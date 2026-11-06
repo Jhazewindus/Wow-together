@@ -290,6 +290,30 @@ def named_item_source(item_name, source_name):
     return len(source) if len(source)>=5 and source in item else 0
 
 
+def order_objectives_by_requirements(quest, requirements):
+    """Keep mapped objective points in source requirement order, stably."""
+    points=quest.get('objectives') or []
+    if len(points)<2 or not requirements:return
+    ranks={}
+    for index,requirement in enumerate(requirements):
+        kind,ident=requirement.get('entityType'),requirement.get('entityID')
+        if kind=='item':ranks[('item',ident)]=min(index,ranks.get(('item',ident),index))
+        else:ranks[(kind,ident)]=min(index,ranks.get((kind,ident),index))
+        for alternative in requirement.get('alternativeEntityIDs',[]):
+            ranks[(kind,alternative)]=min(index,ranks.get((kind,alternative),index))
+    indexed=list(enumerate(points))
+    def rank(entry):
+        index,point=entry
+        keys=[]
+        if point.get('itemID'):keys.append(('item',point['itemID']))
+        if point.get('entityType') and point.get('entityID'):
+            keys.append((point['entityType'],point['entityID']))
+        elif point.get('entityID'):
+            keys.extend((kind,point['entityID']) for kind in ('npc','object'))
+        return (min((ranks[key] for key in keys if key in ranks),default=len(requirements)),index)
+    quest['objectives']=[point for _,point in sorted(indexed,key=rank)]
+
+
 def enrich(quest, refs, entities, preserve_reviewed_objectives=False):
     """Fill real source gaps. Existing mapped instructions take precedence."""
     quest['requirements'] = refs['requirements']

@@ -2,9 +2,21 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.77 — EXACT TRIP ORDERING** targets interface
+progress. Version **0.8.79 — QUESTIE DUNGEON PREREQUISITES** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
+
+**0.8.79 refreshes QuestieDB facts and dungeon prerequisite links.** Dungeon
+preparation now follows verified prerequisite chains before eligible quest
+pickups, including the Lordaeron live changes and the faction alternatives for
+Dire Maul librams. Seven more links were found in an all-dungeon online audit.
+Repeatable quests remain outside automatic collection; undocumented locations
+stay unknown. See CHANGELOG.md, QUEST_DATA.md and TESTING.md.
+
+**0.8.78 refreshed current dungeon references.** The published Wowhead Forever
+quest categories now contain 341 captured memberships, and Wetlands includes a
+newly documented reported encounter with source-linked item facts. Missing
+dungeon encounters remain unknown; see DUNGEONS.md and DUNGEON_VIEWER.md.
 
 **0.8.77 improves live leveling trips** with exact stop ordering for trips
 within a bounded search budget, a beam-search fallback, one per-trip distance
@@ -683,7 +695,7 @@ published Forever entrance geography.** All **19 Classic dungeon complexes**
 have entrance areas, including the level ranges for Scarlet Monastery, Maraudon
 and Blackrock Spire wings. The browser also includes the nine new Forever
 dungeons; four have mapped entrance areas, while the remaining five keep their
-broad locations and explicitly unknown coordinates/quest sets. **339** captured
+  broad locations and explicitly unknown coordinates/quest sets. **341** captured
 dungeon quest memberships join the existing catalogue without changing quest
 facts. Duplicate dungeon labels are folded together; a Dungeon tag alone no
 longer creates class, capital or raid cards. Unassigned records stay in All quests.

@@ -4,6 +4,7 @@ Reads captured files only. No web scripts, source addon engine/UI, images or
 guide prose are executed or bundled. Network capture is a separate operation.
 """
 import argparse
+from datetime import date
 import hashlib
 import json
 import math
@@ -103,7 +104,7 @@ def overview_ranges(path):
     return records
 
 
-def combine(overview, pois, quest_cache):
+def combine(overview, pois, quest_cache, captured):
     records = overview_ranges(overview)
     if digest(pois) != POIS_SHA256:
         raise ValueError('Expected the pinned Forever geographic snapshot')
@@ -145,7 +146,8 @@ def combine(overview, pois, quest_cache):
                         'sha256': digest(path), 'quests': len(set(ids))}
     if any(key not in sources for key, r in records.items() if r['entrances']):
         raise ValueError('Missing captured quest lists for mapped dungeons')
-    metadata = {'schema': 1, 'captured': '2026-10-06', 'overview': {'url': OVERVIEW, 'sha256': digest(overview)},
+    date.fromisoformat(captured)
+    metadata = {'schema': 1, 'captured': captured, 'overview': {'url': OVERVIEW, 'sha256': digest(overview)},
         'entrance_source': {'url': 'https://github.com/tr0tsky0/Mapzeroth/blob/' + COMMIT + '/Data/Forever/Pois.lua',
                             'commit': COMMIT, 'sha256': POIS_SHA256, 'license': 'MIT'},
         'quest_categories': sources, 'classic_complexes': 19, 'forever_dungeons': 9,
@@ -165,8 +167,9 @@ def main():
     parser.add_argument('--overview', type=Path, required=True)
     parser.add_argument('--pois', type=Path, required=True)
     parser.add_argument('--quest-cache', type=Path, required=True)
+    parser.add_argument('--captured', required=True, help='ISO capture date for the supplied source pages')
     args = parser.parse_args()
-    records, metadata = combine(args.overview, args.pois, args.quest_cache)
+    records, metadata = combine(args.overview, args.pois, args.quest_cache, args.captured)
     (ROOT / 'WowTogether/DungeonData.lua').write_text('local addonName, ns = ...\n\n'
         '-- Factual dungeon ranges/membership from Wowhead Forever; geographic facts from\n'
         '-- the attributed MIT Forever snapshot. See DUNGEONS.md / DungeonData.json.\n'

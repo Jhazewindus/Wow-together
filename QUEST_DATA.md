@@ -120,17 +120,23 @@ pass. Existing running guide order stays saved. Distance scores are estimates.
 
 ## Published Forever database facts
 
-Source: https://github.com/Questie/QuestieDB/tree/4ab64311b6f0be1a96b38a5b95bfa27fa95416af
+Source: https://github.com/Questie/QuestieDB/tree/80866960788084ae1592abf66a08f0d306458a95
 
-`tools/forever_source_manifest.json` pins the selected factual files and hashes.
+`tools/forever_source_manifest.json` pins the selected factual files and hashes
+at QuestieDB commit `80866960788084ae1592abf66a08f0d306458a95` (2026-11-05).
+The raw `data/Forever/foreverQuestDB.lua` is unchanged from the previous
+snapshot, so this refresh does not add quest IDs; the 5,307-record catalogue
+remains the same size. Updated corrections and traces do change current facts.
 Our literal-only parser reads raw entity fields, inherited literal corrections,
 beta deltas, trace observations and reviewed literal corrections in source
 precedence order. It does not execute static/dynamic providers, function calls
 or arbitrary expressions. Assumed fields and unsupported expressions remain
 withheld. Short names, typed objective IDs, numeric counts, masks, explicit
-relations and actual representative points are selected.
+relations and actual representative points are selected. It also retains
+Questie's requirement order, current level corrections and reciprocal
+`exclusiveTo` relations when all alternatives have matching quest identities.
 
-The importer also selects **484 explicit NPC patrol paths** as ordered points.
+The importer also selects **482 explicit NPC patrol paths** as ordered points.
 Multiple spawn positions never imply a patrol. Removed/unresolved patrol fields
 remain absent; converted paths in known changed map frames are withheld. The map
 shows a bounded thin amber search trace for upcoming givers, not a live location.
@@ -143,11 +149,30 @@ explicit race IDs, without 32-bit truncation. AND and OR prerequisites retain
 their distinct meanings. Conditions not modeled by the addon remain unknown
 until the actual NPC offer confirms availability.
 
-Typed beta facts correct **488 quest objective records**. Healing groups
+Typed beta facts correct **664 quest objective records**. Healing groups
 produce one credit goal with alternate targets, rather than individual kills.
 Provided items stay out of farming goals. Event areas and item-use instructions
 require explicit locations/mechanisms. Unknown counts are never defaulted to one.
 Escort work stays adjacent to acceptance, preserving its event sequence.
+
+## Live dungeon quest chains
+
+The dungeon preparation route recursively includes every known unfinished
+prerequisite before the dungeon quest. Current live updates add Rear Guard
+Patrol (356 → 99156) before The Wrath of Rath'mael (92422), and A Recipe For
+Death (447 → 450 → 451) before The New Plague (95216). Captured references and
+hashes are recorded in
+`research/ruins-of-lordaeron-2026-11-06/prerequisite-changes.json`.
+
+An all-dungeon audit compared the 341 Wowhead Forever pages linked from all 28
+dungeon records with the current QuestieDB Forever `preQuestSingle` and
+`preQuestGroup` fields. It adds seven further links: direct chains for Uldaman,
+Wailing Caverns, Blackrock Depths and Free Knot!, plus the Horde/Alliance
+Elven Legends alternative before each Dire Maul libram turn-in. Wowhead series
+tables provide independent family checks; only the structured QuestieDB fields
+or the explicit Lordaeron live update determine prerequisite direction. The
+captured URL hashes and limitations are recorded in
+`research/dungeon-prerequisite-audit-2026-11-06/audit.json`.
 
 ## Map geometry and older-world facts
 

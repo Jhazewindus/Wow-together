@@ -36,10 +36,12 @@ unfinished work. Explain any deferred guide commits and the concrete reason.
 Test the combined code and quest data after integration, then finalize the
 version, changelog, test checklist and ZIP. If more guide commits arrive before
 publication, review them and repeat affected integration/checks before building
-the final archive. Record integrated guide work in the release notes. Push the
-tested combined `main` and annotated tag to GitHub, verify their remote IDs,
-then publish that same release's ZIP and matching docs to Discord. A workflow
-instruction change alone does not require an addon version or Discord release.
+the final archive. Record integrated guide work in the release notes. Publish
+that release's ZIP and matching docs to Discord first. Only after Discord
+confirms the post and all attachments, push the tested combined `main` and
+annotated tag to GitHub and verify their remote IDs. If Discord is blocked or
+unconfirmed, do not push the release to GitHub. A workflow instruction change
+alone does not require an addon version or Discord release.
 
 For each addon release:
 
@@ -54,11 +56,12 @@ For each addon release:
    ID and all three attachments. Receipts in the artifact directory prevent
    reposting the same release; changed files require a new release version.
 5. If posting is blocked, finish the complete ZIP and report the specific
-   external blocker. Preserve proxy routing and certificate verification.
-   Ambiguous failures require checking channel history before retrying.
-6. Commit the tested source and matching release notes, create the annotated
-   version tag, and push `main` and that tag directly to GitHub. Report GitHub
-   and Discord outcomes separately if either destination fails.
+   external blocker without pushing the release to GitHub. Preserve proxy
+   routing and certificate verification. Ambiguous failures require checking
+   channel history before retrying.
+6. After confirmed Discord delivery, commit the tested source and matching
+   release notes, create the annotated version tag, and push `main` and that
+   tag directly to GitHub. Verify the remote IDs and report both outcomes.
 
 Read `DISCORD_WEBHOOK_URL` from the environment. For a webhook supplied in the
 current conversation, `--prompt` permits hidden input without writing it to a

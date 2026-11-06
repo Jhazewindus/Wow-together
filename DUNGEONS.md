@@ -1,4 +1,4 @@
-# Combined dungeon data — updated for 0.8.33
+# Combined dungeon data — updated for 0.8.78
 
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
@@ -6,7 +6,11 @@ Maraudon and Blackrock Spire are kept as families with their wing ranges. All
 nine new Forever dungeons are listed; four have published entrance areas and
 five have broad location descriptions without usable coordinates or quest sets.
 
-The 23 bounded Forever dungeon category pages supply 339 quest memberships.
+The 23 bounded Forever dungeon category pages, recaptured November 5, 2026,
+supply 341 quest memberships. Since the prior capture, Deadmines gained quest
+92753 and the Lordaeron list was refreshed. The overview's 28 ranges were
+unchanged. These source lists do not establish that every live quest is
+categorized.
 Every captured member already exists in the 5,230-quest catalogue. Runtime also
 recognizes explicit matching dungeon area/name facts, folding the formerly
 separate Lordaeron label together. A generic Dungeon tag alone does not create
@@ -16,24 +20,26 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
 ## Sources and reconciliation
 
 - [Wowhead Forever overview](https://www.wowhead.com/forever/guide/dungeons-overview-locations-details),
-  captured October 6, 2026. Only short dungeon names and numeric ranges are used.
+  captured November 5, 2026. Only short dungeon names and numeric ranges are used.
 - All 23 published `https://www.wowhead.com/forever/quests/dungeons/<category>`
-  lists, captured on the same date. IDs are merged without changing quest facts.
+  lists, captured on the same date. Five candidate category URLs returned the
+  generic dungeon-quest page rather than a named category, so they remain absent
+  from the captured quest categories. IDs are merged without changing quest facts.
 - [Mapzeroth Forever geographic facts](https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua),
   pinned revision `fd68cfe2153379898680c66a01833846f9933587` (MIT).
   Only the 23 non-raid `instance` point records are selected. No upstream
   engine, route logic, UI, guide prose, screenshots or artwork are included.
 - [Method.gg dungeon guides](https://www.method.gg/wow-forever/dungeons),
-  captured October 13, 2026. The index lists six dungeons: four newer Forever
-  instances and the classic Ragefire Chasm and Stockade. The new-dungeon pages
-  are a second factual check on encounter and listed-item IDs; current
-  Excavation Site, Hall of Thanes and the six listed Ruins of Lordaeron bosses
-  match. Five newer instances are absent from the index. No site code, guide
+  captured November 5, 2026. The index lists ten dungeons: four newer Forever
+  instances and six Classic dungeons. Current newer-dungeon pages cross-check
+  encounter and item IDs. Wetlands lists four encounters including Highland
+  Horror; its NPC and linked item facts also match current Wowhead Forever
+  pages. Five newer instances are absent from the index. No site code, guide
   prose, images or map artwork are included.
 
 `WowTogether/DungeonData.json` keeps all source URLs, SHA256 hashes, fields,
 quest memberships and remaining gaps. Its overview SHA256 is
-`47ccd5577125fbe48321d7ba87da10baa72c2e3b27d89466499881528c79a744`;
+`a5beae895fb35c88d3c854ff364f89c611879086b1c606a6c70797d83a5275f5`;
 its entrance-source SHA256 is
 `3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d`.
 The source's MIT notice is retained in THIRD_PARTY_NOTICES.md.
@@ -118,7 +124,8 @@ Use captured inputs; the importer does not fetch pages or evaluate source script
 /workspace/.wow-together-tests/bin/python tools/import_dungeons.py \
   --overview /tmp/wow-together-dungeons-overview.html \
   --pois /tmp/forever-pois.lua \
-  --quest-cache /tmp/wow-together-dungeon-quests
+  --quest-cache /tmp/wow-together-dungeon-quests \
+  --captured 2026-11-05
 ```
 
 The importer rejects incomplete range coverage, truncated lists, invalid points,

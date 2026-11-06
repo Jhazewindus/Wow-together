@@ -1,9 +1,12 @@
 """Dungeon preparation: all-zone collections, prerequisites and pickup UI."""
+import json
+from pathlib import Path
 import unittest
 
 from test_addon import Client
 from test_050 import solo, dungeon, world_positions
 from test_routes import catalogue, quest, map_canvas, guide as quest_guide
+from test_0817 import shipped, groups as shipped_groups
 
 
 def group(c, data):
@@ -20,6 +23,18 @@ def accept(c, *ids):
 
 
 class DungeonCollectionTests(unittest.TestCase):
+    def test_all_dungeon_quest_page_audit_has_hashed_sources_and_reviewed_edges(self):
+        root = Path(__file__).resolve().parents[1]
+        audit = json.loads((root / 'research/dungeon-prerequisite-audit-2026-11-06/audit.json').read_text())
+        self.assertEqual(audit['scope']['dungeonEntries'], 28)
+        self.assertEqual(audit['scope']['questPagesCaptured'], 341)
+        self.assertEqual(audit['scope']['errors'], 0)
+        self.assertEqual(len(audit['sources'][0]['captures']), 341)
+        self.assertEqual(len(audit['confirmedMissingLinks']), 7)
+        for row in audit['sources'][0]['captures']:
+            self.assertEqual(row['status'], 200)
+            self.assertEqual(len(row['sha256']), 64)
+
     def test_all_twenty_six_pickups_across_three_maps_are_retained(self):
         c = solo(); world_positions(c)
         g = group(c, {i: quest(str(i), map_id=501 + (i % 3)) for i in range(900, 926)})
@@ -40,6 +55,48 @@ class DungeonCollectionTests(unittest.TestCase):
         self.assertEqual(steps, [(899, 'a'), (899, 'q'), (899, 't'), (900, 'a')])
         self.assertTrue(route.stops[4].planned)
         self.assertEqual({r.id for r in guide.records.values()}, {899, 900})
+
+    def test_live_lordaeron_quests_collect_their_new_prerequisite_chains(self):
+        c = shipped(20)
+        group = shipped_groups(c)['ruins-of-lordaeron']
+        guide = c.ns.DungeonGuide(group)
+        self.assertEqual(list(guide.collectionDependencies[92422].values()), [99156])
+        self.assertEqual(list(guide.collectionDependencies[99156].values()), [356])
+        self.assertEqual(list(guide.collectionDependencies[95216].values()), [451])
+        self.assertEqual(list(guide.collectionDependencies[451].values()), [450])
+        self.assertEqual(list(guide.collectionDependencies[450].values()), [447])
+
+        route = c.ns.BuildDungeonRoute(guide, False)
+        positions = {(stop.id, stop.kind): index for index, stop in enumerate(route.stops.values())}
+        for parent, child in ((356, 99156), (99156, 92422),
+                              (447, 450), (450, 451), (451, 95216)):
+            with self.subTest(parent=parent, child=child):
+                self.assertLess(positions[(parent, 't')], positions[(child, 'a')])
+
+    def test_all_dungeon_prerequisites_found_in_current_sources_are_collected_first(self):
+        c = shipped()
+        dungeon_groups = shipped_groups(c)
+        guides = {key: c.ns.DungeonGuide(dungeon_groups[key]) for key in
+                  ('uldaman', 'wailing-caverns', 'blackrock-depths')}
+        for dungeon, child, parent in (('uldaman', 2341, 2340),
+                                       ('wailing-caverns', 1489, 880),
+                                       ('blackrock-depths', 4002, 4001)):
+            with self.subTest(dungeon=dungeon, parent=parent, child=child):
+                self.assertIn(parent, list(guides[dungeon].collectionDependencies[child].values()))
+
+        # Hamuul's prerequisite has known outdoor route stages, so verify the
+        # guide orders its completed hand-in before the dungeon quest pickup.
+        route = c.ns.BuildDungeonRoute(guides['wailing-caverns'], False)
+        positions = {(stop.id, stop.kind): index for index, stop in enumerate(route.stops.values())}
+        self.assertLess(positions[(880, 't')], positions[(1489, 'a')])
+
+        self.assertEqual(c.ns.CatalogueQuest(7429).previousQuest, 5525)
+        # These repeatable objectives are intentionally not collected by the
+        # automatic dungeon-preparation guide, but their faction alternatives
+        # remain available to any flow that explicitly selects one.
+        for child in (7483, 7484, 7485):
+            quest = c.ns.CatalogueQuest(child)
+            self.assertEqual(set(quest.prerequisiteAny.values()), {7481, 7482})
 
     def test_shared_prerequisite_runs_once_and_both_goals_follow_return(self):
         c = solo()

@@ -302,7 +302,9 @@ def merge_beta_facts(records, refs, entities, area_maps, root, preserve_item_sou
         if area in area_maps and area_maps[area] != map_id:
             raise ValueError('Native area/map identity conflicts with captured data: '+str(area))
         area_maps[area] = map_id
-    provenance.update(quests_used=[], identity_conflicts=[], withheld_fields=[], location_points=0,corrected_objective_quest_ids=[], patrol_routes=0)
+    provenance.update(quests_used=[], identity_conflicts=[], withheld_fields=[], location_points=0,
+        corrected_objective_quest_ids=[], objective_order_quest_ids=[], exclusive_quest_ids=[],
+        quest_level_ids=[], required_level_ids=[], patrol_routes=0)
     # Entity records are facts, not quest eligibility. Converted baseline
     # positions remain explicitly distinguishable from new beta observations.
     for kind in ('npc','object','item'):
@@ -371,9 +373,17 @@ def merge_beta_facts(records, refs, entities, area_maps, root, preserve_item_sou
             quest = records[ident] = {'title':title,'level':row['questLevel'],'minLevel':row['requiredLevel'],'foreverStatus':'new'}
         if title and title != quest['title']:
             provenance['identity_conflicts'].append(ident); continue
+        used = False
+        if type(row.get('questLevel')) is int and source.get('questLevel','converted-baseline')!='converted-baseline':
+            if quest.get('level') != row['questLevel']:
+                quest['level']=row['questLevel'];quest['questLevelSource']=provenance['source']
+                provenance['quest_level_ids'].append(ident);used=True
+        if type(row.get('requiredLevel')) is int and source.get('requiredLevel','converted-baseline')!='converted-baseline':
+            if quest.get('minLevel') != row['requiredLevel']:
+                quest['minLevel']=row['requiredLevel'];quest['requiredLevelSource']=provenance['source']
+                provenance['required_level_ids'].append(ident);used=True
         exact = bool(title and row.get('requiredLevel')==quest.get('minLevel') and row.get('questLevel')==quest.get('level'))
         relation = refs.setdefault(ident,{'starts':[],'ends':[],'requirements':[]})
-        used = False
         for field,role in (('startedBy','starts'),('finishedBy','ends')):
             if exact or source.get(field,'converted-baseline')!='converted-baseline':
                 values = relations(row.get(field),data) or inverse[ident][role]
@@ -479,13 +489,42 @@ def merge_beta_facts(records, refs, entities, area_maps, root, preserve_item_sou
                     quest['prerequisiteSource']='Published Forever beta prerequisites'
         if exact:
             quest.setdefault('prerequisitesRead',True)
-            for field in ('requiredSkill','requiredMinRep','requiredMaxRep','parentQuest','availableStartingWith','availableUntilCompleted','exclusiveTo'):
+            for field in ('requiredSkill','requiredMinRep','requiredMaxRep','parentQuest','availableStartingWith','availableUntilCompleted'):
                 if row.get(field): quest['prerequisitesUnverified']=True
             if any(k=='quest' and i==ident and field in ('requiredSkill','requiredMinRep','requiredMaxRep','requiredClasses','requiredRaces')
                 for k,i,field in provenance['skipped_nonliteral_fields']): quest['prerequisitesUnverified']=True
         if type(row.get('specialFlags')) is int and row['specialFlags'] & 1: quest['repeatable']=True
         if type(row.get('questFlags')) is int and row['questFlags'] & (4096|32768|65536): quest['repeatable']=True
+        if source.get('objectives','converted-baseline')!='converted-baseline' and (row.get('objectives') or {}):
+            provenance['objective_order_quest_ids'].append(ident)
         if used: quest['betaFactsSource']=provenance['source']; provenance['quests_used'].append(ident)
+    # QuestieDB's exclusiveTo relation is reciprocal for these branch choices.
+    # Import only complete, title-matched, reciprocal groups; partial records
+    # stay visibly unverified instead of suppressing an unrelated quest.
+    exclusive_source = provenance['source'].rstrip('/')+'/blob/'+provenance['commit']+'/src/corrections/Forever/foreverQuestFixes.lua'
+    for ident,row in sorted(data['quest'].items()):
+        source = origins['quest'].get(ident,{})
+        if source.get('exclusiveTo','converted-baseline')=='converted-baseline': continue
+        quest=records.get(ident); alternatives=ids(row.get('exclusiveTo'))
+        if not quest or not alternatives: continue
+        valid = all(other != ident and other in records and records[other].get('title') == quest.get('title')
+            and ident in ids(data['quest'].get(other,{}).get('exclusiveTo'))
+            and origins['quest'].get(other,{}).get('exclusiveTo') != 'converted-baseline'
+            for other in alternatives)
+        if not valid:
+            quest['prerequisitesUnverified']=True
+            provenance['withheld_fields'].append([ident,'exclusiveTo'])
+            continue
+        existing=quest.get('exclusiveQuests')
+        if existing and sorted(set(existing)) != alternatives:
+            quest['prerequisitesUnverified']=True
+            provenance['withheld_fields'].append([ident,'exclusiveTo'])
+            continue
+        quest['exclusiveQuests']=alternatives
+        quest['exclusiveQuestSource']=exclusive_source
+        provenance['exclusive_quest_ids'].append(ident)
+        quest['betaFactsSource']=provenance['source']
+        if ident not in provenance['quests_used']: provenance['quests_used'].append(ident)
     provenance['inverse_beta_relations_used']=[]
     for ident,quest in records.items():
         relation=refs.setdefault(ident,{'starts':[],'ends':[],'requirements':[]})

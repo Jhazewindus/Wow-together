@@ -163,7 +163,9 @@ class SectionScopeTests(unittest.TestCase):
         self.assertIn(1, guides); self.assertIn(21, guides)
         self.assertNotIn(96259, ids(guides[1]))
         self.assertIn(96259, ids(guides[21]))
-        self.assertEqual((guides[21].mainLevelLow, guides[21].mainLevelHigh), (29, 30))
+        # QuestieDB now reports the former level-29 Defending the Dead and
+        # Stronger than Steel quests at level 30, raising this section bound.
+        self.assertEqual((guides[21].mainLevelLow, guides[21].mainLevelHigh), (30, 30))
         self.assertFalse(guides[21].levelReady)
         # The stable zone identity also retains art if a beta map ID/name changes.
         themed = c.lua.table_from({'key': guides[21].key, 'zoneGuideKey': guides[21].zoneGuideKey,

@@ -1,5 +1,47 @@
 # Wow Together — friend test script
 
+For **0.8.79** — **QUESTIE DUNGEON PREREQUISITES**, World of Warcraft: Forever.
+
+## Dungeon prerequisite audit — 0.8.79
+
+1. On a Horde character without the quests completed, open Wailing Caverns
+   preparation. Confirm Hamuul Runetotem follows the known Barrens chain through
+   Altered Beings, and that completing the chain advances the next pickup.
+2. Check the Uldaman Necklace Recovery and Blackrock Depths rescue quest chains.
+   Confirm the prerequisite relationships are present. Some Uldaman and
+   Blackrock Depths quest locations remain uncaptured, so report any missing
+   pickup/turn-in direction rather than assuming a map point.
+3. Check Ruins of Lordaeron preparation. The Wrath of Rath'mael should follow
+   Rear Guard Patrol; The New Plague should follow the A Recipe For Death chain.
+4. Confirm repeatable dungeon quests remain excluded from automatic collection.
+   Review the three Lorekeeper Lydros librams' Horde/Alliance Elven Legends
+   alternatives in the quest data; do not expect the automatic guide to collect
+   those repeatable turn-ins.
+
+The 341-page Wowhead Forever and current QuestieDB audit is recorded in
+`research/dungeon-prerequisite-audit-2026-11-06/audit.json`. It records factual
+comment checks without copying comment prose. Host tests verify chain data and
+the routable Wailing Caverns prerequisite; only a Forever client can verify
+live offers and unavailable dungeon-interior locations.
+
+For **0.8.78** — **LIVE DUNGEON DATA REFRESH**, World of Warcraft: Forever.
+
+## Live dungeon references — 0.8.78
+
+1. Open Dungeon quests and compare the Deadmines and Ruins of Lordaeron quest
+   lists with the current catalogue. Deadmines includes quest 92753; the
+   published category set now has 341 memberships.
+2. Open the Excavation Site: Wetlands journal. Highland Horror should appear as
+   a reported encounter with Horrible Rootcore listed. Treat reported data as
+   source-backed community documentation, not a complete or official loot
+   table.
+3. Confirm City of Dalaran still displays **Partial data** and five newer
+   Forever dungeons without Method.gg guides remain explicitly unmapped.
+
+Host tests validate current source membership, source receipts and reproducible
+reported encounter merging. They do not confirm live spawn behavior, in-game
+loot, or complete coverage.
+
 For **0.8.77** — **EXACT TRIP ORDERING**, World of Warcraft: Forever,
 interface **16001**.
 Allow **5–10 minutes for this update**; the wider optional checks take 45–60

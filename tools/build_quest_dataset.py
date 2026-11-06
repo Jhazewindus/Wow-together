@@ -15,7 +15,7 @@ import subprocess
 from lupa.lua51 import LuaRuntime
 from import_warcraftdb import ROOT, BASE, apply_corrections, apply_stage_corrections, normalize
 from import_wowhead import base_facts, detail_facts, json_after, list_rows
-from quest_enrichment import enrich, entity_facts, mapper_entities, quest_relations, warcraftdb_objective_facts, warcraftdb_map_facts
+from quest_enrichment import enrich, entity_facts, mapper_entities, order_objectives_by_requirements, quest_relations, warcraftdb_objective_facts, warcraftdb_map_facts
 from legacy_quest_facts import COMMIT, SOURCE, calibrate, indexed, mapped_locations, matches, read_snapshot, requirements, world_locations
 from forever_map_geometry import read_geometry
 from quest_event_areas import event_rows, apply_event_areas
@@ -311,6 +311,8 @@ def build(args):
                     else:item['quantityUnknown']=True
                     items.append(item)
         enrich(quest,relation,entities,preserve_reviewed_objectives=ident in reviewed_stage_ids)
+        if beta_source and ident in beta_source.get('objective_order_quest_ids',[]):
+            order_objectives_by_requirements(quest,relation.get('requirements',[]))
     native_maps={'source':'https://forever.warcraftdb.com/list/quests','stages_added':0,'quests':[]}
     known_maps=set(area_maps.values())|set(geometry)|{n['mapID'] for n in travel['nodes'].values()}
     for ident,raw in sorted(source_maps.items()):

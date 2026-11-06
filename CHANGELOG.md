@@ -1,5 +1,54 @@
 # Wow Together changelog
 
+## Unreleased
+
+## 0.8.79
+
+**QUESTIE DUNGEON PREREQUISITES**
+
+**QUESTIE DATABASE REFRESH**
+
+- Advance the captured QuestieDB Forever facts from `4ab64311` to
+  `80866960`. The base Forever quest database is unchanged, so the catalogue
+  remains at 5,307 quests; current corrections and traces update quest levels,
+  objective counts and ordering, NPC/object locations, starters and
+  prerequisites.
+- Import reciprocal quest-choice restrictions and preserve them in route
+  eligibility. Add the Divine Grace and Confounding Flash branch groups,
+  High Priestess Laurena's new starters, and the prerequisite for A Light in
+  the Darkness.
+- Keep a source-linked audit trail and refresh reviewed snapshots where current
+  Questie observations moved the representative points. No quest prose or
+  source addon code is included.
+- Add the new live prerequisites for two Ruins of Lordaeron quests. Dungeon
+  preparation now routes through Rear Guard Patrol (356 → 99156) before The
+  Wrath of Rath'mael, and through A Recipe For Death (447 → 450 → 451) before
+  The New Plague. The same prerequisite traversal applies to every dungeon's
+  quest list; reviewed sources and hashes are recorded under research.
+- Audit all 341 quest pages assigned to the 28 dungeon records against current
+  QuestieDB Forever prerequisite fields and Wowhead Forever series tables.
+  Add the missing Uldaman, Wailing Caverns, Blackrock Depths and Dire Maul
+  links, including the Horde/Alliance alternative before each of the three
+  Lorekeeper Lydros libram quests. Seven confirmed links are recorded in
+  `research/dungeon-prerequisite-audit-2026-11-06/audit.json`. Repeatable quests
+  remain excluded from automatic collection, and unknown quest locations stay
+  unfilled.
+
+## 0.8.78
+
+**LIVE DUNGEON DATA REFRESH**
+
+- Refresh the 23 published Wowhead Forever dungeon quest categories and retain
+  all 28 dungeon range records. Captured memberships rise from 339 to 341:
+  quest 92753 is added to Deadmines and 92401 is now an explicit Ruins of
+  Lordaeron category member. Quest facts and catalogue records remain unchanged.
+- Refresh the Method.gg index and its ten published guides. Add Highland Horror
+  as a reported Wetlands encounter with its linked Horrible Rootcore item,
+  corroborated by current Wowhead Forever NPC and zone facts. Keep the journal
+  partial and preserve missing encounters/loot as unknown.
+- Keep the five newer Forever dungeons without Method.gg guide pages explicitly
+  unmapped. No site code, prose, artwork or map imagery is included.
+
 ## 0.8.77
 
 **EXACT TRIP ORDERING**

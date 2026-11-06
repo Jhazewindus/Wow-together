@@ -47,6 +47,11 @@ class LootAuditTests(unittest.TestCase):
         self.assertEqual(manifest['counts']['partialDungeons'], 1)
         self.assertEqual(manifest['foreverDungeonAdditions']['city-of-dalaran']['specificBossesCaptured'], 8)
         self.assertEqual(manifest['foreverDungeonAdditions']['city-of-dalaran']['specificDropLinksCaptured'], 27)
+        self.assertEqual(manifest['foreverDungeonAdditions']['reportedEncounterAdditions']['bossesCaptured'], 1)
+        wetlands = c.ns.DungeonViewerData('excavation-site-wetlands')
+        highland = next(row for row in wetlands.bosses.values() if row.id == 260808)
+        self.assertTrue(highland.reported)
+        self.assertEqual({item.id for item in highland.loot.values()}, {270180})
         self.assertEqual(manifest['userConfirmedFacts']['archiveSHA256'],
                          '7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02')
 
@@ -54,18 +59,29 @@ class LootAuditTests(unittest.TestCase):
         additions = json.loads((ROOT / 'tools/dungeon_forever_additions.json').read_text())
         items = {273103: additions['items']['273103']}
         data = {'city-of-dalaran': {'name': 'City of Dalaran', 'partial': True, 'bosses': [
-            {'id': 246020, 'name': 'Shade of the Archmage', 'dropIDs': [273103], 'sharedDropIDs': []}]}}
+            {'id': 246020, 'name': 'Shade of the Archmage', 'dropIDs': [273103], 'sharedDropIDs': []}]},
+            'excavation-site-wetlands': {'name': 'Excavation Site: Wetlands', 'bosses': []}}
         coverage = {'city-of-dalaran': {'bosses': 1, 'foreverNPCTablesCaptured': 0, 'unpublished': False}}
+        coverage['excavation-site-wetlands'] = {'bosses': 0, 'reportedBosses': 0,
+            'foreverNPCTablesCaptured': 0, 'missingForeverNPCs': [260808], 'unpublished': False}
         sources = {}
         for _ in range(2):
             provenance = apply_forever_dungeon_additions(data, coverage, items, sources)
         self.assertEqual(len(data['city-of-dalaran']['bosses']), 8)
         self.assertEqual(sum(len(row['dropIDs']) for row in data['city-of-dalaran']['bosses']), 27)
-        self.assertEqual(len(items), 27)
-        self.assertEqual(len(sources), 8)
-        self.assertEqual(len(additions['methodIndex']['guides']), 6)
+        self.assertEqual(len(items), 28)
+        self.assertEqual(len(sources), 9)
+        self.assertEqual(len(additions['methodIndex']['guides']), 10)
+        self.assertEqual(provenance['methodCrossChecks']['excavation-site-wetlands']['listedBosses'], 4)
+        self.assertEqual(provenance['methodCrossChecks']['excavation-site-wetlands']['listedItemLinks'], 11)
         self.assertEqual(provenance['methodCrossChecks']['city-of-dalaran']['listedBosses'], 8)
         self.assertEqual(coverage['city-of-dalaran']['specificForeverNPCsCaptured'], 8)
+
+        boss = next(row for row in data['excavation-site-wetlands']['bosses'] if row['id'] == 260808)
+        self.assertEqual((boss['name'], boss['level'], boss['reported'], boss['dropIDs']),
+                         ('Highland Horror', 28, True, [270180]))
+        self.assertEqual(items[270180]['name'], 'Horrible Rootcore')
+        self.assertNotIn(260808, coverage['excavation-site-wetlands']['missingForeverNPCs'])
 
     def test_user_confirmed_dungeon_corrections_are_rebuildable_and_idempotent(self):
         data = {key: {'bosses': [{'id': npc, 'name': name, 'dropIDs': [], 'sharedDropIDs': []}]}

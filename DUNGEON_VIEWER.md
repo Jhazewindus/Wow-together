@@ -1,14 +1,18 @@
-# Dungeon viewer — 0.8.75 — ROYS BIG DUNGEON BANANZA
+# Dungeon viewer — 0.8.78 — LIVE DUNGEON DATA REFRESH
 
-The 0.8.75 journal adds eight documented City of Dalaran encounters and 27
-specific boss/item links from captured public Forever NPC pages. The Method.gg
-guide page independently cross-checks the listed Dalaran roster and loot IDs.
-City of Dalaran remains labeled **Partial data** because its interior map and
-exhaustive encounter coverage are not established. No map position or unlisted
-drop is inferred. The records include IDs, names, item metadata, source URLs and
-capture hashes; no site code, prose, artwork, layout or map image is included.
+The journal retains eight documented City of Dalaran encounters and 27
+specific boss/item links from captured public Forever NPC pages. This refresh
+adds Highland Horror as a **reported** Excavation Site: Wetlands encounter and
+the linked Horrible Rootcore item. The current Method.gg guide lists four
+encounters and eleven item links; current Wowhead Forever NPC and zone pages
+independently support these facts. This remains reported data, not an exhaustive
+or official loot table. City of Dalaran stays **Partial data** because its
+interior map and full encounter coverage are not established. No map position
+or unlisted drop is inferred. Source URLs and capture hashes remain in
+`DungeonJournalData.json`; no site code, prose, artwork, layout or map image is
+included.
 
-Method.gg currently has guides for four of the nine newer Forever dungeons:
+Method.gg's November 5, 2026 index has guides for four of the nine newer Forever dungeons:
 City of Dalaran, Excavation Site: Wetlands, Hall of Thanes and Ruins of
 Lordaeron. The listed Wetlands and Hall bosses/drops match the current journal.
 Ruins' six Method-listed bosses match too; Lordaeron Captain is a separate
@@ -129,15 +133,18 @@ Captured and audited 6 October 2026:
   supplement the baseline; **13,127 season-only rows** are excluded. NPC pages can
   contain historic Classic, Hardcore, Anniversary and SoD samples even under a
   Forever URL. No historical sample rate is presented as a Forever drop chance.
-- **263 encounter listings across 22 dungeon definitions**. Hall of Thanes has
+- **272 journal encounter entries across 23 dungeon definitions**. Hall of Thanes has
   four reported encounters and twelve reported drops; Ruins of Lordaeron and
   Excavation Site: Wetlands also have explicit community encounter/drop tables.
   Their matching public NPC/item IDs, names and icons were verified against the
-  page's literal metadata. Comment IDs/authors/dates and page hashes are in
+  page's literal metadata. Highland Horror is an additional reported Wetlands
+  encounter with source receipts for its current NPC, zone and Method pages.
+  Comment IDs/authors/dates and page hashes are in
   `communityReports`; these are reported beta observations, not official or
   exhaustive loot tables. Missing beta trash tables remain unknown.
-- The remaining **six new dungeon definitions** have no captured encounter/loot
-  tables. Wowhead began returning CloudFront 403s during the NPC audit; bulk
+- The remaining **five new dungeon definitions** have no captured encounter
+  records or Method.gg guide pages. Wowhead's guessed quest category pages were
+  generic; bulk
   captures were stopped. Warcraft DB's public NPC endpoint was checked but has no
   loot tabs for the tested NPCs; the tested new item endpoint was unavailable.
   These external gaps prevent a truthful 100% current-Forever claim. No NPC is
@@ -204,7 +211,7 @@ stay outside the addon and source repository.
 `DungeonMapData.lua/json` adds **158 boss positions** and **414 interior quest
 target positions for 139 quests**, with records for all 28 dungeon definitions.
 All 19 Classic complexes have some reference positions. This is **partial
-coordinate coverage**, not all 263 encounter listings: `coverage` lists every unresolved
+coordinate coverage**, not all 272 journal encounters: `coverage` lists every unresolved
 boss, including missing event spawns and ambiguous multi-floor locations. The
 nine new Forever dungeons have no verified offline interior coordinates in this
 capture; matching public native encounters/maps can supply live positions.

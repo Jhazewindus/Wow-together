@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.77
-## X-ReleaseName: EXACT TRIP ORDERING
+## Version: 0.8.79
+## X-ReleaseName: QUESTIE DUNGEON PREREQUISITES
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

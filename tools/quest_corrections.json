@@ -1706,7 +1706,7 @@
     "questID": 99082,
     "title": "The High Chieftain",
     "pickupRequiresOffer": true,
-    "source": "Supplied Mulgore report, Forever beta, 2026-10-06: repeatedly recommended without an NPC offer. Supplied overlapping partial Mulgore exports confirm absences on build 70205; exact unlock unresolved. Actual NPC offer required."
+    "source": "Supplied Mulgore report, Forever beta, 2026-10-06: repeatedly recommended without an NPC offer. Supplied overlapping partial Mulgore exports confirm absences on build 70205; exact unlock unresolved. Actual NPC offer required. Quest level refreshed from the current QuestieDB corrections/trace at https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverQuestTraces.lua (SHA-256 70c924028d203a287d1ae05462b9f7e9064c59b4f6c60b213ec086c037bab65c)."
   },
   {
     "questID": 99101,
@@ -1882,7 +1882,7 @@
     "title": "The High Chieftain",
     "previousQuest": 99080,
     "previousTitle": "Drive Them Out",
-    "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99082; captured 2026-10-08; SHA-256 90a631482b18ff69253e63d72aa50d39ee7c2a05b9a6974244dba440d1b690c5. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+    "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99082; captured 2026-10-08; SHA-256 90a631482b18ff69253e63d72aa50d39ee7c2a05b9a6974244dba440d1b690c5. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions. Quest level refreshed from the current QuestieDB corrections/trace at https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverQuestTraces.lua (SHA-256 70c924028d203a287d1ae05462b9f7e9064c59b4f6c60b213ec086c037bab65c)."
   },
   {
     "questID": 745,
@@ -1950,7 +1950,7 @@
     "stageCorrection": {
       "kind": "npc-location",
       "minLevel": 4,
-      "level": 9,
+      "level": 11,
       "classMask": 0,
       "requiredItems": [],
       "entityID": 2993,
@@ -1968,7 +1968,7 @@
         "y": 0.602
       }
     },
-    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee. Quest level refreshed from the current QuestieDB corrections/trace at https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverQuestTraces.lua (SHA-256 70c924028d203a287d1ae05462b9f7e9064c59b4f6c60b213ec086c037bab65c)."
   },
   {
     "questID": 99101,
@@ -3826,7 +3826,7 @@
   {
     "questID": 79975,
     "title": "Eagle's Fist",
-    "source": "https://github.com/Questie/QuestieDB/blob/4ab64311b6f0be1a96b38a5b95bfa27fa95416af/src/corrections/Forever/traces/foreverObjectTraces.lua; current Carved Figurine and Messenger Bag beta-observation spawns, preserving the three-stage cross-zone handoff. SHA-256 babb02ea656a878d0d0faa9ae62deec878b931e3b997957b1b570d4901c41539.",
+    "source": "https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverObjectTraces.lua; current Carved Figurine and Messenger Bag beta-observation spawns, preserving the three-stage cross-zone handoff. SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 14,
@@ -3840,7 +3840,7 @@
         "npcTargets": [],
         "starts": [
           {
-            "y": 0.12869999999999998,
+            "y": 0.1288,
             "x": 0.49439999999999995,
             "name": "Carved Figurine",
             "entityID": 424007,
@@ -3868,7 +3868,7 @@
         "npcTargets": [],
         "starts": [
           {
-            "y": 0.12869999999999998,
+            "y": 0.1288,
             "x": 0.49439999999999995,
             "name": "Carved Figurine",
             "entityID": 424007,
@@ -8306,11 +8306,11 @@
   {
     "questID": 99053,
     "title": "Escaping Ban'ethil",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation explicitly describes escape work. Pickup and final recipient do not establish the escort path or completion trigger; retain unmapped work instead of claiming a complete conversation-only objective. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation explicitly describes escape work. Pickup and final recipient do not establish the escort path or completion trigger; retain unmapped work instead of claiming a complete conversation-only objective. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09. Quest level refreshed from the current QuestieDB corrections/trace at https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverQuestTraces.lua (SHA-256 70c924028d203a287d1ae05462b9f7e9064c59b4f6c60b213ec086c037bab65c).",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 4,
-      "level": 9,
+      "level": 10,
       "classMask": 0,
       "requiredItems": [],
       "before": {
@@ -8514,7 +8514,7 @@
   {
     "questID": 91317,
     "title": "The Tarnished",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 9,
@@ -8569,8 +8569,8 @@
           },
           {
             "mapID": 1420,
-            "x": 0.1215,
-            "y": 0.5951,
+            "x": 0.2023,
+            "y": 0.6156,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
             "name": "Tarnished Zealot",
@@ -8734,7 +8734,7 @@
   {
     "questID": 95328,
     "title": "Whispering Horror Residue",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed levels from current Wowhead/QuestDB catalogue (was (7, 10), now (7, 13)); QuestieDB row retained in pinned source manifest for comparison.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed levels from current Wowhead/QuestDB catalogue (was (7, 10), now (7, 13)); QuestieDB row retained in pinned source manifest for comparison. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 7,
@@ -8792,8 +8792,8 @@
         "objectives": [
           {
             "mapID": 1420,
-            "x": 0.09179999999999999,
-            "y": 0.6092,
+            "x": 0.094,
+            "y": 0.6175999999999999,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
             "name": "Whispering Horror",
@@ -9106,7 +9106,7 @@
   {
     "questID": 98389,
     "title": "A Light in the Darkness",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 2,
@@ -9116,8 +9116,8 @@
       "before": {
         "npcTargets": [
           {
-            "entityID": 271961,
-            "name": "Webbed Forsaken",
+            "entityID": 271968,
+            "name": "Forsaken Adventurer",
             "action": "event",
             "npc": true,
             "alternativeEntityIDs": [
@@ -9129,12 +9129,12 @@
         "objectives": [
           {
             "mapID": 1420,
-            "x": 0.248,
-            "y": 0.6031,
+            "x": 0.24760000000000001,
+            "y": 0.6037,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
-            "name": "Webbed Forsaken",
-            "entityID": 271961,
+            "name": "Forsaken Adventurer",
+            "entityID": 271968,
             "entityType": "npc",
             "npc": true,
             "quantity": 6,
@@ -10677,7 +10677,7 @@
   {
     "questID": 79192,
     "title": "Stepping Stones",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 14,
@@ -10693,7 +10693,7 @@
         "ends": [
           {
             "mapID": 1442,
-            "x": 0.40759999999999996,
+            "x": 0.4077,
             "y": 0.5257000000000001,
             "sourceAreaID": 406,
             "locationSource": "Published Forever beta-observation entity position",
@@ -13933,7 +13933,7 @@
       "before": "Both",
       "side": "Horde"
     },
-    "source": "https://www.wowhead.com/forever/quest=95534 — refreshed capture 2026-11-04, SHA-256 88414a71d647d103492d4bd0f29f9b5d08cbb029594e552e6422527b4ab34b65; current page says Both. Current QuestieDB Forever data at 4ab64311b6f0be1a96b38a5b95bfa27fa95416af still carries the Horde mask, and the 2026-10-10 Wowhead capture also reported Horde. Retain Horde pending live-client verification of this source conflict."
+    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 refreshed capture 2026-11-04, SHA-256 88414a71d647d103492d4bd0f29f9b5d08cbb029594e552e6422527b4ab34b65; current page says Both. Current QuestieDB Forever data at 4ab64311b6f0be1a96b38a5b95bfa27fa95416af still carries the Horde mask, and the 2026-10-10 Wowhead capture also reported Horde. Retain Horde pending live-client verification of this source conflict."
   },
   {
     "questID": 93680,
@@ -13973,7 +13973,7 @@
   {
     "questID": 96984,
     "title": "Heart of Disruption",
-    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete. Retain the previously reviewed current handoff locations from the captured quest page: starter 269127 at 68.6,45.2 (map 1421), receiver 2410 at 61.6,20.8 (map 1424). Current QuestieDB does not publish this quest record, so no replacement location is inferred.",
+    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete. Retain the previously reviewed current handoff locations from the captured quest page: starter 269127 at 68.6,45.2 (map 1421), receiver 2410 at 61.6,20.8 (map 1424). Current QuestieDB does not publish this quest record, so no replacement location is inferred.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 24,
@@ -17812,7 +17812,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6821
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -17821,7 +17821,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6822
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6824,
@@ -17830,7 +17830,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6823
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -20556,7 +20556,7 @@
     "stageCorrection": {
       "kind": "npc-location",
       "minLevel": 4,
-      "level": 9,
+      "level": 11,
       "classMask": 0,
       "requiredItems": [
         {
@@ -20581,6 +20581,93 @@
         "y": 0.602
       }
     },
-    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee. Quest level refreshed from the current QuestieDB corrections/trace at https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverQuestTraces.lua (SHA-256 70c924028d203a287d1ae05462b9f7e9064c59b4f6c60b213ec086c037bab65c)."
+  },
+  {
+    "questID": 92422,
+    "title": "The Wrath of Rath'mael",
+    "previousTitle": "Rear Guard Patrol",
+    "prerequisiteCorrection": {
+      "previousQuest": 99156
+    },
+    "source": "Wowhead Forever live update reports quest 92422 now requires quest 99156 after quest 356. Capture: research/ruins-of-lordaeron-2026-11-06/prerequisite-changes.json (article SHA-256 d78e664ac01018c21ffefaabaf8227455b2ebeeaa89bd658a79ac82c8f49dd3a; quest 92422 SHA-256 7ad6d122c169ebc120a9ac273b85e282e1902b53e1de5c845e10f724a9858386; quest 99156 SHA-256 4b1fe213c2c7c2871e0dbbf5990ffe832c318dc1b82eef5b63bb963e4a671e99; quest 356 SHA-256 44d4be277d1bb00de26fbaec360bef1f77979429da97342a90ddfb184607185e). Existing quest 99156 data already links to quest 356; the dungeon preparation guide will collect the chain before quest 92422."
+  },
+  {
+    "questID": 95216,
+    "title": "The New Plague",
+    "previousTitle": "A Recipe For Death",
+    "prerequisiteCorrection": {
+      "previousQuest": 451
+    },
+    "source": "Wowhead Forever live update reports quest 95216 now requires the three-part A Recipe For Death chain, quests 447 -> 450 -> 451. Capture: research/ruins-of-lordaeron-2026-11-06/prerequisite-changes.json (article SHA-256 d78e664ac01018c21ffefaabaf8227455b2ebeeaa89bd658a79ac82c8f49dd3a; quest 95216 SHA-256 825e700ca63d892f874219f1002cb33edb3b1071d10860439f00c4d16c0da890; quest 447 SHA-256 0ee2fba4d894db47ff4c2b4b1df019a0f5427b41f24d85e9a62654ecc80be5d4; quest 450 SHA-256 7392ff3cd5d67a0a64309f11daac33325e3a97a474f4566c1a87c85ccfefb17f; quest 451 SHA-256 721c69ef03c1170e642c20e69fe8106d7096cd10cd0b4001f9b62fe07315596b). Existing quest links already define 447 -> 450 -> 451; making 451 a prerequisite completes the entire chain."
+  },
+  {
+    "questID": 2341,
+    "title": "Necklace Recovery, Take 3",
+    "previousTitle": "Deliver the Gems",
+    "prerequisiteCorrection": {
+      "previousQuest": 2340
+    },
+    "source": "Current QuestieDB Forever preQuestSingle field and Wowhead Forever Series table agree that Deliver the Gems (2340) precedes Necklace Recovery, Take 3 (2341). Captured 2026-11-06; evidence and SHA-256: research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 1489,
+    "title": "Hamuul Runetotem",
+    "previousTitle": "Altered Beings",
+    "prerequisiteCorrection": {
+      "previousQuest": 880
+    },
+    "source": "Current QuestieDB Forever preQuestSingle field explicitly requires Altered Beings (880) before Hamuul Runetotem (1489). Captured 2026-11-06; Wowhead Forever quest-page hashes and QuestieDB source commit/file hash: research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 4002,
+    "title": "The Eastern Kingdoms",
+    "previousTitle": "What Is Going On?",
+    "prerequisiteCorrection": {
+      "previousQuest": 4001
+    },
+    "source": "Current QuestieDB Forever preQuestSingle field and the Wowhead Blackrock Depths quest-series listing place What Is Going On? (4001) before The Eastern Kingdoms (4002). Captured 2026-11-06; source hashes: research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 7429,
+    "title": "Free Knot!",
+    "previousTitle": "Free Knot!",
+    "prerequisiteCorrection": {
+      "previousQuest": 5525
+    },
+    "source": "Current QuestieDB Forever preQuestSingle field explicitly links the earlier same-title Free Knot! record (5525) to quest 7429. Captured 2026-11-06; Wowhead Forever and QuestieDB hashes: research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 7483,
+    "title": "Libram of Rapidity",
+    "prerequisiteCorrection": {
+      "prerequisiteAny": [
+        7481,
+        7482
+      ]
+    },
+    "source": "Current QuestieDB Forever preQuestSingle lists the Horde and Alliance Elven Legends choices (7481 or 7482) for this Lorekeeper Lydros libram turn-in. Wowhead Forever quest 7481 comments independently describe Elven Legends as the prerequisite for these libram quests. Captured 2026-11-06; this quest page SHA-256 86e632cde20684001f0ee100cad89bc543aaf76644af9db9f62a6f113b670a93; parent page hashes and QuestieDB source hash are in research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 7484,
+    "title": "Libram of Focus",
+    "prerequisiteCorrection": {
+      "prerequisiteAny": [
+        7481,
+        7482
+      ]
+    },
+    "source": "Current QuestieDB Forever preQuestSingle lists the Horde and Alliance Elven Legends choices (7481 or 7482) for this Lorekeeper Lydros libram turn-in. Wowhead Forever quest 7481 comments independently describe Elven Legends as the prerequisite for these libram quests. Captured 2026-11-06; this quest page SHA-256 ae75a295947346ed14a3a99e68bbfa9a493d90a822d79e52ab485d89430df0f4; parent page hashes and QuestieDB source hash are in research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 7485,
+    "title": "Libram of Protection",
+    "prerequisiteCorrection": {
+      "prerequisiteAny": [
+        7481,
+        7482
+      ]
+    },
+    "source": "Current QuestieDB Forever preQuestSingle lists the Horde and Alliance Elven Legends choices (7481 or 7482) for this Lorekeeper Lydros libram turn-in. Wowhead Forever quest 7481 comments independently describe Elven Legends as the prerequisite for these libram quests. Captured 2026-11-06; this quest page SHA-256 0c65e036673cd336e175f251cdf1f7aab1ff350bc7d9331beab1b99f5eceecf1; parent page hashes and QuestieDB source hash are in research/dungeon-prerequisite-audit-2026-11-06/audit.json."
   }
 ]

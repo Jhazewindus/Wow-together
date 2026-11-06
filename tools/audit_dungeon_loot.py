@@ -201,6 +201,64 @@ def apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources, addi
     coverage_row['unpublished'] = False
     coverage_row['partial'] = True
 
+    reported_rows = additions.get('reportedEncounterAdditions', [])
+    if not isinstance(reported_rows, list):
+        raise ValueError('Forever reported encounter additions must be a list')
+    reported_sources = {}
+    for source_boss in reported_rows:
+        key, ident, name = source_boss.get('dungeonKey'), source_boss.get('id'), source_boss.get('name')
+        drop_ids, source = source_boss.get('dropIDs'), source_boss.get('source')
+        if key not in data or key not in coverage or type(ident) is not int or ident < 1:
+            raise ValueError('Invalid Forever reported encounter identity')
+        if not isinstance(name, str) or not name or not isinstance(drop_ids, list) or not drop_ids:
+            raise ValueError('Forever reported encounter needs a name and item links')
+        if not isinstance(source, dict) or not source.get('url') or not re.fullmatch(r'[0-9a-f]{64}', source.get('sha256', '')):
+            raise ValueError('Forever reported encounter has no source receipt')
+        if type(source.get('bytes')) is not int or source['bytes'] < 1:
+            raise ValueError('Forever reported encounter source has no byte count')
+        corroboration = source_boss.get('corroboration')
+        if (not isinstance(corroboration, dict) or not corroboration.get('url')
+                or not re.fullmatch(r'[0-9a-f]{64}', corroboration.get('sha256', ''))
+                or type(corroboration.get('bytes')) is not int or corroboration['bytes'] < 1):
+            raise ValueError('Forever reported encounter needs an independent corroborating source receipt')
+        source_key = str(ident)
+        prior_source = npc_sources.get(source_key)
+        if prior_source is not None and prior_source != source:
+            raise ValueError('Forever reported encounter source conflicts with captured page')
+        npc_sources[source_key] = source
+        dungeon = data[key]
+        encounter = next((row for row in dungeon.setdefault('bosses', []) if row.get('id') == ident), None)
+        if encounter is None:
+            encounter = {'id': ident, 'name': name, 'dropIDs': [], 'sharedDropIDs': []}
+            if source_boss.get('reported') is True:
+                encounter['reported'] = True
+            if type(source_boss.get('level')) is int and 1 <= source_boss['level'] <= 255:
+                encounter['level'] = source_boss['level']
+            dungeon['bosses'].append(encounter)
+        elif encounter.get('name') != name:
+            raise ValueError('Forever reported encounter name conflicts with existing data')
+        for item_id in drop_ids:
+            item = item_metadata.get(str(item_id))
+            if type(item_id) is not int or item is None:
+                raise ValueError('Forever reported encounter references uncaptured item metadata')
+            existing = item_rows.get(item_id)
+            if existing is not None and existing != item:
+                raise ValueError('Forever reported item metadata conflicts with existing data: ' + str(item_id))
+            item_rows[item_id] = item
+            if item_id not in encounter.setdefault('dropIDs', []):
+                encounter['dropIDs'].append(item_id)
+        encounter['dropIDs'].sort(key=lambda item_id: (
+            -item_rows[item_id].get('quality', 0), item_rows[item_id]['name'], item_id))
+        coverage_entry = coverage[key]
+        coverage_entry['bosses'] = len(dungeon['bosses'])
+        coverage_entry['reportedBosses'] = sum(bool(row.get('reported')) for row in dungeon['bosses'])
+        if prior_source is None:
+            coverage_entry['foreverNPCTablesCaptured'] = coverage_entry.get('foreverNPCTablesCaptured', 0) + 1
+            coverage_entry['specificForeverNPCTablesCaptured'] = coverage_entry.get('specificForeverNPCTablesCaptured', 0) + 1
+        coverage_entry['unpublished'] = False
+        coverage_entry['missingForeverNPCs'] = [value for value in coverage_entry.get('missingForeverNPCs', []) if value != ident]
+        reported_sources[source_key] = source
+
     return {
         'captured': additions.get('captured'),
         'purpose': additions.get('purpose'),
@@ -211,6 +269,12 @@ def apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources, addi
             'specificBossesCaptured': len(source_ids),
             'specificDropLinksCaptured': sum(len(row['dropIDs']) for row in bosses),
             'bossSources': {str(row['id']): row['source'] for row in bosses},
+        },
+        'reportedEncounterAdditions': {
+            'bossesCaptured': len(reported_sources),
+            'specificDropLinksCaptured': sum(len(row.get('dropIDs', [])) for row in reported_rows),
+            'bossSources': reported_sources,
+            'corroboratingSources': {str(row['id']): row['corroboration'] for row in reported_rows},
         },
     }
 
@@ -452,7 +516,8 @@ def audit(args):
             'unpublished': not expected}
     user_confirmed_source = apply_user_confirmed_fact_corrections(data, coverage, item_rows)
     forever_dungeon_sources = apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources)
-    total_rows += forever_dungeon_sources['city-of-dalaran']['specificDropLinksCaptured']
+    total_rows += (forever_dungeon_sources['city-of-dalaran']['specificDropLinksCaptured'] +
+        forever_dungeon_sources['reportedEncounterAdditions']['specificDropLinksCaptured'])
     counts = {'dungeons': len(data), 'dungeonsWithBosses': sum(bool(value['bosses']) for value in data.values()),
         'bosses': sum(len(value['bosses']) for value in data.values()), 'items': len(item_rows),
         'lootEntries': sum(len(boss['dropIDs']) for value in data.values() for boss in value['bosses']),

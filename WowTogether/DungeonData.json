@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "captured": "2026-10-06",
+  "captured": "2026-11-05",
   "overview": {
     "url": "https://www.wowhead.com/forever/guide/dungeons-overview-locations-details",
-    "sha256": "47ccd5577125fbe48321d7ba87da10baa72c2e3b27d89466499881528c79a744"
+    "sha256": "a5beae895fb35c88d3c854ff364f89c611879086b1c606a6c70797d83a5275f5"
   },
   "entrance_source": {
     "url": "https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua",
@@ -14,117 +14,117 @@
   "quest_categories": {
     "blackfathom-deeps": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/blackfathom-deeps",
-      "sha256": "fca897855fcd69c6c7d6e43148c6149be160c85e853ad87ecda508236f387220",
+      "sha256": "b45a112644a4cf1e96d60fdc9a79e69c7fc252d3cce7c93a611538fb5ef5df0a",
       "quests": 13
     },
     "blackrock-depths": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/blackrock-depths",
-      "sha256": "1ec92649419ea1f13f5655e6a3efa336575faca6f6b52335859ff9023e56cd28",
+      "sha256": "4c3eefad19e150d02133c241759e17fbc50d4b494bfe486d8778269cfcca5f24",
       "quests": 43
     },
     "blackrock-spire": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/blackrock-spire",
-      "sha256": "ce1e1ad318c192d093e1bb558e569051d4caae92951fdee2f76b51e542150daf",
+      "sha256": "009279596a88ca211e52dc57135cf7609340aa884ddbc659dc4c5da1d462030d",
       "quests": 37
     },
     "city-of-dalaran": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/city-of-dalaran",
-      "sha256": "b877398201df890a33996408532c77c45ae6ccc9e610a67a798baf228ffa23ef",
+      "sha256": "fc0470d688ff3b3949de75e23cc02fa9864a7b3be6da0bdfd16f296e54148266",
       "quests": 8
     },
     "dire-maul": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/dire-maul",
-      "sha256": "a77218c456ecb69b9af062ec7766a2461629de39c24f23d954c3017e3d89c551",
+      "sha256": "f214c28fee2c9c0de31d2768fcc0e6ae68f2ffc5624f3612e2e6e837c942976c",
       "quests": 38
     },
     "excavation-site-wetlands": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/excavation-site-wetlands",
-      "sha256": "c61601f9b873506b70942846f829de80e8144154a0a6e6d6d77e2f0ed4e7aa08",
+      "sha256": "b1017ba0722a950db3b078636e6e3c888a892d60523dac80f2ac4f6a8bca3654",
       "quests": 14
     },
     "gnomeregan": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/gnomeregan",
-      "sha256": "f72044568bfffea2b20e8f30a1ba1dc1913d1501705b4da81c80420b747ab791",
+      "sha256": "1882918a721fa1712380c62bab663d70f30a57b5cc87e2d7ef9aa88db08ae0d5",
       "quests": 28
     },
     "maraudon": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/maraudon",
-      "sha256": "3a4d7f93323ad46604c36b2c7d5949eb4e798bb53c90dd8a090e4d50457dbdf4",
+      "sha256": "51a3ce75f8669f4ca0a7a3d66ff7e375195eefa137ad62ee1acbec9d186d8f8d",
       "quests": 11
     },
     "ragefire-chasm": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/ragefire-chasm",
-      "sha256": "246bdef1adc19b73ecb06d7dcea26849c6dbc72a764a5193c27ef2526b88ec60",
+      "sha256": "76515b0be63fb3cc6a317a96a2690bb803d5872dd6f6f0936f0dafa1536746d3",
       "quests": 6
     },
     "razorfen-downs": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/razorfen-downs",
-      "sha256": "67f36134f18e935044099a0db12e9c8ae5534196d2cbe31e417c2a75d2d1820e",
+      "sha256": "903d853bd0d75487e155525ed8523d1f5af58512f5bc51d52bc4018e1ae53570",
       "quests": 7
     },
     "razorfen-kraul": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/razorfen-kraul",
-      "sha256": "2b85685c4859de3637f45416d717c823c8ae8346225a597ab9c29c65db4708e7",
+      "sha256": "032708c079fb5c872f7ab75377dc01c8c1e0f501c9b2512637fb687bb8dd4a09",
       "quests": 6
     },
     "ruins-of-lordaeron": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/ruins-of-lordaeron",
-      "sha256": "13f7f3d35b2f224bba94407396186d05b7d8a78bc98920f7338ccb9fb9ff11f5",
-      "quests": 12
+      "sha256": "7e016f06c0cb45f80d38db94bfa7eec7b8e114fffab9ec81de8df94fd79d4e53",
+      "quests": 13
     },
     "scarlet-monastery": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/scarlet-monastery",
-      "sha256": "d1bfa074bcbdb03f657e91e72a04b78245bed05092ab44a4a900cfb6e593ae7b",
+      "sha256": "aa05aeb84b3353996da6ac1aae53468b2a65b484c43f2bc1e43e9836f5a3297a",
       "quests": 8
     },
     "scholomance": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/scholomance",
-      "sha256": "c7d80c91ff6d787a69ac59718f39226e3a4594557899a4905c4822f04d1ed5b3",
+      "sha256": "2756ff1bd9c103f5f2768fdaa77159fc85c66848b00908e4997aa994aab2a416",
       "quests": 12
     },
     "shadowfang-keep": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/shadowfang-keep",
-      "sha256": "6e81cdeb65a88de2a70a4cc0ea2369b6fc421cb7653de15b12bc0b8352cf456d",
+      "sha256": "eaf73fa4ec593163ecf09c46f983f657877faed4a295f3d60265f741d8535f7b",
       "quests": 3
     },
     "stratholme": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/stratholme",
-      "sha256": "07ca3394cbfa335c37c1dcc50b4913d2d821a34ce37a3c01c3202214a08d1034",
+      "sha256": "27846f34727f705e0dee2e50720b283c77bf8db64dbb6929ec935df7ba556165",
       "quests": 17
     },
     "the-deadmines": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/the-deadmines",
-      "sha256": "9af1783f723a24149723fe045a6a414d33bf9a79ef7d4e2a3fe401d5dbd7a1ed",
-      "quests": 5
+      "sha256": "864164ecf1f856a7b344bf1559cbdbd59c27820b4a85e927553d81936522aa29",
+      "quests": 6
     },
     "the-hall-of-thanes": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/the-hall-of-thanes",
-      "sha256": "fc840b587c2c88d51e5478313a817b6f49c2229b98d0631e78f72c5f06352aaf",
+      "sha256": "a737db6f4c5b14dcc9836077c3cea6144f8d88b703afa7662cc6a0c604cef6cb",
       "quests": 4
     },
     "the-stockade": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/the-stockade",
-      "sha256": "88e7df1cfc9be38901b4211ae161e75657619e0d616e8889f3eab16b3a36357f",
+      "sha256": "e893f1821daee6664dc79860ea2966332c14ad461b92092c05b1c8d28b479661",
       "quests": 6
     },
     "the-temple-of-atalhakkar": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/the-temple-of-atalhakkar",
-      "sha256": "7a46a90f53b5a8f92040ff3e0fe27c721c0d5f93b5e71c095555b07b3e6d2778",
+      "sha256": "84a61d506005691771a0ee8ed7e539f4d6fba8a4e6597edd7d3fbe3e2ca7358e",
       "quests": 10
     },
     "uldaman": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/uldaman",
-      "sha256": "3e0f7538351d0b273723ba37f4a398db0a79d6dc3edadabd5b1fa35097ced76b",
+      "sha256": "0c32b3706a9c5aadb50a818e2f3b3f219a962266d46ce8c6fb7dc88649e4508f",
       "quests": 29
     },
     "wailing-caverns": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/wailing-caverns",
-      "sha256": "efdee5cb9c3bc450d6ba1a0c62d71f28b996dc57ced5776c682474164ae04e21",
+      "sha256": "19f3f809bedeecaf588a8184314d5b0be48d57f220d96207623cf6be0361185e",
       "quests": 12
     },
     "zulfarrak": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/zulfarrak",
-      "sha256": "a7955a064f46a06e1d1716f86c7d18f3f3ce2ae19d9ccb6ac1c3ea185a2161c0",
+      "sha256": "85b19c330723443f4343a4a8b668ca97f443a9e1bde1fcac49b4d9d397ac8cbd",
       "quests": 10
     }
   },
@@ -488,6 +488,7 @@
         }
       ],
       "questIDs": [
+        92401,
         92415,
         92421,
         92422,
@@ -756,7 +757,8 @@
         167,
         168,
         214,
-        2040
+        2040,
+        92753
       ]
     },
     "city-of-dalaran": {

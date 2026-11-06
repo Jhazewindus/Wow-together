@@ -3,11 +3,11 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "173cb8259a494a4774bc3f87bf29c6143c55be0799c9603f092ba390025501fc"
+      "sha256": "7c8568b47416b92e7c5f2469ddde970314aa95b4b087bcab00dfe918d1a4791d"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
-      "sha256": "bb3a5ab159a58907387373767de54515d395630df3d0994e949ea1ea3bb7dcd3"
+      "sha256": "5c230bd37c57574424f7d40238f11515be0f3bb6446bb2b49a7555a1f0659074"
     },
     "worldQuestChecks": {
       "file": "QuestCatalogue.lua",
@@ -19,12 +19,12 @@
     },
     "dungeonJournalData": {
       "file": "DungeonJournalData.lua",
-      "sha256": "2978aeac909c744aab27dc303968780216fc5a42e8c62c30d6df81996dea1d1f"
+      "sha256": "18555b883d543e14baf183ca0dd069757b2664e6cfb913e000de033e04ca54de"
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",
       "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "v0.8.28 packing baseline; v0.8.76 refreshes QuestieDB-backed catalogue and source-linked quest/entity facts while preserving packing behavior."
+  "revision": "v0.8.28 packing baseline; QuestieDB Forever 80866960788084ae1592abf66a08f0d306458a95 refresh updates catalogue facts while preserving packing behavior."
 }

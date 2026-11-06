@@ -16,7 +16,7 @@ class RouteGeometryCacheTests(unittest.TestCase):
 
         fingerprint = digest("|".join(":".join(str(stop[key]) for key in
             ("id", "kind", "mapID", "x", "y", "guideStep")) for stop in guide.fixedPlan.values()))
-        self.assertEqual(fingerprint, "fca8903e8394adb54aa8a8e7762f7b84d42cf429c81c7fa9a42643d6853661d9")
+        self.assertEqual(fingerprint, "17abf3ecf21b64ab9edbdd0c42c63d2fc547f7cce0fa560b4b271005d5835eae")
 
         cache = guide.optimization.geometryCache
         self.assertGreater(cache.calls, 0)

@@ -61,10 +61,13 @@ class DungeonDataTests(unittest.TestCase):
             self.assertTrue(set(source['questIDs']).issubset(ids))
             self.assertTrue(all(c.ns.CatalogueQuest(id) is not None for id in source['questIDs']))
             count += len(source['questIDs'])
-        self.assertEqual(count, 339)
+        self.assertEqual(count, 341)
         self.assertEqual(c.ns.catalogue.count, 5307)
         # Explicit zone identity folds this formerly separate dungeon card in.
         self.assertIn(92401, list(gs['ruins-of-lordaeron'].ids.values()))
+        self.assertIn(92401, data['dungeons']['ruins-of-lordaeron']['questIDs'])
+        self.assertIn(92753, list(gs['the-deadmines'].ids.values()))
+        self.assertIsNotNone(c.ns.CatalogueQuest(92753))
         # Unresolved dungeon-tagged class/city/raid records stay in the library.
         self.assertIsNotNone(c.ns.CatalogueQuest(7487))
 

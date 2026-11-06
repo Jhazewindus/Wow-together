@@ -94,13 +94,21 @@ class MulgoreCoverageTests(unittest.TestCase):
         c.ns.BuildGuideRoute(g, False)
         planned = {s.id for s in g.fixedPlan.values()}
         self.assertTrue({747,750,780,758,759,760}.issubset(planned))
-        self.assertTrue(set(CHAIN).issubset(planned))
+        # Current QuestieDB raises the final two quests to level 11; they now
+        # belong to Mulgore's 11-20 section instead of being pulled into 1-10.
+        self.assertTrue(set(CHAIN[:-2]).issubset(planned))
+        self.assertFalse(set(CHAIN[-2:]) & planned)
         self.assertTrue({r.id for r in g.records.values()}.issubset(planned))
         before = order(g)
         c.lua.globals().finished[747] = True
         c.ns.active[750] = 'The Hunt Continues'
         c.ns.BuildGuideRoute(g, False)
         self.assertEqual(order(g), before)
+        c.ns.guideLevel = '11-20'
+        later = next(g for g in c.ns.LevelingGuideChoices().values()
+                     if g.zone == 'Mulgore' and g.sectionLow == 11)
+        c.ns.BuildGuideRoute(later, False)
+        self.assertTrue(set(CHAIN[-2:]).issubset({s.id for s in later.fixedPlan.values()}))
 
     def test_class_and_race_gates_remain_scoped(self):
         c = client()

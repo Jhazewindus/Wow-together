@@ -84,6 +84,13 @@ the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.79 QUESTIE DUNGEON PREREQUISITES refreshes the live QuestieDB snapshot and
+adds seven source-checked dungeon prerequisite links. Lordaeron, Wailing
+Caverns and other eligible dungeon chains are ordered before pickups where
+their locations are known. Repeatable quests remain excluded from automatic
+collection; uncaptured quest locations remain unknown. See CHANGELOG.md,
+QUEST_DATA.md and TESTING.md.
+
 Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
@@ -101,12 +108,12 @@ and prerequisite links. Unknown quantities, locations and pickup rules remain
 explicitly incomplete. Quest 95534 still has conflicting faction evidence and
 needs live-client confirmation. See CHANGELOG.md, QUEST_DATA.md and TESTING.md.
 
-0.8.75 ROYS BIG DUNGEON BANANZA adds eight documented City of Dalaran bosses
-and 27 specific boss/item links. Method.gg's four newer-dungeon pages are
-cross-checked; five other new instances are absent from its index. The Dalaran
-entry remains Partial because its interior map and exhaustive coverage are
-unknown. Only factual IDs and item metadata are included, not website code,
-prose, artwork, layouts or map images. See DUNGEON_VIEWER.md and TESTING.md.
+0.8.78 LIVE DUNGEON DATA REFRESH records 341 current dungeon quest memberships
+and adds one reported Wetlands encounter with independently sourced item facts.
+Five newer instances remain absent from Method.gg's index. Encounter/loot
+coverage remains partial; only factual IDs and item metadata are included, not
+website code, prose, artwork, layouts or map images. See DUNGEON_VIEWER.md and
+TESTING.md.
 
 0.8.72 INSTANT GUIDE START lets a zone route start while its ordered quest list
 is still compiling in the background. The normal route-loading state appears;

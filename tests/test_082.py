@@ -17,8 +17,11 @@ from test_066 import reload
 from test_061 import world_quest
 from test_routes import catalogue
 from forever_beta_facts import apply_fields, base_fields, objective_facts, merge_beta_facts, static_fields
-from quest_enrichment import enrich, warcraftdb_objective_facts, warcraftdb_map_facts
+from quest_enrichment import enrich, order_objectives_by_requirements, warcraftdb_objective_facts, warcraftdb_map_facts
 from quest_observation_facts import coordinate_observations, apply_observations
+from build_quest_dataset import own_lua
+
+ROOT=Path(__file__).resolve().parents[1]
 
 
 def report():
@@ -189,7 +192,7 @@ class BetaFactTests(unittest.TestCase):
         data={'quest':{900:row},'npc':{i:{'name':name,'spawns':{100:{1:{1:x,2:20}}}}
             for i,name,x in ((101,'Guide',10),(102,'Contact',30),(103,'Event credit',20))},'object':{},'item':{}}
         origins={k:{i:{field:'beta-reviewed' for field in r} for i,r in rows.items()} for k,rows in data.items()}
-        return data,{100:501},{'source':'https://example.test/facts','skipped_nonliteral_fields':[]},origins
+        return data,{100:501},{'source':'https://example.test/facts','commit':'a'*40,'skipped_nonliteral_fields':[]},origins
 
     def merge(self, data=None, records=None, refs=None):
         source=self.data()
@@ -300,6 +303,60 @@ end'''
         requirements,provided=warcraftdb_objective_facts(raw)
         self.assertEqual([(r['entityID'],r['quantity']) for r in requirements],[(202,5)])
         self.assertEqual(provided[0]['entityID'],201)
+
+    def test_current_reciprocal_exclusive_branches_are_imported_with_source(self):
+        source=self.data();rows=source[0]['quest'];origins=source[3]['quest']
+        rows[900].update(name='Divine Grace',exclusiveTo={1:901})
+        rows[901]={'name':'Divine Grace','requiredLevel':1,'questLevel':4,'exclusiveTo':{1:900}}
+        origins[900]['exclusiveTo']=origins[901]={'exclusiveTo':'beta-reviewed'}
+        records={i:{'title':'Divine Grace','level':4,'minLevel':1} for i in (900,901)}
+        merged,_,_,provenance=self.merge(source,records=records)
+        self.assertEqual(merged[900]['exclusiveQuests'],[901])
+        self.assertEqual(merged[901]['exclusiveQuests'],[900])
+        self.assertIn('/blob/'+('a'*40)+'/src/corrections/Forever/foreverQuestFixes.lua',
+                      merged[900]['exclusiveQuestSource'])
+        self.assertEqual(provenance['exclusive_quest_ids'],[900,901])
+
+    def test_nonreciprocal_exclusive_branch_is_withheld(self):
+        source=self.data();rows=source[0]['quest'];origins=source[3]['quest']
+        rows[900]['exclusiveTo']={1:901};rows[901]={'name':'Another','requiredLevel':1,'questLevel':4}
+        origins[900]['exclusiveTo']='beta-reviewed';origins[901]={'name':'beta-reviewed'}
+        records={900:{'title':'Study the ruins','level':4,'minLevel':1},
+                 901:{'title':'Another','level':4,'minLevel':1}}
+        merged,_,_,provenance=self.merge(source,records=records)
+        self.assertNotIn('exclusiveQuests',merged[900])
+        self.assertTrue(merged[900]['prerequisitesUnverified'])
+        self.assertIn([900,'exclusiveTo'],provenance['withheld_fields'])
+
+    def test_questie_requirement_order_reorders_only_mapped_points_stably(self):
+        quest={'objectives':[{'entityID':102,'name':'Second'}, {'entityID':101,'name':'First'},
+                             {'entityID':999,'name':'Unmapped'}]}
+        requirements=[{'entityType':'npc','entityID':101},{'entityType':'npc','entityID':102}]
+        order_objectives_by_requirements(quest,requirements)
+        self.assertEqual([p['entityID'] for p in quest['objectives']],[101,102,999])
+
+    def test_current_questie_levels_replace_the_pinned_values(self):
+        source=self.data();row=source[0]['quest'][900];origin=source[3]['quest'][900]
+        row.update(requiredLevel=2,questLevel=5)
+        origin.update(requiredLevel='beta-observation',questLevel='beta-observation')
+        records,_,_,provenance=self.merge(source)
+        self.assertEqual((records[900]['minLevel'],records[900]['level']),(2,5))
+        self.assertEqual(provenance['required_level_ids'],[900])
+        self.assertEqual(provenance['quest_level_ids'],[900])
+
+    def test_latest_questiedb_changes_are_integrated_in_the_zone_catalogue(self):
+        source=json.loads((ROOT/'tools/forever_source_manifest.json').read_text())
+        self.assertEqual(source['commit'],'80866960788084ae1592abf66a08f0d306458a95')
+        quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
+        self.assertEqual(len(quests),5307)
+        self.assertEqual(quests[91724]['requirements'][0]['quantity'],8)
+        self.assertEqual(quests[93165]['requirements'][0]['quantity'],5)
+        self.assertEqual([r['entityID'] for r in quests[99128]['requirements']],[285,735])
+        self.assertEqual([r['entityID'] for r in quests[99130]['requirements']],[286215,286214])
+        self.assertEqual(quests[94773]['exclusiveQuests'],[94774,94775,94776,94777,94778,94779])
+        self.assertEqual(quests[94821]['startRefs'][0]['entityID'],376)
+        self.assertEqual(quests[98389]['previousQuest'],376)
+        self.assertEqual((quests[99082]['level'],quests[99080]['level'],quests[99053]['level']),(11,11,10))
 
     def test_all_prerequisites_are_required_for_pickup_and_compiled_before_child(self):
         c=guide_client(1);quests={i:world_quest(str(i)) for i in (900,901,902)}

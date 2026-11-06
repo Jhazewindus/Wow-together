@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "captured": "2026-11-06",
+  "dungeon": "Ruins of Lordaeron",
+  "source": {
+    "url": "https://www.wowhead.com/forever/news/new-prerequisites-required-for-ruins-of-lordaeron-dungeon-quests-in-wow-forever-383769",
+    "published": "2026-11-05T12:51:44-06:00",
+    "sha256": "d78e664ac01018c21ffefaabaf8227455b2ebeeaa89bd658a79ac82c8f49dd3a",
+    "bytes": 74127
+  },
+  "prerequisites": [
+    {
+      "questID": 92422,
+      "title": "The Wrath of Rath'mael",
+      "previousQuest": 99156,
+      "chain": [356, 99156, 92422],
+      "claim": "Live prerequisite update"
+    },
+    {
+      "questID": 95216,
+      "title": "The New Plague",
+      "previousQuest": 451,
+      "chain": [447, 450, 451, 95216],
+      "claim": "Live prerequisite update"
+    }
+  ],
+  "captures": [
+    {"url":"https://www.wowhead.com/forever/quest=92422","sha256":"7ad6d122c169ebc120a9ac273b85e282e1902b53e1de5c845e10f724a9858386","bytes":62865},
+    {"url":"https://www.wowhead.com/forever/quest=99156","sha256":"4b1fe213c2c7c2871e0dbbf5990ffe832c318dc1b82eef5b63bb963e4a671e99","bytes":53521},
+    {"url":"https://www.wowhead.com/forever/quest=356","sha256":"44d4be277d1bb00de26fbaec360bef1f77979429da97342a90ddfb184607185e","bytes":58455},
+    {"url":"https://www.wowhead.com/forever/quest=95216","sha256":"825e700ca63d892f874219f1002cb33edb3b1071d10860439f00c4d16c0da890","bytes":63883},
+    {"url":"https://www.wowhead.com/forever/quest=447","sha256":"0ee2fba4d894db47ff4c2b4b1df019a0f5427b41f24d85e9a62654ecc80be5d4","bytes":108527},
+    {"url":"https://www.wowhead.com/forever/quest=450","sha256":"7392ff3cd5d67a0a64309f11daac33325e3a97a474f4566c1a87c85ccfefb17f","bytes":123010},
+    {"url":"https://www.wowhead.com/forever/quest=451","sha256":"721c69ef03c1170e642c20e69fe8106d7096cd10cd0b4001f9b62fe07315596b","bytes":100180}
+  ],
+  "existingLinksVerified": [
+    {"questID":99156,"previousQuest":356},
+    {"questID":450,"previousQuest":447},
+    {"questID":451,"previousQuest":450}
+  ],
+  "limitations": [
+    "Only quest IDs, prerequisite edges, source URLs, timestamps, byte counts and SHA-256 hashes are retained.",
+    "No website prose, site code, artwork or page layout is bundled."
+  ]
+}

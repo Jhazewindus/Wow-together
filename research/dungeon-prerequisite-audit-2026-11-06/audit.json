@@ -1,0 +1,3611 @@
+{
+  "schema": 1,
+  "captured": "2026-11-06",
+  "scope": {
+    "dungeonEntries": 28,
+    "questPagesRequested": 341,
+    "questPagesCaptured": 341,
+    "errors": 0
+  },
+  "sources": [
+    {
+      "name": "Wowhead Forever dungeon quest pages",
+      "urlPattern": "https://www.wowhead.com/forever/quest={questID}",
+      "method": "Retrieved every questID listed by the 28 shipped dungeon records; retained HTTP status, byte count, SHA-256 and unordered linked IDs in the Series table.",
+      "captures": [
+        {
+          "questID": 17,
+          "url": "https://www.wowhead.com/forever/quest=17",
+          "status": 200,
+          "bytes": 67307,
+          "sha256": "7177bac03fd069921c2f41a72c1abea1105cfdf14507c7f9aa2f98485fbc8563",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 166,
+          "url": "https://www.wowhead.com/forever/quest=166",
+          "status": 200,
+          "bytes": 200936,
+          "sha256": "3c85a577b2027abca667edca90fd99189fe62ceae139f47f56cf721170f0abad",
+          "seriesQuestIDs": [
+            155
+          ]
+        },
+        {
+          "questID": 167,
+          "url": "https://www.wowhead.com/forever/quest=167",
+          "status": 200,
+          "bytes": 94677,
+          "sha256": "54ea3130817b692c8d9d3ad59abb1464484c71c0a6b733f71f75862c93b2c39a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 168,
+          "url": "https://www.wowhead.com/forever/quest=168",
+          "status": 200,
+          "bytes": 79606,
+          "sha256": "33f9d84e35161f5f8ece8e85ae8c320b0aac653623093c6c23ed088d393156b3",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 214,
+          "url": "https://www.wowhead.com/forever/quest=214",
+          "status": 200,
+          "bytes": 79719,
+          "sha256": "aed78ff910a0a76679fdef31078607ad62bfe9bdfd2bc437fc2de6f1dc08f229",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 377,
+          "url": "https://www.wowhead.com/forever/quest=377",
+          "status": 200,
+          "bytes": 71855,
+          "sha256": "7a33f15b981292f2ee6399f313e89cbcc34257e79fe90f22d2a3ec8431be54b1",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 378,
+          "url": "https://www.wowhead.com/forever/quest=378",
+          "status": 200,
+          "bytes": 84740,
+          "sha256": "094a87f79bcbff3fdb2442e2ccfbc41a1459b41423dab4203cabaddeecf5c5ca",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 386,
+          "url": "https://www.wowhead.com/forever/quest=386",
+          "status": 200,
+          "bytes": 70513,
+          "sha256": "1d4c6ddfab31dde5b8935aecb877be7f3c5778e38470e1b8f5e3a22a1bde868b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 387,
+          "url": "https://www.wowhead.com/forever/quest=387",
+          "status": 200,
+          "bytes": 54002,
+          "sha256": "3573dbba71796d9cbb0df83a00552a4529629f40410883bd4ab7ea4085a8ee0c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 388,
+          "url": "https://www.wowhead.com/forever/quest=388",
+          "status": 200,
+          "bytes": 67254,
+          "sha256": "f83d3a6cf0bcada3214746c274587cccdf1b7b476c13d52fd3086b123996fe6b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 391,
+          "url": "https://www.wowhead.com/forever/quest=391",
+          "status": 200,
+          "bytes": 86398,
+          "sha256": "7518a9b695b60f5f9878038262d0e287c0f2bc7f68a55cca2e66b971e61204a6",
+          "seriesQuestIDs": [
+            373,
+            389,
+            392,
+            393,
+            350,
+            2745,
+            2746
+          ]
+        },
+        {
+          "questID": 704,
+          "url": "https://www.wowhead.com/forever/quest=704",
+          "status": 200,
+          "bytes": 73775,
+          "sha256": "542417d08b1f92993df114923db98226eb0d7f512d6d4ce4687fa8becd19546d",
+          "seriesQuestIDs": [
+            707,
+            738,
+            739
+          ]
+        },
+        {
+          "questID": 709,
+          "url": "https://www.wowhead.com/forever/quest=709",
+          "status": 200,
+          "bytes": 93223,
+          "sha256": "8630c1c8ca08ba5cfa59eca36944f1183288eb6cc7cdbdecb5f9b9ba8d956a43",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 721,
+          "url": "https://www.wowhead.com/forever/quest=721",
+          "status": 200,
+          "bytes": 86075,
+          "sha256": "5b0dca01201c588f6091f1e8f4a59f4cd5e0dc6b45759847e5d130356da4f06e",
+          "seriesQuestIDs": [
+            720,
+            722,
+            723,
+            724
+          ]
+        },
+        {
+          "questID": 722,
+          "url": "https://www.wowhead.com/forever/quest=722",
+          "status": 200,
+          "bytes": 79778,
+          "sha256": "5bbbd8cb4aa1e0a1d93be1a004e7eebb9b4037a44a720791edb0edba59b6203d",
+          "seriesQuestIDs": [
+            720,
+            721,
+            723,
+            724
+          ]
+        },
+        {
+          "questID": 914,
+          "url": "https://www.wowhead.com/forever/quest=914",
+          "status": 200,
+          "bytes": 136256,
+          "sha256": "03d66c32f8c6f40e37f7da1efbed1e65ffbd8e35680c5bc8fe91525d5760bf2c",
+          "seriesQuestIDs": [
+            1489,
+            1490
+          ]
+        },
+        {
+          "questID": 959,
+          "url": "https://www.wowhead.com/forever/quest=959",
+          "status": 200,
+          "bytes": 93998,
+          "sha256": "4db73e9e13c1f9ed66834ebb269de0aee24903c77f7381c14cbff6fadb20c992",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 962,
+          "url": "https://www.wowhead.com/forever/quest=962",
+          "status": 200,
+          "bytes": 76648,
+          "sha256": "d8cace8ee4c6c82ab9131f04c3f67eb81de849685e19b36bdff727a8592a981b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 971,
+          "url": "https://www.wowhead.com/forever/quest=971",
+          "status": 200,
+          "bytes": 81843,
+          "sha256": "1958456630db5f348c1d9d1e77252ab4a14f4df46a18ac7617865dec049f1afd",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 999,
+          "url": "https://www.wowhead.com/forever/quest=999",
+          "status": 200,
+          "bytes": 41947,
+          "sha256": "7695e2c7476da9dbfc9fb1c4c3af3b0a11b557e180ce21c972286860b3de1d3c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1013,
+          "url": "https://www.wowhead.com/forever/quest=1013",
+          "status": 200,
+          "bytes": 79371,
+          "sha256": "2f9e59f906d16b8b4ef88e14a515bb7acb24010510fbec2753768dd8e17dc542",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1014,
+          "url": "https://www.wowhead.com/forever/quest=1014",
+          "status": 200,
+          "bytes": 104401,
+          "sha256": "51e9b727ee8cbccc57af8d253a99dd0ed3ed9bee14be2b9ba21644edd9928c2d",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1048,
+          "url": "https://www.wowhead.com/forever/quest=1048",
+          "status": 200,
+          "bytes": 114971,
+          "sha256": "9783361d2b39b6d4cc517369d560a10ca32063fd8ae9aceecf94b7d91f8bffae",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1049,
+          "url": "https://www.wowhead.com/forever/quest=1049",
+          "status": 200,
+          "bytes": 99067,
+          "sha256": "57c96fbd166ea0d727448a158e377f24740a628755a93d679d02308aac9e7583",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1050,
+          "url": "https://www.wowhead.com/forever/quest=1050",
+          "status": 200,
+          "bytes": 79176,
+          "sha256": "52f847aa1014aa00b7de9ca8ec34cef45dcac7500170f9afd4b60a7eb949b0dd",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1051,
+          "url": "https://www.wowhead.com/forever/quest=1051",
+          "status": 200,
+          "bytes": 90632,
+          "sha256": "cfb81f379a49bdcd97d2d7a8300fe20d80fbd3082baa7d66be0cfd12ef721773",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1053,
+          "url": "https://www.wowhead.com/forever/quest=1053",
+          "status": 200,
+          "bytes": 168348,
+          "sha256": "58582e76a7b96cf1da191f13e74bb8ca009b28fdc3c45f2eabc21793a306c6fc",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1098,
+          "url": "https://www.wowhead.com/forever/quest=1098",
+          "status": 200,
+          "bytes": 67763,
+          "sha256": "4ac6187809c044062a3e5be91af15134c4d0d67b1efa490aee58d8660028df2c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1101,
+          "url": "https://www.wowhead.com/forever/quest=1101",
+          "status": 200,
+          "bytes": 90344,
+          "sha256": "c7b27eb0e2e9f2d3cad70674e1dded3975df47edafe287f0734e859be12a30e3",
+          "seriesQuestIDs": [
+            1100
+          ]
+        },
+        {
+          "questID": 1102,
+          "url": "https://www.wowhead.com/forever/quest=1102",
+          "status": 200,
+          "bytes": 75151,
+          "sha256": "0f17ec8314f3117f23e2d6748348fcbbf713257c5b661c11f5437d8955f0723b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1109,
+          "url": "https://www.wowhead.com/forever/quest=1109",
+          "status": 200,
+          "bytes": 67723,
+          "sha256": "f8efc0c07659f60c21d7b4735578feab2e1fd28ce39ee0e3c8d5cbd93c7ee636",
+          "seriesQuestIDs": [
+            1113
+          ]
+        },
+        {
+          "questID": 1113,
+          "url": "https://www.wowhead.com/forever/quest=1113",
+          "status": 200,
+          "bytes": 60865,
+          "sha256": "2f81f1338042f007ecb82e31633904260ef77e5363f4d7232ce21b2940b69f84",
+          "seriesQuestIDs": [
+            1109
+          ]
+        },
+        {
+          "questID": 1139,
+          "url": "https://www.wowhead.com/forever/quest=1139",
+          "status": 200,
+          "bytes": 65869,
+          "sha256": "83c3536f1b6bc58cc7dc2ef754a7c82896c3584c199d8529c83dc9399b468d61",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1142,
+          "url": "https://www.wowhead.com/forever/quest=1142",
+          "status": 200,
+          "bytes": 71818,
+          "sha256": "88e314f38a75c0f854227b4c59d068a31f0a24d6aeec6dcc11b7e0fc0f35f6ea",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1144,
+          "url": "https://www.wowhead.com/forever/quest=1144",
+          "status": 200,
+          "bytes": 71132,
+          "sha256": "36b3e23ae0ffbfc621e71de198b404857437d6b30819c2531eb30f8f85441068",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1160,
+          "url": "https://www.wowhead.com/forever/quest=1160",
+          "status": 200,
+          "bytes": 95202,
+          "sha256": "fd2282c113f45de7b9b5d6a6aaffb5a901c5570ae38af3a7f0833138553ad869",
+          "seriesQuestIDs": [
+            1149,
+            1150,
+            1151,
+            1152,
+            1154,
+            6627,
+            1159,
+            6628,
+            1394
+          ]
+        },
+        {
+          "questID": 1193,
+          "url": "https://www.wowhead.com/forever/quest=1193",
+          "status": 200,
+          "bytes": 55623,
+          "sha256": "16ac0e607b7d93188649e1475919322feab7f39083573f7fad7d160d701d1297",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1198,
+          "url": "https://www.wowhead.com/forever/quest=1198",
+          "status": 200,
+          "bytes": 83255,
+          "sha256": "de7f30107f711b9645d3d345bdfd4eaaa58a8d1bd02bc3555b5e5e0a0a874bb7",
+          "seriesQuestIDs": [
+            1200
+          ]
+        },
+        {
+          "questID": 1199,
+          "url": "https://www.wowhead.com/forever/quest=1199",
+          "status": 200,
+          "bytes": 88482,
+          "sha256": "bb58b50f612948789e7f4ed9abf20478eacd0b245cf30f57d54465d92ba3ff72",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1200,
+          "url": "https://www.wowhead.com/forever/quest=1200",
+          "status": 200,
+          "bytes": 112699,
+          "sha256": "15deb73ab74ab696a156979e3893d56a8740a96f0e3785c51b2de08c871694ce",
+          "seriesQuestIDs": [
+            1198
+          ]
+        },
+        {
+          "questID": 1221,
+          "url": "https://www.wowhead.com/forever/quest=1221",
+          "status": 200,
+          "bytes": 107410,
+          "sha256": "54c7b115a064ed93dabbaf1f48521c9b8a6dc044a0a0272cf206f2c7e66309ce",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1275,
+          "url": "https://www.wowhead.com/forever/quest=1275",
+          "status": 200,
+          "bytes": 110997,
+          "sha256": "79774e8ccbbd4e7d99c3d081b2df3bc4a8487d9eb9804ce77bde7c94edf3c0d6",
+          "seriesQuestIDs": [
+            3765
+          ]
+        },
+        {
+          "questID": 1318,
+          "url": "https://www.wowhead.com/forever/quest=1318",
+          "status": 200,
+          "bytes": 72719,
+          "sha256": "384b2a2a41948f2fcb8a7f975137e27979a575e62e33887e89abd637e2f8b674",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1360,
+          "url": "https://www.wowhead.com/forever/quest=1360",
+          "status": 200,
+          "bytes": 71728,
+          "sha256": "2e0311da37bd106b18d4e49cf47f2e73ca822a8ab321b90e4b361955bab4610b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1445,
+          "url": "https://www.wowhead.com/forever/quest=1445",
+          "status": 200,
+          "bytes": 60722,
+          "sha256": "ebac090cc62000331e285458fd11483284a4c0713ec3628ad662583fc605b82c",
+          "seriesQuestIDs": [
+            1424,
+            1429,
+            1444
+          ]
+        },
+        {
+          "questID": 1446,
+          "url": "https://www.wowhead.com/forever/quest=1446",
+          "status": 200,
+          "bytes": 88006,
+          "sha256": "a54b54ca99f5ee955e2a447827db5e9bf9f63d0a02122cb1a221f586c291270e",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1475,
+          "url": "https://www.wowhead.com/forever/quest=1475",
+          "status": 200,
+          "bytes": 102240,
+          "sha256": "9dd2d977c9af162824b77a21dfcd61ac124881d95febdf0578c7d0b804b66268",
+          "seriesQuestIDs": [
+            1469
+          ]
+        },
+        {
+          "questID": 1486,
+          "url": "https://www.wowhead.com/forever/quest=1486",
+          "status": 200,
+          "bytes": 84914,
+          "sha256": "31a2699b382ce367577a98f7af38f662faaad0d5b81e94dc87076eca1280197e",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1487,
+          "url": "https://www.wowhead.com/forever/quest=1487",
+          "status": 200,
+          "bytes": 102126,
+          "sha256": "bbedc1f00d8eca8d3f3a318ae4aa8b342a4cb0e06ff5367562d7363fce6e379f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1489,
+          "url": "https://www.wowhead.com/forever/quest=1489",
+          "status": 200,
+          "bytes": 73044,
+          "sha256": "10b7ca6018bdb1f2a650d31b6bca1bc40483111c38fd4190ead316b2e105a91b",
+          "seriesQuestIDs": [
+            1490,
+            914
+          ]
+        },
+        {
+          "questID": 1490,
+          "url": "https://www.wowhead.com/forever/quest=1490",
+          "status": 200,
+          "bytes": 58860,
+          "sha256": "ddccaf710e7885004a2cd82fac6151b85eeeeb0f0fa12b9b2b4ff98cf1bcf844",
+          "seriesQuestIDs": [
+            1489,
+            914
+          ]
+        },
+        {
+          "questID": 1491,
+          "url": "https://www.wowhead.com/forever/quest=1491",
+          "status": 200,
+          "bytes": 64909,
+          "sha256": "db3f1658d2d08880d153b7f1801074ccee73efedd362d59bd6867aedc2c6acd4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 1500,
+          "url": "https://www.wowhead.com/forever/quest=1500",
+          "status": 200,
+          "bytes": 41631,
+          "sha256": "726a0643d01492d0c4e72ecb278814b050c5d75944353ab282d52e619ce06c0d",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2040,
+          "url": "https://www.wowhead.com/forever/quest=2040",
+          "status": 200,
+          "bytes": 82754,
+          "sha256": "3a8645751bbcbf3b08089e65424a5e5d4584b842fa6e0b7e3ea91f0f93d2220d",
+          "seriesQuestIDs": [
+            2041
+          ]
+        },
+        {
+          "questID": 2198,
+          "url": "https://www.wowhead.com/forever/quest=2198",
+          "status": 200,
+          "bytes": 100124,
+          "sha256": "1be62086e42b46aecb361292045317936c7dd13aa4a77d8fac51d4e474c92990",
+          "seriesQuestIDs": [
+            2199,
+            2200,
+            2201,
+            2204
+          ]
+        },
+        {
+          "questID": 2199,
+          "url": "https://www.wowhead.com/forever/quest=2199",
+          "status": 200,
+          "bytes": 62820,
+          "sha256": "c78554b5d5fa17bc607325a8ab18d24925db4448ed0e8f44a0de3a70d423621d",
+          "seriesQuestIDs": [
+            2198,
+            2200,
+            2201,
+            2204
+          ]
+        },
+        {
+          "questID": 2200,
+          "url": "https://www.wowhead.com/forever/quest=2200",
+          "status": 200,
+          "bytes": 62334,
+          "sha256": "b81785f6f6dc347d510567c76efb802c1a09c33ad7337c31dc69a645721f3391",
+          "seriesQuestIDs": [
+            2198,
+            2199,
+            2201,
+            2204
+          ]
+        },
+        {
+          "questID": 2201,
+          "url": "https://www.wowhead.com/forever/quest=2201",
+          "status": 200,
+          "bytes": 93513,
+          "sha256": "11f17e9b5e9f14a73e84bfc3dabe0f7e9f8af36117477559d98c3d1545ed5bd2",
+          "seriesQuestIDs": [
+            2198,
+            2199,
+            2200,
+            2204
+          ]
+        },
+        {
+          "questID": 2202,
+          "url": "https://www.wowhead.com/forever/quest=2202",
+          "status": 200,
+          "bytes": 69868,
+          "sha256": "902af5495f75629c4e272549382b4dc600014a72c68488f9cd39327cc2d993d9",
+          "seriesQuestIDs": [
+            2258
+          ]
+        },
+        {
+          "questID": 2204,
+          "url": "https://www.wowhead.com/forever/quest=2204",
+          "status": 200,
+          "bytes": 100297,
+          "sha256": "142ec3fe6781498f5feeaf0205ebf2c94940139f3fddca098e6383fd5d7c2d1e",
+          "seriesQuestIDs": [
+            2198,
+            2199,
+            2200,
+            2201
+          ]
+        },
+        {
+          "questID": 2240,
+          "url": "https://www.wowhead.com/forever/quest=2240",
+          "status": 200,
+          "bytes": 72352,
+          "sha256": "2afb5236a329ce98eb66e4eb613f45f20b8c7052e0cf0cb750becd912da2da81",
+          "seriesQuestIDs": [
+            2398
+          ]
+        },
+        {
+          "questID": 2278,
+          "url": "https://www.wowhead.com/forever/quest=2278",
+          "status": 200,
+          "bytes": 74070,
+          "sha256": "87740603e2e49a51e5ed95fcdcd7bcfc8fd3e7ff496b3e96b57462076c4aa241",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2279,
+          "url": "https://www.wowhead.com/forever/quest=2279",
+          "status": 200,
+          "bytes": 60709,
+          "sha256": "b138563d01cdded119eaa3fbcfa31e932089d957dd34ee8013c383d62d71ee6e",
+          "seriesQuestIDs": [
+            2439
+          ]
+        },
+        {
+          "questID": 2280,
+          "url": "https://www.wowhead.com/forever/quest=2280",
+          "status": 200,
+          "bytes": 66334,
+          "sha256": "ccf590830527f2d160bb657b0b785962844974226f1b8802c6396f1a1ad63ccb",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2283,
+          "url": "https://www.wowhead.com/forever/quest=2283",
+          "status": 200,
+          "bytes": 74959,
+          "sha256": "ea536b7d1d8c6e38fc9bf83530757399fbc71f8b7608e144ec4ff19dcfb4faaa",
+          "seriesQuestIDs": [
+            2284,
+            2318,
+            2338
+          ]
+        },
+        {
+          "questID": 2284,
+          "url": "https://www.wowhead.com/forever/quest=2284",
+          "status": 200,
+          "bytes": 60905,
+          "sha256": "d1c194e6b5166ec883861dc71c2d5533f4ad62271702ca31f6421945c6a189ba",
+          "seriesQuestIDs": [
+            2283,
+            2318,
+            2338
+          ]
+        },
+        {
+          "questID": 2318,
+          "url": "https://www.wowhead.com/forever/quest=2318",
+          "status": 200,
+          "bytes": 47961,
+          "sha256": "6df63f054708fa7929e519c869b88b6c08f2e23f38d3847c97ca9fa226ce66e9",
+          "seriesQuestIDs": [
+            2283,
+            2284,
+            2338
+          ]
+        },
+        {
+          "questID": 2338,
+          "url": "https://www.wowhead.com/forever/quest=2338",
+          "status": 200,
+          "bytes": 49941,
+          "sha256": "e6fa41184fc842609164fc2f26bba4c33d13186969488801cf15a3ad03c7c04c",
+          "seriesQuestIDs": [
+            2283,
+            2284,
+            2318
+          ]
+        },
+        {
+          "questID": 2339,
+          "url": "https://www.wowhead.com/forever/quest=2339",
+          "status": 200,
+          "bytes": 88791,
+          "sha256": "c436946370094884a3d0793f8188919ca119217a58bb325ebe7714a25deae1f9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2340,
+          "url": "https://www.wowhead.com/forever/quest=2340",
+          "status": 200,
+          "bytes": 49596,
+          "sha256": "d1cad1b4884987fc6bb2b5881656c7b7cab0b10867ebba302e2a8554b1f43881",
+          "seriesQuestIDs": [
+            2341
+          ]
+        },
+        {
+          "questID": 2341,
+          "url": "https://www.wowhead.com/forever/quest=2341",
+          "status": 200,
+          "bytes": 55037,
+          "sha256": "42096df2e4021d7c4613a8b055c66885a83a9077ff253ab873b98c4e7054ab33",
+          "seriesQuestIDs": [
+            2340
+          ]
+        },
+        {
+          "questID": 2342,
+          "url": "https://www.wowhead.com/forever/quest=2342",
+          "status": 200,
+          "bytes": 84840,
+          "sha256": "13fe7c0eb45cca21fb80d31c4bea607d562fc44b9f05342fd433d3b5b2e27445",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2361,
+          "url": "https://www.wowhead.com/forever/quest=2361",
+          "status": 200,
+          "bytes": 50168,
+          "sha256": "d214ce926f424173eb714d36ec1704f2ced2c54ac81c9544d439c1f25f1fd027",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2398,
+          "url": "https://www.wowhead.com/forever/quest=2398",
+          "status": 200,
+          "bytes": 54031,
+          "sha256": "0cb2e58559379dafbd3d03e876f651c8dceaf170ce8c96b5c93839800ba6f27d",
+          "seriesQuestIDs": [
+            2240
+          ]
+        },
+        {
+          "questID": 2418,
+          "url": "https://www.wowhead.com/forever/quest=2418",
+          "status": 200,
+          "bytes": 108540,
+          "sha256": "67de68a7aa3eac1fdc1d76f8fea15e7d33e70ed09a1a392a5fdbf02f40dbb441",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2768,
+          "url": "https://www.wowhead.com/forever/quest=2768",
+          "status": 200,
+          "bytes": 120883,
+          "sha256": "8042167fcc2a155506fc59461d858948864599019038e1eb7a3a0ae1885f306c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2770,
+          "url": "https://www.wowhead.com/forever/quest=2770",
+          "status": 200,
+          "bytes": 110202,
+          "sha256": "991507992bc4dd91aba7561363450b27eef5b2e55289cc847c609df5928882e2",
+          "seriesQuestIDs": [
+            2769
+          ]
+        },
+        {
+          "questID": 2841,
+          "url": "https://www.wowhead.com/forever/quest=2841",
+          "status": 200,
+          "bytes": 123329,
+          "sha256": "a37f71b9a2b0dc44a8497107dc10f662024e112a7a52844210eb98bf162e285c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2842,
+          "url": "https://www.wowhead.com/forever/quest=2842",
+          "status": 200,
+          "bytes": 92788,
+          "sha256": "c4932d3da7e0026378f04d16358649d9891f6092fa41de80d1a64b88669011db",
+          "seriesQuestIDs": [
+            2843
+          ]
+        },
+        {
+          "questID": 2843,
+          "url": "https://www.wowhead.com/forever/quest=2843",
+          "status": 200,
+          "bytes": 58484,
+          "sha256": "12036da3113032dc2ac67dbb0f223b5ab993d5cc6911bb3a2b5be53f4ff9371c",
+          "seriesQuestIDs": [
+            2842
+          ]
+        },
+        {
+          "questID": 2846,
+          "url": "https://www.wowhead.com/forever/quest=2846",
+          "status": 200,
+          "bytes": 87915,
+          "sha256": "8d39100fe993832662a1475b4730679b30f8afa8c53bf9f8c312280f8851d5c3",
+          "seriesQuestIDs": [
+            2861
+          ]
+        },
+        {
+          "questID": 2861,
+          "url": "https://www.wowhead.com/forever/quest=2861",
+          "status": 200,
+          "bytes": 78485,
+          "sha256": "cb6b945134ae833c31eadc54eb41f2bee901aa436f6d9af05f67e166b1db77ce",
+          "seriesQuestIDs": [
+            2846
+          ]
+        },
+        {
+          "questID": 2864,
+          "url": "https://www.wowhead.com/forever/quest=2864",
+          "status": 200,
+          "bytes": 52064,
+          "sha256": "d152c60f8f6f86a8ac3fc831620403cb473ea16f8c1b8d005fdeb0450f4e6ad5",
+          "seriesQuestIDs": [
+            2865
+          ]
+        },
+        {
+          "questID": 2865,
+          "url": "https://www.wowhead.com/forever/quest=2865",
+          "status": 200,
+          "bytes": 60149,
+          "sha256": "cfa8ef84fc4f79d5069c07a9f63053a102995e99053f70e71ca621a5e8b64377",
+          "seriesQuestIDs": [
+            2864
+          ]
+        },
+        {
+          "questID": 2868,
+          "url": "https://www.wowhead.com/forever/quest=2868",
+          "status": 200,
+          "bytes": 44137,
+          "sha256": "e7bc9dd4e956864c1e9aaacdf10ee8f41c1e830972b96341038220faed758868",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2904,
+          "url": "https://www.wowhead.com/forever/quest=2904",
+          "status": 200,
+          "bytes": 79715,
+          "sha256": "1bf20b494b06ca790867892901729841b42e90cce0073720bf61119f77e05212",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2922,
+          "url": "https://www.wowhead.com/forever/quest=2922",
+          "status": 200,
+          "bytes": 79744,
+          "sha256": "0a4c9124469bc960d4167bb7ece12d30981080fb694987ba8fa3c957f2767624",
+          "seriesQuestIDs": [
+            2923
+          ]
+        },
+        {
+          "questID": 2923,
+          "url": "https://www.wowhead.com/forever/quest=2923",
+          "status": 200,
+          "bytes": 52584,
+          "sha256": "90ca98952028902d2f2e558f8477570ed47408210dfc48e93c340e5e4f3e1a0d",
+          "seriesQuestIDs": [
+            2922
+          ]
+        },
+        {
+          "questID": 2924,
+          "url": "https://www.wowhead.com/forever/quest=2924",
+          "status": 200,
+          "bytes": 59686,
+          "sha256": "1f4cf4b21d88b903b4b78fe537de2d2ce3b98f0943d67d0afbe83a73863c2266",
+          "seriesQuestIDs": [
+            2925
+          ]
+        },
+        {
+          "questID": 2925,
+          "url": "https://www.wowhead.com/forever/quest=2925",
+          "status": 200,
+          "bytes": 57224,
+          "sha256": "f18de487411fb95ac175c5438de5db11b0bb3744331655036a07f97cfb41405b",
+          "seriesQuestIDs": [
+            2924
+          ]
+        },
+        {
+          "questID": 2926,
+          "url": "https://www.wowhead.com/forever/quest=2926",
+          "status": 200,
+          "bytes": 85077,
+          "sha256": "d8c1e2c8be98bb97dad9fd3269b9ae3f654869c42bcd542c2db6044923580bb7",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2927,
+          "url": "https://www.wowhead.com/forever/quest=2927",
+          "status": 200,
+          "bytes": 98744,
+          "sha256": "8312d818e6eddce06057991f4405c1f4e2a5b3e1b7939c755e5d191a47d6c363",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2928,
+          "url": "https://www.wowhead.com/forever/quest=2928",
+          "status": 200,
+          "bytes": 66705,
+          "sha256": "59648a6c74049207187af9199e10f69b1d34b70a6c6739e42c75c5f1323045f2",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2929,
+          "url": "https://www.wowhead.com/forever/quest=2929",
+          "status": 200,
+          "bytes": 111691,
+          "sha256": "0837d0d5e42154ba384dabfd94e0467b70e22644737888758f3fe974d63c61f2",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2930,
+          "url": "https://www.wowhead.com/forever/quest=2930",
+          "status": 200,
+          "bytes": 93844,
+          "sha256": "1695f4348dfcb77465e23a1da5562c842dceca2d489b84fd162c623395a4bb31",
+          "seriesQuestIDs": [
+            2931
+          ]
+        },
+        {
+          "questID": 2931,
+          "url": "https://www.wowhead.com/forever/quest=2931",
+          "status": 200,
+          "bytes": 49639,
+          "sha256": "c086dfa2d8a10135d08cbd6325b38e90a71d3fb25987263e2b49a8dc14e0d17a",
+          "seriesQuestIDs": [
+            2930
+          ]
+        },
+        {
+          "questID": 2936,
+          "url": "https://www.wowhead.com/forever/quest=2936",
+          "status": 200,
+          "bytes": 76551,
+          "sha256": "7fceb0508f6b939a8572727053f1761579286001f7eb87ff63a21f82079aeca1",
+          "seriesQuestIDs": [
+            2933,
+            2934,
+            2935,
+            2937
+          ]
+        },
+        {
+          "questID": 2945,
+          "url": "https://www.wowhead.com/forever/quest=2945",
+          "status": 200,
+          "bytes": 101898,
+          "sha256": "5d935975ebbc4db4fd46c174a450efa5b1c27b0dfbd24331bdbe69136fb5d3fe",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2947,
+          "url": "https://www.wowhead.com/forever/quest=2947",
+          "status": 200,
+          "bytes": 70417,
+          "sha256": "8b456e8650024f45992a88cd1a77979db5b223b51d43d09a5b0bdf3a05aa3a3e",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2949,
+          "url": "https://www.wowhead.com/forever/quest=2949",
+          "status": 200,
+          "bytes": 70270,
+          "sha256": "234b5c195bac294620b9a9396f22c6eed2443010e985039c0ef7ddf2027740a3",
+          "seriesQuestIDs": [
+            2950
+          ]
+        },
+        {
+          "questID": 2951,
+          "url": "https://www.wowhead.com/forever/quest=2951",
+          "status": 200,
+          "bytes": 76531,
+          "sha256": "d8be166deb343c0be8a400917c629244619173640e8bff402765bba712679d4d",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2952,
+          "url": "https://www.wowhead.com/forever/quest=2952",
+          "status": 200,
+          "bytes": 48643,
+          "sha256": "66b9302611526881e00675e11f7415a5d2094fd89e94666aeccf405f3be4db1e",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2953,
+          "url": "https://www.wowhead.com/forever/quest=2953",
+          "status": 200,
+          "bytes": 55335,
+          "sha256": "82b36c1b4b6b26e08300d27b6471c66928c3451a2fdd286941b0143bdf02cfb9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2962,
+          "url": "https://www.wowhead.com/forever/quest=2962",
+          "status": 200,
+          "bytes": 112387,
+          "sha256": "02049688636f09ddd54a325a616cdaec1f2ee2e19497b0c8455f2af5f308effa",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2971,
+          "url": "https://www.wowhead.com/forever/quest=2971",
+          "status": 200,
+          "bytes": 62826,
+          "sha256": "8a550a0ddd44deec7c3ad099a70e857037cc6a74820298c67976359a5960649f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 2991,
+          "url": "https://www.wowhead.com/forever/quest=2991",
+          "status": 200,
+          "bytes": 64508,
+          "sha256": "a0f85b8bf01f9694a6b12bbfdbf35df533f89c7e0583e5c4c449401904065756",
+          "seriesQuestIDs": [
+            2988,
+            2989,
+            2990,
+            2992,
+            2993,
+            2994
+          ]
+        },
+        {
+          "questID": 3042,
+          "url": "https://www.wowhead.com/forever/quest=3042",
+          "status": 200,
+          "bytes": 69328,
+          "sha256": "ac1819a07d67f5907e5571f568a88b696e1035886cd43024fe91f5480ae420ec",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3341,
+          "url": "https://www.wowhead.com/forever/quest=3341",
+          "status": 200,
+          "bytes": 78483,
+          "sha256": "fb7e760c3a62914c93073b6c085c5805149ff8801da09f9ea7494afd39d0e0ba",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3366,
+          "url": "https://www.wowhead.com/forever/quest=3366",
+          "status": 200,
+          "bytes": 71315,
+          "sha256": "404aa835d766e9aecff3d22a51f899516e9edd269eccb05144e7ad4f82f0b57c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3373,
+          "url": "https://www.wowhead.com/forever/quest=3373",
+          "status": 200,
+          "bytes": 62282,
+          "sha256": "a4d1d347a97f4d93c94d0cd482514081f83b18263cbfc692bdd4ab79e7ad9bed",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3375,
+          "url": "https://www.wowhead.com/forever/quest=3375",
+          "status": 200,
+          "bytes": 62243,
+          "sha256": "f62b52347faeaf4742b89c167acf09d24d3cb84c92186de933c2ac4d19f66f89",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3380,
+          "url": "https://www.wowhead.com/forever/quest=3380",
+          "status": 200,
+          "bytes": 54623,
+          "sha256": "1ea6ee8db0e00bdf5dc58091e424b650a33c7b3676087bef059a4c83c7e2f19b",
+          "seriesQuestIDs": [
+            3445,
+            3444
+          ]
+        },
+        {
+          "questID": 3446,
+          "url": "https://www.wowhead.com/forever/quest=3446",
+          "status": 200,
+          "bytes": 100247,
+          "sha256": "3e50f5b82d5f09a5f51f2a4b35ebb186c7aab196bc1f99c6c6640b7d116efce9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3447,
+          "url": "https://www.wowhead.com/forever/quest=3447",
+          "status": 200,
+          "bytes": 113598,
+          "sha256": "bd285c9574f0edf444648d9c9a829d2f889df1c034416f054b91e6bf4a717291",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3523,
+          "url": "https://www.wowhead.com/forever/quest=3523",
+          "status": 200,
+          "bytes": 85007,
+          "sha256": "9d7c9167be575626425c563aeb5b50c0d02dfb278e69debb9d32e241871be007",
+          "seriesQuestIDs": [
+            3525
+          ]
+        },
+        {
+          "questID": 3525,
+          "url": "https://www.wowhead.com/forever/quest=3525",
+          "status": 200,
+          "bytes": 102822,
+          "sha256": "dab677d8003410da4259fdd04a4d98d08d6ec26a473025daadccc6f9b17bdf24",
+          "seriesQuestIDs": [
+            3523
+          ]
+        },
+        {
+          "questID": 3527,
+          "url": "https://www.wowhead.com/forever/quest=3527",
+          "status": 200,
+          "bytes": 80290,
+          "sha256": "3e6a1f5470b07304d2da1b5c20432b86a3c1884e5fbe827596e191ac0b009b5e",
+          "seriesQuestIDs": [
+            3520,
+            4787,
+            3528
+          ]
+        },
+        {
+          "questID": 3528,
+          "url": "https://www.wowhead.com/forever/quest=3528",
+          "status": 200,
+          "bytes": 108124,
+          "sha256": "7885c201e1b0c146ee236a1b60defb4e73f77be1cc1151a64ec4a5b72bdd7a3e",
+          "seriesQuestIDs": [
+            3520,
+            3527,
+            4787
+          ]
+        },
+        {
+          "questID": 3636,
+          "url": "https://www.wowhead.com/forever/quest=3636",
+          "status": 200,
+          "bytes": 98392,
+          "sha256": "e803d75e7e8a461cf805f425a32135d29b28499b9a50156fec12fb230f1229b4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3801,
+          "url": "https://www.wowhead.com/forever/quest=3801",
+          "status": 200,
+          "bytes": 82395,
+          "sha256": "081f8ed14fc31c50505fb0b001bd63e27fc47d6c7cc0a8ceb7bfe6763f001cfd",
+          "seriesQuestIDs": [
+            3802
+          ]
+        },
+        {
+          "questID": 3802,
+          "url": "https://www.wowhead.com/forever/quest=3802",
+          "status": 200,
+          "bytes": 131180,
+          "sha256": "e0dd5ac47574471b2415b84806ffb487fa77e1dd36b7ae578c8738ddf37a516e",
+          "seriesQuestIDs": [
+            3801
+          ]
+        },
+        {
+          "questID": 3907,
+          "url": "https://www.wowhead.com/forever/quest=3907",
+          "status": 200,
+          "bytes": 57707,
+          "sha256": "394113b7b8d0dfe64d53d55b591fe5ba2d4c9d2484dfce621c477bc91594c810",
+          "seriesQuestIDs": [
+            3906
+          ]
+        },
+        {
+          "questID": 3911,
+          "url": "https://www.wowhead.com/forever/quest=3911",
+          "status": 200,
+          "bytes": 51115,
+          "sha256": "187c4175f7a047588b95f86d9f37d993ced392c71ec21a1cf11d4ab1994951a0",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 3981,
+          "url": "https://www.wowhead.com/forever/quest=3981",
+          "status": 200,
+          "bytes": 63744,
+          "sha256": "b1cbb68bf3cc3be648c00dd92d44eab52949227092a29457ee312a373c85c422",
+          "seriesQuestIDs": [
+            3982,
+            4001,
+            4002,
+            4003,
+            4004
+          ]
+        },
+        {
+          "questID": 3982,
+          "url": "https://www.wowhead.com/forever/quest=3982",
+          "status": 200,
+          "bytes": 64546,
+          "sha256": "19995c763e618c8adb0675b4253f59e32d2dc88f7122a31915653cd806a946e3",
+          "seriesQuestIDs": [
+            3981,
+            4001,
+            4002,
+            4003,
+            4004
+          ]
+        },
+        {
+          "questID": 4001,
+          "url": "https://www.wowhead.com/forever/quest=4001",
+          "status": 200,
+          "bytes": 54802,
+          "sha256": "2f929629942fa8dfa00dc2a4fe1ec9f92062deb132beac2a061556f12ff295b7",
+          "seriesQuestIDs": [
+            3981,
+            3982,
+            4002,
+            4003,
+            4004
+          ]
+        },
+        {
+          "questID": 4002,
+          "url": "https://www.wowhead.com/forever/quest=4002",
+          "status": 200,
+          "bytes": 49676,
+          "sha256": "fa09d39747e8e4fefba2257d080148084147044ebfd7ef8ac998de9a6a4f0fea",
+          "seriesQuestIDs": [
+            3981,
+            3982,
+            4001,
+            4003,
+            4004
+          ]
+        },
+        {
+          "questID": 4003,
+          "url": "https://www.wowhead.com/forever/quest=4003",
+          "status": 200,
+          "bytes": 82527,
+          "sha256": "e8abbbe8b1038f373b8f2161da0073479a39ced9b48493ae977c1192eb09343e",
+          "seriesQuestIDs": [
+            3981,
+            3982,
+            4001,
+            4002,
+            4004
+          ]
+        },
+        {
+          "questID": 4004,
+          "url": "https://www.wowhead.com/forever/quest=4004",
+          "status": 200,
+          "bytes": 71547,
+          "sha256": "555cc9852d329f4efbd5a74b2778f8dc03f64ec9eabcf1046374f262708b3186",
+          "seriesQuestIDs": [
+            3981,
+            3982,
+            4001,
+            4002,
+            4003
+          ]
+        },
+        {
+          "questID": 4024,
+          "url": "https://www.wowhead.com/forever/quest=4024",
+          "status": 200,
+          "bytes": 68427,
+          "sha256": "35133d7c55aec17cfd9098a249992d6b4f9a066887191b8c9fb3e00665b2006d",
+          "seriesQuestIDs": [
+            4022,
+            4023
+          ]
+        },
+        {
+          "questID": 4063,
+          "url": "https://www.wowhead.com/forever/quest=4063",
+          "status": 200,
+          "bytes": 73575,
+          "sha256": "ce91675294cb48a6168b241483bf46ed98abf07c71a93d93b19acb466c3123e6",
+          "seriesQuestIDs": [
+            4061,
+            4062
+          ]
+        },
+        {
+          "questID": 4081,
+          "url": "https://www.wowhead.com/forever/quest=4081",
+          "status": 200,
+          "bytes": 58099,
+          "sha256": "3fe9494971c4c0ea788aec26656a9c4d1701aea504fb2528f602f40fddeb3278",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4082,
+          "url": "https://www.wowhead.com/forever/quest=4082",
+          "status": 200,
+          "bytes": 60175,
+          "sha256": "8e716b825cee0a7698060a576c0c011f5b19503f4bab63f8b1e4a7f64da64735",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4083,
+          "url": "https://www.wowhead.com/forever/quest=4083",
+          "status": 200,
+          "bytes": 82521,
+          "sha256": "00a16501a4ba0482be45dfc7537c5a4e46b64d03faa4d5e6803ead6627456a52",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4121,
+          "url": "https://www.wowhead.com/forever/quest=4121",
+          "status": 200,
+          "bytes": 78874,
+          "sha256": "60456d35bd0b3573dbb1c410c9e43e9727b85048ed7e6198b45075959c99c34a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4122,
+          "url": "https://www.wowhead.com/forever/quest=4122",
+          "status": 200,
+          "bytes": 94118,
+          "sha256": "0214e2c240e0f716233ae9cf14ad540099ee229e8deb62799f79b398df840c11",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4123,
+          "url": "https://www.wowhead.com/forever/quest=4123",
+          "status": 200,
+          "bytes": 86068,
+          "sha256": "7783039a15a0d0ddfa1653544f2f71b5e9a28bb171f9cbe6ba0cc0150d87b666",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4126,
+          "url": "https://www.wowhead.com/forever/quest=4126",
+          "status": 200,
+          "bytes": 65299,
+          "sha256": "18e1b43a79d16cb0b00008c095cac04b46f57feb9a71b4042cf6d79e639b2655",
+          "seriesQuestIDs": [
+            4128
+          ]
+        },
+        {
+          "questID": 4128,
+          "url": "https://www.wowhead.com/forever/quest=4128",
+          "status": 200,
+          "bytes": 58766,
+          "sha256": "74d52aa671d66c9b66f480e7c22f08d0e852e1df3fe5ab7a048ffb7df4330b15",
+          "seriesQuestIDs": [
+            4126
+          ]
+        },
+        {
+          "questID": 4132,
+          "url": "https://www.wowhead.com/forever/quest=4132",
+          "status": 200,
+          "bytes": 58450,
+          "sha256": "ebcf45d73e1adc6581cfeec04c6bb9b02ff3db5848dfa4a545e34f35e7c56992",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4133,
+          "url": "https://www.wowhead.com/forever/quest=4133",
+          "status": 200,
+          "bytes": 50941,
+          "sha256": "d17dc1bf3e7a1b4a5a3c4906803b799be1914e5534f71519c68ba94d78544834",
+          "seriesQuestIDs": [
+            4134
+          ]
+        },
+        {
+          "questID": 4134,
+          "url": "https://www.wowhead.com/forever/quest=4134",
+          "status": 200,
+          "bytes": 59708,
+          "sha256": "3847004922fe622dc8f5e708d10c8783513448f236a7cce9905ab50968f3a009",
+          "seriesQuestIDs": [
+            4133
+          ]
+        },
+        {
+          "questID": 4136,
+          "url": "https://www.wowhead.com/forever/quest=4136",
+          "status": 200,
+          "bytes": 72067,
+          "sha256": "33f840738a08c9c6952c42b3c40079c364ff0151c686edd2fc455a93a46581f5",
+          "seriesQuestIDs": [
+            4324
+          ]
+        },
+        {
+          "questID": 4201,
+          "url": "https://www.wowhead.com/forever/quest=4201",
+          "status": 200,
+          "bytes": 94823,
+          "sha256": "3b80848daf6148ac7a9685f31eab3025661a43725be1c157cc9b83c48364f927",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4241,
+          "url": "https://www.wowhead.com/forever/quest=4241",
+          "status": 200,
+          "bytes": 97979,
+          "sha256": "86158db7484cacc0590557a7ce7c80841376f649ced89ce340628cecf70d0c25",
+          "seriesQuestIDs": [
+            4182,
+            4183,
+            4184,
+            4185,
+            4186,
+            4223,
+            4224,
+            4242
+          ]
+        },
+        {
+          "questID": 4242,
+          "url": "https://www.wowhead.com/forever/quest=4242",
+          "status": 200,
+          "bytes": 84865,
+          "sha256": "0869761fc2fc80e4e20d1688d939ee1bdc7455b19ea2e4abb3445f1cd424171a",
+          "seriesQuestIDs": [
+            4182,
+            4183,
+            4184,
+            4185,
+            4186,
+            4223,
+            4224,
+            4241
+          ]
+        },
+        {
+          "questID": 4263,
+          "url": "https://www.wowhead.com/forever/quest=4263",
+          "status": 200,
+          "bytes": 52361,
+          "sha256": "6a6cfe548d7e64a5b9416550125108679b659be9c960971429202d1443fd8304",
+          "seriesQuestIDs": [
+            4262
+          ]
+        },
+        {
+          "questID": 4264,
+          "url": "https://www.wowhead.com/forever/quest=4264",
+          "status": 200,
+          "bytes": 101359,
+          "sha256": "a720a52196e9e7c9d7e9750e8d381995f4d5d1598b3c030d782350b295b39add",
+          "seriesQuestIDs": [
+            4282
+          ]
+        },
+        {
+          "questID": 4282,
+          "url": "https://www.wowhead.com/forever/quest=4282",
+          "status": 200,
+          "bytes": 102738,
+          "sha256": "8328e14ec047b6bed8b6f2c27412c211354e0110e2ccf10010c44402a5b30a0c",
+          "seriesQuestIDs": [
+            4264
+          ]
+        },
+        {
+          "questID": 4286,
+          "url": "https://www.wowhead.com/forever/quest=4286",
+          "status": 200,
+          "bytes": 63403,
+          "sha256": "07a27852d5f439c7f2b65d05d109bd07fe23f5232bee518369be2d3c720bd386",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4295,
+          "url": "https://www.wowhead.com/forever/quest=4295",
+          "status": 200,
+          "bytes": 47982,
+          "sha256": "b4e0a3322e361d7392456b9a6e6095e2f20b13c30578bd1a4cbc7a91b7481a15",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4299,
+          "url": "https://www.wowhead.com/forever/quest=4299",
+          "status": 200,
+          "bytes": 44374,
+          "sha256": "24847df20ab70a58ae6726c5d0e5aeaf6dfc7fbfb1d49a9d273e5250f64e3070",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4322,
+          "url": "https://www.wowhead.com/forever/quest=4322",
+          "status": 200,
+          "bytes": 142201,
+          "sha256": "270652d4172ef8d4425015a2bddacf8020cd18254afa1d1db22fe522f067f14e",
+          "seriesQuestIDs": [
+            6402
+          ]
+        },
+        {
+          "questID": 4324,
+          "url": "https://www.wowhead.com/forever/quest=4324",
+          "status": 200,
+          "bytes": 58561,
+          "sha256": "04d30f35e5f69837e5e20db05bfa464afec4f34214c70f5ca9a8c919d6e0a247",
+          "seriesQuestIDs": [
+            4136
+          ]
+        },
+        {
+          "questID": 4341,
+          "url": "https://www.wowhead.com/forever/quest=4341",
+          "status": 200,
+          "bytes": 66897,
+          "sha256": "4870b33db6b30ce3b482544b1d6960e8ee0127132b6591b320b8da69134bd4cb",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4342,
+          "url": "https://www.wowhead.com/forever/quest=4342",
+          "status": 200,
+          "bytes": 52757,
+          "sha256": "8bc26d96efb15ca8d0a172a7e5432ed557c9c9472a0a2935c496782b25fddde8",
+          "seriesQuestIDs": [
+            4361,
+            4362,
+            4363
+          ]
+        },
+        {
+          "questID": 4361,
+          "url": "https://www.wowhead.com/forever/quest=4361",
+          "status": 200,
+          "bytes": 47128,
+          "sha256": "d4fb0d97c9441f07425d62f4bf9b7c4970ab998275ffe0f41cffd3a858447580",
+          "seriesQuestIDs": [
+            4342,
+            4362,
+            4363
+          ]
+        },
+        {
+          "questID": 4362,
+          "url": "https://www.wowhead.com/forever/quest=4362",
+          "status": 200,
+          "bytes": 126289,
+          "sha256": "eb9da3973c2d9247281046babea859a682eae0ecdb1ff65191edbdc1b69648b6",
+          "seriesQuestIDs": [
+            4342,
+            4361,
+            4363
+          ]
+        },
+        {
+          "questID": 4363,
+          "url": "https://www.wowhead.com/forever/quest=4363",
+          "status": 200,
+          "bytes": 68380,
+          "sha256": "b8c6c0ef39a449679abb38b23e9824bc964669a4f90cfb851246e5bb9c2348eb",
+          "seriesQuestIDs": [
+            4342,
+            4361,
+            4362
+          ]
+        },
+        {
+          "questID": 4601,
+          "url": "https://www.wowhead.com/forever/quest=4601",
+          "status": 200,
+          "bytes": 51856,
+          "sha256": "3c5b6fc4adbf2bdde0b9268dbc82f0f6ac701830822e3aa99eacf0931e77654b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4602,
+          "url": "https://www.wowhead.com/forever/quest=4602",
+          "status": 200,
+          "bytes": 51923,
+          "sha256": "75e1044f5ec42702dd8d6cea9973ed742ba983a90047d8a39da103246470c1cf",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4603,
+          "url": "https://www.wowhead.com/forever/quest=4603",
+          "status": 200,
+          "bytes": 51074,
+          "sha256": "c60ae5148004e64540d76e1e37417800b7237ddacb138ae6fe0cdcce948748b9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4604,
+          "url": "https://www.wowhead.com/forever/quest=4604",
+          "status": 200,
+          "bytes": 49165,
+          "sha256": "8d5c5284b2b1e2c2ccb7b7361c0c276865edb65a71ce1fbe3be5c84606eecef0",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4605,
+          "url": "https://www.wowhead.com/forever/quest=4605",
+          "status": 200,
+          "bytes": 49422,
+          "sha256": "ec7bff01ea5b9e7b92e5491229b883c936a09e4fb6d1de06e9fef60c5789d3c4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4606,
+          "url": "https://www.wowhead.com/forever/quest=4606",
+          "status": 200,
+          "bytes": 48643,
+          "sha256": "18e8b19ceb9296fc80aeba7fa3974bfd49c16423ce71b60050d58827e9e37ff8",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4701,
+          "url": "https://www.wowhead.com/forever/quest=4701",
+          "status": 200,
+          "bytes": 61613,
+          "sha256": "e245210ba741c2ed772e3f2595637d7a87c4b29faaafdcbc10c455f7277c8092",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4724,
+          "url": "https://www.wowhead.com/forever/quest=4724",
+          "status": 200,
+          "bytes": 54419,
+          "sha256": "23feb587a1cff554a5314c1a07fb1f3790f071873a7fbf591ac8a9d006ee03b9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4729,
+          "url": "https://www.wowhead.com/forever/quest=4729",
+          "status": 200,
+          "bytes": 89280,
+          "sha256": "19706d9a0ce0a3144ced12f83f364ce27fdc72ddf6f2ab042306d7257669d7c9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4734,
+          "url": "https://www.wowhead.com/forever/quest=4734",
+          "status": 200,
+          "bytes": 60749,
+          "sha256": "b7ed3728d6cbd666668c80bf7a0ea3e00e33495365a4d1ee2738f9f383f95dc6",
+          "seriesQuestIDs": [
+            4907
+          ]
+        },
+        {
+          "questID": 4735,
+          "url": "https://www.wowhead.com/forever/quest=4735",
+          "status": 200,
+          "bytes": 64552,
+          "sha256": "9f1166e011a05206ff8cab5dcaf1c08fe15ffe13974f692317d57631d4b88e78",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4742,
+          "url": "https://www.wowhead.com/forever/quest=4742",
+          "status": 200,
+          "bytes": 131402,
+          "sha256": "a5792d6cecdadbcdac222962cbc303a8f980122495d75c0053012a9773014bfa",
+          "seriesQuestIDs": [
+            4743
+          ]
+        },
+        {
+          "questID": 4743,
+          "url": "https://www.wowhead.com/forever/quest=4743",
+          "status": 200,
+          "bytes": 212923,
+          "sha256": "7c01cfda8af87017345e83abdb9bddf81a93781dde333dfdc6b3b9efd3e74f29",
+          "seriesQuestIDs": [
+            4742
+          ]
+        },
+        {
+          "questID": 4764,
+          "url": "https://www.wowhead.com/forever/quest=4764",
+          "status": 200,
+          "bytes": 61044,
+          "sha256": "ca8371a9f13e8f0a9f53b94ef385870eee40aac76f97bcec9c0ffbcb37d887a8",
+          "seriesQuestIDs": [
+            4766,
+            4765
+          ]
+        },
+        {
+          "questID": 4765,
+          "url": "https://www.wowhead.com/forever/quest=4765",
+          "status": 200,
+          "bytes": 55800,
+          "sha256": "62b6417eaad5357b3047c1ccad0ea7f839831afd6fd477020ba5f54f399ebd5d",
+          "seriesQuestIDs": [
+            4766,
+            4764
+          ]
+        },
+        {
+          "questID": 4766,
+          "url": "https://www.wowhead.com/forever/quest=4766",
+          "status": 200,
+          "bytes": 51463,
+          "sha256": "c718d609badaf0a4187e94113d48350deb72335ee4a7805bccf7583ccde629b8",
+          "seriesQuestIDs": [
+            4764,
+            4765
+          ]
+        },
+        {
+          "questID": 4768,
+          "url": "https://www.wowhead.com/forever/quest=4768",
+          "status": 200,
+          "bytes": 54085,
+          "sha256": "a3aded93872bf7164c633cc821de3cf2869188028b503a7d4d12423140c973e5",
+          "seriesQuestIDs": [
+            4769
+          ]
+        },
+        {
+          "questID": 4769,
+          "url": "https://www.wowhead.com/forever/quest=4769",
+          "status": 200,
+          "bytes": 47487,
+          "sha256": "0e74d5a87ec98c6f869d979475f9c219593df76e746b6cc2513e47d66ea65806",
+          "seriesQuestIDs": [
+            4768
+          ]
+        },
+        {
+          "questID": 4771,
+          "url": "https://www.wowhead.com/forever/quest=4771",
+          "status": 200,
+          "bytes": 80999,
+          "sha256": "76efe8947ed8b1491b0cc9b51b6a4a86b09c6f5920477253a0fe268ab287d155",
+          "seriesQuestIDs": [
+            5522,
+            5531
+          ]
+        },
+        {
+          "questID": 4788,
+          "url": "https://www.wowhead.com/forever/quest=4788",
+          "status": 200,
+          "bytes": 73819,
+          "sha256": "75e2a06ff93563975f6c23ab674ccb518ae8f7158b4a92055558aecbf523cb79",
+          "seriesQuestIDs": [
+            5065
+          ]
+        },
+        {
+          "questID": 4862,
+          "url": "https://www.wowhead.com/forever/quest=4862",
+          "status": 200,
+          "bytes": 68595,
+          "sha256": "43dff187bf42e01bbef9fd7bda426192f36f92bb2f3fe5ab4dc545ecd5a72e68",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4866,
+          "url": "https://www.wowhead.com/forever/quest=4866",
+          "status": 200,
+          "bytes": 112418,
+          "sha256": "b4abade46d85c13b9f190d403e7ea8b05d97e9a1d88df076d332a0d54b35ccdf",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4867,
+          "url": "https://www.wowhead.com/forever/quest=4867",
+          "status": 200,
+          "bytes": 76770,
+          "sha256": "5d56614cc02f091387acad7a89658cc27948110a906f381b8d01c707c2a42d36",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 4903,
+          "url": "https://www.wowhead.com/forever/quest=4903",
+          "status": 200,
+          "bytes": 145545,
+          "sha256": "b4d6966a91fb34f7a6954c72abc35b26dc95e544bc5b48313e2f9b7fc6a3bd20",
+          "seriesQuestIDs": [
+            4941,
+            4974
+          ]
+        },
+        {
+          "questID": 4907,
+          "url": "https://www.wowhead.com/forever/quest=4907",
+          "status": 200,
+          "bytes": 49152,
+          "sha256": "c2c3c2a23bc186b21ab60528463ea452ede6bbb2189948fbb1b2e49d3dfd2557",
+          "seriesQuestIDs": [
+            4734
+          ]
+        },
+        {
+          "questID": 4974,
+          "url": "https://www.wowhead.com/forever/quest=4974",
+          "status": 200,
+          "bytes": 107692,
+          "sha256": "b03d3e620262ed16db914e578cabcd1cd7f062e1e984890246f23f257522fe44",
+          "seriesQuestIDs": [
+            4903,
+            4941
+          ]
+        },
+        {
+          "questID": 4981,
+          "url": "https://www.wowhead.com/forever/quest=4981",
+          "status": 200,
+          "bytes": 51254,
+          "sha256": "334f66f9d1c42946ef98097f4e0c4d43fc158acc5690e3269733c755b15f598b",
+          "seriesQuestIDs": [
+            4982,
+            4983
+          ]
+        },
+        {
+          "questID": 4982,
+          "url": "https://www.wowhead.com/forever/quest=4982",
+          "status": 200,
+          "bytes": 65198,
+          "sha256": "9c7f2d3a7012c723c90e2eeb296b6c94ac2b95d5e32b339f1c65b8854c245c3f",
+          "seriesQuestIDs": [
+            4981,
+            4983
+          ]
+        },
+        {
+          "questID": 4983,
+          "url": "https://www.wowhead.com/forever/quest=4983",
+          "status": 200,
+          "bytes": 48390,
+          "sha256": "e284a91f074acc972aa95fd75b4cc1772c5c7b179052ed3c0a40826bd7b0e73f",
+          "seriesQuestIDs": [
+            4981,
+            4982
+          ]
+        },
+        {
+          "questID": 5001,
+          "url": "https://www.wowhead.com/forever/quest=5001",
+          "status": 200,
+          "bytes": 83995,
+          "sha256": "eb714e33badf3b36c1683f74924594c209c39632cc97e4d21d62287232eb274e",
+          "seriesQuestIDs": [
+            5002,
+            5081
+          ]
+        },
+        {
+          "questID": 5002,
+          "url": "https://www.wowhead.com/forever/quest=5002",
+          "status": 200,
+          "bytes": 51644,
+          "sha256": "cd82d6fbaf93a58e5dc8ae360dad5e9cb884bdb9d770425ecb66a6c4a45cbfbd",
+          "seriesQuestIDs": [
+            5001,
+            5081
+          ]
+        },
+        {
+          "questID": 5047,
+          "url": "https://www.wowhead.com/forever/quest=5047",
+          "status": 200,
+          "bytes": 59569,
+          "sha256": "caa53946c27db1cd52453de1687bb6cab7b39351e47854e295d2805175a3095c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5081,
+          "url": "https://www.wowhead.com/forever/quest=5081",
+          "status": 200,
+          "bytes": 68745,
+          "sha256": "ebd0fa719915d883fd698a403a9ac7ff0bd57ef45adf526a484df976c774596a",
+          "seriesQuestIDs": [
+            5001,
+            5002
+          ]
+        },
+        {
+          "questID": 5089,
+          "url": "https://www.wowhead.com/forever/quest=5089",
+          "status": 200,
+          "bytes": 68131,
+          "sha256": "05af068b7407f37eee1c83a52f4c4c85ac95958d8fe783f88fdc6f04c73039bc",
+          "seriesQuestIDs": [
+            5102
+          ]
+        },
+        {
+          "questID": 5102,
+          "url": "https://www.wowhead.com/forever/quest=5102",
+          "status": 200,
+          "bytes": 95277,
+          "sha256": "1d9a896ba0f9d964ee898e429ee6b276e250a3d810c62800f4a39d8c52ca4f6c",
+          "seriesQuestIDs": [
+            5089
+          ]
+        },
+        {
+          "questID": 5122,
+          "url": "https://www.wowhead.com/forever/quest=5122",
+          "status": 200,
+          "bytes": 61403,
+          "sha256": "ee592f9c5872c6394579204000d6cec407a15c7f4b0f0e9503dc5fa6a3a84284",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5125,
+          "url": "https://www.wowhead.com/forever/quest=5125",
+          "status": 200,
+          "bytes": 78309,
+          "sha256": "c914899b24085f289f7ad65174814926af4ab82686e04a1c3013528f951a38a8",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5127,
+          "url": "https://www.wowhead.com/forever/quest=5127",
+          "status": 200,
+          "bytes": 71412,
+          "sha256": "d07c3d889595fec162aeb889fe5c18ad0391e26c7dbfd82557821950d7f38c96",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5160,
+          "url": "https://www.wowhead.com/forever/quest=5160",
+          "status": 200,
+          "bytes": 161005,
+          "sha256": "78a53638da53b8ddcfe21a59fab553884e50d05b8d129836346db0c1e6c3b056",
+          "seriesQuestIDs": [
+            5161,
+            5162,
+            5164
+          ]
+        },
+        {
+          "questID": 5212,
+          "url": "https://www.wowhead.com/forever/quest=5212",
+          "status": 200,
+          "bytes": 63269,
+          "sha256": "29492181e5d49030de32bd723343a049fb3b466715e58ec39e993e544cd0f69e",
+          "seriesQuestIDs": [
+            5213
+          ]
+        },
+        {
+          "questID": 5213,
+          "url": "https://www.wowhead.com/forever/quest=5213",
+          "status": 200,
+          "bytes": 85474,
+          "sha256": "6a1be29d6b8a8ae3ccc742313eee3a0ebe5b3bff09c596e58aa76c788daa0f60",
+          "seriesQuestIDs": [
+            5212
+          ]
+        },
+        {
+          "questID": 5214,
+          "url": "https://www.wowhead.com/forever/quest=5214",
+          "status": 200,
+          "bytes": 64821,
+          "sha256": "4b0473f8d913e1ab67bfbb5062b7040177c911e2456ab67b7db443a29cd1bc95",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5243,
+          "url": "https://www.wowhead.com/forever/quest=5243",
+          "status": 200,
+          "bytes": 72956,
+          "sha256": "4b22438584c0fc57de08ac0c72f405474f1b5ddfd367b93668048191249bca3d",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5251,
+          "url": "https://www.wowhead.com/forever/quest=5251",
+          "status": 200,
+          "bytes": 69057,
+          "sha256": "efd207cffd46342bb04b5a1b69c4c0721e9a43fa57df9904adb68cf2b342ac72",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5262,
+          "url": "https://www.wowhead.com/forever/quest=5262",
+          "status": 200,
+          "bytes": 70317,
+          "sha256": "fc36cbfc64740a61c1a70afa938e6821b363b95e0203b676cdf7e37018c7fb2e",
+          "seriesQuestIDs": [
+            5263
+          ]
+        },
+        {
+          "questID": 5263,
+          "url": "https://www.wowhead.com/forever/quest=5263",
+          "status": 200,
+          "bytes": 100861,
+          "sha256": "6f7e0400f5c034b6815f66946eee05a59e6e2ec6713a86e40d63ebb164b7118e",
+          "seriesQuestIDs": [
+            5262
+          ]
+        },
+        {
+          "questID": 5282,
+          "url": "https://www.wowhead.com/forever/quest=5282",
+          "status": 200,
+          "bytes": 103647,
+          "sha256": "c089170de1d9a66b4df396ee7a81d2ada63cd778e44fb040423a149c50fac653",
+          "seriesQuestIDs": [
+            5281
+          ]
+        },
+        {
+          "questID": 5341,
+          "url": "https://www.wowhead.com/forever/quest=5341",
+          "status": 200,
+          "bytes": 70461,
+          "sha256": "4ba21b34375f74c280fc26de1c3d81418496718541b3efc94ced6959202deae6",
+          "seriesQuestIDs": [
+            5342
+          ]
+        },
+        {
+          "questID": 5343,
+          "url": "https://www.wowhead.com/forever/quest=5343",
+          "status": 200,
+          "bytes": 76925,
+          "sha256": "9ccc49473404a689363cf0347eb74f35338fa548012b1ac8cf2f8bb9a85be723",
+          "seriesQuestIDs": [
+            5344
+          ]
+        },
+        {
+          "questID": 5382,
+          "url": "https://www.wowhead.com/forever/quest=5382",
+          "status": 200,
+          "bytes": 79231,
+          "sha256": "62cadb3c2d98d19065329f9075cd06e5489831beed3b8284d2a50b06d2b31c1e",
+          "seriesQuestIDs": [
+            5515,
+            5384
+          ]
+        },
+        {
+          "questID": 5384,
+          "url": "https://www.wowhead.com/forever/quest=5384",
+          "status": 200,
+          "bytes": 89914,
+          "sha256": "e6b71f9996b323a50932d887a39dccfb488f55d320f69e2b52db045bca693292",
+          "seriesQuestIDs": [
+            5382,
+            5515
+          ]
+        },
+        {
+          "questID": 5463,
+          "url": "https://www.wowhead.com/forever/quest=5463",
+          "status": 200,
+          "bytes": 63600,
+          "sha256": "057ea274b97db76114b6f1235707ad8166c2b6cec4bfa2826895c948a96a305d",
+          "seriesQuestIDs": [
+            5461,
+            5462,
+            5464,
+            5465,
+            5466
+          ]
+        },
+        {
+          "questID": 5466,
+          "url": "https://www.wowhead.com/forever/quest=5466",
+          "status": 200,
+          "bytes": 87499,
+          "sha256": "1452c760b3af139acf678e91e1fa47c9a774e8afddf521f03277ebeb6c6cd7fc",
+          "seriesQuestIDs": [
+            5461,
+            5462,
+            5463,
+            5464,
+            5465
+          ]
+        },
+        {
+          "questID": 5515,
+          "url": "https://www.wowhead.com/forever/quest=5515",
+          "status": 200,
+          "bytes": 72509,
+          "sha256": "dd4dedb6b9c1af5eca0a0a6592d69c51ce35564815bf5b16ec147b011b8267a7",
+          "seriesQuestIDs": [
+            5382,
+            5384
+          ]
+        },
+        {
+          "questID": 5518,
+          "url": "https://www.wowhead.com/forever/quest=5518",
+          "status": 200,
+          "bytes": 62254,
+          "sha256": "802d47c38299208111d72ee8f16582f7186ba62f00540d1cd32a8db07c217ea8",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5519,
+          "url": "https://www.wowhead.com/forever/quest=5519",
+          "status": 200,
+          "bytes": 51260,
+          "sha256": "60e6764a7cf6d5025c6d4334ebcf5001118435ec4e9cb31702436deb1e858ac6",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5525,
+          "url": "https://www.wowhead.com/forever/quest=5525",
+          "status": 200,
+          "bytes": 53204,
+          "sha256": "5e13cb346bb287b50bdcac887e60accab7ed1db585b2c98f1162a15278396413",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5528,
+          "url": "https://www.wowhead.com/forever/quest=5528",
+          "status": 200,
+          "bytes": 47823,
+          "sha256": "f78f3f46e5515c6a569118522c9f9db108d7ac7a13874db7bce8f5c3872f662e",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5529,
+          "url": "https://www.wowhead.com/forever/quest=5529",
+          "status": 200,
+          "bytes": 58688,
+          "sha256": "a723c29bec79c18c91330bc0f5613e8a8dc3b6d0169d8294a1796d8fd198e8e2",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5531,
+          "url": "https://www.wowhead.com/forever/quest=5531",
+          "status": 200,
+          "bytes": 50427,
+          "sha256": "5c27cbb2826a9e3ab45a5b09a2b660a37ccbce60d717ef2850f4e73776a864f5",
+          "seriesQuestIDs": [
+            5522,
+            4771
+          ]
+        },
+        {
+          "questID": 5582,
+          "url": "https://www.wowhead.com/forever/quest=5582",
+          "status": 200,
+          "bytes": 62219,
+          "sha256": "72f9e1bc703991035227ab41522853032106e4f4f61bb940a4727d9f55b26b1a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5722,
+          "url": "https://www.wowhead.com/forever/quest=5722",
+          "status": 200,
+          "bytes": 70423,
+          "sha256": "b7ecdcc3f9712ff72d66f86a2e091692258f62f49728093f7dec6a5b108e3841",
+          "seriesQuestIDs": [
+            5724
+          ]
+        },
+        {
+          "questID": 5723,
+          "url": "https://www.wowhead.com/forever/quest=5723",
+          "status": 200,
+          "bytes": 60232,
+          "sha256": "3526918741596ae0e9bc60abd0c28ba4a028afe2b291612460aa7a1221a3d6fe",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5724,
+          "url": "https://www.wowhead.com/forever/quest=5724",
+          "status": 200,
+          "bytes": 61294,
+          "sha256": "de833aba842faa6505e06ff8bc00f95cc2e069a38958faae95dcfdf71ad04353",
+          "seriesQuestIDs": [
+            5722
+          ]
+        },
+        {
+          "questID": 5725,
+          "url": "https://www.wowhead.com/forever/quest=5725",
+          "status": 200,
+          "bytes": 100840,
+          "sha256": "b3da57a55e33be35fd17387d2c61caa518636c05ac5a3e42ab0d2adb5214887d",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5728,
+          "url": "https://www.wowhead.com/forever/quest=5728",
+          "status": 200,
+          "bytes": 72652,
+          "sha256": "e0532c42982d31955d589d6e9f18bcd396557f95275398775f0558760d4d6b80",
+          "seriesQuestIDs": [
+            5727,
+            5729,
+            5730
+          ]
+        },
+        {
+          "questID": 5761,
+          "url": "https://www.wowhead.com/forever/quest=5761",
+          "status": 200,
+          "bytes": 60336,
+          "sha256": "dbe6574cccf8efec4596f43045e096e3d7f3ea13cc4795407c87c82c69ee0d8b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 5848,
+          "url": "https://www.wowhead.com/forever/quest=5848",
+          "status": 200,
+          "bytes": 98187,
+          "sha256": "925d66bc604fb43490dfaf09181b528587d4318e0444fa714f0d422ac806a736",
+          "seriesQuestIDs": [
+            5742,
+            5781,
+            5845,
+            5846,
+            5861,
+            5862
+          ]
+        },
+        {
+          "questID": 6163,
+          "url": "https://www.wowhead.com/forever/quest=6163",
+          "status": 200,
+          "bytes": 70345,
+          "sha256": "c00e02c806bc575f32ef6eb6be79e469ebdb4096dc1cb00f5cf5d7dac64ac534",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 6201,
+          "url": "https://www.wowhead.com/forever/quest=6201",
+          "status": 200,
+          "bytes": 44935,
+          "sha256": "00a8355b3a613e6ca9498181e1c17350940298ea88963579ad91482ad353838a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 6502,
+          "url": "https://www.wowhead.com/forever/quest=6502",
+          "status": 200,
+          "bytes": 114756,
+          "sha256": "a7e52b68617ca1390e68782179ca646f0b8fc33534fd10d0eabb383204be474b",
+          "seriesQuestIDs": [
+            6403,
+            6501
+          ]
+        },
+        {
+          "questID": 6521,
+          "url": "https://www.wowhead.com/forever/quest=6521",
+          "status": 200,
+          "bytes": 95297,
+          "sha256": "77064ec731049ec137d23ff947c3171c67a2e3065fd6ff04a57cacaf5955bcce",
+          "seriesQuestIDs": [
+            6522
+          ]
+        },
+        {
+          "questID": 6522,
+          "url": "https://www.wowhead.com/forever/quest=6522",
+          "status": 200,
+          "bytes": 66651,
+          "sha256": "5d6b691090aed00074afcd3f31ec712795202c83861a48ac940d5083a0e067df",
+          "seriesQuestIDs": [
+            6521
+          ]
+        },
+        {
+          "questID": 6561,
+          "url": "https://www.wowhead.com/forever/quest=6561",
+          "status": 200,
+          "bytes": 91264,
+          "sha256": "2cddf098fe3e689ba85a907c6381aaa8a38a385cf8a8e2d26ddb5463c0c20726",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 6562,
+          "url": "https://www.wowhead.com/forever/quest=6562",
+          "status": 200,
+          "bytes": 61813,
+          "sha256": "63ca67da29979e58c3d7087340b617f94c00cd49ae724a447defcb807eefac2f",
+          "seriesQuestIDs": [
+            6563
+          ]
+        },
+        {
+          "questID": 6563,
+          "url": "https://www.wowhead.com/forever/quest=6563",
+          "status": 200,
+          "bytes": 67198,
+          "sha256": "558b66a8e1364b288febb5a5be4074451298a438b58a2399f6e3e93d312f50aa",
+          "seriesQuestIDs": [
+            6562
+          ]
+        },
+        {
+          "questID": 6564,
+          "url": "https://www.wowhead.com/forever/quest=6564",
+          "status": 200,
+          "bytes": 59608,
+          "sha256": "db44b378c7ff13f12e1b3975f7917162a7e36ace426a8cb14e8655bfdf6488b5",
+          "seriesQuestIDs": [
+            6565
+          ]
+        },
+        {
+          "questID": 6565,
+          "url": "https://www.wowhead.com/forever/quest=6565",
+          "status": 200,
+          "bytes": 63314,
+          "sha256": "9f62e7ed281ddc9ca946aaef8e80d8aa806e614e8c7d52a3ae598e034998de31",
+          "seriesQuestIDs": [
+            6564
+          ]
+        },
+        {
+          "questID": 6569,
+          "url": "https://www.wowhead.com/forever/quest=6569",
+          "status": 200,
+          "bytes": 68395,
+          "sha256": "92458a881fc246cb86a9aa37baf00a14a6da7a217bfba605ae40cd850e70d837",
+          "seriesQuestIDs": [
+            6566,
+            6567,
+            6568,
+            6570
+          ]
+        },
+        {
+          "questID": 6602,
+          "url": "https://www.wowhead.com/forever/quest=6602",
+          "status": 200,
+          "bytes": 72762,
+          "sha256": "b530d378037f82dd081d082f07b1ad3aceadb63ca7efd14586ce034e65798122",
+          "seriesQuestIDs": [
+            6585,
+            6601
+          ]
+        },
+        {
+          "questID": 6626,
+          "url": "https://www.wowhead.com/forever/quest=6626",
+          "status": 200,
+          "bytes": 72214,
+          "sha256": "c6bf47e7933b78c75be37f3b583e0e48bea2033160bd2f6b57cdf742cdde041a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 6921,
+          "url": "https://www.wowhead.com/forever/quest=6921",
+          "status": 200,
+          "bytes": 85770,
+          "sha256": "9dc38ad093f95f2f64db3b624d6043b4eacf0ffb575c49b97e77bdd651b22c7a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 6981,
+          "url": "https://www.wowhead.com/forever/quest=6981",
+          "status": 200,
+          "bytes": 103041,
+          "sha256": "a86f6e36e8ff39af94718779d465859c5c5094330611469a784806d58277dca8",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7028,
+          "url": "https://www.wowhead.com/forever/quest=7028",
+          "status": 200,
+          "bytes": 83597,
+          "sha256": "95927b6d862c83a2484023e764cf66000b3807e72180429f285192c7b8b6b532",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7029,
+          "url": "https://www.wowhead.com/forever/quest=7029",
+          "status": 200,
+          "bytes": 72107,
+          "sha256": "4dddc9c9f74869c6fdb88180008ed6878d7fa02f8e2d0230d6e35e4c724098e0",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7041,
+          "url": "https://www.wowhead.com/forever/quest=7041",
+          "status": 200,
+          "bytes": 72943,
+          "sha256": "45a97950b8564d63fd9bdf662b2721af6e485ba7810f6e568156b8c34674956f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7044,
+          "url": "https://www.wowhead.com/forever/quest=7044",
+          "status": 200,
+          "bytes": 84006,
+          "sha256": "bd1a98beec016b8564eb2929f9e46e847528e741fe103e1dd9a21479dd6bd4e8",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7046,
+          "url": "https://www.wowhead.com/forever/quest=7046",
+          "status": 200,
+          "bytes": 63603,
+          "sha256": "f712165daf5a0e8e4bd9180dcf46246a45650e9fd5e1563f99f111482fb5bda4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7064,
+          "url": "https://www.wowhead.com/forever/quest=7064",
+          "status": 200,
+          "bytes": 92082,
+          "sha256": "e89c44c06f1d4ae289a27fef91dac19e048b0d1554433bd9a2f026b68fc3e91f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7065,
+          "url": "https://www.wowhead.com/forever/quest=7065",
+          "status": 200,
+          "bytes": 71154,
+          "sha256": "bc013928909dbaeaecbed0d88f3eb5f52df668adbdd0b35a43f75af68c065fd2",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7066,
+          "url": "https://www.wowhead.com/forever/quest=7066",
+          "status": 200,
+          "bytes": 116379,
+          "sha256": "26722a173780e8ee3bc22f13a3d93d1b2bcb929544fe8e906e56bfe944b5956f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7067,
+          "url": "https://www.wowhead.com/forever/quest=7067",
+          "status": 200,
+          "bytes": 173743,
+          "sha256": "c038569a2c3827ded83bc3dde72eb21bc02cfa9a0b3b84f8e196a744363eadb4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7068,
+          "url": "https://www.wowhead.com/forever/quest=7068",
+          "status": 200,
+          "bytes": 73499,
+          "sha256": "58a585f84b9dd20720adc6b20c354f666b911eb38a2ae58e4b8ead7c95602b47",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7070,
+          "url": "https://www.wowhead.com/forever/quest=7070",
+          "status": 200,
+          "bytes": 93344,
+          "sha256": "42e6e8f9a0bf5c8e495c8dfa81f849d40b34e5c5e469f668820e772aa5f35213",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7201,
+          "url": "https://www.wowhead.com/forever/quest=7201",
+          "status": 200,
+          "bytes": 69600,
+          "sha256": "fd2ac7d90387df684efb2dd5a0a1b192da51cb6ca3ead022c3e94aa53e516a4b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7429,
+          "url": "https://www.wowhead.com/forever/quest=7429",
+          "status": 200,
+          "bytes": 51595,
+          "sha256": "48d94117777a5dc0264235a25b7ccd98627f1087d294cabf98acb9754aca6cf0",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7441,
+          "url": "https://www.wowhead.com/forever/quest=7441",
+          "status": 200,
+          "bytes": 61630,
+          "sha256": "73bd9022b13d18db7e60801a31b5b5bd745b540ce18d18b28de41c22805ffeb3",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7461,
+          "url": "https://www.wowhead.com/forever/quest=7461",
+          "status": 200,
+          "bytes": 64425,
+          "sha256": "40f7b326e9313f9c33d3258fcb64ad34dbd6fc4a9bde9b23b8787c7d2959d0d1",
+          "seriesQuestIDs": [
+            7877
+          ]
+        },
+        {
+          "questID": 7462,
+          "url": "https://www.wowhead.com/forever/quest=7462",
+          "status": 200,
+          "bytes": 47818,
+          "sha256": "22f242b307c649187682d06169b182d3521f3e611b0f27a6356aa6db7769019f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7463,
+          "url": "https://www.wowhead.com/forever/quest=7463",
+          "status": 200,
+          "bytes": 104342,
+          "sha256": "2d57a760b3d8469f2742f8d39fafecf208bbefa9833aa048f03ea19336bdcc74",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7481,
+          "url": "https://www.wowhead.com/forever/quest=7481",
+          "status": 200,
+          "bytes": 70859,
+          "sha256": "e950e94c14707fcd9a65efeadb7063c05da7026a4ab7cdda190ab8cb8d561765",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7482,
+          "url": "https://www.wowhead.com/forever/quest=7482",
+          "status": 200,
+          "bytes": 70396,
+          "sha256": "52636c1f1b14f1d1b090a1989a26b87e70ce8435e4d6f95860621a58dfe26dc1",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7483,
+          "url": "https://www.wowhead.com/forever/quest=7483",
+          "status": 200,
+          "bytes": 127190,
+          "sha256": "86e632cde20684001f0ee100cad89bc543aaf76644af9db9f62a6f113b670a93",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7484,
+          "url": "https://www.wowhead.com/forever/quest=7484",
+          "status": 200,
+          "bytes": 104223,
+          "sha256": "ae75a295947346ed14a3a99e68bbfa9a493d90a822d79e52ab485d89430df0f4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7485,
+          "url": "https://www.wowhead.com/forever/quest=7485",
+          "status": 200,
+          "bytes": 97615,
+          "sha256": "0c65e036673cd336e175f251cdf1f7aab1ff350bc7d9331beab1b99f5eceecf1",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7488,
+          "url": "https://www.wowhead.com/forever/quest=7488",
+          "status": 200,
+          "bytes": 56964,
+          "sha256": "6e9b90c4fde7b511682fb22ddbc029e4c97a600c780f6ffac2a6fcab9212a72c",
+          "seriesQuestIDs": [
+            7494
+          ]
+        },
+        {
+          "questID": 7489,
+          "url": "https://www.wowhead.com/forever/quest=7489",
+          "status": 200,
+          "bytes": 71794,
+          "sha256": "daaa0fabba0a16e5740996cb40c6761a4474f88514634f88031a7b2f46e68f06",
+          "seriesQuestIDs": [
+            7492
+          ]
+        },
+        {
+          "questID": 7492,
+          "url": "https://www.wowhead.com/forever/quest=7492",
+          "status": 200,
+          "bytes": 64980,
+          "sha256": "e3f7b60a6d1998ac7602fe2c5b6a62951d6be6d62041b77e33b006aa618afafd",
+          "seriesQuestIDs": [
+            7489
+          ]
+        },
+        {
+          "questID": 7494,
+          "url": "https://www.wowhead.com/forever/quest=7494",
+          "status": 200,
+          "bytes": 67579,
+          "sha256": "f705289c792563d2d5b686c6ec01bfaaf9e84e890a25512170b1af1335d314ec",
+          "seriesQuestIDs": [
+            7488
+          ]
+        },
+        {
+          "questID": 7498,
+          "url": "https://www.wowhead.com/forever/quest=7498",
+          "status": 200,
+          "bytes": 93000,
+          "sha256": "8a79297f6f13ad0392f051973d42f3dce3267b95232d13bed16080a25c7ae3f0",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7499,
+          "url": "https://www.wowhead.com/forever/quest=7499",
+          "status": 200,
+          "bytes": 52410,
+          "sha256": "bdc7bd3c4fc1c5b6dcea130f4a582b0e0b72a8ab8f02ec8e0481c974fea52b75",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7500,
+          "url": "https://www.wowhead.com/forever/quest=7500",
+          "status": 200,
+          "bytes": 76328,
+          "sha256": "54484add5591f305ee9f1d315492456990912b2696505095a6075fe04aff72db",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7501,
+          "url": "https://www.wowhead.com/forever/quest=7501",
+          "status": 200,
+          "bytes": 72573,
+          "sha256": "77722f366f8a8c2d0b213770159c8aaab45d3d3085f4b49afdc893db6478660b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7502,
+          "url": "https://www.wowhead.com/forever/quest=7502",
+          "status": 200,
+          "bytes": 81394,
+          "sha256": "e4e70f7a24311dce563b509fff5ef45b075ab5960464a8f35e5e1bca8be98cd1",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7503,
+          "url": "https://www.wowhead.com/forever/quest=7503",
+          "status": 200,
+          "bytes": 94399,
+          "sha256": "3bec58ddb22891d66d022e1aeef37b86ed9fa9b7a1d84c0aa222386a29a4c75f",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7504,
+          "url": "https://www.wowhead.com/forever/quest=7504",
+          "status": 200,
+          "bytes": 72608,
+          "sha256": "af4ba1763eedf4f4b77c0a8024987df7a0af601de4aa9dd87751134e047628c9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7505,
+          "url": "https://www.wowhead.com/forever/quest=7505",
+          "status": 200,
+          "bytes": 62508,
+          "sha256": "c68e15ca5c7f06909f791f120cfa7f5e3f850d20f4e18d8e57063aa2178b6e28",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7506,
+          "url": "https://www.wowhead.com/forever/quest=7506",
+          "status": 200,
+          "bytes": 101622,
+          "sha256": "a1cb74b1a965b5b7fd94db4690876a887e1209a65caf8d9a5e4f9d62edadbdb8",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7507,
+          "url": "https://www.wowhead.com/forever/quest=7507",
+          "status": 200,
+          "bytes": 116531,
+          "sha256": "158bd211cf3870adb3a99db1b51a74bfa90904c49ea1d834724270586a3b3b84",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7508,
+          "url": "https://www.wowhead.com/forever/quest=7508",
+          "status": 200,
+          "bytes": 55579,
+          "sha256": "8300ca911b0c264fd1edf011494ff69ad8224b02117d38f1aa8feb4d3ce518c5",
+          "seriesQuestIDs": [
+            7509
+          ]
+        },
+        {
+          "questID": 7604,
+          "url": "https://www.wowhead.com/forever/quest=7604",
+          "status": 200,
+          "bytes": 94429,
+          "sha256": "470860aac909713239a58604aa042fb036a120036ef03a878cee055fc93232c7",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7703,
+          "url": "https://www.wowhead.com/forever/quest=7703",
+          "status": 200,
+          "bytes": 70800,
+          "sha256": "2860b59fdf3c25e166fc7acd91ade30f7a2902562f0d2ba7feb74dd551692ea1",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7761,
+          "url": "https://www.wowhead.com/forever/quest=7761",
+          "status": 200,
+          "bytes": 101693,
+          "sha256": "df99af85935b2e5413293d95dee1bba9860ecb99b8a4be1a427d0949137278d6",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 7877,
+          "url": "https://www.wowhead.com/forever/quest=7877",
+          "status": 200,
+          "bytes": 51670,
+          "sha256": "b0cbb6def19abd5fcb850de5bd57529d6d0213a68189c149e367bc90f2df069c",
+          "seriesQuestIDs": [
+            7461
+          ]
+        },
+        {
+          "questID": 8733,
+          "url": "https://www.wowhead.com/forever/quest=8733",
+          "status": 200,
+          "bytes": 78428,
+          "sha256": "2afb23e8e138e847ea252db8f86e70c0641bf8fc3b6c26453551051e98320639",
+          "seriesQuestIDs": [
+            8734,
+            8735
+          ]
+        },
+        {
+          "questID": 8945,
+          "url": "https://www.wowhead.com/forever/quest=8945",
+          "status": 200,
+          "bytes": 310968,
+          "sha256": "7b1b522fbe4137fd19ddfd0e19085f1504ce87a422e661256227c3fd71bced7f",
+          "seriesQuestIDs": [
+            8926,
+            8927,
+            8931,
+            8932,
+            8933,
+            8934,
+            8935,
+            8936,
+            8937,
+            8938,
+            8939,
+            8940,
+            8941,
+            8942,
+            8943,
+            8944,
+            8929,
+            8930,
+            8946,
+            8947,
+            8948,
+            8949,
+            8950
+          ]
+        },
+        {
+          "questID": 8948,
+          "url": "https://www.wowhead.com/forever/quest=8948",
+          "status": 200,
+          "bytes": 59001,
+          "sha256": "8536d680056e2bfdedf6db737e28bd92f4c66484580d388861938d530fc90063",
+          "seriesQuestIDs": [
+            8926,
+            8927,
+            8931,
+            8932,
+            8933,
+            8934,
+            8935,
+            8936,
+            8937,
+            8938,
+            8939,
+            8940,
+            8941,
+            8942,
+            8943,
+            8944,
+            8929,
+            8930,
+            8945,
+            8946,
+            8947,
+            8949,
+            8950
+          ]
+        },
+        {
+          "questID": 8949,
+          "url": "https://www.wowhead.com/forever/quest=8949",
+          "status": 200,
+          "bytes": 86239,
+          "sha256": "70ddbbed32ab912aeff3d0234daf68abc963317a455a5ead29e10c0a35dfd5f3",
+          "seriesQuestIDs": [
+            8926,
+            8927,
+            8931,
+            8932,
+            8933,
+            8934,
+            8935,
+            8936,
+            8937,
+            8938,
+            8939,
+            8940,
+            8941,
+            8942,
+            8943,
+            8944,
+            8929,
+            8930,
+            8945,
+            8946,
+            8947,
+            8948,
+            8950
+          ]
+        },
+        {
+          "questID": 8950,
+          "url": "https://www.wowhead.com/forever/quest=8950",
+          "status": 200,
+          "bytes": 83490,
+          "sha256": "30fd3e7e3d95961b1623b85b0481bdc4fd5c5dfca12365025226aaeabc481b47",
+          "seriesQuestIDs": [
+            8926,
+            8927,
+            8931,
+            8932,
+            8933,
+            8934,
+            8935,
+            8936,
+            8937,
+            8938,
+            8939,
+            8940,
+            8941,
+            8942,
+            8943,
+            8944,
+            8929,
+            8930,
+            8945,
+            8946,
+            8947,
+            8948,
+            8949
+          ]
+        },
+        {
+          "questID": 8966,
+          "url": "https://www.wowhead.com/forever/quest=8966",
+          "status": 200,
+          "bytes": 73676,
+          "sha256": "c165e16acd9a327a39eac03a33f44e7677c1aac57729ad8592216e7509546000",
+          "seriesQuestIDs": [
+            8962,
+            8963,
+            8964,
+            8965,
+            8967,
+            8968,
+            8969,
+            8970
+          ]
+        },
+        {
+          "questID": 8967,
+          "url": "https://www.wowhead.com/forever/quest=8967",
+          "status": 200,
+          "bytes": 54691,
+          "sha256": "92f5420aca21f15eff6c96f6b7360237933ff621df58df525f128518659a5ff6",
+          "seriesQuestIDs": [
+            8962,
+            8963,
+            8964,
+            8965,
+            8966,
+            8968,
+            8969,
+            8970
+          ]
+        },
+        {
+          "questID": 8968,
+          "url": "https://www.wowhead.com/forever/quest=8968",
+          "status": 200,
+          "bytes": 70857,
+          "sha256": "dc4b93dd215ade852f2b0b95bce11b06f6aec221a19ac7b83f923e1df4b7e8e6",
+          "seriesQuestIDs": [
+            8962,
+            8963,
+            8964,
+            8965,
+            8966,
+            8967,
+            8969,
+            8970
+          ]
+        },
+        {
+          "questID": 8969,
+          "url": "https://www.wowhead.com/forever/quest=8969",
+          "status": 200,
+          "bytes": 70146,
+          "sha256": "abcda8e2d71f624d411e1ca496d6c6f2a3a86fdaa7f2b84ddc34da2054213712",
+          "seriesQuestIDs": [
+            8962,
+            8963,
+            8964,
+            8965,
+            8966,
+            8967,
+            8968,
+            8970
+          ]
+        },
+        {
+          "questID": 8989,
+          "url": "https://www.wowhead.com/forever/quest=8989",
+          "status": 200,
+          "bytes": 56105,
+          "sha256": "b43259e7cf26cd0d4839fd3ea5bf6d1685ad3deb1de1c9cc5f760a24dee519e3",
+          "seriesQuestIDs": [
+            8985,
+            8986,
+            8987,
+            8988,
+            8990,
+            8991,
+            8992,
+            8994,
+            8995,
+            8996
+          ]
+        },
+        {
+          "questID": 8990,
+          "url": "https://www.wowhead.com/forever/quest=8990",
+          "status": 200,
+          "bytes": 60914,
+          "sha256": "ea031ff11b944f5bf296f9f6f4b9dd3d603d01e9a1aad998dbdec3f0acef6681",
+          "seriesQuestIDs": [
+            8985,
+            8986,
+            8987,
+            8988,
+            8989,
+            8991,
+            8992,
+            8994,
+            8995,
+            8996
+          ]
+        },
+        {
+          "questID": 8991,
+          "url": "https://www.wowhead.com/forever/quest=8991",
+          "status": 200,
+          "bytes": 67666,
+          "sha256": "f47f6516c25ba83e5b5e12426e2addfb761985de26f2ad3dbafa4cd213bff62a",
+          "seriesQuestIDs": [
+            8985,
+            8986,
+            8987,
+            8988,
+            8989,
+            8990,
+            8992,
+            8994,
+            8995,
+            8996
+          ]
+        },
+        {
+          "questID": 8992,
+          "url": "https://www.wowhead.com/forever/quest=8992",
+          "status": 200,
+          "bytes": 53761,
+          "sha256": "f837f713cc934d8eb4fa0804730b2531c09b7ecfe32f4bfc024153ed3efb2b7f",
+          "seriesQuestIDs": [
+            8985,
+            8986,
+            8987,
+            8988,
+            8989,
+            8990,
+            8991,
+            8994,
+            8995,
+            8996
+          ]
+        },
+        {
+          "questID": 8995,
+          "url": "https://www.wowhead.com/forever/quest=8995",
+          "status": 200,
+          "bytes": 119279,
+          "sha256": "2add4ce1b7815b3a690d4f2520ae729ab1a68c4362f235e5109c6c960e61d8f1",
+          "seriesQuestIDs": [
+            8985,
+            8986,
+            8987,
+            8988,
+            8989,
+            8990,
+            8991,
+            8992,
+            8994,
+            8996
+          ]
+        },
+        {
+          "questID": 9015,
+          "url": "https://www.wowhead.com/forever/quest=9015",
+          "status": 200,
+          "bytes": 125267,
+          "sha256": "73a827af0ee2c57662b1681b70093dcf5306b00b63e4331f2f05eac12abd1a78",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 78916,
+          "url": "https://www.wowhead.com/forever/quest=78916",
+          "status": 200,
+          "bytes": 48109,
+          "sha256": "b43e0eaf201303e0b1f75788bcc8d09fca4f7446fa451b1bea493315a6ae136a",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 78917,
+          "url": "https://www.wowhead.com/forever/quest=78917",
+          "status": 200,
+          "bytes": 49533,
+          "sha256": "534a5d774d3ce3ccc53f8f68b7c1ab1fce8c840ef2e46463508a5584f8bdf376",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92401,
+          "url": "https://www.wowhead.com/forever/quest=92401",
+          "status": 200,
+          "bytes": 58092,
+          "sha256": "2ed3ae1f62cd953eaf7aebd617273df71421e966f0badae1bff8d31096bc6e71",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92415,
+          "url": "https://www.wowhead.com/forever/quest=92415",
+          "status": 200,
+          "bytes": 52195,
+          "sha256": "f6df650f067a40d3544d0b9985d4cd7ed7cb851d0cf09a310c70c18a116e7cd9",
+          "seriesQuestIDs": [
+            95161
+          ]
+        },
+        {
+          "questID": 92421,
+          "url": "https://www.wowhead.com/forever/quest=92421",
+          "status": 200,
+          "bytes": 51449,
+          "sha256": "4fe3bccb4f534966e53833deda76b6f489464c569e52eb9723e20f22714646cb",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92422,
+          "url": "https://www.wowhead.com/forever/quest=92422",
+          "status": 200,
+          "bytes": 62865,
+          "sha256": "0512314c2486979aa8c9a08a5f3f973877f8cb121ef4f95c698ccc63f633f1df",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92456,
+          "url": "https://www.wowhead.com/forever/quest=92456",
+          "status": 200,
+          "bytes": 52160,
+          "sha256": "2a46c8a7c7e571c304dcd312c6120e3249a28c650680c24a367f267fdd184cfa",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92457,
+          "url": "https://www.wowhead.com/forever/quest=92457",
+          "status": 200,
+          "bytes": 60279,
+          "sha256": "e9a1a700637d7bcf277aed8b38fc4d5d188d4e1b58dd750b8adc8c6746b3fafe",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92458,
+          "url": "https://www.wowhead.com/forever/quest=92458",
+          "status": 200,
+          "bytes": 57173,
+          "sha256": "f3320a4d1243de80971770fea060a4a9c2b25e67dc81223bf908431a73431659",
+          "seriesQuestIDs": [
+            92432,
+            92459
+          ]
+        },
+        {
+          "questID": 92489,
+          "url": "https://www.wowhead.com/forever/quest=92489",
+          "status": 200,
+          "bytes": 50863,
+          "sha256": "db38a358331432ef3dd549753d21fb6985626d65284358474073181b00c91f84",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 92753,
+          "url": "https://www.wowhead.com/forever/quest=92753",
+          "status": 200,
+          "bytes": 51647,
+          "sha256": "74401ba251106ed883cd452c12d355308673e20d3b777f595896941ecf3404d1",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95189,
+          "url": "https://www.wowhead.com/forever/quest=95189",
+          "status": 200,
+          "bytes": 61377,
+          "sha256": "ef0041e54f63a849d24ae999851b415d5f790abe42158e8c85dc09c515a64970",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95195,
+          "url": "https://www.wowhead.com/forever/quest=95195",
+          "status": 200,
+          "bytes": 51991,
+          "sha256": "cbdba4428b3096bd95ba82207aa25f129c99300d9a9a8345e8a671a09cdedd47",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95204,
+          "url": "https://www.wowhead.com/forever/quest=95204",
+          "status": 200,
+          "bytes": 53099,
+          "sha256": "f289948d5fdee68e6462f9ec8551db745757e9feee668eb5a43978997a307e19",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95216,
+          "url": "https://www.wowhead.com/forever/quest=95216",
+          "status": 200,
+          "bytes": 63883,
+          "sha256": "13c6d58dc9f4463d76269b9d82c0f0dd0dbd4334dd813844f75ff7b189b9dedb",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95250,
+          "url": "https://www.wowhead.com/forever/quest=95250",
+          "status": 200,
+          "bytes": 51859,
+          "sha256": "702461c8c8425e73564c86fe498bacb54d717717815f08823aec084dc7d06276",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95646,
+          "url": "https://www.wowhead.com/forever/quest=95646",
+          "status": 200,
+          "bytes": 61779,
+          "sha256": "d96153e501bd6904653041bd02e6bd056ea161b2d8d12b2fbef3886b366fa179",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95647,
+          "url": "https://www.wowhead.com/forever/quest=95647",
+          "status": 200,
+          "bytes": 50939,
+          "sha256": "19eda578d53156f5ee68b109505b6bfe836b5cbbecd5f727a4bead77ef0ffc1d",
+          "seriesQuestIDs": [
+            95809
+          ]
+        },
+        {
+          "questID": 95663,
+          "url": "https://www.wowhead.com/forever/quest=95663",
+          "status": 200,
+          "bytes": 50867,
+          "sha256": "bc311891098c827cb7e1a9f289277908d6ce630538d99ba4458aa798c236e700",
+          "seriesQuestIDs": [
+            95682
+          ]
+        },
+        {
+          "questID": 95664,
+          "url": "https://www.wowhead.com/forever/quest=95664",
+          "status": 200,
+          "bytes": 62038,
+          "sha256": "8da98b004b82ea6163be36f92b703d7f1d4f1b72091916eb3085feaedcfbfda9",
+          "seriesQuestIDs": [
+            98823
+          ]
+        },
+        {
+          "questID": 95682,
+          "url": "https://www.wowhead.com/forever/quest=95682",
+          "status": 200,
+          "bytes": 61001,
+          "sha256": "f9dbaefab27ebf801b57d76012cad55e59e65b2d5b323f32bcf7bdccd0dd0820",
+          "seriesQuestIDs": [
+            95663
+          ]
+        },
+        {
+          "questID": 95697,
+          "url": "https://www.wowhead.com/forever/quest=95697",
+          "status": 200,
+          "bytes": 60727,
+          "sha256": "73095fc4ab69947fcf1458d97242a4c56eed14216086994275ed83b53933ad2b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95737,
+          "url": "https://www.wowhead.com/forever/quest=95737",
+          "status": 200,
+          "bytes": 49955,
+          "sha256": "6a8045cc389a22f35aec4ae55af35f1848826dfc2d3376b3041a419586f5d7b2",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95772,
+          "url": "https://www.wowhead.com/forever/quest=95772",
+          "status": 200,
+          "bytes": 51675,
+          "sha256": "4f587843c9095249f355f131ae9c1a67fd1b05437ce745a8a7350475a06f5cf6",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95795,
+          "url": "https://www.wowhead.com/forever/quest=95795",
+          "status": 200,
+          "bytes": 49349,
+          "sha256": "50eeb5b4015556cd997259e3e0dabb80debcd532cd0080cf4e99f9a71d16e043",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 95809,
+          "url": "https://www.wowhead.com/forever/quest=95809",
+          "status": 200,
+          "bytes": 49867,
+          "sha256": "72799909869e759070a8df4e2a7b4c83d1521c74d9c1d079c7f1fd45dcafbafb",
+          "seriesQuestIDs": [
+            95647
+          ]
+        },
+        {
+          "questID": 95810,
+          "url": "https://www.wowhead.com/forever/quest=95810",
+          "status": 200,
+          "bytes": 56774,
+          "sha256": "4310434f4034ac3468d0a6c09f65c5e5866378a68f85e5609ff2b960a4ba3f77",
+          "seriesQuestIDs": [
+            98824
+          ]
+        },
+        {
+          "questID": 96393,
+          "url": "https://www.wowhead.com/forever/quest=96393",
+          "status": 200,
+          "bytes": 63376,
+          "sha256": "76c8702ab39d6409fd42953bae2a27074d084894ed22ffa54d0babd12c44513c",
+          "seriesQuestIDs": [
+            96391
+          ]
+        },
+        {
+          "questID": 96394,
+          "url": "https://www.wowhead.com/forever/quest=96394",
+          "status": 200,
+          "bytes": 52639,
+          "sha256": "2f339a3dc205232453e9c05fb87d09d7cffec979245cc853ac1dcd0b215973f2",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 96395,
+          "url": "https://www.wowhead.com/forever/quest=96395",
+          "status": 200,
+          "bytes": 51661,
+          "sha256": "0a86ec444b5e0b1efa3b6ee43b9a6dda85a56a8beff96943443e6fe66307ad9b",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 96403,
+          "url": "https://www.wowhead.com/forever/quest=96403",
+          "status": 200,
+          "bytes": 53283,
+          "sha256": "e52e39e4962bf0876c4a36baafd4568c0c233912c1caf0cf22cf299d73660b93",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 96800,
+          "url": "https://www.wowhead.com/forever/quest=96800",
+          "status": 200,
+          "bytes": 52002,
+          "sha256": "57f341b5fc71dfea7d8597f33f6db54f114612a480aea960cbe3f591303553d9",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 96984,
+          "url": "https://www.wowhead.com/forever/quest=96984",
+          "status": 200,
+          "bytes": 57183,
+          "sha256": "24873a22c1eccb691a769ad19aa3dbe7ef27fe6a98ae0f65022de7351bb3ce7a",
+          "seriesQuestIDs": [
+            92434,
+            97287
+          ]
+        },
+        {
+          "questID": 96986,
+          "url": "https://www.wowhead.com/forever/quest=96986",
+          "status": 200,
+          "bytes": 48620,
+          "sha256": "6ca7f86a0537303dcdab3e1077e00fed6a94983b55cf8d3eefd5dca1ebe5d00c",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 96987,
+          "url": "https://www.wowhead.com/forever/quest=96987",
+          "status": 200,
+          "bytes": 47053,
+          "sha256": "f47e9e9954f571131eb2897941f340acef8b6466e15eaa1d032ac68832f8fcd4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 96988,
+          "url": "https://www.wowhead.com/forever/quest=96988",
+          "status": 200,
+          "bytes": 54004,
+          "sha256": "f085e21cd079c91479dd3e9103e63eef606368fa3010e2551cc564d241e6b5c4",
+          "seriesQuestIDs": []
+        },
+        {
+          "questID": 97288,
+          "url": "https://www.wowhead.com/forever/quest=97288",
+          "status": 200,
+          "bytes": 61902,
+          "sha256": "680401310ee6773dbb55c2177871a894234ca90f217d6d59352d1802bbccb609",
+          "seriesQuestIDs": [
+            97289,
+            97290,
+            97291,
+            97292
+          ]
+        },
+        {
+          "questID": 97289,
+          "url": "https://www.wowhead.com/forever/quest=97289",
+          "status": 200,
+          "bytes": 52611,
+          "sha256": "b54e9112ddc251b7c255b40a571c8f63b0272e76d9f8b518dc81e1ca4313a4f4",
+          "seriesQuestIDs": [
+            97288,
+            97290,
+            97291,
+            97292
+          ]
+        },
+        {
+          "questID": 97291,
+          "url": "https://www.wowhead.com/forever/quest=97291",
+          "status": 200,
+          "bytes": 58059,
+          "sha256": "cd4726f4d17155ce1f1836af1661838f7b653425cc3d5f058c9ef7109035f8da",
+          "seriesQuestIDs": [
+            97288,
+            97289,
+            97290,
+            97292
+          ]
+        },
+        {
+          "questID": 97292,
+          "url": "https://www.wowhead.com/forever/quest=97292",
+          "status": 200,
+          "bytes": 58955,
+          "sha256": "0536392d390a2e892de710f40e31a94425fb10ca8b69e3b11a8339013ff12134",
+          "seriesQuestIDs": [
+            97288,
+            97289,
+            97290,
+            97291
+          ]
+        },
+        {
+          "questID": 98815,
+          "url": "https://www.wowhead.com/forever/quest=98815",
+          "status": 200,
+          "bytes": 57379,
+          "sha256": "38d6340d117cfb86a10f1909cf25194833adb6cb701e183eaccf3978dd8c4457",
+          "seriesQuestIDs": [
+            469,
+            484,
+            471
+          ]
+        },
+        {
+          "questID": 98823,
+          "url": "https://www.wowhead.com/forever/quest=98823",
+          "status": 200,
+          "bytes": 72973,
+          "sha256": "48eb90adc5fb546b7f6c9f2208c13770dc8c9e7ae94a4d2cbadd42ba197a3cd3",
+          "seriesQuestIDs": [
+            95664
+          ]
+        },
+        {
+          "questID": 98824,
+          "url": "https://www.wowhead.com/forever/quest=98824",
+          "status": 200,
+          "bytes": 59115,
+          "sha256": "5dfa6e58e4356b3eb3015cea910bf445c7bb6ac6e4dea743cd81e285b865ce69",
+          "seriesQuestIDs": [
+            95810
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QuestieDB Forever quest facts",
+      "url": "https://github.com/Questie/QuestieDB",
+      "commit": "80866960788084ae1592abf66a08f0d306458a95",
+      "dataFile": "data/Forever/foreverQuestDB.lua",
+      "sha256": "621d4a1670232c047e7d171d8f1fdbd31581458935ee59dd70836016838dc942",
+      "facts": "preQuestSingle and preQuestGroup values for dungeon quest IDs; mappings from preQuestSingle to prerequisiteAny and preQuestGroup to prerequisiteAll follow tools/forever_beta_facts.py."
+    }
+  ],
+  "confirmedMissingLinks": [
+    {
+      "questID": 2341,
+      "title": "Necklace Recovery, Take 3",
+      "prerequisiteCorrection": {
+        "previousQuest": 2340
+      },
+      "wowheadPageSHA256": "42096df2e4021d7c4613a8b055c66885a83a9077ff253ab873b98c4e7054ab33",
+      "basis": "Current Wowhead Series table lists quest 2340; QuestieDB preQuestSingle points to 2340."
+    },
+    {
+      "questID": 1489,
+      "title": "Hamuul Runetotem",
+      "prerequisiteCorrection": {
+        "previousQuest": 880
+      },
+      "wowheadPageSHA256": "10b7ca6018bdb1f2a650d31b6bca1bc40483111c38fd4190ead316b2e105a91b",
+      "basis": "QuestieDB preQuestSingle points to Altered Beings (880); 880 is outside the Wailing Caverns Series table but is an explicit prerequisite field."
+    },
+    {
+      "questID": 4002,
+      "title": "The Eastern Kingdoms",
+      "prerequisiteCorrection": {
+        "previousQuest": 4001
+      },
+      "wowheadPageSHA256": "fa09d39747e8e4fefba2257d080148084147044ebfd7ef8ac998de9a6a4f0fea",
+      "basis": "Wowhead Series table contains the Blackrock Depths rescue chain; QuestieDB preQuestSingle points to 4001."
+    },
+    {
+      "questID": 7429,
+      "title": "Free Knot!",
+      "prerequisiteCorrection": {
+        "previousQuest": 5525
+      },
+      "wowheadPageSHA256": "48d94117777a5dc0264235a25b7ccd98627f1087d294cabf98acb9754aca6cf0",
+      "basis": "QuestieDB preQuestSingle points to quest 5525, the same-name earlier quest record; preserve source data linkage."
+    },
+    {
+      "questID": 7483,
+      "title": "Libram of Rapidity",
+      "prerequisiteCorrection": {
+        "prerequisiteAny": [
+          7481,
+          7482
+        ]
+      },
+      "wowheadPageSHA256": "86e632cde20684001f0ee100cad89bc543aaf76644af9db9f62a6f113b670a93",
+      "basis": "QuestieDB preQuestSingle has the two faction alternatives. Wowhead quest 7481 comments identify Elven Legends as a prerequisite to the libram turn-ins; quest 7482 is the Alliance counterpart."
+    },
+    {
+      "questID": 7484,
+      "title": "Libram of Focus",
+      "prerequisiteCorrection": {
+        "prerequisiteAny": [
+          7481,
+          7482
+        ]
+      },
+      "wowheadPageSHA256": "ae75a295947346ed14a3a99e68bbfa9a493d90a822d79e52ab485d89430df0f4",
+      "basis": "Same two faction alternatives as the other Lorekeeper Lydros libram quests in QuestieDB."
+    },
+    {
+      "questID": 7485,
+      "title": "Libram of Protection",
+      "prerequisiteCorrection": {
+        "prerequisiteAny": [
+          7481,
+          7482
+        ]
+      },
+      "wowheadPageSHA256": "0c65e036673cd336e175f251cdf1f7aab1ff350bc7d9331beab1b99f5eceecf1",
+      "basis": "Same two faction alternatives as the other Lorekeeper Lydros libram quests in QuestieDB."
+    }
+  ],
+  "limitations": [
+    "The 28 database entries include 7 locations without questIDs; those entries have no quest prerequisites to audit.",
+    "The current dungeon-preparation policy excludes repeatable quests from automatic collection. The recorded prerequisite alternatives for quests 7429 and 7483\u20137485 do not change that policy.",
+    "Quest 2340/2341 and 4001/4002 have known prerequisite edges but no captured pickup/turn-in map stages in the shipped catalogue. Their chain facts are retained; no locations were invented.",
+    "The shipped Dungeon Journal records dungeon maps, encounters, and quest map markers; it does not provide a prerequisite graph.",
+    "Community comments were checked on the candidate Wailing Caverns and Dire Maul pages where relevant. They support the Altered Beings link and the faction alternatives for the three libram quests. No matching comment evidence was found for quest 7429, so that link remains supported only by structured QuestieDB data. Comment IDs and factual assessments are retained; comment prose is not copied."
+  ],
+  "supportingParentCaptures": [
+    {
+      "questID": 2340,
+      "url": "https://www.wowhead.com/forever/quest=2340",
+      "sha256": "d1cad1b4884987fc6bb2b5881656c7b7cab0b10867ebba302e2a8554b1f43881",
+      "bytes": 49596
+    },
+    {
+      "questID": 880,
+      "url": "https://www.wowhead.com/forever/quest=880",
+      "sha256": "538ad347cf66fe3275ee60c35bc4caa187c875f3914cda6e65c232fd62169619",
+      "bytes": 65771
+    },
+    {
+      "questID": 4001,
+      "url": "https://www.wowhead.com/forever/quest=4001",
+      "sha256": "2f929629942fa8dfa00dc2a4fe1ec9f92062deb132beac2a061556f12ff295b7",
+      "bytes": 54802
+    },
+    {
+      "questID": 5525,
+      "url": "https://www.wowhead.com/forever/quest=5525",
+      "sha256": "5e13cb346bb287b50bdcac887e60accab7ed1db585b2c98f1162a15278396413",
+      "bytes": 53204
+    },
+    {
+      "questID": 7481,
+      "url": "https://www.wowhead.com/forever/quest=7481",
+      "sha256": "e950e94c14707fcd9a65efeadb7063c05da7026a4ab7cdda190ab8cb8d561765",
+      "bytes": 70859
+    },
+    {
+      "questID": 7482,
+      "url": "https://www.wowhead.com/forever/quest=7482",
+      "sha256": "52636c1f1b14f1d1b090a1989a26b87e70ce8435e4d6f95860621a58dfe26dc1",
+      "bytes": 70396
+    }
+  ],
+  "wowheadCommentChecks": [
+    {
+      "questID": 1489,
+      "pageSHA256": "10b7ca6018bdb1f2a650d31b6bca1bc40483111c38fd4190ead316b2e105a91b",
+      "comments": [
+        {
+          "commentID": 1325401,
+          "fact": "states Altered Beings (880) must be completed before this quest"
+        },
+        {
+          "commentID": 2950774,
+          "fact": "identifies the Tonga Runetotem chain, including Altered Beings, as prerequisite progression"
+        }
+      ],
+      "assessment": "Independent comment support agrees with QuestieDB direct prerequisite 880."
+    },
+    {
+      "questID": 7483,
+      "pageSHA256": "86e632cde20684001f0ee100cad89bc543aaf76644af9db9f62a6f113b670a93",
+      "comments": [
+        {
+          "commentID": 19615,
+          "fact": "identifies Alliance Elven Legends (7482) as the prerequisite"
+        },
+        {
+          "commentID": 1180504,
+          "fact": "identifies Horde Elven Legends (7481) as required before the Libram turn-ins"
+        },
+        {
+          "commentID": 2973890,
+          "fact": "identifies Horde Elven Legends as a requirement"
+        }
+      ],
+      "assessment": "Supports either faction version; the two prerequisites are alternatives, not cumulative."
+    },
+    {
+      "questID": 7484,
+      "pageSHA256": "ae75a295947346ed14a3a99e68bbfa9a493d90a822d79e52ab485d89430df0f4",
+      "comments": [
+        {
+          "commentID": 19613,
+          "fact": "identifies Alliance Elven Legends (7482) as required"
+        },
+        {
+          "commentID": 2768855,
+          "fact": "identifies Horde Elven Legends (7481) as required"
+        },
+        {
+          "commentID": 1254709,
+          "fact": "says completing Elven Legends unlocks the Libram turn-ins"
+        }
+      ],
+      "assessment": "Independent comment support agrees with the two faction alternatives in QuestieDB."
+    },
+    {
+      "questID": 7485,
+      "pageSHA256": "0c65e036673cd336e175f251cdf1f7aab1ff350bc7d9331beab1b99f5eceecf1",
+      "comments": [
+        {
+          "commentID": 19614,
+          "fact": "identifies Alliance Elven Legends (7482) as required"
+        },
+        {
+          "commentID": 2973959,
+          "fact": "identifies Elven Legends as the unlock for this quest"
+        }
+      ],
+      "assessment": "Independent comment support agrees with the two faction alternatives in QuestieDB."
+    },
+    {
+      "questID": 7429,
+      "pageSHA256": "48d94117777a5dc0264235a25b7ccd98627f1087d294cabf98acb9754aca6cf0",
+      "comments": [],
+      "assessment": "No matching comment was found in the captured page text. Keep this edge only as the structured QuestieDB preQuestSingle fact; the repeatable target remains excluded from automatic preparation."
+    }
+  ]
+}
