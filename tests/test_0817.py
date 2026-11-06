@@ -30,6 +30,20 @@ def groups(c):
     return {g.key: g for g in c.ns.DungeonGroups().values()}
 
 
+def wow_bit(c):
+    c.lua.execute('''bit={
+      lshift=function(a,b) return a*2^b end,
+      band=function(a,b)
+        local out,p=0,1; a=a%4294967296; b=b%4294967296
+        while a>0 and b>0 do
+          if a%2==1 and b%2==1 then out=out+p end
+          a=math.floor(a/2); b=math.floor(b/2); p=p*2
+        end
+        return out
+      end
+    }''')
+
+
 class DungeonDataTests(unittest.TestCase):
     def test_lordaeron_item_started_quests_are_dungeon_run_goals_not_blocking_preparation(self):
         c = shipped(20)
@@ -65,6 +79,9 @@ class DungeonDataTests(unittest.TestCase):
                 if not guide:
                     continue
                 built += 1
+                self.assertTrue(all(guide.collectionInDungeon[record.id] is not None
+                                    for record in guide.records.values()),
+                                (faction, group.key, 'missing in-dungeon classification'))
                 route = c.ns.BuildDungeonRoute(guide, False, False)
                 if route.missing:
                     self.assertTrue(route.pendingReason, (faction, group.key, route.missing))
@@ -75,7 +92,8 @@ class DungeonDataTests(unittest.TestCase):
                         self.assertTrue(last and last.dungeonEntrance,
                                         (faction, group.key, route.missing, route.limited, route.pendingReason))
                     else:
-                        self.assertFalse(any(stop.dungeonEntrance for stop in route.stops.values()),
+                        self.assertFalse(any(stop.dungeonEntrance and stop.dungeonKey == group.key
+                                             for stop in route.stops.values()),
                                          (faction, group.key, route.entranceBlocked, route.limited))
                 positions = {}
                 for index, stop in enumerate(route.stops.values(), 1):
@@ -90,6 +108,88 @@ class DungeonDataTests(unittest.TestCase):
                             self.assertLess(turn_in, pickup, (faction, group.key, parent, child))
         self.assertEqual(built, 41)
         self.assertGreater(entrances, 10)
+
+    def test_wow_identity_bit_masks_allow_all_41_faction_dungeon_routes_to_finish(self):
+        built = 0
+        for faction, race in (('Horde', 2), ('Alliance', 1)):
+            c = shipped(60)
+            wow_bit(c)
+            c.ns.profile.faction, c.ns.profile.raceID = faction, race
+            for group in groups(c).values():
+                guide = c.ns.DungeonGuide(group)
+                if not guide:
+                    continue
+                built += 1
+                route = c.ns.BuildDungeonRoute(guide, False, False)
+                self.assertFalse(route.entranceBlocked, (faction, group.key, route.pendingReason))
+                self.assertEqual(route.limited, 0, (faction, group.key, route.pendingReason))
+                if c.ns.DungeonEntrance(group):
+                    last = route.stops[len(route.stops)] if len(route.stops) else None
+                    self.assertTrue(last and last.dungeonEntrance,
+                                    (faction, group.key, route.pendingReason))
+        self.assertEqual(built, 41)
+
+    def test_cross_dungeon_prerequisite_routes_its_instance_before_the_goal_dungeon(self):
+        c = shipped(60)
+        guide = c.ns.DungeonGuide(groups(c)['scarlet-monastery'])
+        self.assertEqual(list(guide.collectionDependencies[1113].values()), [1109])
+
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+        steps = list(route.stops.values())
+        prerequisite_entry = next(i for i, stop in enumerate(steps)
+                                  if stop.dungeonEntrance and stop.dungeonKey == 'razorfen-kraul')
+        goal_entry = next(i for i, stop in enumerate(steps)
+                          if stop.dungeonEntrance and stop.dungeonKey == 'scarlet-monastery')
+        pickup = next(i for i, stop in enumerate(steps) if stop.id == 1109 and stop.kind == 'a')
+        turn_in = next(i for i, stop in enumerate(steps) if stop.id == 1109 and stop.kind == 't')
+        child_pickup = next(i for i, stop in enumerate(steps) if stop.id == 1113 and stop.kind == 'a')
+        self.assertLess(pickup, prerequisite_entry)
+        self.assertLess(prerequisite_entry, turn_in)
+        self.assertLess(turn_in, child_pickup)
+        self.assertLess(child_pickup, goal_entry)
+        self.assertFalse(route.entranceBlocked)
+
+    def test_stockade_chain_routes_the_unsent_letter_item_drop_to_the_deadmines(self):
+        c = shipped(30)
+        c.ns.profile.faction, c.ns.profile.raceID = 'Alliance', 1
+        guide = c.ns.DungeonGuide(groups(c)['the-stockade'])
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+        steps = list(route.stops.values())
+        item_drop = next(i for i, stop in enumerate(steps)
+                         if stop.id == 373 and stop.dungeonKey == 'the-deadmines')
+        item_return = next(i for i, stop in enumerate(steps) if stop.id == 373 and stop.kind == 't')
+        next_pickup = next(i for i, stop in enumerate(steps) if stop.id == 389 and stop.kind == 'a')
+        stockade_entry = next(i for i, stop in enumerate(steps)
+                              if stop.dungeonEntrance and stop.dungeonKey == 'the-stockade')
+        self.assertIn('An Unsent Letter', steps[item_drop].label)
+        self.assertIn('Edwin VanCleef', steps[item_drop].label)
+        self.assertLess(item_drop, item_return)
+        self.assertLess(item_return, next_pickup)
+        self.assertLess(next_pickup, stockade_entry)
+
+    def test_unpinned_dungeon_prerequisite_steps_stay_in_sequence_and_do_not_block_the_goal_entrance(self):
+        c = shipped(60)
+        # WoW supplies bit.band/lshift; the host harness intentionally does not.
+        wow_bit(c)
+        guide = c.ns.DungeonGuide(groups(c)['blackrock-spire'])
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+        steps = list(route.stops.values())
+        stratholme_work = next(i for i, stop in enumerate(steps)
+                               if stop.id == 8945 and stop.dungeonKey == 'stratholme')
+        proof_inside = next(i for i, stop in enumerate(steps)
+                            if stop.id == 8946 and stop.dungeonKey == 'stratholme')
+        proof_return = next(i for i, stop in enumerate(steps) if stop.id == 8946 and stop.kind == 't')
+        following_pickup = next(i for i, stop in enumerate(steps) if stop.id == 8947 and stop.kind == 'a')
+        goal_entry = next(i for i, stop in enumerate(steps)
+                          if stop.dungeonEntrance and stop.dungeonKey == 'blackrock-spire')
+        self.assertIn('quest tracker', steps[stratholme_work].label)
+        self.assertIn('quest tracker', steps[proof_inside].label)
+        self.assertLess(stratholme_work, proof_inside)
+        self.assertLess(proof_inside, proof_return)
+        self.assertLess(proof_return, following_pickup)
+        self.assertLess(following_pickup, goal_entry)
+        self.assertTrue(route.partial)
+        self.assertFalse(route.entranceBlocked)
 
     def test_entering_a_dungeon_advances_past_unmapped_prep_steps(self):
         c = shipped(20)

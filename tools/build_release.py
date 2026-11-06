@@ -84,6 +84,12 @@ the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.82 DUNGEON PREREQUISITE TRIPS routes the Stockade chain through the
+Deadmines item drop, then through the known return and Stockade pickup. Other
+cross-dungeon prerequisites use confirmed dungeon entrances and quest-tracker
+steps where interior NPC pins are unavailable. No coordinates are invented.
+See CHANGELOG.md and TESTING.md.
+
 0.8.81 DUNGEON ENTRANCE RECOVERY keeps known dungeon entrances reachable when
 some quest locations are uncaptured. The confirmed route remains partial, and
 entering the selected dungeon advances the guide into its run phase. Known

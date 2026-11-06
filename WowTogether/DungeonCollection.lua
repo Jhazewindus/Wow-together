@@ -40,6 +40,21 @@ local function eligibleIdentity(id)
         and not ns.CatalogueAlternativeTaken(id, ns.self)
 end
 
+local function eligiblePrerequisiteIdentity(id)
+    local q = ns.CatalogueQuest(id)
+    return q and ns.CatalogueIdentityAllowed(id, ns.profile) == true
+        and (ns.active[id] or (q.minLevel or q.level or 255) <= (ns.profile.level or 0)
+            or ns.PickupOfferEvidence(ns.self, id) == true and ns.CatalogueAllowed(id, ns.profile, ns.self) == true)
+        and not ns.CatalogueAlternativeTaken(id, ns.self)
+end
+
+-- Wowhead's Forever item page identifies An Unsent Letter (2874) as a drop
+-- from Edwin VanCleef (639), the Deadmines boss. QuestieDB confirms the
+-- quest-item relationship; the encounter itself has no usable interior pin.
+local questItemDungeonSources = {
+    [373] = {key = "the-deadmines", item = "An Unsent Letter", source = "Edwin VanCleef"},
+}
+
 function ns.DungeonGuide(group, pickupQuestID)
     local records, goals, required, dependencies, deferred, seen = {}, {}, {}, {}, {}, {}
     local dungeonName = string.lower(group.name or "")
@@ -90,7 +105,7 @@ function ns.DungeonGuide(group, pickupQuestID)
         local anyMet, best, score = false, nil, nil
         for _, previous in ipairs(q.prerequisiteAny or {}) do
             if complete(previous) then anyMet = true; break end
-            if eligibleIdentity(previous) then
+            if eligiblePrerequisiteIdentity(previous) then
                 local candidate = ns.CatalogueQuest(previous)
                 local point = ns.NPCPickupPoint(previous) or candidate.starts and candidate.starts[1]
                 local value = ns.active[previous] and -1 or point and ns.ValidTravelPoint(point)
@@ -125,7 +140,7 @@ function ns.DungeonGuide(group, pickupQuestID)
     for _, record in ipairs(records) do
         guide.collectionInDungeon[record.id] = inDungeonScope(ns.CatalogueQuest(record.id) or {})
         local stages = ns.RouteStages(record, ns.self)
-        if #stages > 0 then guide.hasPoint = true; break end
+        if #stages > 0 then guide.hasPoint = true end
     end
     if entrance then guide.hasPoint = true
     elseif not pickupQuestID then guide.reason = guide.reason .. " Entrance not located yet." end
@@ -133,6 +148,18 @@ function ns.DungeonGuide(group, pickupQuestID)
 end
 
 local function taskKey(stop) return stop.id .. ":" .. ns.GuideStepKey(stop) end
+
+local function prerequisiteDungeon(id, guide)
+    if not guide.collectionRequired[id] or guide.collectionGoals[id] then return end
+    local itemSource = questItemDungeonSources[id]
+    if itemSource then
+        for _, group in ipairs(ns.DungeonGroups()) do if group.key == itemSource.key then return group end end
+    end
+    local quest = ns.CatalogueQuest(id)
+    local key = quest and quest.categoryPath and string.match(quest.categoryPath, "^dungeons/([%w%-]+)$")
+    if not key or key == guide.dungeonKey then return end
+    for _, group in ipairs(ns.DungeonGroups()) do if group.key == key then return group end end
+end
 
 function ns.DungeonRunProgress(guide)
     local progress = {total = 0, collected = 0, ready = 0, finished = 0, skipped = 0}
@@ -277,27 +304,78 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
         if not parentsReady and not dungeonWork then
             blockReason = blockReason or ("Finish the mapped prerequisite chain for " .. ns.QuestTitle(id) .. " before entering.")
         end
-        local identityReady = eligibleIdentity(id)
+        local identityReady = guide.collectionRequired[id] and not guide.collectionGoals[id]
+            and eligiblePrerequisiteIdentity(id) or eligibleIdentity(id)
         if not identityReady and not dungeonWork then
             entranceBlocked = true
             blockReason = blockReason or ("Quest eligibility for " .. ns.QuestTitle(id) .. " needs checking before entering.")
         end
-        if not guide.collectionDeferred[id] and not ns.active[id] and ns.PickupOfferEvidence(ns.self, id) == false then
+        local routedPrerequisite = guide.collectionRequired[id] and not guide.collectionGoals[id]
+        if not guide.collectionDeferred[id] and not routedPrerequisite and not ns.active[id]
+            and ns.PickupOfferEvidence(ns.self, id) == false then
             entranceBlocked = true
             local _, reason = ns.CatalogueAllowed(id, ns.profile, ns.self)
             blockReason = blockReason or reason or ("The quest offer for " .. ns.QuestTitle(id) .. " is not available yet.")
         end
         local goalOnly = guide.collectionGoals[id] and not guide.collectionRequired[id]
         local stages = record and identityReady and ns.RouteStages(record, ns.self) or {}
+        local mapped, valid, checklistOnly = nil, nil, false
         if goalOnly and ns.active[id] then stages = {} end
+        local itemSource = questItemDungeonSources[id]
+        local prerequisiteGroup = prerequisiteDungeon(id, guide)
+        local previousDungeon
+        if guide.collectionRequired[id] and not guide.collectionGoals[id] then
+            for _, parentID in ipairs(guide.collectionDependencies[id] or {}) do
+                local parent = ns.CatalogueQuest(parentID)
+                local key = parent and parent.categoryPath and string.match(parent.categoryPath, "^dungeons/([%w%-]+)$")
+                if key and key ~= guide.dungeonKey then
+                    for _, group in ipairs(ns.DungeonGroups()) do
+                        if group.key == key then previousDungeon = group; break end
+                    end
+                end
+                if previousDungeon then break end
+            end
+        end
+        if itemSource and prerequisiteGroup and #stages == 0 then
+            local point = ns.DungeonEntrance(prerequisiteGroup)
+            if point then
+                stages[1] = {id = id, mapID = point.mapID, x = point.x, y = point.y, kind = "q",
+                    action = "travel", dungeonEntrance = true, dungeonKey = prerequisiteGroup.key,
+                    published = point.published, planned = true,
+                    label = "Enter " .. prerequisiteGroup.name .. "; loot " .. itemSource.item .. " from " .. itemSource.source,
+                    title = prerequisiteGroup.name}
+            end
+        end
+        -- Keep known objective areas and route to the known turn-in for
+        -- prerequisite quests even when some objective locations are absent.
+        -- The in-game quest log remains authoritative and holds the player
+        -- until every objective is complete.
+        local hasObjectiveStage = false
+        for _, stop in ipairs(stages) do if stop.kind == "q" then hasObjectiveStage = true; break end end
+        if guide.collectionRequired[id] and not guide.collectionGoals[id]
+            and quest and (quest.objectiveLocationsIncomplete or not hasObjectiveStage) and #stages > 0
+            and stages[#stages].kind ~= "t" then
+            local finish = quest.ends and quest.ends[1]
+            if ns.ValidTravelPoint(finish) then
+                local turnIn = ns.PublishedGuideStop(record, finish, "t")
+                turnIn.label = "After completing this quest, return to " .. (finish.name or record.title)
+                turnIn.planned = true
+                stages[#stages + 1] = turnIn
+            end
+        end
         -- Preview a known chain's later pickup only after its required mapped
         -- returns. Actual offers are checked again when progress promotes it.
-        if #stages == 0 and not ns.active[id] and parentsReady and #dependencies > 0
-            and eligibleIdentity(id) and ns.CataloguePrerequisitesAllowed(id, ns.self) == false then
+        if #stages == 0 and not ns.active[id] and parentsReady
+            and (guide.collectionRequired[id] or #dependencies > 0)
+            and identityReady and (ns.CataloguePrerequisitesAllowed(id, ns.self) == false
+                or quest and quest.prerequisitesUnverified) then
             local q = ns.CatalogueQuest(id)
             local pickup = ns.NPCPickupPoint(id) or q.starts and q.starts[1]
             if ns.ValidTravelPoint(pickup) then
                 stages[1] = ns.PublishedGuideStop(record, pickup, "a"); stages[1].planned = true
+                if quest.prerequisitesUnverified then
+                    stages[1].label = "Check with " .. (pickup.name or record.title) .. " whether " .. record.title .. " is offered"
+                end
                 if not goalOnly then
                     for _, point in ipairs(q.objectives or {}) do
                         if ns.ValidTravelPoint(point) then stages[#stages + 1] = ns.PublishedGuideStop(record, point, "q") end
@@ -308,15 +386,107 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
                 stages = ns.FilterGuideStages(stages)
             end
         end
+        -- A quest can begin inside a dungeon while its source NPC has no
+        -- captured coordinates. When its prerequisite is itself a dungeon
+        -- quest, use that known entrance as an honest checklist anchor and
+        -- retain any mapped outdoor return step.
+        if #stages == 0 and previousDungeon and not ns.active[id] then
+            local point = ns.DungeonEntrance(previousDungeon)
+            if point then
+                stages[1] = {id = id, mapID = point.mapID, x = point.x, y = point.y, kind = "q",
+                    action = "travel", dungeonEntrance = true, dungeonKey = previousDungeon.key,
+                    published = point.published, planned = true,
+                    label = "Inside " .. previousDungeon.name .. ", follow the quest tracker for " .. record.title,
+                    title = previousDungeon.name}
+                local finish = quest and quest.ends and quest.ends[1]
+                if ns.ValidTravelPoint(finish) then
+                    local turnIn = ns.PublishedGuideStop(record, finish, "t")
+                    turnIn.label = "After completing this quest, return to " .. (finish.name or record.title)
+                    turnIn.planned = true
+                    stages[#stages + 1] = turnIn
+                end
+                checklistOnly = true
+                missing = missing + 1
+                pendingReason = pendingReason or ("No interior map pin is available for " .. record.title
+                    .. " in " .. previousDungeon.name .. "; follow its quest tracker inside.")
+            end
+        end
+        if prerequisiteGroup and not complete(id) then
+            local prerequisiteEntrance = ns.DungeonEntrance(prerequisiteGroup)
+            local alreadyInside = ns.DungeonEntryKey() == prerequisiteGroup.key
+            local dungeonScoped = quest and quest.categoryPath == "dungeons/" .. prerequisiteGroup.key
+            if #stages == 0 and dungeonScoped and prerequisiteEntrance then
+                stages[1] = {id = id, mapID = prerequisiteEntrance.mapID,
+                    x = prerequisiteEntrance.x, y = prerequisiteEntrance.y, kind = "q", action = "travel",
+                    dungeonEntrance = true, dungeonKey = prerequisiteGroup.key,
+                    published = prerequisiteEntrance.published, planned = true,
+                    label = "Enter " .. prerequisiteGroup.name .. ", then follow the quest tracker for " .. record.title,
+                    title = prerequisiteGroup.name}
+            end
+            if prerequisiteEntrance and (#stages > 0 or ns.active[id]) then
+                local planned, insertedEntrance = {}, false
+                local function addEntrance()
+                    if insertedEntrance or alreadyInside then return end
+                    planned[#planned + 1] = {id = id, mapID = prerequisiteEntrance.mapID,
+                        x = prerequisiteEntrance.x, y = prerequisiteEntrance.y, kind = "q", action = "travel",
+                        dungeonEntrance = true, dungeonKey = prerequisiteGroup.key,
+                        published = prerequisiteEntrance.published, planned = true,
+                        label = "Enter " .. prerequisiteGroup.name .. " for " .. record.title,
+                        title = prerequisiteGroup.name}
+                    insertedEntrance = true
+                end
+                for _, stop in ipairs(stages) do
+                    if stop.dungeonEntrance and stop.dungeonKey == prerequisiteGroup.key then insertedEntrance = true end
+                    if stop.kind ~= "a" then addEntrance() end
+                    planned[#planned + 1] = stop
+                end
+                addEntrance()
+                stages = planned
+                local finish = quest and quest.ends and quest.ends[1]
+                local hasReturn = stages[#stages] and stages[#stages].kind == "t"
+                if not hasReturn and ns.ValidTravelPoint(finish) then
+                    local turnIn = ns.PublishedGuideStop(record, finish, "t")
+                    turnIn.label = "Return to " .. (finish.name or record.title)
+                    stages[#stages + 1] = turnIn
+                    hasReturn = true
+                end
+                local inDungeonChecklist = not hasReturn and dungeonScoped
+                if inDungeonChecklist then
+                    checklistOnly = true
+                    for _, stop in ipairs(stages) do
+                        if stop.dungeonEntrance and stop.dungeonKey == prerequisiteGroup.key then
+                            stop.label = "Enter " .. prerequisiteGroup.name .. ", then follow the quest tracker for " .. record.title
+                        end
+                    end
+                    missing = missing + 1
+                    pendingReason = pendingReason or ("No interior map pin is available for " .. record.title
+                        .. " in " .. prerequisiteGroup.name .. "; follow its quest tracker inside.")
+                end
+                mapped = parentsReady and #stages > 0
+                valid = mapped and (hasReturn or inDungeonChecklist)
+                if not hasReturn and not inDungeonChecklist then
+                    entranceBlocked = true
+                    blockReason = blockReason or ("Complete " .. record.title .. " in " .. prerequisiteGroup.name
+                        .. " and check the quest log; its return location is not mapped yet.")
+                end
+            else
+                entranceBlocked = true
+                blockReason = blockReason or ("The prerequisite run in " .. prerequisiteGroup.name
+                    .. " is not mapped yet. Check the quest log for " .. record.title .. ".")
+                mapped, valid = false, false
+            end
+        end
         local collected = goalOnly and ns.active[id] ~= nil
-        local mapped = parentsReady and (#stages > 0 or collected)
-        local valid = mapped
+        if not prerequisiteGroup then
+            mapped = parentsReady and (#stages > 0 or collected)
+            valid = mapped
+        end
         if goalOnly and not collected then
             if stages[1] and stages[1].kind == "a" then stages = {stages[1]}
             else
                 stages = {}; valid, mapped = false, false
             end
-        elseif not goalOnly and (#stages == 0 or stages[#stages].kind ~= "t") then
+        elseif not goalOnly and not checklistOnly and (#stages == 0 or stages[#stages].kind ~= "t") then
             if #stages > 0 and not dungeonWork and not inDungeonGoal then
                 entranceBlocked = true
                 blockReason = blockReason or ("The return step for " .. record.title .. " is not ready before entering.")
@@ -414,6 +584,7 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
     if entrance and #tasks == #order and not entranceBlocked then
         stops[#stops + 1] = {id = guide.target.id, mapID = entrance.mapID, x = entrance.x, y = entrance.y, kind = "q",
             action = "travel", dungeonEntrance = true, published = entrance.published,
+            dungeonKey = guide.dungeonKey,
             label = "Go to " .. (guide.dungeon and guide.dungeon.name or guide.title) .. " entrance",
             title = guide.dungeon and guide.dungeon.name or guide.title, planned = #stops > 0}
     end

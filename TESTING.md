@@ -1,5 +1,25 @@
 # Wow Together — friend test script
 
+For **0.8.82** — **DUNGEON PREREQUISITE TRIPS**, World of Warcraft: Forever.
+
+## Cross-instance dungeon preparation — 0.8.82
+
+1. Select The Stockade quests as an Alliance character. Confirm the route sends
+   you to The Deadmines for An Unsent Letter, returns to Baros Alexston, then
+   continues to the Stockade chain and entrance.
+2. Select a dungeon guide whose prerequisite chain crosses another dungeon.
+   Confirm the source instance entrance is shown before later pickups. Where an
+   interior NPC has no captured pin, follow the quest tracker inside; the addon
+   should not claim an exact interior location.
+3. Confirm incomplete objective pins retain a known return NPC, and quest offers
+   still need in-game confirmation where source requirements remain unresolved.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,805 tests and 308 subtests**. The Lua 5.1 host audit builds **41**
+eligible faction/dungeon combinations with **zero blocked routes**; every
+known dungeon destination ends at its published entrance. These checks do not
+verify live quest offers or interior map rendering.
+
 For **0.8.81** — **DUNGEON ENTRANCE RECOVERY**, World of Warcraft: Forever.
 
 ## Dungeon entrance and run phase — 0.8.81

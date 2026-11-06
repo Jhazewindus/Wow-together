@@ -2,9 +2,15 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.81 — DUNGEON ENTRANCE RECOVERY** targets interface
+progress. Version **0.8.82 — DUNGEON PREREQUISITE TRIPS** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
+
+**0.8.82 routes multi-instance dungeon quest chains in order.** The Stockade
+preparation route now sends players through The Deadmines for An Unsent Letter.
+Other prerequisites with missing interior pins receive an explicit entrance
+and quest-tracker step, while known returns remain in sequence. See CHANGELOG.md
+and TESTING.md.
 
 **0.8.81 keeps dungeon preparation usable when some quest locations are
 uncaptured.** The confirmed route still leads to the entrance and switches to

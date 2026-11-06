@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+## 0.8.82
+
+**DUNGEON PREREQUISITE TRIPS**
+
+- Route the Stockade chain through The Deadmines to collect An Unsent Letter
+  from Edwin VanCleef, then return it to Baros before continuing to the
+  Stockade quest giver.
+- Schedule unfinished prerequisites from other dungeons before later quest
+  pickups. When source data confirms a quest is inside an instance but its
+  interior NPC has no usable map pin, route to the entrance and name the quest
+  tracker step instead of inventing coordinates or stalling the whole guide.
+- Keep known prerequisite turn-ins in the route when some objective pins are
+  incomplete, and add a clear quest-offer check for quest givers whose offer
+  conditions still need confirmation.
+- Add regressions for cross-instance ordering and audit all 41 eligible
+  faction/dungeon route combinations under Lua 5.1.
+
 ## 0.8.81
 
 **DUNGEON ENTRANCE RECOVERY**
