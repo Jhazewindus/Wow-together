@@ -1,4 +1,4 @@
-"""Route compilation cache reduces repeated work without changing guide order."""
+"""Fixed route stays repeatable after Questie data updates and caches geometry."""
 import sys
 import unittest
 from pathlib import Path
@@ -16,7 +16,9 @@ class RouteGeometryCacheTests(unittest.TestCase):
 
         fingerprint = digest("|".join(":".join(str(stop[key]) for key in
             ("id", "kind", "mapID", "x", "y", "guideStep")) for stop in guide.fixedPlan.values()))
-        self.assertEqual(fingerprint, "17abf3ecf21b64ab9edbdd0c42c63d2fc547f7cce0fa560b4b271005d5835eae")
+        self.assertEqual(fingerprint, "bc436338f5f35d5a26a8076e0f7a42993ee973d890ab7adca5d0388126737664")
+        planned_quests = [int(stop['id']) for stop in guide.fixedPlan.values() if stop['kind'] == 'q']
+        self.assertIn(98430, planned_quests)  # Questie now supplies its Mulgore starter.
 
         cache = guide.optimization.geometryCache
         self.assertGreater(cache.calls, 0)

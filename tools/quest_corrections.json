@@ -3826,7 +3826,7 @@
   {
     "questID": 79975,
     "title": "Eagle's Fist",
-    "source": "https://github.com/Questie/QuestieDB/blob/80866960788084ae1592abf66a08f0d306458a95/src/corrections/Forever/traces/foreverObjectTraces.lua; current Carved Figurine and Messenger Bag beta-observation spawns, preserving the three-stage cross-zone handoff. SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2.",
+    "source": "https://github.com/Questie/QuestieDB/blob/3ac79c37f140b8eb343a28318b7a516b82802a86/src/corrections/Forever/traces/foreverObjectTraces.lua; current Carved Figurine and Messenger Bag beta-observation spawns, preserving the three-stage cross-zone handoff. SHA-256 94021ea7497fb9e39f57908d61e8499c4f8401ed5a924184290d9e066228b9f9.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 14,
@@ -3840,8 +3840,8 @@
         "npcTargets": [],
         "starts": [
           {
-            "y": 0.1288,
-            "x": 0.49439999999999995,
+            "y": 0.129,
+            "x": 0.4943,
             "name": "Carved Figurine",
             "entityID": 424007,
             "mapID": 1432,
@@ -3851,7 +3851,7 @@
         ],
         "ends": [
           {
-            "y": 0.2419,
+            "y": 0.2418,
             "x": 0.2248,
             "name": "Messenger Bag",
             "entityID": 406918,
@@ -3868,8 +3868,8 @@
         "npcTargets": [],
         "starts": [
           {
-            "y": 0.1288,
-            "x": 0.49439999999999995,
+            "y": 0.129,
+            "x": 0.4943,
             "name": "Carved Figurine",
             "entityID": 424007,
             "mapID": 1432,
@@ -3880,7 +3880,7 @@
         ],
         "ends": [
           {
-            "y": 0.2419,
+            "y": 0.2418,
             "x": 0.2248,
             "name": "Messenger Bag",
             "entityID": 406918,
@@ -3897,7 +3897,7 @@
   {
     "questID": 79976,
     "title": "This Must Be The Place",
-    "source": "https://github.com/Questie/QuestieDB/blob/4ab64311b6f0be1a96b38a5b95bfa27fa95416af/src/corrections/Forever/traces/foreverObjectTraces.lua; current Messenger Bag and Hastily Rolled-Up Satchel beta-observation spawns, preserving the three-stage cross-zone handoff. SHA-256 babb02ea656a878d0d0faa9ae62deec878b931e3b997957b1b570d4901c41539.",
+    "source": "https://github.com/Questie/QuestieDB/blob/3ac79c37f140b8eb343a28318b7a516b82802a86/src/corrections/Forever/traces/foreverObjectTraces.lua; current Messenger Bag and Hastily Rolled-Up Satchel beta-observation spawns, preserving the three-stage cross-zone handoff. SHA-256 94021ea7497fb9e39f57908d61e8499c4f8401ed5a924184290d9e066228b9f9.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 14,
@@ -3911,7 +3911,7 @@
         "npcTargets": [],
         "starts": [
           {
-            "y": 0.2419,
+            "y": 0.2418,
             "x": 0.2248,
             "name": "Messenger Bag",
             "entityID": 406918,
@@ -3923,7 +3923,7 @@
         "ends": [
           {
             "y": 0.242,
-            "x": 0.22469999999999998,
+            "x": 0.2248,
             "name": "Hastily Rolled-Up Satchel",
             "entityID": 424006,
             "mapID": 1417,
@@ -3939,7 +3939,7 @@
         "npcTargets": [],
         "starts": [
           {
-            "y": 0.2419,
+            "y": 0.2418,
             "x": 0.2248,
             "name": "Messenger Bag",
             "entityID": 406918,
@@ -3952,7 +3952,7 @@
         "ends": [
           {
             "y": 0.242,
-            "x": 0.22469999999999998,
+            "x": 0.2248,
             "name": "Hastily Rolled-Up Satchel",
             "entityID": 424006,
             "mapID": 1417,
@@ -8415,8 +8415,8 @@
             "mapID": 1438,
             "entityID": 275683,
             "npc": true,
-            "y": 0.36840000000000006,
-            "x": 0.3757,
+            "y": 0.36810000000000004,
+            "x": 0.3754,
             "name": "Sentinel Eralya Leafshadow",
             "sourceAreaID": 141,
             "locationSource": "Published Forever beta-observation entity position"
@@ -8514,7 +8514,7 @@
   {
     "questID": 91317,
     "title": "The Tarnished",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained. Current QuestieDB NPC trace review for changed Tarnished and Webbed Forsaken points: https://github.com/Questie/QuestieDB/blob/3ac79c37f140b8eb343a28318b7a516b82802a86/src/corrections/Forever/traces/foreverNpcTraces.lua; SHA-256 897d3a39f61caabe46c11d796a9dc77beb6e9b790c484602a69c473f7ed1e961.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 9,
@@ -8528,35 +8528,41 @@
         }
       ],
       "before": {
-        "missingRequirements": [],
-        "requirements": [
+        "objectiveLocationsIncomplete": null,
+        "npcTargets": [
           {
-            "entityType": "npc",
             "entityID": 259434,
             "name": "Tarnished Drudge",
             "action": "kill",
-            "quantity": 8
+            "npc": true
           },
           {
-            "entityType": "npc",
             "entityID": 259433,
             "name": "Tarnished Zealot",
             "action": "kill",
-            "quantity": 6
+            "npc": true
           },
           {
-            "entityType": "item",
-            "entityID": 270435,
+            "entityID": 259431,
+            "name": "Rudolph Gelhardt",
+            "action": "loot",
+            "itemName": "Rudolph Gelhardt's Head",
+            "npc": true
+          }
+        ],
+        "missingRequirements": [],
+        "requiredItems": [
+          {
+            "itemID": 270435,
             "name": "Rudolph Gelhardt's Head",
-            "action": "collect",
             "quantity": 1
           }
         ],
         "objectives": [
           {
             "mapID": 1420,
-            "x": 0.2024,
-            "y": 0.6151,
+            "x": 0.132,
+            "y": 0.5885,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
             "name": "Tarnished Drudge",
@@ -8569,8 +8575,8 @@
           },
           {
             "mapID": 1420,
-            "x": 0.2023,
-            "y": 0.6156,
+            "x": 0.2025,
+            "y": 0.6102000000000001,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
             "name": "Tarnished Zealot",
@@ -8598,32 +8604,26 @@
             "itemName": "Rudolph Gelhardt's Head"
           }
         ],
-        "npcTargets": [
+        "requirements": [
           {
+            "entityType": "npc",
             "entityID": 259434,
             "name": "Tarnished Drudge",
             "action": "kill",
-            "npc": true
+            "quantity": 8
           },
           {
+            "entityType": "npc",
             "entityID": 259433,
             "name": "Tarnished Zealot",
             "action": "kill",
-            "npc": true
+            "quantity": 6
           },
           {
-            "entityID": 259431,
-            "name": "Rudolph Gelhardt",
-            "action": "loot",
-            "itemName": "Rudolph Gelhardt's Head",
-            "npc": true
-          }
-        ],
-        "objectiveLocationsIncomplete": null,
-        "requiredItems": [
-          {
-            "itemID": 270435,
+            "entityType": "item",
+            "entityID": 270435,
             "name": "Rudolph Gelhardt's Head",
+            "action": "collect",
             "quantity": 1
           }
         ]
@@ -8635,14 +8635,24 @@
             "quantity": 8,
             "action": "kill",
             "entityID": 259434,
-            "name": "Tarnished Drudge"
+            "name": "Tarnished Drudge",
+            "x": 0.132,
+            "y": 0.5885,
+            "mapID": 1420,
+            "sourceAreaID": 85,
+            "locationSource": "Published Forever beta-observation entity position"
           },
           {
             "entityType": "npc",
             "quantity": 6,
             "action": "kill",
             "entityID": 259433,
-            "name": "Tarnished Zealot"
+            "name": "Tarnished Zealot",
+            "x": 0.2025,
+            "y": 0.6102000000000001,
+            "mapID": 1420,
+            "sourceAreaID": 85,
+            "locationSource": "Published Forever beta-observation entity position"
           },
           {
             "entityType": "item",
@@ -8666,11 +8676,11 @@
             "action": "kill",
             "entityID": 259434,
             "npc": true,
-            "y": 0.5972,
+            "y": 0.5885,
             "objectiveKey": "npc:259434",
             "name": "Tarnished Drudge",
             "sourceAreaID": 85,
-            "x": 0.11789999999999999,
+            "x": 0.132,
             "locationSource": "Published Forever beta-observation entity position",
             "quantity": 8
           },
@@ -8680,11 +8690,11 @@
             "action": "kill",
             "entityID": 259433,
             "npc": true,
-            "y": 0.6401,
+            "y": 0.6102000000000001,
             "objectiveKey": "npc:259433",
             "name": "Tarnished Zealot",
             "sourceAreaID": 85,
-            "x": 0.1259,
+            "x": 0.2025,
             "locationSource": "Published Forever beta-observation entity position",
             "quantity": 6
           },
@@ -8694,10 +8704,10 @@
             "npc": true,
             "name": "Rudolph Gelhardt",
             "mapID": 1420,
-            "x": 0.114,
-            "y": 0.6436,
+            "x": 0.1151,
+            "y": 0.6418,
             "sourceAreaID": 85,
-            "locationSource": "Published Forever beta-observation entity position",
+            "locationSource": "Published Forever beta-reviewed entity position",
             "action": "loot",
             "itemID": 270435,
             "itemName": "Rudolph Gelhardt's Head",
@@ -8710,20 +8720,35 @@
             "entityID": 259434,
             "npc": true,
             "action": "kill",
-            "name": "Tarnished Drudge"
+            "name": "Tarnished Drudge",
+            "x": 0.132,
+            "y": 0.5885,
+            "mapID": 1420,
+            "sourceAreaID": 85,
+            "locationSource": "Published Forever beta-observation entity position"
           },
           {
             "entityID": 259433,
             "npc": true,
             "action": "kill",
-            "name": "Tarnished Zealot"
+            "name": "Tarnished Zealot",
+            "x": 0.2025,
+            "y": 0.6102000000000001,
+            "mapID": 1420,
+            "sourceAreaID": 85,
+            "locationSource": "Published Forever beta-observation entity position"
           },
           {
             "entityID": 259431,
             "npc": true,
             "name": "Rudolph Gelhardt",
             "action": "loot",
-            "itemName": "Rudolph Gelhardt's Head"
+            "itemName": "Rudolph Gelhardt's Head",
+            "x": 0.1151,
+            "y": 0.6418,
+            "mapID": 1420,
+            "sourceAreaID": 85,
+            "locationSource": "Published Forever beta-reviewed entity position"
           }
         ],
         "missingRequirements": [],
@@ -8792,8 +8817,8 @@
         "objectives": [
           {
             "mapID": 1420,
-            "x": 0.094,
-            "y": 0.6175999999999999,
+            "x": 0.0944,
+            "y": 0.6275999999999999,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
             "name": "Whispering Horror",
@@ -9106,7 +9131,7 @@
   {
     "questID": 98389,
     "title": "A Light in the Darkness",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09. Refreshed its accepted pre-correction snapshot to QuestieDB 80866960788084ae1592abf66a08f0d306458a95 (Forever NPC trace SHA-256 fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d; object trace SHA-256 f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2); reviewed after-state retained. Current QuestieDB NPC trace review for changed Tarnished and Webbed Forsaken points: https://github.com/Questie/QuestieDB/blob/3ac79c37f140b8eb343a28318b7a516b82802a86/src/corrections/Forever/traces/foreverNpcTraces.lua; SHA-256 897d3a39f61caabe46c11d796a9dc77beb6e9b790c484602a69c473f7ed1e961.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 2,
@@ -9114,6 +9139,7 @@
       "classMask": 0,
       "requiredItems": [],
       "before": {
+        "objectiveLocationsIncomplete": null,
         "npcTargets": [
           {
             "entityID": 271968,
@@ -9126,11 +9152,13 @@
             ]
           }
         ],
+        "missingRequirements": [],
+        "requiredItems": [],
         "objectives": [
           {
             "mapID": 1420,
-            "x": 0.24760000000000001,
-            "y": 0.6037,
+            "x": 0.2477,
+            "y": 0.6036,
             "sourceAreaID": 85,
             "locationSource": "Published Forever beta-observation entity position",
             "name": "Forsaken Adventurer",
@@ -9146,8 +9174,6 @@
             "action": "event"
           }
         ],
-        "objectiveLocationsIncomplete": null,
-        "requiredItems": [],
         "requirements": [
           {
             "entityType": "npc",
@@ -9160,8 +9186,7 @@
             ],
             "quantity": 6
           }
-        ],
-        "missingRequirements": []
+        ]
       },
       "after": {
         "requirements": [

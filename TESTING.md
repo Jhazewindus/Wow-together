@@ -1,6 +1,22 @@
 # Wow Together — friend test script
 
-For **0.8.85** — **UNIFIED CLASS QUEST GUIDE**, World of Warcraft: Forever.
+For **0.8.86** — **QUESTIE FOREVER DATA REFRESH**, World of Warcraft: Forever.
+
+## Questie Forever data refresh — 0.8.86
+
+1. Confirm quest catalogue data still contains 5,307 quests, with refreshed
+   starter, turn-in and objective coverage.
+2. Check corrected Questie level gates, especially Call of Earth (96243) at
+   level 4 and the updated Tirisfal and profession quest levels.
+3. Review the six new starter links and seven new turn-in links in the catalogue.
+   Confirm Longwalkers (98430) now appears in the Mulgore route.
+4. Confirm the Eagle's Fist and Tirisfal stage points follow current QuestieDB
+   traces and that reviewed objective actions remain intact.
+
+The source snapshot is QuestieDB `3ac79c37` (2026-11-07). No base quest IDs
+were added. Host verification passed **1,812 tests**, and all **92 Lua files
+compile under Lua 5.1**. This does not establish actual client offers or map
+rendering.
 
 ## Unified class quest guide — 0.8.85
 

@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.8.86
+
+**QUESTIE FOREVER DATA REFRESH**
+
+- Refresh the literal Forever data snapshot from QuestieDB `80866960` to
+  `3ac79c37`, including reviewed quest, NPC, object and item corrections/traces.
+- Keep the catalogue at 5,307 quests; the raw base quest table added no quest IDs.
+  The refresh adds six starter links, seven turn-in links and one objective update.
+- Apply eight Questie quest-level corrections: 96137 (25), 96138 (30), 96139
+  (23), 96243 (4), 97253 (15), 98027 (26), 98251 (23) and 98252 (23).
+- Refresh the verified Questie point snapshots for Eagle's Fist and the Tirisfal
+  quest stages; retain reviewed objective semantics and source hashes. Include the
+  newly linked Longwalkers quest in the Mulgore guide and rebuild its audited route.
+
 ## 0.8.85
 
 **UNIFIED CLASS QUEST GUIDE**

@@ -1,5 +1,5 @@
 {
-  "captured": "2026-11-06",
+  "captured": "2026-11-07",
   "count": 5307,
   "detailed_quests": 362,
   "zones": [
@@ -154,9 +154,9 @@
     }
   ],
   "detail_requests_stopped_after_denials": true,
-  "with_starters": 4413,
-  "with_objectives": 2125,
-  "with_turnins": 4588,
+  "with_starters": 4419,
+  "with_objectives": 2126,
+  "with_turnins": 4595,
   "with_series": 940,
   "with_prerequisites": 2575,
   "repeatable_quests": 639,
@@ -1266,17 +1266,24 @@
     92457,
     92519,
     92422,
-    95216
+    95216,
+    2341,
+    1489,
+    4002,
+    7429,
+    7483,
+    7484,
+    7485
   ],
   "entities": {
-    "npc": 13412,
-    "object": 7039,
+    "npc": 13418,
+    "object": 7043,
     "item": 3242
   },
   "source_entities": {
-    "npc": 13412,
-    "object": 7039,
-    "item": 21421
+    "npc": 13418,
+    "object": 7043,
+    "item": 21442
   },
   "additional_map_joins": [
     {
@@ -1302,24 +1309,24 @@
   "forever_npc_geography": {},
   "forever_beta_facts": {
     "source": "https://github.com/Questie/QuestieDB",
-    "commit": "80866960788084ae1592abf66a08f0d306458a95",
+    "commit": "3ac79c37f140b8eb343a28318b7a516b82802a86",
     "files_sha256": {
       "src/corrections/enum/zones.lua": "20e7af36ec38f6f1640368d1c2030315cbdd068d895578c1374591b2f5dd9216",
       "src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
       "src/corrections/enum/expansions.lua": "33ee6a3592f88883314f6afc3067c17d2d3c8f4d83ba45a10baefdcfa4b364f6",
       "support/Forever/Zones/areaIdToUiMapId.lua": "c6f26a18a2d0d9bdf5750039eabe111f545700a751928e8f79aedb12fbb8ff09",
       "src/corrections/Forever/generated/foreverBaseQuest.lua": "25a5eec6855e8e63098217b2dbe87b0725e2a2df61b54bb65857fef931a2e1b4",
-      "src/corrections/Forever/traces/foreverQuestTraces.lua": "70c924028d203a287d1ae05462b9f7e9064c59b4f6c60b213ec086c037bab65c",
-      "src/corrections/Forever/foreverQuestFixes.lua": "5e546250cfee5196200e0fd1bc8f5201a330012d63fcc3da1b0a784e69daf970",
+      "src/corrections/Forever/traces/foreverQuestTraces.lua": "e27eaa8411340fde5bec141ea20c95d843064b4e3dff899f001952d0c922d5e7",
+      "src/corrections/Forever/foreverQuestFixes.lua": "03475d17adefa575679c1afd887a9896c00e9b8a59038ea8f5c00e68872b702b",
       "src/corrections/Forever/generated/foreverBaseNpc.lua": "25ae0556d29b792758d95682d3974a847bdbe2773322fe863872dc1340260a32",
-      "src/corrections/Forever/traces/foreverNpcTraces.lua": "fa0cbbf40b4ac5d6ee1608a3293f1466c0236219461ac8e0607b75d2160d3d7d",
-      "src/corrections/Forever/foreverNPCFixes.lua": "adff4b9761b5c717c0b0b6193d6f783ffdbbc0209520bbd6e7efc05436782e06",
+      "src/corrections/Forever/traces/foreverNpcTraces.lua": "897d3a39f61caabe46c11d796a9dc77beb6e9b790c484602a69c473f7ed1e961",
+      "src/corrections/Forever/foreverNPCFixes.lua": "f9042c66ccc741cca84144bcd8a6bb2e4f4c192cc1add088eb18284f2d83d9db",
       "src/corrections/Forever/generated/foreverBaseObject.lua": "f589af8d868330de2ff174c7a80147539ee407ce95ddae6ba7bd602535ef0869",
-      "src/corrections/Forever/traces/foreverObjectTraces.lua": "f5586814c0894fc505aa080baccc1f3fb616748a38b0e6bc495730e3654cf8e2",
+      "src/corrections/Forever/traces/foreverObjectTraces.lua": "94021ea7497fb9e39f57908d61e8499c4f8401ed5a924184290d9e066228b9f9",
       "src/corrections/Forever/foreverObjectFixes.lua": "bac79e9a3a4385b6f00fed280bacd9d0556627829ade019f498dcf394d6a6802",
       "src/corrections/Forever/generated/foreverBaseItem.lua": "4824f55dbb542dcf62e65eb9b9129c330e2188ff431163c2bfe1501088208424",
-      "src/corrections/Forever/traces/foreverItemTraces.lua": "9301b3a20de383a8aa80f634d6e4bab570831141e13c90b1d6994a0c7900c9dd",
-      "src/corrections/Forever/foreverItemFixes.lua": "098bb9833f937d4ee18388568953828bd0930f1e23d5ee93dfb87e76da6efb90",
+      "src/corrections/Forever/traces/foreverItemTraces.lua": "cda9bf3e165a7b5eb61c60ba51e61504fdf20526d2a4a9348c808a1260c038af",
+      "src/corrections/Forever/foreverItemFixes.lua": "9c163c9a01d4f47f638faca3435cd27fe97bd069f818a745f949761b30d1b47f",
       "data/Forever/foreverQuestDB.lua": "621d4a1670232c047e7d171d8f1fdbd31581458935ee59dd70836016838dc942",
       "src/corrections/Forever/legacy/classicQuestFixes.lua": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
       "data/Forever/foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
@@ -1331,9 +1338,9 @@
     },
     "parsed_records": {
       "quest": 5233,
-      "npc": 13411,
-      "object": 7039,
-      "item": 21421
+      "npc": 13417,
+      "object": 7043,
+      "item": 21442
     },
     "skipped_nonliteral_fields": [
       [
@@ -7727,6 +7734,9 @@
       94638,
       94773,
       94774,
+      94775,
+      94776,
+      94777,
       94789,
       94792,
       94793,
@@ -7735,6 +7745,7 @@
       94820,
       94821,
       94822,
+      94823,
       94824,
       94863,
       94864,
@@ -8149,12 +8160,8 @@
       99260,
       99267,
       99411,
-      94775,
-      94776,
-      94777,
       94778,
       94779,
-      94823,
       94825,
       94826
     ],
@@ -8261,7 +8268,7 @@
         "exclusiveTo"
       ]
     ],
-    "location_points": 34594,
+    "location_points": 35107,
     "corrected_objective_quest_ids": [
       55,
       273,
@@ -8287,6 +8294,7 @@
       7583,
       65593,
       65597,
+      65602,
       65603,
       65604,
       65610,
@@ -8660,6 +8668,7 @@
       95041,
       95042,
       95065,
+      95140,
       95195,
       95212,
       95213,
@@ -8937,6 +8946,7 @@
       1657,
       65593,
       65597,
+      65602,
       65603,
       65604,
       65610,
@@ -9308,6 +9318,7 @@
       95041,
       95042,
       95065,
+      95140,
       95195,
       95212,
       95213,
@@ -9703,17 +9714,19 @@
       87491,
       88756,
       91736,
-      96137,
-      96139,
+      96138,
+      96243,
       96259,
       96260,
       96261,
       96822,
       97223,
+      97253,
       97282,
-      98027,
       98069,
       98070,
+      98251,
+      98252,
       99048,
       99049,
       99052,
@@ -11001,9 +11014,9 @@
     }
   ],
   "prior_snapshot_fallback": {
-    "source_commit": "3438cfba0b0b8fbcea1c11bc65195487b1dfe352",
-    "quests_with_retained_fields": 4407,
-    "retained_fields": 22667,
+    "source_commit": "6185b43ed596d0ff44177973346ce80a62ffbe6c",
+    "quests_with_retained_fields": 4410,
+    "retained_fields": 22668,
     "rule": "current facts take precedence; prior reviewed fields fill omissions"
   },
   "dungeon_prerequisite_audit": {

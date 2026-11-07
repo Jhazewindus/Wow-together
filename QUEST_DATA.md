@@ -120,13 +120,16 @@ pass. Existing running guide order stays saved. Distance scores are estimates.
 
 ## Published Forever database facts
 
-Source: https://github.com/Questie/QuestieDB/tree/80866960788084ae1592abf66a08f0d306458a95
+Source: https://github.com/Questie/QuestieDB/tree/3ac79c37f140b8eb343a28318b7a516b82802a86
 
 `tools/forever_source_manifest.json` pins the selected factual files and hashes
-at QuestieDB commit `80866960788084ae1592abf66a08f0d306458a95` (2026-11-05).
+at QuestieDB commit `3ac79c37f140b8eb343a28318b7a516b82802a86` (2026-11-07).
 The raw `data/Forever/foreverQuestDB.lua` is unchanged from the previous
 snapshot, so this refresh does not add quest IDs; the 5,307-record catalogue
-remains the same size. Updated corrections and traces do change current facts.
+remains the same size. The refreshed catalogue has 4,419 starter records, 4,595
+turn-in records and 2,126 objective records. Eight Questie level corrections and
+one objective record changed; six starter and seven turn-in links were added.
+Updated corrections and traces also refresh entity locations and metadata.
 Our literal-only parser reads raw entity fields, inherited literal corrections,
 beta deltas, trace observations and reviewed literal corrections in source
 precedence order. It does not execute static/dynamic providers, function calls

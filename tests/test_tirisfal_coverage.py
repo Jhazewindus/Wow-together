@@ -14,7 +14,7 @@ class TirisfalCoverageTests(unittest.TestCase):
   c=client('Horde',class_id=1,level=10);c.ns.SetOption('classQuests',False);self.assertFalse(c.ns.ClassQuestEnabled(3095));self.assertTrue(c.ns.ClassQuestEnabled(6395))
  def test_paladin_head_has_actual_drop_spawn_and_keeps_other_counts(self):
   q=self.q[91317];self.assertFalse(q.get('objectiveLocationsIncomplete'));self.assertFalse(q['missingRequirements']);self.assertEqual((q['classMask'],q['allowedRaceIDs']),(2,[5]))
-  p=q['objectives'][-1];self.assertEqual((p['entityID'],p['itemID'],p['quantity'],p['mapID'],p['action']),(259431,270435,1,1420,'loot'));self.assertAlmostEqual(p['x'],.114);self.assertAlmostEqual(p['y'],.6436)
+  p=q['objectives'][-1];self.assertEqual((p['entityID'],p['itemID'],p['quantity'],p['mapID'],p['action']),(259431,270435,1,1420,'loot'));self.assertAlmostEqual(p['x'],.1151);self.assertAlmostEqual(p['y'],.6418)
   self.assertEqual([p['quantity']for p in q['objectives']],[8,6,1])
  def test_residue_starter_retains_first_loot_without_duplicate_farm(self):
   q=self.q[95328];self.assertEqual((q['starts'][0]['action'],q['starts'][0]['sourceAction'],q['starts'][0]['itemID']),('start-item','loot',268812));self.assertFalse(q['objectives']);self.assertFalse(q['requirements']);self.assertEqual(q['requiredItems'][0]['itemID'],268812);self.assertEqual(q['ends'][0]['mapID'],1458)
