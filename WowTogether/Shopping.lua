@@ -44,7 +44,11 @@ function ns.QuestShoppingList(records, query)
         if quest and quest.requiredItems and #quest.requiredItems > 0
             and (ns.active[record.id] or ns.Completed(record.id, query) ~= true) then
             for _, item in ipairs(quest.requiredItems or {}) do
-                if item.buyable then
+                -- Incomplete catalogue entries can identify a vendor item but
+                -- omit its quantity. Keep those out of the shopping estimate;
+                -- adding nil used to abort the entire browser refresh.
+                if item.buyable and ns.GuideInteger(item.itemID) and item.itemID > 0
+                    and ns.GuideInteger(item.quantity) and item.quantity > 0 then
                     local row = items[item.itemID]
                     if not row then row = {itemID = item.itemID, name = item.name, need = 0, source = "Published vendor item", quests = {}}; items[item.itemID] = row end
                     row.need = row.need + item.quantity

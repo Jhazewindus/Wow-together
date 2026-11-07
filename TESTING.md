@@ -1,7 +1,21 @@
 # Wow Together — friend test script
 
-For **0.8.88** — **ALL-DUNGEON QUEST REVIEW**, World of Warcraft:
+For **0.8.89** — **CLASS QUEST GUIDE BROWSER FIX**, World of Warcraft:
 Forever.
+
+## Class quest browser — 0.8.89
+
+1. On a level-26 Mage, open **Class quests**. Confirm the unified Mage class
+   guide appears and reports available class quest steps instead of leaving the
+   view empty.
+2. Start the guide and confirm its known questline and prerequisite order is
+   preserved. Incomplete vendor-item quantities should not interrupt the view
+   or appear as guessed shopping totals.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/test_089.py -q` passes **40 tests and 20 subtests**. The regression uses
+the shipped catalogue and emulated class/race data; it cannot establish live
+NPC offers or in-game rendering.
 
 ## All-dungeon quest review — 0.8.88
 

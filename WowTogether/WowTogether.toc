@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.88
-## X-ReleaseName: ALL-DUNGEON QUEST REVIEW
+## Version: 0.8.89
+## X-ReleaseName: CLASS QUEST GUIDE BROWSER FIX
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

@@ -63,6 +63,31 @@ def resume(c, legacy=False):
 
 
 class OptionalClassGuideTests(unittest.TestCase):
+    def test_level_26_mage_class_guide_renders_with_incomplete_shopping_metadata(self):
+        c = Client(quests=(), use_catalogue=True)
+        c.guide_environment(level=26)
+        c.lua.execute('''
+          bit = {lshift=function(value,n) return value*2^n end,
+            band=function(a,b)
+              local result,power=0,1
+              while a>0 and b>0 do
+                if a%2==1 and b%2==1 then result=result+power end
+                a,b,power=math.floor(a/2),math.floor(b/2),power*2
+              end
+              return result
+            end}
+        ''')
+        c.ns.profile.classID, c.ns.profile.raceID, c.ns.profile.faction = 8, 1, 'Alliance'
+
+        # Quest 8928 is in the shipped Mage line and has a buyable item with
+        # no published quantity. It must not prevent the guide card rendering.
+        c.ns.SetFilter('classquests')
+        self.assertEqual(c.ns.ui.visibleCards, 1)
+        card = c.ns.ui.cards[1]
+        self.assertEqual(card.title.GetText(card.title), 'Mage class quest guide')
+        self.assertGreater(card.guide.availableNow, 0)
+        self.assertNotIn(21939, {row.itemID for row in c.ns.QuestShoppingList(card.guide.records).values()})
+
     def test_class_category_paths_filter_the_class_view_without_a_mask(self):
         c = class_client()
         classes = {1: 'warrior', 2: 'paladin', 3: 'hunter', 4: 'rogue', 5: 'priest',

@@ -1,5 +1,16 @@
 # Wow Together changelog
 
+## 0.8.89
+
+**CLASS QUEST GUIDE BROWSER FIX**
+
+- Fix a browser-rendering error that could hide the unified class quest guide
+  when its route included vendor-item data with a missing quantity. Incomplete
+  quantities are omitted from shopping estimates instead of interrupting the
+  class quest view.
+- Add a level-26 Mage regression using the shipped quest catalogue. The guide
+  now renders with eligible class quests available.
+
 ## 0.8.88
 
 **ALL-DUNGEON QUEST LIST AND PREREQUISITE REVIEW**

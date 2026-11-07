@@ -2,9 +2,14 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.88 — ALL-DUNGEON QUEST REVIEW** targets
+progress. Version **0.8.89 — CLASS QUEST GUIDE BROWSER FIX** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.89 fixes the Class quests view for characters whose full route contains
+incomplete vendor-item quantity data.** Those item records no longer interrupt
+the browser refresh, so eligible quests remain visible. See CHANGELOG.md and
+TESTING.md.
 
 **0.8.88 refreshes every published dungeon quest list and reviews prerequisite
 links against current QuestieDB, Wowhead series, and relevant comments.** It
