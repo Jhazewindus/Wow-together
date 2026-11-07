@@ -2,15 +2,17 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.87 — BLACKFATHOM DEEPS QUEST PREREQUISITES** targets
+progress. Version **0.8.88 — ALL-DUNGEON QUEST REVIEW** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
 
-**0.8.87 reviews prerequisites for all 13 Blackfathom Deeps quests.** The
-verified Horde chain remains ordered, while current Forever pages show no
-preceding quest for the faction versions of The Heart of the Void. Their pickup
-location remains unknown and is called out by the dungeon route. See
-CHANGELOG.md, DUNGEONS.md, QUEST_DATA.md and TESTING.md.
+**0.8.88 refreshes every published dungeon quest list and reviews prerequisite
+links against current QuestieDB, Wowhead series, and relevant comments.** It
+adds 24 listed quests to the catalogue, fills the newly published Drowned City
+and Krol'dok Stronghold lists, and corrects verified prerequisite edges. Three
+categories still have no dungeon-specific public list; denied quest pages and
+unknown pickup points stay marked as such. See CHANGELOG.md, DUNGEONS.md,
+QUEST_DATA.md and TESTING.md.
 
 **0.8.86 refreshes the Forever quest catalogue from QuestieDB.** It adds six
 starter links and seven turn-in links, refreshes objective facts and applies eight
@@ -69,7 +71,7 @@ routes and shows whose progress needs the next step. It also works solo.
 **0.8.76 refreshes the quest catalogue from current QuestieDB Forever records**
 and cross-checks captured Wowhead and Warcraft DB facts. It updates reviewed
 quest sources, NPC spawn positions, delivery requirements and prerequisite links
-in their matching zones. The catalogue covers 5,307 quests across 123 zones;
+in their matching zones. The catalogue covers 5,333 quests across 123 zones;
 unknown quantities and locations remain marked incomplete, and conflicting
 faction evidence stays flagged for live-client verification. See CHANGELOG.md
 and QUEST_DATA.md for the source pins and coverage limits.
@@ -1453,18 +1455,18 @@ an exclusion for Orc/Troll or eligibility for another race from that report.
 
 ## Data and beta limits
 
-The refreshed offline snapshot was built **November 4, 2026** from public game
+The refreshed offline snapshot was built **November 7, 2026** from public game
 facts in
 [Warcraft DB](https://forever.warcraftdb.com/list/quests) and
 [Wowhead Forever](https://www.wowhead.com/forever/quests).
 
 | Coverage | Records |
 | --- | ---: |
-| Distinct quest records / category lists | 5,307 / 123 |
-| Detailed Forever pages in this refreshed output | 362 |
-| Quests with starter / objective / turn-in facts | 4,412 / 2,125 / 4,587 |
-| Series / quests with explicit prerequisite facts | 938 / 2,465 |
-| Incomplete objective locations / known repeatables | 1,353 / 627 |
+| Distinct quest records / category lists | 5,333 / 123 |
+| Detailed Forever pages in this refreshed output | 390 |
+| Quests with starter / objective / turn-in facts | 4,421 / 2,126 / 4,597 |
+| Series / quests with explicit prerequisite facts | 945 / 2,580 |
+| Incomplete objective locations / known repeatables | 1,375 / 639 |
 
 Mapped item-drop alternatives retain a single representative farming area near
 this quest's published giver. This is a stable geometric choice, not a requirement

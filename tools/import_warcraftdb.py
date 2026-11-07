@@ -119,6 +119,38 @@ def apply_corrections(records):
             quest['prerequisitesRead'] = True
             applied.append(correction['questID'])
             continue
+        if correction.get('prerequisiteReviewCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed prerequisite identity changed; review required')
+            rule = correction['prerequisiteReviewCorrection']
+            allowed = {'previousQuest', 'prerequisiteAny', 'prerequisiteAll',
+                       'prerequisiteCandidates', 'prerequisitesUnverified'}
+            before, after = rule.get('before', {}), rule.get('after', {})
+            if set(before) - allowed or set(after) - allowed:
+                raise ValueError('Unsupported reviewed prerequisite field')
+            for key in set(before) | set(after):
+                current = quest.get(key)
+                if current not in (before.get(key), after.get(key)):
+                    raise ValueError('Reviewed prerequisite source value changed; review required')
+            for key, value in after.items():
+                if value is None:
+                    quest.pop(key, None)
+                elif key in ('prerequisitesUnverified',) and type(value) is not bool:
+                    raise ValueError('Reviewed prerequisite status must be boolean')
+                elif key == 'previousQuest' and (type(value) is not int or value == correction['questID']):
+                    raise ValueError('Reviewed prerequisite parent is invalid')
+                elif key in ('prerequisiteAny', 'prerequisiteAll', 'prerequisiteCandidates') and \
+                        (not isinstance(value, list) or any(type(i) is not int or i not in records for i in value)):
+                    raise ValueError('Reviewed prerequisite alternatives are invalid')
+                else:
+                    quest[key] = copy.deepcopy(value)
+            quest['prerequisitesRead'] = True
+            quest['prerequisiteSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
         if correction.get('pickupRequiresOffer'):
             quest = records.get(correction['questID'])
             if quest is None: continue

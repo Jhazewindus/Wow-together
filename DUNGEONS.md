@@ -1,17 +1,21 @@
-# Combined dungeon data — updated for 0.8.83
+# Combined dungeon data — updated for 0.8.88
 
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
 Maraudon and Blackrock Spire are kept as families with their wing ranges. All
 nine new Forever dungeons are listed; four have published entrance areas and
-five have broad location descriptions without usable coordinates or quest sets.
+five have broad location descriptions without usable coordinates. Two of those
+five now have named quest lists; the other three remain unknown.
 
-The 23 bounded Forever dungeon category pages, captured November 5, 2026,
-supply 341 memberships. Four current Method.gg quest tables supplement these
-with eight listed quests missing from Wowhead's categories: seven for City of
-Dalaran and The Treaty of Understanding (98423) for Hall of Thanes. The merged
-finder now has 349 memberships, all present in the 5,307-quest catalogue. These
-source lists do not establish that every live quest is categorized.
+Current Wowhead Forever lists provide 25 named dungeon categories, captured
+November 7, 2026. The Drowned City (8 quests) and Krol'dok Stronghold (13) now
+have dedicated lists. Three other category URLs still return a generic global
+quest page, so Alcaz Prison, Blackmaw Hold and Shaper's Terrace retain unknown
+quest sets. Current Method.gg tables supplement the named lists with seven
+City of Dalaran quests and The Treaty of Understanding (98423) for Hall of
+Thanes. After excluding two category rows explicitly marked `<UNUSED>`, the
+finder has 376 memberships, all present in the 5,333-quest catalogue. These
+lists do not establish that every live quest is categorized.
 The Method tables for Ruins of Lordaeron and Excavation Site: Wetlands add no
 new IDs beyond Wowhead's lists. The overview's 28 ranges and the other quest
 facts are unchanged. Runtime also
@@ -24,10 +28,13 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
 
 - [Wowhead Forever overview](https://www.wowhead.com/forever/guide/dungeons-overview-locations-details),
   captured November 5, 2026. Only short dungeon names and numeric ranges are used.
-- All 23 published `https://www.wowhead.com/forever/quests/dungeons/<category>`
-  lists, captured on the same date. Five candidate category URLs returned the
-  generic dungeon-quest page rather than a named category, so they remain absent
-  from the captured quest categories. IDs are merged without changing quest facts.
+- All 28 current `https://www.wowhead.com/forever/quests/dungeons/<category>`
+  URLs, captured November 7, 2026. Twenty-five return named categories; three
+  return the generic global quest list and are not used to infer memberships.
+  Two rows explicitly marked `<UNUSED>` are excluded. Current detail pages,
+  series tables and relevant comments were checked for the dungeon quests; the
+  capture hashes, reviewed links and inaccessible pages are in
+  `research/dungeon-prerequisite-audit-2026-11-07/audit.json`.
 - [Mapzeroth Forever geographic facts](https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua),
   pinned revision `fd68cfe2153379898680c66a01833846f9933587` (MIT).
   Only the 23 non-raid `instance` point records are selected. No upstream
@@ -37,8 +44,7 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
   while only City of Dalaran, Excavation Site: Wetlands, Hall of Thanes and
   Ruins of Lordaeron have dedicated guide pages. Their explicit quest tables
   are merged as supplemental memberships; the seven City and one Hall IDs are
-  absent from their Wowhead category captures. The remaining five have no
-  dedicated quest page, so their memberships stay unknown. Guide range labels
+  absent from their Wowhead category captures. Guide range labels
   differ from the Wowhead chart for the four available pages; current finder
   recommendations retain the Wowhead chart ranges. No site code, guide prose,
   images or map artwork are included.
@@ -91,11 +97,22 @@ Saved recordings and public native links can refine these published areas.
 
 ## Coverage
 
-Blackfathom Deeps prerequisite coverage now marks all 13 listed quests as
-reviewed and preserves the known Horde quest chain. The current Forever pages
-show no preceding quest for either faction's The Heart of the Void quest, but
-do not identify its starter item or pickup point; dungeon preparation leaves
-that collection deferred and directs the player to the run.
+The all-dungeon prerequisite review uses current QuestieDB facts, Wowhead
+series, and relevant player comments. It corrects the hidden Rig Wars offer
+gate before Chief Engineer Scooty, and removes the false 6562 → 6563 edge:
+current comments identify Trouble in the Deeps and The Essence of Aku'Mai as
+breadcrumbs rather than required prerequisites. The Lordaeron Unending Torment
+chain now includes its current QuestieDB links through 97292. Known limitations
+remain explicit: 17 detail pages were denied, the prerequisite for quest 7507
+could not be read, and comments conflict or omit the quest ID for gates on 2846
+and 95682. Newly listed quests lack pickup/objective coordinates, and two
+outdoor prerequisite records lack published pickup/turn-in map points. A
+comment-supported pickup for 97130 is routed to Archmage Timear in Dalaran.
+
+The current Forever pages still show no preceding quest for either faction's
+The Heart of the Void quest. They do not identify its starter item or pickup
+point, so dungeon preparation leaves collection deferred and directs the player
+to the run.
 
 Map IDs below are Forever UI map IDs, not area IDs. Coordinates are percentages.
 
@@ -139,7 +156,7 @@ Use captured inputs; the importer does not fetch pages or evaluate source script
   --overview /tmp/wow-together-dungeons-overview.html \
   --pois /tmp/forever-pois.lua \
   --quest-cache /tmp/wow-together-dungeon-quests \
-  --captured 2026-11-05
+  --captured 2026-11-07
 ```
 
 The importer rejects incomplete range coverage, truncated lists, invalid points,

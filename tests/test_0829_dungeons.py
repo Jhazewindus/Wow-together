@@ -2,12 +2,15 @@
 from pathlib import Path
 import sys
 import unittest
+import json
+import copy
 
 from test_addon import Client
 from test_050 import solo, dungeon
 from test_routes import catalogue, quest, map_canvas
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from build_quest_dataset import own_lua
+from import_warcraftdb import apply_corrections
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -22,7 +25,7 @@ class DungeonActionTests(unittest.TestCase):
             with self.subTest(quest_id=quest_id):
                 self.assertTrue(quest_data[quest_id]['prerequisitesRead'])
 
-        self.assertEqual(quest_data[6563]['previousQuest'], 6562)
+        self.assertNotIn('previousQuest', quest_data[6563])
         self.assertEqual(quest_data[6564]['previousQuest'], 6562)
         self.assertEqual(quest_data[6565]['previousQuest'], 6564)
         for quest_id in (78916, 78917):
@@ -44,6 +47,38 @@ class DungeonActionTests(unittest.TestCase):
             route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(group), False, False)
             self.assertFalse(route.entranceBlocked)
             self.assertTrue(any(stop.dungeonEntrance for stop in route.stops.values()))
+
+    def test_current_dungeon_lists_and_reviewed_prerequisites_are_shipped(self):
+        data = json.loads((ROOT / 'WowTogether' / 'DungeonData.json').read_text())
+        quest_data = own_lua(ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua', 'catalogue')['quests']
+        memberships = {ident for dungeon in data['dungeons'].values() for ident in dungeon['questIDs']}
+        self.assertEqual(len(memberships), 376)
+        self.assertTrue(all(ident in quest_data for ident in memberships))
+        for ident in (93404, 93604, 94968, 94984, 94997, 95789, 97130, 97197):
+            self.assertIn(ident, memberships)
+            self.assertTrue(quest_data[ident]['prerequisitesRead'])
+        self.assertEqual(quest_data[2842]['previousQuest'], 2841)
+        self.assertEqual(quest_data[93404]['previousQuest'], 93594)
+        self.assertEqual(quest_data[94984]['previousQuest'], 94907)
+        self.assertEqual(quest_data[94997]['previousQuest'], 94983)
+        self.assertNotIn('previousQuest', quest_data[6563])
+        self.assertTrue(quest_data[2846]['prerequisitesUnverified'])
+        self.assertTrue(quest_data[95682]['prerequisitesUnverified'])
+        self.assertEqual(quest_data[97291]['previousQuest'], 97290)
+        self.assertEqual(quest_data[97292]['previousQuest'], 97291)
+        unread = {ident for ident in memberships if not quest_data[ident].get('prerequisitesRead')}
+        self.assertEqual(unread, {7507})
+        starts = quest_data[97130]['starts']
+        self.assertEqual({p['entityID'] for p in starts}, {31439})
+        self.assertEqual({p['mapID'] for p in starts}, {1416})
+        reviewed = {6563: copy.deepcopy(quest_data[6563])}
+        apply_corrections(reviewed)
+        apply_corrections(reviewed)
+        self.assertNotIn('previousQuest', reviewed[6563])
+        audit = json.loads((ROOT / 'research' / 'dungeon-prerequisite-audit-2026-11-07' / 'audit.json').read_text())
+        self.assertEqual(audit['scope']['deniedQuestPages'], 17)
+        self.assertEqual(audit['scope']['genericCategoryPages'], [
+            'alcaz-prison', 'blackmaw-hold', 'shapers-terrace'])
 
     def test_list_refreshes_stale_faction_and_filters_all_incompatible_quests(self):
         c = solo()

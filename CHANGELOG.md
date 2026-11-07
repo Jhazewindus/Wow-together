@@ -1,5 +1,33 @@
 # Wow Together changelog
 
+## 0.8.88
+
+**ALL-DUNGEON QUEST LIST AND PREREQUISITE REVIEW**
+
+- Refresh all 28 dungeon categories against current Wowhead Forever lists. Add
+  the newly published Drowned City and Krol'dok Stronghold lists, plus new
+  quests in Blackrock Depths, Maraudon, Razorfen Downs and Zul'Farrak. Exclude
+  two category rows explicitly marked unused. The finder now has 376 validated
+  memberships, all present in the 5,333-quest catalogue.
+- Review current QuestieDB `5fba5d86` corrections. Complete the Lordaeron
+  Unending Torment chain through quests 97291 and 97292, and add series links
+  for new Maraudon and Krol'dok quests.
+- Check current Wowhead details, series and comments for all dungeon quest
+  records. Add the hidden Rig Wars prerequisite for Chief Engineer Scooty. Remove
+  the false Trouble in the Deeps prerequisite for The Essence of Aku'Mai;
+  Wowhead comments identify them as breadcrumbs, not a required chain.
+- Use a current comment plus Questie NPC facts to locate Ancient Gurubashi
+  Secrets (97130) at Archmage Timear outside Violet Hold in Dalaran.
+- Keep the conflicting/unnamed comment gates on Tiara of the Deep (2846) and
+  Open the Maw (95682) explicitly unverified, and identify inaccessible quest
+  7507 separately.
+- Keep denied detail pages, unnamed prerequisites, three generic category
+  pages, and quest pickup/objective locations without source coordinates marked
+  unknown. Captures, hashes and comment assessments are in
+  `research/dungeon-prerequisite-audit-2026-11-07/audit.json`.
+- Validation: all 1,814 host tests and 332 subtests pass; all 92 Lua files
+  compile under Lua 5.1. Fixed-guide audits and fingerprints pass unchanged.
+
 ## 0.8.87
 
 **BLACKFATHOM DEEPS QUEST PREREQUISITES**

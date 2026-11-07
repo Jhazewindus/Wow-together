@@ -7,12 +7,12 @@
     "https://github.com/Questie/QuestieDB"
   ],
   "summary": {
-    "count": 5307,
-    "detailed_quests": 364,
-    "with_starters": 4419,
+    "count": 5333,
+    "detailed_quests": 390,
+    "with_starters": 4421,
     "with_objectives": 2126,
     "with_turnins": 4597,
-    "with_prerequisites": 2575,
+    "with_prerequisites": 2580,
     "entities": {
       "npc": 13418,
       "object": 7043,
@@ -21,14 +21,16 @@
   },
   "zones": {
     "Unknown category": {
-      "quests": 4,
+      "quests": 6,
       "pickups": 2,
       "objectives": 2,
       "turnins": 2,
       "complete_locations": 2,
       "missing_quest_ids": [
         92521,
-        98471
+        98471,
+        93594,
+        94907
       ]
     },
     "battlegrounds/alterac-valley": {
@@ -3032,6 +3034,44 @@
         7063,
         8746,
         8762
+      ]
+    },
+    "dungeons/the-drowned-city": {
+      "quests": 8,
+      "pickups": 3,
+      "objectives": 0,
+      "turnins": 1,
+      "complete_locations": 0,
+      "missing_quest_ids": [
+        95775,
+        95776,
+        95787,
+        95788,
+        95789,
+        95791,
+        96774
+      ]
+    },
+    "dungeons/kroldok-stronghold": {
+      "quests": 13,
+      "pickups": 0,
+      "objectives": 0,
+      "turnins": 0,
+      "complete_locations": 0,
+      "missing_quest_ids": [
+        94968,
+        94972,
+        94973,
+        94974,
+        94975,
+        94980,
+        94981,
+        94982,
+        94983,
+        94984,
+        94997,
+        94998,
+        96771
       ]
     }
   },
@@ -14654,8 +14694,16 @@
     }
   ],
   "dungeon_prerequisite_audit": {
-    "path": "research/dungeon-prerequisite-audit-2026-11-06/audit.json",
-    "pages_captured": 341,
-    "confirmed_missing_links": 7
+    "captured": "2026-11-07",
+    "dungeon_quest_memberships": 376,
+    "accessible_detail_pages": 361,
+    "unavailable_pages": 17,
+    "added_catalogue_quests": 24,
+    "added_outdoor_prerequisite_records": 2,
+    "updated_by_latest_questiedb_commit": "5fba5d86641d1a64a787884e28e15ee16b115060",
+    "reviewed_comment_corrections": [
+      2842,
+      6563
+    ]
   }
 }

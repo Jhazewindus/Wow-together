@@ -20694,5 +20694,68 @@
       ]
     },
     "source": "Current QuestieDB Forever preQuestSingle lists the Horde and Alliance Elven Legends choices (7481 or 7482) for this Lorekeeper Lydros libram turn-in. Wowhead Forever quest 7481 comments independently describe Elven Legends as the prerequisite for these libram quests. Captured 2026-11-06; this quest page SHA-256 0c65e036673cd336e175f251cdf1f7aab1ff350bc7d9331beab1b99f5eceecf1; parent page hashes and QuestieDB source hash are in research/dungeon-prerequisite-audit-2026-11-06/audit.json."
+  },
+  {
+    "questID": 2842,
+    "title": "Chief Engineer Scooty",
+    "previousQuest": 2841,
+    "previousTitle": "Rig Wars",
+    "source": "Wowhead Forever comments 3155187 and 3278949 confirm Rig Wars must be accepted before Chief Engineer Scooty is offered; captured 2026-11-07."
+  },
+  {
+    "questID": 6563,
+    "title": "The Essence of Aku'Mai",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "previousQuest": 6562
+      },
+      "after": {
+        "previousQuest": null
+      }
+    },
+    "source": "Wowhead Forever comments 3221829 and 3221830 explicitly identify Trouble in the Deeps (6562) and The Essence of Aku\u2019Mai (6563) as breadcrumb-linked, not prerequisites; page SHA-256 f7758d3d660bad46a1380c2273151dc1a320aac8e7315edd23c5232ac008c4ad."
+  },
+  {
+    "questID": 93404,
+    "title": "Rot and Regret",
+    "previousQuest": 93594,
+    "previousTitle": "Word of the Woods",
+    "source": "Wowhead Forever series table on quest 93404 page, captured 2026-11-07; SHA-256 ad4328893e6849f8920839e9b843633fca1e73f125751f753e1904fac3fb7d3a."
+  },
+  {
+    "questID": 94984,
+    "title": "Tome of Twilight",
+    "previousQuest": 94907,
+    "previousTitle": "A Small Favor",
+    "source": "Wowhead Forever series table on quest 94984 page, captured 2026-11-07; SHA-256 f13d665086c3549e15db2fca30ea137aa5df62803c1b8485f98fc8843bdcb6f7."
+  },
+  {
+    "questID": 94997,
+    "title": "Lingering Essence",
+    "previousQuest": 94983,
+    "previousTitle": "Twilight Mementos",
+    "source": "Wowhead Forever series table on quest 94997 page, captured 2026-11-07; SHA-256 18c0be7125962e71f05a2e7bbe501560e03005a4e5c0debbad27374bd711eb87."
+  },
+  {
+    "questID": 2846,
+    "title": "Tiara of the Deep",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "prerequisitesUnverified": true
+      }
+    },
+    "source": "Wowhead comments 2956157, 2956161 and 2956163 conflict on whether Tabetha\u2019s Task is required for Tiara of the Deep; keep the prerequisite gate visibly unverified rather than inventing an edge."
+  },
+  {
+    "questID": 95682,
+    "title": "Open the Maw",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "prerequisitesUnverified": true
+      }
+    },
+    "source": "Wowhead comment 6440024 reports an unnamed prerequisite pickup near Hammerfall; comment 6440416 marks Dragonmaw Rumors (95663) as a breadcrumb. The actual required quest remains unidentified, so keep this gate unverified."
   }
 ]

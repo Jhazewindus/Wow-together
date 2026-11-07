@@ -1,7 +1,28 @@
 # Wow Together — friend test script
 
-For **0.8.87** — **BLACKFATHOM DEEPS QUEST PREREQUISITES**, World of Warcraft:
+For **0.8.88** — **ALL-DUNGEON QUEST REVIEW**, World of Warcraft:
 Forever.
+
+## All-dungeon quest review — 0.8.88
+
+1. Open the finder and check the refreshed lists for The Drowned City,
+   Krol'dok Stronghold, Blackrock Depths, Maraudon, Razorfen Downs and
+   Zul'Farrak. Confirm the new quest entries resolve to catalogue records.
+2. Check that Chief Engineer Scooty follows accepted Rig Wars, and that The
+   Essence of Aku'Mai does not require Trouble in the Deeps. Check the current
+   Unending Torment order through quest 97292.
+3. Review the three categories without a named public quest list, blocked
+   detail pages, and quests whose pickup/objective coordinates are unknown.
+   Their remaining gaps should be reported without invented route points.
+
+The current Wowhead capture covers 361 quest pages; 17 detail pages returned
+403. Twenty-five of 28 dungeon category pages are named lists; the other three
+are generic. The catalogue contains 5,333 quests and the finder has 376
+validated memberships. Parent quests 93594 and 94907 still lack published map
+stages, so their prerequisite links are known but not spatially guided. These
+source checks do not establish live quest offers or map rendering. Host
+verification: **1,814 tests and 332 subtests pass**; all **92 Lua files compile
+under Lua 5.1**. The fixed-guide audits and fingerprints remain unchanged.
 
 ## Blackfathom Deeps prerequisite review — 0.8.87
 

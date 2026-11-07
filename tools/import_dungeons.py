@@ -161,7 +161,8 @@ def combine(overview, pois, quest_cache, captured):
         key = path.stem
         if key not in records:
             raise ValueError('Unreviewed quest category: ' + key)
-        rows = list_rows(path.read_text())
+        rows = [row for row in list_rows(path.read_text())
+                if not row.get('name', '').lstrip().startswith('<UNUSED>')]
         if len(rows) >= 1000:
             raise ValueError('Truncated dungeon list')
         ids = [r['id'] for r in rows]
@@ -195,7 +196,7 @@ def combine(overview, pois, quest_cache, captured):
         'limitations': ['Dungeon level ranges are recommendations, not minimum entry or quest pickup requirements',
             'Overview chart/table takes precedence over its conflicting paragraphs; retest beta levels',
             'Published points mark entrance areas, not collision-safe cave paths or exact portals',
-            'Five new dungeon entrances and quest sets remain unspecified; no coordinates or membership are inferred'],
+            'Five newer Forever dungeon entrances remain unspecified; three category URLs have no named quest list, so their memberships remain unknown'],
         'dungeons': records}
     return records, metadata
 

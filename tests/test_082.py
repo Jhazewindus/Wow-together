@@ -346,9 +346,9 @@ end'''
 
     def test_latest_questiedb_changes_are_integrated_in_the_zone_catalogue(self):
         source=json.loads((ROOT/'tools/forever_source_manifest.json').read_text())
-        self.assertEqual(source['commit'],'3ac79c37f140b8eb343a28318b7a516b82802a86')
+        self.assertEqual(source['commit'],'5fba5d86641d1a64a787884e28e15ee16b115060')
         quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
-        self.assertEqual(len(quests),5307)
+        self.assertEqual(len(quests),5333)
         self.assertEqual(quests[91724]['requirements'][0]['quantity'],8)
         self.assertEqual(quests[93165]['requirements'][0]['quantity'],5)
         self.assertEqual([r['entityID'] for r in quests[99128]['requirements']],[285,735])
@@ -362,9 +362,11 @@ end'''
         self.assertEqual(quests[94775]['startRefs'][0]['entityID'],3600)
         self.assertEqual(quests[94775]['endRefs'][0]['entityID'],376)
         self.assertEqual(quests[98430]['startRefs'][0]['entityID'],272203)
+        self.assertEqual(quests[97291]['previousQuest'],97290)
+        self.assertEqual(quests[97292]['previousQuest'],97291)
         report=json.loads((ROOT/'WowTogether/QuestCatalogue.json').read_text())
         self.assertEqual((report['with_starters'],report['with_objectives'],report['with_turnins']),
-                         (4419,2126,4597))
+                         (4421,2126,4597))
 
     def test_all_prerequisites_are_required_for_pickup_and_compiled_before_child(self):
         c=guide_client(1);quests={i:world_quest(str(i)) for i in (900,901,902)}

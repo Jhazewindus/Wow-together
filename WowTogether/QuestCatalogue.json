@@ -1,7 +1,7 @@
 {
   "captured": "2026-11-07",
-  "count": 5307,
-  "detailed_quests": 364,
+  "count": 5333,
+  "detailed_quests": 390,
   "zones": [
     "eastern-kingdoms/alterac-mountains",
     "eastern-kingdoms/alterac-valley",
@@ -154,14 +154,14 @@
     }
   ],
   "detail_requests_stopped_after_denials": true,
-  "with_starters": 4419,
+  "with_starters": 4421,
   "with_objectives": 2126,
   "with_turnins": 4597,
-  "with_series": 940,
-  "with_prerequisites": 2575,
+  "with_series": 945,
+  "with_prerequisites": 2580,
   "repeatable_quests": 639,
-  "unverified_prerequisites": 18,
-  "incomplete_objective_locations": 1373,
+  "unverified_prerequisites": 851,
+  "incomplete_objective_locations": 1375,
   "area_ui_maps": {
     "40": 1436,
     "17": 1413,
@@ -10266,6 +10266,8 @@
     2203,
     2205,
     2459,
+    2842,
+    2846,
     2938,
     3095,
     3100,
@@ -10314,6 +10316,7 @@
     5902,
     6022,
     6395,
+    6563,
     6601,
     6821,
     6822,
@@ -10432,12 +10435,16 @@
     92748,
     92752,
     92819,
+    93404,
     94497,
     94499,
     94500,
     94501,
+    94984,
+    94997,
     95217,
     95328,
+    95682,
     96896,
     97331,
     98046,
@@ -11020,8 +11027,27 @@
     "rule": "current facts take precedence; prior reviewed fields fill omissions"
   },
   "dungeon_prerequisite_audit": {
-    "path": "research/dungeon-prerequisite-audit-2026-11-06/audit.json",
-    "pages_captured": 341,
-    "confirmed_missing_links": 7
+    "captured": "2026-11-07",
+    "dungeon_quest_memberships": 376,
+    "accessible_detail_pages": 361,
+    "unavailable_pages": 17,
+    "added_catalogue_quests": 24,
+    "added_outdoor_prerequisite_records": 2,
+    "updated_by_latest_questiedb_commit": "5fba5d86641d1a64a787884e28e15ee16b115060",
+    "reviewed_comment_corrections": [
+      2842,
+      6563
+    ]
+  },
+  "latest_questie_review": {
+    "commit": "5fba5d86641d1a64a787884e28e15ee16b115060",
+    "changedDungeonQuestIDs": [
+      97291,
+      97292
+    ],
+    "files": [
+      "src/corrections/Forever/foreverQuestFixes.lua"
+    ],
+    "note": "Applied only the newly verified Unending Torment prerequisites; unrelated current source fields were not rewritten."
   }
 }

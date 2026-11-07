@@ -106,7 +106,7 @@ class DungeonDataTests(unittest.TestCase):
                         turn_in = positions.get(parent, {}).get('t')
                         if pickup and turn_in:
                             self.assertLess(turn_in, pickup, (faction, group.key, parent, child))
-        self.assertEqual(built, 41)
+        self.assertEqual(built, 45)
         self.assertGreater(entrances, 10)
 
     def test_wow_identity_bit_masks_allow_all_41_faction_dungeon_routes_to_finish(self):
@@ -127,7 +127,7 @@ class DungeonDataTests(unittest.TestCase):
                     last = route.stops[len(route.stops)] if len(route.stops) else None
                     self.assertTrue(last and last.dungeonEntrance,
                                     (faction, group.key, route.pendingReason))
-        self.assertEqual(built, 41)
+        self.assertEqual(built, 45)
 
     def test_cross_dungeon_prerequisite_routes_its_instance_before_the_goal_dungeon(self):
         c = shipped(60)
@@ -246,8 +246,10 @@ class DungeonDataTests(unittest.TestCase):
             self.assertTrue(set(source['questIDs']).issubset(ids))
             self.assertTrue(all(c.ns.CatalogueQuest(id) is not None for id in source['questIDs']))
             count += len(source['questIDs'])
-        self.assertEqual(count, 349)
-        self.assertEqual(c.ns.catalogue.count, 5307)
+        self.assertEqual(count, 376)
+        self.assertNotIn(2971, {i for d in data['dungeons'].values() for i in d['questIDs']})
+        self.assertNotIn(6201, {i for d in data['dungeons'].values() for i in d['questIDs']})
+        self.assertEqual(c.ns.catalogue.count, 5333)
         # Explicit zone identity folds this formerly separate dungeon card in.
         self.assertIn(92401, list(gs['ruins-of-lordaeron'].ids.values()))
         self.assertIn(92401, data['dungeons']['ruins-of-lordaeron']['questIDs'])
@@ -295,11 +297,14 @@ class DungeonDataTests(unittest.TestCase):
         self.assertEqual(len(gs['blackrock-spire'].definition.wings), 2)
         self.assertEqual(gs['scarlet-monastery'].level, 28)
         self.assertEqual(gs['scarlet-monastery'].maxLevel, 45)
-        for key in ('blackmaw-hold', 'kroldok-stronghold', 'the-drowned-city', 'alcaz-prison', 'shapers-terrace'):
+        for key in ('blackmaw-hold', 'alcaz-prison', 'shapers-terrace'):
             self.assertIsNone(c.ns.DungeonEntrance(gs[key]))
             self.assertIsNone(c.ns.DungeonGuide(gs[key]))
             self.assertIn('not captured', c.ns.DungeonCollectionSummary(gs[key]))
             self.assertFalse(c.ns.DungeonCollectionReadiness(gs[key]).levelReady)
+        for key in ('kroldok-stronghold', 'the-drowned-city'):
+            self.assertIsNone(c.ns.DungeonEntrance(gs[key]))
+            self.assertIsNotNone(c.ns.DungeonGuide(gs[key]))
 
     def test_levels_are_information_not_a_new_pickup_gate(self):
         c = solo()
@@ -314,7 +319,7 @@ class DungeonDataTests(unittest.TestCase):
     def test_sources_and_generator_fail_closed_for_an_incomplete_overview(self):
         data = json.loads((ROOT / 'WowTogether/DungeonData.json').read_text())
         self.assertEqual(data['overview']['url'], 'https://www.wowhead.com/forever/guide/dungeons-overview-locations-details')
-        self.assertEqual(len(data['quest_categories']), 23)
+        self.assertEqual(len(data['quest_categories']), 25)
         self.assertEqual(data['entrance_source']['license'], 'MIT')
         self.assertEqual(data['level_conflicts']['city-of-dalaran']['chart'], [28, 33])
         import tempfile
