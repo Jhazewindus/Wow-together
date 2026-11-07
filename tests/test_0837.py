@@ -65,8 +65,9 @@ class CraftBatchTests(unittest.TestCase):
     def test_main_menu_has_requested_order_and_switches_views(self):
         c = crafting()
         menu = c.ns.ui.viewChoice
-        self.assertEqual(len(menu.entries), 6)
-        expected = [('recommended', 'Recommended'), ('guides', 'Leveling'), ('professions', 'Professions'), ('dungeons', 'Dungeons'),
+        self.assertEqual(len(menu.entries), 7)
+        expected = [('recommended', 'Recommended'), ('guides', 'Leveling'), ('classquests', 'Class quests'),
+                    ('professions', 'Professions'), ('dungeons', 'Dungeons'),
                     ('review', 'Quest log'), ('library', 'All quests')]
         for i, (key, title) in enumerate(expected, 1):
             self.assertEqual(menu.entries[i][1], key)

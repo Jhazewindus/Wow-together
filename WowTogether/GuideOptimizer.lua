@@ -14,7 +14,11 @@ local function resetMetrics(metrics)
     for mapID in pairs(metrics) do metrics[mapID] = nil end
 end
 
-local function activeForParty(id, readyOnly)
+local function activeForParty(id, readyOnly, personal)
+    if personal then
+        return ns.active[id] ~= nil and (not readyOnly or ns.QuestProgressReady(ns.self, id) == true
+            or ns.readyToTurnIn[id] == true)
+    end
     for _, person in ipairs(ns.PartyProfiles()) do
         local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
         if active and active[id] and (not readyOnly or ns.QuestProgressReady(person.key, id) == true
@@ -40,7 +44,7 @@ local function prerequisiteRecords(guide)
             local parents, added = {}, {}
             local function add(parent)
                 if ns.GuideInteger(parent) and parent > 0 and parent ~= id and not added[parent]
-                    and ns.CatalogueCompletion(ns.self, parent) ~= true then
+            and (guide.personal and ns.Completed(parent) ~= true or not guide.personal and ns.CatalogueCompletion(ns.self, parent) ~= true) then
                     parents[#parents + 1], added[parent] = parent, true
                 end
             end
@@ -87,20 +91,21 @@ local function availableTasks(guide)
     for _, record in ipairs(prerequisiteRecords(guide)) do
         if ns.ClassQuestEnabled(record.id) then records[#records + 1] = record end
     end
-    local focus = ns.GuideFocus(records)
+    local focus = guide.personal and ns.self or ns.GuideFocus(records)
     guide.focusKey = focus
     for _, record in ipairs(records) do
-        if ns.PartyQuestFinished(record.id) then complete = complete + 1
-        elseif not ns.GuideQuestSkipped(record.id) and ns.FocusCanStartRecord(record, focus)
-            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id, true)
+        local finished = guide.personal and ns.Completed(record.id) == true or not guide.personal and ns.PartyQuestFinished(record.id)
+        if finished then complete = complete + 1
+        elseif not ns.GuideQuestSkipped(record.id) and (guide.personal or ns.FocusCanStartRecord(record, focus))
+            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id, true, guide.personal)
                 or guide.catchupRequired and guide.catchupRequired[record.id]) then
             local candidate = live[record.id] or record
-            local stages = ns.LevelingRouteStages(candidate, focus)
+            local stages = ns.LevelingRouteStages(candidate, focus, guide.personal)
             if #stages > 0 then
                 local first = stages[1]
                 tasks[#tasks + 1] = {id = record.id, stages = stages, first = first,
                     xp = ns.CatalogueQuest(record.id) and ns.CatalogueQuest(record.id).xp or 0,
-                    active = activeForParty(record.id), ready = first.kind == "t"}
+                    active = activeForParty(record.id, false, guide.personal), ready = first.kind == "t"}
             else
                 missing = missing + 1
                 local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)

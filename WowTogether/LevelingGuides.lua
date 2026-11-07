@@ -101,6 +101,11 @@ local function recordEnabled(id)
         and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
 end
 
+local function classLineRecordEnabled(id)
+    return not ns.IsRetiredQuest(id) and not ns.IsRepeatableQuest(id)
+        and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
+end
+
 local function browseEnabled(id)
     return recordEnabled(id) and ns.ClassQuestEnabled(id)
 end
@@ -166,29 +171,31 @@ local function rebuildIndex()
     for _, entry in pairs(entries) do table.sort(entry.ids) end
 end
 
-local function addPrerequisites(records, seen, id, depth)
+local function addPrerequisites(records, seen, id, depth, includeClassActivities)
     if depth > 24 or #records >= 512 then return end
     for _, previous in ipairs(ns.CataloguePrerequisiteIDs(id)) do
-        if not seen[previous] and ns.CatalogueQuest(previous) and recordEnabled(previous) then
+        local allowed = includeClassActivities and classLineRecordEnabled(previous) or recordEnabled(previous)
+        if not seen[previous] and ns.CatalogueQuest(previous) and allowed then
             seen[previous] = true
-            addPrerequisites(records, seen, previous, depth + 1)
+            addPrerequisites(records, seen, previous, depth + 1, includeClassActivities)
             records[#records + 1] = ns.CatalogueRecord(previous)
         end
     end
 end
 
-local function addChain(records, seen, id, ceiling)
+local function addChain(records, seen, id, ceiling, includeClassActivities)
     local quest = ns.CatalogueQuest(id)
-    if #records >= 512 or seen[id] or not quest or not recordEnabled(id) then return end
+    local allowed = includeClassActivities and classLineRecordEnabled(id) or recordEnabled(id)
+    if #records >= 512 or seen[id] or not quest or not allowed then return end
     -- Nearby continuations can finish a chain across a bracket boundary. Do
     -- not pull the rest of the zone's higher-level content into this section.
     if ceiling and ((quest.level or 0) > ceiling or (quest.minLevel or 0) > ceiling) then return end
     seen[id] = true
-    addPrerequisites(records, seen, id, 0)
+    addPrerequisites(records, seen, id, 0, includeClassActivities)
     records[#records + 1] = ns.CatalogueRecord(id)
     local after = false
     for _, nextID in ipairs(quest.series or {}) do
-        if after then addChain(records, seen, nextID, ceiling) end
+        if after then addChain(records, seen, nextID, ceiling, includeClassActivities) end
         if nextID == id then after = true end
     end
 end
@@ -245,6 +252,49 @@ function ns.LevelingGuideRecords(key)
     local entry = base and entries[base]
     if not entry then return end
     return low and sectionRecords(entry, low, high) or entryRecords(entry)
+end
+
+-- Build one character-specific class line from its selected step. The quest
+-- database's previous/prerequisite links provide earlier work; series links
+-- extend the route through later steps. Class, faction, race and repeatable
+-- checks remain in force, while class questlines may legitimately enter
+-- dungeons and raids that ordinary leveling guides omit.
+function ns.BuildClassQuestGuide(id)
+    local quest = ns.CatalogueQuest(id)
+    if not quest or not ns.IsClassQuest(id) or not ns.ClassQuestEnabled(id)
+        or ns.CatalogueClassCategoryAllowed(id, ns.profile) ~= true
+        or ns.CatalogueIdentityAllowed(id, ns.profile) ~= true then return end
+    local records, seen = {}, {}
+    addChain(records, seen, id, nil, true)
+    if #records == 0 then return end
+    local rootID = quest.seriesRoot or id
+    local root = ns.CatalogueQuest(rootID)
+    local classLabel = ns.ClassQuestLabel(id) or "Class quest"
+    local className = string.match(classLabel, "^Class quest:%s*(.+)$") or "Class"
+    local lineName = quest.seriesName or root and root.title or quest.title
+    local low, high, mapID = 255, 1, 0
+    for _, record in ipairs(records) do
+        local item = ns.CatalogueQuest(record.id)
+        local level = item and (item.minLevel or item.level) or 0
+        if level > 0 then low, high = math.min(low, level), math.max(high, level) end
+        if mapID == 0 then
+            local point = item and item.starts and item.starts[1]
+            mapID = point and point.mapID or record.mapID or 0
+        end
+    end
+    if low == 255 then low = 1 end
+    local query = ns.NewQuestQuery()
+    local guide = {key = "class-questline:" .. rootID, title = className .. " questline • " .. lineName,
+        zone = className .. " class quests", mode = "chain", kind = "Class questline", records = records,
+        target = records[1], mapID = mapID, homeMapID = mapID, focusKey = ns.self,
+        rangeLow = 1, rangeHigh = 60, mainLevelLow = low, mainLevelHigh = math.max(low, high),
+        level = ns.PartyLevelFloor(query), fullGuide = true, classQuestScope = true, personal = true,
+        fixedRoute = false, profilesReady = true, hasPoint = false,
+        reason = #records .. " linked class quest steps; the route follows known prerequisites and series order.",
+        destination = "Follow the class questline in order."}
+    guide.coverage = ns.GuideLocationCoverage(records)
+    guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
+    return guide
 end
 
 local function coreRange(entry)

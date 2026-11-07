@@ -1,5 +1,27 @@
 # Wow Together — friend test script
 
+For **0.8.84** — **CLASS QUESTLINES**, World of Warcraft: Forever.
+
+## Class quest browser — 0.8.84
+
+1. Open **Class quests** and confirm quests for your class appear across zones,
+   dungeons and raids. Quests that pass known level, identity and prerequisite
+   checks should appear first with **Available now**; later quests remain listed
+   with their blocking reason.
+2. Start a line from a later quest. Confirm recorded prerequisites and series
+   steps appear in order and the route is personal to your character. Complete a
+   parent quest and confirm its follow-up becomes available.
+3. Check a quest with an unknown pickup or objective location. The guide should
+   name the missing work without inventing a map point. Turn **Include class
+   quests** off in Settings and confirm ordinary leveling guides still hide
+   class-quest steps.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,811 tests and 319 subtests**. All **92 Lua files compile under Lua
+5.1**. Tests cover the class-specific browser, current availability ordering,
+prerequisite messages and personal classline progression. They do not confirm
+live NPC offers or map points.
+
 For **0.8.83** — **DUNGEON FINDER QUEST COVERAGE**, World of Warcraft: Forever.
 
 ## Dungeon finder quest lists — 0.8.83

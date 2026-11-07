@@ -1,6 +1,20 @@
 # Wow Together changelog
 
-## Unreleased
+## 0.8.84
+
+**CLASS QUESTLINES**
+
+- Add a dedicated Class quests browser that lists all catalogue quests matching
+  the character's class, including class-restricted quests filed under zones,
+  dungeons and raids.
+- Start a personal route from any known class quest. Follow recorded
+  prerequisites and later series steps in order; preserve faction, race, class,
+  level and completion checks. Show quests currently available at the top and
+  explain recorded prerequisite blockers for later steps; leave missing
+  locations unresolved.
+- Enforce known class identity from `classes/<class>` source categories when a
+  quest record lacks its own class mask. Keep the existing optional class-quest
+  toggle for ordinary leveling guides.
 
 ## 0.8.83
 

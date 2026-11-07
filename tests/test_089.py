@@ -63,6 +63,74 @@ def resume(c, legacy=False):
 
 
 class OptionalClassGuideTests(unittest.TestCase):
+    def test_class_category_paths_filter_the_class_view_without_a_mask(self):
+        c = class_client()
+        classes = {1: 'warrior', 2: 'paladin', 3: 'hunter', 4: 'rogue', 5: 'priest',
+                   7: 'shaman', 8: 'mage', 9: 'warlock', 11: 'druid'}
+        quests = {1000 + class_id: world_quest('Class ' + name, level=12, xp=100,
+                  classMask=0, categoryPath='classes/' + name)
+                  for class_id, name in classes.items()}
+        catalogue(c, quests)
+        for class_id, name in classes.items():
+            with self.subTest(class_name=name):
+                c.ns.profile.classID = class_id
+                self.assertTrue(c.ns.CatalogueClassCategoryAllowed(1000 + class_id, c.ns.profile))
+                other_class = next(value for value in classes if value != class_id)
+                c.ns.profile.classID = other_class
+                self.assertFalse(c.ns.CatalogueClassCategoryAllowed(1000 + class_id, c.ns.profile)[0])
+
+    def test_class_quests_view_lists_only_the_current_class_across_zones(self):
+        c = class_client(); identity(c); c.ns.SetOption('classQuests', True)
+        catalogue(c, {
+            900: world_quest('Shaman line', level=12, xp=200, classMask=0, categoryPath='classes/shaman'),
+            901: world_quest('Mage line', level=12, xp=200, classMask=0, categoryPath='classes/mage'),
+            902: world_quest('Ordinary quest', level=12, xp=200, classMask=0, categoryPath='kalimdor/test-coast'),
+        })
+        c.ns.SetFilter('classquests')
+        self.assertEqual({item.id for item in c.ns.LibraryItems().values()}, {900})
+        self.assertEqual(c.ns.LibraryItems()[1].quest.title, 'Shaman line')
+        c.ns.Render()
+        self.assertEqual(c.ns.ui.visibleCards, 1)
+        self.assertEqual(c.ns.ui.cards[1].detailsButton.caption.GetText(c.ns.ui.cards[1].detailsButton.caption),
+                         'Start questline')
+
+    def test_class_quests_put_available_steps_first_and_label_them(self):
+        c = class_client(); identity(c); c.ns.SetOption('classQuests', True)
+        catalogue(c, {
+            900: world_quest('Shaman Initiation', level=12, xp=200, classMask=0,
+                categoryPath='classes/shaman', seriesRoot=900, series=[900, 901]),
+            901: world_quest('Shaman Trial', level=12, xp=200, classMask=0,
+                categoryPath='classes/shaman', previousQuest=900, seriesRoot=900, series=[900, 901]),
+        })
+        c.ns.SetFilter('classquests'); c.ns.Render()
+        items = c.ns.LibraryItems()
+        self.assertEqual([item.id for item in items.values()], [900, 901])
+        self.assertTrue(items[1].availableNow)
+        self.assertFalse(items[2].availableNow)
+        self.assertIn('Available now', c.ns.ui.cards[1].reason.GetText(c.ns.ui.cards[1].reason))
+        self.assertIn('Finish Shaman Initiation first', c.ns.ui.cards[2].reason.GetText(c.ns.ui.cards[2].reason))
+
+    def test_class_questline_routes_the_full_known_series_for_the_current_class(self):
+        c = class_client(); identity(c); c.ns.SetOption('classQuests', True)
+        catalogue(c, {
+            900: world_quest('Shaman Initiation', level=12, xp=200, classMask=0,
+                categoryPath='classes/shaman', seriesRoot=900, seriesName='Shaman Initiation', series=[900, 901]),
+            901: world_quest('Shaman Trial', level=12, xp=200, classMask=0,
+                categoryPath='classes/shaman', previousQuest=900, seriesRoot=900,
+                seriesName='Shaman Initiation', series=[900, 901]),
+        })
+        guide = c.ns.BuildClassQuestGuide(900)
+        self.assertEqual(guide.mode, 'chain')
+        self.assertTrue(guide.personal)
+        self.assertEqual([record.id for record in guide.records.values()], [900, 901])
+        first = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual({stop.id for stop in first.stops.values()}, {900})
+        c.lua.globals().finished[900] = True
+        later = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual({stop.id for stop in later.stops.values()}, {901})
+        c.ns.profile.classID = 8
+        self.assertIsNone(c.ns.BuildClassQuestGuide(900))
+
     def test_disabled_class_work_remains_in_compiled_scope_but_not_route(self):
         c = class_client(); g = zone(c)
         self.assertFalse(c.ns.Option('classQuests'))

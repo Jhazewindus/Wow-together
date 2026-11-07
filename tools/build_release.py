@@ -84,6 +84,11 @@ the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.84 CLASS QUESTLINES adds a class quest browser that puts currently eligible
+quests first and explains known prerequisite blockers. Start a personal route to
+follow recorded class quest prerequisites and series steps. Missing locations
+remain unresolved. See CHANGELOG.md and TESTING.md.
+
 0.8.83 DUNGEON FINDER QUEST COVERAGE adds eight Method-listed dungeon quests
 missing from Wowhead categories: seven for City of Dalaran and one for Hall of
 Thanes. Five newer dungeons remain without dedicated guide pages or confirmed

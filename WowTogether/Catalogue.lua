@@ -76,6 +76,29 @@ function ns.CatalogueAlternativeTaken(id, key, query)
     end
 end
 
+local classCategoryIDs = {warrior = 1, paladin = 2, hunter = 3, rogue = 4, priest = 5,
+    ["death-knight"] = 6, shaman = 7, mage = 8, warlock = 9, monk = 10, druid = 11,
+    ["demon-hunter"] = 12, evoker = 13}
+
+function ns.CatalogueClassCategoryID(id)
+    local quest = ns.CatalogueQuest(id)
+    local path = quest and quest.categoryPath
+    local slug = type(path) == "string" and string.match(path, "^classes/([%w%-]+)$")
+    return slug and classCategoryIDs[slug]
+end
+
+function ns.CatalogueClassCategoryAllowed(id, profile)
+    local categoryClass = ns.CatalogueClassCategoryID(id)
+    if not categoryClass then return true end
+    local classID = profile and profile.classID
+    if not ns.GuideInteger(classID, 255) or classID <= 0 then return nil, "Waiting for class." end
+    if classID == categoryClass then return true end
+    local names = {[1] = "Warrior", [2] = "Paladin", [3] = "Hunter", [4] = "Rogue", [5] = "Priest",
+        [6] = "Death Knight", [7] = "Shaman", [8] = "Mage", [9] = "Warlock", [10] = "Monk",
+        [11] = "Druid", [12] = "Demon Hunter", [13] = "Evoker"}
+    return false, "A " .. (names[categoryClass] or "class") .. " class requirement."
+end
+
 function ns.CatalogueIdentityAllowed(id, profile)
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end
@@ -345,8 +368,10 @@ function ns.LibraryItems()
         libraryIndex, indexedCatalogue = {}, ns.catalogue
         for id, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
             local zone = ns.CatalogueZone(quest)
+            local class = ns.ClassQuestLabel(id) or ""
             libraryIndex[#libraryIndex + 1] = {id = id, quest = quest, zone = zone,
-                zoneKey = quest.mapID and ("map:" .. quest.mapID) or ("zone:" .. zone), search = string.lower(quest.title .. " " .. zone)}
+                zoneKey = quest.mapID and ("map:" .. quest.mapID) or ("zone:" .. zone),
+                search = string.lower(quest.title .. " " .. zone .. " " .. class)}
         end
         table.sort(libraryIndex, function(a, b)
             if (a.quest.level or 0) ~= (b.quest.level or 0) then return (a.quest.level or 0) < (b.quest.level or 0) end
@@ -356,12 +381,19 @@ function ns.LibraryItems()
     local query = string.lower(ns.librarySearch or "")
     local quests, zones = {}, {}
     local low, high = ns.LibraryLevelRange()
+    local classOnly = ns.filter == "classquests"
     for _, item in ipairs(libraryIndex) do
         local quest, zone, zoneKey = item.quest, item.zone, item.zoneKey
         local level = quest.level
-        if ns.CatalogueIdentityAllowed(item.id, ns.profile) ~= false and (not low or (level and level >= low and level <= high)) then
+        local identity = ns.CatalogueIdentityAllowed(item.id, ns.profile)
+        local classCategoryAllowed = not classOnly or ns.CatalogueClassCategoryAllowed(item.id, ns.profile) == true
+        if (classOnly and ns.IsClassQuest(item.id) and identity == true and classCategoryAllowed
+            or not classOnly and identity ~= false)
+            and (not low or (level and level >= low and level <= high)) then
+          if classOnly then item.availableNow = ns.CatalogueAllowed(item.id, ns.profile, ns.self) == true end
           if query ~= "" then
             if string.find(item.search, query, 1, true) then quests[#quests + 1] = item end
+          elseif classOnly then quests[#quests + 1] = item
           elseif ns.libraryZone == zoneKey then quests[#quests + 1] = item
           elseif not ns.libraryZone then
             local group = zones[zoneKey]
@@ -371,7 +403,14 @@ function ns.LibraryItems()
           end
         end
     end
-    if not ns.libraryZone and query == "" then
+    if classOnly then
+        table.sort(quests, function(a, b)
+            if a.availableNow ~= b.availableNow then return a.availableNow end
+            if (a.quest.level or 0) ~= (b.quest.level or 0) then return (a.quest.level or 0) < (b.quest.level or 0) end
+            return a.id < b.id
+        end)
+    end
+    if not classOnly and not ns.libraryZone and query == "" then
         local result = {}
         for _, zone in pairs(zones) do result[#result + 1] = zone end
         table.sort(result, function(a, b)

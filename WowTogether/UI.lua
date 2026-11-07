@@ -90,7 +90,7 @@ local function searchBox(parent, hint)
 end
 
 local function scrollTop(filter)
-    return filter == "library" and -246 or filter == "guides" and -214 or -150
+    return (filter == "library" or filter == "classquests") and -246 or filter == "guides" and -214 or -150
 end
 ns.UIEditBox = searchBox
 
@@ -108,9 +108,18 @@ end
 function ns.SetFilter(filter)
     if not ns.PartyFeaturesEnabled() and ns.IsPartyView(filter) then filter = "guides" end
     ns.filter = filter
+    if filter == "classquests" then
+        ns.libraryZone, ns.libraryMapID, ns.libraryPage = nil, nil, 1
+        ns.librarySearch, ns.librarySearchDraft = "", ""
+        ns.librarySearchGeneration = (ns.librarySearchGeneration or 0) + 1
+        if ns.ui.librarySearch then ns.ui.librarySearch:SetText("") end
+    end
     ns.ui.scroll:SetVerticalScroll(0)
     if ns.ui.librarySearch then
-        for _, control in ipairs(ns.ui.libraryControls) do control:SetShown(filter == "library") end
+        for _, control in ipairs(ns.ui.libraryControls) do
+            if control == ns.ui.libraryBack then control:SetShown(filter == "library" and ns.libraryZone ~= nil)
+            else control:SetShown(filter == "library" or filter == "classquests") end
+        end
     end
     for _, control in ipairs(ns.ui.guideControls or {}) do control:SetShown(filter == "guides") end
     ns.ui.scroll:ClearAllPoints()
@@ -187,8 +196,8 @@ function ns.CreateUI()
     ns.ui.party:SetHeight(16)
     ns.ui.party:SetWordWrap(false)
     ns.ui.party:SetJustifyV("TOP")
-    local filters = {{"recommended", "Recommended"}, {"guides", "Leveling"}, {"professions", "Professions"}, {"dungeons", "Dungeons"},
-        {"review", "Quest log"}, {"library", "All quests"}}
+    local filters = {{"recommended", "Recommended"}, {"guides", "Leveling"}, {"classquests", "Class quests"},
+        {"professions", "Professions"}, {"dungeons", "Dungeons"}, {"review", "Quest log"}, {"library", "All quests"}}
     ns.ui.viewChoice = ns.UIDropdown(window, filters, 200, ns.SetFilter)
     ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter)
     ns.ui.viewDescription = label(window, nil, 11, colors.muted)
@@ -448,7 +457,9 @@ local function makeCard()
         if card.activity then card.activity.click()
         elseif card.libraryItem then
             local item = card.libraryItem
-            if item.zoneKey then ns.OpenLibraryZone(item.zoneKey, item.mapID)
+            if item.id and ns.IsClassQuest(item.id) and card.guide and card.guide.fullGuide then
+                ns.ShowGuideOnMap(card.guide)
+            elseif item.zoneKey then ns.OpenLibraryZone(item.zoneKey, item.mapID)
             elseif card.guide and card.guide.hasPoint then ns.ShowGuideOnMap(card.guide)
             else ns.ShowQuestDetails(item.id) end
         elseif card.guide then
@@ -461,6 +472,9 @@ local function makeCard()
     card.detailsButton = button(card, "Quest details", 116, function()
         if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
         local id = card.libraryItem and card.libraryItem.id or (card.guide and card.guide.target.id)
+        if card.libraryItem and id and ns.IsClassQuest(id) and card.guide and card.guide.fullGuide then
+            ns.RequestStartRoute(card.guide); return
+        end
         if id then ns.ShowQuestDetails(id) end
     end, true)
     card.buyButton = button(card, "Buy list", 96, function()
@@ -551,6 +565,7 @@ function ns.Render(queryContext, routeUpdated)
     end
     queryContext = queryContext or ns.NewQuestQuery()
     ns.ui.viewDescription:SetText(ns.filter == "recommended" and "Suggestions for your character, ready when you are."
+        or ns.filter == "classquests" and "Browse your class's quests and start a linked questline."
         or partyEnabled and "Choose a guide or explore your party's progress." or "Choose a solo guide or browse quests.")
     local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
     local synced, shared, own = 1, 0, 0
@@ -563,12 +578,14 @@ function ns.Render(queryContext, routeUpdated)
     ns.ui.hint:SetText(ns.filter == "recommended" and "Pick your next adventure, or continue your current guide."
         or ns.filter == "guides"
         and "Select a guide to preview its quests."
+        or ns.filter == "classquests" and "Choose a quest to follow its known prerequisites and class questline."
         or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
         or ns.filter == "professions" and "Choose a profession to plan crafting, materials and training."
         or "Choose a quest to see its route or requirements.")
     if not routeUpdated and ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
-    ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
-    ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
+    local libraryView = ns.filter == "library" or ns.filter == "classquests"
+    ns.ui.metrics[2].caption:SetText(libraryView and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
+    ns.ui.metrics[2].value:SetText(tostring(libraryView and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
     ns.ui.metrics[3].value:SetText(tostring(own))
     local peers = {"You" .. (ns.profile and ns.profile.level > 0 and (" • Lv " .. ns.profile.level) or " • level pending")}
     for _, name in ipairs(partyEnabled and ns.partyNames or {}) do
@@ -600,10 +617,11 @@ function ns.Render(queryContext, routeUpdated)
     end
     local visible, top = 0, 0
     local display = {}
-    if ns.filter == "library" then
+    if libraryView then
         local items, total, pages = ns.LibraryPageItems()
         for _, item in ipairs(items) do display[#display + 1] = {libraryItem = item} end
         ns.ui.libraryCount:SetText(total .. " results • Page " .. ns.libraryPage .. " / " .. pages .. " • Enter or pause to search")
+        ns.ui.libraryBack:SetShown(ns.filter == "library" and ns.libraryZone ~= nil)
         ns.ui.libraryPrev:SetEnabled(ns.libraryPage > 1)
         ns.ui.libraryNext:SetEnabled(ns.libraryPage < pages)
         for _, chip in ipairs(ns.ui.levelButtons) do chip:SetBackdropBorderColor(unpack(chip.levelKey == ns.libraryLevel and colors.gold or colors.border)) end
@@ -653,9 +671,12 @@ function ns.Render(queryContext, routeUpdated)
     for _, item in ipairs(display) do
         local row, suggestion, guide, libraryItem, activity = item.row, item.suggestion, item.guide, item.libraryItem, item.activity
         if libraryItem and libraryItem.id then
-            local record = ns.CatalogueRecord(libraryItem.id)
-            guide = {key = "quest:" .. libraryItem.id, title = libraryItem.quest.title, records = {record}, target = record, focusKey = ns.self,
-                personal = ns.IsProfessionQuest(libraryItem.id)}
+            guide = ns.IsClassQuest(libraryItem.id) and ns.BuildClassQuestGuide(libraryItem.id)
+            if not guide then
+                local record = ns.CatalogueRecord(libraryItem.id)
+                guide = {key = "quest:" .. libraryItem.id, title = libraryItem.quest.title, records = {record}, target = record, focusKey = ns.self,
+                    personal = ns.IsProfessionQuest(libraryItem.id)}
+            end
             local plan = ns.BuildGuideRoute(guide, false)
             guide.hasPoint = #plan.stops > 0
         end
@@ -713,9 +734,14 @@ function ns.Render(queryContext, routeUpdated)
             if libraryItem.id then
                 local quest = libraryItem.quest
                 local _, reason = ns.CatalogueAllowed(libraryItem.id, ns.profile, ns.self, queryContext)
-                card.reason:SetText("Requires level " .. (quest.minLevel or "?") .. " • " .. (quest.side or "Faction unknown")
-                    .. "\n" .. (reason or (quest.starts and ("Start: " .. quest.starts[1].name) or "Quest giver location unavailable.")))
-                card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
+                local readiness = ns.filter == "classquests" and libraryItem.availableNow and "Available now"
+                    or "Requires level " .. (quest.minLevel or "?") .. " • " .. (quest.side or "Faction unknown")
+                card.reason:SetText(readiness
+                    .. "\n" .. (guide.kind == "Class questline" and (#guide.records .. " linked quest steps • ") or "")
+                    .. (reason or (quest.starts and ("Start: " .. quest.starts[1].name) or "Quest giver location unavailable.")))
+                card.mapButton.caption:SetText(guide.kind == "Class questline" and (guide.hasPoint and "Show line" or "View details")
+                    or (guide.hasPoint and "Show route" or "View details"))
+                if guide.kind == "Class questline" then card.detailsButton.caption:SetText("Start questline") end
             else
                 card.reason:SetText(libraryItem.count .. " quests")
                 card.mapButton.caption:SetText("Browse quests")
@@ -799,7 +825,8 @@ function ns.Render(queryContext, routeUpdated)
         ns.ui.metrics[2].value:SetText(tostring(visible))
     end
     ns.ui.empty:SetShown(visible == 0)
-    ns.ui.empty:SetText(ns.filter == "library" and "No matching quests.\nTry a quest or zone name."
+    ns.ui.empty:SetText(ns.filter == "classquests" and "No class quests match this character or search.\nCheck your class and clear the search to browse all of its quests."
+        or ns.filter == "library" and "No matching quests.\nTry a quest or zone name."
         or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
         or (ns.filter == "guides" and "No zone guides match this bracket and search.\nChoose another bracket or clear the search to browse future guides."
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
