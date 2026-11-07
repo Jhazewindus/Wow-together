@@ -1,20 +1,30 @@
 # Wow Together changelog
 
+## 0.8.85
+
+**UNIFIED CLASS QUEST GUIDE**
+
+- Replace the separate class quest cards with one **Start class guide** action
+  that routes through all catalogue class quests for the character, across
+  zones, dungeons and raids.
+- Keep recorded prerequisites and series steps in order, and continue the same
+  personal guide as quests are completed. If no quest can start because of a
+  minimum-level gate, say which level to reach next.
+- Keep faction, race and class checks in force; keep the optional class-quest
+  toggle for ordinary leveling guides. Leave missing quest locations unknown.
+
 ## 0.8.84
 
 **CLASS QUESTLINES**
 
-- Add a dedicated Class quests browser that lists all catalogue quests matching
+- Add a dedicated Class quests browser that lists catalogue quests matching
   the character's class, including class-restricted quests filed under zones,
-  dungeons and raids.
-- Start a personal route from any known class quest. Follow recorded
-  prerequisites and later series steps in order; preserve faction, race, class,
-  level and completion checks. Show quests currently available at the top and
-  explain recorded prerequisite blockers for later steps; leave missing
-  locations unresolved.
+  dungeons and raids. The 0.8.85 guide combines them into one route.
+- Preserve faction, race, class, level and completion checks, and leave missing
+  quest locations unresolved.
 - Enforce known class identity from `classes/<class>` source categories when a
-  quest record lacks its own class mask. Keep the existing optional class-quest
-  toggle for ordinary leveling guides.
+  quest record lacks its own class mask. Keep the optional class-quest toggle
+  for ordinary leveling guides.
 
 ## 0.8.83
 

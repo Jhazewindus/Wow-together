@@ -37,7 +37,8 @@ local function prerequisiteRecords(guide)
         end
     end
     local cursor = 1
-    while cursor <= #records and #records < 256 do
+    local recordLimit = guide.classLineGuide and 1024 or 256
+    while cursor <= #records and #records < recordLimit do
         local id = records[cursor].id
         local quest = ns.CatalogueQuest(id)
         if quest then
@@ -73,8 +74,9 @@ local function prerequisiteRecords(guide)
                 local candidate = ns.CatalogueQuest(parent)
                 local allowed = candidate and ns.CatalogueIdentityAllowed(parent, ns.profile)
                 local levelReady = candidate and (candidate.minLevel or candidate.level or 255) <= (ns.profile.level or 0)
-                if not seen[parent] and candidate and allowed == true and levelReady and ns.ClassQuestEnabled(parent)
-                    and not ns.GuideQuestSkipped(parent) and #records < 256 then
+                if not seen[parent] and candidate and allowed == true and levelReady
+                    and (guide.classLineGuide or ns.ClassQuestEnabled(parent))
+                    and not ns.GuideQuestSkipped(parent) and #records < recordLimit then
                     local record = ns.CatalogueRecord(parent)
                     if record then records[#records + 1], seen[parent] = record, true end
                 end
@@ -89,33 +91,55 @@ local function availableTasks(guide)
     local tasks, missing, complete, live = {}, 0, 0, ns.AllGuideRecords()
     local records = {}
     for _, record in ipairs(prerequisiteRecords(guide)) do
-        if ns.ClassQuestEnabled(record.id) then records[#records + 1] = record end
+        if guide.classLineGuide or ns.ClassQuestEnabled(record.id) then records[#records + 1] = record end
     end
     local focus = guide.personal and ns.self or ns.GuideFocus(records)
     guide.focusKey = focus
     for _, record in ipairs(records) do
         local finished = guide.personal and ns.Completed(record.id) == true or not guide.personal and ns.PartyQuestFinished(record.id)
         if finished then complete = complete + 1
-        elseif not ns.GuideQuestSkipped(record.id) and (guide.personal or ns.FocusCanStartRecord(record, focus))
-            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id, true, guide.personal)
-                or guide.catchupRequired and guide.catchupRequired[record.id]) then
-            local candidate = live[record.id] or record
-            local stages = ns.LevelingRouteStages(candidate, focus, guide.personal)
-            if #stages > 0 then
-                local first = stages[1]
-                tasks[#tasks + 1] = {id = record.id, stages = stages, first = first,
-                    xp = ns.CatalogueQuest(record.id) and ns.CatalogueQuest(record.id).xp or 0,
-                    active = activeForParty(record.id, false, guide.personal), ready = first.kind == "t"}
+        else
+            local seriesPrevious = guide.classLineGuide and ns.ClassQuestSeriesPrevious(record.id)
+            local seriesBlocked = seriesPrevious and ns.Completed(seriesPrevious) ~= true
+            local seriesReason = seriesBlocked and ("Finish " .. ns.QuestTitle(seriesPrevious) .. " first.")
+            local active = activeForParty(record.id, false, guide.personal)
+            local readyTask = not seriesBlocked and (guide.personal or ns.FocusCanStartRecord(record, focus))
+                and (guide.classLineGuide and (ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true
+                    or active or ns.QuestProgressReady(ns.self, record.id) == true)
+                    or not guide.classLineGuide and (ns.LevelingValue(record.id) ~= false
+                        or activeForParty(record.id, true, guide.personal)
+                        or guide.catchupRequired and guide.catchupRequired[record.id]))
+            if not ns.GuideQuestSkipped(record.id) and readyTask then
+                local candidate = live[record.id] or record
+                local stages = guide.classLineGuide and ns.RouteStages(candidate, ns.self)
+                    or ns.LevelingRouteStages(candidate, focus, guide.personal)
+                if #stages > 0 then
+                    local first = stages[1]
+                    tasks[#tasks + 1] = {id = record.id, stages = stages, first = first,
+                        xp = ns.CatalogueQuest(record.id) and ns.CatalogueQuest(record.id).xp or 0,
+                        active = active, ready = first.kind == "t"}
+                else
+                    missing = missing + 1
+                    local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)
+                    guide.pendingReason = guide.pendingReason or reason or seriesReason or ns.QuestStartGapReason(record.id)
+                end
             else
                 missing = missing + 1
                 local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)
-                guide.pendingReason = guide.pendingReason or reason or ns.QuestStartGapReason(record.id)
+                guide.pendingReason = guide.pendingReason or seriesReason or reason or ns.QuestStartGapReason(record.id)
+                local quest = ns.CatalogueQuest(record.id)
+                if guide.classLineGuide and not seriesBlocked and quest and quest.minLevel
+                    and (ns.profile.level or 0) < quest.minLevel
+                    and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
+                    and ns.CataloguePrerequisitesAllowed(record.id, ns.self) == true
+                    and (not guide.nextLevel or quest.minLevel < guide.nextLevel) then
+                    guide.nextLevel = quest.minLevel
+                end
             end
-        else
-            missing = missing + 1
-            local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)
-            guide.pendingReason = guide.pendingReason or reason or ns.QuestStartGapReason(record.id)
         end
+    end
+    if guide.classLineGuide and #tasks == 0 and guide.nextLevel then
+        guide.pendingReason = "Reach level " .. guide.nextLevel .. " to continue your class guide."
     end
     return tasks, missing, complete, #records
 end
@@ -392,7 +416,8 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
         previewStops = completePreview(tasks, position, cooperative, metrics), eligibleMappedQuests = #tasks,
         missing = missing, otherMaps = otherMaps, limited = math.max(0, #tasks - #batch), focusKey = guide.focusKey,
         partial = partial or missing > 0 or otherMaps > 0, estimatedWalkingCost = cost,
-        guideQuests = #guide.records, tripQuests = #batch, completed = complete, optimized = true, tripSearch = method}
+        guideQuests = #guide.records, tripQuests = #batch, completed = complete, optimized = true, tripSearch = method,
+        pendingReason = guide.pendingReason}
 end
 
 function ns.CancelGuidePlanning()

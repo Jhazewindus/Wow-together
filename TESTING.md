@@ -1,26 +1,26 @@
 # Wow Together — friend test script
 
-For **0.8.84** — **CLASS QUESTLINES**, World of Warcraft: Forever.
+For **0.8.85** — **UNIFIED CLASS QUEST GUIDE**, World of Warcraft: Forever.
 
-## Class quest browser — 0.8.84
+## Unified class quest guide — 0.8.85
 
-1. Open **Class quests** and confirm quests for your class appear across zones,
-   dungeons and raids. Quests that pass known level, identity and prerequisite
-   checks should appear first with **Available now**; later quests remain listed
-   with their blocking reason.
-2. Start a line from a later quest. Confirm recorded prerequisites and series
-   steps appear in order and the route is personal to your character. Complete a
-   parent quest and confirm its follow-up becomes available.
-3. Check a quest with an unknown pickup or objective location. The guide should
-   name the missing work without inventing a map point. Turn **Include class
-   quests** off in Settings and confirm ordinary leveling guides still hide
-   class-quest steps.
+1. Choose **Class quests** and confirm it shows one guide for your character's
+   class, with a single **Start class guide** action.
+2. Start it. Confirm the route follows currently available class quests and
+   recorded prerequisites across their zones. Complete a quest in a series and
+   confirm its next step becomes the route's next work without starting another
+   guide.
+3. On a character below the next quest's minimum level, confirm the guide says
+   **Reach level X to continue your class guide** with the recorded minimum.
+   Unknown pickup/objective locations should remain unmapped.
+4. Turn **Include class quests** off in Settings and confirm ordinary leveling
+   guides still hide class-quest steps while the dedicated class guide remains
+   available.
 
 Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
-passes **1,811 tests and 319 subtests**. All **92 Lua files compile under Lua
-5.1**. Tests cover the class-specific browser, current availability ordering,
-prerequisite messages and personal classline progression. They do not confirm
-live NPC offers or map points.
+passes **1,812 tests and 319 subtests**. All **92 Lua files compile under Lua
+5.1**. Tests cover the unified route, series ordering, single-action start and
+minimum-level message. They do not confirm live NPC offers or map points.
 
 For **0.8.83** — **DUNGEON FINDER QUEST COVERAGE**, World of Warcraft: Forever.
 

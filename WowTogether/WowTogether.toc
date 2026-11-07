@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.84
-## X-ReleaseName: CLASS QUESTLINES
+## Version: 0.8.85
+## X-ReleaseName: UNIFIED CLASS QUEST GUIDE
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

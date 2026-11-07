@@ -103,6 +103,7 @@ end
 
 local function classLineRecordEnabled(id)
     return not ns.IsRetiredQuest(id) and not ns.IsRepeatableQuest(id)
+        and ns.CatalogueClassCategoryAllowed(id, ns.profile) ~= false
         and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
 end
 
@@ -172,7 +173,8 @@ local function rebuildIndex()
 end
 
 local function addPrerequisites(records, seen, id, depth, includeClassActivities)
-    if depth > 24 or #records >= 512 then return end
+    local recordLimit = includeClassActivities and 1024 or 512
+    if depth > 24 or #records >= recordLimit then return end
     for _, previous in ipairs(ns.CataloguePrerequisiteIDs(id)) do
         local allowed = includeClassActivities and classLineRecordEnabled(previous) or recordEnabled(previous)
         if not seen[previous] and ns.CatalogueQuest(previous) and allowed then
@@ -186,7 +188,8 @@ end
 local function addChain(records, seen, id, ceiling, includeClassActivities)
     local quest = ns.CatalogueQuest(id)
     local allowed = includeClassActivities and classLineRecordEnabled(id) or recordEnabled(id)
-    if #records >= 512 or seen[id] or not quest or not allowed then return end
+    local recordLimit = includeClassActivities and 1024 or 512
+    if #records >= recordLimit or seen[id] or not quest or not allowed then return end
     -- Nearby continuations can finish a chain across a bracket boundary. Do
     -- not pull the rest of the zone's higher-level content into this section.
     if ceiling and ((quest.level or 0) > ceiling or (quest.minLevel or 0) > ceiling) then return end
@@ -198,6 +201,87 @@ local function addChain(records, seen, id, ceiling, includeClassActivities)
         if after then addChain(records, seen, nextID, ceiling, includeClassActivities) end
         if nextID == id then after = true end
     end
+end
+
+local classNames = {[1] = "Warrior", [2] = "Paladin", [3] = "Hunter", [4] = "Rogue", [5] = "Priest",
+    [6] = "Death Knight", [7] = "Shaman", [8] = "Mage", [9] = "Warlock", [10] = "Monk",
+    [11] = "Druid", [12] = "Demon Hunter", [13] = "Evoker"}
+
+local function classSeriesPrevious(id)
+    local quest = ns.CatalogueQuest(id)
+    for index, seriesID in ipairs(quest and quest.series or {}) do
+        if seriesID == id and index > 1 then return quest.series[index - 1] end
+    end
+end
+ns.ClassQuestSeriesPrevious = classSeriesPrevious
+
+local function classQuestRoots(profile)
+    local ids = {}
+    for id, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
+        if ns.IsClassQuest(id) and not ns.IsRetiredQuest(id) and not ns.IsRepeatableQuest(id)
+            and ns.CatalogueClassCategoryAllowed(id, profile) == true
+            and ns.CatalogueIdentityAllowed(id, profile) == true then
+            ids[#ids + 1] = id
+        end
+    end
+    table.sort(ids, function(a, b)
+        local qa, qb = ns.CatalogueQuest(a), ns.CatalogueQuest(b)
+        local la, lb = qa and (qa.minLevel or qa.level) or 0, qb and (qb.minLevel or qb.level) or 0
+        if la ~= lb then return la < lb end
+        return a < b
+    end)
+    return ids
+end
+
+function ns.BuildClassQuestsGuide()
+    local profile = ns.profile
+    if not profile or not ns.GuideInteger(profile.classID, 255) or profile.classID <= 0 then return end
+    local roots = classQuestRoots(profile)
+    if #roots == 0 then return end
+
+    local records, seen = {}, {}
+    for _, id in ipairs(roots) do addChain(records, seen, id, nil, true) end
+    if #records == 0 then return end
+
+    local availableNow, nextLevel, low, high, mapID = 0, nil, 255, 1, 0
+    for _, record in ipairs(records) do
+        local item = ns.CatalogueQuest(record.id)
+        local level = item and (item.minLevel or item.level) or 0
+        if level > 0 then low, high = math.min(low, level), math.max(high, level) end
+        if mapID == 0 then
+            local point = item and item.starts and item.starts[1]
+            mapID = point and point.mapID or record.mapID or 0
+        end
+        if ns.Completed(record.id) ~= true and not ns.GuideQuestSkipped(record.id) then
+            local previous = classSeriesPrevious(record.id)
+            local seriesReady = not previous or ns.Completed(previous) == true
+            local prerequisites = ns.CataloguePrerequisitesAllowed(record.id, ns.self)
+            local allowed = ns.CatalogueAllowed(record.id, profile, ns.self)
+            if seriesReady and prerequisites == true then
+                if allowed == true then
+                    availableNow = availableNow + 1
+                elseif item and item.minLevel and (profile.level or 0) < item.minLevel
+                    and (not nextLevel or item.minLevel < nextLevel) then
+                    nextLevel = item.minLevel
+                end
+            end
+        end
+    end
+    if low == 255 then low = 1 end
+    local guideClass = classNames[profile.classID] or "Class"
+    local query = ns.NewQuestQuery()
+    local guide = {key = "class-quests:" .. profile.classID, title = guideClass .. " class quest guide",
+        zone = guideClass .. " class quests", mode = "chain", kind = "Class quest guide", records = records,
+        target = records[1], mapID = mapID, homeMapID = mapID, focusKey = ns.self,
+        rangeLow = 1, rangeHigh = 60, mainLevelLow = low, mainLevelHigh = math.max(low, high),
+        level = ns.PartyLevelFloor(query), fullGuide = true, classLineGuide = true, personal = true,
+        classQuestCount = #roots, classQuestStepCount = #records, availableNow = availableNow, nextLevel = nextLevel,
+        fixedRoute = false, profilesReady = true, hasPoint = false,
+        reason = #roots .. " class quests across your known questlines. The route follows prerequisites and series steps.",
+        destination = "Follow your class quest guide."}
+    guide.coverage = ns.GuideLocationCoverage(records)
+    guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
+    return guide
 end
 
 local function entryRecords(entry)

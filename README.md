@@ -2,15 +2,18 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.84 — CLASS QUESTLINES** targets interface
+progress. Version **0.8.85 — UNIFIED CLASS QUEST GUIDE** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
 
-**0.8.84 adds a Class quests browser** that prioritizes quests currently
-available to your character and shows the recorded reason when a later step is
-blocked. Start a personal route from a class quest to follow known prerequisites
-and series steps. Unmapped locations remain unresolved; see CHANGELOG.md and
-TESTING.md for the coverage limits and friend checks.
+**0.8.85 adds one ongoing class quest guide.** Start it once to follow all
+catalogued quests for your class through known prerequisites and series steps.
+When a minimum-level gate blocks the next step, the guide tells you which level
+to reach. Missing locations remain unresolved; see CHANGELOG.md and TESTING.md.
+
+**0.8.84 added the class quest browser and personal questline routing.** Class
+quests are grouped by their recorded class across zones, dungeons and raids.
+The 0.8.85 guide brings them together into one route.
 
 **0.8.83 fills eight confirmed dungeon finder quest-list gaps** across City of
 Dalaran and Hall of Thanes, using current Method.gg guide tables alongside

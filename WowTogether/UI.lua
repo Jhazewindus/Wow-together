@@ -90,7 +90,7 @@ local function searchBox(parent, hint)
 end
 
 local function scrollTop(filter)
-    return (filter == "library" or filter == "classquests") and -246 or filter == "guides" and -214 or -150
+    return filter == "library" and -246 or filter == "guides" and -214 or -150
 end
 ns.UIEditBox = searchBox
 
@@ -118,7 +118,7 @@ function ns.SetFilter(filter)
     if ns.ui.librarySearch then
         for _, control in ipairs(ns.ui.libraryControls) do
             if control == ns.ui.libraryBack then control:SetShown(filter == "library" and ns.libraryZone ~= nil)
-            else control:SetShown(filter == "library" or filter == "classquests") end
+            else control:SetShown(filter == "library") end
         end
     end
     for _, control in ipairs(ns.ui.guideControls or {}) do control:SetShown(filter == "guides") end
@@ -470,6 +470,7 @@ local function makeCard()
     end
     card.mapButton = button(card, "Show route", 128, activate)
     card.detailsButton = button(card, "Quest details", 116, function()
+        if card.guide and card.guide.classLineGuide then ns.RequestStartRoute(card.guide); return end
         if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
         local id = card.libraryItem and card.libraryItem.id or (card.guide and card.guide.target.id)
         if card.libraryItem and id and ns.IsClassQuest(id) and card.guide and card.guide.fullGuide then
@@ -565,7 +566,7 @@ function ns.Render(queryContext, routeUpdated)
     end
     queryContext = queryContext or ns.NewQuestQuery()
     ns.ui.viewDescription:SetText(ns.filter == "recommended" and "Suggestions for your character, ready when you are."
-        or ns.filter == "classquests" and "Browse your class's quests and start a linked questline."
+        or ns.filter == "classquests" and "One guide for your class quests, including the prerequisites recorded for your character."
         or partyEnabled and "Choose a guide or explore your party's progress." or "Choose a solo guide or browse quests.")
     local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
     local synced, shared, own = 1, 0, 0
@@ -578,14 +579,17 @@ function ns.Render(queryContext, routeUpdated)
     ns.ui.hint:SetText(ns.filter == "recommended" and "Pick your next adventure, or continue your current guide."
         or ns.filter == "guides"
         and "Select a guide to preview its quests."
-        or ns.filter == "classquests" and "Choose a quest to follow its known prerequisites and class questline."
+        or ns.filter == "classquests" and "Start one guide for your class quests. It follows known prerequisites and later steps."
         or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
         or ns.filter == "professions" and "Choose a profession to plan crafting, materials and training."
         or "Choose a quest to see its route or requirements.")
     if not routeUpdated and ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
-    local libraryView = ns.filter == "library" or ns.filter == "classquests"
-    ns.ui.metrics[2].caption:SetText(libraryView and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
-    ns.ui.metrics[2].value:SetText(tostring(libraryView and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
+    local libraryView = ns.filter == "library"
+    local classGuide = ns.filter == "classquests" and ns.BuildClassQuestsGuide() or nil
+    ns.ui.metrics[2].caption:SetText(libraryView and "CATALOGUE QUESTS"
+        or ns.filter == "classquests" and "CLASS QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
+    ns.ui.metrics[2].value:SetText(tostring(libraryView and ns.catalogue.count
+        or classGuide and classGuide.classQuestCount or (ns.filter == "guides" and #choices or shared)))
     ns.ui.metrics[3].value:SetText(tostring(own))
     local peers = {"You" .. (ns.profile and ns.profile.level > 0 and (" • Lv " .. ns.profile.level) or " • level pending")}
     for _, name in ipairs(partyEnabled and ns.partyNames or {}) do
@@ -617,7 +621,9 @@ function ns.Render(queryContext, routeUpdated)
     end
     local visible, top = 0, 0
     local display = {}
-    if libraryView then
+    if ns.filter == "classquests" then
+        if classGuide then display[#display + 1] = {guide = classGuide} end
+    elseif libraryView then
         local items, total, pages = ns.LibraryPageItems()
         for _, item in ipairs(items) do display[#display + 1] = {libraryItem = item} end
         ns.ui.libraryCount:SetText(total .. " results • Page " .. ns.libraryPage .. " / " .. pages .. " • Enter or pause to search")
@@ -752,7 +758,10 @@ function ns.Render(queryContext, routeUpdated)
             if guide.mode == "bundle" then height = height + 52 end
             local selected = ns.routeSelection and ns.routeSelection.key == guide.key
             card.accent:SetColorTexture(unpack(selected and colors.success or item.recommended and colors.gold or colors.border))
-            if guide.mode == "travel" then
+            if guide.classLineGuide then
+                card.category:SetText("CLASS QUEST GUIDE")
+                card.count:SetText(guide.classQuestCount .. " quests")
+            elseif guide.mode == "travel" then
                 card.category:SetText("TRAVEL GUIDE")
             elseif ns.filter == "guides" then
                 card.category:SetText(guide.upcoming and "UPCOMING ZONE GUIDE" or item.recommended and "RECOMMENDED ZONE GUIDE"
@@ -781,13 +790,23 @@ function ns.Render(queryContext, routeUpdated)
                 local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
                 local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
                 local detail = guide.hasPoint and ("Next: " .. nextTitle) or (requirement or "Location unavailable.")
-                local summary = guide.fullGuide and ((guide.enabledCount or #guide.records) .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
-                card.reason:SetText(summary .. "\n" .. (guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
+                local summary = guide.classLineGuide
+                    and (guide.classQuestCount .. " class quests • " .. guide.classQuestStepCount .. " known steps")
+                    or guide.fullGuide and ((guide.enabledCount or #guide.records) .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
+                if guide.classLineGuide then
+                    local nextStep = guide.availableNow > 0 and (guide.availableNow .. " quest steps available now. Start the guide to follow them.")
+                        or guide.nextLevel and ("Reach level " .. guide.nextLevel .. " to continue your class guide.")
+                        or guide.pendingReason or "No class quest step is ready yet. Start the guide to check current prerequisites."
+                    card.reason:SetText(summary .. "\n" .. nextStep)
+                else
+                    card.reason:SetText(summary .. "\n" .. (guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
+                end
                 if guide.fullGuide then ns.GuideXPHelp(card)
                 else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
                 card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
-                card.detailsButton.caption:SetText("Start route")
-                card.detailsButton:SetShown(not guide.personal or guide.mode == "travel")
+                card.detailsButton.caption:SetText(guide.classLineGuide and "Start class guide" or "Start route")
+                card.detailsButton:SetShown(guide.classLineGuide or not guide.personal or guide.mode == "travel")
+                if guide.classLineGuide then card.mapButton:Hide() end
                 card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true)
             end
         else
@@ -825,7 +844,7 @@ function ns.Render(queryContext, routeUpdated)
         ns.ui.metrics[2].value:SetText(tostring(visible))
     end
     ns.ui.empty:SetShown(visible == 0)
-    ns.ui.empty:SetText(ns.filter == "classquests" and "No class quests match this character or search.\nCheck your class and clear the search to browse all of its quests."
+    ns.ui.empty:SetText(ns.filter == "classquests" and "No class quest guide is available for this character's class."
         or ns.filter == "library" and "No matching quests.\nTry a quest or zone name."
         or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
         or (ns.filter == "guides" and "No zone guides match this bracket and search.\nChoose another bracket or clear the search to browse future guides."

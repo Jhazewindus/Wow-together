@@ -92,7 +92,44 @@ class OptionalClassGuideTests(unittest.TestCase):
         c.ns.Render()
         self.assertEqual(c.ns.ui.visibleCards, 1)
         self.assertEqual(c.ns.ui.cards[1].detailsButton.caption.GetText(c.ns.ui.cards[1].detailsButton.caption),
-                         'Start questline')
+                         'Start class guide')
+        self.assertEqual(c.ns.ui.cards[1].guide.classLineGuide, True)
+
+    def test_class_guide_unifies_known_class_quests_and_reports_next_level(self):
+        c = class_client(); identity(c); c.ns.SetOption('classQuests', False)
+        catalogue(c, {
+            900: world_quest('Shaman Initiation', level=12, minLevel=12, xp=200, classMask=0,
+                categoryPath='classes/shaman', seriesRoot=900, series=[900, 901]),
+            901: world_quest('Shaman Trial', level=15, minLevel=15, xp=200, classMask=0,
+                categoryPath='classes/shaman', seriesRoot=900, series=[900, 901]),
+            902: world_quest('Mage Initiation', level=12, minLevel=12, xp=200, classMask=0,
+                categoryPath='classes/mage'),
+        })
+        c.ns.profile.level = 3
+        c.lua.globals().playerLevel = 3
+        guide = c.ns.BuildClassQuestsGuide()
+        self.assertEqual(guide.classLineGuide, True)
+        self.assertEqual(guide.classQuestCount, 2)
+        self.assertEqual({record.id for record in guide.records.values()}, {900, 901})
+        self.assertEqual(guide.availableNow, 0)
+        self.assertEqual(guide.nextLevel, 12)
+        c.ns.SetFilter('classquests'); c.ns.Render()
+        self.assertEqual(c.ns.ui.visibleCards, 1)
+        self.assertEqual(c.ns.ui.cards[1].title.GetText(c.ns.ui.cards[1].title), 'Shaman class quest guide')
+        self.assertIn('Reach level 12', c.ns.ui.cards[1].reason.GetText(c.ns.ui.cards[1].reason))
+        c.ns.ui.cards[1].detailsButton.OnClick(); run_plan(c)
+        self.assertTrue(c.ns.routeSelection.classLineGuide)
+        self.assertIn('Reach level 12', c.ns.routePaused)
+        route = c.ns.BuildGuideRoute(guide, False, False)
+        self.assertEqual(len(route.stops), 0)
+        self.assertIn('Reach level 12', route.pendingReason)
+        c.ns.profile.level = 15
+        guide = c.ns.BuildClassQuestsGuide()
+        first = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual({stop.id for stop in first.stops.values()}, {900})
+        c.lua.globals().finished[900] = True
+        later = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual({stop.id for stop in later.stops.values()}, {901})
 
     def test_class_quests_put_available_steps_first_and_label_them(self):
         c = class_client(); identity(c); c.ns.SetOption('classQuests', True)
@@ -107,8 +144,8 @@ class OptionalClassGuideTests(unittest.TestCase):
         self.assertEqual([item.id for item in items.values()], [900, 901])
         self.assertTrue(items[1].availableNow)
         self.assertFalse(items[2].availableNow)
-        self.assertIn('Available now', c.ns.ui.cards[1].reason.GetText(c.ns.ui.cards[1].reason))
-        self.assertIn('Finish Shaman Initiation first', c.ns.ui.cards[2].reason.GetText(c.ns.ui.cards[2].reason))
+        self.assertEqual(c.ns.ui.visibleCards, 1)
+        self.assertIn('available now', c.ns.ui.cards[1].reason.GetText(c.ns.ui.cards[1].reason).lower())
 
     def test_class_questline_routes_the_full_known_series_for_the_current_class(self):
         c = class_client(); identity(c); c.ns.SetOption('classQuests', True)

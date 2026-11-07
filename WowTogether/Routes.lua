@@ -988,7 +988,7 @@ function ns.UpdateSelectedRoute(choices, query)
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
             local complete
-            if not ns.ClassQuestEnabled(record.id) or ns.GuideQuestSkipped(record.id) then complete = true
+            if (not selection.classLineGuide and not ns.ClassQuestEnabled(record.id)) or ns.GuideQuestSkipped(record.id) then complete = true
             elseif selection.mode == "bundle" then complete = ns.BundleQuestFinished(selection, record.id)
             elseif selection.mode == "current" then complete = ns.CurrentQuestFinished(record.id)
             elseif selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]
