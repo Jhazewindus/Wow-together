@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "captured": "2026-11-07",
+  "dungeon": "Blackfathom Deeps",
+  "dungeonKey": "blackfathom-deeps",
+  "questIDs": [
+    971,
+    1198,
+    1199,
+    1200,
+    1275,
+    6561,
+    6562,
+    6563,
+    6564,
+    6565,
+    6921,
+    78916,
+    78917
+  ],
+  "reviewedQuestCount": 13,
+  "allPrerequisiteRecordsReviewed": true,
+  "knownChains": [
+    {
+      "questID": 6563,
+      "previousQuest": 6562
+    },
+    {
+      "questID": 6564,
+      "previousQuest": 6562
+    },
+    {
+      "questID": 6565,
+      "previousQuest": 6564
+    }
+  ],
+  "questPages": [
+    {
+      "questID": 78916,
+      "title": "The Heart of the Void",
+      "side": "Alliance",
+      "level": 25,
+      "minimumLevel": 25,
+      "url": "https://www.wowhead.com/forever/quest=78916",
+      "status": 200,
+      "captured": "2026-11-07",
+      "sha256": "0b69870cd4dc0cdc644aeca4d2fcb579fab2583b53ee126ad0c933f4d9a421e6",
+      "seriesQuestIDs": [],
+      "prerequisitesRead": true,
+      "previousQuest": null,
+      "endRefs": [
+        4783
+      ],
+      "startRefs": []
+    },
+    {
+      "questID": 78917,
+      "title": "The Heart of the Void",
+      "side": "Horde",
+      "level": 25,
+      "minimumLevel": 25,
+      "url": "https://www.wowhead.com/forever/quest=78917",
+      "status": 200,
+      "captured": "2026-11-07",
+      "sha256": "c3d52805b98664233624a48376a2e8b6c8433b8a2acbb447c5ebc2cbad385cb3",
+      "seriesQuestIDs": [],
+      "prerequisitesRead": true,
+      "previousQuest": null,
+      "endRefs": [
+        9087
+      ],
+      "startRefs": []
+    }
+  ],
+  "questieCrossCheck": [
+    {
+      "url": "https://github.com/Questie/QuestieDB/blob/3ac79c37f140b8eb343a28318b7a516b82802a86/src/corrections/Sod/sodBaseQuests.lua",
+      "sha256": "e67bc5ef87d2ff8fa37440e17fc644113291da35ffc81d37e6472c1155aeaa83",
+      "note": "Cross-version corroboration only; these Season of Discovery facts are not imported into the Forever catalogue."
+    },
+    {
+      "url": "https://github.com/Questie/QuestieDB/blob/3ac79c37f140b8eb343a28318b7a516b82802a86/src/corrections/Sod/sodQuestFixes.lua",
+      "sha256": "4eea894b8d5d5fca3ff2bc993ad161809bd6e4bf1e347470ee42055c5f8e1719",
+      "note": "Cross-version corroboration only; these Season of Discovery facts are not imported into the Forever catalogue."
+    }
+  ],
+  "limitations": [
+    "Wowhead Forever publishes no previous-Series step for quests 78916 or 78917; QuestieDB Forever has no records for them. The corresponding Questie Season of Discovery records are item-started and have no prerequisite edge, but that cross-version item data is not shipped.",
+    "The Forever pages do not identify the quest-start item or pickup point for The Heart of the Void; the in-dungeon pickup remains unmapped.",
+    "Host data and route checks do not confirm current-beta quest offers."
+  ],
+  "routeBehavior": "The Alliance route handles mapped quest pickups such as In Search of Thaelrid before the entrance. The faction-specific Heart of the Void quest has no recorded prequest and is deferred to the Blackfathom Deeps run because its pickup is unmapped."
+}

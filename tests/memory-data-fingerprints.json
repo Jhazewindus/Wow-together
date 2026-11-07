@@ -3,7 +3,7 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "472512894eb85a887b0e6680fd68e4005a6dac4c3d87324b7afc6446c55723d1"
+      "sha256": "ef615c25cbb8d82098fc10811b2e5e08334c8fe6489759fa5276176f035ec889"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
@@ -26,5 +26,5 @@
       "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "v0.8.28 packing baseline; QuestieDB Forever 80866960788084ae1592abf66a08f0d306458a95 refresh updates catalogue facts while preserving packing behavior."
+  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior."
 }

@@ -364,7 +364,7 @@ end'''
         self.assertEqual(quests[98430]['startRefs'][0]['entityID'],272203)
         report=json.loads((ROOT/'WowTogether/QuestCatalogue.json').read_text())
         self.assertEqual((report['with_starters'],report['with_objectives'],report['with_turnins']),
-                         (4419,2126,4595))
+                         (4419,2126,4597))
 
     def test_all_prerequisites_are_required_for_pickup_and_compiled_before_child(self):
         c=guide_client(1);quests={i:world_quest(str(i)) for i in (900,901,902)}

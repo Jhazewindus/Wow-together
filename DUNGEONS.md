@@ -91,6 +91,12 @@ Saved recordings and public native links can refine these published areas.
 
 ## Coverage
 
+Blackfathom Deeps prerequisite coverage now marks all 13 listed quests as
+reviewed and preserves the known Horde quest chain. The current Forever pages
+show no preceding quest for either faction's The Heart of the Void quest, but
+do not identify its starter item or pickup point; dungeon preparation leaves
+that collection deferred and directs the player to the run.
+
 Map IDs below are Forever UI map IDs, not area IDs. Coordinates are percentages.
 
 | Dungeon complex | Run levels | Published entrance area |

@@ -1,7 +1,7 @@
 {
   "captured": "2026-11-07",
   "count": 5307,
-  "detailed_quests": 362,
+  "detailed_quests": 364,
   "zones": [
     "eastern-kingdoms/alterac-mountains",
     "eastern-kingdoms/alterac-valley",
@@ -156,7 +156,7 @@
   "detail_requests_stopped_after_denials": true,
   "with_starters": 4419,
   "with_objectives": 2126,
-  "with_turnins": 4595,
+  "with_turnins": 4597,
   "with_series": 940,
   "with_prerequisites": 2575,
   "repeatable_quests": 639,
@@ -11014,9 +11014,9 @@
     }
   ],
   "prior_snapshot_fallback": {
-    "source_commit": "6185b43ed596d0ff44177973346ce80a62ffbe6c",
-    "quests_with_retained_fields": 4410,
-    "retained_fields": 22668,
+    "source_commit": "386d1a2b7bfb61290606ab132eaf460595558f79",
+    "quests_with_retained_fields": 4414,
+    "retained_fields": 22680,
     "rule": "current facts take precedence; prior reviewed fields fill omissions"
   },
   "dungeon_prerequisite_audit": {

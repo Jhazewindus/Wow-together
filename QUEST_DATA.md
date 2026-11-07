@@ -177,6 +177,15 @@ or the explicit Lordaeron live update determine prerequisite direction. The
 captured URL hashes and limitations are recorded in
 `research/dungeon-prerequisite-audit-2026-11-06/audit.json`.
 
+The 7 November Blackfathom Deeps review covers all 13 listed quests. It
+preserves the known Horde chain 6562 → 6563/6564 → 6565 and captures current
+Wowhead Forever pages for The Heart of the Void (78916/78917). Those pages list
+no preceding quest, and the records now explicitly mark their prerequisites as
+reviewed. Their in-dungeon item starter and pickup point remain unknown; the
+Season of Discovery item-start records are cross-version references only and
+are not shipped. See
+`research/blackfathom-deeps-prerequisite-review-2026-11-07/audit.json`.
+
 ## Map geometry and older-world facts
 
 Published geometry comes from the pinned Forever conversion report, targeting

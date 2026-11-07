@@ -1,6 +1,23 @@
 # Wow Together — friend test script
 
-For **0.8.86** — **QUESTIE FOREVER DATA REFRESH**, World of Warcraft: Forever.
+For **0.8.87** — **BLACKFATHOM DEEPS QUEST PREREQUISITES**, World of Warcraft:
+Forever.
+
+## Blackfathom Deeps prerequisite review — 0.8.87
+
+1. Open Blackfathom Deeps preparation as either faction. Confirm the guide
+   does not block the entrance on an invented prerequisite, and that the known
+   Horde chain Trouble in the Deeps → The Essence of Aku'Mai / Allegiance to the
+   Old Gods → its next step remains ordered.
+2. Confirm The Heart of the Void (Alliance 78916, Horde 78917) has reviewed
+   prerequisite status with no preceding quest listed by its current Forever
+   page. Its unknown pickup point should remain reported as an in-dungeon
+   collection; this update does not claim the quest offer was tested in-game.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,813 tests**. All **92 Lua files compile under Lua 5.1**. The source
+checks verify prerequisite data and an unblocked route to the entrance; they do
+not establish live quest offers or the Heart of the Void pickup location.
 
 ## Questie Forever data refresh — 0.8.86
 

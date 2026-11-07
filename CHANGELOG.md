@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.8.87
+
+**BLACKFATHOM DEEPS QUEST PREREQUISITES**
+
+- Review the prerequisite status for all 13 Blackfathom Deeps quests. Preserve
+  the known Horde chain: Trouble in the Deeps (6562) precedes The Essence of
+  Aku'Mai (6563) and Allegiance to the Old Gods (6564), followed by its next
+  step (6565).
+- Capture current Wowhead Forever pages for Alliance and Horde versions of The
+  Heart of the Void (78916/78917). Neither page lists a preceding quest, so
+  mark both prerequisite records reviewed and let preparation continue to the
+  entrance without inventing a prequest.
+- Keep the Heart of the Void pickup location unresolved. The Forever pages do
+  not name its item starter or pickup point; the route tells players to collect
+  it during the dungeon run. Season of Discovery item data is not imported.
+- Record capture hashes and cross-version limits in
+  `research/blackfathom-deeps-prerequisite-review-2026-11-07/audit.json`.
+
 ## 0.8.86
 
 **QUESTIE FOREVER DATA REFRESH**

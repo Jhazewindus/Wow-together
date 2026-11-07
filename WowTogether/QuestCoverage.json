@@ -8,10 +8,10 @@
   ],
   "summary": {
     "count": 5307,
-    "detailed_quests": 362,
+    "detailed_quests": 364,
     "with_starters": 4419,
     "with_objectives": 2126,
-    "with_turnins": 4595,
+    "with_turnins": 4597,
     "with_prerequisites": 2575,
     "entities": {
       "npc": 13418,
@@ -445,7 +445,7 @@
       "quests": 13,
       "pickups": 9,
       "objectives": 2,
-      "turnins": 10,
+      "turnins": 12,
       "complete_locations": 4,
       "missing_quest_ids": [
         971,
@@ -3057,7 +3057,18 @@
       "status": 403
     }
   ],
-  "quest_capture": {},
+  "quest_capture": {
+    "78916": {
+      "status": 200,
+      "captured": "2026-11-07",
+      "sha256": "0b69870cd4dc0cdc644aeca4d2fcb579fab2583b53ee126ad0c933f4d9a421e6"
+    },
+    "78917": {
+      "status": 200,
+      "captured": "2026-11-07",
+      "sha256": "c3d52805b98664233624a48376a2e8b6c8433b8a2acbb447c5ebc2cbad385cb3"
+    }
+  },
   "entity_capture": {},
   "legacy_fallback": {},
   "forever_beta_facts": {
@@ -11714,9 +11725,9 @@
     ]
   },
   "prior_snapshot_fallback": {
-    "source_commit": "6185b43ed596d0ff44177973346ce80a62ffbe6c",
-    "quests_with_retained_fields": 4410,
-    "retained_fields": 22668,
+    "source_commit": "386d1a2b7bfb61290606ab132eaf460595558f79",
+    "quests_with_retained_fields": 4414,
+    "retained_fields": 22680,
     "rule": "current facts take precedence; prior reviewed fields fill omissions"
   },
   "supplemental_capture": {

@@ -1,12 +1,50 @@
 """Dungeon quests respect fresh identities; explicit Start route never opens a list."""
+from pathlib import Path
+import sys
 import unittest
 
 from test_addon import Client
 from test_050 import solo, dungeon
 from test_routes import catalogue, quest, map_canvas
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
+from build_quest_dataset import own_lua
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class DungeonActionTests(unittest.TestCase):
+    def test_blackfathom_prerequisites_are_reviewed_and_route_is_not_blocked(self):
+        dungeon_data = own_lua(ROOT / 'WowTogether' / 'DungeonData.lua', 'dungeonData')
+        quest_data = own_lua(ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua', 'catalogue')['quests']
+        dungeon_quests = dungeon_data['dungeons']['blackfathom-deeps']['questIDs']
+        self.assertEqual(len(dungeon_quests), 13)
+        for quest_id in dungeon_quests:
+            with self.subTest(quest_id=quest_id):
+                self.assertTrue(quest_data[quest_id]['prerequisitesRead'])
+
+        self.assertEqual(quest_data[6563]['previousQuest'], 6562)
+        self.assertEqual(quest_data[6564]['previousQuest'], 6562)
+        self.assertEqual(quest_data[6565]['previousQuest'], 6564)
+        for quest_id in (78916, 78917):
+            record = quest_data[quest_id]
+            self.assertNotIn('previousQuest', record)
+            self.assertNotIn('prerequisiteAny', record)
+            self.assertNotIn('prerequisiteAll', record)
+            self.assertFalse(record.get('prerequisitesUnverified', False))
+
+        for faction in ('Alliance', 'Horde'):
+            c = Client(quests=(), use_catalogue=True)
+            c.guide_environment(level=30)
+            c.lua.execute(f"function UnitFactionGroup() return '{faction}' end")
+            c.ns.ReadProfile()
+            for quest_id in (78916, 78917):
+                self.assertTrue(c.ns.CataloguePrerequisitesAllowed(quest_id, c.ns.profile))
+
+            group = next(g for g in c.ns.DungeonGroups().values() if g.key == 'blackfathom-deeps')
+            route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(group), False, False)
+            self.assertFalse(route.entranceBlocked)
+            self.assertTrue(any(stop.dungeonEntrance for stop in route.stops.values()))
+
     def test_list_refreshes_stale_faction_and_filters_all_incompatible_quests(self):
         c = solo()
         catalogue(c, {900: quest('Horde pickup', side='Horde', categoryPath='dungeons/test-cavern'),

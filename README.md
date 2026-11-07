@@ -2,9 +2,15 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.86 — QUESTIE FOREVER DATA REFRESH** targets interface
-**16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
-implementation from `WOW_PROJECT_ID`.
+progress. Version **0.8.87 — BLACKFATHOM DEEPS QUEST PREREQUISITES** targets
+interface **16001**, uses Lua **5.1**, and reads capabilities rather than
+choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.87 reviews prerequisites for all 13 Blackfathom Deeps quests.** The
+verified Horde chain remains ordered, while current Forever pages show no
+preceding quest for the faction versions of The Heart of the Void. Their pickup
+location remains unknown and is called out by the dungeon route. See
+CHANGELOG.md, DUNGEONS.md, QUEST_DATA.md and TESTING.md.
 
 **0.8.86 refreshes the Forever quest catalogue from QuestieDB.** It adds six
 starter links and seven turn-in links, refreshes objective facts and applies eight
