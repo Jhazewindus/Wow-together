@@ -2,9 +2,17 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.96 — PROGRESSION-ORDERED DUNGEON COVERAGE** targets
+progress. Version **0.8.97 — STRUCTURED GUIDE STEP PRESENTATION** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.97 makes guide steps easier to scan.** The guide card shows the action,
+reason, availability and travel estimate in separate fields; tooltips add
+supporting context without repeating the card. The standalone arrow and guide
+list use the same action icons and concise status labels. An optional preview of
+the next step is enabled by default. Route selection, eligibility, quest facts
+and guide order are unchanged. See TESTING.md for host results and in-game
+checks.
 
 **0.8.96 refreshes dungeon coverage in player-progression order:** City of
 Dalaran, Razorfen Kraul, Scarlet Monastery, then The Drowned City, with Alcaz

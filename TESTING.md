@@ -1,5 +1,33 @@
 # Wow Together — friend test script
 
+For **0.8.97** — **STRUCTURED GUIDE STEP PRESENTATION**, live World of Warcraft: Forever.
+
+## Structured guide-step presentation — 0.8.97
+
+1. Start a guide with a nearby quest pickup. Check that the card has a clear
+   title and step line, one verb-first action, a separate reason, and one
+   availability/time line. The reason must not repeat the action.
+2. Check an object-start quest, an objective with progress, a turn-in, and a
+   travel leg. Travel should use the quest title, tell you what to do next, and
+   keep the quest action and destination in the tooltip.
+3. Hover the card, standalone arrow and a guide-list row. The tooltip should
+   add useful location or prerequisite context without duplicating visible
+   fields. List rows should show the action icon, title and short status; later
+   steps should include their level.
+4. Check the next-step preview, then turn it off in Settings. It should only
+   add a muted preview below the current state; it does not change the route.
+5. Confirm the window retains its existing size and position, and that route
+   order, eligibility and fixed-guide order are unchanged.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,840 tests** and **341 subtests**. The host suite loads the
+addon sources under Lua 5.1, but cannot verify native in-game rendering. Run
+these visual checks in the live client after installing all four addon folders.
+
+The checked `guides/coverage` commits add audit-only research for Durotar,
+Hillsbrad Foothills and The Barrens; they contain no quest-data or runtime
+changes and remain deferred from this release.
+
 For **0.8.96** — **PROGRESSION-ORDERED DUNGEON COVERAGE**, live World of Warcraft: Forever.
 
 ## Progression-ordered dungeon coverage — 0.8.96

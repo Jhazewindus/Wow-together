@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.8.97
+
+**STRUCTURED GUIDE STEP PRESENTATION**
+
+- Give each guide step one structured presentation shared by the guide card,
+  tooltips, standalone arrow and quest list. The card separates the action,
+  reason, status and travel estimate; tooltips add location and useful detail
+  without repeating what the card already shows.
+- Use consistent action icons and concise availability states across the card
+  and list. Add an optional next-step preview, enabled by default, that can be
+  turned off in settings.
+- Remove generic travel and guide-status filler. Keep route selection,
+  eligibility, quest data, guide order, frame size and position unchanged.
+- Validation: all 1,840 host tests and 341 subtests pass. Host checks cannot
+  establish native in-game rendering; use the 0.8.97 checks in TESTING.md.
+
 ## 0.8.96
 
 **PROGRESSION-ORDERED DUNGEON COVERAGE**
