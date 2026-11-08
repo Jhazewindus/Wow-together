@@ -8,7 +8,7 @@ local FLIGHT_NEAR, FLIGHT_AHEAD, FLIGHT_EXTRA = 350 / 0.9144, 750 / 0.9144, 200 
 local indexed, innsByMap, cached = nil, {}, nil
 
 local function saved()
-    return ns.db and ns.db.guideServices and ns.db.guideServices[ns.self]
+    return ns.char and ns.char.guideServices
 end
 
 local function friendly(place)
@@ -19,7 +19,9 @@ end
 
 local function indexInns()
     local state = saved()
+    local world = ns.db and ns.db.innLocations and ns.db.innLocations[ns.worldBuild]
     local signature = tostring(ns.guideServiceData) .. ":" .. tostring(state and state.revision or 0)
+        .. ":" .. tostring(world)
     if indexed == signature then return end
     indexed, innsByMap = signature, {}
     local seen = {}
@@ -31,15 +33,13 @@ local function indexInns()
         table.insert(innsByMap[inn.mapID], inn)
     end
     -- An actual inn interaction can update an older published location.
-    for _, inn in pairs(state and state.inns or {}) do add(inn) end
+    for _, inn in pairs(world or {}) do add(inn) end
     for _, inn in ipairs(ns.guideServiceData and ns.guideServiceData.inns or {}) do add(inn) end
 end
 
 function ns.InitializeGuideTips()
-    ns.db.guideServices = type(ns.db.guideServices) == "table" and ns.db.guideServices or {}
-    local state = ns.db.guideServices[ns.self]
-    if type(state) ~= "table" then state = {}; ns.db.guideServices[ns.self] = state end
-    if type(state.inns) ~= "table" then state.inns = {} end
+    local state = ns.char and ns.char.guideServices
+    if type(state) ~= "table" then state = {}; ns.char.guideServices = state end
     if type(state.dismissed) ~= "table" then state.dismissed = {} end
     state.revision = 0
     if not ns.SafeTitle(state.boundInnID) then state.boundInnID = nil end
@@ -81,7 +81,7 @@ local function findTip(route, guide, position, navigation)
         end
     end
     if ns.Option("nearbyFlights") then
-        local flights = ns.db.flights and ns.db.flights[ns.self]
+        local flights = ns.char and ns.char.flights
         local seen, safety, nearest = {}, ns.TravelSafetyContext(), nil
         local nextStop = navigation and navigation.stop or route.stops[1]
         local direct = ns.ValidTravelPoint(nextStop) and not nextStop.unknownLocation and not nextStop.planningAnchor
@@ -259,7 +259,11 @@ function ns.RecordGuideInn()
     local faction = ns.SafeTitle(ns.profile and ns.profile.faction)
     if not name or not faction then return end
     local id = published and published.id or "observed:" .. mapID .. ":" .. (npcID or name)
-    state.inns[id] = {id = id, mapID = mapID, x = location.x, y = location.y, name = name, faction = faction, npcID = npcID}
+    ns.db.innLocations = type(ns.db.innLocations) == "table" and ns.db.innLocations or {}
+    ns.db.innLocations[ns.worldBuild] = type(ns.db.innLocations[ns.worldBuild]) == "table"
+        and ns.db.innLocations[ns.worldBuild] or {}
+    ns.db.innLocations[ns.worldBuild][id] = {id = id, mapID = mapID, x = location.x, y = location.y, name = name, faction = faction, npcID = npcID}
+    state.revision = state.revision + 1
     state.revision, ns.pendingGuideInn, cached = state.revision + 1, id, nil
 end
 
@@ -277,7 +281,8 @@ ns.On("CONFIRM_BINDER", ns.RecordGuideInn)
 ns.On("HEARTHSTONE_BOUND", function()
     local state = saved()
     if not state then return end
-    local inn = state.inns[ns.pendingGuideInn]
+    local inn = ns.db.innLocations and ns.db.innLocations[ns.worldBuild]
+        and ns.db.innLocations[ns.worldBuild][ns.pendingGuideInn]
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
     local yards = inn and position and ns.TravelPointDistance(inn, position)

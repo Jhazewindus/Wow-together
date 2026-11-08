@@ -336,7 +336,7 @@ end
 function ns.ShareTrails(mapID, full)
     local store = saved()
     local record = store and store[mapID]
-    if not ns.Option("shareRoads") or not record or not inParty() then return 0 end
+    if not ns.Option("shareObservations") or not record or not inParty() then return 0 end
     local from, to = full and 1 or (sentEdges[mapID] or 0) + 1, #record.e
     if from > to then return 0 end
     local messages = encodeShare(mapID, record, from, to)
@@ -364,6 +364,7 @@ function ns.PumpTrailSharing()
     end
     local transport = ns.TransportState and ns.TransportState() or {queued = 0}
     local room = transport.queued < 4 and SHARE_TRICKLE or 0
+    if ns.ObjectiveLearningSharePump then room = ns.ObjectiveLearningSharePump(room) or room end
     while room > 0 and pendingShare[1] do
         if not ns.QueueMessage(pendingShare[1]) then break end
         table.remove(pendingShare, 1)
@@ -378,7 +379,7 @@ end
 
 function ns.ReceiveTrailMessage(message, sender)
     if string.sub(message, 1, 4) ~= "1|W|" then return false end
-    if not ns.Option("shareRoads") then return true, false, "road sharing off" end
+    if not ns.Option("shareObservations") then return true, false, "observation sharing off" end
     local store = saved()
     if not store then return true, false, "no trail store" end
     local mapText, body = string.match(message, "^1|W|(%d+)|(.+)$")
@@ -498,7 +499,7 @@ function ns.TravelTrailDiagnostics(output)
     for _, source in pairs(ns.travelRoadData and ns.travelRoadData.maps or {}) do bundled = bundled + #(source.roads or {}) end
     output("Proven ground: " .. learned .. " recorded points in " .. maps .. " map(s); " .. bundled
         .. " bundled road polyline(s). Recorder: " .. status)
-    output("Ground sharing: " .. (ns.Option("shareRoads") and "on" or "off") .. "; " .. shareStats.sent .. " message(s) sent, "
+    output("Ground sharing: " .. (ns.Option("shareObservations") and "on" or "off") .. "; " .. shareStats.sent .. " message(s) sent, "
         .. shareStats.received .. " received (" .. shareStats.points .. " new points), " .. #pendingShare .. " pending.")
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     if ns.GuideInteger(mapID) and mapID > 0 then

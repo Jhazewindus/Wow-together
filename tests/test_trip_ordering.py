@@ -36,6 +36,8 @@ function ns.Option() return 0.16 end
 def optimizer_runtime(force_beam=False, expose_batch=False):
     runtime = LuaRuntime(unpack_returned_tuples=True)
     runtime.execute(PRELUDE)
+    cost_source = (ROOT / 'WowTogether' / 'RouteCost.lua').read_text().replace('local addonName, ns = ...', '')
+    runtime.execute(cost_source)
     source = (ROOT / 'WowTogether' / 'GuideOptimizer.lua').read_text()
     source = source.replace('local addonName, ns = ...', '')
     if force_beam:

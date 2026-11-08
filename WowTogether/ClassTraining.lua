@@ -4,7 +4,7 @@ local addonName, ns = ...
 -- never edited. An even level is a reminder, not proof of learnable spells.
 local RANGE, DETOUR = 150 / 0.9144, 150
 local indexed, byClass, byID, cached, displayed = nil, {}, {}, nil, nil
-local function saved() return ns.db and ns.db.classTraining and ns.db.classTraining[ns.self] end
+local function saved() return ns.char and ns.char.classTraining end
 local function index()
     if indexed == ns.guideServiceData then return end
     indexed, byClass, byID = ns.guideServiceData, {}, {}
@@ -31,9 +31,8 @@ local function enabled()
 end
 
 function ns.InitializeClassTraining()
-    if type(ns.db.classTraining) ~= "table" then ns.db.classTraining = {} end
     local state = saved()
-    if type(state) ~= "table" then state = {}; ns.db.classTraining[ns.self] = state end
+    if type(state) ~= "table" then state = {}; ns.char.classTraining = state end
     for _, key in ipairs({"checked", "declined"}) do
         if not ns.GuideInteger(state[key], 255) then state[key] = 0 end
     end

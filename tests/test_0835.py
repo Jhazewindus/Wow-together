@@ -157,7 +157,7 @@ class JournalQuestActionsTests(unittest.TestCase):
                 if scenario == 'completed':
                     c.lua.execute('finished[900]=true')
                 if scenario == 'skipped':
-                    c.ns.db.guideSkips[c.ns.self].quests[900] = True
+                    c.ns.char.guideSkips.quests[900] = True
                 c.ns.ShowDungeonViewer('ragefire-chasm')
                 frame = c.ns.dungeonViewer
                 self.assertFalse(frame.startRoute.IsEnabled(frame.startRoute))

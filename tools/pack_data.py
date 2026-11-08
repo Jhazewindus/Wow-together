@@ -56,7 +56,10 @@ class Packer:
 
 def quest_code(catalogue, entities, world_checks=None, xp=None):
     packer = Packer()
-    body = 'ns.catalogue = ' + encode({k: v for k, v in catalogue.items() if k != 'quests'}) + '\n'
+    metadata = {k: v for k, v in catalogue.items() if k != 'quests'}
+    metadata['meta'] = {'captured': catalogue.get('captured'),
+        'build': catalogue.get('clientBuild', catalogue.get('build')), 'count': catalogue.get('count')}
+    body = 'ns.catalogue = ' + encode(metadata) + '\n'
     body += packer.records('quests', 'ns.catalogue.quests', catalogue['quests'])
     body += 'ns.questEntities = {}\n'
     for kind, rows in sorted(entities.items()):

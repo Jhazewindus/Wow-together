@@ -45,4 +45,4 @@ class StartupFontTests(unittest.TestCase):
         self.assertIsNotNone(c.ns.navigation)
         self.assertTrue(c.ns.minimapButton.IsShown(c.ns.minimapButton))
         self.assertIsNotNone(c.ns.db.offerKnowledge['Poging-Twee'][3143])
-        self.assertEqual(len(c.ns.db.offerKnowledge['Alice-TestRealm']), 0)
+        self.assertIsNone(c.ns.db.offerKnowledge['Alice-TestRealm'])

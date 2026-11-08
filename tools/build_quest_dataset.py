@@ -378,12 +378,13 @@ def build(args):
     # Metadata remains resident; nested quest/entity details unpack on first use.
     from pack_data import quest_code
     catalogue={'source':BASE+'/list/quests', 'detailSource':'https://www.wowhead.com/forever/quests',
-        'captured':datetime.date.today().isoformat(), 'count':len(records), 'quests':records}
+        'captured':datetime.date.today().isoformat(), 'clientBuild':args.client_build or previous.get('clientBuild'),
+        'count':len(records), 'quests':records}
     lua_output = ROOT/'WowTogether_QuestData' if output.resolve() == (ROOT/'WowTogether').resolve() else output
     lua_output.mkdir(parents=True, exist_ok=True)
     (lua_output/'QuestCatalogue.lua').write_text(quest_code(catalogue, runtime_entities,
         world_checks if args.legacy_snapshot else prior_world_checks, None))
-    summary=dict(previous,captured=datetime.date.today().isoformat(),count=len(records),detailed_quests=valid_pages,
+    summary=dict(previous,captured=datetime.date.today().isoformat(),clientBuild=args.client_build or previous.get('clientBuild'),count=len(records),detailed_quests=valid_pages,
         with_starters=sum(bool(q.get('starts')) for q in records.values()),with_objectives=sum(bool(q.get('objectives')) for q in records.values()),
         with_turnins=sum(bool(q.get('ends')) for q in records.values()),with_series=sum(bool(q.get('series')) for q in records.values()),
         with_prerequisites=sum(bool(q.get('previousQuest') or q.get('prerequisiteAny') or q.get('prerequisiteAll')) for q in records.values()),
@@ -396,6 +397,11 @@ def build(args):
             'quests_with_retained_fields':prior_snapshot_quests,'retained_fields':prior_snapshot_fields,
             'rule':'current facts take precedence; prior reviewed fields fill omissions'})
     (output/'QuestCatalogue.json').write_text(json.dumps(summary,indent=2)+'\n')
+    if args.snapshot_output:
+        snapshot = {'captured': catalogue['captured'], 'clientBuild': catalogue['clientBuild'],
+            'count': len(records), 'quests': records}
+        args.snapshot_output.parent.mkdir(parents=True, exist_ok=True)
+        args.snapshot_output.write_text(json.dumps(snapshot, indent=2) + '\n')
     coverage=collections.defaultdict(lambda: {'quests':0,'pickups':0,'objectives':0,'turnins':0,'complete_locations':0,'missing_quest_ids':[]})
     for ident,quest in sorted(records.items()):
         zone=quest.get('categoryPath') or quest.get('zone') or 'Unknown category'
@@ -435,6 +441,8 @@ def main():
     parser.add_argument('--forever-geometry',type=Path,help='Pinned published Forever DBC map bounds; no source addon code is read.')
     parser.add_argument('--forever-event-data',type=Path,help='Pinned public event endpoints; literal facts only, no provider execution.')
     parser.add_argument('--forever-beta-data',type=Path,help='Pinned public Forever facts; literal parsing excludes all source engine/UI code.')
+    parser.add_argument('--client-build',help='Forever client build associated with this capture, when known; never inferred from the host.')
+    parser.add_argument('--snapshot-output',type=Path,help='Optional full JSON quest snapshot for later tools/diff_catalogue.py comparisons.')
     build(parser.parse_args())
 
 

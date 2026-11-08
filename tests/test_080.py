@@ -197,7 +197,7 @@ class GuideInstructionTests(unittest.TestCase):
         c=guide_client(1)
         stop=c.lua.table_from({'id':900,'kind':'a','title':'Letter','itemName':'Sealed Letter','npcName':'Bandit',
             'action':'start-item','sourceAction':'loot'})
-        self.assertEqual(c.ns.StopInstruction(stop),'Loot Sealed Letter from Bandit; use it to start the quest')
+        self.assertEqual(c.ns.StopInstruction(stop),'Kill Bandit for Sealed Letter')
 
     def test_real_lazy_peons_uses_supplied_tool_instead_of_killing_or_farming_it(self):
         c=Client(quests=(),use_catalogue=True)
@@ -237,7 +237,7 @@ class GuideInstructionTests(unittest.TestCase):
             {'id':900,'kind':'q','mapID':501,'entityID':7,'objectiveKey':'item:10','legacyStepKey':'q:501:npc:7'},
             {'id':900,'kind':'q','mapID':501,'entityID':7,'objectiveKey':'item:11'}],recursive=True)
         self.assertNotEqual(c.ns.GuideStepKey(stops[1]),c.ns.GuideStepKey(stops[2]))
-        c.ns.db.guideSkips[c.ns.self].steps[900]=c.lua.table_from({'q:501:npc:7':True})
+        c.ns.char.guideSkips.steps[900]=c.lua.table_from({'q:501:npc:7':True})
         filtered=c.ns.FilterGuideStages(stops)
         self.assertEqual(len(filtered),1)
         self.assertEqual(filtered[1].objectiveKey,'item:11')

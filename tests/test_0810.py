@@ -102,13 +102,14 @@ class BetaEventStartupTests(unittest.TestCase):
         c.ns.guideServiceData = c.lua.table_from({'inns': [{
             'id': 'TEST_INN', 'npcID': 500, 'name': 'Test hub', 'faction': 'Horde',
             'mapID': 501, 'x': .21, 'y': .37}]}, recursive=True)
-        state = c.ns.db.guideServices[c.ns.self]
+        state = c.ns.char.guideServices
+        inns = c.ns.db.innLocations[c.ns.worldBuild]
         event = 'PLAYER_INTERACTION_MANAGER_FRAME_SHOW'
         for payload in (902, c.lua.globals().secret):
             c.ns.frame.OnEvent(c.ns.frame, event, payload)
-            self.assertEqual(len(state.inns), 0)
+            self.assertEqual(len(inns), 0)
         c.ns.frame.OnEvent(c.ns.frame, event, 901)
-        self.assertEqual(state.inns.TEST_INN.name, 'Test hub')
+        self.assertEqual(inns.TEST_INN.name, 'Test hub')
         self.assertIsNone(state.boundInnID)
         c.ns.frame.OnEvent(c.ns.frame, 'HEARTHSTONE_BOUND')
         self.assertEqual(state.boundInnID, 'TEST_INN')
@@ -130,7 +131,7 @@ class BetaEventStartupTests(unittest.TestCase):
         self.assertIsNotNone(c.ns.CurrentGuideTip())
         c.lua.execute('function GetBindLocation() return "Test hub" end; clock=3')
         self.assertIsNone(c.ns.CurrentGuideTip())
-        self.assertIsNone(c.ns.db.guideServices[c.ns.self].boundInnID)
+        self.assertIsNone(c.ns.char.guideServices.boundInnID)
 
     def test_unreadable_new_visit_clears_stale_binding_candidate(self):
         c = tip_client()
@@ -141,7 +142,7 @@ class BetaEventStartupTests(unittest.TestCase):
         c.ns.handlers.CONFIRM_BINDER()
         self.assertIsNone(c.ns.pendingGuideInn)
         c.ns.handlers.HEARTHSTONE_BOUND()
-        self.assertIsNone(c.ns.db.guideServices[c.ns.self].boundInnID)
+        self.assertIsNone(c.ns.char.guideServices.boundInnID)
 
 
 if __name__ == '__main__':

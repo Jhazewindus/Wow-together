@@ -136,7 +136,7 @@ class AffordableWorkTests(unittest.TestCase):
     def test_reload_keeps_goal_but_rechecks_affordable_work(self):
         c = crafting(); c.lua.globals().stock[100] = 4
         c.ns.StartProfessionGuide(171, 75)
-        saved = c.ns.db.guideState[c.ns.self]
+        saved = c.ns.char.guideState
         c.ns.routeSelection = None; c.ns.pendingSavedGuide = saved
         c.ns.RestoreSavedGuide()
         self.assertEqual(c.ns.selectedRoute.stops[1].craftQuantity, 2)

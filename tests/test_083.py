@@ -41,7 +41,7 @@ class DialogScopeTests(unittest.TestCase):
         c.ns.catalogue.quests[900].questType = 'Dungeon'
         offer(c, (900,))
         self.assertTrue(c.ns.CanAutoAcceptGuideQuest(900))
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
+        c.ns.char.guideSkips.quests[900] = True
         self.assertFalse(c.ns.CanAutoAcceptGuideQuest(900))
 
     def test_under_review_pickup_waits_for_actual_offer_without_inventing_races(self):
@@ -82,7 +82,7 @@ class StableProgressTests(unittest.TestCase):
         catalogue(c, {900:world_quest('Ordinary'), 901:world_quest('Repeat', repeatable=True)})
         c.ns.RememberQuestCompletion(900); c.ns.RememberQuestCompletion(901)
         saved = primitive(c.ns.db)
-        self.assertTrue(Client(quests=(), saved_variables=saved).ns.Completed(900))
+        self.assertTrue(Client(quests=(), saved_variables=saved, saved_character=primitive(c.ns.char)).ns.Completed(900))
         other = Client(name='Other', quests=(), saved_variables=saved)
         self.assertFalse(other.ns.Completed(900))
         self.assertFalse(c.ns.Completed(901))
@@ -167,23 +167,26 @@ class XPProjectionTests(unittest.TestCase):
         c.ns.CaptureGuideXP(g)
         c.ns.RememberQuestCompletion(900)
         c.ns.profile.level = 13
-        self.assertIn('Lv 12', c.ns.GuideXPText(g))
-        self.assertIn('1200 XP', c.ns.GuideXPText(g))
+        self.assertIn('Remaining here:', c.ns.GuideXPText(g))
+        self.assertIn('leaves you at level 13', c.ns.GuideXPText(g))
+        self.assertEqual(g.xpReward, 1200)  # Captured baseline survives live progress updates.
 
     def test_missing_reward_and_curve_are_reported_not_fabricated(self):
         c, g = self.client()
         c.ns.catalogue.quests[901].xp = None
         c.ns.xpBaseline = None
+        c.ns.xpCurve = None
         estimate = c.ns.GuideXPProjection(g)
         self.assertEqual(estimate.unknown, 1)
         self.assertTrue(estimate.unavailable)
-        self.assertIn('XP curve incomplete', c.ns.GuideXPText(g))
+        self.assertIn('Remaining here:', c.ns.GuideXPText(g))
         g.xpStartLevel, g.xpUnknown = 'corrupt', None
         self.assertIn('XP curve incomplete', c.ns.GuideXPText(g))
+        self.assertNotIn('leaves you at level', c.ns.GuideXPText(g))
 
     def test_skips_and_wrong_race_are_excluded_and_secret_xp_not_used(self):
         c, g = self.client()
-        c.ns.db.guideSkips[c.ns.self].quests[901] = True
+        c.ns.char.guideSkips.quests[901] = True
         c.ns.catalogue.quests[902].allowedRaceIDs = c.lua.table_from([6])
         c.lua.execute('UnitXP=function() return secret end; UnitXPMax=function() return secret end')
         estimate = c.ns.GuideXPProjection(g)

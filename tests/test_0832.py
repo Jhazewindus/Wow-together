@@ -123,7 +123,7 @@ class EliteSpawnTests(unittest.TestCase):
         c = fixture(); c.ns.active[900] = None
         self.assertEqual(len(c.ns.EliteSpawnPoints()), 0)
         c.ns.active[900] = 'Elite hunt'
-        c.ns.db.guideSkips[c.ns.self] = c.lua.table_from({'quests': {900: True}, 'steps': {}}, recursive=True)
+        c.ns.char.guideSkips = c.lua.table_from({'quests': {900: True}, 'steps': {}}, recursive=True)
         self.assertEqual(len(c.ns.EliteSpawnPoints()), 0)
 
     def test_reference_points_require_unchanged_identity_and_quest_scope(self):

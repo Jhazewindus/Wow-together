@@ -66,7 +66,7 @@ class DestinationReasonTests(unittest.TestCase):
         for excluded in ('faction', 'skip'):
             c = guide_client(2); c.ns.catalogue.quests[901].previousQuest = 900
             if excluded == 'faction': c.ns.catalogue.quests[901].side = 'Alliance'
-            else: c.ns.db.guideSkips[c.ns.self].quests[901] = True
+            else: c.ns.char.guideSkips.quests[901] = True
             s = step(c); select(c, [s])
             self.assertNotEqual(c.ns.GuideDestinationDecision(s).code, 'prerequisite')
 
@@ -110,7 +110,7 @@ class DestinationReasonTests(unittest.TestCase):
         c.ns.objectiveDisplayRevision = 1
         self.assertNotEqual(c.ns.GuideDestinationDecision(a).code, 'pickup-hub')
         c.ns.PickupOfferEvidence = c.lua.eval('function() return true end')
-        c.ns.db.guideSkips[c.ns.self].quests[901] = True
+        c.ns.char.guideSkips.quests[901] = True
         c.ns.objectiveDisplayRevision = 2
         self.assertNotEqual(c.ns.GuideDestinationDecision(a).code, 'pickup-hub')
 
@@ -123,7 +123,7 @@ class DestinationReasonTests(unittest.TestCase):
         d = c.ns.GuideDestinationDecision(a)
         self.assertEqual(d.code, 'objective-area')
         self.assertIn('2 accepted quests', d.why)
-        c.ns.db.guideSkips[c.ns.self].quests[901] = True; c.ns.objectiveDisplayRevision = 2
+        c.ns.char.guideSkips.quests[901] = True; c.ns.objectiveDisplayRevision = 2
         self.assertNotEqual(c.ns.GuideDestinationDecision(a).code, 'objective-area')
 
     def test_low_ready_return_still_explains_the_reward(self):

@@ -105,7 +105,7 @@ class ConfirmationTests(unittest.TestCase):
         c.ns.ClearConfirmationWaypoint(c.ns.CurrentQuestConfirmation())
         self.assertEqual(c.lua.globals().cleared, 0)
         # Ownership survives a namespace restart/reload, not just this frame.
-        self.assertIsNotNone(c.ns.db.confirmationWaypoints[c.ns.self])
+        self.assertIsNotNone(c.ns.char.confirmationWaypoints)
         c.ns.confirmationWaypoint = None
         c.ns.active[900] = True; c.ns.Refresh()
         self.assertEqual(c.lua.globals().cleared, 1)
@@ -154,7 +154,7 @@ class ConfirmationTests(unittest.TestCase):
     def test_blocked_or_other_unknown_requirements_never_get_branch_marker(self):
         for change in ('q.minLevel=99', "q.side='Alliance'", 'q.previousQuest=899',
                        'q.prerequisitesUnverified=nil; q.prerequisitesRead=false',
-                       'ns.db.guideSkips[ns.self].quests[900]=true'):
+                       'ns.char.guideSkips.quests[900]=true'):
             c, g = confirmation_client()
             c.lua.execute('local ns=...; local q=ns.catalogue.quests[900]; ' + change, c.ns)
             if 'prerequisitesRead' in change:
@@ -228,7 +228,7 @@ class AreaObjectiveTests(unittest.TestCase):
         c = area_client(4)
         c.ns.localProgress[901].objectives[1].have = 7
         c.ns.active[902] = None
-        c.ns.db.guideSkips[c.ns.self].quests[903] = True
+        c.ns.char.guideSkips.quests[903] = True
         c.ns.Refresh()
         items = c.ns.AreaObjectives(c.ns.selectedRoute.stops[1])
         self.assertEqual([i.stop.id for i in items.values()], [900])

@@ -2,9 +2,10 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.97
-## X-ReleaseName: STRUCTURED GUIDE STEP PRESENTATION
+## Version: 0.8.98
+## X-ReleaseName: PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW
 ## SavedVariables: WowTogetherDB
+## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua
 DataStore.lua
 EliteSpawnData.lua
@@ -23,6 +24,7 @@ TravelTrails.lua
 Catalogue.lua
 Quests.lua
 GuideXP.lua
+RouteCost.lua
 Sync.lua
 DungeonArtwork.lua
 GuideThemes.lua
@@ -55,6 +57,7 @@ ClassTraining.lua
 InventoryServices.lua
 StandaloneArrow.lua
 Progress.lua
+ObjectiveLearning.lua
 NPCs.lua
 Planner.lua
 GuideControls.lua

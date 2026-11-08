@@ -73,9 +73,8 @@ function ns.ReadProfessionSkills()
 end
 
 function ns.InitializeProfessionState()
-    if type(ns.db.professions) ~= "table" then ns.db.professions = {} end
-    if type(ns.db.professions[ns.self]) ~= "table" then ns.db.professions[ns.self] = {} end
-    local saved = ns.db.professions[ns.self]
+    if type(ns.char.professions) ~= "table" then ns.char.professions = {} end
+    local saved = ns.char.professions
     if type(saved.skills) ~= "table" then saved.skills = {} end
     if type(saved.goals) ~= "table" then saved.goals = {} end
     ns.professionSaved = saved

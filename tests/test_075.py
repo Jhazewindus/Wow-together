@@ -146,7 +146,7 @@ class NativeObjectiveTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.stops[1].kind,'t')
         self.assertIsNone(c.ns.selectedRoute.stops[1].clientLocation)
         c.ns.SaveSelectedGuide()
-        saved=c.ns.db.guideState[c.ns.self].guide.fixedPlan[3]
+        saved=c.ns.char.guideState.guide.fixedPlan[3]
         self.assertTrue(saved.unknownLocation)
         self.assertIsNone(saved.x)
 
@@ -165,7 +165,7 @@ class NativeObjectiveTests(unittest.TestCase):
         c.lua.execute('C_QuestLog.GetNextWaypoint=function() return 501,.8,.65 end')
         c.ns.ReadRouteLocations();c.ns.UpdateFixedGuideRoute(g)
         self.assertFalse(any(p.clientLocation for p in c.ns.selectedRoute.stops.values()))
-        self.assertTrue(c.ns.db.guideSkips[c.ns.self].steps[900]['q:501:unknown'])
+        self.assertTrue(c.ns.char.guideSkips.steps[900]['q:501:unknown'])
         self.assertFalse(c.ns.Completed(900))
 
 

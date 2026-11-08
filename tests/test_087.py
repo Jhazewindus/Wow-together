@@ -39,7 +39,7 @@ class GuideServiceTipTests(unittest.TestCase):
     def test_flight_unlocks_are_character_specific_and_unknown_is_not_locked(self):
         c = tip_client(inn=False, flight=True)
         self.assertIn('Check flight path', c.ns.CurrentGuideTip().text)
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         state.nodes[9000] = c.lua.table_from({'id': 9000, 'name': 'Test flight', 'known': False,
             'unlockConfirmed': True, 'point': {'mapID': 501, 'x': .24, 'y': .37}}, recursive=True)
         c.lua.globals().clock = 3
@@ -48,7 +48,8 @@ class GuideServiceTipTests(unittest.TestCase):
         c.lua.globals().clock = 5
         self.assertIsNone(c.ns.CurrentGuideTip())
         state.nodes[9000] = None
-        c.ns.db.flights['Other-TestRealm'] = c.lua.table_from({'nodes': {9000: {'known': True}}}, recursive=True)
+        c.ns.char.flights.nodes[9000] = None
+        c.ns.db.flights = {'Other-TestRealm': {'nodes': {9000: {'known': True}}}}
         c.lua.globals().clock = 7
         self.assertIsNotNone(c.ns.CurrentGuideTip())
 
@@ -72,7 +73,7 @@ class GuideServiceTipTests(unittest.TestCase):
         node = c.lua.table_from({'id': 9000, 'name': 'Native master', 'known': False,
             'unlockConfirmed': True, 'faction': 'Horde',
             'point': {'mapID': 501, 'x': .24, 'y': .37}}, recursive=True)
-        c.ns.db.flights[c.ns.self].nodes[9000] = node
+        c.ns.char.flights.nodes[9000] = node
         c.lua.globals().clock = 3
         self.assertEqual(c.ns.CurrentGuideTip().kind, 'flight')
         metadata.faction = 'Horde'; node.faction = 'Alliance'
@@ -107,16 +108,16 @@ class GuideServiceTipTests(unittest.TestCase):
         c.lua.execute('function GetBindLocation() return secret end; clock=3; function UnitGUID() return "Creature-0-1-2-3-500-ABC" end')
         self.assertIsNotNone(c.ns.CurrentGuideTip())
         c.ns.handlers.CONFIRM_BINDER()
-        self.assertIsNone(c.ns.db.guideServices[c.ns.self].boundInnID)
+        self.assertIsNone(c.ns.char.guideServices.boundInnID)
         c.ns.handlers.HEARTHSTONE_BOUND()
-        self.assertEqual(c.ns.db.guideServices[c.ns.self].boundInnID, 'INN_500')
+        self.assertEqual(c.ns.char.guideServices.boundInnID, 'INN_500')
         self.assertIsNone(c.ns.CurrentGuideTip())
 
     def test_new_inns_can_be_observed_without_requiring_a_zone_specific_rule(self):
         c = tip_client(inn=False)
         c.lua.execute('function UnitGUID() return "Creature-0-1-2-3-700-ABC" end; function GetSubZoneText() return "New hub" end')
         c.ns.handlers.CONFIRM_BINDER()
-        inn = c.ns.db.guideServices[c.ns.self].inns['observed:501:700']
+        inn = c.ns.db.innLocations[c.ns.worldBuild]['observed:501:700']
         self.assertEqual(inn.name, 'New hub')
         self.assertEqual(c.ns.CurrentGuideTip().kind, 'hearth')
 

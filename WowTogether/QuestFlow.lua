@@ -6,6 +6,13 @@ function ns.NewGuideFlowModel(plan, distance, options)
     options = options or {}
     local model = {stages = {}, pickups = {}, handins = {}, gates = {}, quests = {}, killTargets = {}, size = #plan,
         first = plan[1], last = plan[#plan], ordinal = {}, external = 0}
+    model.routeCost = ns.RouteCostModel({travel = function(a, b)
+        if distance then
+            local value, basis = distance(a, b)
+            if value then return value, basis end
+        end
+        return ns.WalkingDistance(a.mapID, a, b) or ns.NormalizedDistance(a, b) * ns.ROUTE_WEIGHTS.normalizedDistanceScale
+    end})
     local startLevel = 60
     for _, stop in ipairs(plan) do
         local list = model.stages[stop.id] or {}; model.stages[stop.id] = list
@@ -42,8 +49,7 @@ function ns.NewGuideFlowModel(plan, distance, options)
     local function near(a, b, radius)
         return a and b and not a.unknownLocation and not b.unknownLocation and a.mapID == b.mapID
             and ns.ValidTravelPoint(a) and ns.ValidTravelPoint(b)
-            and (distance and distance(a, b) or ns.WalkingDistance(a.mapID, a, b)
-                or ns.NormalizedDistance(a, b) * 6000) <= radius
+            and (model.routeCost:travel(a, b) or math.huge) <= radius
     end
     model.near = near
     model.hubUnlocks = {}
@@ -72,7 +78,7 @@ function ns.NewGuideFlowModel(plan, distance, options)
             if seen[stop] or model.ordinal[stop] ~= (counts[stop.id] or 0) + 1 then result.valid = false end
             seen[stop], counts[stop.id] = true, (counts[stop.id] or 0) + 1
             if index > 1 and distance then
-                local length, basis = distance(candidate[index - 1], stop)
+                local length, basis = model.routeCost:travel(candidate[index - 1], stop)
                 result.distance = result.distance + length
                 if basis == "unmapped-estimate" then result.uncertainTravelLegs = result.uncertainTravelLegs + 1 end
                 if basis == "blocked" then result.blockedTravelLegs = result.blockedTravelLegs + 1 end
@@ -106,8 +112,7 @@ function ns.NewGuideFlowModel(plan, distance, options)
             elseif stop.kind == "t" then
                 log = log - 1; done[stop.id] = true
                 if type(quest.xp) == "number" and quest.xp >= 0 then
-                    local difference = level - (quest.level or level)
-                    local reward = math.floor(quest.xp * (difference <= 5 and 1 or math.max(0.1, 1 - (difference - 5) * 0.2)))
+                    local reward = ns.RouteCostQuestReward(quest, level)
                     result.questXP, xp = result.questXP + reward, xp + reward
                     while level < 60 do
                         local cap = threshold(level)
@@ -172,7 +177,7 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield, options)
     local current, changes = baseline, {}
     -- Tiny attachment/coordinate differences are below the useful precision
     -- of this estimated geography. Do not churn a working guide for them.
-    local minimumSaving = math.max(50, baseline.distance * 0.0005)
+    local minimumSaving = ns.RouteCostMinimumSaving(baseline.distance)
     if not baseline.valid then return {before = baseline, after = baseline, candidates = 0, moves = 0, changes = changes} end
     local positions = {}; local function reindex() for index, stop in ipairs(plan) do positions[stop] = index end end
     reindex()
@@ -182,8 +187,8 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield, options)
         for index = 2, #plan do
             local a, b = plan[index - 1], plan[index]
             if nextStop[a] ~= b then
-                value = value - distance(a, b)
-                if nextStop[a] then value = value + distance(a, nextStop[a]) end
+                value = value - model.routeCost:travel(a, b)
+                if nextStop[a] then value = value + model.routeCost:travel(a, nextStop[a]) end
             end
         end
         return value

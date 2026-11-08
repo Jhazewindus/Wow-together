@@ -11,7 +11,7 @@ local function clock()
     if type(value) == "number" and value == value and value >= 0 and value < 1000000000 then return value end
 end
 local function store()
-    return ready and ns.db and ns.db.guideSessions and ns.db.guideSessions[ns.self]
+    return ready and ns.char and ns.char.guideSessions
 end
 local function xpSnapshot()
     local level, xp, maximum = ns.ReadPublic(UnitLevel, "player"), ns.ReadPublic(UnitXP, "player"), ns.ReadPublic(UnitXPMax, "player")
@@ -47,7 +47,7 @@ local function safeSummary(source)
 end
 
 function ns.PausedSessionCheckpoint()
-    local saved = ns.db and ns.db.guideState and ns.db.guideState[ns.self]
+    local saved = ns.char and ns.char.guideState
     if type(saved) == "table" and saved.schema == 1 and saved.paused == true and type(saved.guide) == "table"
         and ns.SafeTitle(saved.guide.title) and type(saved.guide.key) == "string" and #saved.guide.key <= 600 then return saved end
 end
@@ -89,7 +89,7 @@ function ns.CaptureSessionCheckpoint()
     elseif not now or anchor and now < anchor then summary.timePartial = true end
     anchor = now
     captureXP(summary)
-    local saved = ns.db.guideState[ns.self]
+    local saved = ns.char.guideState
     if type(saved) == "table" and type(saved.guide) == "table" and saved.guide.key == guide.key then
         -- Checkpoint metadata describes the real quest step, not the arrow's
         -- corpse, flight, merchant detour or history preview.
@@ -136,7 +136,7 @@ end
 function ns.PauseGuideSession()
     if not ns.routeSelection or ns.routePlanning or ns.guideScanning then return false end
     ns.SaveSelectedGuide(); ns.CaptureSessionCheckpoint()
-    local saved = ns.db.guideState[ns.self]
+    local saved = ns.char.guideState
     if type(saved) ~= "table" or type(saved.guide) ~= "table" or saved.guide.key ~= ns.routeSelection.key then return false end
     saved.paused = true
     ns.StopGuide(false, true)
@@ -192,7 +192,7 @@ function ns.UpdateSessionUI()
     frame.stats:SetText(ns.GuideSessionSummaryText())
     local levels = summary and summary.startLevel and summary.endLevel
     frame.levels:SetText(levels and ("Level " .. summary.startLevel .. (summary.endLevel ~= summary.startLevel and " → " .. summary.endLevel or "")) or "")
-    local entry = saved or ns.db.guideState[ns.self]
+    local entry = saved or ns.char.guideState
     local checkpoint = type(entry) == "table" and type(entry.checkpoint) == "table" and entry.checkpoint or nil
     local nextStep = checkpoint and ns.SafeTitle(checkpoint.next)
     frame.next:SetText(nextStep and ("Next: " .. nextStep) or checkpoint and checkpoint.complete and "Guide complete." or "")
@@ -243,12 +243,11 @@ function ns.ShowSessionCheckpoint()
 end
 
 function ns.InitializeSessionCheckpoints()
-    ns.db.guideSessions = type(ns.db.guideSessions) == "table" and ns.db.guideSessions or {}
-    local saved = ns.db.guideSessions[ns.self]
+    local saved = ns.char.guideSessions
     local source = type(saved) == "table" and saved or {}
     local state = {current = safeSummary(source.current), last = safeSummary(source.last)}
-    ns.db.guideSessions[ns.self], ready = state, true
-    local guideState = ns.db.guideState[ns.self]
+    ns.char.guideSessions, ready = state, true
+    local guideState = ns.char.guideState
     if state.current and (type(guideState) ~= "table" or not guideState.guide or guideState.paused
         or state.current.key ~= identity(guideState.guide)) then state.last, state.current = state.current, nil end
     local function chain(event, callback) ns.On(event, callback) end

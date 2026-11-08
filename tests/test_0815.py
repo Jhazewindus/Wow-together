@@ -68,7 +68,7 @@ class FreshScanTests(unittest.TestCase):
     def test_failed_scan_preserves_manual_skips_and_last_complete_snapshot(self):
         c, g = scanning_client()
         entries(c, 900); c.ns.ReadQuests()
-        c.ns.db.guideSkips[c.ns.self].quests[901] = True
+        c.ns.char.guideSkips.quests[901] = True
         c.ns.db.config.scanSkipped = True
         c.lua.execute('reads=0; C_QuestLog.GetInfo=function() reads=reads+1; return nil end')
         c.ns.ScanGuideProgress(); c.drain()
@@ -107,7 +107,7 @@ class FreshScanTests(unittest.TestCase):
 
     def test_cancelled_scan_does_not_apply_reconsider_skips(self):
         c, g = scanning_client(85)
-        c.ns.db.guideSkips[c.ns.self].quests[901] = True
+        c.ns.char.guideSkips.quests[901] = True
         c.ns.db.config.scanSkipped = True
         c.ns.ScanGuideProgress(); tick(c)
         c.ns.ClearRoute(); c.drain()

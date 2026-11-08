@@ -95,7 +95,7 @@ class NPCVisitTests(unittest.TestCase):
 
     def test_skip_step_keeps_its_key_when_the_observed_position_changes(self):
         c, g = npc_client()
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
+        c.ns.char.guideSkips.quests[900] = True
         raw = next(s for s in g.fixedPlan.values() if s.id == 901 and s.kind == 'a')
         offer(c, (901,902))
         self.assertEqual(c.ns.selectedRoute.stops[1].fixedStepKey, c.ns.GuideStepKey(raw))
@@ -147,7 +147,7 @@ class NPCVisitTests(unittest.TestCase):
             self.assertIsNone(c.ns.NPCPickupPoint(901))
             self.assertEqual(pickup_ids(c), [])
 
-    def test_new_character_reuses_build_locations_but_not_availability_or_credit(self):
+    def test_new_character_reuses_build_locations_and_matching_world_offer_facts_but_not_credit(self):
         c, g = npc_client()
         offer(c)
         saved = primitive(c.ns.db)
@@ -156,7 +156,7 @@ class NPCVisitTests(unittest.TestCase):
         fresh.lua.globals().grouped = False; fresh.ns.UpdateRoster()
         fresh.ns.catalogue = fresh.lua.table_from(primitive(c.ns.catalogue), recursive=True)
         self.assertTrue(fresh.ns.NPCPickupPoint(901))
-        self.assertIsNone(fresh.ns.ObservedPickupAvailable(901))
+        self.assertTrue(fresh.ns.ObservedPickupAvailable(901))
         self.assertFalse(fresh.ns.Completed(901))
         fresh.lua.execute("function GetBuildInfo() return '1.60.1','different','test',16001 end")
         fresh.ns.InitializeNPCPickups()
@@ -166,15 +166,16 @@ class NPCVisitTests(unittest.TestCase):
         c, g = npc_client()
         offer(c); c.ns.handlers.PLAYER_LOGOUT()
         saved = primitive(c.ns.db)
-        self.assertEqual(set(saved['guideState'][c.ns.self]['guide']['npcVisitPickupIDs'].values()), {900,901,902})
-        fresh = Client(quests=(), saved_variables=saved)
+        saved_character = primitive(c.ns.char)
+        self.assertEqual(set(saved_character['guideState']['guide']['npcVisitPickupIDs'].values()), {900,901,902})
+        fresh = Client(quests=(), saved_variables=saved, saved_character=saved_character)
         fresh.guide_environment(level=12); map_canvas(fresh)
         fresh.lua.globals().grouped = False; fresh.ns.UpdateRoster()
         fresh.ns.catalogue = fresh.lua.table_from(primitive(c.ns.catalogue), recursive=True)
         fresh.ns.handlers.PLAYER_LOGIN(); fresh.drain()
         self.assertEqual(order(fresh.ns.routeSelection), order(g))
         self.assertEqual(set(pickup_ids(fresh)), {900,901,902})
-        self.assertIsNone(fresh.ns.ObservedPickupAvailable(901))
+        self.assertTrue(fresh.ns.ObservedPickupAvailable(901))
 
     def test_automation_advances_only_on_returned_native_lists_and_acceptance_events(self):
         c, g = npc_client()
@@ -276,14 +277,13 @@ class NPCVisitTests(unittest.TestCase):
     def test_same_character_reload_discards_old_availability(self):
         c, g = npc_client()
         offer(c); saved = primitive(c.ns.db)
-        fresh = Client(quests=(), saved_variables=saved)
+        fresh = Client(quests=(), saved_variables=saved, saved_character=primitive(c.ns.char))
         fresh.guide_environment(level=12)
         fresh.ns.catalogue = fresh.lua.table_from(primitive(c.ns.catalogue), recursive=True)
-        self.assertIsNone(fresh.ns.ObservedPickupAvailable(901))
+        self.assertTrue(fresh.ns.ObservedPickupAvailable(901))
 
     def test_partial_offer_creates_a_missing_character_bucket_before_merging(self):
         c, g = npc_client()
-        c.ns.db.offerKnowledge[c.ns.self] = None
         c.ns.RecordNPCOfferAvailability(c.lua.table_from([{'questID':901}], recursive=True), False)
         self.assertTrue(c.ns.ObservedPickupAvailable(901))
         self.assertIsNone(c.ns.ObservedPickupAvailable(902))

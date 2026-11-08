@@ -1,5 +1,36 @@
 # Wow Together changelog
 
+## 0.8.98
+
+**PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW**
+
+- Record local quest-objective progress positions as build-scoped observations.
+  Repeated samples can provide an objective location; sharing remains an
+  explicit party setting. `/wt research` exports the evidence for review.
+- Add review-only observation ingest and promotion tools. They generate
+  correction candidates with observer/build/session confidence and conflicts;
+  catalogue corrections still require human review.
+- Move quest history, guide progress, class/profession progress, and other
+  character state into `WowTogetherCharDB`; keep world locations and offer
+  facts account-wide. Migrate legacy data once, preserving other characters'
+  unconverted records for the migration period.
+- Add quest-item start/use instructions and a secure manual item button. Update
+  the action as the item moves from a source into the bags and then into an
+  accepted quest objective.
+- Show the quest-data capture date and age, expose an optional client-build
+  field, and add catalogue-diff tooling for future source snapshots. The
+  current capture does not record a Forever client build.
+- Centralize established route travel factors and reward calculations in a
+  shared model without retuning the existing optimizer passes. Add an optional
+  quest-XP projection, disabled by default; its overlevel scaling is a Classic
+  estimate and is not verified against Forever rewards.
+- During dungeon runs, route active quest objectives on known interior maps in
+  journal encounter order. Matched boss steps name the quest they advance and
+  can show class-eligible drops from the journal data. Unmapped objectives,
+  unsourced prerequisite chains, and unverified dungeon facts remain explicit.
+- Validation: host suite results are recorded in `TESTING.md`. Host Lua 5.1
+  checks do not establish live client rendering or Forever XP behavior.
+
 ## 0.8.97
 
 **STRUCTURED GUIDE STEP PRESENTATION**

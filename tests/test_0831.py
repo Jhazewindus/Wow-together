@@ -216,14 +216,14 @@ class LootAuditTests(unittest.TestCase):
 class StopGuideTests(unittest.TestCase):
     def test_stop_keeps_empty_window_and_preserves_skip_preferences(self):
         c, _ = scanning_client(); frame = c.ns.navigation
-        c.ns.db.guideSkips[c.ns.self] = c.lua.table_from({'quests': {900: True}, 'steps': {}}, recursive=True)
+        c.ns.char.guideSkips = c.lua.table_from({'quests': {900: True}, 'steps': {}}, recursive=True)
         c.ns.SaveSelectedGuide()
         frame.stop.OnClick()
         self.assertTrue(frame.IsShown(frame))
         self.assertEqual(frame.title.text, 'No guide selected')
         self.assertIsNone(c.ns.routeSelection); self.assertIsNone(c.ns.selectedRoute)
-        self.assertIsNone(c.ns.db.guideState[c.ns.self])
-        self.assertTrue(c.ns.db.guideSkips[c.ns.self].quests[900])
+        self.assertIsNone(c.ns.char.guideState)
+        self.assertTrue(c.ns.char.guideSkips.quests[900])
         self.assertFalse(frame.scan.enabled); self.assertFalse(frame.back.enabled)
         c.drain(); c.ns.Refresh(True)
         self.assertIsNone(c.ns.routeSelection)

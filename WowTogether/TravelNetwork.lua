@@ -266,7 +266,7 @@ function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
                 name = transport.name, personal = transport}
         end
     end
-    local flights = ns.db and ns.db.flights and ns.db.flights[ns.self]
+    local flights = ns.char and ns.char.flights
     for id, node in pairs(flights and flights.nodes or {}) do
         if ns.ValidTravelPoint(node.point) and ns.TravelNodeAllowed("TAXI_" .. id, node.point, node, safety) then
             local key = "TAXI_" .. id

@@ -58,7 +58,7 @@ class CraftBatchTests(unittest.TestCase):
         c.lua.globals().color = 60
         c.ns.handlers.TRADE_SKILL_LIST_UPDATE(); c.drain()
         self.assertEqual(c.ns.selectedRoute.crafts, 20)
-        saved = c.ns.db.guideState[c.ns.self]
+        saved = c.ns.char.guideState
         self.assertGreaterEqual(saved.guide.professionBatch.total, 20)
         self.assertFalse(c.ns.selectedRoute.complete)
 
@@ -217,7 +217,7 @@ class CraftBatchTests(unittest.TestCase):
         c.lua.globals().stock[2318] = 2
         success(c, 2881, 1, 3)
         success(c, 2881, 2, 3)
-        saved = c.ns.db.guideState[c.ns.self]
+        saved = c.ns.char.guideState
         self.assertEqual(saved.guide.professionBatch.remaining, 12)
         c.ns.routeSelection = None
         c.ns.pendingSavedGuide = saved
@@ -229,7 +229,7 @@ class CraftBatchTests(unittest.TestCase):
     def test_malformed_checkpoint_is_ignored(self):
         c = crafting()
         c.ns.StartProfessionGuide(171, 75)
-        saved = c.ns.db.guideState[c.ns.self]
+        saved = c.ns.char.guideState
         saved.guide.professionBatch.remaining = 999
         c.ns.routeSelection = None
         c.ns.pendingSavedGuide = saved

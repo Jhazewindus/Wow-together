@@ -4,6 +4,130 @@ local function number(value, maximum)
     return ns.Public(value) and type(value) == "number" and value >= 0 and value <= maximum and value == math.floor(value)
 end
 
+function ns.XPState()
+    local level = ns.ReadPublic(UnitLevel, "player")
+    local xp = ns.ReadPublic(UnitXP, "player")
+    local maximum = ns.ReadPublic(UnitXPMax, "player")
+    local rested = ns.ReadPublic(GetXPExhaustion)
+    if not number(level, 60) or level < 1 or not number(xp, 10000000)
+        or not number(maximum, 10000000) or maximum < 1 or xp >= maximum then return end
+    if not number(rested, 10000000) then rested = 0 end
+    return {level = level, xp = xp, xpMax = maximum, rested = rested,
+        toNextLevel = math.max(0, maximum - xp)}
+end
+
+-- Classic quest XP overlevel table: quests at up to +5 levels pay nominal XP;
+-- each level below the player thereafter loses 20%, with a 10% floor. Forever
+-- may override this only after a tester provides captured reward comparisons.
+function ns.QuestXP(id, level)
+    local quest = ns.CatalogueQuest(id)
+    if not quest or not number(quest.xp, 10000000) then return end
+    level = number(level, 60) and level or ns.profile and ns.profile.level
+    if not number(level, 60) then return end
+    local difference = level - (quest.level or level)
+    local factor = difference <= ns.ROUTE_WEIGHTS.questRewardFullThroughLevels and 1
+        or math.max(ns.ROUTE_WEIGHTS.minimumQuestRewardFactor,
+            1 - (difference - ns.ROUTE_WEIGHTS.questRewardFullThroughLevels) * ns.ROUTE_WEIGHTS.questRewardPenaltyPerLevel)
+    return math.floor(quest.xp * factor)
+end
+
+function ns.ZoneXPRemaining(guide, profile, query)
+    if type(guide) ~= "table" then return end
+    local total, unknown, seen = 0, 0, {}
+    local function add(id)
+        if seen[id] then return end
+        seen[id] = true
+        if ns.CatalogueCompletion(ns.self, id, query) == true and not ns.active[id] then return end
+        local reward = ns.QuestXP(id, profile and profile.level)
+        if reward then total = total + reward else unknown = unknown + 1 end
+    end
+    for _, record in ipairs(guide.records or {}) do add(record.id) end
+    for id in pairs(ns.active or {}) do
+        if ns.readyToTurnIn and ns.readyToTurnIn[id] or ns.QuestProgressReady(ns.self, id) == true then add(id) end
+    end
+    return total, unknown
+end
+
+function ns.ZoneExitProjection(guide, profile, query)
+    profile = profile or ns.profile
+    local state = ns.XPState()
+    if not state or not profile or not number(profile.level, 60) then return end
+    local remaining, unknown = ns.ZoneXPRemaining(guide, profile, query)
+    if not remaining then return end
+    local level, xp, curveIncomplete = state.level, state.xp + remaining, false
+    while level < 60 do
+        local threshold = ns.xpCurve and ns.xpCurve[level] or ns.xpBaseline and ns.xpBaseline[level]
+        if not number(threshold, 10000000) or threshold < 1 then curveIncomplete = true; break end
+        if xp < threshold then break end
+        xp, level = xp - threshold, level + 1
+    end
+    local nextGuide
+    for _, candidate in ipairs(ns.LevelingGuides and ns.LevelingGuides(query) or {}) do
+        if candidate.mode == "zone" and candidate.key ~= guide.key and candidate.rangeLow
+            and candidate.rangeLow <= level and candidate.rangeLow > (guide.rangeLow or 0)
+            and (not nextGuide or candidate.rangeLow < nextGuide.rangeLow) then nextGuide = candidate end
+    end
+    local threshold = ns.xpCurve and ns.xpCurve[level] or ns.xpBaseline and ns.xpBaseline[level]
+    return {remaining = remaining, unknown = unknown, level = level, xp = xp, curveIncomplete = curveIncomplete,
+        percent = level >= 60 and 1 or threshold and threshold > 0 and xp / threshold or nil,
+        nextGuide = nextGuide}
+end
+
+function ns.XPLevelingValue(id, query)
+    local level = ns.PartyLevelFloor(query)
+    if not level then return end
+    local quest = ns.CatalogueQuest(id)
+    if not quest then return true end
+    local own = ns.QuestXP(id, level) or 0
+    local reference, count = 0, 0
+    for _, candidate in pairs(ns.catalogue and ns.catalogue.quests or {}) do
+        if candidate.level == level and number(candidate.xp, 10000000) then reference, count = reference + candidate.xp, count + 1 end
+    end
+    reference = count > 0 and reference / count or quest.xp or 0
+    local minimum = reference * ns.ROUTE_WEIGHTS.minUsefulXP
+    local best, nextID = own, nil
+    -- A low-level pickup remains useful when it directly unlocks a worthwhile
+    -- next quest. Follow-up eligibility is still checked by existing policy.
+    for nextQuestID, candidate in pairs(ns.catalogue and ns.catalogue.quests or {}) do
+        local follows = candidate.previousQuest == id
+        if not follows then
+            for _, parent in ipairs(candidate.prerequisiteAll or {}) do if parent == id then follows = true; break end end
+            for _, parent in ipairs(candidate.prerequisiteAny or {}) do if parent == id then follows = true; break end end
+        end
+        if follows and ns.CatalogueIdentityAllowed(nextQuestID, ns.profile) == true
+            and ns.CatalogueCompletion(ns.self, nextQuestID, query) ~= true then
+            local value = ns.QuestXP(nextQuestID, level) or 0
+            if value > best then best, nextID = value, nextQuestID end
+        end
+    end
+    if best >= minimum and best > 0 then
+        if nextID and own < minimum then return true, "Unlocks " .. ns.QuestTitle(nextID) .. " for its quest XP." end
+        return true, "Quest XP fits your current level."
+    end
+    return false, "Low XP for your current level; keep it under Later."
+end
+
+function ns.CatalogueFreshnessText(now)
+    local catalogue = ns.catalogue or {}
+    local metadata = catalogue.meta or {}
+    local captured = metadata.captured or catalogue.captured
+    local build = metadata.build or catalogue.clientBuild or catalogue.build
+    local age
+    local year, month, day = type(captured) == "string" and string.match(captured, "^(%d%d%d%d)%-(%d%d)%-(%d%d)$")
+    if year and type(time) == "function" then
+        local okay, stamp = pcall(time, {year = tonumber(year), month = tonumber(month), day = tonumber(day), hour = 12})
+        local current = now or (type(time) == "function" and time())
+        if okay and type(stamp) == "number" and type(current) == "number" then
+            age = math.max(0, math.floor((current - stamp) / 86400))
+        end
+    end
+    local text = "Quest data captured " .. (captured or "on an unknown date")
+        .. (age and (" (" .. age .. " day" .. (age == 1 and "" or "s") .. " ago)") or " (age unknown)")
+        .. "; build " .. (build and tostring(build) or "not recorded") .. "."
+    if age and age > 21 then text = text .. " Data may predate the current patch." end
+    return text
+end
+
 local function snapshot(guide)
     return number(guide.xpStartLevel, 60) and guide.xpStartLevel >= 1
         and number(guide.xpFinishLevel, 60) and guide.xpFinishLevel >= guide.xpStartLevel
@@ -52,9 +176,7 @@ function ns.GuideXPProjection(guide, query)
         if not number(quest.xp, 10000000) then result.unknown = result.unknown + 1; return end
         -- Published reward is nominal. The older-world overlevel reduction is
         -- an estimate, not a claim about the current Forever reward formula.
-        local difference = level - (quest.level or level)
-        local factor = difference <= 5 and 1 or math.max(0.1, 1 - (difference - 5) * 0.2)
-        local reward = math.floor(quest.xp * factor)
+        local reward = ns.QuestXP(id, level)
         result.reward, progress = result.reward + reward, progress + reward
         while level < 60 do
             local threshold = ns.xpCurve and ns.xpCurve[level]
@@ -87,6 +209,24 @@ function ns.GuideXPText(guide, query)
         reward = guide.xpReward, unknown = guide.xpUnknown, unavailable = guide.xpUnavailable, baseline = guide.xpBaseline, assumedStart = guide.xpAssumedStart}
         or ns.GuideXPProjection(guide, query)
     if not result then return "" end
+    if guide.mode == "zone" then
+        local projection = ns.ZoneExitProjection(guide, ns.profile, query)
+        if projection then
+            local state = ns.XPState()
+            local remainingLevels = projection.remaining / math.max(1, state and state.xpMax or 1)
+            if projection.curveIncomplete then
+                return string.format("Remaining here: ~%.1f levels • XP curve incomplete; projected exit unavailable",
+                    remainingLevels)
+            end
+            local percent = projection.percent and (" (" .. math.floor(projection.percent * 100 + 0.5) .. "%)") or ""
+            local line = string.format("Remaining here: ~%.1f levels • leaves you at level %d%s",
+                remainingLevels, projection.level, percent)
+            local nextGuide = projection.nextGuide
+            if nextGuide then line = line .. "\nThen: " .. nextGuide.zone .. " ("
+                .. tostring(nextGuide.rangeLow or "?") .. "–" .. tostring(nextGuide.rangeHigh or "?") .. ")" end
+            return line
+        end
+    end
     local finish = result.unavailable and "XP curve incomplete" or ("Lv " .. result.startLevel .. " → ~Lv " .. result.finishLevel)
     return "Quest XP estimate: " .. finish .. " • " .. result.reward .. " XP"
         .. (result.baseline and " • Classic curve estimate" or " • Quest rewards only")
@@ -94,7 +234,9 @@ function ns.GuideXPText(guide, query)
 end
 
 function ns.GuideXPHelp(frame)
-    ns.UIHelp(frame, "Estimate from unfinished guide quest rewards at route start. Kills, exploration, rested XP and party effects are excluded. Unobserved level thresholds and reward scaling use an older-world baseline; these are not verified Forever values. Missing XP reads assume the start of your level.")
+    local freshness = ns.CatalogueFreshnessText and ns.CatalogueFreshnessText()
+    ns.UIHelp(frame, "Quest reward estimate; kills, exploration, rested XP and party effects are excluded. Unobserved level thresholds and reward scaling use an older-world baseline, not a verified Forever curve. Missing XP reads assume the start of your level."
+        .. (freshness and ("\n" .. freshness) or ""))
 end
 
 ns.On("PLAYER_XP_UPDATE", function(unit) if ns.Public(unit) and unit == "player" and ns.db then ns.ReadGuideXP() end end)

@@ -3,6 +3,7 @@ import json
 import unittest
 from test_addon import Client
 from test_062 import client
+from test_063 import primitive
 
 
 def setup():
@@ -18,6 +19,13 @@ def offer(c, ids, complete=True):
 
 
 def exported(c):
+    data = json.loads(c.ns.ExportQuestResearch())
+    data['events'] = [event for event in data['events']
+                      if event.get('event') not in ('objective-area', 'pickup-location')]
+    return data
+
+
+def raw_export(c):
     return json.loads(c.ns.ExportQuestResearch())
 
 
@@ -47,6 +55,15 @@ class QuestResearchTests(unittest.TestCase):
         data = exported(c)['events'][0]
         self.assertFalse(data['completeList'])
         self.assertEqual(data['offered'], [901])
+
+    def test_export_adds_pickup_observation_events_with_build_and_anonymous_observer(self):
+        c = setup(); offer(c, [900])
+        events = raw_export(c)['events']
+        pickup, = [event for event in events if event['event'] == 'pickup-location']
+        self.assertEqual(pickup['build'], '70009')
+        self.assertEqual(pickup['questID'], 900)
+        self.assertTrue(pickup['observerID'].startswith('observer-'))
+        self.assertNotIn('character', pickup)
 
     def test_opening_one_detail_keeps_previously_confirmed_absence_in_the_same_context(self):
         c = setup(); offer(c, [900])
@@ -135,15 +152,15 @@ class QuestResearchTests(unittest.TestCase):
 
     def test_current_character_export_persists_across_reload_and_is_separate_from_friends(self):
         c = setup(); offer(c, [900])
-        saved = {'questResearch': {c.ns.self: dict(c.ns.db.questResearch[c.ns.self])}}
-        state = saved['questResearch'][c.ns.self]
+        saved_character = {'questResearch': primitive(c.ns.char.questResearch)}
+        state = saved_character['questResearch']
         state['events'] = exported(c)['events']
-        restored = Client(quests=(), saved_variables=saved)
+        restored = Client(quests=(), saved_character=saved_character)
         data = exported(restored)
         self.assertEqual(len(data['events']), 1)
         self.assertEqual(data['events'][0]['offered'], [900])
-        self.assertEqual(restored.ns.db.questResearch[restored.ns.self].session, 2)
-        friend = Client(name='Bob', peer='Alice', quests=(), saved_variables=saved)
+        self.assertEqual(restored.ns.char.questResearch.session, 2)
+        friend = Client(name='Bob', peer='Alice', quests=())
         self.assertEqual(exported(friend)['events'], [])
 
     def test_json_escaping_and_report_refresh_preserve_export_mode(self):

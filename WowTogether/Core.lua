@@ -333,6 +333,7 @@ function ns.Diagnostics()
     if ns.MinimapRouteDiagnostics then ns.MinimapRouteDiagnostics(output) end
     ns.GuideReasonDiagnostics(output)
     ns.QuestItemDiagnostics(output)
+    if ns.ObjectiveLearningDiagnostics then ns.ObjectiveLearningDiagnostics(output) end
     ns.GuideTipDiagnostics(output)
     ns.ClassTrainingDiagnostics(output)
     ns.InventoryServiceDiagnostics(output)
@@ -346,6 +347,16 @@ function ns.Diagnostics()
         local level, _, name = ns.PartyLevelFloor()
         output("Leveling quest band: " .. low .. "–" .. high .. "; lowest synced player: " .. name .. " (level " .. level .. ").")
     else output("Leveling quest band: waiting for public character level.") end
+    local xpState = ns.XPState and ns.XPState()
+    if xpState then
+        local guide = ns.routeSelection or ns.routeSelectionCandidate
+        local remaining = guide and ns.ZoneXPRemaining and ns.ZoneXPRemaining(guide, ns.profile)
+        local projection = guide and ns.ZoneExitProjection and ns.ZoneExitProjection(guide, ns.profile)
+        output("XP model: level " .. xpState.level .. " (" .. math.floor(xpState.xp / xpState.xpMax * 100) .. "%), rested "
+            .. xpState.rested .. "; zone remaining " .. tostring(remaining or "unknown")
+            .. ", projected exit " .. tostring(projection and projection.level or "unknown")
+            .. (projection and projection.percent and (" (" .. math.floor(projection.percent * 100) .. "%)") or ""))
+    end
     output("Travel: " .. ns.travelStatus)
     ns.TravelDiagnostics(output)
     ns.NPCPickupDiagnostics(output)
@@ -356,6 +367,106 @@ function ns.Diagnostics()
     ns.ResearchDiagnostics(output)
     ns.MemoryDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
+end
+
+local CHARACTER_STORES = {"flights", "questHistory", "guideState", "guideSkips", "questResearch",
+    "questResearchObserverIDs", "questLearning", "guideSessions", "classTraining", "professions",
+    "inventoryServiceCharacters", "pickupRechecks", "confirmationWaypoints"}
+
+local function copySaved(value, depth)
+    if type(value) ~= "table" then return value end
+    depth = (depth or 0) + 1
+    if depth > 24 then return nil end
+    local result = {}
+    for key, child in pairs(value) do
+        if type(key) == "string" or type(key) == "number" then
+            local copied = copySaved(child, depth)
+            if copied ~= nil then result[key] = copied end
+        end
+    end
+    return result
+end
+
+local function hasSavedValue(value, depth)
+    if type(value) ~= "table" then return value ~= nil end
+    depth = (depth or 0) + 1
+    if depth > 24 then return false end
+    for _, child in pairs(value) do if hasSavedValue(child, depth) then return true end end
+    return false
+end
+
+local function currentBuildFaction()
+    local _, build = ns.ReadPublic(GetBuildInfo)
+    local faction = ns.ReadPublic(UnitFactionGroup, "player")
+    if type(build) ~= "string" and type(build) ~= "number" then build = "unknown" end
+    if faction ~= "Horde" and faction ~= "Alliance" then faction = "unknown" end
+    return tostring(build), faction
+end
+
+function ns.MigrateCharacterStorage()
+    if type(WowTogetherCharDB) ~= "table" then WowTogetherCharDB = {} end
+    ns.char = WowTogetherCharDB
+    if ns.char.schema ~= 2 then
+        for _, store in ipairs(CHARACTER_STORES) do
+            local old = ns.db[store]
+            local empty = type(ns.char[store]) ~= "table" or not hasSavedValue(ns.char[store])
+            if type(old) == "table" and type(old[ns.self]) == "table" and empty then
+                ns.char[store] = copySaved(old[ns.self])
+            end
+        end
+        local oldServices = ns.db.guideServices and ns.db.guideServices[ns.self]
+        if type(oldServices) == "table" then
+            ns.char.guideServices = type(ns.char.guideServices) == "table" and ns.char.guideServices or {}
+            if ns.char.guideServices.boundInnID == nil then ns.char.guideServices.boundInnID = oldServices.boundInnID end
+            ns.char.guideServices.dismissed = type(ns.char.guideServices.dismissed) == "table"
+                and ns.char.guideServices.dismissed or copySaved(oldServices.dismissed or {})
+        end
+        ns.char.schema = 2
+    end
+
+    local build, faction = currentBuildFaction()
+    local migrateWorld = ns.db.schema ~= 2
+    ns.db.innLocations = type(ns.db.innLocations) == "table" and ns.db.innLocations or {}
+    local inns = ns.db.innLocations[build]
+    if type(inns) ~= "table" then inns = {}; ns.db.innLocations[build] = inns end
+    if migrateWorld then
+        for _, services in pairs(type(ns.db.guideServices) == "table" and ns.db.guideServices or {}) do
+            for id, inn in pairs(type(services) == "table" and type(services.inns) == "table" and services.inns or {}) do
+                if type(inn) == "table" and type(id) == "string" and type(inn.mapID) == "number"
+                    and type(inn.x) == "number" and type(inn.y) == "number" and inns[id] == nil then
+                    inns[id] = copySaved(inn)
+                end
+            end
+        end
+
+        -- Preserve old positive offer observations under the current build while
+        -- isolating their unknown faction and old offer context. They are not
+        -- actionable on a character until that context is observed anew.
+        ns.db.offerKnowledgeBuilds = type(ns.db.offerKnowledgeBuilds) == "table" and ns.db.offerKnowledgeBuilds or {}
+        for _, knowledge in pairs(type(ns.db.offerKnowledge) == "table" and ns.db.offerKnowledge or {}) do
+            local byFaction = ns.db.offerKnowledgeBuilds[build]
+            if type(byFaction) ~= "table" then byFaction = {}; ns.db.offerKnowledgeBuilds[build] = byFaction end
+            local byHash = byFaction.unknown
+            if type(byHash) ~= "table" then byHash = {}; byFaction.unknown = byHash end
+            for npcID, fact in pairs(type(knowledge) == "table" and knowledge or {}) do
+                if type(fact) == "table" and type(fact.offered) == "table" then
+                    local hash = "legacy:" .. tostring(fact.context or "unknown")
+                    local byQuest = byHash[hash]
+                    if type(byQuest) ~= "table" then byQuest = {}; byHash[hash] = byQuest end
+                    for questID in pairs(fact.offered) do
+                        if ns.GuideInteger(tonumber(questID)) and tonumber(questID) > 0 then
+                            byQuest[tonumber(questID)] = byQuest[tonumber(questID)] or {}
+                            if ns.GuideInteger(tonumber(npcID)) then
+                                byQuest[tonumber(questID)][tonumber(npcID)] = {offered = true, observers = 1, legacy = true}
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    ns.worldBuild, ns.worldFaction = build, faction
+    ns.db.schema = 2
 end
 
 ns.On("ADDON_LOADED", function(name)
@@ -374,6 +485,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateMinimapRoute()
     ns.ReadQuests()
     ns.InitializeSync()
+    ns.MigrateCharacterStorage()
     ns.InitializeQuestHistory()
     ns.InitializeGuideXP()
     ns.InitializeGuideControls()
@@ -384,6 +496,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeItemHints()
     ns.InitializeOffers()
     ns.InitializeNPCPickups()
+    ns.InitializeObjectiveLearning()
     ns.InitializeQuestResearch()
     ns.InitializeQuestLearning()
     ns.InitializeGuide()

@@ -35,8 +35,8 @@ class FlightMapTests(unittest.TestCase):
         self.assertIsNone(c.lua.globals().C_TaxiMap.GetTaxiMapID)
         c.ns.handlers.TAXIMAP_OPENED(0)  # The event argument is a taxi system, not a map.
         self.assertEqual(c.ns.flightMapSource, 11)
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[22].known)
-        self.assertIsNotNone(c.ns.db.flights[c.ns.self].edges['11:22'])
+        self.assertTrue(c.ns.char.flights.nodes[22].known)
+        self.assertIsNotNone(c.ns.char.flights.edges['11:22'])
         self.assertIn('GetTaxiMapID', c.ns.flightMapStatus)
         self.assertIsNotNone(c.ns.FindFlightPlan(c.ns.selectedRoute.stops[1]))
 
@@ -61,7 +61,7 @@ class FlightMapTests(unittest.TestCase):
         C_TaxiMap.GetAllTaxiNodes=function(id) error('Must never call with guessed map') end
         """)
         c.ns.ReadFlightMap()
-        self.assertEqual(len(c.ns.db.flights[c.ns.self].nodes), 0)
+        self.assertEqual(len(c.ns.char.flights.nodes), 0)
         self.assertIn('No public flight map ID', c.ns.travelStatus)
 
     def test_late_node_data_retries_and_closing_cancels_stale_reads_and_actions(self):
@@ -90,22 +90,22 @@ class FlightMapTests(unittest.TestCase):
         c.ns.handlers.TAXIMAP_OPENED(0); c.drain()
         self.assertEqual(c.lua.globals().reads, 4)
         self.assertIn('failed or returned restricted', c.ns.flightMapStatus)
-        self.assertEqual(len(c.ns.db.flights[c.ns.self].edges), 0)
+        self.assertEqual(len(c.ns.char.flights.edges), 0)
         self.assertIsNone(c.ns.visibleFlights)
 
     def test_public_ownership_survives_unreachable_state_but_stale_connection_is_removed(self):
         c = flight_client(); c.ns.ReadFlightMap()
         c.lua.globals().taxiNodes[2].state = 80
         c.ns.handlers.TAXIMAP_OPENED(0)
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[22].known)
-        self.assertIsNone(c.ns.db.flights[c.ns.self].edges['11:22'])
+        self.assertTrue(c.ns.char.flights.nodes[22].known)
+        self.assertIsNone(c.ns.char.flights.edges['11:22'])
         self.assertIsNone(c.ns.FindFlightPlan(c.ns.selectedRoute.stops[1]))
 
     def test_secret_slot_can_recognize_public_unlock_but_never_select_a_flight(self):
         c = flight_client(); c.ns.db.config.autoFly = True
         c.lua.globals().taxiNodes[2].slotIndex = c.lua.globals().secret
         c.ns.handlers.TAXIMAP_OPENED(0)
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[22].known)
+        self.assertTrue(c.ns.char.flights.nodes[22].known)
         self.assertIsNone(c.ns.visibleFlights[22].slot)
         self.assertIsNone(c.lua.globals().taken)
 
@@ -113,7 +113,7 @@ class FlightMapTests(unittest.TestCase):
 class UnlockTests(unittest.TestCase):
     def test_public_map_flags_recognize_unlocked_paths_but_cannot_invent_connections(self):
         c = discovery_client(); c.ns.ReadKnownFlightPaths()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         self.assertTrue(state.nodes[11].known); self.assertTrue(state.nodes[22].known)
         self.assertFalse(state.nodes[33].known)
         for id in (44, 55, 66): self.assertIsNone(state.nodes[id])
@@ -130,7 +130,7 @@ class UnlockTests(unittest.TestCase):
         c.lua.globals().mapNodes[3].isUndiscovered = False
         c.ns.handlers.TAXI_NODE_STATUS_CHANGED(); c.ns.handlers.TAXI_NODE_STATUS_CHANGED()
         c.ns.handlers.ZONE_CHANGED_NEW_AREA(); c.drain()
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[33].known)
+        self.assertTrue(c.ns.char.flights.nodes[33].known)
         self.assertEqual(list(c.lua.globals().mapReads.values()), [501, 601])
         self.assertEqual(c.ns.TransportState().queued, 0)
         self.assertIsNone(c.lua.globals().taken)
@@ -139,7 +139,7 @@ class UnlockTests(unittest.TestCase):
         c = discovery_client(); c.ns.ReadFlightMap()
         c.lua.globals().mapNodes[2].isUndiscovered = c.lua.globals().secret
         c.ns.ReadKnownFlightPaths()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         self.assertTrue(state.nodes[22].known)
         self.assertIsNotNone(state.edges['11:22'])
         c.lua.globals().mapNodes[2].isUndiscovered = True
@@ -152,7 +152,7 @@ class UnlockTests(unittest.TestCase):
 
     def test_map_only_unlock_can_be_revised_without_menu_confirmation(self):
         c = discovery_client(); c.ns.ReadKnownFlightPaths()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         self.assertTrue(state.nodes[22].known)
         c.lua.globals().mapNodes[2].isUndiscovered = True
         c.ns.ReadKnownFlightPaths()
@@ -164,16 +164,17 @@ class UnlockTests(unittest.TestCase):
         c.lua.globals().mapNodes[1].nodeID = 77777  # No published fallback coordinates.
         c.lua.globals().mapNodes[1].position = c.lua.globals().secret
         c.ns.ReadKnownFlightPaths()
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[77777].known)
-        self.assertIsNone(c.ns.db.flights[c.ns.self].nodes[77777].point)
-        self.assertEqual(len(c.ns.db.flights[c.ns.self].edges), 0)
+        self.assertTrue(c.ns.char.flights.nodes[77777].known)
+        self.assertIsNone(c.ns.char.flights.nodes[77777].point)
+        self.assertEqual(len(c.ns.char.flights.edges), 0)
 
     def test_saved_unlocks_are_personal_and_diagnostics_do_not_select_or_query_flights(self):
         c = discovery_client(); c.ns.ReadKnownFlightPaths(); saved = plain(c.ns.db)
-        same = Client(quests=(), saved_variables=saved)
+        saved_character = plain(c.ns.char)
+        same = Client(quests=(), saved_variables=saved, saved_character=saved_character)
         other = Client(name='Different', quests=(), saved_variables=saved)
-        self.assertTrue(same.ns.db.flights[same.ns.self].nodes[22].known)
-        self.assertEqual(len(other.ns.db.flights[other.ns.self].nodes), 0)
+        self.assertTrue(same.ns.char.flights.nodes[22].known)
+        self.assertEqual(len(other.ns.char.flights.nodes), 0)
         c.lua.execute("""
         function GetTaxiMapID() error('probe must not query') end
         C_TaxiMap.GetAllTaxiNodes=function() error('probe must not query') end

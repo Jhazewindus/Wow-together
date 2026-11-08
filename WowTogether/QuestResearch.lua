@@ -28,7 +28,20 @@ local function json(value)
 end
 
 local function state()
-    return ns.db and ns.db.questResearch and ns.db.questResearch[ns.self]
+    return ns.char and ns.char.questResearch
+end
+
+function ns.QuestResearchObserverID()
+    local id = ns.char.questResearchObserverIDs
+    if type(id) == "string" then return id end
+    local now = ns.ReadPublic(time) or 1
+    local elapsed = ns.ReadPublic(GetTime) or 1
+    local seed = tostring(now) .. ":" .. tostring(elapsed) .. ":" .. tostring(math.random(1, 2147483646))
+    local hash = 2166136261
+    for index = 1, #seed do hash = (hash * 16777619 + string.byte(seed, index)) % 2147483647 end
+    id = string.format("observer-%08x", hash)
+    ns.char.questResearchObserverIDs = id
+    return id
 end
 
 function ns.ResearchCaptureBoundary()
@@ -39,11 +52,10 @@ function ns.ResearchCaptureBoundary()
 end
 
 function ns.InitializeQuestResearch()
-    if type(ns.db.questResearch) ~= "table" then ns.db.questResearch = {} end
     local saved = state()
     if type(saved) ~= "table" or saved.schema ~= 1 or type(saved.events) ~= "table" then
         saved = {schema = 1, events = {}, sequence = 0, dropped = 0, session = 0, reputationRevision = 0}
-        ns.db.questResearch[ns.self] = saved
+        ns.char.questResearch = saved
     end
     for _, key in ipairs({"sequence", "dropped", "session", "reputationRevision"}) do
         if not ns.GuideInteger(saved[key]) then saved[key] = 0 end
@@ -57,6 +69,7 @@ local function snapshot(kind, facts, saved)
     local profile = ns.profile or {}
     local version, build, _, interface = ns.ReadPublic(GetBuildInfo)
     local result = {event = kind, addon = ns.VERSION, session = saved.session,
+        observerID = ns.QuestResearchObserverID(),
         client = version, build = build, interface = interface,
         level = profile.level, faction = profile.faction, classID = profile.classID,
         raceID = profile.raceID, mapID = profile.mapID, reputationRevision = saved.reputationRevision,
@@ -139,12 +152,23 @@ end
 
 function ns.ExportQuestResearch()
     local saved, lines = state(), {}
+    local learned = ns.ObjectiveAreaResearchEvents and ns.ObjectiveAreaResearchEvents() or {}
+    local pickups = ns.ExportNPCPickupResearchEvents and ns.ExportNPCPickupResearchEvents() or {}
     local header = {format = "wow-together-quest-research", schema = 1, addon = ns.VERSION,
-        capacity = LIMIT, dropped = saved and saved.dropped or 0}
+        capacity = LIMIT, dropped = saved and saved.dropped or 0,
+        objectiveAreaCount = #learned, pickupLocationCount = #pickups}
     local encoded = json(header)
     lines[#lines + 1] = string.sub(encoded, 1, -2) .. ',"events":['
-    for index, record in ipairs(saved and saved.events or {}) do
-        lines[#lines + 1] = json(record) .. (index < #saved.events and "," or "")
+    local events = saved and saved.events or {}
+    local total = #events + #learned + #pickups
+    for index, record in ipairs(events) do
+        lines[#lines + 1] = json(record) .. (index < total and "," or "")
+    end
+    for index, record in ipairs(learned) do
+        lines[#lines + 1] = json(record) .. (index < #learned + #pickups and "," or "")
+    end
+    for index, record in ipairs(pickups) do
+        lines[#lines + 1] = json(record) .. (index < #pickups and "," or "")
     end
     lines[#lines + 1] = "]}"
     return table.concat(lines, "\n")

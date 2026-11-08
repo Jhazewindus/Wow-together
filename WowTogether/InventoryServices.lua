@@ -25,7 +25,7 @@ for _, row in ipairs({
 end
 
 local function personal()
-    return ns.db and ns.db.inventoryServiceCharacters and ns.db.inventoryServiceCharacters[ns.self]
+    return ns.char and ns.char.inventoryServiceCharacters
 end
 local function scope()
     local _, build = ns.ReadPublic(GetBuildInfo)
@@ -367,10 +367,9 @@ end
 
 function ns.InitializeInventoryServices()
     if initialized then return end
-    ns.db.inventoryServiceCharacters = type(ns.db.inventoryServiceCharacters) == "table" and ns.db.inventoryServiceCharacters or {}
     ns.db.inventoryServiceVendors = type(ns.db.inventoryServiceVendors) == "table" and ns.db.inventoryServiceVendors or {}
     local state = personal()
-    if type(state) ~= "table" then state = {}; ns.db.inventoryServiceCharacters[ns.self] = state end
+    if type(state) ~= "table" then state = {}; ns.char.inventoryServiceCharacters = state end
     state.dismissed = type(state.dismissed) == "table" and state.dismissed or {}
     if type(state.pending) ~= "table" or type(state.pending.needs) ~= "table" then state.pending = nil end
     initialized = true

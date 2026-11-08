@@ -2,10 +2,36 @@ local addonName, ns = ...
 
 ns.offered = {}
 ns.turnInStatus = "Automatic turn-in is off."
+local offersInvalidated = false
 
 function ns.InvalidateNPCOffers()
-    if ns.db and ns.db.offerKnowledge then ns.db.offerKnowledge[ns.self] = {} end
+    offersInvalidated = true
     ns.offered = {}
+end
+
+local function completionSetHash()
+    local ids = {}
+    for id, complete in pairs(ns.questHistory or {}) do
+        if complete and ns.GuideInteger(id) then ids[#ids + 1] = id end
+    end
+    table.sort(ids)
+    return table.concat(ids, ",")
+end
+
+local function offerFacts(create)
+    local build, faction = ns.worldBuild, ns.worldFaction
+    if not ns.db or not build or not faction then return end
+    ns.db.offerKnowledgeBuilds = type(ns.db.offerKnowledgeBuilds) == "table" and ns.db.offerKnowledgeBuilds or {}
+    local builds = ns.db.offerKnowledgeBuilds
+    if not builds[build] and create then builds[build] = {} end
+    local factions = builds[build]
+    if not factions then return end
+    if not factions[faction] and create then factions[faction] = {} end
+    local sets = factions[faction]
+    if not sets then return end
+    local hash = completionSetHash()
+    if not sets[hash] and create then sets[hash] = {} end
+    return sets[hash], hash
 end
 
 local function offerContext()
@@ -36,37 +62,52 @@ function ns.RecordNPCOfferAvailability(quests, complete)
             for questID in pairs(observed) do ns.pickupRechecks[id][questID] = true end
         end
     end
-    ns.db.offerKnowledge[ns.self] = ns.db.offerKnowledge[ns.self] or {}
-    if complete == false then
-        local previous = ns.db.offerKnowledge[ns.self][id]
-        if previous and previous.context == offerContext() then
-            for questID in pairs(previous.offered) do offered[questID] = true end
-            completeList = previous.complete == true
+    local facts, completionHash = offerFacts(true)
+    if not facts then return end
+    offersInvalidated = false
+    if complete ~= false then
+        for questID, byNPC in pairs(facts) do
+            if type(questID) == "number" and type(byNPC) == "table" then byNPC[id] = nil end
         end
     end
-    ns.db.offerKnowledge[ns.self][id] = {context = offerContext(), offered = offered, complete = completeList}
+    if complete == false then
+        for questID, byNPC in pairs(facts) do
+            if type(questID) == "number" and type(byNPC) == "table" and byNPC[id] then
+                offered[questID] = true
+            end
+        end
+        completeList = facts._complete and facts._complete[id] == true
+    end
+    for questID in pairs(observed) do
+        facts[questID] = type(facts[questID]) == "table" and facts[questID] or {}
+        facts[questID][id] = {offered = true, observers = 1, completionSetHash = completionHash}
+    end
+    if complete ~= false then
+        facts._complete = type(facts._complete) == "table" and facts._complete or {}
+        facts._complete[id] = true
+    end
     ns.RecordNPCPickupLocations(id, observed)
     if complete ~= false then ns.RecordGuideNPCVisit(observed) end
     ns.RecordQuestResearch("offers", {npcID = id, offered = observed, complete = complete ~= false})
 end
 
 function ns.ObservedPickupAvailable(id)
-    local quest, knowledge = ns.CatalogueQuest(id), ns.db.offerKnowledge and ns.db.offerKnowledge[ns.self]
-    if not quest or not knowledge then return end
+    local quest, facts = ns.CatalogueQuest(id), offerFacts(false) or {}
+    if not quest then return end
     local checked, total = 0, 0
     local starts = {}; for _, point in ipairs(quest.starts or {}) do starts[#starts + 1] = point end
     local observedPoint = ns.NPCPickupPoint(id)
     if observedPoint then starts[#starts + 1] = observedPoint end
     for _, point in ipairs(starts) do
         total = total + 1
-        local observed = point.npc and knowledge[point.entityID]
-        local fresh = observed and observed.context == offerContext()
-        if fresh and observed.offered[id] then return true end
+        local byNPC = point.npc and facts[id]
+        local observed = byNPC and byNPC[point.entityID]
+        if not offersInvalidated and observed and observed.offered == true then return true end
         -- Old positives are not current availability. A complete absence
         -- remains a reason to recheck the giver, even after other progress or
         -- opening another quest's partial dialog at this same NPC.
         local previous = ns.pickupRechecks and point.npc and ns.pickupRechecks[point.entityID]
-        if fresh and observed.complete ~= false or previous and not previous[id] then checked = checked + 1 end
+        if facts._complete and facts._complete[point.entityID] == true or previous and not previous[id] then checked = checked + 1 end
     end
     if total > 0 and checked == total then return false end
 end
@@ -210,22 +251,19 @@ function ns.ReadGreetingOffers()
 end
 
 function ns.InitializeOffers()
-    ns.db.offerKnowledge = type(ns.db.offerKnowledge) == "table" and ns.db.offerKnowledge or {}
     -- Complete negative observations survive progress/reload for this player
     -- and build. They never become a prerequisite or another player's gate.
     local _, build = ns.ReadPublic(GetBuildInfo)
-    ns.db.pickupRechecks = type(ns.db.pickupRechecks) == "table" and ns.db.pickupRechecks or {}
-    local remembered = ns.db.pickupRechecks[ns.self]
+    local remembered = ns.char.pickupRechecks
     if type(build) == "string" or type(build) == "number" then
         build = tostring(build)
         if type(remembered) ~= "table" or remembered.build ~= build or type(remembered.npcs) ~= "table" then
             remembered = {build = build, npcs = {}}
-            ns.db.pickupRechecks[ns.self] = remembered
+            ns.char.pickupRechecks = remembered
         end
         ns.pickupRechecks = remembered.npcs
     else ns.pickupRechecks = {} end
     -- Fresh positive availability must still be observed again after reload.
-    ns.db.offerKnowledge[ns.self] = {}
     ns.gossipReady = C_GossipInfo and type(C_GossipInfo.GetAvailableQuests) == "function" or false
     ns.greetingReady = type(GetNumAvailableQuests) == "function" and type(GetAvailableQuestInfo) == "function"
     ns.offerReady = ns.gossipReady or ns.greetingReady or type(GetQuestID) == "function"

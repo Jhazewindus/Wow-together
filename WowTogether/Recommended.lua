@@ -14,7 +14,7 @@ end
 local function signature()
     local p, values = ns.profile or {}, {revision, ns.objectiveDisplayRevision or 0,
         ns.professionRevision or 0, ns.catalogueLocationRevision or 0, ns.questHistoryCount or 0,
-        ns.db and ns.db.questLearning and ns.db.questLearning.revision or 0}
+        ns.char and ns.char.questLearning and ns.char.questLearning.revision or 0}
     for _, key in ipairs({"level", "faction", "classID", "raceID", "mapID"}) do values[#values + 1] = tostring(p[key] or "") end
     values[#values + 1] = tostring(ns.Option("classQuests"))
     values[#values + 1] = tostring(ns.Option("soloMode"))

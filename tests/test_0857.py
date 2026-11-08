@@ -75,7 +75,7 @@ class FixedTerrainCostTests(unittest.TestCase):
         c.ns.travelData.nodes.WEST, c.ns.travelData.nodes.EAST = a, b
         c.ns.travelData.edges[1] = c.lua.table_from(
             {'from': 'WEST', 'to': 'EAST', 'method': 'taxi', 'seconds': 1})
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         for ident, x in ((9033, .1), (9034, .9)):
             state.nodes[ident] = c.lua.table_from({'id': ident, 'known': True,
                 'point': {'mapID': 501, 'x': x, 'y': .37}}, recursive=True)

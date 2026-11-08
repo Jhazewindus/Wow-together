@@ -48,12 +48,13 @@ def ids(stages):
 def resume(c, legacy=False):
     c.ns.handlers.PLAYER_LOGOUT()
     saved = primitive(c.ns.db)
+    saved_character = primitive(c.ns.char)
     if legacy:
-        saved['guideState'][c.ns.self]['addon'] = '0.8.8'
-        saved['guideState'][c.ns.self]['guide'].pop('classQuestScope', None)
-        saved['guideState'][c.ns.self]['guide']['records'] = {
-            i: r for i, r in saved['guideState'][c.ns.self]['guide']['records'].items() if r['id'] != 902}
-    fresh = Client(quests=(), saved_variables=saved)
+        saved_character['guideState']['addon'] = '0.8.8'
+        saved_character['guideState']['guide'].pop('classQuestScope', None)
+        saved_character['guideState']['guide']['records'] = {
+            i: r for i, r in saved_character['guideState']['guide']['records'].items() if r['id'] != 902}
+    fresh = Client(quests=(), saved_variables=saved, saved_character=saved_character)
     fresh.guide_environment(level=12); identity(fresh)
     fresh.lua.globals().grouped, fresh.lua.globals().peer = False, None
     fresh.ns.UpdateRoster(); map_canvas(fresh)
@@ -491,7 +492,7 @@ class NearbyPickupTests(unittest.TestCase):
         c, g = hub_client(); identity(c)
         c.ns.SetOption('classQuests', False)
         c.ns.catalogue.quests[901].classMask = 64
-        c.ns.db.guideSkips[c.ns.self].quests[902] = True
+        c.ns.char.guideSkips.quests[902] = True
         route = c.ns.BuildGuideRoute(g, False)
         self.assertEqual(ids(route.stops), {900})
         c.ns.SetOption('classQuests', True)

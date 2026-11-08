@@ -69,7 +69,7 @@ local function distance(a, b, metrics)
     if a and a.unknownLocation then a = a.planningAnchor; if not a then return 12000 end end
     if not a then return 0 end
     if a.mapID ~= b.mapID then return ns.TravelPointDistance(a, b, metrics) or 15000 end
-    return ns.WalkingDistance(b.mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
+    return ns.WalkingDistance(b.mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * ns.ROUTE_WEIGHTS.normalizedDistanceScale
 end
 ns.FixedGuideGeometry = distance
 

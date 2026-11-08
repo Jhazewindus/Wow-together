@@ -95,8 +95,7 @@ local function descriptor(guide, depth)
 end
 
 function ns.InitializeGuidePersistence()
-    if type(ns.db.guideState) ~= "table" then ns.db.guideState = {} end
-    local saved = ns.db.guideState[ns.self]
+    local saved = ns.char.guideState
     if type(saved) == "table" and saved.schema == 1 and type(saved.guide) == "table" then
         if saved.paused == true then ns.guideResumeStatus = "Guide paused; choose Resume when ready."
         else
@@ -108,7 +107,7 @@ end
 
 function ns.SaveSelectedGuide()
     local guide = ns.routeSelection
-    if not ns.db or not ns.db.guideState or not ns.self or not guide then return end
+    if not ns.db or not ns.char or not ns.self or not guide then return end
     local batch = guide.mode == "profession" and guide.professionBatch
     local batchSignature = batch and table.concat({batch.recipeID, batch.remaining, batch.total, batch.startSkill,
         batch.finish, batch.goal, batch.maximum}, ":")
@@ -117,9 +116,9 @@ function ns.SaveSelectedGuide()
         and cachedOutsideLevels == guide.continueOutsideLevels then return end
     local saved = descriptor(guide, 0)
     if not saved then return end
-    local entry = ns.db.guideState[ns.self]
+    local entry = ns.char.guideState
     local previous = type(entry) == "table" and entry or nil
-    ns.db.guideState[ns.self] = {schema = 1, addon = ns.VERSION, guide = saved,
+    ns.char.guideState = {schema = 1, addon = ns.VERSION, guide = saved,
         checkpoint = previous and type(previous.guide) == "table" and previous.guide.key == guide.key and previous.checkpoint or nil}
     cachedGuide, cachedPlan, cachedBatch = guide, guide.fixedPlan, guide.batchIDs
     cachedVisit = guide.npcVisitPickupIDs
@@ -133,7 +132,7 @@ function ns.ClearSavedGuide(preserveCheckpoint)
     cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase = nil, nil, nil, nil, nil
     cachedProfessionBatch = nil
     cachedOutsideLevels = nil
-    if not preserveCheckpoint and ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
+    if not preserveCheckpoint and ns.db and ns.char and ns.self then ns.char.guideState = nil end
 end
 
 local function restore(saved, reusePlan, depth)

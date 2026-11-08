@@ -146,6 +146,7 @@ local function levelingValue(id, query)
     if value == 0 then return true end
     if value > level + 3 then return false, "Above the lowest player's level range." end
     if ns.IsClassQuest(id) then return true, "Class progression." end
+    if ns.Option("xpModel") and ns.XPLevelingValue then return ns.XPLevelingValue(id, query) end
     if value >= preferredFloor(level) then return true end
     local reason = ns.UsefulQuestReason(id, key, level, query)
     if not reason then

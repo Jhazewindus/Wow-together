@@ -66,7 +66,7 @@ class TravelSearchTests(unittest.TestCase):
     def test_flight_links_are_character_owned_and_can_form_multiple_legs(self):
         c = flight_client(); c.ns.ReadFlightMap()
         c.ns.travelData = c.lua.table_from({'nodes': {}, 'edges': {}, 'factors': {}}, recursive=True)
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         c.lua.execute('C_Map.GetPlayerMapPosition=function() return CreateVector2D(.02,.4) end')
         # A synthetic ID must not reuse real Alliance Stonetalon Peak (33).
         middle = {'id': 9033, 'name': 'Middle', 'point': {'mapID': 501, 'x': .5, 'y': .4}, 'known': True}
@@ -150,7 +150,7 @@ class TravelSearchTests(unittest.TestCase):
 
     def test_owned_flight_point_projected_onto_outer_zone_does_not_bypass_city_gate(self):
         c = network_client(nodes={'TAXI_23': {'mapID': 503, 'x': .5, 'y': .5, 'name': 'City flight', 'faction': 'Horde'}})
-        c.ns.db.flights[c.ns.self].nodes[23] = c.lua.table_from({'id': 23, 'name': 'Owned', 'known': True,
+        c.ns.char.flights.nodes[23] = c.lua.table_from({'id': 23, 'name': 'Owned', 'known': True,
             'point': {'mapID': 501, 'x': .21, 'y': .37}}, recursive=True)
         self.assertIsNone(c.ns.FindTravelPath(point(c), point(c, 503, .6), True))
 
@@ -167,7 +167,7 @@ class TravelSearchTests(unittest.TestCase):
         c = flight_client(include_geography=True)
         c.lua.execute("GetTaxiMapID=nil; FlightMapFrame=CreateFrame('Frame');FlightMapFrame:Show();function FlightMapFrame:GetMapID() return 501 end;taxiNodes={{nodeID=23,name='Orgrimmar',state=60,slotIndex=1},{nodeID=25,name='Crossroads',state=70,slotIndex=2}}")
         c.ns.ReadFlightMap()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         self.assertEqual(state.nodes[25].point.mapID, 1413)
         self.assertTrue(state.nodes[25].known)
         self.assertIsNotNone(state.edges['23:25'])

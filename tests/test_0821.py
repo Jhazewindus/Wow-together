@@ -61,7 +61,7 @@ class ClassTrainingTests(unittest.TestCase):
         sent = len(c.lua.globals().sent)
         c.ns.navigation.skipQuest.OnClick()
         self.assertEqual(c.ns.navigation.state.stop.id, 900)
-        self.assertEqual(c.ns.db.classTraining[c.ns.self].checked, 10)
+        self.assertEqual(c.ns.char.classTraining.checked, 10)
         self.assertEqual(c.ns.navigation.skipQuest.caption.text, 'Skip quest')
         self.assertEqual(len(c.lua.globals().sent), sent)
         self.assertFalse(c.ns.GuideQuestSkipped(900)); self.assertFalse(c.ns.Completed(900))
@@ -72,24 +72,24 @@ class ClassTrainingTests(unittest.TestCase):
 
     def test_skip_is_personal_and_does_not_skip_any_quest_or_learn_a_prerequisite(self):
         c = training_client(); c.ns.UpdateNavigation()
-        events = primitive(c.ns.db.questResearch) if c.ns.db.questResearch else None
+        events = primitive(c.ns.char.questResearch) if c.ns.char.questResearch else None
         c.ns.navigation.skipStep.OnClick()
         self.assertEqual(c.ns.navigation.state.stop.id, 900)
-        self.assertEqual(c.ns.db.classTraining[c.ns.self].declined, 10)
-        self.assertEqual(c.ns.db.classTraining[c.ns.self].checked, 0)
+        self.assertEqual(c.ns.char.classTraining.declined, 10)
+        self.assertEqual(c.ns.char.classTraining.checked, 0)
         self.assertFalse(c.ns.GuideQuestSkipped(900))
         self.assertFalse(c.ns.GuideQuestSkipped(0))
-        self.assertEqual(primitive(c.ns.db.questResearch) if c.ns.db.questResearch else None, events)
+        self.assertEqual(primitive(c.ns.char.questResearch) if c.ns.char.questResearch else None, events)
         c.ns.profile.level = 12; c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.state.stop.kind, 'trainer')
 
     def test_pending_stop_and_acknowledgement_survive_reload_without_affecting_another_character(self):
         c = training_client(); c.ns.UpdateNavigation()
-        fresh = training_client(Client(quests=(), saved_variables=primitive(c.ns.db)))
+        fresh = training_client(Client(quests=(), saved_variables=primitive(c.ns.db), saved_character=primitive(c.ns.char)))
         fresh.ns.UpdateNavigation()
         self.assertEqual(fresh.ns.navigation.state.stop.kind, 'trainer')
         fresh.ns.FinishClassTraining(True)
-        restored = training_client(Client(quests=(), saved_variables=primitive(fresh.ns.db)))
+        restored = training_client(Client(quests=(), saved_variables=primitive(fresh.ns.db), saved_character=primitive(fresh.ns.char)))
         restored.ns.UpdateNavigation(); self.assertEqual(restored.ns.navigation.state.stop.id, 900)
         other = training_client(Client(name='Other', quests=(), saved_variables=primitive(fresh.ns.db)))
         other.ns.UpdateNavigation(); self.assertEqual(other.ns.navigation.state.stop.kind, 'trainer')
@@ -138,7 +138,7 @@ class ClassTrainingTests(unittest.TestCase):
         c = training_client()
         c.lua.execute('function BuyTrainerService()error("unexpected purchase")end')
         c.ns.UpdateNavigation(); c.ns.FinishClassTraining(True)
-        self.assertEqual(c.ns.db.classTraining[c.ns.self].checked, 10)
+        self.assertEqual(c.ns.char.classTraining.checked, 10)
         self.assertIn('training check', c.ns.RouteContext(c.lua.table_from({
             'kind': 'trainer', 'trainingLevel': 10, 'mapID': 501, 'x': .23, 'y': .37})))
 
@@ -178,7 +178,7 @@ class ClassTrainingTests(unittest.TestCase):
     def test_scanning_keeps_the_pending_service_separate_from_quest_skips(self):
         c = training_client(); c.ns.UpdateNavigation()
         c.ns.ResetGuideSkips()
-        self.assertIsNotNone(c.ns.db.classTraining[c.ns.self].pending)
+        self.assertIsNotNone(c.ns.char.classTraining.pending)
         self.assertFalse(c.ns.GuideQuestSkipped(900))
 
     def test_map_prepend_keeps_full_quest_previews_and_marks_training_with_T(self):
@@ -205,7 +205,7 @@ class ClassTrainingTests(unittest.TestCase):
     def test_arrival_alone_does_not_acknowledge_training_or_complete_a_quest(self):
         c = training_client(); c.ns.guideServiceData.trainers[1].x = .21
         c.ns.UpdateNavigation(); self.assertTrue(c.ns.navigation.state.arrived)
-        self.assertEqual(c.ns.db.classTraining[c.ns.self].checked, 0)
+        self.assertEqual(c.ns.char.classTraining.checked, 0)
         self.assertEqual(c.ns.navigation.state.stop.kind, 'trainer')
         self.assertFalse(c.ns.Completed(900))
 
@@ -228,7 +228,7 @@ class ClassTrainingTests(unittest.TestCase):
         c.ns.CurrentQuestConfirmation = lambda: confirmation
         c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.state.stop.id, 901)
-        self.assertIsNone(c.ns.db.classTraining[c.ns.self].pending)
+        self.assertIsNone(c.ns.char.classTraining.pending)
         self.assertEqual(c.ns.RouteForDisplay().stops[1].id, 901)
 
     def test_training_is_independent_of_class_quests_and_the_option_resumes_immediately(self):
@@ -262,14 +262,14 @@ class ClassTrainingTests(unittest.TestCase):
             c.lua.execute(f'function {flag}()return true end')
             self.assertEqual(c.ns.ClassTrainingDestination(c.ns.selectedRoute.stops[1]).id, 900)
             self.assertFalse(c.ns.FinishClassTraining(True))
-            self.assertIsNotNone(c.ns.db.classTraining[c.ns.self].pending)
+            self.assertIsNotNone(c.ns.char.classTraining.pending)
             c.lua.execute(f'function {flag}()return false end')
             c.ns.UpdateNavigation(); self.assertEqual(c.ns.navigation.state.stop.kind, 'trainer')
 
     def test_invalid_saved_state_is_repaired_inside_addon_loaded(self):
         c = training_client(Client(quests=(), saved_variables={'classTraining': {'Alice-TestRealm': {
             'checked': 'bad', 'declined': -1, 'pending': {'id': False}}}}))
-        state = c.ns.db.classTraining[c.ns.self]
+        state = c.ns.char.classTraining
         self.assertEqual(state.checked, 0); self.assertEqual(state.declined, 0)
         self.assertIsNone(state.pending)
         c.ns.UpdateNavigation(); self.assertEqual(c.ns.navigation.state.stop.kind, 'trainer')

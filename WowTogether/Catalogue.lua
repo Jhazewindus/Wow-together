@@ -288,14 +288,14 @@ function ns.CataloguePickupCheck(id, profile, key, query)
         and (string.find(quest.prerequisiteSource, "^Identity%-matched unchanged quest:")
             or quest.prerequisiteSource == "Published converted-baseline prerequisites") then return true end
     if prerequisites ~= true then return prerequisites, prerequisiteReason end
-    if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
     if offered == true then return true end
-    if quest and quest.pickupRequiresOffer then return false, "Confirm this quest at its NPC; its published eligibility is under review." end
-    if identity ~= true then return identity, reason end
     if ns.LearnedPrerequisiteAllowed then
         local learned, learnedReason = ns.LearnedPrerequisiteAllowed(id, profile, key, query)
         if learned ~= true then return learned, learnedReason end
     end
+    if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
+    if quest and quest.pickupRequiresOffer then return false, "Confirm this quest at its NPC; its published eligibility is under review." end
+    if identity ~= true then return identity, reason end
     if not quest then return true end
     if ns.catalogue.detailSource and quest.prerequisitesRead ~= true then
         return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
@@ -347,7 +347,7 @@ function ns.CatalogueScopeIDs()
     local keys = {}
     for mapID in pairs(maps) do keys[#keys + 1] = mapID end
     table.sort(keys)
-    local signature = table.concat(keys, ",") .. ":" .. tostring(ns.db and ns.db.questLearning and ns.db.questLearning.revision or 0)
+    local signature = table.concat(keys, ",") .. ":" .. tostring(ns.char and ns.char.questLearning and ns.char.questLearning.revision or 0)
         .. ":" .. tostring(ns.Option("useLearnedQuests"))
     if signature == scopeSignature and scopeCatalogue == ns.catalogue then return scopeCache end
     local ordered = {}

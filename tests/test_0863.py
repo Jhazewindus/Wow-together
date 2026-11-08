@@ -49,7 +49,7 @@ class ContinueGuideTests(unittest.TestCase):
         self.assertFalse(c.ns.LevelingValue(901)[0])
         self.assertEqual(c.ns.PreferredQuestLevels(), (22, 28))
         self.assertFalse(c.ns.Completed(900))
-        self.assertTrue(c.ns.db.guideState[c.ns.self].guide.continueOutsideLevels)
+        self.assertTrue(c.ns.char.guideState.guide.continueOutsideLevels)
 
     def test_accepted_higher_level_work_and_ready_returns_progress_normally(self):
         c, g = paused()
@@ -90,9 +90,9 @@ class ContinueGuideTests(unittest.TestCase):
 
     def test_manual_quest_and_step_skips_survive_the_override(self):
         c, g = paused(3)
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
+        c.ns.char.guideSkips.quests[900] = True
         step = next(s for s in g.fixedPlan.values() if s.id == 901 and s.kind == 'a')
-        c.ns.db.guideSkips[c.ns.self].steps[901] = c.lua.table_from({c.ns.GuideStepKey(step): True})
+        c.ns.char.guideSkips.steps[901] = c.lua.table_from({c.ns.GuideStepKey(step): True})
         c.ns.Refresh()
         before = primitive(c.ns.db.guideSkips)
         c.ns.ContinueGuideAnyway()
@@ -150,7 +150,7 @@ class ContinueGuideTests(unittest.TestCase):
         old = fresh.ns.routeSelection
         fresh.ns.StopGuide(False)
         self.assertIsNone(old.continueOutsideLevels)
-        self.assertIsNone(fresh.ns.db.guideState[fresh.ns.self])
+        self.assertIsNone(fresh.ns.char.guideState)
         fresh.ns.ActivateRoute(old); fresh.ns.Refresh()
         self.assertFalse(fresh.ns.GuideDifficultyOverride(old))
         self.assertEqual(len(fresh.ns.selectedRoute.stops), 0)

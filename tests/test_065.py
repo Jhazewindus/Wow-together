@@ -305,7 +305,7 @@ class TemporaryDeferralTests(unittest.TestCase):
         c.ns.routeSelection = g; c.ns.UpdateFixedGuideRoute(g)
         from test_063 import primitive
         saved = primitive(c.ns.db)
-        loaded = Client(quests=(), saved_variables=saved)
+        loaded = Client(quests=(), saved_variables=saved, saved_character=primitive(c.ns.char))
         events = json.loads(loaded.ns.ExportQuestResearch())['events']
         self.assertEqual([e['questID'] for e in events if e['event'] == 'defer-pickup'], [900])
 

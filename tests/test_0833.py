@@ -88,7 +88,7 @@ class DungeonHandInTests(unittest.TestCase):
         c, g = running_dungeon()
         c.ns.readyToTurnIn[900] = True; c.ns.readyToTurnIn[901] = True
         c.ns.UpdateSelectedRoute(c.lua.table())
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
+        c.ns.char.guideSkips.quests[900] = True
         c.ns.ScanGuideProgress(); c.drain()
         self.assertEqual(c.ns.routeSelection.dungeonPhase, 'return')
         self.assertTrue(c.ns.GuideQuestSkipped(900))
@@ -102,7 +102,7 @@ class DungeonHandInTests(unittest.TestCase):
                 c.ns.UpdateSelectedRoute(c.lua.table())
             c.ns.SaveSelectedGuide()
             saved = plain(c.ns.db)
-            other = Client(quests=(900, 901), saved_variables=saved)
+            other = Client(quests=(900, 901), saved_variables=saved, saved_character=plain(c.ns.char))
             other.guide_environment(); other.lua.globals().grouped = False
             dungeon(other); map_canvas(other)
             other.ns.ReadProfile(); other.ns.ReadQuests()
@@ -116,7 +116,7 @@ class FlightCacheTests(unittest.TestCase):
     def test_reported_thunder_bluff_hillsbrad_trip_uses_flight_zeppelin_flight(self):
         c = solo(); map_canvas(c)
         c.lua.execute('C_Map.GetWorldPosFromMapPos=nil;C_Map.GetMapWorldSize=function()return 10000,10000 end')
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         for id in (22, 23, 11, 13):
             p = c.ns.travelData.nodes['TAXI_' + str(id)]
             state.nodes[id] = c.lua.table_from({'id': id, 'name': p.name, 'known': True, 'faction': 'Horde',
@@ -139,23 +139,23 @@ class FlightCacheTests(unittest.TestCase):
               return {{nodeID=11,name='Start',isUndiscovered=true,faction=1},
                       {nodeID=22,name='End',isUndiscovered=true,faction=1}} end''')
         c.ns.ReadKnownFlightPaths()
-        flights = c.ns.db.flights[c.ns.self]
+        flights = c.ns.char.flights
         self.assertTrue(flights.nodes[11].known); self.assertTrue(flights.nodes[22].known)
         self.assertIsNotNone(flights.edges['11:22'])
         self.assertGreater(c.ns.flightCacheConflicts, 0)
-        other = Client(quests=(), saved_variables=plain(c.ns.db))
-        self.assertIsNotNone(other.ns.db.flights[other.ns.self].edges['11:22'])
+        other = Client(quests=(), saved_variables=plain(c.ns.db), saved_character=plain(c.ns.char))
+        self.assertIsNotNone(other.ns.char.flights.edges['11:22'])
         self.assertEqual(other.ns.flightCacheRestored, 1)
 
     def test_actual_menu_unreachable_still_removes_connection(self):
         c = flight_client(); c.ns.ReadFlightMap()
         c.lua.execute('taxiNodes[2].state=80'); c.ns.ReadFlightMap()
-        self.assertIsNone(c.ns.db.flights[c.ns.self].edges['11:22'])
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[22].known)
+        self.assertIsNone(c.ns.char.flights.edges['11:22'])
+        self.assertTrue(c.ns.char.flights.nodes[22].known)
 
     def test_saved_world_geometry_survives_unavailable_native_projection(self):
         c = flight_client(include_geography=True); c.ns.ReadFlightMap()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         old_world = plain(state.nodes[11].world)
         # A saved continent point is normalized back onto its city map at login.
         state.nodes[11].point = c.lua.table_from({'mapID': 1463, 'x': .4, 'y': .3})
@@ -168,7 +168,7 @@ class FlightCacheTests(unittest.TestCase):
                                   'TAXI_9022': {'mapID': 502, 'x': .2, 'y': .37}})
         c.ns.travelData.edges = c.lua.table_from([{'from': 'TAXI_9011', 'to': 'TAXI_9022',
                                                  'method': 'walk', 'distance': 10000}], recursive=True)
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         for id, map_id, x in ((9011, 501, .21), (9022, 502, .2)):
             state.nodes[id] = c.lua.table_from({'id': id, 'known': True, 'name': str(id),
                                                 'point': {'mapID': map_id, 'x': x, 'y': .37}}, recursive=True)

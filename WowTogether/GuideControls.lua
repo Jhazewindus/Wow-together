@@ -3,15 +3,14 @@ local addonName, ns = ...
 ns.guideScanStatus = "Select a guide to scan its quest history."
 
 function ns.InitializeGuideControls()
-    if type(ns.db.guideSkips) ~= "table" then ns.db.guideSkips = {} end
-    local state = ns.db.guideSkips[ns.self]
-    if type(state) ~= "table" then state = {}; ns.db.guideSkips[ns.self] = state end
+    local state = ns.char.guideSkips
+    if type(state) ~= "table" then state = {}; ns.char.guideSkips = state end
     if type(state.quests) ~= "table" then state.quests = {} end
     if type(state.steps) ~= "table" then state.steps = {} end
 end
 
 local function saved()
-    return ns.db and ns.db.guideSkips and ns.db.guideSkips[ns.self]
+    return ns.char and ns.char.guideSkips
 end
 
 function ns.GuideQuestSkipped(id)

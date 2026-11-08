@@ -1,6 +1,7 @@
 local addonName, ns = ...
 
 ns.localProgress = {}
+local objectiveDeltas = {}
 local sentProgress, sequence = {}, 0
 local MAX_OBJECTIVES = 12
 
@@ -22,6 +23,7 @@ end
 
 function ns.ReadProgress()
     local result = {}
+    local deltas = {}
     ns.progressReady = C_QuestLog and type(C_QuestLog.GetQuestObjectives) == "function" or false
     ns.restrictedObjectives = 0
     if ns.progressReady then
@@ -49,10 +51,31 @@ function ns.ReadProgress()
                     end
                 end
                 result[id] = {objectives = values}
+                local previous = ns.localProgress and ns.localProgress[id]
+                if previous and previous.objectives then
+                    for index, objective in ipairs(values) do
+                        local old = previous.objectives[index]
+                        if old and ns.GuideInteger(old.have) and ns.GuideInteger(objective.have)
+                            and objective.have > old.have then
+                            deltas[id] = deltas[id] or {}
+                            deltas[id][index] = {old = old.have, new = objective.have,
+                                kind = objective.kind, text = objective.text}
+                        end
+                    end
+                end
             end
         end
     end
     ns.localProgress = result
+    objectiveDeltas = deltas
+end
+
+-- Consumed by the local objective-area sampler after this same progress read;
+-- party progress is deliberately never used as a location observation.
+function ns.ObjectiveSnapshotDelta(questID)
+    local values = objectiveDeltas[questID]
+    objectiveDeltas[questID] = nil
+    return values
 end
 
 function ns.ResetProgressTraffic() sentProgress = {} end
@@ -357,4 +380,5 @@ function ns.RenderTracker()
     frame.footer:SetText(count .. " quests • mouse wheel to scroll")
 end
 
-ns.On("QUEST_WATCH_UPDATE", function() if ns.db then ns.ReadProgress(); ns.ScheduleSync(); ns.ScheduleRefresh(true) end end)
+ns.On("QUEST_WATCH_UPDATE", function() if ns.db then ns.ReadProgress(); if ns.RecordObjectiveProgress then ns.RecordObjectiveProgress() end; ns.ScheduleSync(); ns.ScheduleRefresh(true) end end)
+ns.On("UNIT_QUEST_LOG_CHANGED", function(unit) if unit == "player" and ns.db then ns.ReadProgress(); if ns.RecordObjectiveProgress then ns.RecordObjectiveProgress() end; ns.ScheduleSync(); ns.ScheduleRefresh(true) end end)

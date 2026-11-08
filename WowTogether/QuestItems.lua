@@ -46,15 +46,50 @@ local function readItem()
     return {id = id, index = index, link = link, texture = texture, name = name}, "Ready: " .. name .. "."
 end
 
+local function readBagGuideItem()
+    local route = ns.selectedRoute
+    local stop = route and route.stops and route.stops[1]
+    if not stop or stop.kind ~= "a" and stop.kind ~= "q" then return end
+    local action = stop.action
+    if action ~= "start-item" and action ~= "use" then return end
+    local itemID = stop.itemID
+    if not ns.GuideInteger(itemID) or itemID <= 0 then return end
+    local have = ns.ItemOwned(itemID)
+    if not ns.GuideInteger(have) or have < 1 then return end
+    local name = ns.ItemName(itemID, stop.itemName or stop.useItemName) or "Quest item"
+    local texture = C_Item and ns.ReadPublic(C_Item.GetItemIconByID, itemID)
+    if type(texture) ~= "string" and type(texture) ~= "number" then texture = "Interface\\Icons\\INV_Misc_QuestionMark" end
+    return {id = stop.id, itemID = itemID, kind = action, link = "item:" .. itemID,
+        texture = texture, name = name, source = "bags"}, "Ready: " .. name .. " is in your bags."
+end
+
 function ns.UpdateGuideQuestItem()
     -- Called on progress/bag/item-data events, never from movement repainting.
-    ns.guideQuestItem, ns.guideQuestItemStatus = readItem()
+    local item, status = readItem()
+    if not item then
+        local bagItem, bagStatus = readBagGuideItem()
+        if bagItem then item, status = bagItem, bagStatus
+        elseif bagStatus then status = bagStatus end
+    end
+    ns.guideQuestItem, ns.guideQuestItemStatus = item, status
 end
 
 function ns.UseGuideQuestItem(button)
     if not button or not button:IsShown() or not button.item then return false end
     if ns.RouteInCombat() then ns.guideQuestItemStatus = "Use the guide item outside combat."; return false end
     local displayed = button.item
+    if displayed.source == "bags" then
+        local current = readBagGuideItem()
+        if not current or current.id ~= displayed.id or current.itemID ~= displayed.itemID
+            or current.kind ~= displayed.kind then
+            ns.UpdateNavigation()
+            return false
+        end
+        -- SecureActionButtonTemplate executes the configured /use macro from
+        -- this hardware click. This callback only checks freshness/status.
+        ns.guideQuestItemStatus = "Manual item use requested: " .. current.name .. "."
+        return true
+    end
     local item, status = readItem()
     ns.guideQuestItem, ns.guideQuestItemStatus = item, status
     -- Re-resolve on this hardware click: headers, accepts, removals and route
@@ -71,13 +106,16 @@ function ns.UseGuideQuestItem(button)
 end
 
 function ns.CreateQuestItemButton(frame)
-    local button = ns.UIButton(frame, "Use item", 360, ns.UseGuideQuestItem)
-    frame.questItem = button
-    button:SetHeight(32); button:RegisterForClicks("LeftButtonUp")
-    button.caption:ClearAllPoints(); button.caption:SetPoint("LEFT", 36, 0)
-    button.caption:SetSize(310, 20); button.caption:SetWordWrap(false)
+    local button = CreateFrame("Button", nil, frame, "SecureActionButtonTemplate,BackdropTemplate")
+    button:SetSize(360, 32); ns.UIPanel(button, ns.UIColors.panel)
+    button.caption = ns.UILabel(button, nil, 12)
+    button.caption:SetPoint("LEFT", 36, 0); button.caption:SetSize(310, 20)
+    button.caption:SetWordWrap(false); button.caption:SetJustifyH("LEFT"); button.caption:SetText("Use item")
     button.icon = button:CreateTexture(nil, "ARTWORK")
     button.icon:SetSize(24, 24); button.icon:SetPoint("LEFT", 4, 0)
+    button:SetScript("OnClick", ns.UseGuideQuestItem)
+    frame.questItem = button
+    button:RegisterForClicks("LeftButtonUp")
     button:SetScript("OnEnter", function(self)
         if not GameTooltip or not self.item then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -95,16 +133,31 @@ function ns.UpdateQuestItemButton(state)
     if not button then return end
     local item = ns.guideQuestItem
     local stop = state.stop
+    local combat = ns.RouteInCombat()
     local show = item ~= nil and state.visible and ns.Option("routeArrow") and not state.flight and not state.busy
         and not ns.navigationPreview and stop and stop.kind == "q" and stop.id == item.id
-    button:SetShown(show == true)
+    show = show or (item and item.source == "bags" and state.visible and ns.Option("routeArrow")
+        and not state.flight and not state.busy and not ns.navigationPreview and stop
+        and stop.id == item.id and (stop.kind == "a" or stop.kind == "q"))
+    button:SetShown(show == true and (item.source ~= "bags" or not combat))
     button.item = show and item or nil
     if show then
-        button.caption:SetText("Use item • " .. item.name)
+        button.caption:SetText("Use " .. item.name .. (item.kind == "start-item" and " to start quest" or ""))
         button.icon:SetTexture(item.texture)
-        button:SetEnabled(not ns.RouteInCombat())
+        if not combat then
+            if item.source == "bags" then
+                button:SetAttribute("type", "macro")
+                button:SetAttribute("macrotext", "/use item:" .. item.itemID)
+            else
+                button:SetAttribute("type", nil)
+                button:SetAttribute("macrotext", nil)
+            end
+        end
+        button:SetEnabled(not combat)
     end
 end
+
+ns.On("BAG_UPDATE_DELAYED", function() if ns.db then ns.ScheduleRefresh(true) end end)
 
 function ns.QuestItemDiagnostics(output)
     output("Guide quest item: " .. (ns.guideQuestItemStatus or "Waiting for a guide objective.") .. " Manual click; outside combat.")

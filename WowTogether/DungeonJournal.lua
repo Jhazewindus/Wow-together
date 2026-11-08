@@ -94,6 +94,7 @@ function ns.DungeonViewerData(key)
     local byName = {}
     for index, boss in ipairs(stored.bosses) do
         data.bosses[index] = dropSource(boss, "boss"); byName[nameKey(boss.name)] = data.bosses[index]
+        data.bosses[index].encounterOrder = index
         if not ns.GuideInteger(boss.level, 255) or boss.level < 1 then data.bosses[index].level = nil end
     end
     for index, npc in ipairs(stored.trash or {}) do data.trash[index] = dropSource(npc, "trash") end
@@ -111,7 +112,7 @@ function ns.DungeonViewerData(key)
                 data.bosses[#data.bosses + 1] = boss; byName[nameKey(name)] = boss
             end
             if boss then
-                boss.encounterID = id
+                boss.encounterID, boss.encounterOrder = id, index
                 local _, _, _, _, portrait = ns.ReadPublic(EJ_GetCreatureInfo, 1, id)
                 if ns.GuideInteger(portrait, 1000000000) and portrait > 0 then boss.portrait = portrait end
             end

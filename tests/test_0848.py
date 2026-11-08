@@ -52,7 +52,7 @@ class RecommendedHomeTests(unittest.TestCase):
                 for id in (900, 901):
                     if finished: c.lua.globals().finished[id] = True
                     else:
-                        c.ns.db.guideSkips[c.ns.self] = c.lua.table_from({'quests': {900: True, 901: True}}, recursive=True)
+                        c.ns.char.guideSkips = c.lua.table_from({'quests': {900: True, 901: True}}, recursive=True)
                 c.ns.Refresh()
                 items, states = recommendations(c, 'leveling')
                 self.assertEqual(items, [])

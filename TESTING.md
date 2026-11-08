@@ -1,6 +1,38 @@
 # Wow Together — friend test script
 
-For **0.8.97** — **STRUCTURED GUIDE STEP PRESENTATION**, live World of Warcraft: Forever.
+For **0.8.98** — **PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW**, live World of Warcraft: Forever.
+
+## Play-learned objectives and dungeon run flow — 0.8.98
+
+1. On a quest with a missing objective area, advance the objective counter
+   outdoors at three nearby points. Confirm the route uses an observed area
+   only after three samples. Check `/wt probe` for objective sample counts.
+   Turn off objective sharing to verify observations stay local; sharing uses
+   the explicit party observation setting.
+2. Use an item-started quest: before looting, confirm the step names its source;
+   after looting, confirm the manual item button appears; after accepting, the
+   normal objective replaces the start step. Verify bag updates refresh the
+   button and clicks outside combat are required.
+3. Accept mapped quests for a dungeon and enter it. Confirm active interior
+   objectives appear in journal encounter order, with a matched boss step
+   naming the quest it advances. Hover a boss step to inspect any class-eligible
+   drops from the captured journal. Unmapped objectives should remain visibly
+   unresolved rather than acquiring invented coordinates.
+4. Log into an alt after migration. Its quest completion, skipped steps,
+   flights, research and guide session should be independent; learned inns and
+   NPC/world facts should remain available account-wide.
+5. Check the guide header tooltip and `/wt probe` for quest-data capture age and
+   the recorded client build. The current capture does not record a build.
+   `xpModel` stays off by default; if enabled, treat its XP projection as a
+   Classic estimate until Forever reward data is verified.
+6. Export `/wt research`; run `tools/ingest_observations.py` and
+   `tools/promote_candidates.py` only on tester exports. Confirm they produce
+   review candidates and never write directly into the catalogue corrections.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,860 tests** and **341 subtests** under Lua 5.1. These host
+checks cannot verify native Forever UI rendering, live dungeon map IDs, or the
+XP reward curve. Install all four addon folders and perform the checks above.
 
 ## Structured guide-step presentation — 0.8.97
 

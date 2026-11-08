@@ -91,7 +91,7 @@ class FactionLearningTests(unittest.TestCase):
         c = learner()
         if restricted: c.ns.catalogue.quests[901].classMask = 64
         learn(c)
-        saved = primitive(c.ns.db.questLearning)
+        saved = primitive(c.ns.char.questLearning)
         rule = copy.deepcopy(next(iter(saved['rules'].values())))
         base = ':'.join(str(rule[k]) for k in ('interface', 'build', 'faction'))
         rule['scope'] = base + ':7:2'
@@ -105,15 +105,15 @@ class FactionLearningTests(unittest.TestCase):
                 second['previousQuest'] = 902
                 c.ns.catalogue.quests[902] = c.lua.table_from(world_quest('Other parent'), recursive=True)
             saved['rules'][second['scope'] + ':901'] = second
-        c.ns.db.questLearning = c.lua.table_from(saved, recursive=True)
-        c.ns.db.questResearch = c.lua.table()  # Test migration independent of retained raw replay.
+        c.ns.char.questLearning = c.lua.table_from(saved, recursive=True)
+        c.ns.char.questResearch = c.lua.table()  # Test migration independent of retained raw replay.
         c.ns.InitializeQuestLearning()
         return c
 
     def test_old_matching_rules_merge_without_losing_sources_or_proofs(self):
         c = self.legacy()
-        self.assertEqual(c.ns.db.questLearning.schema, 2)
-        self.assertEqual(len(list(c.ns.db.questLearning.rules.items())), 1)
+        self.assertEqual(c.ns.char.questLearning.schema, 2)
+        self.assertEqual(len(list(c.ns.char.questLearning.rules.items())), 1)
         c.ns.profile.classID, c.ns.profile.raceID = 1, 6
         self.assertEqual(c.ns.LearnedQuestRule(901).previousQuest, 900)
         finding = json.loads(c.ns.ExportGuideFindings())['findings'][0]

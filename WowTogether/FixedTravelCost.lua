@@ -37,7 +37,7 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield, options)
                 and not ns.TerrainWalkCrossing(point, node.point, policy.terrain) then
                 local length = fallback(point, node.point)
                 if length <= 1500 then
-                    local cost = length * 1.25
+                    local cost = length * ns.ROUTE_WEIGHTS.walkingDistanceFactor
                     local index = #result + 1
                     -- Retain the established seed's prices only when explicitly
                     -- requested. Corrected comparisons use one scale throughout.

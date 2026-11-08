@@ -151,6 +151,47 @@ class PresentationTests(unittest.TestCase):
             for phrase in phrases:
                 self.assertNotIn(phrase, source)
 
+    def test_item_started_quest_changes_from_kill_to_use_and_then_objective(self):
+        item_count = {6654: 0}
+        self.ns.ItemOwned = lambda item_id: item_count.get(item_id, 0)
+        self.ns.ItemName = lambda item_id, fallback=None: fallback or "Sealed Letter"
+        start = self.stop({'id': 108, 'kind': 'a', 'title': 'Assassination Plot',
+                           'action': 'start-item', 'sourceAction': 'loot', 'itemID': 6654,
+                           'itemName': 'Sealed Letter', 'npcName': 'Galak Messenger'})
+        facts = self.ns.GuideStepFacts(start)
+        self.assertEqual(facts.startItem.inBags, False)
+        self.assertEqual(self.ns.StopInstruction(start, facts), 'Kill Galak Messenger for Sealed Letter')
+        item_count[6654] = 1
+        facts = self.ns.GuideStepFacts(start)
+        self.assertTrue(facts.startItem.inBags)
+        self.assertEqual(self.ns.StopInstruction(start, facts), 'Use Sealed Letter to start Assassination Plot')
+
+        self.lua.execute("""
+          local ns = ...
+          ns.RouteInCombat=function() return false end
+          ns.selectedRoute={stops={}}
+          ns.navigation={questItem=CreateFrame('Button')}
+        """, self.ns)
+        # A separate button frame uses the existing secure click path; the
+        # item macro is armed only after a route update and bag confirmation.
+        frame = self.lua.eval("CreateFrame('Frame')")
+        self.ns.CreateQuestItemButton(frame)
+        button = frame.questItem
+        button.SetAttribute = lambda self, key, value: setattr(self, key, value)
+        self.ns.selectedRoute.stops[1] = start
+        self.ns.navigation.questItem = button
+        state = self.lua.table_from({'stop': start, 'visible': True, 'flight': False, 'busy': False})
+        self.ns.guideQuestItem = self.ns.GuideStepFacts(start).startItem
+        # UpdateGuideQuestItem owns the rendered button record and secure macro.
+        self.ns.UpdateGuideQuestItem()
+        self.ns.UpdateQuestItemButton(state)
+        self.assertEqual(button.macrotext, '/use item:6654')
+
+        accepted = self.stop({'id': 108, 'kind': 'q', 'title': 'Assassination Plot',
+                              'action': 'kill', 'targetName': 'Street Thug'})
+        accepted_facts = self.lua.table_from({'stop': accepted, 'action': 'kill', 'target': 'Street Thug', 'amount': ''})
+        self.assertEqual(self.ns.StopInstruction(accepted, accepted_facts), 'Kill Street Thug')
+
 
 if __name__ == '__main__':
     unittest.main()

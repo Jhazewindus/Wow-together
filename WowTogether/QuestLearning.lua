@@ -2,7 +2,7 @@ local addonName, ns = ...
 
 local LIMIT, baselines, tracking = 512, {}, {}
 local ruleIndex, followerIndex, indexData, indexRevision = {}, {}, nil, nil
-local function data() return ns.db and ns.db.questLearning end
+local function data() return ns.char and ns.char.questLearning end
 local function set(list)
     local result = {}
     if type(list) ~= "table" then return result end
@@ -273,7 +273,7 @@ function ns.InitializeQuestLearning()
     local saved = data()
     if type(saved) ~= "table" or (saved.schema ~= 1 and saved.schema ~= 2)
         or type(saved.rules) ~= "table" or type(saved.sources) ~= "table" then
-        saved = {schema = 2, rules = {}, sources = {}, sourceSequence = 0, revision = 0}; ns.db.questLearning = saved
+        saved = {schema = 2, rules = {}, sources = {}, sourceSequence = 0, revision = 0}; ns.char.questLearning = saved
     end
     if not ns.GuideInteger(saved.sourceSequence) then saved.sourceSequence = 0 end
     if not ns.GuideInteger(saved.revision) then saved.revision = 0 end
@@ -312,12 +312,9 @@ function ns.InitializeQuestLearning()
     saved.rules, saved.schema, saved.revision = migrated, 2, saved.revision + 1
     indexData = nil
     ns.ResetLearningContext()
-    local names = {}; for name in pairs(ns.db.questResearch or {}) do names[#names + 1] = name end; table.sort(names)
-    for _, name in ipairs(names) do
-        local research = ns.db.questResearch[name]
-        if type(research) == "table" and type(research.events) == "table" then
-            for _, record in ipairs(research.events) do ns.ObserveQuestLearning(record, name) end
-        end
+    local research = ns.char.questResearch
+    if type(research) == "table" and type(research.events) == "table" then
+        for _, record in ipairs(research.events) do ns.ObserveQuestLearning(record, ns.self) end
     end
     ns.ResetLearningContext() -- A reload/pause is an observation gap.
 end

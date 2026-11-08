@@ -181,6 +181,23 @@ function ns.RouteStop(record, focusKey)
                     entityID = point.entityID, action = point.action, name = point.name, published = true, npc = point.npc}
             end
         end
+        if not p and not ready and focusKey == ns.self and ns.LearnedObjectivePoint then
+            local progress = ns.localProgress and ns.localProgress[record.id]
+            local index
+            for objectiveIndex, objective in ipairs(progress and progress.objectives or {}) do
+                if not ns.ObjectiveFinished(objective) then index = objectiveIndex; break end
+            end
+            index = index or 1
+            local observed = ns.LearnedObjectivePoint(record.id, index, false)
+            if observed then
+                local observers = 0
+                for _ in pairs(observed.observers or {}) do observers = observers + 1 end
+                p = {mapID = observed.mapID, x = observed.x, y = observed.y, kind = "q",
+                    name = progress and progress.objectives[index] and progress.objectives[index].text,
+                    locationSource = "observed", observedCount = observers,
+                    observedSamples = observed.totalSamples or observed.n}
+            end
+        end
         if not p or p.kind == "a" then return end
     elseif not p then
         if (record.source == "n" or record.source == "l") and validPoint(record.mapID, record.x, record.y) then
@@ -228,7 +245,8 @@ function ns.RouteStop(record, focusKey)
             or (npc ~= "" and ("Talk to " .. npc) or ("Check pickup: " .. title))),
         approximate = p.kind == "a" and record.source == "n"}
     for _, key in ipairs({"quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType",
-        "legacyStepKey", "sourceAction", "alternativeEntityIDs", "progressName", "objectiveLabel", "quantityUnknown", "sourceZone"}) do
+        "legacyStepKey", "sourceAction", "alternativeEntityIDs", "progressName", "objectiveLabel", "quantityUnknown", "sourceZone",
+        "locationSource", "observedCount", "observedSamples"}) do
         result[key] = p[key]
         if result[key] == nil then result[key] = facts[key] end
     end
@@ -247,7 +265,8 @@ function ns.PublishedGuideStop(record, point, kind)
         entityType = point.entityType, worldFallback = point.worldFallback, legacyStepKey = point.legacyStepKey,
         sourceAction = point.sourceAction, alternativeEntityIDs = point.alternativeEntityIDs,
         progressName = point.progressName, objectiveLabel = point.objectiveLabel, quantityUnknown = point.quantityUnknown,
-        sourceZone = point.sourceZone}
+        sourceZone = point.sourceZone, locationSource = point.locationSource,
+        observedCount = point.observedCount, observedSamples = point.observedSamples}
 end
 
 function ns.ClientObjectiveStop(stop, key)

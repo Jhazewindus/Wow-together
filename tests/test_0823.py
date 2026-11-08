@@ -19,7 +19,7 @@ def connecting_route(c):
 class FlightTimingTests(unittest.TestCase):
     def test_native_connecting_stops_improve_untimed_estimate_in_both_planners(self):
         c = flight_client(); connecting_route(c)
-        edge = c.ns.db.flights[c.ns.self].edges['11:22']
+        edge = c.ns.char.flights.edges['11:22']
         self.assertEqual(list(edge.route.values()), [11, 99, 22])
         seconds, measured, basis = c.ns.FlightDuration(11, 22, 8800)
         self.assertGreater(seconds, 8800/32*1.35)
@@ -37,7 +37,7 @@ class FlightTimingTests(unittest.TestCase):
                       'function TaxiGetNodeSlot()return 61 end',
                       'function GetNumRoutes()return 1000 end'):
             c = flight_client(); connecting_route(c); c.lua.execute(setup); c.ns.ReadFlightMap()
-            self.assertIsNone(c.ns.db.flights[c.ns.self].edges['11:22'].route)
+            self.assertIsNone(c.ns.char.flights.edges['11:22'].route)
             duration, measured, basis = c.ns.FlightDuration(11, 22, 8800)
             self.assertAlmostEqual(duration, 8800/32*1.35)
             self.assertFalse(measured); self.assertEqual(basis, 'Distance estimate')
@@ -50,7 +50,7 @@ class FlightTimingTests(unittest.TestCase):
         c.lua.execute('flying=true;clock=100.1'); c.drain()
         self.assertAlmostEqual(c.ns.flightStarted, 100.1)
         c.lua.execute('flying=false;clock=180.1'); c.ns.handlers.PLAYER_CONTROL_GAINED()
-        self.assertAlmostEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 80)
+        self.assertAlmostEqual(c.ns.char.flights.timings['11:22'].mean, 80)
 
     def test_native_close_before_selection_hook_still_identifies_manual_flight(self):
         c = flight_client(); c.ns.ReadFlightMap()
@@ -82,8 +82,8 @@ class FlightTimingTests(unittest.TestCase):
         c.lua.execute('''flying=false;clock=260
             C_Map.GetPlayerMapPosition=function()return CreateVector2D(.02,.4)end''')
         c.ns.FinishFlight()
-        self.assertEqual(c.ns.db.flights[c.ns.self].timings['22:11'].mean, 80)
-        self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+        self.assertEqual(c.ns.char.flights.timings['22:11'].mean, 80)
+        self.assertIsNone(c.ns.char.flights.timings['11:22'])
 
     def test_landing_event_before_taxi_state_saves_after_short_retry(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
@@ -91,14 +91,14 @@ class FlightTimingTests(unittest.TestCase):
         c.lua.execute('clock=180'); c.ns.handlers.PLAYER_CONTROL_GAINED()
         self.assertIsNotNone(c.ns.pendingFlight)
         c.lua.execute('flying=false;clock=180.1'); c.drain()
-        self.assertAlmostEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 80.1)
+        self.assertAlmostEqual(c.ns.char.flights.timings['11:22'].mean, 80.1)
         self.assertIsNone(c.ns.pendingFlight)
 
     def test_missed_landing_event_is_completed_by_existing_navigation_update(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
         c.lua.execute('flying=true'); c.ns.UpdateNavigation()
         c.lua.execute('flying=false;clock=180'); c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 80)
+        self.assertEqual(c.ns.char.flights.timings['11:22'].mean, 80)
         self.assertIsNone(c.ns.flightStarted)
         before = c.ns.travelRevision
         c.ns.UpdateNavigation()
@@ -111,7 +111,7 @@ class FlightTimingTests(unittest.TestCase):
             c.lua.execute(f'''flying=false;clock=180
                 C_Map.GetPlayerMapPosition=function()return {position} end''')
             c.ns.FinishFlight()
-            self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+            self.assertIsNone(c.ns.char.flights.timings['11:22'])
             self.assertIn('arrival', c.ns.flightTimingStatus.lower())
 
     def test_delayed_landing_position_keeps_original_duration_without_postflight_walking(self):
@@ -120,10 +120,10 @@ class FlightTimingTests(unittest.TestCase):
         c.lua.execute('''flying=false;clock=180
             C_Map.GetPlayerMapPosition=function()return nil end''')
         c.ns.FinishFlight()
-        self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+        self.assertIsNone(c.ns.char.flights.timings['11:22'])
         c.lua.execute('clock=180.5;C_Map.GetPlayerMapPosition=function()return CreateVector2D(.9,.4)end')
         c.drain()
-        self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 80)
+        self.assertEqual(c.ns.char.flights.timings['11:22'].mean, 80)
 
     def test_new_flight_selection_cancels_previous_pending_arrival_check(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
@@ -134,14 +134,14 @@ class FlightTimingTests(unittest.TestCase):
         c.ns.NoteFlightSelection(54)
         c.lua.execute('C_Map.GetPlayerMapPosition=function()return CreateVector2D(.9,.4)end')
         c.drain()
-        self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+        self.assertIsNone(c.ns.char.flights.timings['11:22'])
 
     def test_confirmed_ride_is_shared_by_both_timer_panels_and_future_route_estimates(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
         before = plain(c.ns.selectedRoute)
         c.lua.execute('flying=true'); c.ns.FlightState()
         c.lua.execute('flying=false;clock=180'); c.ns.FinishFlight()
-        sample = c.ns.db.flights[c.ns.self].timings['11:22']
+        sample = c.ns.char.flights.timings['11:22']
         self.assertTrue(sample.validated); self.assertEqual(sample.build, c.ns.flightTimingBuild)
         self.assertEqual(c.ns.FlightDuration(11, 22, 8800), (80, True, 'Timed flight'))
         c.ns.NoteFlightSelection(54); c.ns.SetOption('standaloneArrow', True)
@@ -157,14 +157,14 @@ class FlightTimingTests(unittest.TestCase):
         c.lua.execute('flying=true'); c.ns.FlightState()
         c.lua.execute('flying=false;clock=180'); c.ns.FinishFlight()
         self.assertTrue(c.ns.FlightDuration(11, 22, 8800)[1])
-        c.ns.db.flights[c.ns.self].edges['11:22'].route = c.lua.table_from([11, 22])
+        c.ns.char.flights.edges['11:22'].route = c.lua.table_from([11, 22])
         self.assertFalse(c.ns.FlightDuration(11, 22, 8800)[1])
         connecting_route(c); c.ns.flightTimingBuild = 'new build'
         self.assertFalse(c.ns.FlightDuration(11, 22, 8800)[1])
 
     def test_old_unverified_measurement_is_retained_but_replaced_after_a_valid_ride(self):
         c = flight_client(); c.ns.ReadFlightMap()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         state.timings['11:22'] = c.lua.table_from({'mean': 700, 'samples': 10})
         self.assertFalse(c.ns.FlightDuration(11, 22, 8800)[1])
         self.assertEqual(state.timings['11:22'].mean, 700)
@@ -179,7 +179,7 @@ class FlightTimingTests(unittest.TestCase):
         self.assertIsNone(c.ns.pendingFlight)
         self.assertIsNone(current.remaining)
         c.lua.execute('flying=false;clock=180'); c.ns.FinishFlight()
-        self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+        self.assertIsNone(c.ns.char.flights.timings['11:22'])
 
     def test_unknown_flight_state_never_finalizes_a_ride_and_retries_are_bounded(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
@@ -187,7 +187,7 @@ class FlightTimingTests(unittest.TestCase):
         c.lua.execute('clock=180;UnitOnTaxi=function()return secret end')
         c.ns.handlers.PLAYER_CONTROL_GAINED(); c.drain()
         self.assertIsNotNone(c.ns.pendingFlight)
-        self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+        self.assertIsNone(c.ns.char.flights.timings['11:22'])
 
 
 if __name__ == '__main__':

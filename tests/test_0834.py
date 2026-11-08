@@ -216,7 +216,7 @@ class SectionProgressTests(unittest.TestCase):
         self.assertEqual(len(g.records), 8); self.assertIsNone(g.sectionLow)
         c.ns.ShowGuideOnMap(g); run_plan(c)
         c.ns.SaveSelectedGuide()
-        c.ns.db.guideState[c.ns.self].addon = '0.8.33'
+        c.ns.char.guideState.addon = '0.8.33'
         fresh = reload(c)
         self.assertEqual(fresh.ns.routeSelection.key, BASE)
         self.assertEqual(len(fresh.ns.routeSelection.records), 8)

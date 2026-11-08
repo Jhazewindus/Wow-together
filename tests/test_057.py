@@ -58,9 +58,10 @@ class SkipAndScanTests(unittest.TestCase):
         c.ns.navigation.skipStep.OnClick()
         c.ns.navigation.skipQuest.OnClick()
         saved = plain(c.ns.db)
-        other = Client(quests=(900,), saved_variables=saved)
+        saved_character = plain(c.ns.char)
+        other = Client(quests=(900,), saved_variables=saved, saved_character=saved_character)
         self.assertTrue(other.ns.GuideQuestSkipped(900))
-        self.assertTrue(other.ns.db.guideSkips[other.ns.self].steps[900])
+        self.assertTrue(other.ns.char.guideSkips.steps[900])
         different = Client(name='Carol', quests=(900,), saved_variables=saved)
         self.assertFalse(different.ns.GuideQuestSkipped(900))
 

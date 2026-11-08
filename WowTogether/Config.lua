@@ -7,13 +7,14 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
+    standaloneArrow = false, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
-    unitNumbers = false, approachMaps = true}
+    unitNumbers = false, approachMaps = true, xpModel = false}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
+    if key == "shareObservations" and value == nil and ns.db and ns.db.config then value = ns.db.config.shareRoads end
     if value == nil then return defaults[key] end
     return value
 end
@@ -54,7 +55,7 @@ local sections = {
     {"travel", "Travel and tips", {
         {"travelNetwork", "Use mapped travel routes", "Route through known terrain points, zone links, city gates and transports."},
         {"learnRoads", "Learn roads as you walk", "Record the ground you walk so routes follow real paths around hills, rivers and walls in every zone."},
-        {"shareRoads", "Share walked ground with your party", "Send the ground you walk to party members and accept theirs, so one member's walk improves everyone's routes."},
+        {"shareObservations", "Share observations with your party", "Share walked ground and observed quest locations with party members."},
         {"useHearthstone", "Use Hearthstone and teleports", "Route through your Hearthstone or class teleports when that is quicker than walking or flying."},
         {"suggestFlights", "Suggest faster flight paths", "Suggest a flight you have unlocked when it should save time."},
         {"nearbyFlights", "Suggest nearby flight masters", "Point out a friendly unlearned flight master near you or your route."},
@@ -83,7 +84,9 @@ local sections = {
         {"supplyTarget", "Food and drink amount", "How many of each to carry after a restock.", {{10, "10 each"}, {20, "20 each"}, {40, "40 each"}}}},
         "Optional stops for bags, repairs, food and drink."},
     {"data", "Quest data and saved progress", {
+        {"xpModel", "Use quest XP to choose useful quests", "Estimate whether a quest still provides useful experience. This model stays optional until Forever reward data is verified."},
         {"recordQuestData", "Record quest offers and progress", "Save up to 300 local observations for guide research. Exports are manual."},
+        {"learnObjectives", "Learn objective areas as you play", "Record your own location when an objective counter advances. These observations stay local unless party sharing is enabled."},
         {"useLearnedQuests", "Use observed quest prerequisites", "Use confirmed unlock patterns for your faction and client build."},
         {"exportCharacterNames", "Name characters in guide findings", "Include character names in guide findings. Quest research exports never include them."}},
         "Manage local quest research and saved guide skips."}
@@ -91,6 +94,7 @@ local sections = {
 
 function ns.InitializeConfig()
     if type(ns.db.config) ~= "table" then ns.db.config = {} end
+    if ns.db.config.shareObservations == nil then ns.db.config.shareObservations = ns.db.config.shareRoads ~= false end
     -- Adopt the requested star default once; later explicit choices survive.
     if not ns.db.config.starMarkerDefault then
         if ns.db.config.npcMarker == "cross" then ns.db.config.npcMarker = "star" end

@@ -125,7 +125,7 @@ C_QuestLog = {
 '''
 
 class Client:
-    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, before_load=None):
+    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, saved_character=None, before_load=None):
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         g = self.lua.globals()
@@ -185,6 +185,8 @@ class Client:
             self.ns.dungeonData = None  # Synthetic quest fixtures have their own dungeon definitions.
         if saved_variables is not None:
             g.WowTogetherDB = self.lua.table_from(saved_variables, recursive=True)
+        if saved_character is not None:
+            g.WowTogetherCharDB = self.lua.table_from(saved_character, recursive=True)
         self.ns.handlers.ADDON_LOADED('WowTogether')
         if not default_guide:
             self.ns.SetFilter('all')

@@ -1,17 +1,29 @@
 local addonName, ns = ...
 
 local BEAM_WIDTH, QUESTS_PER_TRIP, MAX_STOPS = 24, 6, 20
+local costModels = setmetatable({}, {__mode = "k"})
 -- Exact trip ordering is attempted while the progress-vector state space
 -- (product of stage counts + 1, times the task count) stays within this
 -- budget; larger trips fall back to the bounded beam search.
 local EXACT_STATE_BUDGET = 60000
 local function distance(mapID, a, b, metrics)
     if not a or not b then return 0 end
-    return ns.WalkingDistance(mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
+    local byMap = metrics and costModels[metrics]
+    if metrics and not byMap then byMap = {}; costModels[metrics] = byMap end
+    local model = byMap and byMap[mapID]
+    if not model then
+        model = ns.RouteCostModel({travel = function(from, to)
+            return ns.WalkingDistance(mapID, from, to, metrics)
+                or ns.NormalizedDistance(from, to) * ns.ROUTE_WEIGHTS.normalizedDistanceScale
+        end})
+        if byMap then byMap[mapID] = model end
+    end
+    return model:travel(a, b)
 end
 
 local function resetMetrics(metrics)
     for mapID in pairs(metrics) do metrics[mapID] = nil end
+    costModels[metrics] = nil
 end
 
 local function activeForParty(id, readyOnly, personal)
@@ -178,7 +190,7 @@ local function chooseBatch(guide, tasks, mapID, position, metrics)
         for _, task in ipairs(tasks) do
             if not seen[task.id] and task.first.kind == "a" and task.first.mapID == mapID and position
                 and #selected < QUESTS_PER_TRIP and stops + #task.stages <= MAX_STOPS
-                and distance(mapID, position, task.first, metrics) <= math.min(150, ns.Option("circuitRadius") * 6000) then
+                and distance(mapID, position, task.first, metrics) <= math.min(150, ns.Option("circuitRadius") * ns.ROUTE_WEIGHTS.circuitRadiusScale) then
                 selected[#selected + 1], seen[task.id] = task, true
                 stops = stops + #task.stages
             end
@@ -206,7 +218,7 @@ local function chooseBatch(guide, tasks, mapID, position, metrics)
         return best
     end
     for _, task in ipairs(selected) do anchor(task) end
-    local radius = ns.Option("circuitRadius") * 6000
+    local radius = ns.Option("circuitRadius") * ns.ROUTE_WEIGHTS.circuitRadiusScale
     while #selected < QUESTS_PER_TRIP do
         local best, cost
         for _, task in ipairs(tasks) do
@@ -426,6 +438,31 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
         if quest and quest.objectiveLocationsIncomplete then partial = true end
     end
     local stops, cost, method = optimize(localTasks, mapID, position, cooperative, metrics)
+    if ns.Option("xpModel") and guide.mode == "zone" and ns.ZoneExitProjection then
+        local projection = ns.ZoneExitProjection(guide, ns.profile)
+        local nextGuide = projection and projection.nextGuide
+        if nextGuide and projection.level < (nextGuide.rangeLow or 1) then
+            local state, required = ns.XPState(), 0
+            if state then
+                local level, xp = state.level, state.xp
+                while level < nextGuide.rangeLow do
+                    local threshold = ns.xpCurve and ns.xpCurve[level] or ns.xpBaseline and ns.xpBaseline[level]
+                    if not threshold then required = nil; break end
+                    required = required + math.max(0, threshold - xp)
+                    xp, level = 0, level + 1
+                end
+            end
+            local area
+            for index = #stops, 1, -1 do if stops[index].kind == "q" then area = stops[index]; break end end
+            if required and required > 0 and area then
+                stops[#stops + 1] = {id = 0, kind = "notice", mapID = area.mapID,
+                    x = area.x, y = area.y, reasonCode = "zone-exit", optional = true,
+                    label = "Grind " .. required .. " XP near " .. (area.title or guide.zone)
+                        .. "; next zone starts at level " .. nextGuide.rangeLow .. ".",
+                    title = guide.zone}
+            end
+        end
+    end
     if #stops == 0 and not guide.pendingReason then
         guide.pendingReason = #laterTasks > 0 and "No specific quest reason is ready yet; generic steps are listed under Later."
             or complete == enabled and "This guide's selected quests are completed."
@@ -448,7 +485,7 @@ end
 local function fingerprint(guide)
     if guide.fixedRoute then return "fixed:" .. guide.key end
     local values = {tostring(ns.Option("classQuests")), ns.profile and ns.profile.mapID or 0, ns.profile and ns.profile.level or 0,
-        ns.db.questLearning and ns.db.questLearning.revision or 0}
+        ns.char.questLearning and ns.char.questLearning.revision or 0}
     for _, record in ipairs(guide.records) do
         values[#values + 1] = record.id .. ":" .. tostring(ns.active[record.id] ~= nil) .. ":" .. tostring(ns.Completed(record.id))
             .. ":" .. tostring(ns.QuestProgressReady(ns.self, record.id))
@@ -460,7 +497,7 @@ local function fingerprint(guide)
                 action = point.action, quantity = point.quantity, quantityUnknown = point.quantityUnknown}, ns.self)
             if item then values[#values + 1] = "bag:" .. point.itemID .. ":" .. item.have .. ":" .. item.need end
         end
-        local skipped = ns.db.guideSkips and ns.db.guideSkips[ns.self]
+        local skipped = ns.char and ns.char.guideSkips
         local steps = {}; for key, value in pairs(skipped and skipped.steps[record.id] or {}) do if value == true then steps[#steps + 1] = key end end
         table.sort(steps); values[#values + 1] = table.concat(steps, ",")
     end

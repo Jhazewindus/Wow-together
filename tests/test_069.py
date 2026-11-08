@@ -170,7 +170,7 @@ class LearningIndexTests(unittest.TestCase):
         self.assertEqual(c.lua.globals().buildReads,0)
         self.assertEqual(list(c.ns.LearnedFollowers(900).values()),[901])
         c.lua.execute('''
-        local saved=perfNS.db.questLearning
+        local saved=perfNS.char.questLearning
         local _,rule=next(saved.rules)
         local other={};for k,v in pairs(rule) do other[k]=v end
         other.previousQuest=902

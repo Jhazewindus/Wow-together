@@ -63,16 +63,16 @@ local function samePoint(a, b)
 end
 
 local function savedWaypoints()
-    if not ns.db or not ns.self then return end
-    if type(ns.db.confirmationWaypoints) ~= "table" then ns.db.confirmationWaypoints = {} end
-    return ns.db.confirmationWaypoints
+    if not ns.char then return end
+    if type(ns.char.confirmationWaypoints) ~= "table" then ns.char.confirmationWaypoints = {} end
+    return ns.char.confirmationWaypoints
 end
 
 function ns.ClearConfirmationWaypoint(current)
     local saved = savedWaypoints()
-    local owned = ns.confirmationWaypoint or saved and saved[ns.self]
+    local owned = ns.confirmationWaypoint or saved
     if owned and (not ns.ValidTravelPoint(owned) or not ns.GuideInteger(owned.id) or owned.id <= 0) then
-        ns.confirmationWaypoint = nil; if saved then saved[ns.self] = nil end; return
+        ns.confirmationWaypoint = nil; if saved then ns.char.confirmationWaypoints = nil end; return
     end
     if not owned or current and current.id == owned.id and samePoint(current, owned) or ns.RouteInCombat() then return end
     -- Do not erase a waypoint the player placed after clicking our button.
@@ -84,7 +84,7 @@ function ns.ClearConfirmationWaypoint(current)
     if position and ns.Public(position) and type(position.GetXY) == "function" then x, y = ns.ReadPublic(position.GetXY, position) end
     if samePoint(owned, {mapID = mapID, x = x, y = y}) and type(C_Map.ClearUserWaypoint) == "function" then C_Map.ClearUserWaypoint() end
     ns.confirmationWaypoint = nil
-    if saved then saved[ns.self] = nil end
+    if saved then ns.char.confirmationWaypoints = nil end
 end
 
 function ns.ShowConfirmationOnMap()
@@ -107,7 +107,7 @@ function ns.ShowConfirmationOnMap()
             api.SetUserWaypoint(point)
             ns.confirmationWaypoint = {id = stop.id, mapID = stop.mapID, x = stop.x, y = stop.y}
             local saved = savedWaypoints()
-            if saved then saved[ns.self] = ns.confirmationWaypoint end
+            if saved then ns.char.confirmationWaypoints = ns.confirmationWaypoint end
         end
     end
     return true

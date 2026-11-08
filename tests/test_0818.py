@@ -26,7 +26,7 @@ class FlightReportTests(unittest.TestCase):
         C_TaxiMap.GetAllTaxiNodes=function(map) assert(map==10);return taxiNodes end
         ''')
         c.ns.ReadFlightMap()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         self.assertEqual(state.nodes[22].point.mapID, 502)
         self.assertAlmostEqual(state.nodes[22].point.x, .4)
         path = c.ns.FindTravelPath(point(c), stop, True)
@@ -40,7 +40,7 @@ class FlightReportTests(unittest.TestCase):
         c = flight_client(); maps(c)
         c.ns.travelData = c.lua.table_from({'nodes': {'TAXI_22': {
             'name': 'Crossroads', 'mapID': 502, 'x': .4, 'y': .37}}, 'edges': [], 'factors': {}}, recursive=True)
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         state.nodes[22] = c.lua.table_from({'name': 'Crossroads', 'known': False,
             'point': {'mapID': 10, 'x': 1.4 / 3, 'y': .37}}, recursive=True)
         c.ns.InitializeTravel()
@@ -50,7 +50,7 @@ class FlightReportTests(unittest.TestCase):
 
     def test_measured_ride_countdown_is_shared_and_not_whole_journey_time(self):
         c = flight_client(); c.ns.ReadFlightMap()
-        c.ns.db.flights[c.ns.self].timings['11:22'] = c.lua.table_from({
+        c.ns.char.flights.timings['11:22'] = c.lua.table_from({
             'mean': 90, 'samples': 1, 'validated': True, 'build': c.ns.flightTimingBuild})
         c.ns.ResetTravelPath(); c.ns.SetOption('standaloneArrow', True)
         c.ns.NoteFlightSelection(54)
@@ -60,7 +60,7 @@ class FlightReportTests(unittest.TestCase):
         self.assertEqual(c.ns.standaloneNavigation.timer.text, '~50 s')
         self.assertEqual(c.ns.navigation.presentation.time, c.ns.standaloneNavigation.timer.text)
         c.lua.execute('flying=false; clock=190'); c.ns.handlers.PLAYER_CONTROL_GAINED()
-        self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 90)
+        self.assertEqual(c.ns.char.flights.timings['11:22'].mean, 90)
         self.assertNotIn('left', c.ns.standaloneNavigation.timer.text)
 
     def test_untimed_or_overdue_flight_never_displays_a_fake_exact_countdown(self):

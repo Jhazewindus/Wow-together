@@ -111,7 +111,7 @@ class SettlementTravelTests(unittest.TestCase):
             'TAXI_28':{'mapID':502,'x':.4,'y':.35},'B':{'mapID':503,'x':.8,'y':.35}},
             edges=[{'from':'A','to':'TAXI_28','seconds':10,'method':'walk'},
                 {'from':'TAXI_28','to':'B','seconds':10,'method':'walk'}])
-        c.ns.db.flights[c.ns.self].nodes[28]=c.lua.table_from({'id':28,'known':True,'name':'Astranaar',
+        c.ns.char.flights.nodes[28]=c.lua.table_from({'id':28,'known':True,'name':'Astranaar',
             'point':{'mapID':502,'x':.4,'y':.35}},recursive=True)
         self.assertIsNone(c.ns.FindTravelPath(point(c,501,.2,.35),point(c,503,.8,.35),True))
         c.ns.profile.faction='Alliance'
@@ -131,7 +131,7 @@ class SettlementTravelTests(unittest.TestCase):
         stop=c.ns.selectedRoute.stops[1]
         # Flying over an enemy town is allowed; only approach/exit walks matter.
         self.assertIsNotNone(c.ns.FindFlightPlan(stop))
-        state=c.ns.db.flights[c.ns.self]
+        state=c.ns.char.flights
         state.nodes[22].faction='Alliance'
         self.assertIsNone(c.ns.FindFlightPlan(stop))
         state.nodes[22].faction=None

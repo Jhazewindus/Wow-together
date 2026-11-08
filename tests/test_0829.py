@@ -129,6 +129,9 @@ class PackedDataTests(unittest.TestCase):
                            'WowTogether')
                 source = ROOT / package / name
             value = canonical(own_lua(source, field))
+            # Capture metadata describes the export, not a quest-field change.
+            if field == 'catalogue' and isinstance(value, dict):
+                value.pop('meta', None)
             digest = hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
             self.assertEqual(digest, expected['sha256'], field)
 

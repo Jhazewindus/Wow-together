@@ -154,7 +154,7 @@ class TerrainRoutingTests(unittest.TestCase):
         self.assertIsNone(c.ns.FindTravelPath(point(c, 502, .2), point(c, 501, .1), False))
 
     def test_confirmed_flight_crosses_barrier_in_air_without_a_ground_chord(self):
-        c = terrain_client(); state = c.ns.db.flights[c.ns.self]
+        c = terrain_client(); state = c.ns.char.flights
         for ident, x in ((9033, .15), (9034, .85)):
             state.nodes[ident] = c.lua.table_from({'id': ident, 'name': 'Flight master', 'known': True,
                 'point': {'mapID': 501, 'x': x, 'y': .37}}, recursive=True)
@@ -179,7 +179,7 @@ class TerrainRoutingTests(unittest.TestCase):
 
     def test_legacy_flight_fallback_cannot_send_player_through_a_mesa(self):
         c = terrain_client(); c.ns.SetOption('suggestFlights', True)
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         for ident, x in ((9033, .45), (9034, .99)):
             state.nodes[ident] = c.lua.table_from({'id': ident, 'name': 'Flight master', 'known': True,
                 'point': {'mapID': 501, 'x': x, 'y': .37},

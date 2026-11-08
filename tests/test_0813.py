@@ -47,7 +47,7 @@ class GuideCompletionTests(unittest.TestCase):
     def test_skipping_every_step_does_not_confirm_quest_completion(self):
         c = guide_client(2); g = start(c)
         for s in g.fixedPlan.values():
-            steps = c.ns.db.guideSkips[c.ns.self].steps
+            steps = c.ns.char.guideSkips.steps
             if steps[s.id] is None: steps[s.id] = c.lua.table()
             steps[s.id][c.ns.GuideStepKey(s)] = True
         c.ns.Refresh()
@@ -60,8 +60,8 @@ class GuideCompletionTests(unittest.TestCase):
 
     def test_skipped_quests_remain_distinct_and_reload_safe(self):
         c = guide_client(2); g = start(c)
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
-        c.ns.db.guideSkips[c.ns.self].quests[901] = True
+        c.ns.char.guideSkips.quests[900] = True
+        c.ns.char.guideSkips.quests[901] = True
         c.ns.Refresh()
         self.assertIsNone(c.ns.selectedRoute.complete)
         self.assertEqual(c.ns.selectedRoute.completionProgress.skipped, 2)
@@ -146,7 +146,7 @@ class GuideCompletionTests(unittest.TestCase):
         self.assertIsNone(c.ns.selectedRoute.complete)
         self.assertEqual({s.id for s in c.ns.selectedRoute.stops.values()}, {546})
         self.assertEqual(c.ns.selectedRoute.completionProgress.unfinished, 3)
-        c.ns.db.guideSkips[c.ns.self].quests[546] = True
+        c.ns.char.guideSkips.quests[546] = True
         c.ns.Refresh()
         self.assertIsNone(c.ns.selectedRoute.complete)
         self.assertEqual(c.ns.selectedRoute.completionProgress.skipped, 1)

@@ -72,11 +72,11 @@ class StepReasonTests(unittest.TestCase):
 
         client.ns.routeSelection = guide
         client.ns.SaveSelectedGuide()
-        saved = client.ns.db.guideState[client.ns.self].guide
+        saved = client.ns.char.guideState.guide
         self.assertEqual(int(saved.collectionDependencies[97286][1]), chosen)
         self.assertEqual(saved.collectionAlternatives[chosen], 40)
 
-        client.ns.db.guideSkips[client.ns.self].quests[chosen] = True
+        client.ns.char.guideSkips.quests[chosen] = True
         client.ns.profile.mapID = 1439
         client.ns.BuildLevelingRoute(guide, False, False)
         replacement = int(guide.collectionDependencies[97286][1])

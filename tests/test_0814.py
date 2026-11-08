@@ -51,7 +51,7 @@ class GuideBackgroundTests(unittest.TestCase):
         before_text = (nav.status.text, nav.context.text, nav.title.text)
         c.ns.navigationPreview = 2
         c.ns.flightPlanCache = c.lua.table_from({'sentinel': True})
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
+        c.ns.char.guideSkips.quests[900] = True
         click(nav.background)
         self.assertFalse(c.ns.Option('guideOpaque'))
         for panel in (nav, nav.tip, nav.work):
@@ -61,7 +61,7 @@ class GuideBackgroundTests(unittest.TestCase):
         self.assertEqual((nav.status.text, nav.context.text, nav.title.text), before_text)
         self.assertEqual(c.ns.navigationPreview, 2)
         self.assertTrue(c.ns.flightPlanCache.sentinel)
-        self.assertTrue(c.ns.db.guideSkips[c.ns.self].quests[900])
+        self.assertTrue(c.ns.char.guideSkips.quests[900])
         self.assertEqual(order(g), before)
         click(nav.background)
         self.assertTrue(c.ns.Option('guideOpaque'))
@@ -121,7 +121,7 @@ class SuppliedResearchTests(unittest.TestCase):
         for record in records:
             c.ns.ObserveQuestLearning(c.lua.table_from(record, recursive=True),
                                      'Anonymous supplied export')
-        self.assertEqual(list(c.ns.db.questLearning.rules.keys()), [])
+        self.assertEqual(list(c.ns.char.questLearning.rules.keys()), [])
         self.assertIsNone(c.ns.LearnedQuestRule(788))
         self.assertIsNone(c.ns.LearnedQuestRule(97279))
         self.assertEqual(list(c.ns.CataloguePrerequisiteIDs(789).values()), [788])

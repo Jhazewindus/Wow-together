@@ -7,7 +7,7 @@ local function finite(value)
     return ns.Public(value) and type(value) == "number" and value == value
         and value > -math.huge and value < math.huge
 end
-local function state() return ns.db and ns.db.flights and ns.db.flights[ns.self] end
+local function state() return ns.char and ns.char.flights end
 local function routeKey(route)
     if not ns.Public(route) or type(route) ~= "table" or #route < 2 or #route > 33 then return end
     local ids = {}

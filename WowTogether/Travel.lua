@@ -41,7 +41,7 @@ local function localPoint(mapID, p)
     return point(map, position) or p
 end
 
-local function flights() return ns.db.flights and ns.db.flights[ns.self] end
+local function flights() return ns.char and ns.char.flights end
 
 local function savedPoint(p)
     return type(p) == "table" and ns.GuideInteger(p.mapID) and p.mapID > 0
@@ -192,9 +192,8 @@ function ns.RefreshTravelDirections(tryFlight)
 end
 
 function ns.InitializeTravel()
-    ns.db.flights = type(ns.db.flights) == "table" and ns.db.flights or {}
-    local state = ns.db.flights[ns.self]
-    if type(state) ~= "table" then state = {}; ns.db.flights[ns.self] = state end
+    local state = ns.char.flights
+    if type(state) ~= "table" then state = {}; ns.char.flights = state end
     for _, name in ipairs({"nodes", "edges", "timings"}) do
         if type(state[name]) ~= "table" then state[name] = {} end
     end

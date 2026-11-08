@@ -236,7 +236,7 @@ class ProfessionWindowTests(unittest.TestCase):
         self.assertEqual(c.ns.professionData[171].skill, 20)
         self.assertEqual(c.ns.selectedRoute.stops[1].action, 'read')
         self.assertFalse(c.ns.selectedRoute.complete)
-        self.assertIsNone(c.ns.db.guideSkips[c.ns.self].quests[0])
+        self.assertIsNone(c.ns.char.guideSkips.quests[0])
         c.ns.ScanGuideProgress(); c.drain()
         self.assertEqual(c.ns.selectedRoute.recipe.id, 1)
 
@@ -289,7 +289,7 @@ class ProfessionWindowTests(unittest.TestCase):
     def test_profession_resume_saved_goal_and_stop_remains_stopped(self):
         c = crafting()
         c.ns.StartProfessionGuide(171, 150)
-        saved = c.ns.db.guideState[c.ns.self]
+        saved = c.ns.char.guideState
         self.assertEqual(saved.guide.professionID, 171)
         self.assertIsNone(saved.guide.records)
         c.ns.routeSelection = None
@@ -297,7 +297,7 @@ class ProfessionWindowTests(unittest.TestCase):
         c.ns.RestoreSavedGuide()
         self.assertEqual(c.ns.routeSelection.targetSkill, 150)
         c.ns.StopGuide(True)
-        self.assertIsNone(c.ns.db.guideState[c.ns.self])
+        self.assertIsNone(c.ns.char.guideState)
         c.ns.handlers.BAG_UPDATE_DELAYED(); c.drain()
         self.assertIsNone(c.ns.routeSelection)
         self.assertFalse(c.ns.navigation.IsShown(c.ns.navigation))

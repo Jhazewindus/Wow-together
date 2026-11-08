@@ -155,7 +155,7 @@ class MarketTests(unittest.TestCase):
         c = market(crafting())
         c.ns.StoreAuctionQuote(100,c.lua.table_from([[12,200]],recursive=True),True)
         saved = plain(c.ns.db)
-        other = Client(quests=(),saved_variables=saved,before_load='''
+        other = Client(quests=(),saved_variables=saved,saved_character=plain(c.ns.char),before_load='''
           function GetServerTime() return 100010 end
           function UnitLevel() return 20 end
           function UnitFactionGroup() return nil end''')

@@ -39,7 +39,7 @@ def ratchet_client():
         'factors': {}, 'settlements': [], 'flightConnections': [
             {'source': 80, 'destination': 25, 'seconds': 69, 'faction': 'Horde'},
             {'source': 25, 'destination': 22, 'seconds': 100, 'faction': 'Horde'}]}, recursive=True)
-    state = c.ns.db.flights[c.ns.self]
+    state = c.ns.char.flights
     state.nodes = c.lua.table_from({i: {'id': i, 'name': p['name'], 'point': p,
         'faction': p['faction'], 'known': i != 80} for i, p in points.items()}, recursive=True)
     state.edges = c.lua.table_from({'25:22': {'source': 25, 'destination': 22}}, recursive=True)
@@ -59,7 +59,7 @@ def ratchet_client():
 class FlightDiscoveryRoutingTests(unittest.TestCase):
     def test_ratchet_screenshot_uses_shorter_check_without_unlocking_or_reordering(self):
         c = ratchet_client()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         current = c.ns.selectedRoute.stops[1]
         discovery = c.ns.navigation.state.stop
         self.assertEqual(discovery.flightDiscovery.source.id, 80)
@@ -90,7 +90,7 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
     def test_known_landings_connections_and_faction_are_required(self):
         for change in ('missing', 'reverse', 'wrong-faction', 'locked', 'blocked', 'hostile'):
             with self.subTest(change=change):
-                c = ratchet_client(); state = c.ns.db.flights[c.ns.self]
+                c = ratchet_client(); state = c.ns.char.flights
                 if change == 'missing': c.ns.travelData.flightConnections = c.lua.table()
                 elif change == 'reverse':
                     e = c.ns.travelData.flightConnections[1]; e.source, e.destination = 25, 80
@@ -105,7 +105,7 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         for change in ('slow', 'far'):
             c = ratchet_client()
             if change == 'slow': c.ns.travelData.flightConnections[1].seconds = 600
-            else: c.ns.travelData.nodes['TAXI_80'].x = .8; c.ns.db.flights[c.ns.self].nodes[80].point.x = .8
+            else: c.ns.travelData.nodes['TAXI_80'].x = .8; c.ns.char.flights.nodes[80].point.x = .8
             c.ns.ResetTravelPath(); c.ns.UpdateNavigation()
             self.assertIsNone(c.ns.navigation.state.stop.flightDiscovery)
 
@@ -123,7 +123,7 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         c.ns.navigation.skipStep.OnClick()
         self.assertIsNone(c.ns.navigation.state.stop.flightDiscovery)
         self.assertFalse(c.ns.GuideQuestSkipped(900))
-        self.assertEqual(len(c.ns.db.guideSkips[c.ns.self].steps), 0)
+        self.assertEqual(len(c.ns.char.guideSkips.steps), 0)
         self.assertEqual(c.ns.selectedRoute.stops[1].id, 900)
         lines = c.ns.TravelLinePoints(c.ns.PlayerPoint(1413), c.ns.selectedRoute.stops[1])
         self.assertGreater(len(lines), 3)
@@ -155,7 +155,7 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         c.ns.ReadFlightMap()
         self.assertIsNone(c.ns.navigation.state.stop.flightDiscovery)
         self.assertEqual(c.ns.navigation.state.stop.kind, 'f')
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[80].known)
+        self.assertTrue(c.ns.char.flights.nodes[80].known)
         plan = c.ns.navigation.state.stop.flightPlan
         self.assertEqual(plan.source.id, 80)
         self.assertEqual(c.lua.globals().selectedSlot, c.ns.visibleFlights[plan.destination.id].slot)
@@ -176,8 +176,8 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         ''')
         c.ns.SetOption('autoFly', True); c.ns.ReadFlightMap()
         self.assertIsNone(c.ns.navigation.state.stop.flightDiscovery)
-        self.assertIsNone(c.ns.db.flights[c.ns.self].edges['80:25'])
-        self.assertEqual(c.ns.db.flights[c.ns.self].unreachable['80:25'], c.ns.flightTimingBuild)
+        self.assertIsNone(c.ns.char.flights.edges['80:25'])
+        self.assertEqual(c.ns.char.flights.unreachable['80:25'], c.ns.flightTimingBuild)
 
     def test_navigation_refresh_reuses_calculation_but_movement_reconsiders_it(self):
         c = ratchet_client()

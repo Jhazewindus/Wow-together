@@ -31,7 +31,7 @@ class OfferRecheckTests(unittest.TestCase):
             else: c.lua.globals().playerLevel = 13
             self.assertFalse(c.ns.ObservedPickupAvailable(900), change)
             self.assertFalse(c.ns.CatalogueAllowed(900, c.ns.profile, c.ns.self)[0], change)
-        fresh = Client(quests=(), saved_variables=primitive(c.ns.db))
+        fresh = Client(quests=(), saved_variables=primitive(c.ns.db), saved_character=primitive(c.ns.char))
         fresh.guide_environment(level=13)
         fresh.ns.catalogue = fresh.lua.table_from(primitive(c.ns.catalogue), recursive=True)
         self.assertFalse(fresh.ns.ObservedPickupAvailable(900))
@@ -48,7 +48,7 @@ class OfferRecheckTests(unittest.TestCase):
         offer(c, (900, 901))
         self.assertIn(900, {s.id for s in c.ns.selectedRoute.stops.values()})
         self.assertEqual(order(g), before)
-        self.assertFalse(c.ns.db.guideSkips[c.ns.self].quests[900])
+        self.assertFalse(c.ns.char.guideSkips.quests[900])
         self.assertFalse(c.ns.Completed(900))
 
     def test_partial_offer_preserves_other_negatives_but_restores_its_own(self):
@@ -81,7 +81,7 @@ class OfferRecheckTests(unittest.TestCase):
         offer(c, (900,), full=False)
         self.assertTrue(c.ns.ObservedPickupAvailable(900))
 
-    def test_accepted_work_continues_and_other_characters_builds_are_not_blocked(self):
+    def test_accepted_work_continues_and_matching_account_offer_context_is_shared(self):
         c, g = npc_client(False)
         g.records = c.lua.table_from([c.ns.CatalogueRecord(900)])
         g.fixedPlan = None
@@ -93,8 +93,8 @@ class OfferRecheckTests(unittest.TestCase):
         saved = primitive(c.ns.db)
         other = Client(name='Other', quests=(), saved_variables=saved)
         other.ns.catalogue = other.lua.table_from(primitive(c.ns.catalogue), recursive=True)
-        self.assertIsNone(other.ns.ObservedPickupAvailable(900))
-        changed = Client(quests=(), saved_variables=saved,
+        self.assertFalse(other.ns.ObservedPickupAvailable(900))
+        changed = Client(quests=(), saved_variables=saved, saved_character=primitive(c.ns.char),
             before_load='GetBuildInfo=function() return "1.60.1","new-build",0,16001 end')
         changed.ns.catalogue = changed.lua.table_from(primitive(c.ns.catalogue), recursive=True)
         self.assertIsNone(changed.ns.ObservedPickupAvailable(900))

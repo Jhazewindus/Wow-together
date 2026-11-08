@@ -250,3 +250,17 @@ function ns.ExportNPCPickupLocations()
     end
     return result
 end
+
+function ns.ExportNPCPickupResearchEvents()
+    local result, profile = {}, ns.profile or {}
+    local saved = ns.char and ns.char.questResearch
+    local session = saved and saved.session or 0
+    for _, item in ipairs(ns.ExportNPCPickupLocations().quests) do
+        local event = {event = "pickup-location", build = ns.npcPickupBuild, session = session,
+            observerID = ns.QuestResearchObserverID and ns.QuestResearchObserverID(),
+            questID = item.questID, npcID = item.npcID, mapID = item.mapID, x = item.x, y = item.y,
+            classID = profile.classID, raceID = profile.raceID, level = profile.level, faction = profile.faction}
+        result[#result + 1] = event
+    end
+    return result
+end

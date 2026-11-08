@@ -433,6 +433,14 @@ function ns.Receive(prefix, message, channel, sender)
             return
         end
     end
+    if ns.ReceiveObjectiveMessage then
+        local handled, accepted, reason = ns.ReceiveObjectiveMessage(message, sender)
+        if handled then
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
+            if accepted then ns.ScheduleRefresh(true) end
+            return
+        end
+    end
     if ns.ReceivePartyRouteMessage then
         local handled, accepted, reason = ns.ReceivePartyRouteMessage(message, sender)
         if handled then
@@ -654,6 +662,7 @@ function ns.SyncDiagnostics(output)
     output("Guide quest records known: " .. guideCount)
     output("Guide read status: " .. (ns.guideReadError or "no read failures recorded"))
     output("Offline catalogue: " .. (ns.catalogue and ns.catalogue.count or 0) .. " quests; captured " .. (ns.catalogue and ns.catalogue.captured or "unknown"))
+    if ns.CatalogueFreshnessText then output(ns.CatalogueFreshnessText()) end
     output("Route location read status: " .. (ns.routeReadError or "no read failures recorded"))
     local localPoints = 0
     for _ in pairs(ns.routeLocations or {}) do localPoints = localPoints + 1 end

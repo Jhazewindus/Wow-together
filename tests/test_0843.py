@@ -24,7 +24,7 @@ class FlightDiscoveryTests(unittest.TestCase):
           C_Map.GetPlayerMapPosition=function() return {GetXY=function() return .496,.610 end} end
           C_Map.GetMapWorldSize=function() return 5000,3333 end
         ''')
-        flights = c.ns.db.flights[c.ns.self]
+        flights = c.ns.char.flights
         flights.nodes[25] = c.lua.table_from({'name': 'Crossroads', 'known': True})
         flights.nodes[29] = c.lua.table_from({'name': 'Sun Rock Retreat', 'known': False,
             'unlockConfirmed': True, 'faction': 'Horde'})
@@ -65,7 +65,7 @@ class FlightDiscoveryTests(unittest.TestCase):
     def test_native_only_continent_position_is_projected_into_current_zone(self):
         c = tip_client(inn=False)
         maps(c)
-        c.ns.db.flights[c.ns.self].nodes[9009] = c.lua.table_from({
+        c.ns.char.flights.nodes[9009] = c.lua.table_from({
             'name': 'New beta flight master', 'faction': 'Horde', 'known': False,
             'unlockConfirmed': True, 'point': {'mapID': 10, 'x': .25/3, 'y': .37}}, recursive=True)
         value = c.ns.CurrentGuideTip()
@@ -73,7 +73,7 @@ class FlightDiscoveryTests(unittest.TestCase):
         self.assertEqual(value.place.mapID, 501)
         self.assertAlmostEqual(value.place.x, .25)
         self.assertAlmostEqual(value.distance, 40)
-        self.assertEqual(len(c.ns.db.flights[c.ns.self].edges), 0)
+        self.assertEqual(len(c.ns.char.flights.edges), 0)
 
     def test_unknown_ownership_restricted_flags_and_enemy_flags_do_not_invent_unlocks(self):
         c = tip_client(inn=False, flight=True)
@@ -82,7 +82,7 @@ class FlightDiscoveryTests(unittest.TestCase):
         c.ns.guideServiceData.taxis[9000].faction = 'Horde'
         node = c.lua.table_from({'name': 'Flight master', 'faction': 'Horde'})
         node.known, node.unlockConfirmed = c.lua.globals().secret, c.lua.globals().secret
-        c.ns.db.flights[c.ns.self].nodes[9000] = node
+        c.ns.char.flights.nodes[9000] = node
         c.lua.globals().clock = 3
         self.assertEqual(c.ns.CurrentGuideTip().kind, 'flight-check')
         node.faction = 'Alliance'; c.lua.globals().clock = 5
@@ -118,7 +118,7 @@ class FlightDiscoveryTests(unittest.TestCase):
         c.ns.UpdateNavigation()
         self.assertTrue(c.ns.navigation.tip.IsShown(c.ns.navigation.tip))
         self.assertFalse(c.ns.standaloneNavigation.tip.IsShown(c.ns.standaloneNavigation.tip))
-        c.ns.db.flights[c.ns.self].nodes[9000] = c.lua.table_from({'name': 'Flight master', 'known': True})
+        c.ns.char.flights.nodes[9000] = c.lua.table_from({'name': 'Flight master', 'known': True})
         c.ns.travelRevision = (c.ns.travelRevision or 0) + 1
         c.ns.UpdateNavigation()
         self.assertFalse(c.ns.navigation.tip.IsShown(c.ns.navigation.tip))
@@ -127,9 +127,9 @@ class FlightDiscoveryTests(unittest.TestCase):
     def test_flight_map_confirms_current_master_without_unlocking_other_points(self):
         c = flight_client()
         c.ns.ReadFlightMap()
-        self.assertTrue(c.ns.db.flights[c.ns.self].nodes[11].known)
+        self.assertTrue(c.ns.char.flights.nodes[11].known)
         self.assertTrue(c.ns.checkedFlightNodes[11])
-        self.assertEqual(set(c.ns.db.flights[c.ns.self].edges), {'11:22'})
+        self.assertEqual(set(c.ns.char.flights.edges), {'11:22'})
 
     def test_metrics_and_diagnostics_do_not_claim_every_beta_flight_master_is_mapped(self):
         c = tip_client(inn=False, flight=True)

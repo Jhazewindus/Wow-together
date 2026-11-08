@@ -269,7 +269,7 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_single_pickup_survives_saved_guide_restore(self):
         c = solo(); map_canvas(c); g = dungeon(c)
         c.ns.ShowDungeonQuests(g, True, 901); c.drain(); c.ns.SaveSelectedGuide()
-        saved = c.ns.db.guideState[c.ns.self]
+        saved = c.ns.char.guideState
         c.ns.routeSelection = None; c.ns.pendingSavedGuide = saved
         c.ns.RestoreSavedGuide(); c.drain()
         self.assertEqual(c.ns.routeSelection.pickupQuestID, 901)
@@ -286,7 +286,7 @@ class DungeonCollectionTests(unittest.TestCase):
         c.ns.offered[898] = True
         self.assertTrue(c.ns.CanAutoAcceptGuideQuest(899))
         self.assertFalse(c.ns.CanAutoAcceptGuideQuest(898))
-        c.ns.db.guideSkips[c.ns.self].quests[899] = True
+        c.ns.char.guideSkips.quests[899] = True
         route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), False)
         self.assertEqual(len(route.stops), 0)
         self.assertTrue(c.ns.GuideQuestSkipped(899))

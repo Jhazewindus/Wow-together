@@ -35,7 +35,9 @@ def session(c):
 def fresh(c, completed=(), active=()):
     c.ns.handlers.PLAYER_LOGOUT()
     saved = primitive(c.ns.db)
-    n = Client(quests=active, completed=completed, saved_variables=saved, before_load=NATIVE)
+    saved_character = primitive(c.ns.char)
+    n = Client(quests=active, completed=completed, saved_variables=saved,
+               saved_character=saved_character, before_load=NATIVE)
     n.guide_environment(level=12); map_canvas(n)
     n.lua.globals().sessionClock = 50000
     n.lua.globals().sessionXP = 600
@@ -124,7 +126,7 @@ class SessionTotalsTests(unittest.TestCase):
         replacement = c.lua.table_from(primitive(g), recursive=True)
         replacement.key, replacement.title = 'other-guide', 'Other guide'
         c.ns.ActivateRoute(replacement)
-        state = c.ns.db.guideSessions[c.ns.self]
+        state = c.ns.char.guideSessions
         self.assertEqual((state.last.xp, state.last.seconds), (200, 60))
         self.assertEqual((state.current.xp, state.current.seconds), (0, 0))
 
@@ -181,8 +183,8 @@ class SessionCheckpointTests(unittest.TestCase):
 
     def test_stop_discards_resume_exit_of_paused_window_keeps_it(self):
         c = playing(); c.ns.StopGuide(False)
-        self.assertIsNone(c.ns.db.guideState[c.ns.self])
-        self.assertIsNone(c.ns.db.guideSessions[c.ns.self].current)
+        self.assertIsNone(c.ns.char.guideState)
+        self.assertIsNone(c.ns.char.guideSessions.current)
         d = playing(); d.ns.PauseGuideSession()
         d.ns.navigation.close.OnClick()
         self.assertIsNotNone(d.ns.PausedSessionCheckpoint())
@@ -208,7 +210,7 @@ class SessionCheckpointTests(unittest.TestCase):
         c = playing(); actual = c.ns.selectedRoute.stops[1]
         c.ns.navigationPreview = c.lua.table_from({'stop': {'id': 999, 'title': 'Other target'}}, recursive=True)
         c.ns.CaptureSessionCheckpoint()
-        checkpoint = c.ns.db.guideState[c.ns.self].checkpoint
+        checkpoint = c.ns.char.guideState.checkpoint
         self.assertEqual(checkpoint.questID, actual.id)
         self.assertEqual(checkpoint.next, actual.title)
 
@@ -223,18 +225,17 @@ class SessionCheckpointTests(unittest.TestCase):
     def test_bounded_stats_do_not_duplicate_the_guide_blueprint(self):
         c = playing()
         for _ in range(20): c.ns.CaptureSessionCheckpoint()
-        data = primitive(c.ns.db.guideSessions[c.ns.self])
+        data = primitive(c.ns.char.guideSessions)
         self.assertEqual(set(data), {'current'})
         self.assertNotIn('fixedPlan', str(data))
         self.assertNotIn('records', str(data))
-        self.assertEqual(len(c.ns.db.guideState[c.ns.self].guide.fixedPlan), 9)
-        c.ns.db.guideState['Other-TestRealm'] = c.lua.table_from({'schema': 1})
+        self.assertEqual(len(c.ns.char.guideState.guide.fixedPlan), 9)
         c.ns.StopGuide(True)
-        self.assertIsNotNone(c.ns.db.guideState['Other-TestRealm'])
+        self.assertIsNone(c.ns.db.guideState)
 
     def test_malformed_session_summary_is_discarded(self):
         c = playing()
-        c.ns.db.guideSessions[c.ns.self].current.seconds = -99
+        c.ns.char.guideSessions.current.seconds = -99
         n = fresh(c)
         self.assertEqual(session(n).seconds, 0)
         self.assertEqual(session(n).xp, 0)
@@ -243,12 +244,12 @@ class SessionCheckpointTests(unittest.TestCase):
         for bad_entry in (False, True):
             with self.subTest(bad_entry=bad_entry):
                 c = playing()
-                if bad_entry: c.ns.db.guideState[c.ns.self] = True
-                else: c.ns.db.guideState[c.ns.self].guide.key = None
+                if bad_entry: c.ns.char.guideState = True
+                else: c.ns.char.guideState.guide.key = None
                 n = fresh(c)
                 self.assertIsNone(n.ns.routeSelection)
                 self.assertIsNone(n.ns.PausedSessionCheckpoint())
-                self.assertIsNone(n.ns.db.guideSessions[n.ns.self].current)
+                self.assertIsNone(n.ns.char.guideSessions.current)
 
 
 class SessionUITests(unittest.TestCase):

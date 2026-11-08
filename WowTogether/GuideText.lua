@@ -80,6 +80,11 @@ function ns.GuideStepFacts(stop)
         if bags.finished then facts.finished = true end
     end
     if not facts.action and facts.npc and facts.item then facts.action = "collect" end
+    if facts.action == "start-item" and ns.GuideInteger(stop.itemID) and stop.itemID > 0 then
+        local owned = ns.ItemOwned(stop.itemID)
+        facts.startItem = {itemID = stop.itemID, name = facts.item or ns.ItemName(stop.itemID),
+            inBags = ns.GuideInteger(owned) and owned > 0 or false, count = owned or 0}
+    end
     if facts.have and facts.need and facts.need > 0 then
         facts.remaining = math.max(0, facts.need - facts.have)
         facts.progress = facts.have .. "/" .. facts.need
@@ -103,6 +108,10 @@ function ns.GuideStepAction(stop, facts)
     if stop.kind == "loading" then return stop.action == "scan" and "Scanning guide…" or "Loading route…" end
     if stop.kind == "notice" then return text(stop.label) or "Waiting for the next guide step" end
     if facts.action == "start-item" then
+        if facts.startItem and facts.startItem.inBags then
+            return "Use " .. (facts.startItem.name or facts.item or "the item") .. " to start " .. title
+        end
+        if facts.npc then return "Kill " .. facts.npc .. " for " .. (facts.item or "the quest item") end
         local verb = stop.sourceAction == "buy" and "Buy " or stop.sourceAction == "loot" and "Loot " or "Find "
         return verb .. (facts.item or target or title)
     end
@@ -121,6 +130,9 @@ function ns.GuideStepAction(stop, facts)
     end
     if stop.kind == "t" then return facts.npc and ("Turn in to " .. facts.npc) or ("Turn in " .. title) end
     if facts.finished or facts.remaining == 0 then return "Objective complete: " .. (target or title) end
+    if text(stop.dungeonBossName) then
+        return "Kill " .. text(stop.dungeonBossName) .. " — also completes " .. title
+    end
     local amount, action = facts.amount, facts.action
     if action == "use" then
         return "Use " .. (facts.tool or "the quest item") .. (stop.sourceAction == "use-at" and " at " or " on ")
@@ -154,6 +166,7 @@ local function guideStepHintSource(stop, facts)
     if stop.kind == "notice" then return text(stop.label) end
     if facts.finished or facts.remaining == 0 then return "This objective is finished." end
     if action == "start-item" then
+        if facts.startItem and facts.startItem.inBags then return "Use the item to start the quest." end
         return (facts.npc and ((stop.sourceAction == "buy" and "Buy from " or "Loot from ") .. facts.npc .. "; ") or "")
             .. "use the item to start the quest."
     end
@@ -194,8 +207,7 @@ function ns.StopInstruction(stop, facts)
         return "Accept " .. title .. (facts.npc and (" from " .. facts.npc) or facts.target and (" at " .. facts.target) or "")
     end
     if stop.kind == "t" then return "Turn in " .. title .. (facts.npc and (" to " .. facts.npc) or "") end
-    if facts.action == "start-item" then return ns.GuideStepAction(stop, facts)
-        .. (facts.npc and (" from " .. facts.npc) or "") .. "; use it to start the quest" end
+    if facts.action == "start-item" then return ns.GuideStepAction(stop, facts) end
     if facts.action == "use" and not facts.finished and facts.remaining ~= 0 then
         return "Use " .. (facts.tool or "the quest item") .. (stop.sourceAction == "use-at" and " at " or " on ")
             .. facts.amount .. (facts.npc or text(stop.targetName) or facts.target or title)
@@ -496,6 +508,9 @@ function ns.GuideStepPresentation(stop, facts, guide, route, state)
         addDetail(goal.serviceInstructions)
         addDetail("Done resumes your guide")
     else
+        for _, watch in ipairs(goal.dungeonLootWatch or {}) do
+            addDetail("Watch for: " .. watch.name .. " (" .. watch.members .. ")")
+        end
         addDetail(ns.QuestGroupWarning(goal.id))
         addDetail(goal.forPlayer and ("For " .. text(goal.forPlayer)))
         if goal.clientLocation then addDetail("Quest tracker marked area") end

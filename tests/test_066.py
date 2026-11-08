@@ -28,7 +28,8 @@ def party(complete=(900, 901), peer_complete=(), active=(), peer_active=()):
 def reload(c, completed=(), active=()):
     c.ns.handlers.PLAYER_LOGOUT()
     saved = primitive(c.lua.globals().WowTogetherDB)
-    fresh = Client(quests=active, completed=completed, saved_variables=saved)
+    saved_character = primitive(c.ns.char)
+    fresh = Client(quests=active, completed=completed, saved_variables=saved, saved_character=saved_character)
     fresh.guide_environment(level=12)
     fresh.lua.globals().grouped, fresh.lua.globals().peer = False, None
     fresh.ns.UpdateRoster()
@@ -52,14 +53,13 @@ class ResumeTests(unittest.TestCase):
         self.assertNotIn((901, 'a'), {(s.id, s.kind) for s in fresh.ns.selectedRoute.stops.values()})
         self.assertIsNone(fresh.lua.globals().WorldMapFrame.mapID)  # No forced map opening on login.
         self.assertFalse(any(msg.startswith('1|V|') for _, msg, _ in fresh.drain()))
-        self.assertNotIn('memberKey', primitive(fresh.ns.db.guideState[fresh.ns.self].guide.fixedPlan[1]))
+        self.assertNotIn('memberKey', primitive(fresh.ns.char.guideState.guide.fixedPlan[1]))
 
     def test_clear_removes_only_current_char_checkpoint_and_reload_does_not_restart(self):
         c = guide_client(2); c.ns.ActivateRoute(zone(c))
-        c.ns.db.guideState['Other-TestRealm'] = c.lua.table_from({'schema': 1})
         c.ns.ClearRoute()
-        self.assertIsNone(c.ns.db.guideState[c.ns.self])
-        self.assertIsNotNone(c.ns.db.guideState['Other-TestRealm'])
+        self.assertIsNone(c.ns.char.guideState)
+        self.assertIsNone(c.ns.db.guideState)
         self.assertIsNone(reload(c).ns.routeSelection)
 
     def test_manual_skips_survive_without_becoming_completed_credit(self):
@@ -73,7 +73,7 @@ class ResumeTests(unittest.TestCase):
 
     def test_invalid_checkpoint_is_discarded_safely(self):
         c = guide_client(2); c.ns.ActivateRoute(zone(c))
-        c.ns.db.guideState[c.ns.self].guide.title = None
+        c.ns.char.guideState.guide.title = None
         fresh = reload(c)
         self.assertIsNone(fresh.ns.routeSelection)
         self.assertIn('invalid', fresh.ns.guideResumeStatus)
@@ -81,7 +81,8 @@ class ResumeTests(unittest.TestCase):
     def test_login_in_combat_defers_until_regen(self):
         c = guide_client(2); c.ns.ActivateRoute(zone(c))
         saved = primitive(c.ns.db)
-        fresh = Client(quests=(), saved_variables=saved)
+        saved_character = primitive(c.ns.char)
+        fresh = Client(quests=(), saved_variables=saved, saved_character=saved_character)
         fresh.guide_environment(level=12); map_canvas(fresh)
         fresh.ns.catalogue = fresh.lua.table_from(primitive(c.ns.catalogue), recursive=True)
         fresh.lua.globals().grouped, fresh.lua.globals().peer = False, None

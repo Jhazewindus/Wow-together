@@ -228,7 +228,8 @@ class CityTravelGuideTests(unittest.TestCase):
     def test_reload_restores_travel_guide_without_fake_quests_or_credit(self):
         c = travel_client(); c.ns.RequestStartRoute(c.ns.OrgrimmarTravelGuide())
         saved = primitive(c.ns.db)
-        restored = Client(quests=(), saved_variables=saved)
+        saved_character = primitive(c.ns.char)
+        restored = Client(quests=(), saved_variables=saved, saved_character=saved_character)
         restored.guide_environment(level=23)
         restored.ns.RestoreSavedGuide()
         self.assertEqual(restored.ns.routeSelection.key, 'travel:orgrimmar')

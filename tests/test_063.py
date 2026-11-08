@@ -143,7 +143,7 @@ class FixedGuideTests(unittest.TestCase):
         # Skipping an objective does not assert a completed quest.
         for s in g.fixedPlan.values():
             if s.kind == 'q':
-                c.ns.db.guideSkips[c.ns.self].steps[s.id] = c.lua.table_from({c.ns.GuideStepKey(s): True})
+                c.ns.char.guideSkips.steps[s.id] = c.lua.table_from({c.ns.GuideStepKey(s): True})
         route = c.ns.BuildGuideRoute(g, False)
         self.assertEqual(len(route.stops), 0)
         self.assertIn('before handing it in', route.pendingReason)
@@ -281,7 +281,8 @@ class ObservedLearningTests(unittest.TestCase):
     def test_account_wide_rules_survive_reload_and_match_build_faction(self):
         c = learner(); learn(c)
         saved = primitive(c.ns.db)
-        fresh = Client(name='Fresh', quests=(), saved_variables=saved)
+        saved_character = primitive(c.ns.char)
+        fresh = Client(quests=(), saved_variables=saved, saved_character=saved_character)
         fresh.guide_environment(level=12); fresh.lua.globals().grouped = False
         fresh.lua.execute("function UnitClass() return 'Shaman','SHAMAN',7 end; function UnitRace() return 'Orc','Orc',2 end")
         catalogue(fresh, {900: world_quest('Quest 0'), 901: world_quest('Quest 1')})
@@ -289,7 +290,7 @@ class ObservedLearningTests(unittest.TestCase):
         fresh.ns.ReadProfile()
         self.assertEqual(fresh.ns.LearnedQuestRule(901).previousQuest, 900)
         allowed = fresh.ns.CatalogueAllowed(901, fresh.ns.profile, fresh.ns.self)
-        self.assertFalse(allowed[0])
+        self.assertTrue(allowed)  # The matched faction/build offer was observed after the parent.
         fresh.ns.profile.classID = 8; self.assertIsNotNone(fresh.ns.LearnedQuestRule(901))
         fresh.ns.profile.raceID = 8; self.assertIsNotNone(fresh.ns.LearnedQuestRule(901))
         fresh.ns.profile.faction = 'Alliance'; self.assertIsNone(fresh.ns.LearnedQuestRule(901))
@@ -309,7 +310,7 @@ class ObservedLearningTests(unittest.TestCase):
     def test_unknown_or_truncated_history_never_creates_a_dependency(self):
         for truncated in (True, False):
             c = learner(); c.ns.active[900] = 'Quest 0'; offers(c, [900])
-            before = c.ns.db.questResearch[c.ns.self].events[1]
+            before = c.ns.char.questResearch.events[1]
             if truncated: before.historyTruncated = True
             else: before.notCompleted = c.lua.table_from([900])
             c.ns.handlers.QUEST_TURNED_IN(900); c.ns.active[900] = None

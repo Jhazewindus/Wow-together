@@ -29,7 +29,7 @@ end
 
 local function context(guide, route)
     local profile = ns.profile or {}
-    local learning = ns.db and ns.db.questLearning
+    local learning = ns.char and ns.char.questLearning
     if not cached or cached.guide ~= guide or cached.route ~= route or cached.catalogue ~= ns.catalogue
         or cached.progress ~= ns.localProgress or cached.active ~= ns.active
         or cached.revision ~= ns.objectiveDisplayRevision or cached.learning ~= (learning and learning.revision)
@@ -228,7 +228,19 @@ local function explain(goal, ctx)
     end
     if goal.kind == "q" then
         ids = objectiveVisit(goal, ctx)
-        if ids then return result("objective-area", "This area advances " .. #ids .. " accepted quests in one visit.", true, ids) end
+        if ids then
+            local why = "This area advances " .. #ids .. " accepted quests in one visit."
+            if goal.locationSource == "observed" then
+                local count = ns.GuideInteger(goal.observedCount) and goal.observedCount or 0
+                why = why .. " Observed by " .. count .. " " .. (count == 1 and "player" or "players") .. "."
+            end
+            return result("objective-area", why, true, ids)
+        end
+        if goal.locationSource == "observed" then
+            local count = ns.GuideInteger(goal.observedCount) and goal.observedCount or 0
+            local people = count == 1 and "player" or "players"
+            return result("observed-objective", "Observed by " .. count .. " " .. people .. " at this objective area.", true)
+        end
         local facts = ns.GuideStepFacts(goal)
         local target = text(facts.item) or text(facts.target)
         return result("quest-objective", target and (target .. " is needed to finish " .. title .. ".")
@@ -242,6 +254,9 @@ local function explain(goal, ctx)
 end
 
 function ns.GuideDestinationDecision(stop, guide, route)
+    if stop and stop.reasonCode == "zone-exit" then
+        return result("zone-exit", text(stop.label) or "Gain more experience before starting the next zone.", true)
+    end
     if stop and stop.flightDiscovery then
         local decision = result("flight-check", ns.TravelPathSummary(stop) or "Check the nearer flight master's connections.", true)
         decision.estimated, decision.confidence = true, "estimated"

@@ -71,13 +71,14 @@ end
 -- Where the Hearthstone lands: the inn confirmed by the bind event, else the
 -- published inn whose name matches the client's bind location.
 function ns.HearthstonePoint()
-    local state = ns.db and ns.db.guideServices and ns.db.guideServices[ns.self]
-    local inn = state and state.boundInnID and state.inns and state.inns[state.boundInnID]
+    local state = ns.char and ns.char.guideServices
+    local inns = ns.db and ns.db.innLocations and ns.db.innLocations[ns.worldBuild]
+    local inn = state and state.boundInnID and inns and inns[state.boundInnID]
     if inn and ns.ValidTravelPoint(inn) then return {mapID = inn.mapID, x = inn.x, y = inn.y}, ns.SafeTitle(inn.name) or "your inn", "confirmed" end
     local bind = ns.SafeTitle(ns.ReadPublic(GetBindLocation))
     if not bind then return nil, nil, "bind location unavailable" end
     local wanted = string.lower(bind)
-    for _, candidate in pairs(state and state.inns or {}) do
+    for _, candidate in pairs(inns or {}) do
         if ns.ValidTravelPoint(candidate) and ns.SafeTitle(candidate.name) and string.lower(candidate.name) == wanted then
             return {mapID = candidate.mapID, x = candidate.x, y = candidate.y}, candidate.name, "recorded inn"
         end

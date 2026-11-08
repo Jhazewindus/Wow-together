@@ -117,9 +117,8 @@ end
 function ns.InitializeQuestHistory()
     local _, build = ns.ReadPublic(GetBuildInfo)
     build = build and tostring(build) or "unknown"
-    ns.db.questHistory = type(ns.db.questHistory) == "table" and ns.db.questHistory or {}
-    local builds = ns.db.questHistory[ns.self]
-    if type(builds) ~= "table" then builds = {}; ns.db.questHistory[ns.self] = builds end
+    local builds = ns.char.questHistory
+    if type(builds) ~= "table" then builds = {}; ns.char.questHistory = builds end
     local history = builds[build]
     if type(history) ~= "table" then history = {}; builds[build] = history end
     local count = 0

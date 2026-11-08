@@ -2,11 +2,20 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.97 — STRUCTURED GUIDE STEP PRESENTATION** targets
+progress. Version **0.8.98 — PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
 
-**0.8.97 makes guide steps easier to scan.** The guide card shows the action,
+**0.8.98 adds play-learned objective locations and a continuous dungeon run
+route.** Character progress is stored separately from account-wide world
+facts. Repeated objective-counter samples can map missing quest work, and
+research exports feed a review-only correction pipeline. Dungeon guides route
+active interior objectives in journal order when the map and encounter data
+support them. XP projections are optional and use an unverified Classic
+estimate; current capture metadata has no Forever client-build number. See
+CHANGELOG.md and TESTING.md for details and limits.
+
+**0.8.97 made guide steps easier to scan.** The guide card shows the action,
 reason, availability and travel estimate in separate fields; tooltips add
 supporting context without repeating the card. The standalone arrow and guide
 list use the same action icons and concise status labels. An optional preview of

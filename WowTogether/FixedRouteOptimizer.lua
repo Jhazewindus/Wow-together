@@ -252,6 +252,9 @@ end
 -- assumed. Changed legs need published connections or short local estimates.
 -- Every accepted move keeps reward/progression/log/kill and recovery guards.
 function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, options)
+    local legacyTravel = distance
+    local routeCost = ns.RouteCostModel({travel = legacyTravel})
+    distance = function(a, b) return routeCost:travel(a, b) end
     local work, tried = 0, 0
     local function tick()
         work = work + 1
@@ -271,7 +274,7 @@ function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, option
         tick()
     end
     if not hasNetwork then return result end
-    local minimumSaving = math.max(50, current.distance * 0.0005)
+    local minimumSaving = ns.RouteCostMinimumSaving(current.distance)
     local regions, region = {}, 0
     for _, stop in ipairs(plan) do
         if stop.unknownLocation or stop.planNeedsReview then region = region + 1 end
@@ -431,6 +434,13 @@ function ns.ImproveFixedGeometry(plan, geometry, cost, cooperative, onYield, opt
 end
 
 function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions, terrainDistance, connectionDistance)
+    local function shared(travel)
+        if not travel then return nil end
+        local model = ns.RouteCostModel({travel = travel})
+        return function(a, b) return model:travel(a, b) end
+    end
+    distance, flowDistance = shared(distance), shared(flowDistance)
+    terrainDistance, connectionDistance = shared(terrainDistance), shared(connectionDistance)
     local legacy = ns.ImproveFixedGeometry(plan, distance, flowDistance, cooperative, onYield, flowOptions)
     local flow = ns.ImproveQuestFlow(plan, flowDistance or distance, cooperative, onYield, flowOptions)
     local network = flowDistance and ns.ImproveFixedTravelOrder(plan, flowDistance, cooperative, onYield, flowOptions)

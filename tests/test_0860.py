@@ -109,11 +109,11 @@ class InventoryServiceTests(unittest.TestCase):
     def test_skip_visit_never_creates_a_quest_skip_or_research_event(self):
         c = service_client(); visit(c)
         c.ns.AcceptInventoryServiceTip(c.ns.CurrentGuideTip())
-        before = primitive(c.ns.db.questResearch)
+        before = primitive(c.ns.char.questResearch)
         c.ns.navigation.skipStep.OnClick()
         self.assertEqual(c.ns.navigation.state.stop.id, 900)
         self.assertFalse(c.ns.GuideQuestSkipped(900))
-        self.assertEqual(primitive(c.ns.db.questResearch), before)
+        self.assertEqual(primitive(c.ns.char.questResearch), before)
 
     def test_small_arrow_can_accept_finish_and_dismiss(self):
         c = service_client(); visit(c)
@@ -155,7 +155,7 @@ class InventoryServiceTests(unittest.TestCase):
         c.lua.execute('bags[0].free=7; durability=90')
         c.ns.handlers.BAG_UPDATE_DELAYED(); c.drain()
         self.assertEqual(c.ns.navigation.state.stop.id, 900)
-        self.assertIsNone(c.ns.db.inventoryServiceCharacters[c.ns.self].pending)
+        self.assertIsNone(c.ns.char.inventoryServiceCharacters.pending)
 
     def test_food_counts_usable_tier_only_and_drink_is_for_mana_classes(self):
         c = service_client(); visit(c)
@@ -237,19 +237,19 @@ class InventoryServiceTests(unittest.TestCase):
     def test_pending_visit_survives_reload_but_stop_or_different_guide_clears_it(self):
         c = service_client(); visit(c); c.ns.AcceptInventoryServiceTip(c.ns.CurrentGuideTip())
         saved = primitive(c.lua.globals().WowTogetherDB)
-        fresh = service_client(Client(quests=(),saved_variables=saved))
+        fresh = service_client(Client(quests=(),saved_variables=saved,saved_character=primitive(c.ns.char)))
         # Install the same synthetic route after the new client's initialization.
         fresh.ns.UpdateNavigation()
         self.assertEqual(fresh.ns.navigation.state.stop.kind, 'service')
         fresh.ns.StopGuide(False)
-        self.assertIsNone(fresh.ns.db.inventoryServiceCharacters[fresh.ns.self].pending)
+        self.assertIsNone(fresh.ns.char.inventoryServiceCharacters.pending)
         c.ns.routeSelection.key = 'other-zone'
         self.assertIsNone(c.ns.CurrentInventoryServiceStop())
 
     def test_off_setting_clears_the_pending_visit_and_professions_get_no_detour(self):
         c = service_client(); visit(c); c.ns.AcceptInventoryServiceTip(c.ns.CurrentGuideTip())
         c.ns.SetOption('inventoryServices',False)
-        self.assertIsNone(c.ns.db.inventoryServiceCharacters[c.ns.self].pending)
+        self.assertIsNone(c.ns.char.inventoryServiceCharacters.pending)
         self.assertIsNone(c.ns.CurrentGuideTip())
         c.ns.SetOption('inventoryServices',True)
         c.ns.routeSelection.mode = 'profession'
@@ -327,8 +327,8 @@ class InventoryServiceTests(unittest.TestCase):
         c.ns.DismissInventoryServiceTip(c.ns.CurrentGuideTip())
         c.lua.execute('C_Container.GetContainerNumSlots=function()error("unavailable")end; function GetInventoryItemDurability()return secret,100 end')
         c.ns.ReadServiceInventory()
-        self.assertTrue(c.ns.db.inventoryServiceCharacters[c.ns.self].dismissed.bags)
-        self.assertTrue(c.ns.db.inventoryServiceCharacters[c.ns.self].dismissed.repair)
+        self.assertTrue(c.ns.char.inventoryServiceCharacters.dismissed.bags)
+        self.assertTrue(c.ns.char.inventoryServiceCharacters.dismissed.repair)
 
     def test_temporarily_unknown_inventory_retains_an_accepted_visit_without_claiming_completion(self):
         c = service_client(); visit(c)
@@ -339,7 +339,7 @@ class InventoryServiceTests(unittest.TestCase):
         self.assertIn('Check bag space',c.ns.navigation.context.text)
         self.assertIn('Check repairs',c.ns.navigation.context.text)
         self.assertNotIn('Buy ~20',c.ns.navigation.context.text)
-        self.assertIsNotNone(c.ns.db.inventoryServiceCharacters[c.ns.self].pending)
+        self.assertIsNotNone(c.ns.char.inventoryServiceCharacters.pending)
 
     def test_known_terrain_barrier_rejects_an_estimated_shortcut_to_a_vendor(self):
         c = service_client(); visit(c)

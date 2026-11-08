@@ -273,7 +273,7 @@ def flight_client(include_geography=False):
 class TravelTests(unittest.TestCase):
     def test_malformed_saved_travel_data_is_discarded(self):
         c = flight_client()
-        state = c.ns.db.flights[c.ns.self]
+        state = c.ns.char.flights
         state.nodes[12] = 7
         state.edges['bad'] = c.lua.table_from({'source': 'bad', 'destination': 12})
         state.timings['bad'] = c.lua.table_from({'mean': 'bad', 'samples': 1})
@@ -292,7 +292,7 @@ class TravelTests(unittest.TestCase):
         c.lua.execute('clock=200; UnitOnTaxi=function() return secret end')
         c.ns.FinishFlight()
         self.assertIsNotNone(c.ns.pendingFlight)
-        self.assertIsNone(c.ns.db.flights[c.ns.self].timings['11:22'])
+        self.assertIsNone(c.ns.char.flights.timings['11:22'])
 
     def test_flight_recommendation_requires_observed_network_and_labels_estimate(self):
         c = flight_client()
@@ -335,17 +335,18 @@ class TravelTests(unittest.TestCase):
         self.assertIn('~', c.ns.navigation.distance.text)
         self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
         c.lua.globals().flying = False; c.ns.FinishFlight()
-        self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 12)
+        self.assertEqual(c.ns.char.flights.timings['11:22'].mean, 12)
         c.ns.NoteFlightSelection(54); c.lua.globals().flying = True; c.ns.UpdateNavigation()
         self.assertIn('~12 s', c.ns.navigation.distance.text)
 
     def test_flight_progress_and_character_network_are_not_shared(self):
         c = flight_client(); c.ns.ReadFlightMap()
         saved = plain(c.ns.db)
+        saved_character = plain(c.ns.char)
         other = Client(name='Different', quests=(), saved_variables=saved)
-        self.assertEqual(len(other.ns.db.flights[other.ns.self].nodes), 0)
-        same = Client(quests=(), saved_variables=saved)
-        self.assertEqual(same.ns.db.flights[same.ns.self].nodes[22].name, 'End')
+        self.assertEqual(len(other.ns.char.flights.nodes), 0)
+        same = Client(quests=(), saved_variables=saved, saved_character=saved_character)
+        self.assertEqual(same.ns.char.flights.nodes[22].name, 'End')
 
     def test_missing_flight_apis_leave_regular_navigation_working(self):
         c = preview_client(); c.ns.ReadFlightMap(); c.ns.UpdateNavigation()

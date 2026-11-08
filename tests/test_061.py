@@ -160,7 +160,7 @@ class GuideBrowserTests(unittest.TestCase):
                       901: world_quest('Followup', previousQuest=900), 902: world_quest('Another')})
         g = c.ns.LevelingGuideChoices()[1]
         self.assertEqual({r.id for r in g.records.values()}, {900, 901, 902})
-        c.ns.db.guideSkips[c.ns.self].quests[900] = True
+        c.ns.char.guideSkips.quests[900] = True
         plan = c.ns.BuildGuideRoute(g, False)
         self.assertNotIn(901, {s.id for s in plan.stops.values()})
         c.lua.globals().finished[900] = True
