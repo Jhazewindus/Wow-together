@@ -3,12 +3,12 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "3020da62ec8d511eb5a021e1ae0807f465e17017c6972a89c442904963cef253",
-      "records": 5333
+      "sha256": "66ef8917d235559ba5abe272658c5e22a579807cdbda0154413b29d2e6c4aabb",
+      "records": 5337
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
-      "sha256": "b10abb04627386e558f10e6fd6fa85b11a8517cea2da222f61f2c7aff01a6dbb"
+      "sha256": "120a528e078ed55c1de15d65ef078c7d26d3eefb52301593aa7173abaf707dda"
     },
     "worldQuestChecks": {
       "file": "QuestCatalogue.lua",

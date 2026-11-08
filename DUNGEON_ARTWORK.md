@@ -31,6 +31,13 @@ format when available; missing capability preserves full image bounds.
 
 ## Published filename references: 23 of 28 complexes
 
+The current Forever listfile was rescanned on November 8, 2026. Its
+`parts/interface.csv` capture has SHA-256
+`317853e44ff2bf02b5d359892364a27591e0c9b1430caf78c2ad293fcf3f49ef` and still
+contains exactly four unique Forever dungeon loading-screen filenames. No
+unique filename was found for the other five newer dungeons; current instance
+journal art may still resolve dynamically through the client API.
+
 These references establish filenames, not installation on the running beta.
 Classic primary paths have prefix
 `Interface\EncounterJournal\UI-EJ-DungeonButton-`; secondary paths have prefix

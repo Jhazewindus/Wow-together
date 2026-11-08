@@ -1,4 +1,4 @@
-# Combined dungeon data — updated for 0.8.88
+# Combined dungeon data — updated for 0.8.96
 
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
@@ -7,15 +7,26 @@ nine new Forever dungeons are listed; four have published entrance areas and
 five have broad location descriptions without usable coordinates. Two of those
 five now have named quest lists; the other three remain unknown.
 
-Current Wowhead Forever lists provide 25 named dungeon categories, captured
-November 7, 2026. The Drowned City (8 quests) and Krol'dok Stronghold (13) now
-have dedicated lists. Three other category URLs still return a generic global
-quest page, so Alcaz Prison, Blackmaw Hold and Shaper's Terrace retain unknown
+Current Wowhead Forever lists provide 26 named dungeon categories, captured
+November 8, 2026. The Drowned City (8 quests), Krol'dok Stronghold (13), and
+now Alcaz Prison (4) have dedicated lists. Two category URLs still return a
+generic global quest page, so Blackmaw Hold and Shaper's Terrace retain unknown
 quest sets. Current Method.gg tables supplement the named lists with seven
 City of Dalaran quests and The Treaty of Understanding (98423) for Hall of
 Thanes. After excluding two category rows explicitly marked `<UNUSED>`, the
-finder has 376 memberships, all present in the 5,333-quest catalogue. These
-lists do not establish that every live quest is categorized.
+finder has 380 static memberships, all present in the 5,337-quest catalogue.
+Runtime also recognizes two verified matching-area quests, for 382 audited
+memberships. These lists do not establish that every live quest is categorized.
+
+Research now follows the user's requested level progression: City of Dalaran
+(28–33), Razorfen Kraul (30–40), Scarlet Monastery (28–45), then The Drowned
+City (35–40). This is the order for coverage work, not a mandatory player
+route. Alcaz Prison (48–53) is treated as a later-game follow-up. The level
+bands overlap, so they describe relative audit priority rather than a strict
+unlock sequence. The live data already links Horde Hearts of Zeal (1113) to
+Going, Going, Guano! (1109): its generated prep route picks up the prerequisite,
+travels to Razorfen Kraul, returns to turn it in, then resumes at the Scarlet
+quest giver. A regression test protects that cross-dungeon chain.
 The Method tables for Ruins of Lordaeron and Excavation Site: Wetlands add no
 new IDs beyond Wowhead's lists. The overview's 28 ranges and the other quest
 facts are unchanged. Runtime also
@@ -29,12 +40,13 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
 - [Wowhead Forever overview](https://www.wowhead.com/forever/guide/dungeons-overview-locations-details),
   captured November 5, 2026. Only short dungeon names and numeric ranges are used.
 - All 28 current `https://www.wowhead.com/forever/quests/dungeons/<category>`
-  URLs, captured November 7, 2026. Twenty-five return named categories; three
+  URLs, captured November 8, 2026. Twenty-six return named categories; two
   return the generic global quest list and are not used to infer memberships.
   Two rows explicitly marked `<UNUSED>` are excluded. Current detail pages,
   series tables and relevant comments were checked for the dungeon quests; the
   capture hashes, reviewed links and inaccessible pages are in
-  `research/dungeon-prerequisite-audit-2026-11-07/audit.json`.
+  `research/dungeon-prerequisite-audit-2026-11-07/audit.json`; the refreshed
+  Alcaz list and four detail-page hashes are in `tools/dungeon_quest_additions.json`.
 - [Mapzeroth Forever geographic facts](https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua),
   pinned revision `fd68cfe2153379898680c66a01833846f9933587` (MIT).
   Only the 23 non-raid `instance` point records are selected. No upstream
@@ -147,6 +159,39 @@ Map IDs below are Forever UI map IDs, not area IDs. Coordinates are percentages.
 | Shaper's Terrace | 58–60 | Unknown — Un'Goro Crater |
 | Stratholme | 58–60 | Map 1423 — 26.0, 10.5 |
 
+## Progression-ordered refresh (November 8, 2026)
+
+The current audit sequence follows the supplied level brackets and the
+cross-dungeon quest dependency: Dalaran → Razorfen Kraul → Scarlet Monastery
+Graveyard/Library → The Drowned City. Scarlet's published complex bracket is
+28–45, but the relevant RFK-to-Scarlet chain starts at level 30. The Drowned
+City's 35–40 bracket follows those checks in the requested review order. Alcaz
+Prison at 48–53 is late-game coverage and is recorded separately.
+
+The refreshed Alcaz category has four named quests: 96335, 96337, 96377 and
+96772. Current individual pages disclose some item/object requirements but do
+not establish pickup/turn-in map points or trustworthy prerequisite chains;
+the catalogue therefore exposes the quests while keeping them out of a falsely
+complete guided route. The category capture and each page hash are recorded in
+`tools/dungeon_quest_additions.json`.
+
+The November 8 refresh of the eight Drowned City pages improved seven existing
+records (95775, 95776, 95787, 95788, 95789, 95791 and 97130): it adds or confirms
+three pickup points, three turn-in points, NPC/item facts and the exact tablet
+item IDs. No objective coordinates, Drowned City entrance point, or new chain
+link was established. The current source captures and hashes are recorded in
+`research/dungeon-progression-audit-2026-11-08.json`. QuestieDB at
+`aa1d7e7294596cf50a6fd0946dfae0d969cb9623` added no new dungeon quest records
+beyond this reviewed catalogue; its chain facts confirm the 1109 → 1113 link.
+
+As of this refresh, 380 static quest memberships are in the finder and two
+additional area-matched quests are included in the runtime prerequisite audit
+(382 total). Five of 28 dungeon entrance areas remain unknown, Blackmaw Hold
+and Shaper's Terrace still have no named quest list, and 27 listed quest
+memberships have unverified prerequisite research. These are visible work items,
+not gaps to fill with guessed paths. See
+`research/dungeon-prerequisite-level-audit-2026-11-08.json`.
+
 ## Reproduce the offline merge
 
 Use captured inputs; the importer does not fetch pages or evaluate source scripts:
@@ -156,7 +201,7 @@ Use captured inputs; the importer does not fetch pages or evaluate source script
   --overview /tmp/wow-together-dungeons-overview.html \
   --pois /tmp/forever-pois.lua \
   --quest-cache /tmp/wow-together-dungeon-quests \
-  --captured 2026-11-07
+  --captured 2026-11-08
 ```
 
 The importer rejects incomplete range coverage, truncated lists, invalid points,

@@ -805,7 +805,8 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py', 'audit_quest_flow.py',
                      'import_professions.py', 'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',
                      'audit_dungeon_loot.py', 'capture_dungeon_loot.py', 'import_vanilla_loot.py', 'dungeon_encounters.json', 'dungeon_fact_corrections.json',
-                     'guide_source_queue.py', 'audit_dungeon_level_gates.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
+                     'guide_source_queue.py', 'audit_dungeon_level_gates.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json',
+                     'apply_dungeon_quest_additions.py', 'dungeon_quest_additions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)
     with zipfile.ZipFile(destination) as archive:

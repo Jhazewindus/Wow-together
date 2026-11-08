@@ -82,6 +82,9 @@ function ns.DungeonCollectionReadiness(group)
 end
 
 function ns.DungeonCollectionSummary(group, readiness)
+    if group.definition and group.definition.questListCaptured == false then
+        return "Quest data not captured for this dungeon yet."
+    end
     if group.definition and #group.ids == 0 then return "Quest data not captured for this dungeon yet." end
     local result = readiness or ns.DungeonCollectionReadiness(group)
     if result.count == 0 then return "No matching regular quests for your character and settings." end

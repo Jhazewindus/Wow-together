@@ -2,15 +2,27 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.95 — LEVEL-LOCKED DUNGEON PREQUESTS** targets
+progress. Version **0.8.96 — PROGRESSION-ORDERED DUNGEON COVERAGE** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
 
-**0.8.95 routes level-locked dungeon prequests before the dungeon quest.** Blood in the Streets requires level 30 and precedes Heart of Disruption; a level-26 character is told to reach 30, and the guide routes the predecessor first after it becomes available. 0.8.94 also keeps unsupported steps under Later and routes published item starts from their data. The
-Stockade guide follows An Unsent Letter through its Deadmines drop before
-continuing to the Stockade quest giver. Steps without a supported reason, and
-quests with a prerequisite still needing a giver check, remain under Later.
-Run `python3 tools/audit_dungeon_level_gates.py` to scan the recorded dungeon prerequisite edges. See CHANGELOG.md, QUEST_DATA.md and TESTING.md for the remaining source gaps.
+**0.8.96 refreshes dungeon coverage in player-progression order:** City of
+Dalaran, Razorfen Kraul, Scarlet Monastery, then The Drowned City, with Alcaz
+Prison handled as a later-level dungeon. This orders research work, not a forced
+route. A known Horde Scarlet quest has regression coverage for its Razorfen
+Kraul prerequisite. Four newly listed Alcaz quests appear with unverified route
+facts kept explicit; seven Drowned City quest records have newly checked source
+facts. Two dungeon lists and five entrance locations still need verified data.
+See DUNGEONS.md, CHANGELOG.md, QUEST_DATA.md and TESTING.md.
+
+**0.8.95 routes level-locked dungeon prequests before the dungeon quest.** Blood
+in the Streets requires level 30 and precedes Heart of Disruption; a level-26
+character is told to reach 30, and the guide routes the predecessor first after
+it becomes available. Earlier releases keep unsupported steps under Later and
+route published item starts from their data. The Stockade guide follows An
+Unsent Letter through its Deadmines drop before continuing to the Stockade
+quest giver. Run `python3 tools/audit_dungeon_level_gates.py` to scan recorded
+dungeon prerequisite edges.
 
 **0.8.92 imports QuestieDB's published quest-chain links and one-way
 exclusions.** A completed continuation now supersedes its preceding class
@@ -1481,17 +1493,17 @@ an exclusion for Orc/Troll or eligibility for another race from that report.
 
 ## Data and beta limits
 
-The refreshed offline snapshot was built **November 7, 2026** from public game
+The refreshed offline snapshot was built **November 8, 2026** from public game
 facts in
 [Warcraft DB](https://forever.warcraftdb.com/list/quests) and
 [Wowhead Forever](https://www.wowhead.com/forever/quests).
 
 | Coverage | Records |
 | --- | ---: |
-| Distinct quest records / category lists | 5,333 / 123 |
-| Detailed Forever pages in this refreshed output | 390 |
-| Quests with starter / objective / turn-in facts | 4,421 / 2,126 / 4,597 |
-| Series / quests with explicit prerequisite facts | 945 / 2,580 |
+| Distinct quest records / category lists | 5,337 / 123 |
+| Detailed Forever pages in this refreshed output | 394 |
+| Quests with starter / objective / turn-in facts | 4,424 / 2,126 / 4,600 |
+| Series / quests with explicit prerequisite facts | 945 / 2,581 |
 | Incomplete objective locations / known repeatables | 1,375 / 639 |
 
 Mapped item-drop alternatives retain a single representative farming area near

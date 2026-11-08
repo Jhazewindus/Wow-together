@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.95
-## X-ReleaseName: LEVEL-LOCKED DUNGEON PREQUESTS
+## Version: 0.8.96
+## X-ReleaseName: PROGRESSION-ORDERED DUNGEON COVERAGE
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

@@ -1,0 +1,135 @@
+{
+  "captured": "2026-11-08",
+  "requestedResearchOrder": [
+    {
+      "dungeon": "City of Dalaran",
+      "levelBracket": "28-33"
+    },
+    {
+      "dungeon": "Razorfen Kraul",
+      "levelBracket": "30-40"
+    },
+    {
+      "dungeon": "Scarlet Monastery",
+      "levelBracket": "28-45"
+    },
+    {
+      "dungeon": "The Drowned City",
+      "levelBracket": "35-40"
+    },
+    {
+      "dungeon": "Alcaz Prison",
+      "levelBracket": "48-53",
+      "priority": "later-game"
+    }
+  ],
+  "orderMeaning": "Research and coverage priority supplied by the user; not a mandatory leveling route. Brackets overlap.",
+  "categoryCaptures": {
+    "city-of-dalaran": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/city-of-dalaran",
+      "sha256": "c84e17d655f626f3b7038339b7e26d9aba6d3349092daf6b85d3ea5f5189ef5e",
+      "quests": 8
+    },
+    "razorfen-kraul": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/razorfen-kraul",
+      "sha256": "37444a2c69b5108b87387b736536e69682ffd0a657f4a5e58599a36660e571f0",
+      "quests": 6
+    },
+    "scarlet-monastery": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/scarlet-monastery",
+      "sha256": "5a47fbcb45638d5794bddb2ff848cd75f779a80fbbe613e8a88d1aa57c81b186",
+      "quests": 8
+    },
+    "the-drowned-city": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/the-drowned-city",
+      "sha256": "3c306d934c42b4f6293442a2350e5465c7cf46adf5ff504ede8180bb2912890d",
+      "quests": 8
+    },
+    "alcaz-prison": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/alcaz-prison",
+      "sha256": "8abe474fc3d833d9bf4d5139b629c8fc2e8d8113a8246b9deb79613ca4279ac2",
+      "quests": 4
+    }
+  },
+  "drownedCityQuestPages": {
+    "95775": "91325cca09a50b6a6ec27be3f3cc0847a0ba9f0651fe1889df891bbaf6b0c176",
+    "95776": "43531a6bd9a29217c44107aad04766be18416d390c46d867fe98475099edccbb",
+    "95787": "62917ea7c498c5c4270991832b1c43d5b1dc9bef2ddcef88ce32477ba71431a0",
+    "95788": "014b881126b071d0ec03c50b028a5e213ec51b680b491b6430d0cb1396f09217",
+    "95789": "12a21585a825deba4e7cad076c18514d135600033fde1eee2b3502cf004400bf",
+    "95791": "1e575f6f92e43ae73c75ce837f9b9048b5e8f2bf05565a9f9aecc424582c6378",
+    "96774": "ccc9d90e77a8e2e96108e6964e02060e73f1f1541b801124d97de858a53aa40a",
+    "97130": "63d5cc2f7537fb9421fbe52ea4a0cadbc8ab4b76d173cf2864808b9b59472b90"
+  },
+  "drownedCityChanges": {
+    "updatedQuestIDs": [
+      95775,
+      95776,
+      95787,
+      95788,
+      95789,
+      95791,
+      97130
+    ],
+    "pickupPointsAdded": 3,
+    "turnInPointsAdded": 3,
+    "objectiveCoordinatesAdded": 0,
+    "entranceCoordinatesAdded": 0,
+    "newPrerequisiteLinks": 0,
+    "notes": [
+      "95775 now has Kin'weelay at map 1434, 32.2, 27.8 for pickup and turn-in.",
+      "95776 now has Commander Aggro'gosh at map 1434, 32.2, 28.8 for pickup and turn-in; objective Var'Taka remains unmapped.",
+      "95787 lists four tablet item IDs 270308-270311; their objective positions remain unknown.",
+      "95788 requires five I'lalai Fetishes (270343), with location unknown.",
+      "95789 starts from Krazek (NPC 773), with location unknown.",
+      "95791 now maps Krazek at map 1434, 27.0, 77.2; objective locations remain unknown.",
+      "97130 requires Ancient Gurubashi Idol item 276894; objective locations remain unknown."
+    ]
+  },
+  "verifiedCrossDungeonPrerequisite": {
+    "parent": {
+      "questID": 1109,
+      "title": "Going, Going, Guano!",
+      "dungeon": "Razorfen Kraul",
+      "minimumLevel": 30
+    },
+    "child": {
+      "questID": 1113,
+      "title": "Hearts of Zeal",
+      "dungeon": "Scarlet Monastery",
+      "minimumLevel": 30
+    },
+    "source": "QuestieDB Forever quest data at aa1d7e7294596cf50a6fd0946dfae0d969cb9623; verified against shipped catalogue and level-30 Horde route regression.",
+    "routeOrder": [
+      "1109 pickup",
+      "Razorfen Kraul entrance",
+      "1109 turn-in",
+      "1113 pickup"
+    ]
+  },
+  "currentCoverage": {
+    "dungeonCategories": 28,
+    "namedQuestCategories": 26,
+    "unknownQuestCategories": [
+      "blackmaw-hold",
+      "shapers-terrace"
+    ],
+    "staticQuestMemberships": 380,
+    "runtimeAuditedMemberships": 382,
+    "unknownEntranceLocations": [
+      "The Drowned City",
+      "Krol'dok Stronghold",
+      "Alcaz Prison",
+      "Blackmaw Hold",
+      "Shaper's Terrace"
+    ],
+    "unverifiedPrerequisiteMemberships": 27
+  },
+  "limits": [
+    "Current source pages do not provide enough evidence to infer all Drowned City prerequisites or objective positions.",
+    "The four Alcaz quests are listed but have no verified prerequisite chains or pickup/turn-in map points.",
+    "Mapzeroth's current Forever POI data contains no entrance points for the five listed unknown locations.",
+    "QuestieDB at the pinned revision adds no further dungeon records in this refresh; category and detail sources are still necessary.",
+    "The four unique Forever loading-screen filenames are verified; no unrelated or website artwork is bundled."
+  ]
+}

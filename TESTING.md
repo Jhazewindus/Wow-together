@@ -1,6 +1,34 @@
 # Wow Together — friend test script
 
-For **0.8.95** — **LEVEL-LOCKED DUNGEON PREQUESTS**, live World of Warcraft: Forever.
+For **0.8.96** — **PROGRESSION-ORDERED DUNGEON COVERAGE**, live World of Warcraft: Forever.
+
+## Progression-ordered dungeon coverage — 0.8.96
+
+1. In the dungeon finder, check the refreshed Alcaz Prison list. It should show
+   its four published quests. Their unknown prerequisite/pickup facts must not
+   create fabricated map steps or claim a complete prep route.
+2. On a level-30 Horde character, start a Scarlet Monastery guide for **Hearts
+   of Zeal** (1113). It must route **Going, Going, Guano!** (1109) pickup,
+   Razorfen Kraul entrance, its turn-in, then the Hearts of Zeal pickup. The
+   research sequence Dalaran → Razorfen Kraul → Scarlet Monastery → Drowned
+   City is a coverage priority, not a mandatory route.
+3. Check the seven refreshed Drowned City records and their source facts. Three
+   now have verified pickup and turn-in points; objective locations and the
+   entrance remain unknown. Blackmaw Hold and Shaper's Terrace remain the two
+   categories without a named quest list. Five dungeon entrance locations and
+   27 quest prerequisite memberships remain unverified.
+4. Journal artwork uses the four verified Forever-specific client filenames
+   where available and native journal art when exposed. Confirm no unrelated
+   dungeon image is assigned; a neutral official background is the fallback.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,836 tests**. All **96 Lua files compile under Lua 5.1**.
+Fixed-guide compilation, audits and fingerprints remain unchanged. Host checks
+cannot verify live quest offers, entrance points or in-game image rendering.
+
+The pinned QuestieDB source is `aa1d7e7294596cf50a6fd0946dfae0d969cb9623`;
+it confirms the existing 1109 → 1113 prerequisite but adds no new dungeon
+records beyond the reviewed captures.
 
 ## Dungeon prerequisite level check — 0.8.95
 
@@ -18,7 +46,8 @@ For **0.8.95** — **LEVEL-LOCKED DUNGEON PREQUESTS**, live World of Warcraft: F
 4. Run `python3 tools/audit_dungeon_level_gates.py` to scan recorded links.
    `tests/test_092_dungeon_level_gates.py` guards all five currently known
    dungeon prerequisite edges whose minimum level exceeds the child quest. The
-   scan found 23 dungeon quest memberships with unverified prerequisite data;
+   scan found 23 dungeon quest memberships with unverified prerequisite data
+   at the 0.8.95 baseline;
    leave these under Later until a source or in-game observation confirms them.
 
 Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
@@ -57,7 +86,7 @@ For **0.8.93** — **DUNGEON PREREQUISITES AND CLEAR LATER STEPS** (included in 
    the message should ask you to speak with **Deathstalker Agent** rather than
    sending you to an unverified pickup.
 3. Check the reviewed dungeon lists. The audit covers 28 categories and 376
-   listed memberships, but 17 detail pages remain denied, three categories
+   listed memberships at the 0.8.93 baseline, but 17 detail pages remain denied, three categories
    lack named public lists, and some quest locations remain unmapped. Treat
    those as open gaps; do not infer the missing quests or locations.
 
@@ -148,9 +177,9 @@ NPC offers or in-game rendering.
    detail pages, and quests whose pickup/objective coordinates are unknown.
    Their remaining gaps should be reported without invented route points.
 
-The current Wowhead capture covers 361 quest pages; 17 detail pages returned
-403. Twenty-five of 28 dungeon category pages are named lists; the other three
-are generic. The catalogue contains 5,333 quests and the finder has 376
+At the 0.8.92 baseline the Wowhead capture covered 361 quest pages; 17 detail
+pages returned 403. Twenty-five of 28 dungeon category pages were named lists;
+the other three were generic. The catalogue contained 5,333 quests and the finder had 376
 validated memberships. Parent quests 93594 and 94907 still lack published map
 stages, so their prerequisite links are known but not spatially guided. These
 source checks do not establish live quest offers or map rendering. Host

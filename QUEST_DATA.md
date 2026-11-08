@@ -82,11 +82,13 @@ audit checks all 152 sections; source mapping completeness does not change.
 
 The category union contains **5,307 quests from 123 leaf lists**. The
 Wowhead root list is truncated at 1,000 and is never treated as a complete index.
-There are **362 captured Forever detail pages** in this refreshed output, plus
-the retained Warcraft DB and Wowhead references. The catalogue records **4,412
-starters / 2,125 objectives / 4,587 turn-ins / 2,565 prerequisite links**.
-Runtime named entities: **13,397 NPCs / 7,035 objects / 3,014 quest-used
-items**. Unrelated item loot tables are omitted. Detailed page coverage is
+There are **394 captured Forever detail pages** in this refreshed output, plus
+the retained Warcraft DB and Wowhead references. The 0.8.96 catalogue records
+**4,424 starters / 2,126 objectives / 4,600 turn-ins / 2,581 prerequisite
+links** across 5,337 quests. Runtime named entities: **13,418 NPCs / 7,044
+objects / 3,245 quest-used items**. The Alcaz addition accounts for four new
+quest records; the Drowned City refresh adds three pickup and three turn-in
+points. Unrelated item loot tables are omitted. Detailed page coverage is
 partial; an absent detail page does not mean a quest is unavailable.
 
 Source capture uses normal proxy routing and verified TLS. Individual failed
@@ -128,7 +130,7 @@ The literal-only importer adds 1,947 `nextQuestInChain` links as `nextInChain`
 and 122 explicit one-way `exclusiveTo` relations. It records the source URL,
 commit and hashes. The full category rebuild from the available captures omitted
 26 existing dungeon and related records, so this scoped import retained all
-5,333 packaged quest records. The source queue has 638 open records under the
+5,337 packaged quest records after the 0.8.96 Alcaz additions. The source queue has 638 open records under the
 current chapter audit.
 
 Reproduce the scoped source import against a captured QuestieDB checkout and

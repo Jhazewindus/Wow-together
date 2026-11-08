@@ -89,6 +89,20 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def is_named_category_page(page, key):
+    """Reject Wowhead's global fallback page under a dungeon-specific URL."""
+    canonical = re.search(r'<link\s+rel=["\']canonical["\']\s+href=["\']([^"\']+)', page, re.I)
+    expected = 'https://www.wowhead.com/forever/quests/dungeons/' + key
+    if not canonical:
+        raise ValueError('Dungeon quest page has no canonical URL: ' + key)
+    canonical_url = canonical.group(1)
+    if canonical_url == expected or re.fullmatch(re.escape(expected.rsplit('/', 1)[0] + '/') + r'\d+-' + re.escape(key), canonical_url):
+        return True
+    if canonical_url == 'https://www.wowhead.com/forever/quests/dungeons':
+        return False
+    raise ValueError('Dungeon quest page canonical URL does not match its category: ' + key)
+
+
 def overview_ranges(path):
     page = path.read_text()
     if 'Dungeons Overview for Forever' not in page:
@@ -161,7 +175,10 @@ def combine(overview, pois, quest_cache, captured):
         key = path.stem
         if key not in records:
             raise ValueError('Unreviewed quest category: ' + key)
-        rows = [row for row in list_rows(path.read_text())
+        page = path.read_text()
+        if not is_named_category_page(page, key):
+            continue
+        rows = [row for row in list_rows(page)
                 if not row.get('name', '').lstrip().startswith('<UNUSED>')]
         if len(rows) >= 1000:
             raise ValueError('Truncated dungeon list')
@@ -181,6 +198,11 @@ def combine(overview, pois, quest_cache, captured):
         method_sources[key] = {'url': source['url'], 'sha256': source['sha256'],
                                'quests': len(method_ids),
                                'supplementalQuestIDs': sorted(method_ids - category_ids)}
+    for key, record in records.items():
+        # Runtime can match extra quests by explicit area/name facts. Keep the
+        # source-list status alongside those memberships so an unknown category
+        # is never presented as a confirmed empty list.
+        record['questListCaptured'] = key in sources
     if any(key not in sources for key, r in records.items() if r['entrances']):
         raise ValueError('Missing captured quest lists for mapped dungeons')
     date.fromisoformat(captured)
@@ -193,10 +215,13 @@ def combine(overview, pois, quest_cache, captured):
         'published_entrance_areas': points, 'unmapped_entrances': sorted(k for k, r in records.items() if not r['entrances']),
         'level_conflicts': {'city-of-dalaran': {'chart': [28, 33], 'paragraph': [20, 35]},
                             'kroldok-stronghold': {'chart': [40, 45], 'paragraph': [40, 55]}},
+        'unknown_quest_categories': sorted(set(records) - set(sources)),
         'limitations': ['Dungeon level ranges are recommendations, not minimum entry or quest pickup requirements',
             'Overview chart/table takes precedence over its conflicting paragraphs; retest beta levels',
             'Published points mark entrance areas, not collision-safe cave paths or exact portals',
-            'Five newer Forever dungeon entrances remain unspecified; three category URLs have no named quest list, so their memberships remain unknown'],
+            str(len([key for key in records if records[key]['era'] == 'Forever' and not records[key]['entrances']])) +
+                ' newer Forever dungeon entrances remain unspecified; ' +
+                str(len(set(records) - set(sources))) + ' category URLs still resolve to the generic quest list, so their memberships remain unknown'],
         'dungeons': records}
     return records, metadata
 

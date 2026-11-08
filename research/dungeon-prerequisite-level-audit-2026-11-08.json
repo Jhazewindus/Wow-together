@@ -1,82 +1,216 @@
 {
-  "captured": "2026-11-08",
-  "scope": "QuestCatalogue.lua dungeon memberships; compare each recorded previousQuest, prerequisiteAll, and prerequisiteAny parent minLevel against the child minLevel.",
   "counts": {
     "dungeonCategories": 28,
-    "listedQuestMemberships": 378,
-    "uniqueListedQuests": 378,
+    "listedQuestMemberships": 382,
+    "uniqueListedQuests": 382,
     "missingCatalogueRecords": 0,
     "higherMinimumPrerequisiteEdges": 5,
-    "unverifiedPrerequisiteMemberships": 23
+    "unverifiedPrerequisiteMemberships": 27
   },
   "higherMinimumPrerequisites": [
     {
-      "dungeon": "City of Dalaran",
+      "dungeon": "city-of-dalaran",
       "parentQuestID": 92432,
       "parentTitle": "An Alarming Request",
       "parentMinLevel": 30,
       "questID": 92457,
       "title": "Starving Arcane",
       "minLevel": 24,
-      "relation": "previousQuest",
-      "status": "already present before 0.8.95",
-      "source": "User-confirmed prerequisite fact from ForeverDungeonJournal 1.6.3; correction source names Wowhead page pointers but notes those pages were not fetched at correction time."
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": "User-confirmed prerequisite fact from the supplied ForeverDungeonJournal 1.6.3 reference archive (SHA-256 7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02), confirmed 2026-10-12. Lookup pointers: https://www.wowhead.com/forever/quest=92457 and https://www.wowhead.com/forever/quest=92432; these pages were not fetched for this update. No addon code, quest prose, images or bulk tables were used."
     },
     {
-      "dungeon": "City of Dalaran",
+      "dungeon": "city-of-dalaran",
       "parentQuestID": 92432,
       "parentTitle": "An Alarming Request",
       "parentMinLevel": 30,
       "questID": 92458,
       "title": "Heart of Disruption",
       "minLevel": 24,
-      "relation": "previousQuest",
-      "status": "already present before 0.8.95; source attribution missing in catalogue"
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": null
     },
     {
-      "dungeon": "City of Dalaran",
+      "dungeon": "city-of-dalaran",
       "parentQuestID": 92434,
       "parentTitle": "Blood in the Streets",
       "parentMinLevel": 30,
       "questID": 96984,
       "title": "Heart of Disruption",
       "minLevel": 24,
-      "relation": "previousQuest",
-      "status": "added in 0.8.95",
-      "source": "Wowhead Forever quest page, captured 2026-10-10; SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; series 92434 → 96984 → 97287."
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; the captured quest series is 92434 → 96984 → 97287."
     },
     {
-      "dungeon": "Gnomeregan",
+      "dungeon": "gnomeregan",
       "parentQuestID": 2841,
       "parentTitle": "Rig Wars",
       "parentMinLevel": 25,
       "questID": 2842,
       "title": "Chief Engineer Scooty",
       "minLevel": 20,
-      "relation": "previousQuest",
-      "status": "already present before 0.8.95",
-      "source": "Wowhead Forever comments 3155187 and 3278949; captured 2026-11-07."
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": "Wowhead Forever comments 3155187 and 3278949 confirm Rig Wars must be accepted before Chief Engineer Scooty is offered; captured 2026-11-07."
     },
     {
-      "dungeon": "The Stockade",
+      "dungeon": "the-stockade",
       "parentQuestID": 303,
       "parentTitle": "The Dark Iron War",
       "parentMinLevel": 25,
       "questID": 378,
       "title": "The Fury Runs Deep",
       "minLevel": 22,
-      "relation": "prerequisiteAny and previousQuest",
-      "status": "already present before 0.8.95",
-      "source": "Catalogue prerequisite attribution: Published Forever beta prerequisites."
+      "relations": [
+        "previousQuest",
+        "prerequisiteAny"
+      ],
+      "prerequisiteSource": "Published Forever beta prerequisites"
     }
   ],
-  "unverifiedPrerequisiteQuestIDs": [
-    4083, 5127, 8966, 8989, 8967, 8990, 95682, 2951, 2952, 2953, 4601, 4602,
-    4603, 4604, 4605, 4606, 8969, 8992, 8968, 8991, 8733, 3375, 2846
+  "unverifiedPrerequisiteMemberships": [
+    {
+      "dungeon": "alcaz-prison",
+      "questID": 96335,
+      "title": "The Man in the Iron Chains"
+    },
+    {
+      "dungeon": "alcaz-prison",
+      "questID": 96337,
+      "title": "More Valuable Than Gold"
+    },
+    {
+      "dungeon": "alcaz-prison",
+      "questID": 96377,
+      "title": "State Secrets"
+    },
+    {
+      "dungeon": "alcaz-prison",
+      "questID": 96772,
+      "title": "The Dragon's Journal"
+    },
+    {
+      "dungeon": "blackrock-depths",
+      "questID": 4083,
+      "title": "The Spectral Chalice"
+    },
+    {
+      "dungeon": "blackrock-spire",
+      "questID": 5127,
+      "title": "The Demon Forge"
+    },
+    {
+      "dungeon": "blackrock-spire",
+      "questID": 8966,
+      "title": "The Left Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "blackrock-spire",
+      "questID": 8989,
+      "title": "The Right Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "dire-maul",
+      "questID": 8967,
+      "title": "The Left Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "dire-maul",
+      "questID": 8990,
+      "title": "The Right Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "excavation-site-wetlands",
+      "questID": 95682,
+      "title": "Open the Maw"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 2951,
+      "title": "The Sparklematic 5200!"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 2952,
+      "title": "The Sparklematic 5200!"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 2953,
+      "title": "More Sparklematic Action"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 4601,
+      "title": "The Sparklematic 5200!"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 4602,
+      "title": "The Sparklematic 5200!"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 4603,
+      "title": "More Sparklematic Action"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 4604,
+      "title": "More Sparklematic Action"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 4605,
+      "title": "The Sparklematic 5200!"
+    },
+    {
+      "dungeon": "gnomeregan",
+      "questID": 4606,
+      "title": "The Sparklematic 5200!"
+    },
+    {
+      "dungeon": "scholomance",
+      "questID": 8969,
+      "title": "The Left Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "scholomance",
+      "questID": 8992,
+      "title": "The Right Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "stratholme",
+      "questID": 8968,
+      "title": "The Left Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "stratholme",
+      "questID": 8991,
+      "title": "The Right Piece of Lord Valthalak's Amulet"
+    },
+    {
+      "dungeon": "the-temple-of-atalhakkar",
+      "questID": 8733,
+      "title": "Eranikus, Tyrant of the Dream"
+    },
+    {
+      "dungeon": "uldaman",
+      "questID": 3375,
+      "title": "Replacement Phial"
+    },
+    {
+      "dungeon": "zulfarrak",
+      "questID": 2846,
+      "title": "Tiara of the Deep"
+    }
   ],
-  "limitations": [
-    "This is a scan of prerequisite edges present in the catalogue; it cannot discover a missing edge without an external or in-game source.",
-    "The 23 unverified entries require source review or a Forever-client observation before their prerequisite chains can be claimed complete.",
-    "The dungeon-wide audit dated 2026-11-07 separately records inaccessible detail pages, unnamed category lists, and missing objective locations."
-  ]
+  "missingRecords": []
 }

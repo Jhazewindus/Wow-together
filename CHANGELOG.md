@@ -1,5 +1,34 @@
 # Wow Together changelog
 
+## 0.8.96
+
+**PROGRESSION-ORDERED DUNGEON COVERAGE**
+
+- Review the live dungeon data in the requested leveling order: City of Dalaran,
+  Razorfen Kraul, Scarlet Monastery, then The Drowned City. Treat this as the
+  research priority, not a mandatory player route; the published brackets
+  overlap. Alcaz Prison is recorded as later-game coverage (48–53).
+- Add Alcaz Prison's four current Wowhead-listed quests to the finder and
+  catalogue. Keep their prerequisites and pickup/objective locations marked
+  unknown where the current pages do not establish them; do not imply a
+  complete prep route.
+- Refresh the eight Drowned City quest pages. Seven catalogue records gain
+  verified NPC/item/turn-in/pickup facts; no new objective coordinates, entrance
+  point or prerequisite chain is claimed. Current QuestieDB confirms the
+  existing Going, Going, Guano! (1109) → Hearts of Zeal (1113) link. Add a
+  regression proving the level-30 Horde Scarlet prep guide sends the player to
+  Razorfen Kraul and completes that predecessor before Hearts of Zeal.
+- Correct category import so Wowhead's generic global fallback cannot masquerade
+  as a dungeon-specific list. Blackmaw Hold and Shaper's Terrace remain the two
+  unnamed categories and now report that their quest data is not captured.
+  Dungeon coverage is 380 static memberships / 382 runtime audited memberships;
+  27 prerequisite memberships remain unverified.
+- Refresh the journal artwork source scan: the four verified Forever-specific
+  loading images remain the only unique filenames; no unrelated image is
+  assigned. Five dungeon entrance locations are still unknown.
+- Validation: all 1,836 host tests pass; all 96 Lua files compile under Lua
+  5.1. Fixed-guide compilation, audits and fingerprints remain unchanged.
+
 ## 0.8.95
 
 **LEVEL-LOCKED DUNGEON PREQUESTS**

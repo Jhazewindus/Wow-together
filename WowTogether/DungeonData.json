@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "captured": "2026-11-07",
+  "captured": "2026-11-08",
   "overview": {
     "url": "https://www.wowhead.com/forever/guide/dungeons-overview-locations-details",
-    "sha256": "a5beae895fb35c88d3c854ff364f89c611879086b1c606a6c70797d83a5275f5"
+    "sha256": "67019143ecd9a025233f87f39b7f8d002798629ea86df03aab719c761df29a83"
   },
   "entrance_source": {
     "url": "https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua",
@@ -12,6 +12,11 @@
     "license": "MIT"
   },
   "quest_categories": {
+    "alcaz-prison": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/alcaz-prison",
+      "sha256": "8abe474fc3d833d9bf4d5139b629c8fc2e8d8113a8246b9deb79613ca4279ac2",
+      "quests": 4
+    },
     "blackfathom-deeps": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/blackfathom-deeps",
       "sha256": "41ffa33f1c1df3c650b4a17ae147b8e6336be9d7ec9322c52133426b0f1e5218",
@@ -29,7 +34,7 @@
     },
     "city-of-dalaran": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/city-of-dalaran",
-      "sha256": "28d2cd6afb703421dbcdf11da0b88db3d85dd151d796494ee3e47eedb09f92de",
+      "sha256": "c84e17d655f626f3b7038339b7e26d9aba6d3349092daf6b85d3ea5f5189ef5e",
       "quests": 8
     },
     "dire-maul": {
@@ -49,7 +54,7 @@
     },
     "kroldok-stronghold": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/kroldok-stronghold",
-      "sha256": "013f227734b011e3e7cfadba90d66b6571aa720d5b2c2666b00acd4997271dd5",
+      "sha256": "423c3cad1d568d8ed6ed9d7fe71ea501e934f46e8c68e90fcfddb70887da5406",
       "quests": 13
     },
     "maraudon": {
@@ -69,7 +74,7 @@
     },
     "razorfen-kraul": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/razorfen-kraul",
-      "sha256": "72daca44763feaa6dbad3e9d652fd76be8eee9cf248fe7e701594bf8c78e7fd3",
+      "sha256": "37444a2c69b5108b87387b736536e69682ffd0a657f4a5e58599a36660e571f0",
       "quests": 6
     },
     "ruins-of-lordaeron": {
@@ -79,7 +84,7 @@
     },
     "scarlet-monastery": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/scarlet-monastery",
-      "sha256": "1c4f82a831c42cc55c4361e638d3e1bae9f61b384e14b2ffc8ac436ae4442d8c",
+      "sha256": "5a47fbcb45638d5794bddb2ff848cd75f779a80fbbe613e8a88d1aa57c81b186",
       "quests": 8
     },
     "scholomance": {
@@ -104,7 +109,7 @@
     },
     "the-drowned-city": {
       "url": "https://www.wowhead.com/forever/quests/dungeons/the-drowned-city",
-      "sha256": "f0ee45c219136a0c1c27948d63f9a2aeb409e0d2a868e5584688cd254c7df028",
+      "sha256": "3c306d934c42b4f6293442a2350e5465c7cf46adf5ff504ede8180bb2912890d",
       "quests": 8
     },
     "the-hall-of-thanes": {
@@ -209,11 +214,15 @@
       ]
     }
   },
+  "unknown_quest_categories": [
+    "blackmaw-hold",
+    "shapers-terrace"
+  ],
   "limitations": [
     "Dungeon level ranges are recommendations, not minimum entry or quest pickup requirements",
     "Overview chart/table takes precedence over its conflicting paragraphs; retest beta levels",
     "Published points mark entrance areas, not collision-safe cave paths or exact portals",
-    "Five newer Forever dungeon entrances remain unspecified; three category URLs have no named quest list, so their memberships remain unknown"
+    "5 newer Forever dungeon entrances remain unspecified; 2 category URLs still resolve to the generic quest list, so their memberships remain unknown"
   ],
   "dungeons": {
     "the-hall-of-thanes": {
@@ -245,7 +254,8 @@
         96403,
         98423
       ],
-      "locationHint": "Ironforge"
+      "locationHint": "Ironforge",
+      "questListCaptured": true
     },
     "shadowfang-keep": {
       "name": "Shadowfang Keep",
@@ -273,7 +283,8 @@
         1013,
         1014,
         1098
-      ]
+      ],
+      "questListCaptured": true
     },
     "scarlet-monastery": {
       "name": "Scarlet Monastery",
@@ -327,7 +338,8 @@
         1113,
         1160,
         96800
-      ]
+      ],
+      "questListCaptured": true
     },
     "zulfarrak": {
       "name": "Zul'Farrak",
@@ -365,7 +377,8 @@
         3527,
         96770,
         96775
-      ]
+      ],
+      "questListCaptured": true
     },
     "shapers-terrace": {
       "name": "Shaper's Terrace",
@@ -377,7 +390,8 @@
       "areaIDs": [],
       "entrances": [],
       "questIDs": [],
-      "locationHint": "Un'Goro Crater"
+      "locationHint": "Un'Goro Crater",
+      "questListCaptured": false
     },
     "ragefire-chasm": {
       "name": "Ragefire Chasm",
@@ -408,7 +422,8 @@
         5725,
         5728,
         5761
-      ]
+      ],
+      "questListCaptured": true
     },
     "the-stockade": {
       "name": "The Stockade",
@@ -439,7 +454,8 @@
         387,
         388,
         391
-      ]
+      ],
+      "questListCaptured": true
     },
     "the-drowned-city": {
       "name": "The Drowned City",
@@ -460,7 +476,8 @@
         96774,
         97130
       ],
-      "locationHint": "Stranglethorn coast"
+      "locationHint": "Stranglethorn coast",
+      "questListCaptured": true
     },
     "uldaman": {
       "name": "Uldaman",
@@ -514,7 +531,8 @@
         2398,
         2418,
         3375
-      ]
+      ],
+      "questListCaptured": true
     },
     "blackmaw-hold": {
       "name": "Blackmaw Hold",
@@ -526,7 +544,8 @@
       "areaIDs": [],
       "entrances": [],
       "questIDs": [],
-      "locationHint": "Northern Azshara"
+      "locationHint": "Northern Azshara",
+      "questListCaptured": false
     },
     "ruins-of-lordaeron": {
       "name": "Ruins of Lordaeron",
@@ -563,7 +582,8 @@
         97291,
         97292
       ],
-      "locationHint": "Lordaeron"
+      "locationHint": "Lordaeron",
+      "questListCaptured": true
     },
     "excavation-site-wetlands": {
       "name": "Excavation Site: Wetlands",
@@ -603,7 +623,8 @@
         98823,
         98824
       ],
-      "locationHint": "Wetlands"
+      "locationHint": "Wetlands",
+      "questListCaptured": true
     },
     "maraudon": {
       "name": "Maraudon",
@@ -657,7 +678,8 @@
         7070,
         93404,
         96776
-      ]
+      ],
+      "questListCaptured": true
     },
     "wailing-caverns": {
       "name": "Wailing Caverns",
@@ -694,7 +716,8 @@
         1500,
         3366,
         6981
-      ]
+      ],
+      "questListCaptured": true
     },
     "kroldok-stronghold": {
       "name": "Krol'dok Stronghold",
@@ -720,7 +743,8 @@
         94998,
         96771
       ],
-      "locationHint": "Riverglades"
+      "locationHint": "Riverglades",
+      "questListCaptured": true
     },
     "alcaz-prison": {
       "name": "Alcaz Prison",
@@ -731,8 +755,14 @@
       "aliases": [],
       "areaIDs": [],
       "entrances": [],
-      "questIDs": [],
-      "locationHint": "Alcaz Island, Dustwallow Marsh"
+      "questIDs": [
+        96335,
+        96337,
+        96377,
+        96772
+      ],
+      "locationHint": "Alcaz Island, Dustwallow Marsh",
+      "questListCaptured": true
     },
     "blackrock-spire": {
       "name": "Blackrock Spire",
@@ -805,7 +835,8 @@
         8966,
         8989,
         8995
-      ]
+      ],
+      "questListCaptured": true
     },
     "the-deadmines": {
       "name": "The Deadmines",
@@ -836,7 +867,8 @@
         214,
         2040,
         92753
-      ]
+      ],
+      "questListCaptured": true
     },
     "city-of-dalaran": {
       "name": "City of Dalaran",
@@ -875,7 +907,8 @@
         96987,
         96988
       ],
-      "locationHint": "Dalaran"
+      "locationHint": "Dalaran",
+      "questListCaptured": true
     },
     "razorfen-downs": {
       "name": "Razorfen Downs",
@@ -910,7 +943,8 @@
         93604,
         96773,
         97196
-      ]
+      ],
+      "questListCaptured": true
     },
     "blackrock-depths": {
       "name": "Blackrock Depths",
@@ -979,7 +1013,8 @@
         7604,
         9015,
         97197
-      ]
+      ],
+      "questListCaptured": true
     },
     "blackfathom-deeps": {
       "name": "Blackfathom Deeps",
@@ -1017,7 +1052,8 @@
         6921,
         78916,
         78917
-      ]
+      ],
+      "questListCaptured": true
     },
     "scholomance": {
       "name": "Scholomance",
@@ -1054,7 +1090,8 @@
         5582,
         8969,
         8992
-      ]
+      ],
+      "questListCaptured": true
     },
     "gnomeregan": {
       "name": "Gnomeregan",
@@ -1106,7 +1143,8 @@
         4604,
         4605,
         4606
-      ]
+      ],
+      "questListCaptured": true
     },
     "the-temple-of-atalhakkar": {
       "name": "Sunken Temple",
@@ -1144,7 +1182,8 @@
         3447,
         3528,
         8733
-      ]
+      ],
+      "questListCaptured": true
     },
     "razorfen-kraul": {
       "name": "Razorfen Kraul",
@@ -1175,7 +1214,8 @@
         1142,
         1144,
         1221
-      ]
+      ],
+      "questListCaptured": true
     },
     "stratholme": {
       "name": "Stratholme",
@@ -1216,7 +1256,8 @@
         8945,
         8968,
         8991
-      ]
+      ],
+      "questListCaptured": true
     },
     "dire-maul": {
       "name": "Dire Maul",
@@ -1279,7 +1320,8 @@
         8950,
         8967,
         8990
-      ]
+      ],
+      "questListCaptured": true
     }
   }
 }

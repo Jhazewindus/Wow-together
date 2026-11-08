@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "captured": "2026-11-08",
+  "dungeonKey": "alcaz-prison",
+  "category": {
+    "url": "https://www.wowhead.com/forever/quests/dungeons/alcaz-prison",
+    "sha256": "8abe474fc3d833d9bf4d5139b629c8fc2e8d8113a8246b9deb79613ca4279ac2",
+    "questIDs": [96335, 96337, 96377, 96772]
+  },
+  "records": [
+    {
+      "id": 96335,
+      "title": "The Man in the Iron Chains",
+      "url": "https://www.wowhead.com/forever/quest=96335",
+      "sha256": "115eed3914e01662169dc973033cfb2b46543729ef35e64e6998dc616767aa11"
+    },
+    {
+      "id": 96337,
+      "title": "More Valuable Than Gold",
+      "url": "https://www.wowhead.com/forever/quest=96337",
+      "sha256": "900e8e48eb1a67c2d8d1af08b70a51e0949feec5444a1d0b05a0f71596df7bea"
+    },
+    {
+      "id": 96377,
+      "title": "State Secrets",
+      "url": "https://www.wowhead.com/forever/quest=96377",
+      "sha256": "87412bf5b915cbcc32a039541a2693ff46dfb7cb1c7bf609250f398ea41e46f9"
+    },
+    {
+      "id": 96772,
+      "title": "The Dragon's Journal",
+      "url": "https://www.wowhead.com/forever/quest=96772",
+      "sha256": "bfb6291b989d2a533ce3e713d2fc0d8b6a2b1d60e6e3ec5c46427bfbed892bee"
+    }
+  ],
+  "limitations": [
+    "Quest pages publish no starter or turn-in map points for these records.",
+    "No trustworthy quest-series rows or prerequisite links were published; prerequisite state remains unverified.",
+    "The dungeon lists and individual quest facts are not evidence of an item drop source or a complete pickup route."
+  ]
+}

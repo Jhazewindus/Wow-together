@@ -409,7 +409,7 @@ end'''
         self.assertEqual(source['commit'],'aa1d7e7294596cf50a6fd0946dfae0d969cb9623')
         quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
         entities=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','questEntities')
-        self.assertEqual(len(quests),5333)
+        self.assertEqual(len(quests),5337)
         self.assertEqual(quests[1943]['nextInChain'],1944)
         self.assertEqual(quests[1944]['nextInChain'],1945)
         self.assertEqual(quests[1945]['nextInChain'],1946)
@@ -442,7 +442,7 @@ end'''
         self.assertEqual(len(report['quest_chain_import']['exclusive_quest_ids']),122)
         self.assertFalse(report['quest_chain_import']['withheld_fields'])
         self.assertEqual((report['with_starters'],report['with_objectives'],report['with_turnins']),
-                         (4421,2126,4597))
+                         (4424,2126,4600))
 
     def test_all_prerequisites_are_required_for_pickup_and_compiled_before_child(self):
         c=guide_client(1);quests={i:world_quest(str(i)) for i in (900,901,902)}

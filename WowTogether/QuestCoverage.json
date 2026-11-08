@@ -7,16 +7,16 @@
     "https://github.com/Questie/QuestieDB"
   ],
   "summary": {
-    "count": 5333,
-    "detailed_quests": 390,
-    "with_starters": 4421,
+    "count": 5337,
+    "detailed_quests": 394,
+    "with_starters": 4424,
     "with_objectives": 2126,
-    "with_turnins": 4597,
+    "with_turnins": 4600,
     "with_prerequisites": 2581,
     "entities": {
+      "object": 7044,
       "npc": 13418,
-      "object": 7043,
-      "item": 3242
+      "item": 3245
     }
   },
   "zones": {
@@ -443,6 +443,19 @@
         8425
       ]
     },
+    "dungeons/alcaz-prison": {
+      "quests": 4,
+      "pickups": 0,
+      "objectives": 0,
+      "turnins": 0,
+      "complete_locations": 0,
+      "missing_quest_ids": [
+        96335,
+        96337,
+        96377,
+        96772
+      ]
+    },
     "dungeons/blackfathom-deeps": {
       "quests": 13,
       "pickups": 9,
@@ -857,9 +870,9 @@
     },
     "dungeons/the-drowned-city": {
       "quests": 3,
-      "pickups": 2,
+      "pickups": 3,
       "objectives": 0,
-      "turnins": 0,
+      "turnins": 1,
       "complete_locations": 0,
       "missing_quest_ids": [
         95789,
@@ -2822,9 +2835,9 @@
     },
     "uncategorized": {
       "quests": 267,
-      "pickups": 168,
+      "pickups": 170,
       "objectives": 144,
-      "turnins": 170,
+      "turnins": 172,
       "complete_locations": 159,
       "missing_quest_ids": [
         73,
@@ -16837,5 +16850,29 @@
       98287
     ],
     "withheld_fields": []
+  },
+  "dungeon_quest_additions": {
+    "captured": "2026-11-08",
+    "category": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/alcaz-prison",
+      "sha256": "f2989e413da3da6823e6be4ee20e15d703c914806457dbb2a5accd8adf327ded",
+      "questIDs": [
+        96335,
+        96337,
+        96377,
+        96772
+      ]
+    },
+    "records": [
+      96335,
+      96337,
+      96377,
+      96772
+    ],
+    "limitations": [
+      "Quest pages publish no starter or turn-in map points for these records.",
+      "No trustworthy quest-series rows or prerequisite links were published; prerequisite state remains unverified.",
+      "The dungeon lists and individual quest facts are not evidence of an item drop source or a complete pickup route."
+    ]
   }
 }

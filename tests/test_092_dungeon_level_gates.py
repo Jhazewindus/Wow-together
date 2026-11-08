@@ -22,11 +22,11 @@ class DungeonLevelGateTests(unittest.TestCase):
         report = scan()
         self.assertEqual(report['counts'], {
             'dungeonCategories': 28,
-            'listedQuestMemberships': 378,
-            'uniqueListedQuests': 378,
+            'listedQuestMemberships': 382,
+            'uniqueListedQuests': 382,
             'missingCatalogueRecords': 0,
             'higherMinimumPrerequisiteEdges': 5,
-            'unverifiedPrerequisiteMemberships': 23,
+            'unverifiedPrerequisiteMemberships': 27,
         })
         actual = {(edge['parentQuestID'], edge['questID'])
                   for edge in report['higherMinimumPrerequisites']}

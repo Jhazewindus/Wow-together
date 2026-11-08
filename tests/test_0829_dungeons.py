@@ -52,7 +52,7 @@ class DungeonActionTests(unittest.TestCase):
         data = json.loads((ROOT / 'WowTogether' / 'DungeonData.json').read_text())
         quest_data = own_lua(ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua', 'catalogue')['quests']
         memberships = {ident for dungeon in data['dungeons'].values() for ident in dungeon['questIDs']}
-        self.assertEqual(len(memberships), 376)
+        self.assertEqual(len(memberships), 380)
         self.assertTrue(all(ident in quest_data for ident in memberships))
         for ident in (93404, 93604, 94968, 94984, 94997, 95789, 97130, 97197):
             self.assertIn(ident, memberships)
@@ -67,7 +67,7 @@ class DungeonActionTests(unittest.TestCase):
         self.assertEqual(quest_data[97291]['previousQuest'], 97290)
         self.assertEqual(quest_data[97292]['previousQuest'], 97291)
         unread = {ident for ident in memberships if not quest_data[ident].get('prerequisitesRead')}
-        self.assertEqual(unread, {7507})
+        self.assertEqual(unread, {7507, 96335, 96337, 96377, 96772})
         starts = quest_data[97130]['starts']
         self.assertEqual({p['entityID'] for p in starts}, {31439})
         self.assertEqual({p['mapID'] for p in starts}, {1416})
