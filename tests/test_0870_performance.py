@@ -26,6 +26,22 @@ class RouteGeometryCacheTests(unittest.TestCase):
         self.assertEqual(cache.calls, cache.hits + cache.misses)
         self.assertEqual(cache.resets, 0)
 
+    def test_guide_browser_reuses_prerequisite_walks_for_one_fresh_query(self):
+        c = client()
+        query = c.ns.NewQuestQuery()
+        choices = c.ns.LevelingGuideChoices(True, query, "party")
+        cache = query.levelPathCache
+        self.assertTrue(cache)
+        size = lambda: sum(sum(1 for _ in paths.items()) for _, paths in cache.items())
+        before = size()
+
+        for index in range(1, len(choices) + 1):
+            c.ns.GuideLevelSuitable(choices[index], query)
+
+        after = size()
+        self.assertGreater(before, 0)
+        self.assertEqual(after, before, "Repeated browser checks should reuse this query's prerequisite results")
+
 
 if __name__ == "__main__":
     unittest.main()

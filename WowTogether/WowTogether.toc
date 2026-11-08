@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.98
-## X-ReleaseName: PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW
+## Version: 0.8.99
+## X-ReleaseName: GUIDE BROWSER SCAN PERFORMANCE
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua

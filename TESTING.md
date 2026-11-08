@@ -1,5 +1,22 @@
 # Wow Together — friend test script
 
+For **0.8.99** — **GUIDE BROWSER SCAN PERFORMANCE**, live World of Warcraft: Forever.
+
+## Guide browser scan performance — 0.8.99
+
+1. Open a leveling route, use **Scan guide**, and wait for the fresh route to
+   finish. Confirm the route updates and the Guides view remains responsive.
+2. Reopen the Guides view and switch level brackets. Availability must still
+   follow current quest history, level, faction, race and class restrictions.
+3. Run the host benchmark with `tools/benchmark_addon.py`. On this environment,
+   warm Guides-view rendering fell from about 129 ms to 29 ms after caching
+   repeated prerequisite walks. Host timings are not live frame-time claims.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,861 tests** and **341 subtests** under Lua 5.1. These host
+checks cannot confirm in-client frame times; verify Scan guide responsiveness
+on the Forever client.
+
 For **0.8.98** — **PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW**, live World of Warcraft: Forever.
 
 ## Play-learned objectives and dungeon run flow — 0.8.98

@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.99
+
+**GUIDE BROWSER SCAN PERFORMANCE**
+
+- Cache prerequisite-path results inside one fresh guide-browser query. Shared
+  quest chains are checked once during a render instead of being walked again
+  for every overlapping zone and questline card. A new query still reevaluates
+  progress, level, faction and character identity.
+- Add a regression ensuring guide cards reuse those results within a render.
+- Host mock timing for a warm Guides view fell from about 129 ms to 29 ms on
+  this environment. This is not a live-client frame-time claim; retest after
+  Scan guide in World of Warcraft: Forever.
+
 ## 0.8.98
 
 **PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW**

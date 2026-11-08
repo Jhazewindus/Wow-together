@@ -524,24 +524,38 @@ end
 
 local function levelPath(id, level, seen, depth, query)
     if depth > 24 or seen[id] then return false end
+    -- A single browser render checks overlapping zone and questline guides
+    -- against the same quest graph. Cache each result only for this fresh
+    -- query context, so repeated guide cards do not walk and copy the same
+    -- prerequisite chains dozens of times.
+    query.levelPathCache = query.levelPathCache or {}
+    local paths = query.levelPathCache[level]
+    if not paths then paths = {}; query.levelPathCache[level] = paths end
+    local cached = paths[id]
+    if cached ~= nil then return cached end
     local quest = ns.CatalogueQuest(id)
-    if not quest then return true end -- Missing requirements remain an NPC check.
-    if quest.minLevel and quest.minLevel > level then return false end
-    if (quest.level or 0) > level + 3 then return false end
-    if ns.CatalogueIdentityAllowed(id, ns.profile) == false then return false end
-    local visited = {}; for key, value in pairs(seen) do visited[key] = value end; visited[id] = true
+    if not quest then paths[id] = true; return true end -- Missing requirements remain an NPC check.
+    if quest.minLevel and quest.minLevel > level then paths[id] = false; return false end
+    if (quest.level or 0) > level + 3 then paths[id] = false; return false end
+    if ns.CatalogueIdentityAllowed(id, ns.profile) == false then paths[id] = false; return false end
+    seen[id] = true
+    local function finish(value)
+        seen[id] = nil
+        paths[id] = value
+        return value
+    end
     if quest.previousQuest and not ns.PartyQuestFinished(quest.previousQuest, query)
-        and not levelPath(quest.previousQuest, level, visited, depth + 1, query) then return false end
+        and not levelPath(quest.previousQuest, level, seen, depth + 1, query) then return finish(false) end
     for _, previous in ipairs(quest.prerequisiteAll or {}) do
-        if not ns.PartyQuestFinished(previous, query) and not levelPath(previous, level, visited, depth + 1, query) then return false end
+        if not ns.PartyQuestFinished(previous, query) and not levelPath(previous, level, seen, depth + 1, query) then return finish(false) end
     end
     if quest.prerequisiteAny then
         for _, previous in ipairs(quest.prerequisiteAny) do
-            if ns.PartyQuestFinished(previous, query) or levelPath(previous, level, visited, depth + 1, query) then return true end
+            if ns.PartyQuestFinished(previous, query) or levelPath(previous, level, seen, depth + 1, query) then return finish(true) end
         end
-        return false
+        return finish(false)
     end
-    return true
+    return finish(true)
 end
 
 local function guideAreaMatches(guide)
