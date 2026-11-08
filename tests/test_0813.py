@@ -166,14 +166,14 @@ class GuideCompletionTests(unittest.TestCase):
         c.ns.routePlanning = c.lua.table_from({'guide': g})
         c.ns.UpdateNavigation(); c.ns.navigation.OnEnter(c.ns.navigation)
         tooltip = c.lua.globals().GameTooltip
-        self.assertIn('Loading route', '\n'.join(tooltip.lines.values()))
+        self.assertIn('Loading route', c.ns.navigation.status.text)
         self.assertNotIn('Drag to move', '\n'.join(tooltip.lines.values()))
         c.ns.routePlanning = None
         c.lua.execute('finished[900]=true; finished[901]=true')
         c.ns.Refresh()
         text = '\n'.join(tooltip.lines.values())
         self.assertNotIn('Loading route', text)
-        self.assertIn('Guide complete', text)
+        self.assertIn('Guide complete', c.ns.navigation.status.text)
         self.assertNotIn('Drag to move', text)
 
 

@@ -88,15 +88,13 @@ class GuideBackgroundTests(unittest.TestCase):
     def test_small_button_explains_current_state_and_next_action(self):
         c = ui_client(); nav = c.ns.navigation; button = nav.background
         self.assertEqual(nav.width, 360); self.assertEqual(nav.height, 168)
-        self.assertEqual(button.caption.text, 'BG')
+        self.assertEqual(button.caption.text, 'Solid')
         self.assertLessEqual(14 + nav.title.width, nav.width - 10 - button.width)
         self.assertEqual(button.caption.fontFlags, '')
         button.OnEnter(button)
-        self.assertEqual(c.lua.globals().GameTooltip.lines[1],
-                         'Guide background: opaque. Click for see-through.')
+        self.assertEqual(c.lua.globals().GameTooltip.lines[1], 'Opaque background')
         click(button); button.OnEnter(button)
-        self.assertEqual(c.lua.globals().GameTooltip.lines[1],
-                         'Guide background: see-through. Click for opaque.')
+        self.assertEqual(c.lua.globals().GameTooltip.lines[1], 'Opaque background')
 
 
 RESEARCH_FILE = ROOT / 'research/2026-10-06-durotar-orc-rogue-build-70235.json'

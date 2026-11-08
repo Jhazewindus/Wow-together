@@ -30,8 +30,8 @@ class ResizeTests(unittest.TestCase):
         self.assertTrue(f.sizing)
         c.ns.handlers.GLOBAL_MOUSE_UP('LeftButton')
         self.assertIsNone(f.sizing);self.assertEqual(c.ns.db.arrowSize.width,520)
-        # The fixture reports 100 px of text; leave room for the full reason.
-        self.assertEqual(f.context.height,102)
+        # The presentation card keeps its one-line reason at every saved size.
+        self.assertEqual(f.context.height,14)
 
     def test_reentrant_native_size_callback_clamps_once_without_replanning(self):
         c=navigator();f=c.ns.navigation;c.lua.globals().resizeFrame=f
@@ -148,9 +148,11 @@ class DestinationPurposeTests(unittest.TestCase):
         c=navigator();goal={'id':900,'kind':'t','title':'Important return','npcName':'Named giver','mapID':502,'x':.1,'y':.2}
         stop=c.lua.table_from({'kind':'travel','goal':goal,'id':900,'mapID':501,'x':.2,'y':.3},recursive=True)
         c.ns.TravelPathSummary=c.lua.eval('function() return "Take the zeppelin.\\nContinue to the far shore." end')
-        context=c.ns.RouteContext(stop,501)
-        self.assertIn('Take the zeppelin',context);self.assertIn('Important return',context);self.assertIn('Named giver',context)
-        self.assertIn('Important return',context.splitlines()[0])
+        presentation=c.ns.GuideStepPresentation(stop,None,c.ns.routeSelection,c.ns.selectedRoute)
+        self.assertIn('Take the zeppelin',presentation.travel)
+        self.assertIn('Important return',presentation.then_)
+        self.assertIn('Named giver',presentation.then_)
+        self.assertIn('Important return',presentation.why)
 
     def test_long_objective_purpose_explains_quest_without_repeating_the_action(self):
         c=navigator();goal=c.lua.table_from({'id':900,'kind':'q','title':'Quest goal','npcName':'Target','action':'kill','quantity':7},recursive=True)

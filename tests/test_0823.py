@@ -147,8 +147,8 @@ class FlightTimingTests(unittest.TestCase):
         c.ns.NoteFlightSelection(54); c.ns.SetOption('standaloneArrow', True)
         c.lua.execute('flying=true'); c.ns.FlightState()
         c.lua.execute('clock=190'); c.ns.UpdateNavigation()
-        self.assertIn('1m 10s', c.ns.standaloneNavigation.timer.text)
-        self.assertEqual(c.ns.navigation.distance.text, c.ns.standaloneNavigation.timer.text)
+        self.assertEqual(c.ns.standaloneNavigation.timer.text, '~1 min 10 s')
+        self.assertEqual(c.ns.navigation.presentation.time, c.ns.standaloneNavigation.timer.text)
         self.assertEqual(plain(c.ns.selectedRoute), before)
         self.assertFalse(c.ns.Completed(900)); self.assertFalse(c.ns.GuideQuestSkipped(900))
 

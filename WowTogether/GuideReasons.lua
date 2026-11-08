@@ -224,7 +224,7 @@ local function explain(goal, ctx)
         if ns.GuideDifficultyOverride(guide) then
             return result("chosen-level-range", "Outside the recommended level range; included because you chose Continue anyway.", true)
         end
-        return result("outside-level-range", "Outside your useful leveling range; this saved or previewed step can be skipped.", false)
+        return result("outside-level-range", "Outside your useful leveling range.", false)
     end
     if goal.kind == "q" then
         ids = objectiveVisit(goal, ctx)
@@ -303,7 +303,7 @@ function ns.GuideVisibleReason(stop, mapID, distance, guide, route)
     if decision.caution and not (why and string.find(why, decision.caution, 1, true)) then
         why = why and (why .. " " .. decision.caution) or decision.caution
     end
-    local hint = ns.GuideStepHint(goal)
+    local hint = ns.GuideStepHintSource(goal)
     if goal.action == "start-item" or hint == "This quest giver patrols; search nearby." then
         why = why and (why .. " " .. hint) or hint
     end

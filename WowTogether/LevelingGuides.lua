@@ -340,8 +340,7 @@ function ns.BuildClassQuestsGuide()
         classQuestCount = #roots, classQuestStepCount = #records, availableNow = availableNow, nextLevel = nextLevel,
         fixedRoute = false, profilesReady = true, hasPoint = false,
         collectionDependencies = dependencies.chosen, collectionAlternatives = dependencies.alternatives,
-        reason = #roots .. " class quests across your known questlines. The route follows prerequisites and series steps.",
-        destination = "Follow your class quest guide."}
+        reason = #roots .. " class quests across your known questlines. The route follows prerequisites and series steps."}
     guide.coverage = ns.GuideLocationCoverage(records)
     guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
     return guide

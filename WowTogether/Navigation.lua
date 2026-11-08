@@ -28,101 +28,43 @@ function ns.NavigationTravelTime(state)
     end
 end
 
+local function nextDisplayedStop(state)
+    if not state or state.stop.historyPreview or not ns.selectedRoute or type(ns.selectedRoute.stops) ~= "table" then return nil end
+    local stops, goal = ns.selectedRoute.stops, ns.GuideDestination(state.stop)
+    for index, stop in ipairs(stops) do
+        if stop == goal or stop.id == goal.id and stop.kind == goal.kind
+            and (not stop.memberKey or not goal.memberKey or stop.memberKey == goal.memberKey) then
+            return stops[index + 1]
+        end
+    end
+    return stops[2]
+end
+
 local function updateTooltip(frame, opening)
     if not GameTooltip then return end
     if not opening and ns.ReadPublic(GameTooltip.IsOwned, GameTooltip, frame) ~= true then return end
     local state = frame.state
     local stop = state and state.stop
-    local description = stop and ns.GuideStepDescription(stop) or ""
-    local status = stop and stop.kind == "notice" and state.status or ""
-    local context = stop and not ns.GuideDestination(stop).professionStep and frame.context and frame.context:GetText() or ""
-    local content = ns.CompactGuideTooltip(description, status, context)
+    local presentation = frame.presentation or stop and ns.GuideStepPresentation(stop, nil, ns.routeSelection, ns.selectedRoute, state)
+    local content = presentation and (presentation.title .. "\n" .. ns.GuidePresentationTooltip(presentation, false)) or ""
     local previous = frame.tooltipContent
     if not opening and previous == content then return end
     if opening or type(GameTooltip.ClearLines) ~= "function" then GameTooltip:SetOwner(frame, "ANCHOR_RIGHT")
     else GameTooltip:ClearLines() end
     frame.tooltipContent = content
-    if content ~= "" then GameTooltip:AddLine(content, 1, 1, 1, true) end
+    if presentation then
+        GameTooltip:AddLine(presentation.title, 1, 0.82, 0.3, true)
+        for _, line in ipairs(ns.GuidePresentationTooltipLines(presentation, false)) do GameTooltip:AddLine(line, 1, 1, 1, true) end
+    end
     GameTooltip:Show()
 end
 
+-- Compatibility surface for older integrations. New renderers consume fields.
 function ns.RouteContext(stop, mapID, facts, travelDistance)
-    if stop.professionStep then return ns.GuideDestinationPurpose(stop) end
-    if ns.IsInventoryServiceStep(stop) then
-        local service = ns.GuideDestination(stop)
-        return service.serviceReason .. ".\n" .. service.serviceInstructions
-    end
-    if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town." end
-    if stop.unsafeTerrain then
-        local purpose = ns.GuideDestinationPurpose(stop, mapID, travelDistance)
-        return (purpose and (purpose .. "\n") or "") .. (stop.terrainApproach
-            and "Reach the mesa using its lift or ramp." or "Use the entrance or a path around the pinnacle.")
-    end
-    if ns.IsClassTrainingStep(stop) then
-        local training = stop.kind == "trainer" and stop or stop.goal
-        return "Optional • level " .. training.trainingLevel .. " training check.\nTrain manually; Done training resumes quests."
-    end
-    if stop.confirmation then
-        return ns.GuideDestinationReason(stop) .. "\n" .. ns.StopLocationText(stop, mapID)
-    end
-    if stop.kind == "loading" then
-        return stop.action == "scan" and "Checking quest progress…" or "Preparing your route…"
-    end
-    local travelSummary = ns.TravelPathSummary(stop)
-    if stop.flightDiscovery then return travelSummary end
-    local purpose = (travelSummary or stop.goal or stop.flightPlan or stop.travelLeg) and ns.GuideDestinationPurpose(stop, mapID, travelDistance)
-    if travelSummary then return purpose and (purpose .. "\n" .. travelSummary) or travelSummary end
-    if ns.routeSelection and ns.routeSelection.mode == "travel" then
-        if stop.travelLeg or stop.flightPlan then
-            return (stop.travelLeg and stop.travelLeg.method == "walk" and "Follow the crossing towards Orgrimmar."
-                or "Use this transport towards Orgrimmar.") .. "\nQuickest known route; travel times are estimates."
-        end
-        return ns.routePaused or "Reach Orgrimmar.\nTravel guide • Levels 1–60."
-    end
-    if stop.kind == "notice" and not stop.sourceStop and ns.routeSelection and ns.routeSelection.fullGuide then
-        if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
-        return (ns.routeSelection.zone or ns.MapName(ns.routeSelection.homeMapID or ns.routeSelection.mapID or 0)) .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
-    end
-    if stop.kind == "notice" and not stop.sourceStop then
-        if ns.routeSelection and ns.routeSelection.mode == "dungeon" then return ns.routePaused or "Finish the dungeon quests." end
-        return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character."
-    end
-    if stop.kind == "corpse" then
-        return (stop.approximate and "Recorded death position; check nearby." or "Your quest guide is retained.")
-            .. "\nResume questing after recovering your body."
-    end
-    if stop.flightPlan then
-        local plan = stop.flightPlan
-        return (purpose and (purpose .. "\n") or "") .. (plan.measured and "Timed flight: ~" or "Estimated flight: ") .. ns.FormatTravelDuration(plan.flightSeconds)
-            .. "; journey ~" .. ns.FormatTravelDuration(plan.seconds)
-            .. "\nFly to " .. plan.destination.name .. (plan.walkingSeconds and plan.walkingSeconds > plan.seconds
-                and ("; saves ~" .. ns.FormatTravelDuration(plan.walkingSeconds - plan.seconds) .. ".") or ".")
-    end
-    if stop.travelLeg then return (purpose and (purpose .. "\n") or "") .. "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
-        and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.")
-    end
-    if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
-    if ns.routePaused and not stop.sourceStop then
-        if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
-        if ns.routeSelection and ns.routeSelection.mode == "dungeon" then return ns.routePaused end
-        return "Waiting for confirmed party progress.\nYour last route is retained."
-    end
-    facts = facts or ns.GuideStepFacts(stop)
-    stop = facts.stop
-    local reason = ns.GuideVisibleReason(stop, mapID, travelDistance)
-    local forPlayer = ns.SafeTitle(stop.forPlayer)
-    local who = forPlayer and (" • For " .. forPlayer) or ""
-    local context = ns.StopLocationText(stop, mapID) .. who
-    local useful, exception = ns.LevelingValue(stop.id)
-    local quest, low = ns.CatalogueQuest(stop.id), ns.PreferredQuestLevels()
-    if useful == true and exception and quest and low and (quest.level or 0) > 0 and quest.level < low then
-        facts.lowerLevelPrerequisite = quest.level
-        facts.lowerLevelClassQuest = ns.IsClassQuest(stop.id)
-    end
-    local groupWarning = ns.QuestGroupWarning(stop.id)
-    if groupWarning then reason = reason and (groupWarning .. " " .. reason) or groupWarning end
-    local sourceHint = stop.kind == "q" and stop.clientLocation and "Quest tracker marked area." or nil
-    return (reason and (reason .. "\n") or "") .. (sourceHint and (sourceHint .. "\n") or "") .. context
+    local presentation = ns.GuideStepPresentation(stop, facts, ns.routeSelection, ns.selectedRoute)
+    if not presentation then return end
+    if presentation.why and presentation.status then return presentation.why .. "\n" .. presentation.status end
+    return presentation.why or presentation.status or presentation.location
 end
 
 function ns.NavigationState()
@@ -248,30 +190,28 @@ function ns.UpdateNavigation()
     ns.UpdateAreaObjectives(state)
     ns.UpdateGuideTip(state)
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
-    frame.title:SetText(state.stop.title)
     local facts = ns.GuideStepFacts(state.stop)
-    local clock = ns.NavigationTravelTime(state)
-    local distance = state.distance and (ns.FormatDistance(state.distance) .. (state.arrived and " • Here" or "")) or ""
-    if facts.progress then distance = distance .. (distance ~= "" and " • " or "") .. facts.progress end
-    frame.distance:SetText(state.flight and clock or distance .. (clock and (distance ~= "" and " • " or "") .. clock or ""))
-    frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
-    local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local context = ns.RouteContext(state.stop, mapID, facts, state.distance)
-    if not state.stop.confirmation and (state.stop.kind == "a" or state.stop.kind == "q" or state.stop.kind == "t") then
-        local requirement = ns.GuideStepRequirement(state.stop, mapID, state.distance,
-            ns.routeSelection, ns.selectedRoute)
-        if requirement and requirement ~= "" then context = (context and context ~= "" and context .. "\n" or "") .. requirement end
-    end
-    frame.context:SetText(context or "")
-    -- Keep the explanation readable at the player's width. Only grow when
-    -- needed; never resize during a drag or overwrite their saved dimensions.
-    local measured = ns.ReadPublic(frame.context.GetStringHeight, frame.context)
-    local needed = finite(measured) and math.min(110, math.max(26, measured + 2)) or 26
-    if frame.reasonHeight ~= needed then
-        frame.reasonHeight = needed
-        if not frame.sizing and frame:GetHeight() < 142 + needed then frame:SetHeight(142 + needed) end
-        ns.LayoutNavigation()
-    end
+    local presentation = ns.GuideStepPresentation(state.stop, facts, ns.routeSelection, ns.selectedRoute, state)
+    frame.presentation = presentation
+    frame.title:SetText(presentation.title)
+    frame.step:SetText(presentation.stepLine or "")
+    frame.status:SetText(presentation.what .. (presentation.progress and (" " .. presentation.progress) or ""))
+    frame.status:SetTextColor(unpack(ns.UIColors.text))
+    frame.context:SetText(presentation.why or "")
+    frame.distance:SetText(presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
+        .. ((presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport") and " • Route re-plans after you land" or ""))
+    local statusColor = presentation.statusColor == "green" and ns.UIColors.success
+        or presentation.statusColor == "gold" and ns.UIColors.gold
+        or presentation.statusColor == "muted" and ns.UIColors.muted or ns.UIColors.text
+    frame.distance:SetTextColor(unpack(statusColor))
+    local nextStop = ns.Option("guidePeek") and nextDisplayedStop(state) or nil
+    if nextStop then
+        local nextWhat = ns.StopInstruction(nextStop)
+        local nextZone = nextStop.mapID and ns.MapName(nextStop.mapID)
+        frame.peek:SetText("Next: " .. (nextWhat or nextStop.title or "Next step")
+            .. (nextZone and (" (" .. nextZone .. ")") or ""))
+        frame.peek:SetShown(true)
+    else frame.peek:SetText(""); frame.peek:Hide() end
     updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
     local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
@@ -280,29 +220,18 @@ function ns.UpdateNavigation()
         frame.separateArrow = separate
         ns.LayoutNavigation()
     end
+    local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
+    frame.kindIcon:SetTexture(presentation.icon)
+    frame.kindIcon:SetShown(state.angle == nil and iconOnly and not state.busy)
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
-    frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
-    frame.step:SetText(state.idle and "" or state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Preparing route") or state.stop.historyPreview and "Previous step" or
-        (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
-            ns.navigationPreview and "Step preview" or
-            (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
+    frame.symbol:SetShown(state.busy and state.angle == nil or state.angle == nil and not iconOnly and not state.busy)
     local training = ns.IsClassTrainingStep(state.stop)
     local service = ns.IsInventoryServiceStep(state.stop)
-    if training then frame.step:SetText("Optional class training") end
-    if service then frame.step:SetText("Optional vendor visit") end
     frame.skipStep.caption:SetText(service and "Skip visit" or training and "Skip training" or "Skip step")
     frame.skipQuest.caption:SetText(service and "Done" or training and "Done training" or "Skip quest")
     if frame.trainingLayout ~= (training or service) then
         frame.trainingLayout = training or service
         ns.LayoutNavigation()
-    end
-    if facts.lowerLevelPrerequisite and not state.stop.historyPreview and not ns.navigationPreview then
-        frame.step:SetText((state.stop.guideStep and ("Step " .. state.stop.guideStep .. " • ") or "")
-            .. (facts.lowerLevelClassQuest and "Class progression • Lv " or "Lower-level prerequisite • Lv ") .. facts.lowerLevelPrerequisite)
-    end
-    if state.areaObjectives and #state.areaObjectives > 1 then
-        frame.title:SetText("Complete nearby objectives")
-        frame.step:SetText(#state.areaObjectives .. " tasks • Arrow points to the current objective")
     end
     local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
@@ -329,7 +258,7 @@ function ns.UpdateNavigation()
     if ns.routeSelection and ns.routeSelection.mode == "profession" then
         local route = ns.selectedRoute
         frame.step:SetText("Personal crafting guide")
-        frame.skipStep.caption:SetText("Next recipe"); frame.skipQuest.caption:SetText("Materials"); frame.scan.caption:SetText("Refresh")
+        frame.skipStep.caption:SetText("Next recipe"); frame.skipQuest.caption:SetText("Materials")
         frame.skipStep:SetEnabled(editable and route and route.recipe ~= nil)
         frame.skipQuest:SetEnabled(route and route.materials and #route.materials > 0)
         frame.back:SetEnabled(false); frame.next:SetEnabled(false)
@@ -340,7 +269,6 @@ function ns.UpdateNavigation()
             frame.professionControls = true
         end
     else
-        frame.scan.caption:SetText("Scan guide")
         if frame.professionControls then
             ns.UIHelp(frame.skipStep, "Skip this guide step. Training stops postpone their personal reminder.")
             ns.UIHelp(frame.skipQuest, "Skip this quest. During training, Done training resumes quests.")
@@ -361,7 +289,7 @@ function ns.UpdateNavigation()
     if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
     if not separate then
         if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
-        elseif state.arrived then ns.DrawNavigationArrow(math.pi)
+        elseif state.arrived then frame.symbol:Hide()
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
     end
 end
@@ -377,24 +305,24 @@ end
 function ns.LayoutNavigation()
     local frame = ns.navigation
     if not frame or not frame.layoutReady then return end
-    local width, height = frame:GetWidth(), frame:GetHeight()
-    if not finite(width) or not finite(height) then return end
+    local width = frame:GetWidth()
+    if not finite(width) then return end
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
-    local contextHeight = math.max(26, math.min(frame.reasonHeight or 52, height - 142))
-    frame.title:SetWidth(width - 186); frame.step:SetWidth(width - 28)
+    frame.title:SetWidth(width - 190); frame.step:SetWidth(width - 28)
     frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
-    frame.status:SetSize(width - left - 14, math.max(28, height - contextHeight - 114))
-    frame.distance:ClearAllPoints(); frame.distance:SetPoint("BOTTOMLEFT", left, contextHeight + 46)
-    frame.distance:SetWidth(width - left - 14)
-    frame.context:ClearAllPoints(); frame.context:SetPoint("BOTTOMLEFT", 14, 40)
-    frame.context:SetSize(width - 28, contextHeight)
+    frame.status:SetSize(width - left - 14, 18); frame.status:SetWordWrap(false)
+    frame.context:ClearAllPoints(); frame.context:SetPoint("TOPLEFT", left, -71)
+    frame.context:SetSize(width - left - 14, 14); frame.context:SetWordWrap(false)
+    frame.distance:ClearAllPoints(); frame.distance:SetPoint("TOPLEFT", left, -87)
+    frame.distance:SetWidth(width - left - 14); frame.distance:SetWordWrap(false)
+    frame.peek:ClearAllPoints(); frame.peek:SetPoint("TOPLEFT", left, -103)
+    frame.peek:SetWidth(width - left - 14); frame.peek:SetWordWrap(false)
     local training = frame.trainingLayout
     frame.skipStep:SetWidth(training and 84 or 80)
     frame.skipStep:ClearAllPoints(); frame.skipStep:SetPoint("BOTTOMLEFT", offset + (training and 36 or 42), 8)
     frame.skipQuest:SetWidth(training and 88 or 80)
     frame.skipQuest:ClearAllPoints(); frame.skipQuest:SetPoint("BOTTOMLEFT", offset + (training and 124 or 128), 8)
-    frame.scan:ClearAllPoints(); frame.scan:SetPoint("BOTTOMLEFT", offset + (training and 218 or 214), 8)
     frame.continue:ClearAllPoints(); frame.continue:SetPoint("BOTTOMLEFT", offset + 42, 8)
     frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, 8)
     frame.next:ClearAllPoints(); frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8)
@@ -423,8 +351,7 @@ function ns.UpdateNavigationBackground()
         panel:SetBackdropColor(color[1], color[2], color[3], alpha)
     end
     ns.UIButtonTone(frame.background, opaque)
-    ns.UIHelp(frame.background, opaque and "Guide background: opaque. Click for see-through."
-        or "Guide background: see-through. Click for opaque.")
+    ns.UIHelp(frame.background, "Opaque background")
 end
 
 function ns.CreateNavigation()
@@ -445,18 +372,18 @@ function ns.CreateNavigation()
     frame.pause = ns.UIButton(frame, "Pause", 42, function()
         if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession() else ns.PauseGuideSession() end
     end)
-    frame.pause:SetHeight(18); frame.pause:SetPoint("TOPRIGHT", -102, -10)
+    frame.pause:SetHeight(18); frame.pause:SetPoint("TOPRIGHT", -122, -10)
     frame.pause.caption:ClearAllPoints(); frame.pause.caption:SetPoint("CENTER")
     frame.pause.caption:SetSize(40, 14); frame.pause.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
-    frame.background = ns.UIButton(frame, "BG", 22, function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end)
-    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -72, -10)
+    frame.background = ns.UIButton(frame, "Solid", 22, function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end)
+    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -66, -10)
     frame.background.caption:ClearAllPoints(); frame.background.caption:SetPoint("CENTER")
-    frame.background.caption:SetSize(18, 14); frame.background.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
-    frame.stop = ns.UIButton(frame, "ST", 24, function() ns.StopGuide(false) end)
-    frame.stop:SetHeight(18); frame.stop:SetPoint("TOPRIGHT", -42, -10)
+    frame.background.caption:SetSize(22, 14); frame.background.caption:SetFont("Fonts\\ARIALN.TTF", 8, "")
+    frame.stop = ns.UIButton(frame, "Stop", 24, function() ns.StopGuide(false) end)
+    frame.stop:SetHeight(18); frame.stop:SetPoint("TOPRIGHT", -38, -10)
     frame.stop.caption:ClearAllPoints(); frame.stop.caption:SetPoint("CENTER")
-    frame.stop.caption:SetSize(18, 14); frame.stop.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
-    ns.UIHelp(frame.stop, "Stop guide. Keep this window open.")
+    frame.stop.caption:SetSize(24, 14); frame.stop.caption:SetFont("Fonts\\ARIALN.TTF", 8, "")
+    ns.UIHelp(frame.stop, "Stop the guide.")
     frame.close = ns.UIClose(frame, function() ns.StopGuide(true, ns.PausedSessionCheckpoint() ~= nil) end)
     frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -10, -10)
     frame.close.caption:ClearAllPoints(); frame.close.caption:SetPoint("CENTER"); frame.close.caption:SetSize(16, 14)
@@ -465,16 +392,19 @@ function ns.CreateNavigation()
     ns.UIDivider(frame, -48)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
     frame.icon.lines = {}
+    frame.kindIcon = frame.icon:CreateTexture(nil, "ARTWORK"); frame.kindIcon:SetSize(34, 34); frame.kindIcon:SetPoint("CENTER")
     frame.symbol = frame.icon:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
     frame.symbol:SetFont("Fonts\\FRIZQT__.TTF", 26, "OUTLINE"); frame.symbol:SetPoint("CENTER")
     frame.distance = ns.UILabel(frame, nil, 11, ns.UIColors.gold)
-    frame.distance:SetPoint("TOPLEFT", 82, -82); frame.distance:SetSize(264, 14); frame.distance:SetWordWrap(false)
+    frame.distance:SetPoint("TOPLEFT", 82, -87); frame.distance:SetSize(264, 14); frame.distance:SetWordWrap(false)
     frame.status = ns.UILabel(frame, nil, 12)
     frame.status:SetPoint("TOPLEFT", 82, -52)
-    frame.status:SetSize(264, 28); frame.status:SetWordWrap(true); frame.status:SetJustifyV("TOP")
+    frame.status:SetSize(264, 18); frame.status:SetWordWrap(false); frame.status:SetJustifyV("TOP")
     frame.context = ns.UILabel(frame, nil, 10, ns.UIColors.muted)
-    frame.context:SetPoint("TOPLEFT", 14, -101)
-    frame.context:SetSize(332, 26); frame.context:SetWordWrap(true); frame.context:SetJustifyV("TOP")
+    frame.context:SetPoint("TOPLEFT", 82, -71)
+    frame.context:SetSize(264, 14); frame.context:SetWordWrap(false); frame.context:SetJustifyV("TOP")
+    frame.peek = ns.UILabel(frame, nil, 10, ns.UIColors.muted)
+    frame.peek:SetPoint("TOPLEFT", 82, -103); frame.peek:SetSize(264, 14); frame.peek:SetWordWrap(false)
     frame.skipStep = ns.UIButton(frame, "Skip step", 80, function() ns.SkipGuide("step") end)
     frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 42, 8)
     frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function()
@@ -485,8 +415,11 @@ function ns.CreateNavigation()
     frame.skipQuest:SetHeight(24); frame.skipQuest:SetPoint("BOTTOMLEFT", 128, 8)
     ns.UIHelp(frame.skipStep, "Skip this step for this character. Training stops postpone this reminder until the next even level; they never skip a quest or learn a prerequisite.")
     ns.UIHelp(frame.skipQuest, "Skip the current quest. During a training stop, Done training records your personal check and resumes quests; no skills are purchased automatically.")
-    frame.scan = ns.UIButton(frame, "Scan guide", 96, function() ns.ScanGuideProgress() end)
-    frame.scan:SetHeight(24); frame.scan:SetPoint("BOTTOMLEFT", 214, 8)
+    frame.scan = ns.UIButton(frame, "", 22, function() ns.ScanGuideProgress() end)
+    frame.scan:SetHeight(18); frame.scan:SetPoint("TOPRIGHT", -94, -10)
+    frame.scan.icon = frame.scan:CreateTexture(nil, "ARTWORK"); frame.scan.icon:SetSize(14, 14); frame.scan.icon:SetPoint("CENTER")
+    frame.scan.icon:SetTexture("Interface\\Buttons\\UI-RefreshButton")
+    ns.UIHelp(frame.scan, "Re-scan quest log and rebuild the route")
     frame.continue = ns.UIButton(frame, "Continue anyway", 166, ns.ContinueGuideAnyway, true)
     frame.continue:SetHeight(24); frame.continue:SetPoint("BOTTOMLEFT", 42, 8); frame.continue:Hide()
     ns.UIHelp(frame.continue, "Include quests outside the recommended level range for this guide. Pickup requirements and manual skips still apply; elite quests may need a party. Saved across reloads; Stop guide restores the normal range.")

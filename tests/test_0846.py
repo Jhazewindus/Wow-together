@@ -29,8 +29,8 @@ class DestinationReasonTests(unittest.TestCase):
         self.assertIn('Accept Quest 0 to begin its quest objectives.', short)
         self.assertNotIn('level 12', short)
         self.assertNotIn('Skip quest', short)
-        far = c.ns.RouteContext(s, 502, None, 1500)
-        self.assertIn('Accept Quest 0 to begin its quest objectives.', far)
+        far = c.ns.GuideStepPresentation(s, None, c.ns.routeSelection, c.ns.selectedRoute)
+        self.assertIn('Accept Quest 0 to begin its quest objectives', far.why)
         self.assertNotIn('optimal', far)
         self.assertTrue(c.ns.GuideDestinationDecision(s).specificBenefit)
         c.ns.PickupOfferEvidence = c.lua.eval('function() return true end')
@@ -141,7 +141,8 @@ class DestinationReasonTests(unittest.TestCase):
         self.assertIn('Named giver', d.caution)
         self.assertTrue(d.needsReview)
         self.assertEqual(d.confidence, 'review')
-        self.assertIn('Confirm availability with Named giver', c.ns.RouteContext(s, 501))
+        presentation = c.ns.GuideStepPresentation(s, None, c.ns.routeSelection, c.ns.selectedRoute)
+        self.assertTrue(any('Confirm availability with Named giver' in detail for detail in presentation.details.values()))
         missing = step(c, unknownLocation=True)
         missing_decision = c.ns.GuideDestinationDecision(missing)
         self.assertIn('not mapped', missing_decision.caution)
@@ -194,15 +195,13 @@ class VisibleReasonTests(unittest.TestCase):
         c.lua.globals().reasonLabel = c.ns.standaloneNavigation.reason
         c.lua.execute('function reasonLabel:GetStringHeight() return 55 end')
         c.ns.SetOption('standaloneArrow', True)
-        self.assertIn('Accept Synthetic quest to begin its quest objectives.', c.ns.navigation.context.text)
+        self.assertIn('Accept Synthetic quest to begin its quest objectives', c.ns.navigation.context.text)
         self.assertFalse(c.ns.standaloneNavigation.reason.IsShown(c.ns.standaloneNavigation.reason))
         c.ns.SetOption('routeArrow', False)
         f = c.ns.standaloneNavigation
-        self.assertTrue(f.reason.IsShown(f.reason))
-        self.assertIn('Accept Synthetic quest to begin its quest objectives.', f.reason.text)
-        self.assertGreaterEqual(f.reason.height, 55)
-        self.assertGreaterEqual(f.width, f.reason.width)
-        self.assertGreaterEqual(f.height, 102 + f.reason.height + 4)
+        self.assertFalse(f.reason.IsShown(f.reason))
+        self.assertIn('Accept Synthetic quest', f.title.text)
+        self.assertEqual(f.height, 102)
 
     def test_standalone_advice_sits_below_the_reason_and_dismissal_keeps_it(self):
         c = tip_client(inn=False, flight=True)
@@ -211,9 +210,10 @@ class VisibleReasonTests(unittest.TestCase):
         c.ns.SetOption('standaloneArrow', True); c.ns.SetOption('routeArrow', False)
         f = c.ns.standaloneNavigation
         self.assertTrue(f.tip.IsShown(f.tip))
-        self.assertLess(f.tip.point[5], f.reason.point[5] - f.reason.height)
+        self.assertFalse(f.reason.IsShown(f.reason))
+        self.assertEqual(f.tip.point[5], -106)
         before = f.height; f.tip.close.OnClick()
-        self.assertTrue(f.reason.IsShown(f.reason))
+        self.assertFalse(f.reason.IsShown(f.reason))
         self.assertEqual(f.height, before - 56)
         self.assertFalse(c.ns.GuideQuestSkipped(900))
 
@@ -224,8 +224,8 @@ class VisibleReasonTests(unittest.TestCase):
         c.lua.globals().reasonLabel = f.context
         c.lua.execute('function reasonLabel:GetStringHeight() return 65 end')
         c.ns.UpdateNavigation()
-        self.assertGreaterEqual(f.context.height, 65)
-        self.assertGreaterEqual(f.height, 142 + 65)
+        self.assertEqual(f.context.height, 14)
+        self.assertEqual(f.height, 168)
         self.assertEqual(c.ns.db.arrowSize.height, 168)
 
 

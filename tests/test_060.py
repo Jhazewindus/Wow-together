@@ -152,7 +152,7 @@ class GuideControlTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 'q')
         c.ns.PreviewGuideStep(-1)
         self.assertEqual(c.ns.navigation.state.stop.kind, 'a')
-        self.assertEqual('Previous step', c.ns.navigation.step.text)
+        self.assertEqual('Previous step • Test Coast', c.ns.navigation.step.text)
         self.assertTrue(c.ns.active[900])
         self.assertFalse(c.ns.Completed(900))
         c.ns.SkipGuide('quest')
@@ -302,7 +302,7 @@ class TravelTests(unittest.TestCase):
         self.assertEqual(plan.destination.name, 'End')
         self.assertLess(plan.seconds, plan.walkingSeconds)
         self.assertFalse(plan.measured)
-        self.assertIn('Estimated flight', c.ns.navigation.context.text)
+        self.assertIn('Estimated flight', c.ns.navigation.presentation.travel)
         self.assertEqual(c.ns.RouteForDisplay().stops[1].kind, 'f')
         self.assertIsNone(c.lua.globals().taken)
 
@@ -332,12 +332,12 @@ class TravelTests(unittest.TestCase):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
         c.lua.globals().flying = True; c.ns.UpdateNavigation()
         c.lua.globals().clock = 112; c.ns.UpdateNavigation()
-        self.assertIn('Est. flight', c.ns.navigation.distance.text)
+        self.assertIn('~', c.ns.navigation.distance.text)
         self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
         c.lua.globals().flying = False; c.ns.FinishFlight()
         self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 12)
         c.ns.NoteFlightSelection(54); c.lua.globals().flying = True; c.ns.UpdateNavigation()
-        self.assertIn('left', c.ns.navigation.distance.text)
+        self.assertIn('~12 s', c.ns.navigation.distance.text)
 
     def test_flight_progress_and_character_network_are_not_shared(self):
         c = flight_client(); c.ns.ReadFlightMap()

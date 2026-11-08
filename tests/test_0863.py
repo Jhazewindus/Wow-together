@@ -191,8 +191,16 @@ class ContinueGuideTests(unittest.TestCase):
         c.ns.ShowGuideQuestList(g); c.drain()
         rows = list(c.ns.guideQuestList.rows.values())
         self.assertFalse(any('Outside level range' in (r.state.text or '') for r in rows))
-        self.assertTrue(any('Elite' in (r.state.text or '') for r in rows))
-        self.assertIn('Available', rows[0].state.text)
+        self.assertIn(rows[0].state.text, ('Available', 'Required'))
+        elite_row = next(r for r in rows if r.stop.id == 901)
+        self.assertNotIn('Elite', elite_row.state.text or '')
+        c.lua.execute('''GameTooltip={lines={}}
+          function GameTooltip:SetOwner(owner) self.owner=owner;self.lines={} end
+          function GameTooltip:AddLine(text) self.lines[#self.lines+1]=text end
+          function GameTooltip:Show() self.shown=true end''')
+        elite_row.OnEnter(elite_row)
+        tooltip = '\\n'.join(c.lua.globals().GameTooltip.lines.values())
+        self.assertIn('party', tooltip)
         c.ns.Diagnostics()
         self.assertIn('all quest levels by player choice', c.ns.diagnosticsText.text)
 

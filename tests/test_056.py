@@ -202,14 +202,12 @@ class CurrentTripTests(unittest.TestCase):
         stop.kind = 't'
         c.lua.execute('C_Map.GetBestMapForUnit=function() return 502 end')
         c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.navigation.context.text.splitlines(),
-                         ['Return here to collect the reward for Pickup quest.',
-                          'Travel to Test Coast • 21.0, 27.0 • For You, Bob',
-                          'Required now to finish Pickup quest'])
+        self.assertEqual(c.ns.navigation.context.text,
+                         'Return here to collect the reward for Pickup quest')
         self.assertIsNone(c.ns.navigation.state.angle)
         c.ns.routePaused = 'Waiting'
         c.ns.UpdateNavigation()
-        self.assertIn('retained', c.ns.navigation.context.text)
+        self.assertEqual(c.ns.navigation.context.text, 'Return here to collect the reward for Pickup quest')
 
 
 def dialog_client():

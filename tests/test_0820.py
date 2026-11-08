@@ -80,7 +80,7 @@ class SettlementTravelTests(unittest.TestCase):
         self.assertTrue(state.visible)
         self.assertIsNone(state.angle)
         self.assertIn('Route around Enemy town',state.status)
-        self.assertIn('No mapped bypass',c.ns.navigation.context.text)
+        self.assertTrue(any('No mapped bypass' in detail for detail in c.ns.navigation.presentation.details.values()))
         self.assertEqual(c.ns.selectedRoute.stops[1].kind,'q')
         self.assertFalse(c.ns.Completed(900));self.assertFalse(c.ns.GuideQuestSkipped(900))
 

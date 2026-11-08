@@ -8,7 +8,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
-    guideOpaque = true, highlightGuideQuest = true, classTraining = true,
+    guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
     unitNumbers = false, approachMaps = true}
 
@@ -44,6 +44,7 @@ local sections = {
     {"navigation", "Arrow and display", {
         {"routeArrow", "Show the guide window", "Show the current step, direction and guide controls."},
         {"guideOpaque", "Solid guide background", "Use a solid background for easier reading; turn off for a translucent panel."},
+        {"guidePeek", "Preview the next guide step", "Show one muted next-step preview below the current instruction."},
         {"standaloneArrow", "Show a separate direction arrow", "Show direction, distance and travel time in a small separate panel."},
         {"minimapRoute", "Draw the route on the minimap", "Show the current travel line and next stops on the minimap, clipped to its edge."},
         {"distanceUnits", "Distance units", "Choose the unit shown below the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},

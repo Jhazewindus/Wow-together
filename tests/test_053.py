@@ -333,12 +333,11 @@ class ArrivalTests(unittest.TestCase):
         stop.npcName = 'Receiver'
         c.lua.execute('function AcceptQuest() error("unexpected acceptance") end')
         c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.navigation.status.text, 'Accept from Receiver')
+        self.assertEqual(c.ns.navigation.status.text, 'Accept Pickup quest from Receiver')
         self.assertEqual(c.ns.navigation.title.text, stop.title)
         self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
-        line = c.ns.navigation.icon.lines[1]
-        self.assertTrue(line.IsShown(line))
-        self.assertAlmostEqual(line.startPoint[4], -21)
+        self.assertTrue(c.ns.navigation.kindIcon.IsShown(c.ns.navigation.kindIcon))
+        self.assertEqual(c.ns.navigation.kindIcon.texture, c.ns.navigation.presentation.icon)
         self.assertIsNotNone(c.ns.routeSelection)
         self.assertFalse(c.ns.Completed(900))
 

@@ -16,31 +16,32 @@ def tooltip(c):
 
 
 class GuideTooltipTests(unittest.TestCase):
-    def test_navigation_hover_deduplicates_context_and_omits_drag_prompt(self):
+    def test_navigation_hover_uses_only_fields_not_already_shown_on_card(self):
         c = navigator()
         game_tooltip = tooltip(c)
-        c.ns.GuideStepDescription = lambda *_: "Accept Quest\nCollect Quest before entering Hall\nIronforge • 33.0, 48.0"
-        c.ns.navigation.context.SetText(c.ns.navigation.context,
-            "Collect Quest before entering Hall\nIronforge • 33.0, 48.0")
+        c.lua.execute('''local ns = ...
+          ns.GuideStepPresentation = function() return {title='Quest',what='Accept Quest',why='Collect Quest before entering Hall',
+            status='Required',location='Ironforge • 33.0, 48.0',details={'Collect Quest before entering Hall','Ironforge • 33.0, 48.0'}} end''', c.ns)
+        c.ns.navigation.presentation = None
 
         c.ns.navigation.OnEnter(c.ns.navigation)
         text = "\n".join(game_tooltip.lines.values())
-        self.assertEqual(text.count("Collect Quest before entering Hall"), 1)
+        self.assertEqual(text.count("Collect Quest before entering Hall"), 0)
         self.assertEqual(text.count("Ironforge • 33.0, 48.0"), 1)
         self.assertNotIn("Drag to move", text)
 
-    def test_standalone_arrow_hover_deduplicates_route_tip_and_omits_drag_prompt(self):
+    def test_standalone_arrow_tooltip_includes_why_and_deduplicates_fields(self):
         c = navigator()
         game_tooltip = tooltip(c)
         frame = c.ns.standaloneNavigation
-        c.ns.GuideStepDescription = lambda *_: "Accept Quest\nCollect Quest before entering Hall\nIronforge • 33.0, 48.0"
-        frame.guideTip = c.lua.table_from({'detail': 'Collect Quest before entering Hall\nIronforge • 33.0, 48.0'})
+        c.lua.execute('''local ns = ...
+          ns.GuideStepPresentation = function() return {title='Quest',what='Accept Quest',why='Collect Quest before entering Hall',
+            status='Required',location='Ironforge • 33.0, 48.0',details={'Collect Quest before entering Hall','Ironforge • 33.0, 48.0'}} end''', c.ns)
 
         frame.OnEnter(frame)
         text = "\n".join(game_tooltip.lines.values())
         self.assertEqual(text.count("Collect Quest before entering Hall"), 1)
         self.assertEqual(text.count("Ironforge • 33.0, 48.0"), 1)
-        self.assertNotIn("Drag to move", text)
         self.assertIsNone(c.lua.eval('rawget')(c.ns.navigation.tip, 'OnEnter'))
         self.assertIsNone(c.lua.eval('rawget')(frame.tip, 'OnEnter'))
 

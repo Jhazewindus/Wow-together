@@ -57,9 +57,8 @@ class FlightReportTests(unittest.TestCase):
         c.lua.execute('flying=true; clock=100'); c.ns.handlers.PLAYER_CONTROL_LOST()
         c.lua.execute('clock=140'); c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.state.flight.remaining, 50)
-        self.assertIn('0m 50s', c.ns.standaloneNavigation.timer.text)
-        self.assertEqual(c.ns.navigation.distance.text, c.ns.standaloneNavigation.timer.text)
-        self.assertNotIn('Est.', c.ns.standaloneNavigation.timer.text)
+        self.assertEqual(c.ns.standaloneNavigation.timer.text, '~50 s')
+        self.assertEqual(c.ns.navigation.presentation.time, c.ns.standaloneNavigation.timer.text)
         c.lua.execute('flying=false; clock=190'); c.ns.handlers.PLAYER_CONTROL_GAINED()
         self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 90)
         self.assertNotIn('left', c.ns.standaloneNavigation.timer.text)
@@ -68,15 +67,15 @@ class FlightReportTests(unittest.TestCase):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.SetOption('standaloneArrow', True)
         c.ns.NoteFlightSelection(54)
         c.lua.execute('flying=true'); c.ns.UpdateNavigation()
-        self.assertIn('Est. flight', c.ns.standaloneNavigation.timer.text)
+        self.assertIn('~6 min', c.ns.standaloneNavigation.timer.text)
         c.lua.execute('clock=5000'); c.ns.UpdateNavigation()
-        self.assertIn('flying', c.ns.standaloneNavigation.timer.text)
+        self.assertEqual(c.ns.standaloneNavigation.timer.text, '')
         self.assertNotIn('left', c.ns.standaloneNavigation.timer.text)
 
     def test_flight_summary_distinguishes_ride_from_journey(self):
         c = flight_client(); c.ns.ReadFlightMap()
         stop = c.ns.TravelDestination(c.ns.selectedRoute.stops[1])
-        summary = c.ns.RouteContext(stop, 501)
+        summary = c.ns.GuideStepPresentation(stop, None, c.ns.routeSelection, c.ns.selectedRoute).travel
         self.assertIn('Estimated flight: ' + c.ns.FormatTravelDuration(stop.flightPlan.flightSeconds), summary)
         self.assertIn('journey ~' + c.ns.FormatTravelDuration(stop.flightPlan.seconds), summary)
         self.assertGreater(stop.flightPlan.seconds, stop.flightPlan.flightSeconds)
@@ -105,9 +104,8 @@ class FlightReportTests(unittest.TestCase):
         state = c.ns.navigation.state
         self.assertEqual(state.stop.travelLeg.method, 'zeppelin')
         self.assertAlmostEqual(state.stop.x, .9)
-        self.assertIn('Board at East gate', c.ns.navigation.context.text)
-        self.assertIn('90.0, 37.0', c.ns.navigation.context.text)
-        self.assertIn('waiting time varies', c.ns.navigation.context.text.lower())
+        self.assertIn('Take the zeppelin', c.ns.navigation.presentation.travel)
+        self.assertIn('90.0, 37.0', c.ns.navigation.presentation.location)
 
 
 class ArrowAndSettingsTests(unittest.TestCase):
@@ -148,7 +146,7 @@ class ArrowAndSettingsTests(unittest.TestCase):
         c.ns.UpdateNavigation(); before = c.ns.navigation.state.walkSeconds
         c.lua.execute('function GetUnitSpeed() return 14,14 end'); c.ns.UpdateNavigation()
         self.assertAlmostEqual(c.ns.navigation.state.walkSeconds, before / 2)
-        self.assertIn('travel', c.ns.standaloneNavigation.timer.text)
+        self.assertIn('~', c.ns.standaloneNavigation.timer.text)
         self.assertAlmostEqual(c.ns.travelPath.seconds, before * 1.25 / 2)
         c.lua.execute('function GetUnitSpeed() return secret,secret end'); c.ns.UpdateNavigation()
         self.assertAlmostEqual(c.ns.navigation.state.walkSeconds, before)

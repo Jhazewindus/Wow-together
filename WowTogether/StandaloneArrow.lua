@@ -25,6 +25,7 @@ function ns.CreateStandaloneArrow()
     frame.timer = ns.UILabel(frame, nil, 11, ns.UIColors.gold); frame.timer:SetPoint("TOP", 0, 0)
     frame.timer:SetSize(176, 16); frame.timer:SetWordWrap(false)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, -18); frame.icon.lines = {}
+    frame.kindIcon = frame.icon:CreateTexture(nil, "ARTWORK"); frame.kindIcon:SetSize(34, 34); frame.kindIcon:SetPoint("CENTER")
     frame.symbol = ns.UILabel(frame.icon, "GameFontNormalLarge", 24); frame.symbol:SetPoint("CENTER")
     frame.distance = ns.UILabel(frame, nil, 12, ns.UIColors.gold); frame.distance:SetPoint("TOP", 0, -71)
     frame.title = ns.UILabel(frame, nil, 11); frame.title:SetPoint("TOP", 0, -87); frame.title:SetSize(176, 14); frame.title:SetWordWrap(false)
@@ -58,10 +59,12 @@ function ns.CreateStandaloneArrow()
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        local description = self.state and self.state.stop and ns.GuideStepDescription(self.state.stop) or ""
-        local tip = self.guideTip and self.guideTip.detail or ""
-        local content = ns.CompactGuideTooltip(description, tip)
-        if content ~= "" then GameTooltip:AddLine(content, 1, 0.82, 0.3, true) end
+        local presentation = self.presentation or self.state and ns.GuideStepPresentation(self.state.stop, nil,
+            ns.routeSelection, ns.selectedRoute, self.state)
+        if presentation then
+            GameTooltip:AddLine(presentation.title, 1, 0.82, 0.3, true)
+            for _, line in ipairs(ns.GuidePresentationTooltipLines(presentation, "arrow")) do GameTooltip:AddLine(line, 1, 1, 1, true) end
+        end
         GameTooltip:Show()
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
@@ -96,26 +99,23 @@ function ns.UpdateStandaloneArrow(state)
     local training = (ns.IsClassTrainingStep(state.stop) or ns.IsInventoryServiceStep(state.stop)) and not state.flight and not state.busy
         and not ns.navigationPreview and not ns.Option("routeArrow")
     frame.training:SetShown(training == true)
-    local showReason = state.visible == true and not state.idle and not state.busy and not ns.Option("routeArrow")
-        and state.stop and state.stop.kind ~= "notice" and not state.stop.flightDiscovery
-    frame.reason:SetShown(showReason == true)
-    if showReason then
-        local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-        frame.reason:SetText("Why: " .. ns.GuideVisibleReason(state.stop, mapID, state.distance))
-    end
+    frame.reason:Hide()
     ns.LayoutStandaloneDetails(frame)
     ns.HideNavigationGeometry(frame.icon)
     if not frame:IsShown() then return end
-    local clock = ns.NavigationTravelTime(state)
-    frame.timer:SetText(clock or ""); frame.timer:SetShown(clock ~= nil)
+    local presentation = ns.GuideStepPresentation(state.stop, nil, ns.routeSelection, ns.selectedRoute, state)
+    frame.presentation = presentation
+    frame.timer:SetText(presentation.time or ""); frame.timer:SetShown(presentation.time ~= nil)
+    frame.distance:Hide()
     local drawable = type(frame.icon.CreateLine) == "function"
-    frame.symbol:SetText(state.flight and "…" or state.arrived and "↓" or "…")
-    frame.symbol:SetShown(not drawable or not state.arrived and state.angle == nil)
+    local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
+    frame.kindIcon:SetTexture(presentation.icon); frame.kindIcon:SetShown(state.angle == nil and iconOnly)
+    frame.symbol:SetText("…")
+    frame.symbol:SetShown(state.angle == nil and not iconOnly)
     if drawable then
         if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
-        elseif state.arrived then ns.DrawNavigationArrow(math.pi, frame.icon)
+        elseif state.arrived then frame.symbol:Hide()
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle, frame.icon) end
     end
-    frame.distance:SetText(state.flight and "Flying" or state.distance and ns.FormatDistance(state.distance) or state.status)
-    frame.title:SetText(state.stop.flightDiscovery and ("Visit " .. state.stop.flightDiscovery.source.name) or state.stop.title)
+    frame.title:SetText(presentation.what .. (presentation.progress and (" " .. presentation.progress) or ""))
 end

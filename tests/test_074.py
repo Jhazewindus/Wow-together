@@ -49,7 +49,7 @@ class SharedTravelTests(unittest.TestCase):
         stop = c.ns.navigation.state.stop
         self.assertEqual(stop.travelLeg.method, 'walk')
         self.assertIn('flight master', stop.label)
-        self.assertIn('then fly to End', c.ns.navigation.context.text)
+        self.assertIn('then Fly to End', c.ns.navigation.presentation.travel)
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 'q')
 
     def test_terminal_graph_walk_cannot_be_overridden_by_legacy_flight(self):
@@ -87,7 +87,7 @@ class SharedTravelTests(unittest.TestCase):
         self.assertEqual(c.ns.RouteForDisplay().stops[1].x, .95)
         self.assertEqual(c.ns.RouteForDisplay().stops[1].id, 900)
         self.assertEqual(c.ns.routeStats.lines, 0)
-        self.assertIn('Flying', c.ns.navigation.status.text)
+        self.assertIn('Fly to', c.ns.navigation.status.text)
         c.lua.execute('flying=false; C_Map.GetPlayerMapPosition=function() return CreateVector2D(.9,.4) end')
         c.ns.handlers.PLAYER_CONTROL_GAINED()
         self.assertFalse(c.ns.RouteForDisplay().flying)

@@ -166,8 +166,10 @@ class CraftTextTests(unittest.TestCase):
         c = cured_hide(skill=35); c.ns.StartProfessionGuide(165, 75)
         tooltip = hover(c)
         text = '\n'.join(tooltip.lines.values())
-        self.assertEqual(text.count('Skill 35'), 1)
-        self.assertEqual(text.count('Gather or buy materials'), 1)
+        self.assertEqual(c.ns.navigation.context.text.count('Skill 35'), 1)
+        self.assertEqual(c.ns.navigation.status.text, 'Gather or buy materials for Cured Light Hide')
+        self.assertEqual(text.count('Skill 35'), 0)  # Card fields are not repeated in its tooltip.
+        self.assertEqual(text.count('Gather or buy materials'), 0)
         self.assertLess(len(text), 350)
         self.assertNotIn('quest tracker', text)
         self.assertNotIn('Location not mapped', text)
@@ -175,8 +177,8 @@ class CraftTextTests(unittest.TestCase):
         c.lua.globals().stock[783] = 4; c.lua.globals().stock[4289] = 4
         c.ns.handlers.BAG_UPDATE_DELAYED(); c.drain()
         text = '\n'.join(tooltip.lines.values())
-        self.assertEqual(text.count('Craft 4 × Cured Light Hide'), 1)
-        self.assertNotIn('Gather or buy', text)
+        self.assertIn('Craft 4 × Cured Light Hide', c.ns.navigation.status.text)
+        self.assertNotIn('Gather or buy', c.ns.navigation.status.text)
         self.assertEqual(c.ns.navigation.context.text.count('Skill 35'), 1)
 
     def test_trainer_hover_preserves_useful_rank_reason_and_location(self):

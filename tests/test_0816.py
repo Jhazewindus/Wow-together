@@ -42,10 +42,10 @@ class WaypointDirectionsTests(unittest.TestCase):
         stop = c.ns.navigation.state.stop
         expected = 'Go to waypoint — The Barrens (54.0, 26.6)'
         self.assertEqual(stop.label, expected)
-        self.assertEqual(c.ns.navigation.status.text, expected)
-        self.assertIn(expected, c.ns.GuideStepDescription(stop))
-        self.assertIn('Travel towards Test Hills.', c.ns.navigation.context.text)
-        self.assertIn('this waypoint', c.ns.navigation.context.text)
+        self.assertEqual(c.ns.navigation.status.text, 'Walk to waypoint — The Barrens (54.0, 26.6)')
+        self.assertIn('Walk to waypoint — The Barrens (54.0, 26.6)', c.ns.GuideStepDescription(stop))
+        self.assertTrue(c.ns.navigation.presentation.travel)
+        self.assertIn('The Barrens (54.0, 26.6)', c.ns.navigation.presentation.what)
         self.assertNotIn('crossing', c.ns.navigation.context.text)
         self.assertAlmostEqual(stop.x, .5402)
         self.assertAlmostEqual(stop.y, .2659)

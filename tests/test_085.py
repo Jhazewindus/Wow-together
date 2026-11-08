@@ -85,7 +85,7 @@ class GuideTextTests(unittest.TestCase):
         description = c.ns.GuideStepDescription(stop)
         self.assertEqual(description.count('Loot 8 × Boar Flank'), 1)
         self.assertNotIn('Kill and loot Battleboar', description)
-        self.assertNotIn('Boar Flank is needed to finish Supplies', description)
+        self.assertEqual(description.count('Boar Flank is needed to finish Supplies'), 1)
         stop.action = 'gather'; stop.targetName = 'Apple tree'; stop.itemName = 'Apple'
         description = c.ns.GuideStepDescription(stop)
         self.assertIn('Collect from Apple tree.', description)
@@ -125,7 +125,7 @@ class GuideTextTests(unittest.TestCase):
         stop = step(c, unknownLocation=True)
         self.assertEqual(c.ns.StopLocationText(stop), 'Test Coast • location not mapped')
         self.assertNotIn('40.0', c.ns.RouteContext(stop, 501))
-        self.assertIn('quest tracker', c.ns.RouteContext(stop, 501))
+        self.assertNotIn('40.0', c.ns.GuideStepDescription(stop))
         stop.unknownLocation = None
         for value in (c.lua.globals().secret, float('nan'), float('inf'), 2):
             stop.x = value
@@ -163,10 +163,9 @@ class GuideTextTests(unittest.TestCase):
         c.ns.selectedRoute.stops[1] = stop
         progress(c, [{'text': 'Boar Flank', 'have': 3, 'need': 8}])
         c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.navigation.status.text, 'Loot 5 more Boar Flank')
-        self.assertEqual(c.ns.navigation.distance.text, '100 yd • 3/8 • ~0m 14s travel')
-        self.assertEqual(c.ns.navigation.context.text.splitlines(),
-                         ['Test Coast • 21.0, 27.0', 'Required now to finish Supplies'])
+        self.assertEqual(c.ns.navigation.status.text, 'Loot 5 more Boar Flank from Battleboar 3/8')
+        self.assertEqual(c.ns.navigation.distance.text, 'Required • 100 yd, ~14 s')
+        self.assertEqual(c.ns.navigation.context.text, 'Boar Flank is needed to finish Supplies')
         self.assertEqual(c.ns.selectedRoute.stops[1].x, .21)
 
     def test_pending_step_keeps_its_facts_and_blocking_reason(self):
@@ -176,8 +175,8 @@ class GuideTextTests(unittest.TestCase):
         c.ns.selectedRoute.pendingStop = stop
         c.ns.routePaused = 'Finish the prerequisite before this step.'
         c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.navigation.status.text, 'Finish the prerequisite before this step.')
-        self.assertIn('location not mapped', c.ns.navigation.context.text)
+        self.assertIn('Loot 8 × Boar Flank', c.ns.navigation.status.text)
+        self.assertNotIn('40.0', c.ns.navigation.context.text)
         self.assertIn('Battleboar', c.ns.GuideStepDescription(c.ns.navigation.state.stop))
 
     def test_patrol_hint_is_only_used_for_explicit_published_patrols(self):
@@ -195,7 +194,7 @@ class GuideTextTests(unittest.TestCase):
         c.ns.selectedRoute.pendingStop = stop
         c.ns.routePaused = 'Finish Cutting Teeth first.'
         c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.navigation.status.text, 'Finish Cutting Teeth first.')
+        self.assertEqual(c.ns.navigation.status.text, 'Accept Supplies from Gornek')
         self.assertNotIn('Kill', c.ns.GuideStepDescription(c.ns.navigation.state.stop))
 
     def test_unknown_item_starter_does_not_invent_a_creature_drop(self):

@@ -120,7 +120,11 @@ function ns.UpdateAreaObjectives(state)
                     row:SetWidth(width - 22); row.action:SetWidth(width - 88); row.quest:SetWidth(width - 28)
                     row:SetScript("OnEnter", function(self)
                         if not GameTooltip or not self.item then return end
-                        GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:AddLine(ns.GuideStepDescription(self.item.stop), 1, 1, 1, true); GameTooltip:Show()
+                        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                        local presentation = ns.GuideStepPresentation(self.item.stop)
+                        GameTooltip:AddLine(presentation.title, 1, 0.82, 0.3, true)
+                        for _, line in ipairs(ns.GuidePresentationTooltipLines(presentation, "arrow")) do GameTooltip:AddLine(line, 1, 1, 1, true) end
+                        GameTooltip:Show()
                     end)
                     row:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
                     panel.rows[index] = row

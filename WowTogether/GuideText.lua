@@ -3,6 +3,16 @@ local addonName, ns = ...
 -- Instructions use structured quest facts and matching public progress.
 -- They never turn a planning anchor or an unknown objective into a location.
 local function text(value) return ns.SafeTitle(value) end
+local function characterCount(value) return select(2, string.gsub(value, "[^\128-\191]", "")) end
+local function characterPrefix(value, limit)
+    local index, count = 1, 0
+    while index <= #value and count < limit do
+        local byte = string.byte(value, index)
+        index = index + (byte >= 240 and 4 or byte >= 224 and 3 or byte >= 192 and 2 or 1)
+        count = count + 1
+    end
+    return string.sub(value, 1, index - 1)
+end
 local function compactTooltipText(...)
     local output, seen = {}, {}
     for index = 1, select("#", ...) do
@@ -97,7 +107,14 @@ function ns.GuideStepAction(stop, facts)
         return verb .. (facts.item or target or title)
     end
     if stop.kind == "a" then
-        if stop.entityType == "object" then return "Read the " .. (facts.npc or target or "object") .. " (ground object) to start " .. title end
+        if stop.entityType == "object" then
+            local object = facts.npc or target or "object"
+            local full = "Read the " .. object .. " (ground object) to start " .. title
+            if characterCount(full) <= 70 then return full end
+            local compact = "Read " .. object .. " (object) to start " .. title
+            if characterCount(compact) <= 70 then return compact end
+            return "Read " .. object .. " to start " .. title
+        end
         if facts.npc then return "Accept from " .. facts.npc end
         if target then return "Accept at " .. target end
         return "Accept " .. title
@@ -123,7 +140,7 @@ function ns.GuideStepAction(stop, facts)
     return target and ("Complete the " .. target .. " objective") or (text(stop.label) or ("Work on " .. title))
 end
 
-function ns.GuideStepHint(stop, facts)
+local function guideStepHintSource(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
     if stop.professionStep then return stop.description end
     if stop.dungeonEntrance then return stop.published and "Entrance area; follow the approach to the portal."
@@ -131,10 +148,10 @@ function ns.GuideStepHint(stop, facts)
     local action = facts.action
     if stop.kind == "trainer" then return "Optional training check; buy useful class skills manually. Done training or Skip training resumes quests." end
     if stop.confirmation then return stop.confirmationReason or "Check the quest giver's offers before picking this quest up." end
-    if stop.kind == "travel" or stop.kind == "f" then return "Follow the travel instructions for this leg." end
+    if stop.kind == "travel" or stop.kind == "f" then return nil end
     if stop.kind == "corpse" then return "Recover your body to resume the guide." end
     if stop.kind == "loading" then return "Checking quest progress and route information." end
-    if stop.kind == "notice" then return "Check the guide status below." end
+    if stop.kind == "notice" then return text(stop.label) end
     if facts.finished or facts.remaining == 0 then return "This objective is finished." end
     if action == "start-item" then
         return (facts.npc and ((stop.sourceAction == "buy" and "Buy from " or "Loot from ") .. facts.npc .. "; ") or "")
@@ -166,12 +183,14 @@ function ns.GuideStepHint(stop, facts)
     if action == "event" then return "Complete the quest event at this location." end
     return "Finish this quest objective in the marked area."
 end
+ns.GuideStepHintSource = guideStepHintSource
 
 function ns.StopInstruction(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
     local title = text(stop.title) or "this quest"
     if stop.confirmation then return "Talk to " .. (facts.npc or "the quest giver") .. " to confirm " .. title end
     if stop.kind == "a" and facts.action ~= "start-item" then
+        if stop.entityType == "object" then return ns.GuideStepAction(stop, facts) end
         return "Accept " .. title .. (facts.npc and (" from " .. facts.npc) or facts.target and (" at " .. facts.target) or "")
     end
     if stop.kind == "t" then return "Turn in " .. title .. (facts.npc and (" to " .. facts.npc) or "") end
@@ -226,7 +245,7 @@ function ns.GuideStepRequirement(stop, mapID, distance, guide, route)
 end
 
 local function compactStepHint(stop, facts)
-    local hint = ns.GuideStepHint(stop, facts)
+    local hint = guideStepHintSource(stop, facts)
     local action = facts.action
     if stop.professionStep or stop.inventoryService or stop.dungeonEntrance
         or stop.kind == "trainer" or stop.kind == "travel" or stop.kind == "f"
@@ -244,15 +263,6 @@ local function compactStepHint(stop, facts)
     return
 end
 
-local function meaningfulDecision(decision)
-    if not decision then return end
-    local generic = {
-        ["quest-objective"] = true, ["level-work"] = true,
-        ["selected-guide"] = true, ["guide-status"] = true,
-    }
-    if not generic[decision.code] then return decision.why end
-end
-
 function ns.StopLocationText(stop, mapID)
     stop = source(stop)
     if not ns.GuideInteger(stop.mapID) or stop.mapID <= 0 then return "Location not mapped" end
@@ -268,37 +278,307 @@ function ns.StopLocationText(stop, mapID)
     return zone .. " • location not mapped"
 end
 
-function ns.GuideStepDescription(stop, facts, guide, route)
-    facts = facts or ns.GuideStepFacts(stop)
-    local parts = {text(facts.stop.title) or "Guide step", ns.StopInstruction(stop, facts)}
-    if facts.stop.professionStep then
-        if facts.stop.description then parts[#parts + 1] = facts.stop.description end
-        if not facts.stop.unknownLocation then parts[#parts + 1] = ns.StopLocationText(facts.stop) end
-        return compactTooltipText(table.concat(parts, "\n"))
+local function withoutFinalPeriod(value)
+    if type(value) ~= "string" then return nil end
+    return string.gsub(string.gsub(value, "%s+$", ""), "[%.!]+$", "")
+end
+
+local function capped(value, maximum)
+    value = withoutFinalPeriod(value)
+    if not value then return nil end
+    if characterCount(value) > maximum then return characterPrefix(value, maximum - 1) .. "…" end
+    return value
+end
+
+local function sentence(value, maximum)
+    value = capped(value, maximum)
+    if value and not string.find(value, "[.!?]$") then return value .. "." end
+    return value
+end
+
+local function actionKind(action)
+    if action == "kill" or action == "escort" then return "kill" end
+    if action == "collect" or action == "loot" or action == "item" or action == "gather" or action == "buy" then return "collect" end
+    if action == "use" or action == "heal" or action == "interact" or action == "event" then return "use" end
+    if action == "talk" then return "talk" end
+    return "explore"
+end
+
+local function presentationKind(stop, facts)
+    if stop.kind == "a" then return "accept" end
+    if stop.kind == "t" then return "turnin" end
+    if stop.kind == "trainer" then return "trainer" end
+    if stop.inventoryService then return "vendor" end
+    if stop.professionStep then return "vendor" end
+    if stop.confirmation then return "notice" end
+    if stop.dungeonEntrance then return "dungeon" end
+    if stop.kind == "corpse" then return "corpse" end
+    if stop.kind == "notice" or stop.kind == "loading" then return "notice" end
+    if stop.kind == "travel" or stop.kind == "f" then
+        local method = stop.travelLeg and stop.travelLeg.method
+        if method == "taxi" then return "travel-fly" end
+        if method == "ship" or method == "zeppelin" or method == "tram" then return "travel-ship" end
+        if method == "hearth" then return "travel-hearth" end
+        if method == "teleport" then return "travel-teleport" end
+        return "travel-walk"
     end
-    if facts.stop.inventoryService then
-        parts[#parts + 1] = facts.stop.serviceReason
-        parts[#parts + 1] = facts.stop.serviceInstructions
-        parts[#parts + 1] = "Done resumes your guide."
-        return compactTooltipText(table.concat(parts, "\n"))
+    return actionKind(facts.action)
+end
+
+local function presentationTravelAction(stop, goal)
+    if stop.flightDiscovery then
+        local plan = stop.flightDiscovery
+        return "Visit " .. (text(plan.source and plan.source.name) or "the flight master")
     end
-    local groupWarning = ns.QuestGroupWarning(facts.stop.id)
-    if groupWarning then parts[#parts + 1] = groupWarning end
-    if facts.progress then parts[#parts + 1] = "Progress: " .. facts.progress end
-    if text(facts.stop.forPlayer) then parts[#parts + 1] = "For " .. text(facts.stop.forPlayer) end
-    local hint = compactStepHint(facts.stop, facts)
-    if hint then parts[#parts + 1] = hint end
-    local decision = ns.GuideDestinationDecision(stop, guide, route)
-    local reason = meaningfulDecision(decision)
-    if reason then parts[#parts + 1] = reason end
-    if decision.caution and decision.caution ~= reason then parts[#parts + 1] = decision.caution end
-    parts[#parts + 1] = ns.StopLocationText(stop)
-    local quest = ns.CatalogueQuest(facts.stop.id)
-    if quest then
-        for _, item in ipairs(quest.providedItems or {}) do
-            local name = text(item.name)
-            if name then parts[#parts + 1] = "Quest item: " .. name .. " (provided)" end
+    local leg = stop.travelLeg
+    if stop.flightPlan then
+        local instruction = text(stop.label)
+        if instruction then return instruction end
+        return "Fly to " .. (stop.flightPlan.destination.name or ns.MapName(stop.flightPlan.destination.mapID))
+    end
+    if not leg then return text(stop.label) or text(stop.status) or "Travel to the next stop" end
+    if leg.method == "hearth" or leg.method == "teleport" then
+        return ns.PersonalTransportLabel(leg)
+    end
+    if leg.method == "taxi" then return "Fly to " .. (text(leg.name) or ns.MapName(leg.to.mapID)) end
+    if leg.method == "ship" or leg.method == "zeppelin" or leg.method == "tram" then
+        if leg.from and (text(leg.from.name) or text(leg.from.label)) then
+            return "Board at " .. (text(leg.from.name) or text(leg.from.label))
+        end
+        local transport = leg.method == "ship" and "ship" or leg.method == "zeppelin" and "zeppelin" or "tram"
+        return "Take the " .. transport .. " to " .. (text(leg.name) or ns.MapName(leg.to.mapID))
+    end
+    if leg.to and leg.to.terrain then return "Follow the road around " .. (text(leg.to.terrain.name) or "the terrain") end
+    if leg.to and leg.to.trail then return "Follow the road towards " .. (text(leg.to.name) or ns.MapName(leg.to.mapID)) end
+    if leg.waypoint or leg.toID and string.find(leg.toID, "^BORDER_") then
+        return "Walk to " .. (text(leg.name) or text(leg.to.name) or ns.MapName(leg.to.mapID))
+    end
+    return text(stop.label) or ("Walk to " .. (text(leg.name) or ns.MapName(leg.to.mapID)))
+end
+
+local function presentationStatus(decision, stop, facts, guide)
+    if stop.confirmation then return "Confirm at the giver", "gold" end
+    if facts.finished or facts.remaining == 0 or stop.id and stop.id > 0
+        and ns.CatalogueCompletion(stop.memberKey or ns.self, stop.id) == true then
+        return "Done", "green"
+    end
+    if decision and decision.specificBenefit ~= true then
+        local quest = ns.CatalogueQuest(stop.id)
+        local level = quest and (quest.minLevel or quest.level)
+        return "Later" .. (level and (" (level " .. level .. ")") or ""), "muted"
+    end
+    local optional = { ["pickup-hub"] = true, ["return-hub"] = true, ["objective-area"] = true,
+        ["early-reward"] = true, ["quest-log-space"] = true, ["dungeon-pickup"] = true,
+        ["class-training"] = true, vendor = true, ["class-progression"] = true,
+        ["profession-work"] = true, service = true }
+    if stop.kind == "trainer" or stop.inventoryService or stop.professionStep
+        or decision and optional[decision.code] then return "Optional, on the way", "text" end
+    if guide and decision and decision.specificBenefit then return "Required", "gold" end
+    return "Optional, on the way", "text"
+end
+
+local function statusLineForGuide(guide, route, stop, status)
+    if status == "Optional, on the way" and ns.IsClassTrainingStep and ns.IsClassTrainingStep(stop) then return "Optional class training" end
+    if status == "Optional, on the way" and ns.IsInventoryServiceStep and ns.IsInventoryServiceStep(stop) then return "Optional vendor visit" end
+    if not guide then return "Current step" end
+    local countStops = route and route.stops and #route.stops or guide.classQuestStepCount or guide.classQuestCount
+    local index = stop.guideStep
+    local prefix
+    if stop.historyPreview then prefix = "Previous step"
+    elseif index and countStops then prefix = "Step " .. index .. " of " .. countStops
+    elseif index then prefix = "Step " .. index
+    else prefix = "Current step" end
+    local label = guide.zone or guide.title or guide.name
+    if guide.mode == "zone" and ns.profile and ns.profile.faction and label then label = ns.profile.faction .. " / " .. label end
+    if label then return prefix .. " • " .. label end
+    return prefix
+end
+
+local function presentationTime(state)
+    if not state then return nil end
+    if state.arrived then return "Here" end
+    local distance = state.distance and ns.FormatDistance(state.distance) or nil
+    local seconds
+    if state.flight then
+        seconds = state.flight.remaining or state.flight.elapsed
+    else
+        seconds = state.walkSeconds
+    end
+    local timing
+    if seconds and seconds > 0 then
+        timing = seconds < 60 and ("~" .. math.floor(seconds) .. " s")
+            or ("~" .. math.floor(seconds / 60) .. " min " .. string.format("%02d", math.floor(seconds % 60)) .. " s")
+    end
+    if distance and timing then return distance .. ", " .. timing end
+    return distance or timing
+end
+
+local function presentationTravelSummary(stop, fallback)
+    local path = ns.travelPath
+    if (stop.travelLeg or stop.flightPlan) and not stop.flightPlan
+        and type(path) == "table" and type(path.legs) == "table" then
+        local parts, landing = {}, nil
+        local cursor = math.max(1, path.cursor or 1)
+        for index = cursor, #path.legs do
+            local leg = path.legs[index]
+            local method, label = leg.method, text(leg.name)
+            local action
+            if method == "teleport" then action, landing = "Teleport", leg.name
+            elseif method == "hearth" then action, landing = "Hearthstone", leg.name
+            elseif method == "taxi" then
+                local flight = type(leg.flight) == "table" and leg.flight
+                local seconds = flight and (flight.flightSeconds or flight.seconds) or leg.seconds
+                action = "Fly to " .. (label or "the next flight point")
+                    .. (seconds and (" (~" .. ns.FormatTravelDuration(seconds) .. ")") or "")
+            elseif method == "ship" or method == "zeppelin" or method == "tram" then
+                action = "Take the " .. method .. (label and (" to " .. label) or "")
+            elseif method == "walk" then
+                action = "walk" .. (leg.seconds and (" ~" .. ns.FormatTravelDuration(leg.seconds)) or "")
+            end
+            if action then parts[#parts + 1] = action end
+        end
+        if #parts > 0 then
+            local result = table.concat(parts, ", then ")
+            if landing then result = result .. ". Lands in " .. landing end
+            return sentence(result, 180)
         end
     end
-    return compactTooltipText(table.concat(parts, "\n"))
+    if not fallback then return nil end
+    local first = (stop.travelLeg or stop.flightPlan) and (presentationTravelAction(stop, ns.GuideDestination(stop)) .. ".")
+    fallback = string.gsub(fallback, "The route re%-plans after you arrive%.", "")
+    fallback = string.gsub(fallback, "Continue towards your guide destination%.?", "")
+    fallback = string.gsub(fallback, "; the map line follows it%.?", "")
+    fallback = string.gsub(fallback, "Follow the travel instructions for this leg%.?", "")
+    if first then fallback = string.gsub(fallback, "^%s*" .. first, "") end
+    fallback = string.gsub(fallback, "Lands at ", "Lands in ")
+    fallback = string.gsub(fallback, "[\n]+", " ")
+    fallback = string.gsub(fallback, "%s+%.", ".")
+    fallback = string.gsub(fallback, "%s+", " ")
+    return sentence(fallback, 180)
+end
+
+function ns.GuideStepPresentation(stop, facts, guide, route, state)
+    if not stop then return nil end
+    guide, route = guide or ns.routeSelection, route or ns.selectedRoute
+    local goal = ns.GuideDestination(stop)
+    facts = facts and facts.stop == goal and facts or ns.GuideStepFacts(goal)
+    local decision = ns.GuideDestinationDecision(stop, guide, route)
+    local status, statusColor = presentationStatus(decision, goal, facts, guide)
+    local complete = stop.kind == "notice" and route and route.complete == true
+    if complete then status, statusColor = "Done", "green" end
+    local isTravel = stop.kind == "travel" or stop.kind == "f" or stop.travelLeg or stop.flightPlan or state and state.flight
+    local what = complete and "Guide complete"
+        or state and state.flight and ("Fly to " .. (text(state.flight.name) or "your destination"))
+        or isTravel and presentationTravelAction(stop, goal) or ns.StopInstruction(goal, facts)
+    local title = text(goal.title) or text(stop.title) or "Current task"
+    local why = decision and decision.specificBenefit and decision.why or nil
+    local departure = stop.travelLeg and (stop.travelLeg.method == "ship" or stop.travelLeg.method == "zeppelin"
+        or stop.travelLeg.method == "tram" or stop.travelLeg.method == "taxi")
+    local locationStop = isTravel and stop.travelLeg and (departure and stop.travelLeg.from or stop.travelLeg.to) or goal
+    local location = locationStop and locationStop.mapID and not (goal.professionStep and goal.unknownLocation)
+        and ns.StopLocationText(locationStop) or nil
+    local rawHint = guideStepHintSource(goal, facts)
+    local hint = compactStepHint(goal, facts)
+    local details, seen = {}, {}
+    local function addDetail(value)
+        value = text(value)
+        local lowered = value and string.lower(value)
+        local repeats = lowered and (what and (string.find(lowered, string.lower(what), 1, true)
+            or string.find(string.lower(what), lowered, 1, true))
+            or why and (string.find(lowered, string.lower(why), 1, true)
+                or string.find(string.lower(why), lowered, 1, true)))
+        if value and value ~= "" and not repeats and not seen[value] and #details < 3 then
+            details[#details + 1], seen[value] = sentence(value, 110), true
+        end
+    end
+    if goal.inventoryService then
+        addDetail(goal.serviceReason)
+        addDetail(goal.serviceInstructions)
+        addDetail("Done resumes your guide")
+    else
+        addDetail(ns.QuestGroupWarning(goal.id))
+        addDetail(goal.forPlayer and ("For " .. text(goal.forPlayer)))
+        if goal.clientLocation then addDetail("Quest tracker marked area") end
+        local quest = ns.CatalogueQuest(goal.id)
+        for _, item in ipairs(quest and quest.providedItems or {}) do
+            if item.name then addDetail("Quest item: " .. text(item.name) .. " (provided)") end
+        end
+        if goal.unsafeTransit then addDetail("No mapped bypass is known. Follow roads around the town") end
+        if goal.unsafeTerrain then
+            addDetail(goal.terrainApproach and "Reach the mesa using its lift or ramp" or "Use the entrance or a path around the pinnacle")
+        end
+        addDetail(decision and decision.caution)
+        if hint and not goal.professionStep
+            and not string.find(string.lower(what), string.lower(hint), 1, true) then addDetail(hint) end
+    end
+    if goal.professionStep and not why then
+        addDetail(goal.description)
+    end
+    local kind = presentationKind(stop, facts)
+    local icon = ns.StopIcon(stop) or ns.StopIcon(goal) or (facts.action == "kill" and "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8")
+        or "Interface\\Icons\\INV_Misc_Map_01"
+    local thenText
+    if isTravel then thenText = "Then: " .. ns.StopInstruction(goal, facts)
+        .. (location and (" (" .. location .. ")") or "") .. "." end
+    local travel = presentationTravelSummary(stop, ns.TravelPathSummary(stop))
+    local evidence = decision and decision.code and ("Reason: " .. decision.code
+        .. (decision.confidence and (" • " .. decision.confidence) or "")
+        .. (decision.estimated and " • estimated" or "") .. ".")
+    return {kind = kind, icon = icon, title = title, stepLine = capped(statusLineForGuide(guide, route, goal, status), 110),
+        what = capped(what, 70), progress = facts.progress, why = capped(why, 110), status = status,
+        statusColor = statusColor, time = presentationTime(state), location = location, then_ = thenText,
+        travel = travel and string.gsub(string.gsub(travel, "^%s+", ""), "%s+$", "") or nil,
+        hint = rawHint,
+        details = details, evidence = evidence, decision = decision, stop = stop, goal = goal, facts = facts}
+end
+
+function ns.GuidePresentationTooltip(presentation, includeCard)
+    if not presentation then return "" end
+    return table.concat(ns.GuidePresentationTooltipLines(presentation, includeCard), "\n")
+end
+
+function ns.GuidePresentationTooltipLines(presentation, includeCard)
+    if not presentation then return {} end
+    local output, seen = {}, {}
+    local function keyFor(value)
+        value = text(value)
+        return value and string.lower(string.gsub(value, "[%.!]+$", "")) or nil
+    end
+    local function add(value)
+        value = text(value)
+        if not value then return end
+        local key = keyFor(value)
+        if key == "" or seen[key] or #output >= 5 then return end
+        seen[key], output[#output + 1] = true, value
+    end
+    local function mark(value)
+        local key = keyFor(value)
+        if key then seen[key] = true end
+    end
+    if includeCard == true then
+        add(presentation.what); add(presentation.why); add(presentation.status)
+    else
+        mark(presentation.what)
+        if includeCard ~= "arrow" then
+            mark(presentation.why); mark(presentation.status)
+        else add(presentation.why); add(presentation.status) end
+    end
+    add(presentation.then_)
+    if not (presentation.then_ and presentation.location
+        and string.find(presentation.then_, presentation.location, 1, true)) then add(presentation.location) end
+    add(presentation.travel)
+    for _, detail in ipairs(presentation.details or {}) do add(detail) end
+    add(presentation.evidence)
+    return output
+end
+
+function ns.GuideStepDescription(stop, facts, guide, route)
+    local presentation = ns.GuideStepPresentation(stop, facts, guide, route)
+    return compactTooltipText(presentation and presentation.title,
+        ns.GuidePresentationTooltip(presentation, true))
+end
+
+function ns.GuideStepHint(stop, facts, guide, route)
+    local presentation = ns.GuideStepPresentation(stop, facts, guide, route)
+    return presentation and presentation.hint
 end

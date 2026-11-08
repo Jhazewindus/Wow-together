@@ -566,16 +566,16 @@ function ns.TravelPathSummary(stop)
         local leg = stop.travelLeg
         local transport = leg.to.personal
         return ns.PersonalTransportLabel(leg) .. ".\nLands " .. (transport and transport.approximate and "near " or "at ") .. leg.name
-            .. "; journey ~" .. ns.FormatTravelDuration(path.seconds) .. ". The route re-plans after you arrive."
+            .. "; journey ~" .. ns.FormatTravelDuration(path.seconds) .. "."
     end
     if stop.travelLeg and stop.travelLeg.method == "walk" and stop.travelLeg.to.terrain then
-        return "Go around " .. stop.travelLeg.to.terrain.name .. ".\nContinue towards your guide destination."
+        return "Go around " .. stop.travelLeg.to.terrain.name .. "."
     end
     if stop.travelLeg and stop.travelLeg.method == "walk" and stop.travelLeg.to.trail then
         local connection = nextConnection(path)
         local onward = connection and (transportAction(connection.method) .. " to " .. connection.name .. " from " .. nodeName(connection.fromID, connection.from) .. ".")
             or ("Continue towards " .. ns.MapName(stop.goal.mapID) .. ".")
-        return (stop.travelLeg.to.bundled and "Bundled road" or "Ground you have walked before") .. "; the map line follows it.\n" .. onward
+        return (stop.travelLeg.to.bundled and "Bundled road" or "Ground you have walked before") .. ". " .. onward
     end
     if stop.travelLeg and stop.travelLeg.method ~= "walk" and stop.travelLeg.method ~= "taxi" then
         local leg = stop.travelLeg

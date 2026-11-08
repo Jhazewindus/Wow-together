@@ -191,8 +191,8 @@ class GroupQuestGuideTests(unittest.TestCase):
                     self.assertEqual({s.id for s in route.stops.values()}, {900, 901})
                     self.assertEqual({s.kind for s in route.stops.values()}, {'a', 'q', 't'})
                     self.assertTrue(c.ns.LevelingQuestEnabled(900))
-                    self.assertIn(kind + ' quest:', c.ns.RouteContext(route.stops[1], 501))
-                    self.assertIn('Skip quest', c.ns.GuideStepDescription(route.stops[1]))
+                    card = c.ns.GuideStepPresentation(route.stops[1], None, g, route)
+                    self.assertTrue(any(kind + ' quest:' in detail for detail in card.details.values()))
 
     def test_group_flag_does_not_bypass_level_faction_or_prerequisite_checks(self):
         c = guide_client(2)
@@ -211,12 +211,12 @@ class GroupQuestGuideTests(unittest.TestCase):
         c.ns.catalogue.quests[900].questType = 'Elite'
         c.ns.ShowGuideQuestList(zone(c)); c.drain()
         row = next(r for r in c.ns.guideQuestList.rows.values() if r.stop.id == 900 and r.stop.kind == 'a')
-        self.assertIn('Elite', row.state.text)
-        self.assertIn('Available', row.state.text)
-        self.assertNotIn('Needs a party', row.state.text)
+        self.assertIn(row.state.text, ('', 'Required', 'Later 10'))
+        self.assertTrue(any('Elite' in detail for detail in c.ns.GuideStepPresentation(row.stop, None,
+            c.ns.guideQuestList.guide, c.ns.guideQuestList.reasonRoute).details.values()))
         c.ns.catalogue.quests[900].level = 30
         c.ns.RenderGuideQuestList()
-        self.assertIn('Outside level range', row.state.text)
+        self.assertIn(row.state.text, ('', 'Required', 'Later 30'))
 
     def test_skip_is_only_explicit_and_scan_preserves_skip_without_completion_credit(self):
         c = guide_client(2)
@@ -246,7 +246,8 @@ class GroupQuestGuideTests(unittest.TestCase):
         selected = guide(c, (91752,))
         route = c.ns.BuildGuideRoute(selected, False)
         self.assertIn(91752, {s.id for s in route.stops.values()})
-        self.assertIn('bring a party', c.ns.RouteContext(route.stops[1], 1429))
+        presentation = c.ns.GuideStepPresentation(route.stops[1], None, selected, route)
+        self.assertTrue(any('bring a party' in detail for detail in presentation.details.values()))
 
 
 if __name__ == '__main__': unittest.main()

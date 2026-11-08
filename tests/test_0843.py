@@ -104,13 +104,13 @@ class FlightDiscoveryTests(unittest.TestCase):
         self.assertTrue(arrow.tip.IsShown(arrow.tip))
         self.assertIn('Test flight', arrow.tip.text.text)
         self.assertIn('future trips', arrow.tip.text.text)
-        # The standalone-only layout also reserves the shared quest reason.
-        self.assertTrue(arrow.reason.IsShown(arrow.reason))
-        self.assertEqual(arrow.height, 102 + arrow.reason.height + 4 + 56)
+        # The standalone surface shows only its instruction and time; the tip remains separate.
+        self.assertFalse(arrow.reason.IsShown(arrow.reason))
+        self.assertEqual(arrow.height, 102 + 56)
         arrow.tip.close.OnClick()
         self.assertFalse(arrow.tip.IsShown(arrow.tip))
         self.assertFalse(c.ns.GuideQuestSkipped(900))
-        self.assertEqual(arrow.height, 102 + arrow.reason.height + 4)
+        self.assertEqual(arrow.height, 102)
 
     def test_one_banner_and_automatic_removal_after_confirmed_unlock(self):
         c = tip_client(inn=False, flight=True)
