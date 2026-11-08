@@ -1,5 +1,29 @@
 # Wow Together — friend test script
 
+For **0.8.100** — **DUNGEON PREREQUISITE AUDIT**, live World of Warcraft: Forever.
+
+## Dungeon prerequisite audit — 0.8.100
+
+1. In the dungeon finder, inspect quests whose prerequisite chains were
+   corrected, especially the Gnomeregan Sparklematic quests and Lord Valthalak
+   amulet variants. Confirm each variant leads to its own required prior quest.
+2. Check Tiara of the Deep (2846) and Open the Maw (95682). They must remain
+   unverified until the conflicting source reports are resolved; do not follow
+   a guessed prerequisite.
+3. Check a dungeon quest with no recorded pickup or objective coordinates.
+   The guide should keep the missing location visible and should not invent a
+   map point. Dungeon categories and entrances with missing source coverage
+   remain incomplete.
+4. Verify level, faction, class, quest history and actual in-game offers on a
+   live Forever character. Host source-data tests cannot establish those facts.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,865 tests and 385 subtests** in 488.11 seconds. All **98 Lua
+files compile under Lua 5.1**. The dungeon audit reports 382 memberships, no
+missing catalogue records, and two still-unverified prerequisite facts. Fixed-
+guide audits and fingerprints are unchanged. Host checks cannot establish live
+quest offers, character-specific eligibility, or in-game route behavior.
+
 For **0.8.99** — **GUIDE BROWSER SCAN PERFORMANCE**, live World of Warcraft: Forever.
 
 ## Guide browser scan performance — 0.8.99

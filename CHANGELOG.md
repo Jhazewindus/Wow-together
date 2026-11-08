@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.8.100
+
+**DUNGEON PREREQUISITE AUDIT**
+
+- Recheck all 27 previously unverified dungeon quest memberships against
+  current QuestieDB Forever data, Wowhead quest-series pages and relevant
+  player comments. Resolve 25 memberships, including exact Sparklematic and
+  Lord Valthalak quest variants; retain two conflicting gates as explicitly
+  unverified rather than inventing route steps.
+- Review quest 7507's current detail page, correct the generated prerequisite
+  catalogue, and add a hash-backed source manifest and regression coverage.
+- Keep entrance, pickup and objective gaps visible. This update does not claim
+  complete dungeon quest lists or fully mapped in-game routes.
+- Validation: 1,865 host tests and 385 subtests pass; all 98 Lua files compile
+  under Lua 5.1. Fixed-guide audits and fingerprints remain unchanged. Live
+  quest offers and route behavior still need in-game verification; see
+  `TESTING.md`.
+
 ## 0.8.99
 
 **GUIDE BROWSER SCAN PERFORMANCE**

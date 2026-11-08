@@ -1,4 +1,4 @@
-# Combined dungeon data — updated for 0.8.96
+# Combined dungeon data — updated for 0.8.100
 
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
@@ -45,7 +45,7 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
   Two rows explicitly marked `<UNUSED>` are excluded. Current detail pages,
   series tables and relevant comments were checked for the dungeon quests; the
   capture hashes, reviewed links and inaccessible pages are in
-  `research/dungeon-prerequisite-audit-2026-11-07/audit.json`; the refreshed
+  `research/dungeon-prerequisite-audit-2026-11-08.json`; the refreshed
   Alcaz list and four detail-page hashes are in `tools/dungeon_quest_additions.json`.
 - [Mapzeroth Forever geographic facts](https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua),
   pinned revision `fd68cfe2153379898680c66a01833846f9933587` (MIT).
@@ -109,17 +109,30 @@ Saved recordings and public native links can refine these published areas.
 
 ## Coverage
 
-The all-dungeon prerequisite review uses current QuestieDB facts, Wowhead
-series, and relevant player comments. It corrects the hidden Rig Wars offer
-gate before Chief Engineer Scooty, and removes the false 6562 → 6563 edge:
-current comments identify Trouble in the Deeps and The Essence of Aku'Mai as
-breadcrumbs rather than required prerequisites. The Lordaeron Unending Torment
-chain now includes its current QuestieDB links through 97292. Known limitations
-remain explicit: 17 detail pages were denied, the prerequisite for quest 7507
-could not be read, and comments conflict or omit the quest ID for gates on 2846
-and 95682. Newly listed quests lack pickup/objective coordinates, and two
-outdoor prerequisite records lack published pickup/turn-in map points. A
-comment-supported pickup for 97130 is routed to Archmage Timear in Dalaran.
+The all-dungeon prerequisite review combines current QuestieDB Forever rows,
+Wowhead Forever quest pages and relevant player comments. It retains the
+verified Rig Wars offer gate before Chief Engineer Scooty, removes the false
+6562 → 6563 edge, and keeps the Lordaeron Unending Torment chain through 97292.
+
+On November 8, all **27 formerly unverified dungeon memberships** were
+rechecked against current detail pages. Twenty-five now have a verified
+predecessor or a reviewed page with no preceding series step. The exact
+Gnomeregan Sparklematic variants and each Lord Valthalak amulet variant now
+point to their own required predecessor, rather than treating sibling variants
+as interchangeable. The reviewed page hashes and the QuestieDB revision are in
+`research/dungeon-prerequisite-audit-2026-11-08.json`. Only two prerequisite
+memberships remain unresolved: **Tiara of the Deep** (2846), where comments
+conflict with the published series row, and **Open the Maw** (95682), whose
+listed prior quest is also reported as a breadcrumb while its required pickup
+NPC is unnamed. Both remain visibly unverified; neither receives a guessed
+route.
+
+Fifteen pages previously denied by Wowhead are now accessible; two detail pages
+(7498 and 7761) remain denied. Quest 7507 is now source-reviewed as having no
+preceding quest; it remains the known predecessor for 7508. Newly listed quests
+still lack some pickup/objective coordinates, and two outdoor prerequisite
+records have no published pickup/turn-in map points. A comment-supported pickup
+for 97130 is routed to Archmage Timear in Dalaran.
 
 The current Forever pages still show no preceding quest for either faction's
 The Heart of the Void quest. They do not identify its starter item or pickup
@@ -187,10 +200,11 @@ beyond this reviewed catalogue; its chain facts confirm the 1109 → 1113 link.
 As of this refresh, 380 static quest memberships are in the finder and two
 additional area-matched quests are included in the runtime prerequisite audit
 (382 total). Five of 28 dungeon entrance areas remain unknown, Blackmaw Hold
-and Shaper's Terrace still have no named quest list, and 27 listed quest
-memberships have unverified prerequisite research. These are visible work items,
-not gaps to fill with guessed paths. See
-`research/dungeon-prerequisite-level-audit-2026-11-08.json`.
+and Shaper's Terrace still have no named quest list, and only the two conflicting
+prerequisite memberships above remain unverified. Pickup/objective coordinates
+and those entrance/category gaps remain explicit rather than guessed. See
+`research/dungeon-prerequisite-level-audit-2026-11-08.json` and
+`research/dungeon-prerequisite-audit-2026-11-08.json`.
 
 ## Reproduce the offline merge
 

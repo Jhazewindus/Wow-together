@@ -67,7 +67,7 @@ class DungeonActionTests(unittest.TestCase):
         self.assertEqual(quest_data[97291]['previousQuest'], 97290)
         self.assertEqual(quest_data[97292]['previousQuest'], 97291)
         unread = {ident for ident in memberships if not quest_data[ident].get('prerequisitesRead')}
-        self.assertEqual(unread, {7507, 96335, 96337, 96377, 96772})
+        self.assertEqual(unread, set())
         starts = quest_data[97130]['starts']
         self.assertEqual({p['entityID'] for p in starts}, {31439})
         self.assertEqual({p['mapID'] for p in starts}, {1416})

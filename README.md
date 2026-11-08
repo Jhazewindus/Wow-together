@@ -2,9 +2,14 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.99 — GUIDE BROWSER SCAN PERFORMANCE** targets
+progress. Version **0.8.100 — DUNGEON PREREQUISITE AUDIT** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.100 reviews 27 previously uncertain dungeon quest prerequisites.** It
+resolves 25 from current Forever source data and keeps two conflicting gates
+unverified. Dungeon pickup/objective locations and incomplete category lists
+remain explicit. See DUNGEONS.md and TESTING.md.
 
 **0.8.99 reduces repeated prerequisite checks when the Guides view refreshes.**
 It reuses results within one current-state query, including after route scans,

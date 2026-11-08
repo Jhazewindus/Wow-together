@@ -20764,5 +20764,475 @@
     "previousQuest": 92434,
     "previousTitle": "Blood in the Streets",
     "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; the captured quest series is 92434 → 96984 → 97287."
+  },
+  {
+    "questID": 96335,
+    "title": "The Man in the Iron Chains",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=96335 detail capture SHA-256 4dc98704ed6e8485dd1a8e90fa4fac022952a9ad061c16d028fdbfa0131c62c6; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 96337,
+    "title": "More Valuable Than Gold",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=96337 detail capture SHA-256 c2704ecc5132f59e81334221d1ca240a9dd73359666509f6cc012473aa43fe32; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 96377,
+    "title": "State Secrets",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=96377 detail capture SHA-256 fec470ba977782fd8d326d7d245ca60301d4fe862599b9ac001cfe536d8ab9eb; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 96772,
+    "title": "The Dragon's Journal",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=96772 detail capture SHA-256 e20cce652b8f992defefca381c3a500de7f5fc90203c127c48c59344c5a12fa0; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 4083,
+    "title": "The Spectral Chalice",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=4083 detail capture SHA-256 f306c7081194cfd407b010af67c9deb84776a12037fc8a3c99eedf586fada422; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 5127,
+    "title": "The Demon Forge",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": 5126,
+        "prerequisiteAny": [
+          5126
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 5126,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=5127 detail capture SHA-256 f4c0b968dd626436a6c6d35e2a344c228e482f3ebb782db34f6497bd3897e04c; verified predecessor 5126 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8966,
+    "title": "The Left Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8962,
+          8963,
+          8964,
+          8965
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8962,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8966 detail capture SHA-256 3cd66d0184ca37730e1c236b7e09a50babf5786e938389faeca7f9594a73d49d; verified predecessor 8962 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8967,
+    "title": "The Left Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8962,
+          8963,
+          8964,
+          8965
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8963,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8967 detail capture SHA-256 30f51a04a260e358d67b7c69328c1a6b8839f3a7e1d18e89890d0f3878019856; verified predecessor 8963 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8968,
+    "title": "The Left Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8962,
+          8963,
+          8964,
+          8965
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8964,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8968 detail capture SHA-256 9b9647268c04778abc40960b205aa82ab97b8319f518ad51b3eae23807cd79f0; verified predecessor 8964 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8969,
+    "title": "The Left Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8962,
+          8963,
+          8964,
+          8965
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8965,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8969 detail capture SHA-256 05f791131cd09285f0a17afe7ec04a4e4fb7575e5cd94f5b1140c5410746ffa6; verified predecessor 8965 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8989,
+    "title": "The Right Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8985,
+          8986,
+          8987,
+          8988
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8986,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8989 detail capture SHA-256 a5729aeb3e87a3d54fc0f18db511883bf1243718865a855500ef09be1f796b12; verified predecessor 8986 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8990,
+    "title": "The Right Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8985,
+          8986,
+          8987,
+          8988
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8985,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8990 detail capture SHA-256 9aa297f6450b69e32da604f7bc214e7f716abfcf1b913cd1fbd1801197acce30; verified predecessor 8985 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8991,
+    "title": "The Right Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8985,
+          8986,
+          8987,
+          8988
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8987,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8991 detail capture SHA-256 a5b10d75d74ef2b9dccb379e5a5c0784470d358ef80f9c62b2a311c6cd1fab12; verified predecessor 8987 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 8992,
+    "title": "The Right Piece of Lord Valthalak's Amulet",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          8985,
+          8986,
+          8987,
+          8988
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8988,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8992 detail capture SHA-256 789e4a1070906d204e7eadd4e9f101c73734795fa3741b8a71751ef32eab8b79; verified predecessor 8988 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 2951,
+    "title": "The Sparklematic 5200!",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=2951 detail capture SHA-256 40e01dd2247412f6897557934ef4cd9b1f7c5a4cd415c46399e02338679e0953; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 2952,
+    "title": "The Sparklematic 5200!",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          2951,
+          4601,
+          4602
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 2951,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=2952 detail capture SHA-256 f18b88c060c8ad89727e6a13aed8ea54e4c642277bd08ac98ac9cf7a60504bc6; verified predecessor 2951 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 2953,
+    "title": "More Sparklematic Action",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          2952,
+          4605,
+          4606
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 2952,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=2953 detail capture SHA-256 9e5838bd689ea68ae37d822e37d2b375401848ad28447f9ff25b32a7b60b028d; verified predecessor 2952 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 4601,
+    "title": "The Sparklematic 5200!",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=4601 detail capture SHA-256 543c5f4276f7cd582b9bc68187eb387f292bc5c81f65d6097c19999b1d7bf6c3; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 4602,
+    "title": "The Sparklematic 5200!",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=4602 detail capture SHA-256 80248e403bfe51519d8ccc647b537315b5a0f913eebf4b3a8751e1063fa0582f; published quest page reviewed and no preceding series step is listed"
+  },
+  {
+    "questID": 4603,
+    "title": "More Sparklematic Action",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          2952,
+          4605,
+          4606
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 4605,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=4603 detail capture SHA-256 44d8bec86c54c202c65d580c97356a766ed92f27caaecc409a9a199e7ff00e23; verified predecessor 4605 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 4604,
+    "title": "More Sparklematic Action",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 4606
+      }
+    },
+    "source": "Wowhead Forever quest=4604 detail capture SHA-256 08fb7292d16548372f064af17ad8bcb83d8975a589ad716f9e90218df73610b2; verified predecessor 4606 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 4605,
+    "title": "The Sparklematic 5200!",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          2951,
+          4601,
+          4602
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 4601,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=4605 detail capture SHA-256 991999ed355d7555778d56deafd575faaa5b672f0e98bcf111a1c948704a9fbb; verified predecessor 4601 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 4606,
+    "title": "The Sparklematic 5200!",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": null,
+        "prerequisiteAny": [
+          2951,
+          4601,
+          4602
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 4602,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=4606 detail capture SHA-256 08e4dfaecf4f30b5f4029358cf872c2446f211bf26fc65d41760bd9d4d5bbfe2; verified predecessor 4602 from QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf preQuestSingle"
+  },
+  {
+    "questID": 3375,
+    "title": "Replacement Phial",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": 2201,
+        "prerequisiteAny": [
+          2201
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 2201,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=3375 detail capture SHA-256 9c82593886f9f45eeb2705d0e6813085217dda4f0f21c1691a53a713ad683c89; verified predecessor 2201 from the published Wowhead Forever quest series"
+  },
+  {
+    "questID": 8733,
+    "title": "Eranikus, Tyrant of the Dream",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": true,
+        "previousQuest": 8555,
+        "prerequisiteAny": [
+          8555
+        ]
+      },
+      "after": {
+        "prerequisitesUnverified": null,
+        "previousQuest": 8555,
+        "prerequisiteAny": null
+      }
+    },
+    "source": "Wowhead Forever quest=8733 detail capture SHA-256 444178384286cca548a69380e6aada67d2e5fc021c0f70ec0eec8a09dcbc494c; verified predecessor 8555 from the published Wowhead Forever quest series"
+  },
+  {
+    "questID": 7507,
+    "title": "Foror's Compendium",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "prerequisitesUnverified": null
+      },
+      "after": {
+        "prerequisitesUnverified": null
+      }
+    },
+    "source": "Wowhead Forever quest=7507 detail capture SHA-256 386186d3142e88757d873134411183617720275ad283e63f3079ee27f71f5268; reviewed published quest page and current QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf show no prior quest. This is a predecessor to 7508."
   }
 ]

@@ -26,7 +26,7 @@ class DungeonLevelGateTests(unittest.TestCase):
             'uniqueListedQuests': 382,
             'missingCatalogueRecords': 0,
             'higherMinimumPrerequisiteEdges': 5,
-            'unverifiedPrerequisiteMemberships': 27,
+            'unverifiedPrerequisiteMemberships': 2,
         })
         actual = {(edge['parentQuestID'], edge['questID'])
                   for edge in report['higherMinimumPrerequisites']}

@@ -44,7 +44,8 @@ class AlcazDungeonCoverageTests(unittest.TestCase):
                 self.assertEqual(quest['title'], title)
                 self.assertEqual(quest['categoryPath'], 'dungeons/alcaz-prison')
                 self.assertIn('SHA-256', quest['dungeonSource'])
-                self.assertTrue(quest['prerequisitesUnverified'])
+                self.assertTrue(quest['prerequisitesRead'])
+                self.assertFalse(quest.get('prerequisitesUnverified', False))
                 self.assertTrue(quest['objectiveLocationsIncomplete'])
                 self.assertFalse(quest.get('starts'))
                 self.assertFalse(quest.get('ends'))
@@ -62,10 +63,10 @@ class AlcazDungeonCoverageTests(unittest.TestCase):
         guide = c.ns.DungeonGuide(group, 96772)
         route = c.ns.BuildDungeonRoute(guide, False, False)
         self.assertEqual(len(route.stops), 0)
-        self.assertIn('which quest unlocks The Dragon\'s Journal', route.pendingReason)
+        self.assertIn('pickup location for The Dragon\'s Journal is not mapped yet', route.pendingReason)
         later = {int(step.id): step for step in route.later.values()}
         self.assertIn(96772, later)
-        self.assertIn('which quest unlocks', later[96772].reason)
+        self.assertIn('pickup location for The Dragon\'s Journal is not mapped yet', later[96772].reason)
 
     def test_scarlet_guide_routes_razorfen_kraul_prequest_before_hearts_of_zeal(self):
         # Hearts of Zeal (1113) is the Scarlet objective; Going, Going, Guano!
