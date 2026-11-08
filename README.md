@@ -2,9 +2,18 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.102 — FLIGHT MAP CANVAS HIGHLIGHT** targets
+progress. Version **0.8.104 — PARTY QUEST DIGEST** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.104 compares quest-log gaps with supporting party members** in the
+existing tracker using a bounded history digest. It keeps each player's
+selected route personal while the shared-plan stages are built.
+
+**0.8.103 removes duplicate travel-summary text filtering and the profession
+choice override.** The original profession-choice API now calls a dedicated
+planning-choice builder, keeping crafting cards while preserving one owner for
+the public function. The version fallback matches the TOC.
 
 **0.8.102 draws the manual destination highlight on Blizzard's separate Flight
 Map canvas**, next to its flight nodes. It appears only for a reachable route

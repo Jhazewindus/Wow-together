@@ -328,6 +328,10 @@ function ns.TrackerDisplayLines()
     local function add(text, x, width, gold, right)
         result[#result + 1] = {text = text, x = x, width = width, gold = gold, right = right, y = y}
     end
+    if ns.PartyPlanMissingLine then
+        local summary = ns.PartyPlanMissingLine()
+        if summary then add(summary, 8, 328, true); y = y + 22 end
+    end
     for _, row in ipairs(rows) do
         add(row.title, 8, 328, true); y = y + 20
         if #row.objectives == 0 then add("Objective details pending", 16, 316); y = y + 20 end

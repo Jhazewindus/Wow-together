@@ -77,7 +77,10 @@ function ns.UpdateRoster()
         end
     end
     for key in pairs(ns.members) do
-        if not roster[key] then ns.members[key] = nil; assemblies[key] = nil; repairs[key] = nil end
+        if not roster[key] then
+            if ns.ResetPartyPlanPeer then ns.ResetPartyPlanPeer(key) end
+            ns.members[key] = nil; assemblies[key] = nil; repairs[key] = nil
+        end
     end
     for key in pairs(assemblies) do
         if not roster[key] then assemblies[key] = nil end
@@ -139,6 +142,10 @@ local function inParty()
     if not ns.PartyFeaturesEnabled() then return false end
     local raid, grouped = IsInRaid(), IsInGroup()
     return ns.Public(raid) and ns.Public(grouped) and not raid and grouped
+end
+
+local function sendPlanHello()
+    if ns.QueueMessage then ns.QueueMessage("2|H|" .. tostring(ns.VERSION or "0") .. "|1") end
 end
 
 local function schedulePump(delay)
@@ -314,7 +321,9 @@ function ns.SyncNow(force)
         if not announced then
             announced = true
             queue[#queue + 1] = "1|H"
+            sendPlanHello()
         end
+        if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(force) end
         ns.SendActiveSnapshot(force)
         if ns.SendProgress then ns.SendProgress(force, lastActiveRevision) end
         ns.SendCompletion(force)
@@ -339,6 +348,8 @@ end
 local function replySnapshot()
     if not ns.ReadQuests() then return end
     if ns.ReadGuide then ns.ReadGuide() end
+    sendPlanHello()
+    if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(true) end
     ns.SendActiveSnapshot(true)
     if ns.SendProgress then ns.SendProgress(true, lastActiveRevision) end
     ns.SendCompletion(true)
@@ -388,14 +399,33 @@ function ns.Receive(prefix, message, channel, sender)
     sender = identity.key
     if not roster[sender] then ignored("sender left roster"); return end
     trace("Receive from " .. transportSender .. "; matched " .. matchReason)
+    local planVersion, planSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$")
+    if planVersion then
+        local member = ns.members[sender] or {}
+        ns.members[sender] = member
+        member.version, member.planSupport = planVersion, planSupport == "1"
+        ns.syncStats.accepted = ns.syncStats.accepted + 1
+        ns.Refresh(true)
+        return
+    end
+    if ns.ReceivePartyPlanMessage then
+        local handled, accepted, reason = ns.ReceivePartyPlanMessage(message, sender)
+        if handled then
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
+            return
+        end
+    end
     if message == "1|H" then
         ns.syncStats.accepted = ns.syncStats.accepted + 1
         trace("Accepted hello; await refreshed peer snapshot")
         assemblies[sender] = nil
         if ns.ResetPartyRoutePeer then ns.ResetPartyRoutePeer(sender) end
         if ns.ResetTrailSharing then ns.ResetTrailSharing() end
+        if ns.ResetPartyPlanPeer then ns.ResetPartyPlanPeer(sender) end
         local member = ns.members[sender] or {}
         ns.members[sender] = member
+        member.planSupport, member.version, member.partyPlan = false, nil, nil
+        member.partyPlanScope = nil
         member.syncPending, member.activeRevision = true, nil
         member.completionRevision, member.historyRevision, member.routeLocations = nil, nil, nil
         member.progress, member.progressTransfers = nil, nil
@@ -617,6 +647,7 @@ function ns.ApplyPartyMode()
     transportGeneration = transportGeneration + 1
     queue, pumping, retryCount, sendDelay, announced = {}, false, 0, 1, false
     assemblies, repairs, ns.members = {}, {}, {}
+    if ns.ResetPartyPlanTraffic then ns.ResetPartyPlanTraffic() end
     lastSnapshot, lastCompletion, lastOffers, lastActiveRevision = nil, nil, nil, nil
     ns.ResetGuideTraffic(); ns.ResetCatchupHistory()
     ns.pendingPartyRouteStart, ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil, nil
@@ -641,6 +672,7 @@ function ns.SyncDiagnostics(output)
     end
     output("")
     output("Sync runtime")
+    if ns.PartyPlanDiagnostics then ns.PartyPlanDiagnostics(output) end
     output("Play mode: " .. (ns.PartyFeaturesEnabled() and "Party features enabled" or "Solo leveling; party features disabled"))
     output("Player name candidates: " .. safe(ns.self) .. " / " .. safe(ns.MemberLabel(ns.self)))
     output("Sender matching: qualified name, or unique exact first-name + surname in the current roster")

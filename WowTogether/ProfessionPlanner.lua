@@ -795,9 +795,7 @@ function ns.PlanProfessionPreview(id, target, cooperative)
     return {steps = steps, missing = missing, start = start, target = target}
 end
 
-local legacyChoices = ns.ProfessionChoices
-function ns.ProfessionChoices()
-    if ns.professionSelection then return legacyChoices() end
+function ns.ProfessionPlanningChoices()
     local ids, choices = {}, {}
     for _, id in ipairs(order) do ids[#ids + 1] = id end
     table.sort(ids, function(a, b)

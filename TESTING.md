@@ -1,5 +1,44 @@
 # Wow Together — friend test script
 
+For **0.8.104** — **PARTY QUEST DIGEST**, live World of Warcraft: Forever.
+
+## Party quest digest — 0.8.104
+
+1. In a normal party with 0.8.104 on both clients, select the same quest guide
+   and open the party tracker. Confirm it shows “Missing vs party” after both
+   digests arrive, and that it reports a quest-log gap without changing either
+   player's current guide.
+2. Accept or complete a quest and allow sync to drain. Confirm the comparison
+   refreshes, while a skipped quest is not reported as a gap.
+3. Check `/wt probe` for the party digest count and scope size. Older clients
+   should continue to exchange the existing quest snapshots.
+
+This is the first party-planning slice: it compares scoped quest state; it does
+not yet create a shared route or push/accept quests.
+
+Host verification: all 1,876 tests pass; all 95 addon Lua files compile under
+Lua 5.1. The six party-digest tests cover state/offer/skip/pin bits, legacy and
+supporting peers, waiting/gap display, and the 255-byte message limit at the
+512-quest scope cap. Native party delivery and the tracker display still need
+a two-client game test.
+
+For **0.8.103** — **SOURCE-OWNED GUIDE TEXT**, live World of Warcraft: Forever.
+
+## Source-owned guide text — 0.8.103
+
+1. Check travel-step summaries with a walking leg, flight leg, and multi-leg
+   route. Verify their route summary text is retained as produced by its source.
+2. Open profession choices with no profession selected, then choose a
+   profession quest guide. Confirm the original `ProfessionChoices` flow remains
+   in control and selected quest routes still work.
+3. In a host test with metadata unavailable, confirm the fallback version
+   matches the TOC version, 0.8.103.
+
+Host verification: all 1,869 tests pass; the 75 targeted profession and
+presentation tests pass; all 94 addon Lua files compile under Lua 5.1. The
+fallback/TOC version match was checked. Native game UI behavior still needs an
+in-client check.
+
 For **0.8.102** — **FLIGHT MAP CANVAS HIGHLIGHT**, live World of Warcraft: Forever.
 
 ## Flight-map canvas highlight — 0.8.102

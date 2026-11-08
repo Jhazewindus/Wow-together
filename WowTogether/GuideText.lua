@@ -457,9 +457,6 @@ local function presentationTravelSummary(stop, fallback)
     end
     if not fallback then return nil end
     local first = (stop.travelLeg or stop.flightPlan) and (presentationTravelAction(stop, ns.GuideDestination(stop)) .. ".")
-    fallback = string.gsub(fallback, "The route re%-plans after you arrive%.", "")
-    fallback = string.gsub(fallback, "Continue towards your guide destination%.?", "")
-    fallback = string.gsub(fallback, "; the map line follows it%.?", "")
     fallback = string.gsub(fallback, "Follow the travel instructions for this leg%.?", "")
     if first then fallback = string.gsub(fallback, "^%s*" .. first, "") end
     fallback = string.gsub(fallback, "Lands at ", "Lands in ")

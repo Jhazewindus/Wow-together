@@ -1,5 +1,34 @@
 # Wow Together changelog
 
+## 0.8.104
+
+**PARTY QUEST DIGEST**
+
+- Add bounded, scope-checked party quest-history digests with per-quest
+  unknown/available/in-log/completed state, confirmed unverified-offer,
+  personal skip and pin flags.
+- Show the first “Missing vs party” comparison in the existing tracker. This
+  stage compares quest gaps without changing anyone's guide or route.
+- Preserve existing quest snapshots by carrying the new capability hello,
+  scope and digest messages on separate `2|` message kinds; existing `1|`
+  sync traffic remains unchanged.
+- Retain the 0.8.103 travel-text, profession-choice and version-fallback fixes.
+- Validation: all 1,876 host tests pass; all 95 addon Lua files compile under
+  Lua 5.1. The digest suite checks the 512-quest scope/message-size limit.
+
+## 0.8.103
+
+**SOURCE-OWNED GUIDE TEXT**
+
+- Remove three travel-summary substitutions that stripped source sentences a
+  second time in the presentation layer.
+- Remove the later `ProfessionChoices` override. The original API now calls a
+  dedicated planning-choice builder, preserving crafting cards without
+  replacing the source function.
+- Align the metadata fallback version with the TOC release version.
+- Validation: 1,869 host tests pass; all 94 addon Lua files compile under Lua
+  5.1. The profession-window regression and travel-summary guard tests pass.
+
 ## 0.8.102
 
 **FLIGHT MAP CANVAS HIGHLIGHT**

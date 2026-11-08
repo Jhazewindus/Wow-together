@@ -151,6 +151,15 @@ class PresentationTests(unittest.TestCase):
             for phrase in phrases:
                 self.assertNotIn(phrase, source)
 
+    def test_travel_summary_does_not_strip_source_sentences_again(self):
+        source = (ROOT / 'WowTogether/GuideText.lua').read_text()
+        for phrase in (
+            'The route re%-plans after you arrive%.',
+            'Continue towards your guide destination%.?',
+            '; the map line follows it%.?',
+        ):
+            self.assertNotIn(phrase, source)
+
     def test_item_started_quest_changes_from_kill_to_use_and_then_objective(self):
         item_count = {6654: 0}
         self.ns.ItemOwned = lambda item_id: item_count.get(item_id, 0)

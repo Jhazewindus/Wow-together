@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.102
-## X-ReleaseName: FLIGHT MAP CANVAS HIGHLIGHT
+## Version: 0.8.104
+## X-ReleaseName: PARTY QUEST DIGEST
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua
@@ -44,6 +44,7 @@ Suggestions.lua
 Guide.lua
 Routes.lua
 PartyRoutes.lua
+PartyPlan.lua
 GuideText.lua
 GuideReasons.lua
 EliteSpawns.lua

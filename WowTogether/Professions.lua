@@ -131,6 +131,7 @@ end
 function ns.ProfessionChoices()
     local choices = {}
     if not ns.professionSelection then
+        if ns.ProfessionPlanningChoices then return ns.ProfessionPlanningChoices() end
         for id, info in pairs(ns.professionData) do
             choices[#choices + 1] = {title = info.name .. " crafting guide", category = "PERSONAL / LIVE RECIPES",
                 detail = "Skill " .. (info.skill or "?") .. " / " .. (info.maximum or "?") .. " • " .. #info.recipes .. " learned recipes can raise skill.",
