@@ -708,6 +708,62 @@ local function drawFlightHighlight(provider, surface, mapID, context, waypoint)
     ns.routeStats.flightHighlights = 1
 end
 
+function ns.DrawFlightMapHighlight(provider)
+    provider = provider or ns.flightMapProvider
+    local map = provider and provider.owningMap
+    if not provider or not map then return end
+    if not ns.flightMapOpen or ns.RouteInCombat() or ns.ReadPublic(map.IsShown, map) == false then
+        if provider.flightPin then provider.flightPin:Hide() end
+        if provider.overlay then provider.overlay:Hide() end
+        return
+    end
+    local mapID = ns.ReadPublic(map.GetMapID, map)
+    local surface = mapID and ns.RouteSurface(map)
+    if not surface then
+        if provider.flightPin then provider.flightPin:Hide() end
+        return
+    end
+    if not provider.overlay then
+        provider.overlay = CreateFrame("Frame", nil, surface.parent)
+        provider.overlay:EnableMouse(false)
+        if type(provider.overlay.SetClipsChildren) == "function" then provider.overlay:SetClipsChildren(true) end
+        if type(provider.overlay.SetIgnoreParentAlpha) == "function" then provider.overlay:SetIgnoreParentAlpha(true) end
+    end
+    provider.overlay:SetParent(surface.parent)
+    provider.overlay:ClearAllPoints(); provider.overlay:SetAllPoints(surface.parent); provider.overlay:Show()
+    local level = ns.ReadPublic(surface.parent.GetFrameLevel, surface.parent)
+    if type(level) == "number" then provider.overlay:SetFrameLevel(level + 30) end
+    drawFlightHighlight(provider, surface, mapID, {}, ns.travelWaypoint)
+end
+
+function ns.AttachFlightMapHighlightProvider(attempt)
+    if ns.flightMapProvider then return true end
+    attempt = attempt or 0
+    local map = FlightMapFrame
+    local mixin = MapCanvasDataProviderMixin
+    if map and mixin and type(map.AddDataProvider) == "function" and type(map.GetCanvas) == "function"
+        and type(map.GetMapID) == "function" then
+        local provider = {}
+        for key, method in pairs(mixin) do provider[key] = method end
+        provider.OnAdded = function(self, owningMap) self.owningMap = owningMap end
+        provider.RefreshAllData = function(self) ns.DrawFlightMapHighlight(self) end
+        provider.OnCanvasSizeChanged = provider.RefreshAllData
+        provider.OnCanvasScaleChanged = provider.RefreshAllData
+        provider.OnCanvasPanChanged = provider.RefreshAllData
+        provider.OnShow = provider.RefreshAllData
+        local okay = pcall(map.AddDataProvider, map, provider)
+        if okay then
+            ns.flightMapProvider = provider
+            ns.DrawFlightMapHighlight(provider)
+            return true
+        end
+    end
+    if attempt < 3 and ns.flightMapOpen and C_Timer and type(C_Timer.After) == "function" then
+        C_Timer.After(0.2, function() ns.AttachFlightMapHighlightProvider(attempt + 1) end)
+    end
+    return false
+end
+
 function ns.DrawRoute(provider, geometryOnly)
     provider = provider or ns.routeProvider
     if not provider then return end

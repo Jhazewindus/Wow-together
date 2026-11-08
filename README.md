@@ -2,14 +2,17 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.101 — MANUAL FLIGHT MAP HIGHLIGHT** targets
+progress. Version **0.8.102 — FLIGHT MAP CANVAS HIGHLIGHT** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
 
-**0.8.101 lights up the needed flight master and reachable flight destination
-when automatic flight selection is off.** It highlights route-relevant paths
-for manual selection and does not select or board a flight. Verify the native
-Forever flight map in game; host tests cover the route logic and marker state.
+**0.8.102 draws the manual destination highlight on Blizzard's separate Flight
+Map canvas**, next to its flight nodes. It appears only for a reachable route
+destination when automatic flight selection is off. It does not board flights.
+
+**0.8.101 added a world-map highlight** for the route's flight master and
+reachable manual destination. 0.8.102 attaches that destination marker to the
+Flight Map canvas itself; verify native Forever rendering in game.
 
 **0.8.100 reviews 27 previously uncertain dungeon quest prerequisites.** It
 resolves 25 from current Forever source data and keeps two conflicting gates

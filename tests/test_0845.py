@@ -57,6 +57,40 @@ def ratchet_client():
 
 
 class FlightDiscoveryRoutingTests(unittest.TestCase):
+    def test_manual_destination_pin_is_attached_to_the_flight_map_canvas(self):
+        c = ratchet_client()
+        c.lua.execute('''
+          MapCanvasDataProviderMixin = {}
+          flightCanvas = CreateFrame('Frame'); flightCanvas:SetSize(400, 300)
+          FlightMapFrame = CreateFrame('Frame'); FlightMapFrame:Show(); FlightMapFrame.GetViewRect = false
+          function FlightMapFrame:GetCanvas() return flightCanvas end
+          function FlightMapFrame:GetCanvasContainer() return nil end
+          function FlightMapFrame:GetMapID() return 1413 end
+          function FlightMapFrame:AddDataProvider(provider)
+            self.provider = provider; provider:OnAdded(self)
+          end
+        ''')
+        c.ns.flightMapOpen = True
+        c.ns.flightMapSource = 80
+        c.ns.visibleFlights = c.lua.table_from({25: {'reachable': True}}, recursive=True)
+        c.ns.travelWaypoint = c.lua.table_from({
+            'kind': 'f', 'mapID': 1413, 'x': .6312, 'y': .3711,
+            'flightPlan': {
+                'source': {'id': 80},
+                'destination': {'id': 25, 'name': 'Crossroads',
+                                'point': {'mapID': 1413, 'x': .515, 'y': .3041}},
+            },
+        }, recursive=True)
+        self.assertTrue(c.ns.AttachFlightMapHighlightProvider())
+        provider = c.ns.flightMapProvider
+        pin = provider.flightPin
+        self.assertTrue(pin.IsShown(pin))
+        self.assertEqual(pin.flightLabel, 'Select Crossroads on the flight map')
+        self.assertAlmostEqual(pin.target.x, .515)
+        self.assertTrue(c.lua.eval('rawequal')(provider.overlay.GetParent(provider.overlay), c.lua.globals().flightCanvas))
+        c.ns.handlers.TAXIMAP_CLOSED()
+        self.assertFalse(pin.IsShown(pin))
+
     def test_manual_route_glows_exact_flight_master_and_selectable_destination(self):
         c = ratchet_client()
         map_canvas(c)

@@ -190,6 +190,7 @@ function ns.RefreshTravelDirections(tryFlight)
     ns.UpdateNavigation()
     if tryFlight then ns.TrySuggestedFlight() end
     ns.DrawRoute(nil, true)
+    if ns.flightMapOpen and ns.DrawFlightMapHighlight then ns.DrawFlightMapHighlight() end
 end
 
 function ns.InitializeTravel()
@@ -691,6 +692,7 @@ ns.On("TAXIMAP_OPENED", function()
     flightMapGeneration, flightMapOpen = flightMapGeneration + 1, true
     ns.flightMapOpen = true
     ns.recentFlightMap = nil
+    if ns.AttachFlightMapHighlightProvider then ns.AttachFlightMapHighlightProvider() end
     if ns.db then ns.ReadKnownFlightPaths(); ns.ReadFlightMap() end
 end)
 ns.On("TAXIMAP_CLOSED", function()
@@ -699,6 +701,7 @@ ns.On("TAXIMAP_CLOSED", function()
     ns.recentFlightMap = {source = ns.flightMapSource, visible = ns.visibleFlights, time = ns.ReadPublic(GetTime)}
     ns.visibleFlights, ns.flightMapSource, ns.flightAttempt = nil, nil, nil
     ns.DrawRoute(nil, true)
+    if ns.DrawFlightMapHighlight then ns.DrawFlightMapHighlight() end
 end)
 ns.On("TAXI_NODE_STATUS_CHANGED", function()
     ns.ScheduleFlightDiscovery()

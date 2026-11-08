@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.101
-## X-ReleaseName: MANUAL FLIGHT MAP HIGHLIGHT
+## Version: 0.8.102
+## X-ReleaseName: FLIGHT MAP CANVAS HIGHLIGHT
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua

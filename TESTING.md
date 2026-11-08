@@ -1,25 +1,27 @@
 # Wow Together — friend test script
 
-For **0.8.101** — **MANUAL FLIGHT MAP HIGHLIGHT**, live World of Warcraft: Forever.
+For **0.8.102** — **FLIGHT MAP CANVAS HIGHLIGHT**, live World of Warcraft: Forever.
 
-## Manual flight-map highlight — 0.8.101
+## Flight-map canvas highlight — 0.8.102
 
-1. Turn **Select suggested flights automatically** off. Start a route with a
-   known useful flight connection and open its flight-master map. The reachable
-   destination for the next route leg should have a bright gold ring on the map;
-   hover it to see the destination and manual-selection instruction.
-2. Before reaching the flight master, confirm the exact boarding point is
-   highlighted on the world map. If the bounded nearby-flight suggestion names
-   an unlearned flight master, that point should glow as the suggested unlock.
-3. Confirm the addon does not select the flight. Select the highlighted path
-   yourself; then close the flight map and verify the extra highlight disappears.
-4. Turn automatic selection on or make the route unavailable and confirm the
-   manual highlight is hidden. Route choice and quest progress must be unchanged.
+1. Turn **Select suggested flights automatically** off. At a flight master,
+   open the separate **Flight Map**. The reachable destination for the next
+   route leg should have a gold ring directly on this map beside its flight
+   node. Hover it to read the destination and manual-selection instruction.
+2. Confirm the addon does not select the flight. Choose the highlighted route
+   yourself; then close the flight map and verify the ring disappears.
+3. Turn automatic selection on or make the route unavailable and confirm the
+   manual destination ring is hidden. Route choice and quest progress must be
+   unchanged.
+4. Before reaching the flight master, confirm the exact boarding point is
+   highlighted on the world map. A nearby-path suggestion should highlight
+   that unlearned flight master.
 
 Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
-tests/` passes **1,868 tests and 385 subtests** in 497.72 seconds. All **98 Lua
-files compile under Lua 5.1**. Host checks cover route target selection and
-owned marker state, not native Forever taxi-map composition or map rendering.
+tests/` passes **1,869 tests and 385 subtests** in 500.39 seconds. All **98 Lua
+files compile under Lua 5.1**. The highlight attaches to a mocked
+`FlightMapFrame` canvas, tracks reachable destinations and hides on close.
+Host mocks cannot establish native Forever taxi-map composition or rendering.
 
 For **0.8.100** — **DUNGEON PREREQUISITE AUDIT**, live World of Warcraft: Forever.
 

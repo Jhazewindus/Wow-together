@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.102
+
+**FLIGHT MAP CANVAS HIGHLIGHT**
+
+- Attach the manual flight destination highlight to Blizzard's separate
+  `FlightMapFrame` canvas, where flight masters display taxi nodes. Keep the
+  route destination ringed only when the open map reports it reachable; hide
+  it when the taxi map closes or automatic selection is on.
+- Retain the route-map flight-master marker while walking to a boarding point.
+  This display does not select or board a flight.
+- Validation: 1,869 host tests and 385 subtests pass; all 98 Lua files compile
+  under Lua 5.1. Check native Forever taxi-map visibility in game.
+
 ## 0.8.101
 
 **MANUAL FLIGHT MAP HIGHLIGHT**
