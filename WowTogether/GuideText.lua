@@ -97,6 +97,7 @@ function ns.GuideStepAction(stop, facts)
         return verb .. (facts.item or target or title)
     end
     if stop.kind == "a" then
+        if stop.entityType == "object" then return "Read the " .. (facts.npc or target or "object") .. " (ground object) to start " .. title end
         if facts.npc then return "Accept from " .. facts.npc end
         if target then return "Accept at " .. target end
         return "Accept " .. title
@@ -202,6 +203,26 @@ function ns.GuideDestinationPurpose(stop, mapID, distance, guide, route)
     -- The arrow status already gives the current action. Keep the context line
     -- for the reason to travel, rather than repeating that action a second time.
     return reason
+end
+
+function ns.GuideStepRequirement(stop, mapID, distance, guide, route)
+    local decision = ns.GuideDestinationDecision(stop, guide, route)
+    local current = ns.GuideReasonCanBeCurrent(stop, guide, route)
+    if not current then return "Later" end
+    if not decision.specificBenefit then return end
+    if decision.code == "prerequisite" or decision.code == "learned-prerequisite"
+        or decision.code == "chosen-branch" or decision.code == "party-prerequisite" then
+        return "Required now for this quest chain"
+    end
+    if decision.code == "quest-objective" or decision.code == "quest-reward" then
+        return "Required now to finish " .. (text(ns.GuideDestination(stop).title) or "this quest")
+    end
+    local goal = ns.GuideDestination(stop)
+    local otherMap = ns.GuideInteger(mapID) and mapID > 0 and goal.mapID ~= mapID
+    if not otherMap and ns.Public(distance) and type(distance) == "number" and distance <= 1000 then
+        return "Optional • on your way"
+    end
+    return "Optional • current route"
 end
 
 local function compactStepHint(stop, facts)

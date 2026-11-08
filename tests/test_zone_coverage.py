@@ -105,7 +105,12 @@ class ZoneCoverageTests(unittest.TestCase):
             self.assertRegex(source['sha256'], r'^[0-9a-f]{64}$')
         queue = json.loads((ROOT / 'WowTogether/GuideSourceQueue.json').read_text())
         actual = {r['questID']: r['needs'] for r in queue['quests'] if 'Alliance / Dun Morogh' in r['guides']}
-        self.assertEqual({r['questID']: r['needs'] for r in self.review['remaining_needs']}, actual)
+        reviewed = {r['questID']: r['needs'] for r in self.review['remaining_needs']}
+        for ident, needs in reviewed.items():
+            self.assertIn(ident, actual)
+            self.assertTrue(set(needs).issubset(actual[ident]), (ident, needs, actual[ident]))
+        self.assertEqual(actual[417], ['objective quantities'])
+        self.assertIn('pickup requirements', actual[95217])
 
 
 if __name__ == '__main__':

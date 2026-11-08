@@ -262,6 +262,21 @@ class AlternativeQuestTests(unittest.TestCase):
         c.ns.profile.raceID = 5
         return c
 
+    def test_real_mage_errand_is_superseded_by_its_published_continuation(self):
+        c = Client(quests=(), completed=(1944,1945), use_catalogue=True)
+        c.guide_environment(level=26)
+        quest = c.ns.CatalogueQuest(1943)
+        self.assertEqual(quest.nextInChain,1944)
+        self.assertEqual(list(c.ns.CatalogueBreadcrumbTargets(1943).values()),[1944])
+        self.assertEqual(c.ns.CatalogueAlternativeTaken(1943,c.ns.self),1944)
+
+    def test_real_one_way_exclusive_link_blocks_only_the_documented_quest(self):
+        c = Client(quests=(), completed=(526,), use_catalogue=True)
+        c.guide_environment(level=29)
+        quest = c.ns.CatalogueQuest(324)
+        self.assertEqual(list(quest.exclusiveQuests.values()),[526])
+        self.assertEqual(c.ns.CatalogueAlternativeTaken(324,c.ns.self),526)
+
     def test_shipped_report_variants_both_directions_keep_active_work(self):
         for chosen,other in ((6541,6542),(6542,6541)):
             c = self.client(chosen)

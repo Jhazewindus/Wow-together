@@ -182,6 +182,8 @@ class TripOrderingTests(unittest.TestCase):
         client.guide_environment(level=12)
         catalogue(client, {900: quest('First'), 901: quest('Second')})
         route_guide = guide(client, (900, 901))
+        route_guide.mode = 'dungeon'
+        route_guide.collectionGoals = client.lua.table_from({900: True, 901: True})
         route_guide.mapID = 501
         client.ns.profile.mapID = 501
         client.lua.execute('''

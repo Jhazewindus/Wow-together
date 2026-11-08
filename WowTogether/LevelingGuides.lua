@@ -172,20 +172,82 @@ local function rebuildIndex()
     for _, entry in pairs(entries) do table.sort(entry.ids) end
 end
 
-local function addPrerequisites(records, seen, id, depth, includeClassActivities)
+-- An any-of prerequisite group ("finish one of these 40 books") is one step,
+-- not forty. Once any member is done, none is needed; otherwise the guide
+-- picks the eligible member nearest the player (an accepted one first), with
+-- level and ID as tie-breaks, and records the choice so the step can say
+-- which quest it unlocks and how many alternatives exist.
+local function alternativeEligible(id)
+    local quest = ns.CatalogueQuest(id)
+    local profile = ns.profile
+    return quest and not ns.IsRetiredQuest(id) and not ns.IsRepeatableQuest(id)
+        and not ns.GuideQuestSkipped(id)
+        and ns.CatalogueIdentityAllowed(id, profile) == true
+        and ns.CatalogueClassCategoryAllowed(id, profile) ~= false
+        and ns.PickupOfferEvidence(ns.self, id) ~= false
+        and not (quest.minLevel and profile and profile.level and quest.minLevel > profile.level)
+end
+
+local function chooseAlternative(group)
+    local best, score
+    local origin = ns.profile and ns.GuideInteger(ns.profile.mapID) and ns.profile.mapID > 0 and ns.PlayerPoint(ns.profile.mapID)
+    for _, previous in ipairs(group) do
+        if ns.Completed(previous) == true then return nil, true end
+    end
+    for _, previous in ipairs(group) do
+        if alternativeEligible(previous) then
+            local quest = ns.CatalogueQuest(previous)
+            local point = ns.NPCPickupPoint and ns.NPCPickupPoint(previous) or quest.starts and quest.starts[1]
+            local distance = origin and point and ns.ValidTravelPoint(point) and ns.TravelPointDistance(origin, point)
+            local value = ns.active and ns.active[previous] and -1 or distance or 200000
+            local rank = value * 1000 + (quest.level or 0)
+            if not score or rank < score or rank == score and previous < best then best, score = previous, rank end
+        end
+    end
+    return best, false
+end
+
+local function addPrerequisites(records, seen, id, depth, includeClassActivities, dependencies)
     local recordLimit = includeClassActivities and 1024 or 512
     if depth > 24 or #records >= recordLimit then return end
-    for _, previous in ipairs(ns.CataloguePrerequisiteIDs(id)) do
+    local quest = ns.CatalogueQuest(id)
+    if not quest then return end
+    local parents, added = {}, {}
+    local function add(previous)
+        if ns.GuideInteger(previous) and previous > 0 and previous ~= id and not added[previous] then
+            parents[#parents + 1], added[previous] = previous, true
+        end
+    end
+    if dependencies then
+        add(quest.previousQuest)
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do add(previous) end
+        if ns.LearnedPrerequisiteIDs then for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do add(previous) end end
+        local group = quest.prerequisiteAny or quest.prerequisiteCandidates
+        if type(group) == "table" and #group > 0 then
+            local chosen, met = chooseAlternative(group)
+            if chosen and not met then
+                add(chosen)
+                dependencies.chosen[id] = dependencies.chosen[id] or {}
+                table.insert(dependencies.chosen[id], chosen)
+                dependencies.alternatives[chosen] = #group
+            end
+        end
+    else
+        -- Keep ordinary leveling-guide expansion unchanged; one-of branch
+        -- selection is scoped to dedicated class quest guides.
+        for _, previous in ipairs(ns.CataloguePrerequisiteIDs(id)) do add(previous) end
+    end
+    for _, previous in ipairs(parents) do
         local allowed = includeClassActivities and classLineRecordEnabled(previous) or recordEnabled(previous)
         if not seen[previous] and ns.CatalogueQuest(previous) and allowed then
             seen[previous] = true
-            addPrerequisites(records, seen, previous, depth + 1, includeClassActivities)
+            addPrerequisites(records, seen, previous, depth + 1, includeClassActivities, dependencies)
             records[#records + 1] = ns.CatalogueRecord(previous)
         end
     end
 end
 
-local function addChain(records, seen, id, ceiling, includeClassActivities)
+local function addChain(records, seen, id, ceiling, includeClassActivities, dependencies)
     local quest = ns.CatalogueQuest(id)
     local allowed = includeClassActivities and classLineRecordEnabled(id) or recordEnabled(id)
     local recordLimit = includeClassActivities and 1024 or 512
@@ -194,11 +256,11 @@ local function addChain(records, seen, id, ceiling, includeClassActivities)
     -- not pull the rest of the zone's higher-level content into this section.
     if ceiling and ((quest.level or 0) > ceiling or (quest.minLevel or 0) > ceiling) then return end
     seen[id] = true
-    addPrerequisites(records, seen, id, 0, includeClassActivities)
+    addPrerequisites(records, seen, id, 0, includeClassActivities, dependencies)
     records[#records + 1] = ns.CatalogueRecord(id)
     local after = false
     for _, nextID in ipairs(quest.series or {}) do
-        if after then addChain(records, seen, nextID, ceiling, includeClassActivities) end
+        if after then addChain(records, seen, nextID, ceiling, includeClassActivities, dependencies) end
         if nextID == id then after = true end
     end
 end
@@ -239,8 +301,8 @@ function ns.BuildClassQuestsGuide()
     local roots = classQuestRoots(profile)
     if #roots == 0 then return end
 
-    local records, seen = {}, {}
-    for _, id in ipairs(roots) do addChain(records, seen, id, nil, true) end
+    local records, seen, dependencies = {}, {}, {chosen = {}, alternatives = {}}
+    for _, id in ipairs(roots) do addChain(records, seen, id, nil, true, dependencies) end
     if #records == 0 then return end
 
     local availableNow, nextLevel, low, high, mapID = 0, nil, 255, 1, 0
@@ -277,6 +339,7 @@ function ns.BuildClassQuestsGuide()
         level = ns.PartyLevelFloor(query), fullGuide = true, classLineGuide = true, personal = true,
         classQuestCount = #roots, classQuestStepCount = #records, availableNow = availableNow, nextLevel = nextLevel,
         fixedRoute = false, profilesReady = true, hasPoint = false,
+        collectionDependencies = dependencies.chosen, collectionAlternatives = dependencies.alternatives,
         reason = #roots .. " class quests across your known questlines. The route follows prerequisites and series steps.",
         destination = "Follow your class quest guide."}
     guide.coverage = ns.GuideLocationCoverage(records)
@@ -348,8 +411,8 @@ function ns.BuildClassQuestGuide(id)
     if not quest or not ns.IsClassQuest(id) or not ns.ClassQuestEnabled(id)
         or ns.CatalogueClassCategoryAllowed(id, ns.profile) ~= true
         or ns.CatalogueIdentityAllowed(id, ns.profile) ~= true then return end
-    local records, seen = {}, {}
-    addChain(records, seen, id, nil, true)
+    local records, seen, dependencies = {}, {}, {chosen = {}, alternatives = {}}
+    addChain(records, seen, id, nil, true, dependencies)
     if #records == 0 then return end
     local rootID = quest.seriesRoot or id
     local root = ns.CatalogueQuest(rootID)
@@ -370,6 +433,7 @@ function ns.BuildClassQuestGuide(id)
     local query = ns.NewQuestQuery()
     local guide = {key = "class-questline:" .. rootID, title = className .. " questline • " .. lineName,
         zone = className .. " class quests", mode = "chain", kind = "Class questline", records = records,
+        collectionDependencies = dependencies.chosen, collectionAlternatives = dependencies.alternatives,
         target = records[1], mapID = mapID, homeMapID = mapID, focusKey = ns.self,
         rangeLow = 1, rangeHigh = 60, mainLevelLow = low, mainLevelHigh = math.max(low, high),
         level = ns.PartyLevelFloor(query), fullGuide = true, classQuestScope = true, personal = true,

@@ -1,6 +1,6 @@
 {
   "source": "https://github.com/Questie/QuestieDB",
-  "commit": "5fba5d86641d1a64a787884e28e15ee16b115060",
+  "commit": "aa1d7e7294596cf50a6fd0946dfae0d969cb9623",
   "files_sha256": {
     "src/corrections/enum/zones.lua": "20e7af36ec38f6f1640368d1c2030315cbdd068d895578c1374591b2f5dd9216",
     "src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
@@ -8,10 +8,10 @@
     "support/Forever/Zones/areaIdToUiMapId.lua": "c6f26a18a2d0d9bdf5750039eabe111f545700a751928e8f79aedb12fbb8ff09",
     "src/corrections/Forever/generated/foreverBaseQuest.lua": "25a5eec6855e8e63098217b2dbe87b0725e2a2df61b54bb65857fef931a2e1b4",
     "src/corrections/Forever/traces/foreverQuestTraces.lua": "e27eaa8411340fde5bec141ea20c95d843064b4e3dff899f001952d0c922d5e7",
-    "src/corrections/Forever/foreverQuestFixes.lua": "507b92d1fe96cef6f125ac4a878f4a7c3cec5843e3fe2e0ccc0ad98cf1ce9f19",
+    "src/corrections/Forever/foreverQuestFixes.lua": "17121512fd6b4eed2a05c62dc142203e96d9b061bc126b01a08d9032a659aa9f",
     "src/corrections/Forever/generated/foreverBaseNpc.lua": "25ae0556d29b792758d95682d3974a847bdbe2773322fe863872dc1340260a32",
     "src/corrections/Forever/traces/foreverNpcTraces.lua": "897d3a39f61caabe46c11d796a9dc77beb6e9b790c484602a69c473f7ed1e961",
-    "src/corrections/Forever/foreverNPCFixes.lua": "85df7918f365251a3d2ce2ea955d941391e2a96ab568017ca1504e73d3a029eb",
+    "src/corrections/Forever/foreverNPCFixes.lua": "65f14296430d119ea80aed05a98578f6cf4d4993cc4703b744d446a702670e11",
     "src/corrections/Forever/generated/foreverBaseObject.lua": "f589af8d868330de2ff174c7a80147539ee407ce95ddae6ba7bd602535ef0869",
     "src/corrections/Forever/traces/foreverObjectTraces.lua": "94021ea7497fb9e39f57908d61e8499c4f8401ed5a924184290d9e066228b9f9",
     "src/corrections/Forever/foreverObjectFixes.lua": "80713985c403fe6b8d9b5db2d9097abedbf1a3a82c925db2dfc0f5441d4a7577",
@@ -25,6 +25,7 @@
     "data/Forever/foreverObjectDB.lua": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
     "src/corrections/Forever/legacy/classicObjectFixes.lua": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
     "data/Forever/foreverItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
-    "src/corrections/Forever/legacy/classicItemFixes.lua": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87"
+    "src/corrections/Forever/legacy/classicItemFixes.lua": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87",
+    "src/corrections/Forever/legacy/itemStartFixes.lua": "c5f379867c82a401432e0ba2ef58c4e44ffe878a806f4901e070f9f090523bc6"
   }
 }

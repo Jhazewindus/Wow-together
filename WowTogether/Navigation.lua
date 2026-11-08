@@ -167,7 +167,7 @@ function ns.NavigationState()
     if stop.professionStep and stop.unknownLocation then state.status = stop.label; return state end
     if stop.unsafeTransit or stop.unsafeTerrain then state.status = stop.label; return state end
     if stop.kind == "notice" then state.status = stop.label; return state end
-    if stop.transportWaiting then state.status = stop.label; return state end
+    if stop.transportWaiting or stop.personalTransport then state.status = stop.label; return state end
     if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end
     if ns.routePaused and not (confirmation and not confirmation.unknownLocation) and stop.kind ~= "corpse" then state.status = "Waiting for party updates"; return state end
     if ns.navigation and type(ns.navigation.icon.CreateLine) ~= "function" then state.status = "Arrow drawing unavailable"; return state end
@@ -256,7 +256,13 @@ function ns.UpdateNavigation()
     frame.distance:SetText(state.flight and clock or distance .. (clock and (distance ~= "" and " • " or "") .. clock or ""))
     frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    frame.context:SetText(ns.RouteContext(state.stop, mapID, facts, state.distance))
+    local context = ns.RouteContext(state.stop, mapID, facts, state.distance)
+    if not state.stop.confirmation and (state.stop.kind == "a" or state.stop.kind == "q" or state.stop.kind == "t") then
+        local requirement = ns.GuideStepRequirement(state.stop, mapID, state.distance,
+            ns.routeSelection, ns.selectedRoute)
+        if requirement and requirement ~= "" then context = (context and context ~= "" and context .. "\n" or "") .. requirement end
+    end
+    frame.context:SetText(context or "")
     -- Keep the explanation readable at the player's width. Only grow when
     -- needed; never resize during a drag or overwrite their saved dimensions.
     local measured = ns.ReadPublic(frame.context.GetStringHeight, frame.context)

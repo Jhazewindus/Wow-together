@@ -579,12 +579,7 @@ function ns.CheckDungeonViewerEntry()
     frame.key = key; frame.text:SetText(ns.dungeonData.dungeons[key].name .. "\nBrowse the map, bosses and their loot."); frame:Show()
 end
 function ns.InitializeDungeonViewer()
-    -- Chain existing handlers after all modules initialize; preserve the single
-    -- dispatch frame and profession item-cache handler.
-    local function listen(event, callback)
-        local previous = ns.handlers[event]
-        ns.On(event, function(...) if previous then previous(...) end; callback(...) end)
-    end
+    local function listen(event, callback) ns.On(event, callback) end
     listen("ITEM_DATA_LOAD_RESULT", function(id)
         if ns.GuideInteger(id) and ns.dungeonViewer and ns.dungeonViewer.itemRequests[id] then ns.RefreshDungeonViewer() end
     end)

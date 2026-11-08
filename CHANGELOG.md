@@ -1,5 +1,107 @@
 # Wow Together changelog
 
+## 0.8.94
+
+**SUPPORTED REASONS AND DUNGEON CHAINS**
+
+- Apply the supported-reason rule to live adaptive leveling, class-quest and
+  dungeon-preparation routes: a step without a specific benefit or with facts
+  still needing review stays under Later and cannot be the current destination.
+  Fixed-guide compilation and its audited order remain unchanged. Quest pickups now explain the concrete next
+  action using the recorded quest title; specific low-level unlocks remain
+  eligible.
+- Carry forward 0.8.93's source-driven dungeon item starts and prerequisite
+  handling. The Stockade preparation route follows An Unsent Letter through the
+  Deadmines item source; unsupported dungeon prerequisites remain under Later.
+- The game is live World of Warcraft: Forever. The release instructions now
+  name the live client's AddOns folder, not the old beta-client path.
+- Validation: all 1,827 host tests pass; all 92 Lua files compile under Lua
+  5.1. The fixed Mulgore fingerprint and fixed-guide audits pass unchanged.
+
+## 0.8.93
+
+**DUNGEON PREREQUISITES AND CLEAR LATER STEPS**
+
+- Replace the quest-373 dungeon exception with a data-driven item-source rule.
+  Import QuestieDB's published item-start facts and source areas; the Stockade
+  guide now routes An Unsent Letter through its Deadmines drop before continuing
+  to the Stockade quest giver.
+- Keep dungeon preparation steps with generic or unverified reasons out of the
+  current route. Show those quests under Later with a specific explanation; for
+  Open the Maw (95682), name the unresolved prerequisite check and its recorded
+  quest giver instead of leaving a generic waiting message.
+- Keep the all-dungeon evidence limits visible: 17 Wowhead Forever detail pages
+  remain denied, three categories have no named published quest list, and some
+  quests still lack mapped pickup/objective points. No chain or location is
+  invented to fill those gaps.
+- The game-facing metadata now describes the live Forever game. The add-on
+  remains on interface 16001 and Lua 5.1.
+- Validation: all 1,826 host tests pass; all 92 Lua files compile under Lua
+  5.1. The fixed Mulgore fingerprint and fixed-guide audits pass unchanged.
+
+## 0.8.92
+
+**PUBLISHED QUEST CHAINS**
+
+- Import QuestieDB Forever `nextQuestInChain` as the catalogue's `nextInChain`,
+  with source commit and file hashes recorded. The refreshed catalogue contains
+  1,947 linked quests, including the Troll Mage chain 1943 → 1944 → 1945 → 1946.
+- Apply QuestieDB `exclusiveTo` in its documented one-way direction: a listed
+  completed quest suppresses the current quest. Import 122 explicit relations;
+  do not infer a reverse edge or require matching titles.
+- Keep all 5,333 existing quest records. The full category rebuild candidate
+  omitted 26 existing dungeon and related records, so only the source-backed
+  chain and exclusivity facts were applied to the existing catalogue.
+- Regenerate the guide audits and source queue. The 157 fixed guides retain the
+  same 12,688 actions; the source queue currently contains 638 quest records.
+- The Horde Research Access hand-in remains unresolved pending an in-game
+  Horde Mage observation. No faction or NPC claim was added.
+- Validation: the full host suite and Lua 5.1 compile results are recorded in
+  TESTING.md. Fixed-guide compilation and its Mulgore fingerprint remain
+  unchanged.
+
+## 0.8.91
+
+**CLEAR CLASS QUEST STEPS AND PREREQUISITE CHOICES**
+
+- Keep class-guide steps with generic reasons such as level work or outside the
+  useful range out of the current route; retain them in the guide list as Later.
+  A specific quest or activity benefit is required before the arrow leads there.
+- Select one eligible `prerequisiteAny` quest for a class guide, preferring an
+  accepted option and then the nearest option. Record the choice and group size,
+  explain which later quest it unlocks, and select another option if the chosen
+  quest is skipped. This covers the 40 alternatives for Research Access (97286).
+- Name object-started quest pickups as a reading action on the ground object, and
+  show whether the current class-guide step is required for its chain or optional.
+- Apply published or inferred supersession rules to class-only talk errands so a
+  report-to-NPC breadcrumb disappears when its continuation is already underway.
+- Keep the Horde Research Access turn-in unresolved: the catalogue still places
+  the book turn-ins with Garion Wendell in Stormwind. No Horde location or faction
+  correction is claimed pending an in-game Horde Mage check.
+- Ordinary leveling-guide compilation and the Mulgore fixed-guide fingerprint
+  remain unchanged.
+- Validation: 1,817 host tests and 332 subtests; all 96 Lua files compile under
+  Lua 5.1. The host regression uses the shipped Research Access catalogue data;
+  it cannot verify a live Horde NPC offer or in-game card rendering.
+
+## 0.8.90
+
+**PROVEN GROUND ROUTING BASELINE**
+
+- Add optional recorded ground trails, party sharing for explored roads, and a
+  matching minimap route display. Terrain and unverified map-art traces remain
+  estimates; fixed-guide cost and quest ordering do not assume a character's
+  private trail history.
+- Include Hearthstone and class-teleport choices from known bind locations, and
+  use published flight connections as estimates until that character discovers
+  the flight route. Add the Stormwind–Dalaran portal transition as an unverified
+  connection.
+- Dispatch multiple subscribers for one game event and read the addon version
+  from TOC metadata, so later module handlers run and changed saved plans rebuild
+  on a version update.
+- These routing additions came from the supplied 0.8.90 baseline and still need
+  the in-game checks listed in TESTING.md.
+
 ## 0.8.89
 
 **CLASS QUEST GUIDE BROWSER FIX**

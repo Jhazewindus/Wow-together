@@ -71,10 +71,10 @@ def main():
         if hashlib.sha256((media / name).read_bytes()).hexdigest() != texture['sha256']:
             raise ValueError('Guide texture checksum mismatch: ' + name)
         media_names.append(name)
-    instructions = f'''Wow Together {release_label} — Forever beta
+    instructions = f'''Wow Together {release_label} — World of Warcraft: Forever (live)
 
 Copy the complete WowTogether folder to:
-World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
+the live World of Warcraft client’s Interface\\AddOns\\WowTogether\\ directory
 
 Update EVERY party member to {version}, copying the WowTogether folder and
 all three matching WowTogether_*Data folders side by side into AddOns.

@@ -185,7 +185,7 @@ class DestinationPurposeTests(unittest.TestCase):
         c.ns.catalogue.quests[901].prerequisiteAny=c.lua.table_from([900,999])
         c.ns.selectedRoute=c.lua.table_from({'stops':[goal]},recursive=True)
         reason=c.ns.GuideDestinationReason(goal)
-        self.assertNotIn('Required',reason);self.assertIn('selected guide',reason)
+        self.assertNotIn('Required',reason);self.assertIn('Accept First quest to begin its quest objectives.',reason)
 
     def test_consecutive_nearby_pickups_explain_single_visit_and_cache_until_route_changes(self):
         c=guide_client(2);g=zone(c);c.ns.ShowGuideOnMap(g);run_plan(c)

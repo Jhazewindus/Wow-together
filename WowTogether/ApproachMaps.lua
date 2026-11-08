@@ -287,11 +287,7 @@ function ns.InitializeApproachMaps()
     local poll = CreateFrame("Frame")
     local untilPoll = 0
     for _, event in ipairs({"PLAYER_ENTERING_WORLD", "ZONE_CHANGED_NEW_AREA", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS"}) do
-        local previous = ns.handlers[event]
-        ns.On(event, function(...)
-            if previous then previous(...) end
-            untilPoll = 0
-        end)
+        ns.On(event, function() untilPoll = 0 end)
     end
     poll:SetScript("OnUpdate", function(_, delta)
         untilPoll = untilPoll - delta

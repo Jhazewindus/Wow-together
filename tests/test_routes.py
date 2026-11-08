@@ -96,8 +96,9 @@ class RouteTests(unittest.TestCase):
 
     def test_live_leveling_route_expands_a_known_prerequisite_before_the_selected_quest(self):
         c = route_client()
-        catalogue(c, {900: quest('Goal', previousQuest=899), 899: quest('Prerequisite')})
-        records = c.lua.table_from([c.ns.CatalogueRecord(900)])
+        catalogue(c, {900: quest('Goal', previousQuest=899), 899: quest('Prerequisite'),
+                      901: quest('Follow-up', previousQuest=900)})
+        records = c.lua.table_from([c.ns.CatalogueRecord(900), c.ns.CatalogueRecord(901)])
         guide = c.lua.table_from({'key': 'synthetic', 'title': 'Synthetic route', 'records': records,
                                   'mapID': 501, 'zone': 'Test Coast', 'focusKey': c.ns.self, 'fullGuide': True})
 

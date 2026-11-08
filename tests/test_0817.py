@@ -184,27 +184,45 @@ class DungeonDataTests(unittest.TestCase):
         self.assertLess(item_return, next_pickup)
         self.assertLess(next_pickup, stockade_entry)
 
-    def test_unpinned_dungeon_prerequisite_steps_stay_in_sequence_and_do_not_block_the_goal_entrance(self):
+    def test_item_with_an_alternative_outside_source_is_not_assigned_to_a_dungeon(self):
+        c = shipped(30)
+        c.ns.profile.faction, c.ns.profile.raceID = 'Alliance', 1
+        c.ns.questEntities.npc[999999] = c.lua.table_from(
+            {'name': 'Outside source', 'sourceAreaIDs': [1]}, recursive=True)
+        item = c.ns.questEntities.item[2874]
+        item.sources[len(item.sources) + 1] = c.lua.table_from(
+            {'entityType': 'npc', 'entityID': 999999, 'name': 'Outside source', 'action': 'loot'}, recursive=True)
+
+        guide = c.ns.DungeonGuide(groups(c)['the-stockade'])
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+        self.assertFalse(any(stop.id == 373 and stop.dungeonKey == 'the-deadmines'
+                             for stop in route.stops.values()))
+
+    def test_unverified_wetlands_gate_is_named_under_later_not_routed_as_current(self):
+        c = shipped(31)
+        c.ns.profile.faction, c.ns.profile.raceID = 'Horde', 2
+        group = groups(c)['excavation-site-wetlands']
+        guide = c.ns.DungeonGuide(group, 95682)
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+
+        self.assertFalse(any(stop.id == 95682 for stop in route.stops.values()))
+        self.assertIn('Open the Maw', route.pendingReason)
+        self.assertIn('under Later', route.pendingReason)
+        self.assertIn('Ask Deathstalker Agent', route.pendingReason)
+        self.assertIn('Deathstalker Agent', route.pendingReason)
+
+    def test_unverified_dungeon_chain_is_kept_under_later_while_other_goals_remain_routable(self):
         c = shipped(60)
         # WoW supplies bit.band/lshift; the host harness intentionally does not.
         wow_bit(c)
         guide = c.ns.DungeonGuide(groups(c)['blackrock-spire'])
         route = c.ns.BuildDungeonRoute(guide, False, False)
         steps = list(route.stops.values())
-        stratholme_work = next(i for i, stop in enumerate(steps)
-                               if stop.id == 8945 and stop.dungeonKey == 'stratholme')
-        proof_inside = next(i for i, stop in enumerate(steps)
-                            if stop.id == 8946 and stop.dungeonKey == 'stratholme')
-        proof_return = next(i for i, stop in enumerate(steps) if stop.id == 8946 and stop.kind == 't')
-        following_pickup = next(i for i, stop in enumerate(steps) if stop.id == 8947 and stop.kind == 'a')
-        goal_entry = next(i for i, stop in enumerate(steps)
-                          if stop.dungeonEntrance and stop.dungeonKey == 'blackrock-spire')
-        self.assertIn('quest tracker', steps[stratholme_work].label)
-        self.assertIn('quest tracker', steps[proof_inside].label)
-        self.assertLess(stratholme_work, proof_inside)
-        self.assertLess(proof_inside, proof_return)
-        self.assertLess(proof_return, following_pickup)
-        self.assertLess(following_pickup, goal_entry)
+        later_ids = {int(step.id) for step in route.later.values()}
+        self.assertTrue({8945, 8946, 8947}.isdisjoint({int(stop.id) for stop in steps}))
+        self.assertIn(8927, later_ids)
+        self.assertNotIn(8945, later_ids)  # Collapse the blocked chain at its first available step.
+        self.assertTrue(any(stop.dungeonEntrance and stop.dungeonKey == 'blackrock-spire' for stop in steps))
         self.assertTrue(route.partial)
         self.assertFalse(route.entranceBlocked)
 

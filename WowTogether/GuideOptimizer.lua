@@ -65,10 +65,15 @@ local function prerequisiteRecords(guide)
                         local point = ns.NPCPickupPoint(parent) or candidate.starts and candidate.starts[1]
                         local value = point and ns.PlayerPoint(point.mapID)
                             and ns.TravelPointDistance(ns.PlayerPoint(point.mapID), point) or 100000
+                        if ns.active[parent] then value = -1 end
                         if not score or value < score or value == score and parent < best then best, score = parent, value end
                     end
                 end
-                if not met and best then add(best) end
+                if not met and best then
+                    add(best)
+                    if guide.collectionDependencies then guide.collectionDependencies[id] = {best} end
+                    if guide.collectionAlternatives then guide.collectionAlternatives[best] = #quest.prerequisiteAny end
+                end
             end
             for _, parent in ipairs(parents) do
                 local candidate = ns.CatalogueQuest(parent)
@@ -142,6 +147,17 @@ local function availableTasks(guide)
         guide.pendingReason = "Reach level " .. guide.nextLevel .. " to continue your class guide."
     end
     return tasks, missing, complete, #records
+end
+
+local function splitReasonReadyTasks(guide, tasks)
+    local ready, later = {}, {}
+    for _, task in ipairs(tasks) do
+        local current, decision = ns.GuideReasonCanBeCurrent(task.first, guide)
+        if current then ready[#ready + 1] = task
+        else later[#later + 1] = {id = task.id, title = task.first.title,
+            level = (ns.CatalogueQuest(task.id) or {}).level, reason = decision.code} end
+    end
+    return ready, later
 end
 
 local function chooseBatch(guide, tasks, mapID, position, metrics)
@@ -387,6 +403,8 @@ end
 function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     guide.pendingReason = nil
     local tasks, missing, complete, enabled = availableTasks(guide)
+    local laterTasks
+    tasks, laterTasks = splitReasonReadyTasks(guide, tasks)
     local mapID = guide.mapID or 0
     local current = ns.profile and ns.profile.mapID or 0
     local hasMap = false
@@ -409,12 +427,13 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     end
     local stops, cost, method = optimize(localTasks, mapID, position, cooperative, metrics)
     if #stops == 0 and not guide.pendingReason then
-        guide.pendingReason = complete == enabled and "This guide's selected quests are completed."
+        guide.pendingReason = #laterTasks > 0 and "No specific quest reason is ready yet; generic steps are listed under Later."
+            or complete == enabled and "This guide's selected quests are completed."
             or "Visit a quest giver in " .. guide.zone .. "; the next pickup or objective location is not known yet."
     end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
         previewStops = completePreview(tasks, position, cooperative, metrics), eligibleMappedQuests = #tasks,
-        missing = missing, otherMaps = otherMaps, limited = math.max(0, #tasks - #batch), focusKey = guide.focusKey,
+        missing = missing, later = laterTasks, otherMaps = otherMaps, limited = math.max(0, #tasks - #batch), focusKey = guide.focusKey,
         partial = partial or missing > 0 or otherMaps > 0, estimatedWalkingCost = cost,
         guideQuests = #guide.records, tripQuests = #batch, completed = complete, optimized = true, tripSearch = method,
         pendingReason = guide.pendingReason}

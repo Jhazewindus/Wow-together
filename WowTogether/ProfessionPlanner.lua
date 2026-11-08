@@ -838,9 +838,7 @@ function ns.QueueProfessionUpdate(readRecipes)
     end
     if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.25, update) else update() end
 end
-local previousRegen = ns.handlers.PLAYER_REGEN_ENABLED
-ns.On("PLAYER_REGEN_ENABLED", function(...)
-    if previousRegen then previousRegen(...) end
+ns.On("PLAYER_REGEN_ENABLED", function()
     if ns.professionUpdateDeferred then ns.professionUpdateDeferred = nil; ns.QueueProfessionUpdate(true) end
     if ns.ResumeProfessionPreview then ns.ResumeProfessionPreview() end
 end)

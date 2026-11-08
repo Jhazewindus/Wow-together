@@ -102,9 +102,7 @@ ns.On("TRAINER_UPDATE", function()
     ns.QueueProfessionUpdate(true)
 end)
 ns.On("TRAINER_CLOSED", function() trainerOpen = false; ns.QueueProfessionUpdate(true) end)
-local previousSpell = ns.handlers.SPELL_DATA_LOAD_RESULT
 ns.On("SPELL_DATA_LOAD_RESULT", function(id, success)
-    if previousSpell then previousSpell(id, success) end
     if not ns.GuideInteger(id) or not pendingSpells[id] then return end
     pendingSpells[id] = nil
     if not trainerOpen or not ns.Public(success) or success ~= true or spellRefreshQueued then return end

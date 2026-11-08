@@ -256,17 +256,13 @@ ns.On("AUCTION_HOUSE_CLOSED", function()
     ns.CancelAuctionScan("Scan stopped: auction house closed.")
     if panel then panel:Hide(); panel.planSignature = nil; panel.goal.menu:Hide() end
 end)
-local previousRegen = ns.handlers.PLAYER_REGEN_ENABLED
-ns.On("PLAYER_REGEN_ENABLED", function(...)
-    if previousRegen then previousRegen(...) end
+ns.On("PLAYER_REGEN_ENABLED", function()
     if ns.shoppingContext and ns.shoppingWindow and ns.shoppingWindow:IsShown() and not ns.shoppingContext.signature then
         ns.RefreshProfessionShopping()
     end
     ns.RefreshAuctionGuideSearch()
 end)
-local previousItem = ns.handlers.ITEM_DATA_LOAD_RESULT
-ns.On("ITEM_DATA_LOAD_RESULT", function(...)
-    if previousItem then previousItem(...) end
+ns.On("ITEM_DATA_LOAD_RESULT", function()
     if ns.auctionHouseOpen then
         if panel then panel.renderedList = nil end
         ns.RefreshAuctionGuideSearch()

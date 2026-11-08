@@ -4,7 +4,7 @@ local addonName, ns = ...
 local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "fullGuide", "fixedRoute", "personal",
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey", "xpStartLevel", "xpStart",
     "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel", "dungeonKey", "pickupQuestID", "dungeonPhase",
-    "zoneGuideKey", "sectionLow", "sectionHigh", "minLevel", "maxLevel", "mainLevelLow", "mainLevelHigh", "professionID", "targetSkill", "continueOutsideLevels"}
+    "zoneGuideKey", "sectionLow", "sectionHigh", "minLevel", "maxLevel", "mainLevelLow", "mainLevelHigh", "professionID", "targetSkill", "continueOutsideLevels", "classLineGuide"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
@@ -56,6 +56,22 @@ local function descriptor(guide, depth)
         if index > 512 then return end
         if ns.GuideInteger(record.id) and record.id > 0 then
             result.records[#result.records + 1], ids[record.id] = fields(record, recordFields), true
+        end
+    end
+    if guide.collectionDependencies then
+        result.collectionDependencies = {}
+        for child, parents in pairs(guide.collectionDependencies) do
+            if ids[child] and type(parents) == "table" and #parents <= 16 then
+                local selected = {}
+                for _, parent in ipairs(parents) do if ids[parent] then selected[#selected + 1] = parent end end
+                if #selected > 0 then result.collectionDependencies[child] = selected end
+            end
+        end
+    end
+    if guide.collectionAlternatives then
+        result.collectionAlternatives = {}
+        for id, count in pairs(guide.collectionAlternatives) do
+            if ids[id] and ns.GuideInteger(count, 1000) and count > 1 then result.collectionAlternatives[id] = count end
         end
     end
     for _, key in ipairs({"pickupIDs", "catchupTargets", "catchupRequired"}) do
@@ -149,6 +165,22 @@ local function restore(saved, reusePlan, depth)
         guide.records[#guide.records + 1], ids[record.id] = current, true
     end
     guide.target = guide.records[1]
+    if type(saved.collectionDependencies) == "table" then
+        guide.collectionDependencies = {}
+        for child, parents in pairs(saved.collectionDependencies) do
+            if ids[child] and type(parents) == "table" and #parents <= 16 then
+                local selected = {}
+                for _, parent in ipairs(parents) do if ids[parent] then selected[#selected + 1] = parent end end
+                if #selected > 0 then guide.collectionDependencies[child] = selected end
+            end
+        end
+    end
+    if type(saved.collectionAlternatives) == "table" then
+        guide.collectionAlternatives = {}
+        for id, count in pairs(saved.collectionAlternatives) do
+            if ids[id] and ns.GuideInteger(count, 1000) and count > 1 then guide.collectionAlternatives[id] = count end
+        end
+    end
     if guide.mode == "zone" and guide.fullGuide and not guide.catchup and not guide.classQuestScope then
         -- Older releases omitted disabled class quests from the checkpoint.
         -- Restore the full catalogue scope once; later toggles reuse its order.

@@ -26,25 +26,24 @@ class DestinationReasonTests(unittest.TestCase):
     def test_long_generic_trip_is_honest_about_its_value(self):
         c = guide_client(1); s = step(c); select(c, [s], (900,))
         short = c.ns.GuideVisibleReason(s, 501, 100)
-        self.assertIn('level 12', short)
+        self.assertIn('Accept Quest 0 to begin its quest objectives.', short)
+        self.assertNotIn('level 12', short)
         self.assertNotIn('Skip quest', short)
         far = c.ns.RouteContext(s, 502, None, 1500)
-        self.assertIn('No special unlock is known', far)
-        self.assertIn('Skip quest', far)
+        self.assertIn('Accept Quest 0 to begin its quest objectives.', far)
         self.assertNotIn('optimal', far)
-        self.assertFalse(c.ns.GuideDestinationDecision(s).specificBenefit)
-        self.assertIn('No special unlock is known', far)
+        self.assertTrue(c.ns.GuideDestinationDecision(s).specificBenefit)
         c.ns.PickupOfferEvidence = c.lua.eval('function() return true end')
         c.ns.objectiveDisplayRevision = 1
         verified = c.ns.GuideVisibleReason(s, 502, 1500)
-        self.assertIn('Route evidence is incomplete', verified)
+        self.assertIn('Accept Quest 0 to begin its quest objectives.', verified)
 
     def test_mutated_stop_cannot_keep_a_pickup_reason_after_becoming_a_return(self):
         c = guide_client(1); s = step(c); select(c, [s], (900,))
-        self.assertEqual(c.ns.GuideDestinationDecision(s).code, 'level-work')
+        self.assertEqual(c.ns.GuideDestinationDecision(s).code, 'quest-start')
         s.kind = 't'
         self.assertEqual(c.ns.GuideDestinationDecision(s).code, 'quest-reward')
-        self.assertNotIn('level 12', c.ns.GuideVisibleReason(s, 501, 1500))
+        self.assertNotIn('Accept Quest 0 to begin its quest objectives.', c.ns.GuideVisibleReason(s, 501, 1500))
 
     def test_unknown_or_private_distance_does_not_invent_a_long_trip(self):
         c = guide_client(1); s = step(c); select(c, [s], (900,))
@@ -195,12 +194,12 @@ class VisibleReasonTests(unittest.TestCase):
         c.lua.globals().reasonLabel = c.ns.standaloneNavigation.reason
         c.lua.execute('function reasonLabel:GetStringHeight() return 55 end')
         c.ns.SetOption('standaloneArrow', True)
-        self.assertIn(c.ns.GuideDestinationReason(s), c.ns.navigation.context.text)
+        self.assertIn('Accept Synthetic quest to begin its quest objectives.', c.ns.navigation.context.text)
         self.assertFalse(c.ns.standaloneNavigation.reason.IsShown(c.ns.standaloneNavigation.reason))
         c.ns.SetOption('routeArrow', False)
         f = c.ns.standaloneNavigation
         self.assertTrue(f.reason.IsShown(f.reason))
-        self.assertIn(c.ns.GuideDestinationReason(s), f.reason.text)
+        self.assertIn('Accept Synthetic quest to begin its quest objectives.', f.reason.text)
         self.assertGreaterEqual(f.reason.height, 55)
         self.assertGreaterEqual(f.width, f.reason.width)
         self.assertGreaterEqual(f.height, 102 + f.reason.height + 4)

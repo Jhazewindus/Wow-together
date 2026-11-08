@@ -158,6 +158,28 @@ class Client:
             if line.endswith('.lua'):
                 self.lua.execute('assert(loadstring(...))(select(2, ...))',
                                  (ROOT / 'WowTogether' / line).read_text(), 'WowTogether', self.ns)
+        # 0.8.90 stores multiple subscribers per event. Keep the older host
+        # fixtures' convenient `handlers.EVENT(...)` syntax while preserving
+        # the production event list consumed by the frame dispatcher.
+        self.lua.execute(r'''
+        local ns = ...
+        local function makeCallable(list)
+            if type(list) == 'table' then
+                setmetatable(list, {__call=function(handlers, ...)
+                    for index = 1, #handlers do handlers[index](...) end
+                end})
+            end
+        end
+        if type(ns.handlers) == 'table' then
+            for _, list in pairs(ns.handlers) do makeCallable(list) end
+            local on = ns.On
+            ns.On = function(event, handler)
+                local result = on(event, handler)
+                makeCallable(ns.handlers[event])
+                return result
+            end
+        end
+        ''', self.ns)
         if not use_catalogue and not use_lazy_data:
             self.ns.catalogue = self.lua.table_from({'count': 0, 'quests': self.lua.table()})
             self.ns.dungeonData = None  # Synthetic quest fixtures have their own dungeon definitions.

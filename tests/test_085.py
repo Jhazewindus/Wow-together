@@ -166,7 +166,7 @@ class GuideTextTests(unittest.TestCase):
         self.assertEqual(c.ns.navigation.status.text, 'Loot 5 more Boar Flank')
         self.assertEqual(c.ns.navigation.distance.text, '100 yd • 3/8 • ~0m 14s travel')
         self.assertEqual(c.ns.navigation.context.text.splitlines(),
-                         ['Test Coast • 21.0, 27.0'])
+                         ['Test Coast • 21.0, 27.0', 'Required now to finish Supplies'])
         self.assertEqual(c.ns.selectedRoute.stops[1].x, .21)
 
     def test_pending_step_keeps_its_facts_and_blocking_reason(self):

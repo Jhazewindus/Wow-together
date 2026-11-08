@@ -120,24 +120,34 @@ pass. Existing running guide order stays saved. Distance scores are estimates.
 
 ## Published Forever database facts
 
-Source: https://github.com/Questie/QuestieDB/tree/3ac79c37f140b8eb343a28318b7a516b82802a86
+Source: https://github.com/Questie/QuestieDB/tree/aa1d7e7294596cf50a6fd0946dfae0d969cb9623
 
 `tools/forever_source_manifest.json` pins the selected factual files and hashes
-at QuestieDB commit `3ac79c37f140b8eb343a28318b7a516b82802a86` (2026-11-07).
-The raw `data/Forever/foreverQuestDB.lua` is unchanged from the previous
-snapshot, so this refresh does not add quest IDs; the 5,307-record catalogue
-remains the same size. The refreshed catalogue has 4,419 starter records, 4,595
-turn-in records and 2,126 objective records. Eight Questie level corrections and
-one objective record changed; six starter and seven turn-in links were added.
-Updated corrections and traces also refresh entity locations and metadata.
+at QuestieDB commit `aa1d7e7294596cf50a6fd0946dfae0d969cb9623` (2026-11-08).
+The literal-only importer adds 1,947 `nextQuestInChain` links as `nextInChain`
+and 122 explicit one-way `exclusiveTo` relations. It records the source URL,
+commit and hashes. The full category rebuild from the available captures omitted
+26 existing dungeon and related records, so this scoped import retained all
+5,333 packaged quest records. The source queue has 638 open records under the
+current chapter audit.
+
+Reproduce the scoped source import against a captured QuestieDB checkout and
+the existing catalogue:
+
+```text
+/workspace/.wow-together-tests/bin/python tools/supplement_quest_data.py \
+  --directory WowTogether --cache <captured-pages> --output <candidate-directory> \
+  --forever-beta-data <QuestieDB-checkout>
+```
+
 Our literal-only parser reads raw entity fields, inherited literal corrections,
 beta deltas, trace observations and reviewed literal corrections in source
 precedence order. It does not execute static/dynamic providers, function calls
 or arbitrary expressions. Assumed fields and unsupported expressions remain
 withheld. Short names, typed objective IDs, numeric counts, masks, explicit
-relations and actual representative points are selected. It also retains
-Questie's requirement order, current level corrections and reciprocal
-`exclusiveTo` relations when all alternatives have matching quest identities.
+relations and actual representative points are selected. QuestieDB's
+`exclusiveTo` field is directional: the listed quest makes the current quest
+unavailable, without requiring a reciprocal field or identical title.
 
 The importer also selects **482 explicit NPC patrol paths** as ordered points.
 Multiple spawn positions never imply a patrol. Removed/unresolved patrol fields

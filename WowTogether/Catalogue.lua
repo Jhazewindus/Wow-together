@@ -61,19 +61,97 @@ function ns.CatalogueCompletion(key, id, query)
         and member.historyChecked and member.historyChecked[id] then return false end
 end
 
--- Only explicitly documented alternatives qualify. Matching titles alone must
--- never suppress separate chain quests, repeatables or accepted work.
-function ns.CatalogueAlternativeTaken(id, key, query)
+local function talkOnly(quest)
+    return quest and next(quest.objectives or {}) == nil and next(quest.requirements or {}) == nil
+end
+local function npcPoint(point)
+    return point and point.entityType == "npc" and ns.GuideInteger(point.entityID) and point.entityID > 0 and point.entityID or nil
+end
+
+-- Breadcrumb targets: the quests a "Speak with X" / "Report to X" errand
+-- exists to lead into. The server refuses such an errand once its
+-- continuation is accepted or done (SatisfyQuestNextChain), so the guide must
+-- not route to it either. Published `nextInChain` data wins; without it, a
+-- class-category errand with no objectives is inferred to lead into the
+-- same-class quests its end NPC starts, excluding round trips back to its
+-- own start NPC, quests it is a recorded prerequisite of, and quests outside
+-- a -5/+10 level band. Skipping an errand too eagerly costs a few XP; routing
+-- to one the server no longer offers costs a trip to another city. Zone quests are never inferred: a
+-- delivery to a hub NPC is not an errand.
+local breadcrumbCache, breadcrumbSignature, startIndex = {}, nil, nil
+local function indexCatalogue()
+    local quests = ns.catalogue and ns.catalogue.quests
+    if not quests then return end
+    local signature = tostring(quests)
+    if breadcrumbSignature == signature then return end
+    breadcrumbSignature, breadcrumbCache, startIndex = signature, {}, {}
+    -- Only class-category quests are indexed: inference is limited to them,
+    -- and this keeps the one-time unpacking to a few hundred records.
+    for id, quest in pairs(quests) do
+        local path = quest.categoryPath
+        if type(path) == "string" and string.find(path, "^classes/") then
+            local starter = npcPoint(quest.starts and quest.starts[1])
+            if starter then startIndex[starter] = startIndex[starter] or {}; table.insert(startIndex[starter], id) end
+        end
+    end
+end
+
+function ns.CatalogueBreadcrumbTargets(id)
     local quest = ns.CatalogueQuest(id)
-    if not quest or not quest.exclusiveQuests then return end
+    if not quest then return {} end
+    indexCatalogue()
+    if breadcrumbCache[id] then return breadcrumbCache[id] end
+    local targets = {}
+    local published = quest.nextInChain
+    if type(published) == "number" then targets[1] = published
+    elseif type(published) == "table" then for _, other in ipairs(published) do targets[#targets + 1] = other end end
+    local path = quest.categoryPath
+    local starter, finisher = npcPoint(quest.starts and quest.starts[1]), npcPoint(quest.ends and quest.ends[1])
+    if #targets == 0 and type(path) == "string" and string.find(path, "^classes/") and talkOnly(quest)
+        and starter and finisher and starter ~= finisher then
+        local level = quest.level or quest.minLevel or 0
+        for _, other in ipairs(startIndex and startIndex[finisher] or {}) do
+            local candidate = ns.CatalogueQuest(other)
+            local otherLevel = candidate and (candidate.level or candidate.minLevel or 0) or 0
+            if other ~= id and candidate and candidate.categoryPath == path and not ns.IsRetiredQuest(other)
+                and npcPoint(candidate.ends and candidate.ends[1]) ~= starter
+                and otherLevel >= level - 5 and otherLevel <= level + 10 then
+                local dependent = false
+                for _, previous in ipairs(ns.CataloguePrerequisiteIDs(other)) do if previous == id then dependent = true end end
+                if not dependent then targets[#targets + 1] = other end
+            end
+        end
+        table.sort(targets)
+    end
+    breadcrumbCache[id] = targets
+    return targets
+end
+
+-- Only explicitly documented alternatives qualify. Matching titles alone must
+-- never suppress separate chain quests, repeatables or accepted work. The
+-- second result names the relation: "exclusive" or "breadcrumb".
+local function alternativeTaken(id, key, query)
+    local quest = ns.CatalogueQuest(id)
+    if not quest then return end
     key = key or ns.self
     local member = key ~= ns.self and ns.members[key]
     local active = key == ns.self and ns.active or member and member.active
     if active and active[id] then return end
     if key ~= ns.self and (not member or member.syncPending or not member.activeRevision) then return end
-    for _, other in ipairs(quest.exclusiveQuests) do
-        if active and active[other] or ns.CatalogueCompletion(key, other, query) == true then return other end
+    for _, other in ipairs(quest.exclusiveQuests or {}) do
+        if active and active[other] or ns.CatalogueCompletion(key, other, query) == true then return other, "exclusive" end
     end
+    local targets = ns.CatalogueBreadcrumbTargets(id)
+    if #targets == 0 or ns.CatalogueCompletion(key, id, query) == true then return end
+    for _, other in ipairs(targets) do
+        if active and active[other] or ns.CatalogueCompletion(key, other, query) == true then return other, "breadcrumb" end
+    end
+end
+
+-- Keep the public contract compatible with callers that expect one value.
+function ns.CatalogueAlternativeTaken(id, key, query)
+    local alternative = alternativeTaken(id, key, query)
+    return alternative
 end
 
 local classCategoryIDs = {warrior = 1, paladin = 2, hunter = 3, rogue = 4, priest = 5,
@@ -197,8 +275,10 @@ function ns.CataloguePickupCheck(id, profile, key, query)
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity == false then return false, reason end
     key = key or ns.self
-    local alternative = ns.CatalogueAlternativeTaken(id, key, query)
-    if alternative then return false, "Already following the alternative " .. ns.QuestTitle(alternative) .. "." end
+    local alternative, relation = alternativeTaken(id, key, query)
+    if alternative and relation == "breadcrumb" then
+        return false, "No longer offered: it only leads into " .. ns.QuestTitle(alternative) .. ", which is already underway or done.", "breadcrumb-superseded"
+    elseif alternative then return false, "Already following the alternative " .. ns.QuestTitle(alternative) .. "." end
     -- Neither shareability nor an opened turn-in dialog proves remote pickup.
     -- Actual beta offers can contradict an explicitly marked older-world
     -- fallback gate. Published beta and tester prerequisites remain strict.

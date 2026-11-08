@@ -11,11 +11,12 @@ import hashlib
 import json
 from pathlib import Path
 
-from build_quest_dataset import own_lua
+from build_quest_dataset import ROOT, own_lua
 from import_wowhead import detail_facts
 from pack_data import quest_code
 from quest_enrichment import enrich, mapper_entities, quest_relations
 from import_warcraftdb import apply_corrections, apply_stage_corrections
+from forever_beta_facts import apply_chain_facts, apply_item_start_areas, read_beta_facts
 
 ROLES = ('starts', 'ends', 'objectives')
 
@@ -60,7 +61,7 @@ def capture_history(previous, history):
     return result
 
 
-def build(directory, cache, output):
+def build(directory, cache, output, forever_beta_data=None):
     source_directory=ROOT/'WowTogether_QuestData' if directory.resolve()==(ROOT/'WowTogether').resolve() else directory
     source=source_directory/'QuestCatalogue.lua'
     catalogue=own_lua(source, 'catalogue')
@@ -98,6 +99,13 @@ def build(directory, cache, output):
             target=entities[kind].get(ident)
             if target and not target.get('name') and value['name']:target['name']=value['name']
     corrections=apply_corrections(records)
+    chain_import={}
+    if forever_beta_data:
+        beta,_,source,origins=read_beta_facts(forever_beta_data)
+        apply_item_start_areas(entities,beta,source,origins)
+        apply_chain_facts(records,beta,source,origins)
+        chain_import={key:source[key] for key in (
+            'source','commit','files_sha256','next_chain_ids','exclusive_quest_ids','withheld_fields')}
     stage_corrections=apply_stage_corrections(records)
     changed=sorted(ident for ident,quest in records.items() if quest!=before_records[ident])
     added=collections.Counter()
@@ -110,6 +118,8 @@ def build(directory, cache, output):
         'incomplete_objectives_after':sum(bool(q.get('objectiveLocationsIncomplete')) for q in records.values()),'evidence':evidence}
     report['reviewed_stage_corrections']=stage_corrections
     report['reviewed_quest_corrections']=corrections
+    if chain_import:
+        report['quest_chain_import']=chain_import
     catalogue['captured']=now;output.mkdir(parents=True,exist_ok=True)
     lua_output=ROOT/'WowTogether_QuestData' if output.resolve()==(ROOT/'WowTogether').resolve() else output
     lua_output.mkdir(parents=True,exist_ok=True)
@@ -117,19 +127,23 @@ def build(directory, cache, output):
     for key,role in [('with_starters','starts'),('with_objectives','objectives'),('with_turnins','ends')]:metadata[key]=sum(bool(q.get(role)) for q in records.values())
     metadata_history=capture_history(metadata.get('supplemental_capture'),
                                      metadata.get('supplemental_capture_history'))
-    if metadata_history:
+    if (parsed or invalid) and metadata_history:
         metadata['supplemental_capture_history']=metadata_history
     metadata['captured']=now;metadata['incomplete_objective_locations']=report['incomplete_objectives_after']
-    metadata['supplemental_capture']={key:value for key,value in report.items() if key!='evidence'}
+    if parsed or invalid:
+        metadata['supplemental_capture']={key:value for key,value in report.items() if key!='evidence'}
+    if chain_import:
+        metadata['quest_chain_import']=chain_import
     (output/'QuestCatalogue.json').write_text(json.dumps(metadata,indent=2)+'\n')
     coverage=json.loads((directory/'QuestCoverage.json').read_text())
-    previous_capture=coverage.get('supplemental_capture')
-    prior_history=coverage.get('supplemental_capture_history')
-    if prior_history is None:
-        prior_history=metadata.get('supplemental_capture_history', [])
-    history=capture_history(previous_capture, prior_history)
-    if history:
-        coverage['supplemental_capture_history']=history
+    if parsed or invalid:
+        previous_capture=coverage.get('supplemental_capture')
+        prior_history=coverage.get('supplemental_capture_history')
+        if prior_history is None:
+            prior_history=metadata.get('supplemental_capture_history', [])
+        history=capture_history(previous_capture, prior_history)
+        if history:
+            coverage['supplemental_capture_history']=history
     coverage['captured']=now
     for key in ['with_starters','with_objectives','with_turnins']:coverage['summary'][key]=metadata[key]
     zones=collections.defaultdict(lambda:{'quests':0,'pickups':0,'objectives':0,'turnins':0,'complete_locations':0,'missing_quest_ids':[]})
@@ -141,7 +155,11 @@ def build(directory, cache, output):
         complete=bool(q.get('starts') and q.get('ends') and q.get('prerequisitesRead') and not q.get('objectiveLocationsIncomplete') and (q.get('objectives') or not q.get('requirements')))
         if complete:row['complete_locations']+=1
         else:row['missing_quest_ids'].append(ident)
-    coverage['zones']=dict(sorted(zones.items()));coverage['supplemental_capture']=report
+    coverage['zones']=dict(sorted(zones.items()))
+    if parsed or invalid:
+        coverage['supplemental_capture']=report
+    if chain_import:
+        coverage['quest_chain_import']=chain_import
     (output/'QuestCoverage.json').write_text(json.dumps(coverage,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items() if k!='evidence'},indent=2))
     return report
@@ -152,6 +170,8 @@ def main():
     parser.add_argument('--directory',type=Path,default=Path(__file__).resolve().parents[1]/'WowTogether')
     parser.add_argument('--cache',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
-    args=parser.parse_args();build(args.directory,args.cache,args.output)
+    parser.add_argument('--forever-beta-data',type=Path,
+        help='Pinned QuestieDB checkout for chain and exclusivity facts')
+    args=parser.parse_args();build(args.directory,args.cache,args.output,args.forever_beta_data)
 
 if __name__=='__main__':main()

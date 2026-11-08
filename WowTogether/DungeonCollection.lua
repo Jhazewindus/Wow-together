@@ -48,12 +48,49 @@ local function eligiblePrerequisiteIdentity(id)
         and not ns.CatalogueAlternativeTaken(id, ns.self)
 end
 
--- Wowhead's Forever item page identifies An Unsent Letter (2874) as a drop
--- from Edwin VanCleef (639), the Deadmines boss. QuestieDB confirms the
--- quest-item relationship; the encounter itself has no usable interior pin.
-local questItemDungeonSources = {
-    [373] = {key = "the-deadmines", item = "An Unsent Letter", source = "Edwin VanCleef"},
-}
+local function itemStartDungeon(id)
+    local quest = ns.CatalogueQuest(id)
+    for _, reference in ipairs(quest and quest.startRefs or {}) do
+        if reference.entityType == "item" and ns.GuideInteger(reference.entityID) then
+            local item = ns.questEntities and ns.questEntities.item
+                and ns.questEntities.item[reference.entityID]
+            local matchedGroup, matchedSource, ambiguousSource = nil, nil, false
+            for _, source in ipairs(item and item.sources or {}) do
+                local sources = ns.questEntities and ns.questEntities[source.entityType]
+                local entity = sources and sources[source.entityID]
+                if source.action == "loot" or source.action == "gather" then
+                    local sourceAreas = entity and entity.sourceAreaIDs or {}
+                    if #sourceAreas == 0 then
+                        ambiguousSource = true
+                    else
+                        for _, areaID in ipairs(sourceAreas) do
+                            local areaGroup
+                            for _, group in ipairs(ns.DungeonGroups()) do
+                                for _, dungeonAreaID in ipairs(group.definition and group.definition.areaIDs or {}) do
+                                    if areaID == dungeonAreaID then areaGroup = group; break end
+                                end
+                                if areaGroup then break end
+                            end
+                            if not areaGroup then
+                                ambiguousSource = true
+                            elseif matchedGroup and matchedGroup.key ~= areaGroup.key then
+                                ambiguousSource = true
+                            else
+                                matchedGroup, matchedSource = areaGroup, source
+                            end
+                        end
+                    end
+                else
+                    ambiguousSource = true
+                end
+            end
+            if matchedGroup and not ambiguousSource then
+                return matchedGroup, {item = ns.SafeTitle(item.name or reference.name) or "the quest item",
+                    source = ns.SafeTitle(matchedSource.name or "the creature") or "the creature"}
+            end
+        end
+    end
+end
 
 function ns.DungeonGuide(group, pickupQuestID)
     local records, goals, required, dependencies, deferred, seen = {}, {}, {}, {}, {}, {}
@@ -84,6 +121,7 @@ function ns.DungeonGuide(group, pickupQuestID)
         seen[id] = true
         local q = ns.CatalogueQuest(id)
         if not q then return end
+        if q.prerequisitesUnverified then deferred[id] = true end
         records[#records + 1] = ns.CatalogueRecord(id)
         -- Explicit group membership (Wowhead category or supplemental Method
         -- table) is authoritative evidence that the quest's work belongs to
@@ -119,8 +157,9 @@ function ns.DungeonGuide(group, pickupQuestID)
         if not anyMet and best then add(best) end
         for _, previous in ipairs(parents) do
             required[previous], dependencies[id][#dependencies[id] + 1] = true, previous
+            if deferred[id] then deferred[previous] = true end
             visit(previous, depth + 1)
-            if deferred[previous] or inDungeonScope(ns.CatalogueQuest(previous) or {}) then deferred[id] = true end
+            if inDungeonScope(ns.CatalogueQuest(previous) or {}) then deferred[id] = true end
         end
     end
     for _, id in ipairs(group.ids) do
@@ -155,10 +194,8 @@ local function taskKey(stop) return stop.id .. ":" .. ns.GuideStepKey(stop) end
 
 local function prerequisiteDungeon(id, guide)
     if not guide.collectionRequired[id] or guide.collectionGoals[id] then return end
-    local itemSource = questItemDungeonSources[id]
-    if itemSource then
-        for _, group in ipairs(ns.DungeonGroups()) do if group.key == itemSource.key then return group end end
-    end
+    local itemGroup, itemSource = itemStartDungeon(id)
+    if itemGroup then return itemGroup, itemSource end
     local quest = ns.CatalogueQuest(id)
     local key = quest and quest.categoryPath and string.match(quest.categoryPath, "^dungeons/([%w%-]+)$")
     if not key or key == guide.dungeonKey then return end
@@ -272,16 +309,44 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
         end
     end
     guide.collectionDeferred, guide.collectionInDungeon = guide.collectionDeferred or {}, guide.collectionInDungeon or {}
-    local tasks, terminal, byID, missing, pendingReason, deferredNote = {}, {}, {}, 0, nil, nil
+    local tasks, later, terminal, byID, missing, pendingReason, deferredNote = {}, {}, {}, {}, 0, nil, nil
     local entranceBlocked, blockReason = false, nil
     local visiting = {}
+    local function hasUnverifiedParent(id, seenParents)
+        seenParents = seenParents or {}
+        if seenParents[id] then return false end
+        seenParents[id] = true
+        for _, parentID in ipairs(guide.collectionDependencies[id] or {}) do
+            local parent = ns.CatalogueQuest(parentID)
+            if parent and parent.prerequisitesUnverified then return true end
+            if hasUnverifiedParent(parentID, seenParents) then return true end
+        end
+        return false
+    end
     local function append(id)
         if complete(id) then return true end
         if visiting[id] then return false end
         if byID[id] ~= nil then return byID[id] end
-        if guide.collectionDeferred[id] then
+        if guide.collectionDeferred[id] == "dependent" then
             byID[id] = true
+            return true
+        end
+        if guide.collectionDeferred[id] == true then
+            visiting[id] = true
+            for _, previous in ipairs(guide.collectionDependencies[id] or {}) do append(previous) end
+            visiting[id] = nil
+            byID[id] = true
+            local record, quest = ns.CatalogueRecord(id), ns.CatalogueQuest(id)
             local reason = ns.QuestStartGapReason(id)
+            if quest and quest.prerequisitesUnverified then
+                local giver = ns.QuestGiverName(id)
+                reason = giver and ("Ask " .. giver .. " which quest unlocks " .. ns.QuestTitle(id) .. ". Keep it under Later until then.")
+                    or ("Ask the quest giver which quest unlocks " .. ns.QuestTitle(id) .. ". Keep it under Later until then.")
+            end
+            if record and not (not (quest and quest.prerequisitesUnverified) and hasUnverifiedParent(id)) then
+                later[#later + 1] = {id = id, title = record.title, reason = reason
+                    or ("A prerequisite for " .. record.title .. " is not mapped yet.")}
+            end
             if reason and (not deferredNote or string.find(reason, " from ", 1, true)
                 and not string.find(deferredNote, " from ", 1, true)) then deferredNote = reason end
             return true
@@ -292,13 +357,13 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
         for _, previous in ipairs(guide.collectionDependencies[id] or {}) do
             if not append(previous) then
                 parentsReady = false
-                if not guide.collectionInDungeon[previous] then entranceBlocked = true end
+                if guide.pickupQuestID and not guide.collectionInDungeon[previous] then entranceBlocked = true end
             end
             if guide.collectionDeferred[previous] then deferredParent = true end
             if terminal[previous] then dependencies[#dependencies + 1] = terminal[previous] end
         end
         if deferredParent then
-            guide.collectionDeferred[id], visiting[id], byID[id] = true, nil, true
+            guide.collectionDeferred[id], visiting[id], byID[id] = "dependent", nil, true
             return true
         end
         local record = ns.CatalogueRecord(id)
@@ -306,27 +371,35 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
         local dungeonWork = guide.collectionDeferred[id] == true or guide.collectionInDungeon[id] == true
         local inDungeonGoal = guide.collectionGoals[id] == true and guide.collectionInDungeon[id] == true
         if not parentsReady and not dungeonWork then
-            blockReason = blockReason or ("Finish the mapped prerequisite chain for " .. ns.QuestTitle(id) .. " before entering.")
+            if guide.pickupQuestID then
+                entranceBlocked = true
+                blockReason = blockReason or ("Finish the mapped prerequisite chain for " .. ns.QuestTitle(id) .. " before entering.")
+            end
         end
         local identityReady = guide.collectionRequired[id] and not guide.collectionGoals[id]
             and eligiblePrerequisiteIdentity(id) or eligibleIdentity(id)
         if not identityReady and not dungeonWork then
-            entranceBlocked = true
-            blockReason = blockReason or ("Quest eligibility for " .. ns.QuestTitle(id) .. " needs checking before entering.")
+            if guide.pickupQuestID then entranceBlocked = true end
+            local _, eligibilityReason = ns.CatalogueAllowed(id, ns.profile, ns.self)
+            if guide.pickupQuestID then
+                blockReason = blockReason or eligibilityReason
+                    or ("Quest eligibility for " .. ns.QuestTitle(id) .. " needs checking before entering.")
+            end
         end
         local routedPrerequisite = guide.collectionRequired[id] and not guide.collectionGoals[id]
         if not guide.collectionDeferred[id] and not routedPrerequisite and not ns.active[id]
             and ns.PickupOfferEvidence(ns.self, id) == false then
-            entranceBlocked = true
+            if guide.pickupQuestID then entranceBlocked = true end
             local _, reason = ns.CatalogueAllowed(id, ns.profile, ns.self)
-            blockReason = blockReason or reason or ("The quest offer for " .. ns.QuestTitle(id) .. " is not available yet.")
+            if guide.pickupQuestID then
+                blockReason = blockReason or reason or ("The quest offer for " .. ns.QuestTitle(id) .. " is not available yet.")
+            end
         end
         local goalOnly = guide.collectionGoals[id] and not guide.collectionRequired[id]
         local stages = record and identityReady and ns.RouteStages(record, ns.self) or {}
         local mapped, valid, checklistOnly = nil, nil, false
         if goalOnly and ns.active[id] then stages = {} end
-        local itemSource = questItemDungeonSources[id]
-        local prerequisiteGroup = prerequisiteDungeon(id, guide)
+        local prerequisiteGroup, itemSource = prerequisiteDungeon(id, guide)
         local previousDungeon
         if guide.collectionRequired[id] and not guide.collectionGoals[id] then
             for _, parentID in ipairs(guide.collectionDependencies[id] or {}) do
@@ -469,14 +542,18 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
                 mapped = parentsReady and #stages > 0
                 valid = mapped and (hasReturn or inDungeonChecklist)
                 if not hasReturn and not inDungeonChecklist then
-                    entranceBlocked = true
-                    blockReason = blockReason or ("Complete " .. record.title .. " in " .. prerequisiteGroup.name
-                        .. " and check the quest log; its return location is not mapped yet.")
+                    if guide.pickupQuestID then entranceBlocked = true end
+                    if guide.pickupQuestID then
+                        blockReason = blockReason or ("Complete " .. record.title .. " in " .. prerequisiteGroup.name
+                            .. " and check the quest log; its return location is not mapped yet.")
+                    end
                 end
             else
-                entranceBlocked = true
-                blockReason = blockReason or ("The prerequisite run in " .. prerequisiteGroup.name
-                    .. " is not mapped yet. Check the quest log for " .. record.title .. ".")
+                if guide.pickupQuestID then entranceBlocked = true end
+                if guide.pickupQuestID then
+                    blockReason = blockReason or ("The prerequisite run in " .. prerequisiteGroup.name
+                        .. " is not mapped yet. Check the quest log for " .. record.title .. ".")
+                end
                 mapped, valid = false, false
             end
         end
@@ -492,20 +569,51 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
             end
         elseif not goalOnly and not checklistOnly and (#stages == 0 or stages[#stages].kind ~= "t") then
             if #stages > 0 and not dungeonWork and not inDungeonGoal then
-                entranceBlocked = true
-                blockReason = blockReason or ("The return step for " .. record.title .. " is not ready before entering.")
+                if guide.pickupQuestID then entranceBlocked = true end
+                if guide.pickupQuestID then
+                    blockReason = blockReason or ("The return step for " .. record.title .. " is not ready before entering.")
+                end
             end
             valid = false
         end
         if mapped then
+            local laterReason
             for _, stop in ipairs(stages) do
-                local task = {stop = stop, parents = dependencies, key = taskKey(stop)}
-                tasks[#tasks + 1] = task; dependencies = {#tasks}
+                local decision = ns.GuideDestinationDecision(stop, guide)
+                if not decision.specificBenefit or decision.needsReview then laterReason = decision.why; break end
             end
-            if valid then terminal[id] = dependencies[1] end
+            if laterReason then
+                local _, eligibilityReason = ns.CatalogueAllowed(id, ns.profile, ns.self)
+                local reason = eligibilityReason or laterReason
+                later[#later + 1] = {id = id, title = record.title, reason = reason}
+                pendingReason = pendingReason or (record.title .. " stays under Later: " .. reason)
+                if guide.collectionRequired[id] and not guide.collectionGoals[id] then
+                    if guide.pickupQuestID then
+                        entranceBlocked = true
+                        blockReason = blockReason or pendingReason
+                    end
+                end
+                mapped, valid = false, false
+            else
+                for _, stop in ipairs(stages) do
+                    local task = {stop = stop, parents = dependencies, key = taskKey(stop)}
+                    tasks[#tasks + 1] = task; dependencies = {#tasks}
+                end
+                if valid then terminal[id] = dependencies[1] end
+            end
         else
-            local reason = ns.QuestStartGapReason(id)
-                or ("A pickup or route step for " .. record.title .. " is not mapped yet.")
+            local reason
+            if quest and quest.prerequisitesUnverified then
+                local giver = ns.QuestGiverName(id)
+                reason = giver and ("Ask " .. giver .. " which quest unlocks " .. record.title .. ". Keep it under Later until then.")
+                    or ("Ask the quest giver which quest unlocks " .. record.title .. ". Keep it under Later until then.")
+            else
+                reason = ns.QuestStartGapReason(id)
+                    or ("A pickup or route step for " .. record.title .. " is not mapped yet.")
+            end
+            if not (quest and not quest.prerequisitesUnverified and hasUnverifiedParent(id)) then
+                later[#later + 1] = {id = id, title = record.title, reason = reason}
+            end
             if not pendingReason or string.find(reason, " from ", 1, true) and not string.find(pendingReason, " from ", 1, true) then
                 pendingReason = reason
             end
@@ -514,7 +622,14 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
         return valid
     end
     local goalIDs = {}; for id in pairs(guide.collectionGoals or {}) do goalIDs[#goalIDs + 1] = id end; table.sort(goalIDs)
-    for _, id in ipairs(goalIDs) do if not append(id) then missing = missing + 1 end end
+    local unreadyGoals = 0
+    for _, id in ipairs(goalIDs) do
+        if not append(id) then missing, unreadyGoals = missing + 1, unreadyGoals + 1 end
+    end
+    if #goalIDs > 0 and (guide.pickupQuestID or unreadyGoals == #goalIDs) then
+        entranceBlocked = true
+        blockReason = blockReason or pendingReason
+    end
     local start = ns.PlayerPoint(ns.profile.mapID)
     local entrance = guide.entrance
     local order, used = {}, {}
@@ -602,6 +717,7 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops,
         origin = includeOrigin and start and start.mapID == mapID and start or nil, focusKey = ns.self,
         missing = missing, remote = 0, limited = #tasks - #order, otherMaps = otherMaps,
+        later = later,
         partial = missing > 0 or #tasks ~= #order or not guide.pickupQuestID and not entrance,
         entranceBlocked = entranceBlocked,
         pendingReason = pendingReason or deferredNote and (deferredNote .. " This is picked up during the dungeon run.")}

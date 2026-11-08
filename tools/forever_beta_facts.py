@@ -22,6 +22,7 @@ FIELDS = {
     'quest': {'name','startedBy','finishedBy','requiredLevel','questLevel','requiredRaces','requiredClasses',
         'objectives','objectivesText','description','sourceItemId','preQuestGroup','preQuestSingle','zoneOrSort','requiredSkill',
         'triggerEnd','requiredSourceItems','questFlags','specialFlags','requiredMaxLevel','exclusiveTo',
+        'nextQuestInChain',
         'availableUntilCompleted','availableStartingWith','parentQuest','requiredMinRep','requiredMaxRep'},
     'npc': {'name','minLevel','maxLevel','rank','spawns','waypoints','zoneID','questStarts','questEnds'},
     'object': {'name','spawns','zoneID','questStarts','questEnds'},
@@ -71,24 +72,26 @@ def read_value(text, start, symbols):
 def static_fields(text, kind, symbols):
     # Only the static Load body is examined. Never invoke it or interpret a
     # LoadDynamic body whose values depend on class/faction/phase at runtime.
-    match = re.search(r'^function [^\n]+:Load\(\)\s*$', text, re.M)
+    match = re.search(r'^function [^\n]+:Load(?:[A-Za-z0-9_]*)\(\)\s*$', text, re.M)
     if not match: raise ValueError('Unrecognized factual provider boundary')
     body = text[match.end():]
     end = re.search(r'^end\s*$', body, re.M)
     if not end: raise ValueError('Missing factual provider boundary')
     body = body[:end.start()]
     rows, skipped, assumptions = {}, [], []
-    entries = list(re.finditer(r'^        \[(\d+)\]\s*=\s*\{([^\n]*)', body, re.M))
+    entry_matches = list(re.finditer(r'^(\s+)\[(\d+)\]\s*=\s*\{([^\n]*)', body, re.M))
+    entry_indent = len(entry_matches[0][1]) if entry_matches else None
+    entries = [entry for entry in entry_matches if len(entry[1]) == entry_indent]
     for i, entry in enumerate(entries):
-        ident = int(entry[1])
+        ident = int(entry[2])
         if not 0 < ident < 2147483647: raise ValueError('Invalid factual entity ID')
         chunk = body[entry.end():entries[i+1].start() if i+1<len(entries) else len(body)]
         row = rows.setdefault(ident, {})
         # An entry heading may carry a short entity identity, never quest prose.
-        heading = entry[2].strip()
+        heading = entry[3].strip()
         name = re.match(r'--\s*(.*?)\s*(?::\s*https://|$)', heading)
         if name and name[1]: row['_identityName'] = name[1].strip()
-        for field in re.finditer(r'^            \['+kind+r'Keys\.([A-Za-z_0-9]+)\]\s*=\s*', chunk, re.M):
+        for field in re.finditer(r'^\s+\['+kind+r'Keys\.([A-Za-z_0-9]+)\]\s*=\s*', chunk, re.M):
             key = field[1]; base = re.sub(r'_(?:add|remove)$','',key)
             if base not in FIELDS[kind]: continue
             line = chunk[field.end():].split('\n',1)[0]
@@ -151,7 +154,9 @@ def read_beta_facts(root):
         base = 'data/Forever/forever'+cap+'DB.lua'
         data[kind] = base_fields(texts[base],kind)
         for ident,row in data[kind].items(): origins[kind][ident]={key:'converted-baseline' for key in row}
-        files=['src/corrections/Forever/legacy/classic'+('NPC' if kind=='npc' else cap)+'Fixes.lua',
+        files=['src/corrections/Forever/legacy/classic'+('NPC' if kind=='npc' else cap)+'Fixes.lua']
+        if kind == 'item': files.append('src/corrections/Forever/legacy/itemStartFixes.lua')
+        files += [
             'src/corrections/Forever/generated/foreverBase'+cap+'.lua',
             'src/corrections/Forever/traces/forever'+cap+'Traces.lua',
             'src/corrections/Forever/forever'+('NPC' if kind=='npc' else cap)+'Fixes.lua']
@@ -160,7 +165,9 @@ def read_beta_facts(root):
             skipped.extend(missing); assumptions.extend(guessed)
             for ident, row in rows.items():
                 apply_fields(data[kind].setdefault(ident,{}),row)
-                source = 'converted-baseline' if '/legacy/' in name else 'beta-delta' if '/generated/' in name else 'beta-observation' if '/traces/' in name else 'beta-reviewed'
+                source = ('published-item-start' if name.endswith('/itemStartFixes.lua') else
+                    'converted-baseline' if '/legacy/' in name else 'beta-delta' if '/generated/' in name else
+                    'beta-observation' if '/traces/' in name else 'beta-reviewed')
                 origin = origins[kind].setdefault(ident,{})
                 for key in row: origin[re.sub(r'_(?:add|remove)$','',key)] = source
     mapping_text=texts['support/Forever/Zones/areaIdToUiMapId.lua']
@@ -183,6 +190,96 @@ HORDE = 8589934770
 
 def ids(value):
     return [i for i in sequence(value) if type(i) is int and 0 < i < 2147483647]
+
+
+def apply_chain_facts(records, data, provenance, origins):
+    """Apply QuestieDB next-chain and one-way exclusivity relations."""
+    provenance.setdefault('next_chain_ids', [])
+    provenance.setdefault('exclusive_quest_ids', [])
+    provenance.setdefault('withheld_fields', [])
+    provenance.setdefault('quests_used', [])
+    source_root = provenance['source'].rstrip('/') + '/blob/' + provenance['commit'] + '/'
+    for ident, row in sorted(data['quest'].items()):
+        origin = origins['quest'].get(ident, {})
+        quest = records.get(ident)
+        if not quest:
+            continue
+        chain_origin = origin.get('nextQuestInChain', 'converted-baseline')
+        next_id = row.get('nextQuestInChain')
+        exact = bool(row.get('name') == quest.get('title')
+            and row.get('requiredLevel') == quest.get('minLevel')
+            and row.get('questLevel') == quest.get('level'))
+        if type(next_id) is int and (exact or chain_origin != 'converted-baseline'):
+            current = quest.get('nextInChain')
+            if next_id == 0:
+                if current:
+                    quest['prerequisitesUnverified'] = True
+                    provenance['withheld_fields'].append([ident, 'nextQuestInChain'])
+            elif next_id == ident or next_id not in records:
+                quest['prerequisitesUnverified'] = True
+                provenance['withheld_fields'].append([ident, 'nextQuestInChain'])
+            elif current not in (None, next_id):
+                quest['prerequisitesUnverified'] = True
+                provenance['withheld_fields'].append([ident, 'nextQuestInChain'])
+            else:
+                quest['nextInChain'] = next_id
+                source_file = ('data/Forever/foreverQuestDB.lua'
+                    if chain_origin == 'converted-baseline'
+                    else 'src/corrections/Forever/foreverQuestFixes.lua')
+                quest['nextInChainSource'] = source_root + source_file
+                provenance['next_chain_ids'].append(ident)
+                quest['betaFactsSource'] = provenance['source']
+                if ident not in provenance['quests_used']:
+                    provenance['quests_used'].append(ident)
+
+        if origin.get('exclusiveTo', 'converted-baseline') == 'converted-baseline':
+            continue
+        alternatives = sorted(set(ids(row.get('exclusiveTo'))))
+        if not alternatives:
+            continue
+        if any(other == ident or other not in records for other in alternatives):
+            quest['prerequisitesUnverified'] = True
+            provenance['withheld_fields'].append([ident, 'exclusiveTo'])
+            continue
+        existing = quest.get('exclusiveQuests')
+        if existing and sorted(set(existing)) != alternatives:
+            quest['prerequisitesUnverified'] = True
+            provenance['withheld_fields'].append([ident, 'exclusiveTo'])
+            continue
+        quest['exclusiveQuests'] = alternatives
+        quest['exclusiveQuestSource'] = source_root + 'src/corrections/Forever/foreverQuestFixes.lua'
+        provenance['exclusive_quest_ids'].append(ident)
+        quest['betaFactsSource'] = provenance['source']
+        if ident not in provenance['quests_used']:
+            provenance['quests_used'].append(ident)
+    return provenance
+
+
+def apply_item_start_areas(entities, data, provenance, origins):
+    """Attach source-zone facts for lootable quest-starting items."""
+    source_root = provenance['source'].rstrip('/') + '/blob/' + provenance['commit'] + '/'
+    item_start_url = source_root + 'src/corrections/Forever/legacy/itemStartFixes.lua'
+    for item in data['item'].values():
+        if type(item.get('startQuest')) is not int:
+            continue
+        for kind, field in (('npc', 'npcDrops'), ('object', 'objectDrops')):
+            for ident in ids(item.get(field)):
+                area_id = data[kind].get(ident, {}).get('zoneID')
+                if type(area_id) is not int or area_id <= 0:
+                    continue
+                entity = entities[kind].get(ident)
+                if entity is None:
+                    continue
+                area_ids = entity.setdefault('sourceAreaIDs', [])
+                if area_id not in area_ids:
+                    area_ids.append(area_id)
+                    area_ids.sort()
+                area_basis = origins[kind].get(ident, {}).get('zoneID', 'converted-baseline')
+                area_file = 'src/corrections/Forever/foreverNpcFixes.lua' if area_basis != 'converted-baseline' \
+                    and kind == 'npc' else 'src/corrections/Forever/foreverObjectFixes.lua' if area_basis != 'converted-baseline' \
+                    else 'data/Forever/foreverNpcDB.lua' if kind == 'npc' else 'data/Forever/foreverObjectDB.lua'
+                entity['sourceAreaSource'] = item_start_url + '; ' + source_root + area_file
+    return entities
 
 
 def patrol_paths(value):
@@ -304,15 +401,26 @@ def merge_beta_facts(records, refs, entities, area_maps, root, preserve_item_sou
         area_maps[area] = map_id
     provenance.update(quests_used=[], identity_conflicts=[], withheld_fields=[], location_points=0,
         corrected_objective_quest_ids=[], objective_order_quest_ids=[], exclusive_quest_ids=[],
+        next_chain_ids=[],
         quest_level_ids=[], required_level_ids=[], patrol_routes=0)
     # Entity records are facts, not quest eligibility. Converted baseline
     # positions remain explicitly distinguishable from new beta observations.
+    item_start_sources = {'npc': set(), 'object': set()}
+    for item in data['item'].values():
+        if type(item.get('startQuest')) is int:
+            for kind, field in (('npc', 'npcDrops'), ('object', 'objectDrops')):
+                item_start_sources[kind].update(ids(item.get(field)))
     for kind in ('npc','object','item'):
         for ident,row in data[kind].items():
             value = entities[kind].setdefault(ident,{'name':'','locations':[]})
             if not value['name']: value['name'] = entity_name(kind,ident,data)
             source = origins[kind].get(ident,{})
             if kind != 'item':
+                if ident in item_start_sources[kind] and type(row.get('zoneID')) is int and row['zoneID'] > 0:
+                    value.setdefault('sourceAreaIDs', [])
+                    if row['zoneID'] not in value['sourceAreaIDs']:
+                        value['sourceAreaIDs'].append(row['zoneID'])
+                    value['sourceAreaSource'] = provenance['source'] + ' ' + provenance['commit']
                 for area,coords in (row.get('spawns') or {}).items():
                     if area not in area_maps or not isinstance(coords,dict): continue
                     basis = source.get('spawns','converted-baseline')
@@ -498,33 +606,7 @@ def merge_beta_facts(records, refs, entities, area_maps, root, preserve_item_sou
         if source.get('objectives','converted-baseline')!='converted-baseline' and (row.get('objectives') or {}):
             provenance['objective_order_quest_ids'].append(ident)
         if used: quest['betaFactsSource']=provenance['source']; provenance['quests_used'].append(ident)
-    # QuestieDB's exclusiveTo relation is reciprocal for these branch choices.
-    # Import only complete, title-matched, reciprocal groups; partial records
-    # stay visibly unverified instead of suppressing an unrelated quest.
-    exclusive_source = provenance['source'].rstrip('/')+'/blob/'+provenance['commit']+'/src/corrections/Forever/foreverQuestFixes.lua'
-    for ident,row in sorted(data['quest'].items()):
-        source = origins['quest'].get(ident,{})
-        if source.get('exclusiveTo','converted-baseline')=='converted-baseline': continue
-        quest=records.get(ident); alternatives=ids(row.get('exclusiveTo'))
-        if not quest or not alternatives: continue
-        valid = all(other != ident and other in records and records[other].get('title') == quest.get('title')
-            and ident in ids(data['quest'].get(other,{}).get('exclusiveTo'))
-            and origins['quest'].get(other,{}).get('exclusiveTo') != 'converted-baseline'
-            for other in alternatives)
-        if not valid:
-            quest['prerequisitesUnverified']=True
-            provenance['withheld_fields'].append([ident,'exclusiveTo'])
-            continue
-        existing=quest.get('exclusiveQuests')
-        if existing and sorted(set(existing)) != alternatives:
-            quest['prerequisitesUnverified']=True
-            provenance['withheld_fields'].append([ident,'exclusiveTo'])
-            continue
-        quest['exclusiveQuests']=alternatives
-        quest['exclusiveQuestSource']=exclusive_source
-        provenance['exclusive_quest_ids'].append(ident)
-        quest['betaFactsSource']=provenance['source']
-        if ident not in provenance['quests_used']: provenance['quests_used'].append(ident)
+    apply_chain_facts(records, data, provenance, origins)
     provenance['inverse_beta_relations_used']=[]
     for ident,quest in records.items():
         relation=refs.setdefault(ident,{'starts':[],'ends':[],'requirements':[]})

@@ -230,8 +230,7 @@ function ns.InitializeGroupFinderRoles()
         end
     end)
     for _, event in ipairs({"LFG_LIST_SEARCH_RESULTS_RECEIVED", "LFG_LIST_SEARCH_RESULT_UPDATED", "LFG_LIST_APPLICANT_LIST_UPDATED", "LFG_LIST_APPLICANT_UPDATED", "PLAYER_REGEN_ENABLED"}) do
-        local previous = ns.handlers[event]
-        ns.On(event, function(...) if previous then previous(...) end; dirty = true end)
+        ns.On(event, function() dirty = true end)
     end
 end
 function ns.GroupFinderRoleDiagnostics(output)

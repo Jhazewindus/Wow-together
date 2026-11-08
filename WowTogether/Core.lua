@@ -1,7 +1,15 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.76"
-ns.RELEASE_NAME = "QUESTIE LIVE ROUTE REFRESH"
+-- The TOC is the only place a version is typed. The literal fallback exists
+-- for builds whose metadata API is unavailable; keep it equal to the TOC.
+local function metadata(field)
+    local reader = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
+    if type(reader) ~= "function" then return end
+    local okay, value = pcall(reader, addonName, field)
+    if okay and type(value) == "string" and value ~= "" then return value end
+end
+ns.VERSION = metadata("Version") or "0.8.90"
+ns.RELEASE_NAME = metadata("X-ReleaseName") or "PROVEN GROUND ROUTING"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -97,12 +105,17 @@ function ns.ScheduleGuideProgress()
     C_Timer.After(0.1, update)
 end
 
+-- Every module may subscribe to the same event; handlers run in
+-- registration order. Registering the same function twice is a no-op, so an
+-- initializer that runs again does not double-subscribe. The frame itself
+-- registers each event once: some builds return false for a repeat.
 function ns.On(event, handler)
-    -- A successful subscription belongs to this one dispatch frame. Updating
-    -- its handler must not register it again: some builds return false for an
-    -- already registered event. Explicit unsubscription clears the handler.
-    if ns.handlers[event] then
-        ns.handlers[event], ns.eventFailures[event] = handler, nil
+    if type(handler) ~= "function" then return false end
+    local list = ns.handlers[event]
+    if list then
+        for _, existing in ipairs(list) do if existing == handler then return true end end
+        list[#list + 1] = handler
+        ns.eventFailures[event] = nil
         return true
     end
     -- Beta builds may omit otherwise documented events. This only catches
@@ -121,13 +134,14 @@ function ns.On(event, handler)
         return false
     end
     ns.eventFailures[event] = nil
-    ns.handlers[event] = handler
+    ns.handlers[event] = {handler}
     return true
 end
 
 ns.frame:SetScript("OnEvent", function(_, event, ...)
-    local handler = ns.handlers[event]
-    if handler then handler(...) end
+    local list = ns.handlers[event]
+    if not list then return end
+    for index = 1, #list do list[index](...) end
 end)
 
 function ns.Diagnostics()
@@ -169,6 +183,10 @@ function ns.Diagnostics()
         {"C_Map.GetPlayerMapPosition", C_Map and C_Map.GetPlayerMapPosition},
         {"C_Map.GetMapInfo", C_Map and C_Map.GetMapInfo},
         {"IsInInstance", IsInInstance},
+        {"IsFalling", IsFalling},
+        {"GetBindLocation", GetBindLocation},
+        {"GetItemCooldown / C_Container.GetItemCooldown", GetItemCooldown or C_Container and C_Container.GetItemCooldown},
+        {"IsSpellKnown", IsSpellKnown},
         {"GetInstanceInfo", GetInstanceInfo},
         {"EJ_GetInstanceByIndex", EJ_GetInstanceByIndex},
         {"EJ_GetInstanceInfo", EJ_GetInstanceInfo},
@@ -312,6 +330,7 @@ function ns.Diagnostics()
         .. " coalesced; " .. ns.refreshStats.completed .. " passes.")
     output("Scan guide: fresh quest log, objectives and history; fixed order retained. Useful lower-level prerequisites explain their unlock.")
     ns.NavigationDiagnostics(output)
+    if ns.MinimapRouteDiagnostics then ns.MinimapRouteDiagnostics(output) end
     ns.GuideReasonDiagnostics(output)
     ns.QuestItemDiagnostics(output)
     ns.GuideTipDiagnostics(output)
@@ -352,12 +371,14 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateUI()
     ns.CreateSettings()
     ns.CreateMinimap()
+    ns.CreateMinimapRoute()
     ns.ReadQuests()
     ns.InitializeSync()
     ns.InitializeQuestHistory()
     ns.InitializeGuideXP()
     ns.InitializeGuideControls()
     ns.InitializeTravel()
+    ns.InitializeTravelTrails()
     ns.InitializeGuideTips()
     ns.InitializeClassTraining()
     ns.InitializeItemHints()
@@ -442,5 +463,6 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "research" then ns.ShowQuestResearch()
     elseif command == "findings" then ns.ShowGuideFindings()
     elseif command == "questlines" then ns.ShowQuestLineReport()
+    elseif command == "roads" or string.sub(command, 1, 6) == "roads " then ns.TravelTrailCommand(string.sub(command, 7))
     else ns.ToggleWindow() end
 end

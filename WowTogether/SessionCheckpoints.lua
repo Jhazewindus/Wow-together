@@ -251,13 +251,7 @@ function ns.InitializeSessionCheckpoints()
     local guideState = ns.db.guideState[ns.self]
     if state.current and (type(guideState) ~= "table" or not guideState.guide or guideState.paused
         or state.current.key ~= identity(guideState.guide)) then state.last, state.current = state.current, nil end
-    local function chain(event, callback)
-        local previous = ns.handlers[event]
-        ns.On(event, function(...)
-            if previous then previous(...) end
-            callback(...)
-        end)
-    end
+    local function chain(event, callback) ns.On(event, callback) end
     chain("PLAYER_XP_UPDATE", function(unit) if ns.Public(unit) and unit == "player" then ns.CaptureSessionCheckpoint() end end)
     -- PLAYER_LEVEL_UP can precede the reset of UnitXP. The XP event (and
     -- existing batched guide refresh) reads the settled level/XP pair instead.

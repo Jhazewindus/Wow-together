@@ -1,9 +1,9 @@
 ## Interface: 16001
 ## Title: Wow Together
-## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
+## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.89
-## X-ReleaseName: CLASS QUEST GUIDE BROWSER FIX
+## Version: 0.8.94
+## X-ReleaseName: SUPPORTED REASONS AND DUNGEON CHAINS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -18,6 +18,8 @@ ExperienceData.lua
 TravelNetwork.lua
 TravelTerrainData.lua
 TravelTerrain.lua
+TravelRoadData.lua
+TravelTrails.lua
 Catalogue.lua
 Quests.lua
 GuideXP.lua
@@ -31,6 +33,7 @@ LuaConsole.lua
 Config.lua
 UnitNumbers.lua
 Minimap.lua
+MinimapRoute.lua
 Offers.lua
 NPCPickups.lua
 QuestResearch.lua
@@ -57,6 +60,7 @@ Planner.lua
 GuideControls.lua
 GuidePolicy.lua
 Travel.lua
+TravelPersonal.lua
 FlightTimes.lua
 TravelGuides.lua
 LevelingGuides.lua

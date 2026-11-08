@@ -35,7 +35,7 @@ def prepare(archive):
         release_name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})$', toc, re.M)
         release_label = version + (' — ' + release_name.group(1) if release_name else '')
         if not re.search(r'^## Interface: 16001$', toc, re.M):
-            raise ValueError('Expected Forever beta interface 16001.')
+            raise ValueError('Expected WoW Forever client interface 16001.')
         for name in toc.splitlines():
             if name.endswith('.lua'):
                 z.getinfo('WowTogether/' + name)
@@ -57,13 +57,13 @@ def prepare(archive):
                         changelog.decode(), re.M | re.S)
     if not section or ('**' + version + '**') not in testing.decode():
         raise ValueError('Changelog/test checklist do not match the release version.')
-    heading = '**Wow Together ' + release_label + ' — Forever beta**\n\n'
+    heading = '**Wow Together ' + release_label + ' — World of Warcraft: Forever (live)**\n\n'
     notes = section.group(1).strip()
     footer = ('\n\n**Install:** replace `WowTogether` and all three matching `WowTogether_*Data` sibling folders in '
-               '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\` on every party member’s client, then fully restart. '
+               'the live World of Warcraft client’s `Interface\\AddOns\\` folder on every party member’s client, then fully restart. '
                'Restart the client if the addon folder does not appear.\n\n'
                '**Testing:** use the attached leveling checklist and report template. '
-               'Host checks do not establish beta API/rendering compatibility.')
+               'Host checks do not establish live-client API/rendering compatibility.')
     if len(heading + notes + footer) > 2000:
         attached = '\n\nFull changelog attached.'
         budget = 2000 - len(heading + attached + footer)

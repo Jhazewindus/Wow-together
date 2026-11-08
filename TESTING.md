@@ -1,5 +1,100 @@
 # Wow Together — friend test script
 
+For **0.8.94** — **SUPPORTED REASONS AND DUNGEON CHAINS**, live World of Warcraft: Forever.
+
+## Current-step reason rule — 0.8.94
+
+1. Open a regular adaptive leveling guide whose selected quest has only a
+   generic level-work reason. It must remain under Later and must not become the
+   current arrow destination. A mapped pickup should instead say “Accept
+   <quest> to begin its quest objectives.”
+2. Open a class quest guide and verify specific unlock steps remain available.
+   Steps with unknown destinations or unverified requirements remain Later.
+3. Follow the Stockade preparation check below: the data-backed An Unsent
+   Letter pickup routes through Deadmines, while the unsupported Open the Maw
+   requirement stays Later with the recorded giver named. Fixed-guide plans
+   keep their audited order.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,827 tests** in 458.50 seconds. All **92 Lua files compile
+under Lua 5.1**. The fixed Mulgore fingerprint and fixed-guide audits pass.
+Host checks cannot verify live NPC offers or in-game rendering.
+
+For **0.8.93** — **DUNGEON PREREQUISITES AND CLEAR LATER STEPS** (included in 0.8.94), live World of Warcraft: Forever.
+
+## Dungeon prerequisite routing and Later status — 0.8.93
+
+1. On an Alliance character preparing for the Stockade, start its dungeon
+   quest guide. The route should lead to Deadmines, tell you to loot **An
+   Unsent Letter** from **Edwin VanCleef**, return it, and then continue to the
+   Stockade quest giver.
+2. On a level-31 Horde character, select **Open the Maw** (95682) at
+   Excavation Site: Wetlands. Its unknown prerequisite must stay under Later;
+   the message should ask you to speak with **Deathstalker Agent** rather than
+   sending you to an unverified pickup.
+3. Check the reviewed dungeon lists. The audit covers 28 categories and 376
+   listed memberships, but 17 detail pages remain denied, three categories
+   lack named public lists, and some quest locations remain unmapped. Treat
+   those as open gaps; do not infer the missing quests or locations.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,826 tests** in 461.03 seconds. All **92 Lua files compile
+under Lua 5.1**. The fixed Mulgore fingerprint and fixed-guide audits pass.
+Host checks cannot verify live NPC offers or in-game rendering.
+
+The pinned QuestieDB source is `aa1d7e7294596cf50a6fd0946dfae0d969cb9623`;
+the item-start file and NPC/object source areas are hashed in the source
+manifest. Host tests cannot verify a live NPC offer or in-game rendering.
+
+For **0.8.92** — **PUBLISHED QUEST CHAINS**, World of Warcraft: Forever.
+
+## Published chain and exclusion data — 0.8.92
+
+1. On a Troll Mage, complete **Speak with Deino** (1943), **Waters of Xavian**
+   (1944) and **Laughing Sisters** (1945). Reopen the class guide: the finished
+   Deino errand must not send you back to its giver.
+2. For **The Lost Ingots** (324), check the documented one-way exclusion with
+   **Lightforge Ingots** (526). Completing 526 suppresses 324; the addon must
+   not invent an exclusion in the opposite direction unless QuestieDB records it.
+3. Existing fixed zone guides should retain their stop order. The Horde
+   Research Access book hand-in is still open for in-game verification.
+
+The QuestieDB snapshot is `aa1d7e7294596cf50a6fd0946dfae0d969cb9623`.
+It contributes 1,947 chain links and 122 explicit one-way exclusions to the
+existing 5,333-quest catalogue. The source queue contains 638 quest records.
+Host route audits checked 157 guides and 12,688 total actions with no fixed
+guide order change.
+
+## Class guide reasons and prerequisite choices — 0.8.91
+
+1. On a level-26 Mage, open **Class quests** and start the guide. Check that a
+   current step says what to do, where to go, why it advances a quest, and
+   whether it is required for the chain or optional. Object-start quests should
+   name the object as a ground object and use a verb such as Read.
+2. Check Research Access (97286). The guide should route exactly one eligible
+   option from its 40 `prerequisiteAny` quests and name Research Access in the
+   reason. Skip the chosen quest and rebuild; another eligible option should be
+   selected.
+3. Generic class-guide reasons such as level work and outside-level-range must
+   stay out of the current arrow destination and appear as Later in the guide
+   list. Verify ordinary zone-route ordering remains unchanged.
+4. The book hand-in for a Horde Mage is still an open question. This release
+   does not claim a Horde-side NPC or change the quest's faction data.
+5. On the 0.8.90 travel baseline, walk a road and check that the route line
+   follows known ground; reload and confirm the trail remains. Check the
+   minimap route and, if available, Hearthstone/class-teleport suggestions.
+   These features require in-game testing and are not certified by host tests.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,822 tests and 332 subtests** in 453.51 seconds. All **96 Lua
+files compile under Lua 5.1**. The chain/exclusion tests read the shipped
+catalogue and verify source-backed mappings, one-way behavior and class-guide
+supersession. Host data checks do not establish live offers or in-game rendering.
+
+The Research Access test reads the shipped catalogue and checks
+choice count, reason code, object wording and skip/reselect behavior; this does
+not establish live offers or in-game rendering.
+
 For **0.8.89** — **CLASS QUEST GUIDE BROWSER FIX**, World of Warcraft:
 Forever.
 
@@ -391,7 +486,7 @@ tracking, protected APIs and gameplay timing need this client check.
 
 1. Replace the four sibling folders `WowTogether`, `WowTogether_QuestData`,
    `WowTogether_ProfessionData` and `WowTogether_DungeonData` in
-   `World of Warcraft\_classic_beta_\Interface\AddOns\`. Do not nest
+   `the live World of Warcraft client’s `Interface\AddOns\` folder`. Do not nest
    data folders inside the main addon. **Fully restart the client for this
    update**, rather than only `/reload`.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,

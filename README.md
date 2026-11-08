@@ -1,10 +1,31 @@
 # WoW Together
 
-A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
+A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.89 — CLASS QUEST GUIDE BROWSER FIX** targets
+progress. Version **0.8.94 — SUPPORTED REASONS AND DUNGEON CHAINS** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.94 keeps steps without a supported reason out of every current route.** They remain under Later until their reason or source facts are supported. The dungeon guide also routes published item-start prerequisites from their data. The
+Stockade guide follows An Unsent Letter through its Deadmines drop before
+continuing to the Stockade quest giver. Steps without a supported reason, and
+quests with a prerequisite still needing a giver check, remain under Later.
+See CHANGELOG.md, QUEST_DATA.md and TESTING.md for the remaining source gaps.
+
+**0.8.92 imports QuestieDB's published quest-chain links and one-way
+exclusions.** A completed continuation now supersedes its preceding class
+errand using the recorded chain, and a quest is suppressed only by the quests
+Questie explicitly lists. Existing catalogue entries are retained. See
+CHANGELOG.md, QUEST_DATA.md and TESTING.md.
+
+**0.8.91 makes dedicated class guides show only steps with a specific reason
+to act now.** Generic level-work steps remain under Later, while any-of
+prerequisites such as the 40 book options for Research Access choose one
+eligible route and explain what it unlocks. Object starts are described as a
+reading action, and the card identifies whether a step is required or optional.
+This archive also carries forward 0.8.90's ground trails, party road sharing,
+minimap routes and personal travel options. The Horde hand-in for Research
+Access remains unverified. See CHANGELOG.md and TESTING.md.
 
 **0.8.89 fixes the Class quests view for characters whose full route contains
 incomplete vendor-item quantity data.** Those item records no longer interrupt
@@ -118,7 +139,7 @@ they do not establish in-game FPS or load time. See PERFORMANCE.md and TESTING.m
 Extract the release ZIP and copy all four addon folders side by side to:
 
 ```text
-World of Warcraft\_classic_beta_\Interface\AddOns\
+the live World of Warcraft client’s `Interface\AddOns\` folder
 ```
 
 Install `WowTogether`, `WowTogether_QuestData`, `WowTogether_ProfessionData` and
@@ -425,7 +446,7 @@ instead of only the 36 settlement labels. Your other flights do not unlock this
 one. Public character unlock/ownership observations take priority; uncertain
 unlocks say Check. Opening the flight-master map confirms access. Quest order
 and confirmed travel connections are retained. Locations and live reminder
-behavior still need testing on the current Forever beta.
+behavior still need testing on the current Forever client.
 
 **0.8.42 polishes guide windows and destination advice.** Smaller guide-start,
 profession-scan, activity and party prompts now resize and remember geometry.

@@ -393,6 +393,7 @@ function ns.Receive(prefix, message, channel, sender)
         trace("Accepted hello; await refreshed peer snapshot")
         assemblies[sender] = nil
         if ns.ResetPartyRoutePeer then ns.ResetPartyRoutePeer(sender) end
+        if ns.ResetTrailSharing then ns.ResetTrailSharing() end
         local member = ns.members[sender] or {}
         ns.members[sender] = member
         member.syncPending, member.activeRevision = true, nil
@@ -422,6 +423,13 @@ function ns.Receive(prefix, message, channel, sender)
         if handled then
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
             ns.Refresh(true)
+            return
+        end
+    end
+    if ns.ReceiveTrailMessage then
+        local handled, accepted, reason = ns.ReceiveTrailMessage(message, sender)
+        if handled then
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
             return
         end
     end

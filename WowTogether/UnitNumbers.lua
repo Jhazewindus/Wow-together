@@ -49,7 +49,6 @@ end
 function ns.InitializeUnitNumbers()
     ns.ApplyUnitNumbers()
     for _, event in ipairs({"PLAYER_LOGIN", "PLAYER_REGEN_ENABLED"}) do
-        local previous = ns.handlers[event]
-        ns.On(event, function(...) if previous then previous(...) end; ns.ApplyUnitNumbers() end)
+        ns.On(event, ns.ApplyUnitNumbers)
     end
 end

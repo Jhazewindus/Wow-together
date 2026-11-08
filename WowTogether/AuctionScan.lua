@@ -164,9 +164,7 @@ function ns.StartAuctionGuideScan()
     C_Timer.After(0, prepare)
 end
 
-local previousRegen = ns.handlers.PLAYER_REGEN_ENABLED
-ns.On("PLAYER_REGEN_ENABLED", function(...)
-    if previousRegen then previousRegen(...) end
+ns.On("PLAYER_REGEN_ENABLED", function()
     if scan and scan.items then schedule(scan) end
 end)
 ns.On("AUCTION_HOUSE_BROWSE_RESULTS_UPDATED", function()

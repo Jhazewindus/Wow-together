@@ -374,11 +374,7 @@ function ns.InitializeInventoryServices()
     state.dismissed = type(state.dismissed) == "table" and state.dismissed or {}
     if type(state.pending) ~= "table" or type(state.pending.needs) ~= "table" then state.pending = nil end
     initialized = true
-    -- Register last, chaining the profession/travel handlers instead of replacing them.
-    local function chain(event, action)
-        local before = ns.handlers[event]
-        ns.On(event, function(...) if before then before(...) end; action(...) end)
-    end
+    local function chain(event, action) ns.On(event, action) end
     for _, event in ipairs({"BAG_UPDATE_DELAYED", "UPDATE_INVENTORY_DURABILITY", "PLAYER_EQUIPMENT_CHANGED", "PLAYER_LEVEL_UP", "PLAYER_LOGIN"}) do
         chain(event, ns.QueueServiceInventory)
     end

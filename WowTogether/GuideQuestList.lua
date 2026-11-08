@@ -19,6 +19,7 @@ local function status(stop, query, guide)
     if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return "Skipped" end
     if ns.Completed(stop.id, query) == true then return "Done" end
     if not ns.GuideWorkAllowed(guide, stop.id, ns.self, query) then return "Outside level range" end
+    if not ns.GuideReasonCanBeCurrent(stop, guide) then return "Later" end
     local active = ns.active and ns.active[stop.id]
     if active then
         if stop.kind == "a" then return "Accepted" end

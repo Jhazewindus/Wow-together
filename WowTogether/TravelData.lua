@@ -1493,6 +1493,9 @@ ns.travelData = {
         {["distance"]=650.19,["from"]="PORTAL_DALARAN_STORMWIND",["method"]="walk",["to"]="ENTRANCE_C1416_219_828"},
         {["distance"]=530.52,["from"]="PORTAL_DARNASSUS_RUTTHERAN",["method"]="walk",["to"]="ENTRANCE_C1457_739_400"},
         {["from"]="PORTAL_DARNASSUS_RUTTHERAN",["method"]="transition",["seconds"]=12,["to"]="PORTAL_RUTTHERAN_DARNASSUS"},
+        -- Skyborne portals (0.8.90): both ends were published as nodes without a crossing. Retest in the beta.
+        {["faction"]="Alliance",["from"]="PORTAL_DALARAN_STORMWIND",["method"]="transition",["seconds"]=12,["to"]="PORTAL_STORMWIND_DALARAN"},
+        {["faction"]="Alliance",["from"]="PORTAL_STORMWIND_DALARAN",["method"]="transition",["seconds"]=12,["to"]="PORTAL_DALARAN_STORMWIND"},
         {["distance"]=280.66,["from"]="PORTAL_RUTTHERAN_DARNASSUS",["method"]="walk",["to"]="DOCK_RUTTHERAN"},
         {["from"]="PORTAL_RUTTHERAN_DARNASSUS",["method"]="transition",["seconds"]=12,["to"]="PORTAL_DARNASSUS_RUTTHERAN"},
         {["distance"]=220.16,["from"]="PORTAL_RUTTHERAN_DARNASSUS",["method"]="walk",["to"]="TAXI_27"},

@@ -194,7 +194,12 @@ local function explain(goal, ctx)
     if flow then return flow end
     local nextID, nextTitle, learned, alternative = continuation(goal, ctx)
     if nextID then
-        if alternative then return result("chosen-branch", "Chosen branch toward " .. nextTitle .. "; other prerequisites may also work.", true, {nextID}) end
+        if alternative then
+            local count = guide and guide.collectionAlternatives and guide.collectionAlternatives[goal.id]
+            local choice = goal.entityType == "object" and " quest-start objects that unlock " or " quest options that unlock "
+            return result("chosen-branch", (count and count > 1 and ("One of " .. count .. choice) or "Chosen branch toward ")
+                .. nextTitle .. (count and count > 1 and "; this is the nearest for you. Skip quest to use another option." or "; other prerequisites may also work."), true, {nextID})
+        end
         return result(learned and "learned-prerequisite" or "prerequisite", "Required for " .. nextTitle
             .. " later in this guide; finish and turn in " .. title .. " first.", true, {nextID})
     end
@@ -211,6 +216,9 @@ local function explain(goal, ctx)
     end
     if ns.IsClassQuest(goal.id) then
         return result("class-progression", "Optional class progression; follow it for your class, or use Skip quest.", true)
+    end
+    if goal.kind == "a" then
+        return result("quest-start", "Accept " .. title .. " to begin its quest objectives.", true)
     end
     if useful == false and not (guide and guide.mode == "dungeon") then
         if ns.GuideDifficultyOverride(guide) then
@@ -259,6 +267,16 @@ function ns.GuideDestinationDecision(stop, guide, route)
     end
     ctx.decisions[goal] = decision
     return decision
+end
+
+function ns.IsDedicatedClassGuide(guide)
+    return guide and (guide.classLineGuide == true
+        or guide.classQuestScope == true and guide.mode == "chain") or false
+end
+
+function ns.GuideReasonCanBeCurrent(stop, guide, route)
+    local decision = ns.GuideDestinationDecision(stop, guide, route)
+    return decision.specificBenefit == true and not decision.needsReview, decision
 end
 
 function ns.GuideDestinationReason(stop, guide, route)
