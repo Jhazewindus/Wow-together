@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.8.101
+
+**MANUAL FLIGHT MAP HIGHLIGHT**
+
+- When automatic flight selection is off, highlight the exact flight master
+  needed by the current suggested route. At that master, highlight the
+  reachable destination on the flight map so the player can select it manually.
+- Mark a nearby unlearned flight master when the existing bounded discovery
+  suggestion recommends visiting it. Hide the highlight when the taxi map
+  closes or the route/path is no longer valid. The addon never selects a flight
+  as part of this highlight.
+- Validation: 1,868 host tests and 385 subtests pass; all 98 Lua files compile
+  under Lua 5.1. Native Forever flight-map rendering still needs an in-game
+  check; see `TESTING.md`.
+
 ## 0.8.100
 
 **DUNGEON PREREQUISITE AUDIT**

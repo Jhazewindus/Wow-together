@@ -51,6 +51,60 @@ def map_canvas(c):
 
 
 class RouteTests(unittest.TestCase):
+    def test_manual_flight_destination_lights_up_only_when_it_is_selectable(self):
+        c = route_client()
+        map_canvas(c)
+        c.ns.ShowGuideOnMap(guide(c))
+        world = c.lua.globals().WorldMapFrame
+        world.SetMapID(world, 501)
+        c.ns.flightMapOpen = True
+        c.ns.flightMapSource = 80
+        c.ns.visibleFlights = c.lua.table_from({22: {'reachable': True}}, recursive=True)
+        c.lua.execute('local ns=...; ns.TravelDestination=function() return ns.travelWaypoint end', c.ns)
+        c.ns.travelWaypoint = c.lua.table_from({
+            'kind': 'f', 'mapID': 501, 'x': .2, 'y': .25,
+            'flightPlan': {
+                'source': {'id': 80},
+                'destination': {'id': 22, 'name': 'Crossroads',
+                                'point': {'mapID': 501, 'x': .82, 'y': .73}},
+            },
+        }, recursive=True)
+        c.ns.DrawRoute()
+        pin = c.ns.routeProvider.flightPin
+        self.assertTrue(pin.IsShown(pin))
+        self.assertEqual(pin.flightLabel, 'Select Crossroads on the flight map')
+        self.assertEqual(pin.target.mapID, 501)
+        self.assertAlmostEqual(pin.target.x, .82)
+        self.assertEqual(pin.glow.texture, r'Interface\Minimap\UI-Minimap-Ping')
+        self.assertEqual(c.ns.routeStats.flightHighlights, 1)
+
+        c.ns.visibleFlights[22].reachable = False
+        c.ns.DrawRoute()
+        self.assertFalse(pin.IsShown(pin))
+        self.assertEqual(c.ns.routeStats.flightHighlights, 0)
+
+        c.ns.visibleFlights[22].reachable = True
+        c.ns.SetOption('autoFly', True)
+        c.ns.DrawRoute()
+        self.assertFalse(pin.IsShown(pin))
+
+    def test_unlearned_route_flight_master_gets_manual_glow(self):
+        c = route_client()
+        map_canvas(c)
+        c.ns.ShowGuideOnMap(guide(c))
+        c.lua.globals().WorldMapFrame.SetMapID(c.lua.globals().WorldMapFrame, 501)
+        c.lua.execute('local ns=...; ns.TravelDestination=function() return ns.travelWaypoint end', c.ns)
+        c.ns.travelWaypoint = c.lua.table_from({
+            'kind': 'travel',
+            'flightDiscovery': {'source': {'id': 80, 'name': 'Ratchet',
+                'point': {'mapID': 501, 'x': .63, 'y': .37}}},
+        }, recursive=True)
+        c.ns.DrawRoute()
+        pin = c.ns.routeProvider.flightPin
+        self.assertTrue(pin.IsShown(pin))
+        self.assertEqual(pin.flightLabel, 'Visit Ratchet to learn the flight path')
+        self.assertAlmostEqual(pin.target.x, .63)
+
     def test_shipped_facts_and_alternative_drop_sources(self):
         c = Client(quests=(), use_catalogue=True)
         q = c.ns.CatalogueQuest(97223)

@@ -10,7 +10,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from test_070 import network_client
-from test_routes import guide
+from test_routes import guide, map_canvas
 from import_travel_network import flight_facts
 
 
@@ -57,6 +57,53 @@ def ratchet_client():
 
 
 class FlightDiscoveryRoutingTests(unittest.TestCase):
+    def test_manual_route_glows_exact_flight_master_and_selectable_destination(self):
+        c = ratchet_client()
+        map_canvas(c)
+        self.assertTrue(c.ns.AttachRouteProvider())
+        world = c.lua.globals().WorldMapFrame
+        world.SetMapID(world, 1413)
+        state = c.ns.char.flights
+        state.nodes[80].known = True
+        state.nodes[80].reachabilityConfirmed = True
+        state.edges['80:25'] = c.lua.table_from({'source': 80, 'destination': 25,
+                                                  'route': c.lua.table()})
+        c.ns.ResetTravelPath()
+        c.ns.flightDiscoveryCache = None
+        c.lua.execute('playerX=.60; now=10')
+        goal = c.ns.selectedRoute.stops[1]
+        stop = c.ns.TravelNetworkDestination(goal)
+        self.assertEqual(stop.label, 'Walk to Ratchet (flight master)')
+        self.assertEqual(stop.flightMasterTarget.id, 80)
+        c.lua.execute('local ns=...; ns.TravelDestination=function() return ns.travelWaypoint end', c.ns)
+        c.ns.DrawRoute()
+        pin = c.ns.routeProvider.flightPin
+        self.assertTrue(pin.IsShown(pin))
+        self.assertIn('Ratchet', pin.flightLabel)
+        self.assertAlmostEqual(pin.target.x, .6312)
+
+        # At the flight master, a reachable route destination is highlighted
+        # only while manual selection is needed; the addon never selects it.
+        c.ns.flightMapOpen = True
+        c.ns.flightMapSource = 80
+        c.ns.visibleFlights = c.lua.table_from({25: {'reachable': True}}, recursive=True)
+        c.ns.travelWaypoint = c.lua.table_from({
+            'kind': 'f', 'mapID': 1413, 'x': .6312, 'y': .3711,
+            'flightPlan': {
+                'source': {'id': 80},
+                'destination': {'id': 25, 'name': 'Crossroads',
+                                'point': {'mapID': 1413, 'x': .515, 'y': .3041}},
+            },
+        }, recursive=True)
+        c.ns.DrawRoute()
+        self.assertTrue(pin.IsShown(pin))
+        self.assertEqual(pin.flightLabel, 'Select Crossroads on the flight map')
+        self.assertAlmostEqual(pin.target.x, .515)
+        self.assertFalse(c.ns.flightAttempt)
+        c.ns.handlers.TAXIMAP_CLOSED()
+        self.assertFalse(c.ns.flightMapOpen)
+        self.assertFalse(pin.IsShown(pin))
+
     def test_ratchet_screenshot_uses_shorter_check_without_unlocking_or_reordering(self):
         c = ratchet_client()
         state = c.ns.char.flights

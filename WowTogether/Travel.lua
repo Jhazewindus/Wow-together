@@ -4,6 +4,7 @@ ns.travelStatus = "Open a flight master's map to learn this character's flight n
 ns.flightDiscoveryStatus = "Map unlock flags have not been checked this session."
 ns.flightMapStatus = "No flight-master map read this session."
 local flightMapOpen, flightMapGeneration, discoveryPending = false, 0, false
+ns.flightMapOpen = false
 
 local function number(value)
     return ns.Public(value) and type(value) == "number" and value == value
@@ -688,13 +689,16 @@ end
 
 ns.On("TAXIMAP_OPENED", function()
     flightMapGeneration, flightMapOpen = flightMapGeneration + 1, true
+    ns.flightMapOpen = true
     ns.recentFlightMap = nil
     if ns.db then ns.ReadKnownFlightPaths(); ns.ReadFlightMap() end
 end)
 ns.On("TAXIMAP_CLOSED", function()
     flightMapGeneration, flightMapOpen = flightMapGeneration + 1, false
+    ns.flightMapOpen = false
     ns.recentFlightMap = {source = ns.flightMapSource, visible = ns.visibleFlights, time = ns.ReadPublic(GetTime)}
     ns.visibleFlights, ns.flightMapSource, ns.flightAttempt = nil, nil, nil
+    ns.DrawRoute(nil, true)
 end)
 ns.On("TAXI_NODE_STATUS_CHANGED", function()
     ns.ScheduleFlightDiscovery()

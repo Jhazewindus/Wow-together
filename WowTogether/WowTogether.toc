@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.100
-## X-ReleaseName: DUNGEON PREREQUISITE AUDIT
+## Version: 0.8.101
+## X-ReleaseName: MANUAL FLIGHT MAP HIGHLIGHT
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua

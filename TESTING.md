@@ -1,5 +1,26 @@
 # Wow Together — friend test script
 
+For **0.8.101** — **MANUAL FLIGHT MAP HIGHLIGHT**, live World of Warcraft: Forever.
+
+## Manual flight-map highlight — 0.8.101
+
+1. Turn **Select suggested flights automatically** off. Start a route with a
+   known useful flight connection and open its flight-master map. The reachable
+   destination for the next route leg should have a bright gold ring on the map;
+   hover it to see the destination and manual-selection instruction.
+2. Before reaching the flight master, confirm the exact boarding point is
+   highlighted on the world map. If the bounded nearby-flight suggestion names
+   an unlearned flight master, that point should glow as the suggested unlock.
+3. Confirm the addon does not select the flight. Select the highlighted path
+   yourself; then close the flight map and verify the extra highlight disappears.
+4. Turn automatic selection on or make the route unavailable and confirm the
+   manual highlight is hidden. Route choice and quest progress must be unchanged.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,868 tests and 385 subtests** in 497.72 seconds. All **98 Lua
+files compile under Lua 5.1**. Host checks cover route target selection and
+owned marker state, not native Forever taxi-map composition or map rendering.
+
 For **0.8.100** — **DUNGEON PREREQUISITE AUDIT**, live World of Warcraft: Forever.
 
 ## Dungeon prerequisite audit — 0.8.100

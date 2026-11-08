@@ -728,6 +728,7 @@ function ns.TravelNetworkDestination(stop)
             else instruction = (leg.waypoint and "Go to " or "Head to ") .. leg.name end
             local result = {id = stop.id, kind = "travel", title = stop.title, mapID = target.mapID, x = target.x, y = target.y,
                 action = "travel", label = instruction, travelLeg = leg, goal = stop, guideStep = stop.guideStep}
+            if following and following.flight then result.flightMasterTarget = following.flight.source end
             if personal then result.personalTransport = true end
             if leg.method == "ship" or leg.method == "zeppelin" or leg.method == "tram" then
                 local boardingDistance = ns.TravelPointDistance(position, leg.from)

@@ -4,7 +4,7 @@ ns.routeLocations = {}
 ns.readyToTurnIn = {}
 local sentLocations = {}
 local MAX_STOPS = 20
-ns.routeStats = {pins = 0, lines = 0, status = "No route selected."}
+ns.routeStats = {pins = 0, lines = 0, flightHighlights = 0, status = "No route selected."}
 
 local function validPoint(mapID, x, y)
     return ns.GuideInteger(mapID, 1000000) and mapID > 0 and ns.Public(x) and ns.Public(y)
@@ -477,12 +477,14 @@ function ns.StopSymbol(stop) return stop.kind == "trainer" and "T" or stop.kind 
 local function hideDrawing(provider)
     ns.HideEliteSpawnMarkers(provider)
     for _, pin in ipairs(provider.pins or {}) do pin:Hide() end
+    if provider.flightPin then provider.flightPin:Hide() end
     for _, line in ipairs(provider.lines or {}) do line:Hide() end
     for _, line in ipairs(provider.shadowLines or {}) do line:Hide() end
     for _, line in ipairs(provider.patrolLines or {}) do line:Hide() end
     if provider.legend then provider.legend:Hide() end
     ns.routeStats.pins, ns.routeStats.lines, ns.routeStats.patrols, ns.routeStats.hostileLines = 0, 0, 0, 0
     ns.routeStats.terrainLines = 0
+    ns.routeStats.flightHighlights = 0
 end
 
 function ns.RouteSurface(map)
@@ -603,6 +605,7 @@ local function publicOwnedDrawing(provider)
     local frames = {provider.overlay, provider.legend}
     for _, pin in ipairs(provider.pins or {}) do frames[#frames + 1] = pin end
     for _, pin in ipairs(provider.elitePins or {}) do frames[#frames + 1] = pin end
+    if provider.flightPin then frames[#frames + 1] = provider.flightPin end
     for _, frame in ipairs(frames) do
         if ns.ReadPublic(frame.IsProtected, frame) ~= false then return false end
     end
@@ -644,6 +647,65 @@ local function drawPatrols(provider, displayed, surface, mapID, context)
         end
     end
     ns.routeStats.patrols = count
+end
+
+local function flightHighlightTarget(waypoint)
+    if ns.Option("autoFly") or not waypoint then return end
+    if ns.flightMapOpen and waypoint.kind == "f" and waypoint.flightPlan then
+        local plan, visible = waypoint.flightPlan, ns.visibleFlights and ns.visibleFlights[waypoint.flightPlan.destination.id]
+        local source = plan.source
+        local target = plan.destination
+        if source and source.id == ns.flightMapSource and visible and visible.reachable and target and validPoint(
+            target.point and target.point.mapID, target.point and target.point.x, target.point and target.point.y) then
+            return target.point, "Select " .. (target.name or "this flight") .. " on the flight map"
+        end
+    end
+    local discovery = waypoint.flightDiscovery
+    if discovery and discovery.source and validPoint(discovery.source.point and discovery.source.point.mapID,
+        discovery.source.point and discovery.source.point.x, discovery.source.point and discovery.source.point.y) then
+        return discovery.source.point, "Visit " .. (discovery.source.name or "this flight master") .. " to learn the flight path"
+    end
+    local source = waypoint.flightMasterTarget
+    if source and validPoint(source.point and source.point.mapID, source.point and source.point.x, source.point and source.point.y) then
+        return source.point, "Go to " .. (source.name or "the flight master") .. " for the suggested flight"
+    end
+end
+
+local function drawFlightHighlight(provider, surface, mapID, context, waypoint)
+    local point, label = flightHighlightTarget(waypoint)
+    local projected = point and ns.ProjectMapPoint(point, mapID, context)
+    local x, y
+    if projected then x, y = ns.RouteProject(surface, projected) end
+    if not x or x < 0 or x > surface.width or y < 0 or y > surface.height then
+        if provider.flightPin then provider.flightPin:Hide() end
+        ns.routeStats.flightHighlights = 0
+        return
+    end
+    local pin = provider.flightPin
+    if not pin then
+        pin = CreateFrame("Button", nil, provider.overlay)
+        pin:SetSize(38, 38)
+        pin.glow = pin:CreateTexture(nil, "BACKGROUND")
+        pin.glow:SetAllPoints(pin)
+        pin.glow:SetTexture("Interface\\Minimap\\UI-Minimap-Ping")
+        pin.glow:SetVertexColor(1, 0.78, 0.16, 0.95)
+        pin.glow:SetBlendMode("ADD")
+        pin.icon = pin:CreateTexture(nil, "OVERLAY")
+        pin.icon:SetSize(20, 20); pin.icon:SetPoint("CENTER")
+        pin.icon:SetTexture("Interface\\Icons\\Ability_Mount_Wyvern_01")
+        pin:SetScript("OnEnter", function(self)
+            if not GameTooltip then return end
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:AddLine(self.flightLabel or "Suggested flight", 1, 0.86, 0.3, true)
+            GameTooltip:AddLine("Automatic flight selection is off; choose this path yourself.", 1, 1, 1, true)
+            GameTooltip:Show()
+        end)
+        pin:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+        provider.flightPin = pin
+    end
+    pin.flightLabel, pin.target = label, point
+    pin:ClearAllPoints(); pin:SetPoint("CENTER", provider.overlay, "TOPLEFT", x, -y); pin:Show()
+    ns.routeStats.flightHighlights = 1
 end
 
 function ns.DrawRoute(provider, geometryOnly)
@@ -829,6 +891,7 @@ function ns.DrawRoute(provider, geometryOnly)
         pin:SetPoint("CENTER", overlay, "TOPLEFT", group.x, -group.y)
         pin:Show()
     end
+    drawFlightHighlight(provider, surface, mapID, projectionContext, waypoint)
     local missingTravel = displayed[1] and displayed[1].mapID ~= mapID and not projected[1]
     updateLegend(legend, route.flying and "Wow Together • Flying" or
         "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
