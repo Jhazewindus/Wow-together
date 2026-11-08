@@ -1,5 +1,29 @@
 # Wow Together changelog
 
+## 0.8.95
+
+**LEVEL-LOCKED DUNGEON PREQUESTS**
+
+- Restore the source-recorded series link: Blood in the Streets (92434) is the
+  predecessor to Heart of Disruption (96984). Its minimum level is 30, so a
+  level-26 character is told to reach level 30 before starting the chain; at 30
+  the route leads through Blood in the Streets before Heart of Disruption.
+- Record the predecessor from the captured Wowhead Forever series (2026-10-10,
+  SHA-256 `ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7`).
+  QuestieDB does not publish Heart of Disruption, so no Questie relation is
+  claimed. Regression coverage also guards the four other known higher-level
+  dungeon prequests: An Alarming Request, Rig Wars and The Dark Iron War.
+- A scan of 28 dungeon categories and 378 listed quests found five recorded
+  prerequisite edges where the parent's minimum level exceeds the child's; four
+  were already present and the Blood in the Streets edge was missing. A further
+  23 memberships have unverified prerequisite facts. The dated audit records
+  these findings and the scan's limits in `research/dungeon-prerequisite-level-audit-2026-11-08.json`.
+- Keep source gaps honest: Heart of Disruption still has an unmapped alternate
+  item source, Rath'maël. This update corrects the chain and level gate; it does
+  not claim the alternate objective location is mapped.
+- Validation: all 1,832 host tests pass; all 92 Lua files compile under Lua
+  5.1. The fixed Mulgore fingerprint and fixed-guide audits pass unchanged.
+
 ## 0.8.94
 
 **SUPPORTED REASONS AND DUNGEON CHAINS**

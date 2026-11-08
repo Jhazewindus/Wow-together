@@ -2,15 +2,15 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.94 — SUPPORTED REASONS AND DUNGEON CHAINS** targets
+progress. Version **0.8.95 — LEVEL-LOCKED DUNGEON PREQUESTS** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
 
-**0.8.94 keeps steps without a supported reason out of every current route.** They remain under Later until their reason or source facts are supported. The dungeon guide also routes published item-start prerequisites from their data. The
+**0.8.95 routes level-locked dungeon prequests before the dungeon quest.** Blood in the Streets requires level 30 and precedes Heart of Disruption; a level-26 character is told to reach 30, and the guide routes the predecessor first after it becomes available. 0.8.94 also keeps unsupported steps under Later and routes published item starts from their data. The
 Stockade guide follows An Unsent Letter through its Deadmines drop before
 continuing to the Stockade quest giver. Steps without a supported reason, and
 quests with a prerequisite still needing a giver check, remain under Later.
-See CHANGELOG.md, QUEST_DATA.md and TESTING.md for the remaining source gaps.
+Run `python3 tools/audit_dungeon_level_gates.py` to scan the recorded dungeon prerequisite edges. See CHANGELOG.md, QUEST_DATA.md and TESTING.md for the remaining source gaps.
 
 **0.8.92 imports QuestieDB's published quest-chain links and one-way
 exclusions.** A completed continuation now supersedes its preceding class

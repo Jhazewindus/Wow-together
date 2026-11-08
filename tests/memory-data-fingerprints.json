@@ -3,7 +3,7 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "94a2b898debc1d978b9f1ca4e39d477bb9a31bf31378a97f86090f1a52cc92fd",
+      "sha256": "3020da62ec8d511eb5a021e1ae0807f465e17017c6972a89c442904963cef253",
       "records": 5333
     },
     "questEntities": {
@@ -27,5 +27,5 @@
       "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior."
+  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior. Version 0.8.95 restores Wowhead Forever series predecessor 92434 for Heart of Disruption (96984)."
 }

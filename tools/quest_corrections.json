@@ -13958,7 +13958,7 @@
       "before": "Both",
       "side": "Horde"
     },
-    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 refreshed capture 2026-11-04, SHA-256 88414a71d647d103492d4bd0f29f9b5d08cbb029594e552e6422527b4ab34b65; current page says Both. Current QuestieDB Forever data at 4ab64311b6f0be1a96b38a5b95bfa27fa95416af still carries the Horde mask, and the 2026-10-10 Wowhead capture also reported Horde. Retain Horde pending live-client verification of this source conflict."
+    "source": "https://www.wowhead.com/forever/quest=95534 — refreshed capture 2026-11-04, SHA-256 88414a71d647d103492d4bd0f29f9b5d08cbb029594e552e6422527b4ab34b65; current page says Both. Current QuestieDB Forever data at 4ab64311b6f0be1a96b38a5b95bfa27fa95416af still carries the Horde mask, and the 2026-10-10 Wowhead capture also reported Horde. Retain Horde pending live-client verification of this source conflict."
   },
   {
     "questID": 93680,
@@ -13998,7 +13998,7 @@
   {
     "questID": 96984,
     "title": "Heart of Disruption",
-    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete. Retain the previously reviewed current handoff locations from the captured quest page: starter 269127 at 68.6,45.2 (map 1421), receiver 2410 at 61.6,20.8 (map 1424). Current QuestieDB does not publish this quest record, so no replacement location is inferred.",
+    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete. Retain the previously reviewed current handoff locations from the captured quest page: starter 269127 at 68.6,45.2 (map 1421), receiver 2410 at 61.6,20.8 (map 1424). Current QuestieDB does not publish this quest record, so no replacement location is inferred.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 24,
@@ -17837,7 +17837,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6821
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -17846,7 +17846,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6822
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6824,
@@ -17855,7 +17855,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6823
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -20713,7 +20713,7 @@
         "previousQuest": null
       }
     },
-    "source": "Wowhead Forever comments 3221829 and 3221830 explicitly identify Trouble in the Deeps (6562) and The Essence of Aku\u2019Mai (6563) as breadcrumb-linked, not prerequisites; page SHA-256 f7758d3d660bad46a1380c2273151dc1a320aac8e7315edd23c5232ac008c4ad."
+    "source": "Wowhead Forever comments 3221829 and 3221830 explicitly identify Trouble in the Deeps (6562) and The Essence of Aku’Mai (6563) as breadcrumb-linked, not prerequisites; page SHA-256 f7758d3d660bad46a1380c2273151dc1a320aac8e7315edd23c5232ac008c4ad."
   },
   {
     "questID": 93404,
@@ -20745,7 +20745,7 @@
         "prerequisitesUnverified": true
       }
     },
-    "source": "Wowhead comments 2956157, 2956161 and 2956163 conflict on whether Tabetha\u2019s Task is required for Tiara of the Deep; keep the prerequisite gate visibly unverified rather than inventing an edge."
+    "source": "Wowhead comments 2956157, 2956161 and 2956163 conflict on whether Tabetha’s Task is required for Tiara of the Deep; keep the prerequisite gate visibly unverified rather than inventing an edge."
   },
   {
     "questID": 95682,
@@ -20757,5 +20757,12 @@
       }
     },
     "source": "Wowhead comment 6440024 reports an unnamed prerequisite pickup near Hammerfall; comment 6440416 marks Dragonmaw Rumors (95663) as a breadcrumb. The actual required quest remains unidentified, so keep this gate unverified."
+  },
+  {
+    "questID": 96984,
+    "title": "Heart of Disruption",
+    "previousQuest": 92434,
+    "previousTitle": "Blood in the Streets",
+    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; the captured quest series is 92434 → 96984 → 97287."
   }
 ]

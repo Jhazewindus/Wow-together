@@ -1,6 +1,30 @@
 # Wow Together — friend test script
 
-For **0.8.94** — **SUPPORTED REASONS AND DUNGEON CHAINS**, live World of Warcraft: Forever.
+For **0.8.95** — **LEVEL-LOCKED DUNGEON PREQUESTS**, live World of Warcraft: Forever.
+
+## Dungeon prerequisite level check — 0.8.95
+
+1. On a level-26 Horde character, select **Heart of Disruption** (96984) in the
+   City of Dalaran guide. It must not send you directly to the quest giver; the
+   pending message and Later entry must say to reach level 30 to accept **Blood
+   in the Streets** (92434).
+2. At level 30, start the same guide. It must route Blood in the Streets
+   pickup, objective work and turn-in before Heart of Disruption. After Blood
+   is complete, rebuild the guide and confirm it advances to Heart.
+3. The source-backed series is recorded in `tools/quest_corrections.json` and
+   `research/alterac-mountains-2026-10-10/source-facts.json`. Heart of
+   Disruption still has an unmapped alternate item source; the route must not
+   invent its location.
+4. Run `python3 tools/audit_dungeon_level_gates.py` to scan recorded links.
+   `tests/test_092_dungeon_level_gates.py` guards all five currently known
+   dungeon prerequisite edges whose minimum level exceeds the child quest. The
+   scan found 23 dungeon quest memberships with unverified prerequisite data;
+   leave these under Later until a source or in-game observation confirms them.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
+tests/` passes **1,832 tests** in 469.95 seconds. All **92 Lua files compile
+under Lua 5.1**. Fixed-guide fingerprints and audits pass unchanged.
+Host tests cannot verify live quest offers or in-game rendering.
 
 ## Current-step reason rule — 0.8.94
 
@@ -20,7 +44,7 @@ tests/` passes **1,827 tests** in 458.50 seconds. All **92 Lua files compile
 under Lua 5.1**. The fixed Mulgore fingerprint and fixed-guide audits pass.
 Host checks cannot verify live NPC offers or in-game rendering.
 
-For **0.8.93** — **DUNGEON PREREQUISITES AND CLEAR LATER STEPS** (included in 0.8.94), live World of Warcraft: Forever.
+For **0.8.93** — **DUNGEON PREREQUISITES AND CLEAR LATER STEPS** (included in 0.8.95), live World of Warcraft: Forever.
 
 ## Dungeon prerequisite routing and Later status — 0.8.93
 

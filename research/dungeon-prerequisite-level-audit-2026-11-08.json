@@ -1,0 +1,82 @@
+{
+  "captured": "2026-11-08",
+  "scope": "QuestCatalogue.lua dungeon memberships; compare each recorded previousQuest, prerequisiteAll, and prerequisiteAny parent minLevel against the child minLevel.",
+  "counts": {
+    "dungeonCategories": 28,
+    "listedQuestMemberships": 378,
+    "uniqueListedQuests": 378,
+    "missingCatalogueRecords": 0,
+    "higherMinimumPrerequisiteEdges": 5,
+    "unverifiedPrerequisiteMemberships": 23
+  },
+  "higherMinimumPrerequisites": [
+    {
+      "dungeon": "City of Dalaran",
+      "parentQuestID": 92432,
+      "parentTitle": "An Alarming Request",
+      "parentMinLevel": 30,
+      "questID": 92457,
+      "title": "Starving Arcane",
+      "minLevel": 24,
+      "relation": "previousQuest",
+      "status": "already present before 0.8.95",
+      "source": "User-confirmed prerequisite fact from ForeverDungeonJournal 1.6.3; correction source names Wowhead page pointers but notes those pages were not fetched at correction time."
+    },
+    {
+      "dungeon": "City of Dalaran",
+      "parentQuestID": 92432,
+      "parentTitle": "An Alarming Request",
+      "parentMinLevel": 30,
+      "questID": 92458,
+      "title": "Heart of Disruption",
+      "minLevel": 24,
+      "relation": "previousQuest",
+      "status": "already present before 0.8.95; source attribution missing in catalogue"
+    },
+    {
+      "dungeon": "City of Dalaran",
+      "parentQuestID": 92434,
+      "parentTitle": "Blood in the Streets",
+      "parentMinLevel": 30,
+      "questID": 96984,
+      "title": "Heart of Disruption",
+      "minLevel": 24,
+      "relation": "previousQuest",
+      "status": "added in 0.8.95",
+      "source": "Wowhead Forever quest page, captured 2026-10-10; SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; series 92434 → 96984 → 97287."
+    },
+    {
+      "dungeon": "Gnomeregan",
+      "parentQuestID": 2841,
+      "parentTitle": "Rig Wars",
+      "parentMinLevel": 25,
+      "questID": 2842,
+      "title": "Chief Engineer Scooty",
+      "minLevel": 20,
+      "relation": "previousQuest",
+      "status": "already present before 0.8.95",
+      "source": "Wowhead Forever comments 3155187 and 3278949; captured 2026-11-07."
+    },
+    {
+      "dungeon": "The Stockade",
+      "parentQuestID": 303,
+      "parentTitle": "The Dark Iron War",
+      "parentMinLevel": 25,
+      "questID": 378,
+      "title": "The Fury Runs Deep",
+      "minLevel": 22,
+      "relation": "prerequisiteAny and previousQuest",
+      "status": "already present before 0.8.95",
+      "source": "Catalogue prerequisite attribution: Published Forever beta prerequisites."
+    }
+  ],
+  "unverifiedPrerequisiteQuestIDs": [
+    4083, 5127, 8966, 8989, 8967, 8990, 95682, 2951, 2952, 2953, 4601, 4602,
+    4603, 4604, 4605, 4606, 8969, 8992, 8968, 8991, 8733, 3375, 2846
+  ],
+  "limitations": [
+    "This is a scan of prerequisite edges present in the catalogue; it cannot discover a missing edge without an external or in-game source.",
+    "The 23 unverified entries require source review or a Forever-client observation before their prerequisite chains can be claimed complete.",
+    "The dungeon-wide audit dated 2026-11-07 separately records inaccessible detail pages, unnamed category lists, and missing objective locations."
+  ]
+}

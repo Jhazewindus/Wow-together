@@ -48,6 +48,13 @@ local function eligiblePrerequisiteIdentity(id)
         and not ns.CatalogueAlternativeTaken(id, ns.self)
 end
 
+local function eligibilityReason(id)
+    local _, reason = ns.CatalogueAllowed(id, ns.profile, ns.self)
+    local level = reason and string.match(reason, "^Requires level (%d+)%.?$")
+    if level then return "Reach level " .. level .. " to accept " .. ns.QuestTitle(id) .. "." end
+    return reason
+end
+
 local function itemStartDungeon(id)
     local quest = ns.CatalogueQuest(id)
     for _, reference in ipairs(quest and quest.startRefs or {}) do
@@ -380,9 +387,9 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
             and eligiblePrerequisiteIdentity(id) or eligibleIdentity(id)
         if not identityReady and not dungeonWork then
             if guide.pickupQuestID then entranceBlocked = true end
-            local _, eligibilityReason = ns.CatalogueAllowed(id, ns.profile, ns.self)
+            local reason = eligibilityReason(id)
             if guide.pickupQuestID then
-                blockReason = blockReason or eligibilityReason
+                blockReason = blockReason or reason
                     or ("Quest eligibility for " .. ns.QuestTitle(id) .. " needs checking before entering.")
             end
         end
@@ -583,8 +590,7 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
                 if not decision.specificBenefit or decision.needsReview then laterReason = decision.why; break end
             end
             if laterReason then
-                local _, eligibilityReason = ns.CatalogueAllowed(id, ns.profile, ns.self)
-                local reason = eligibilityReason or laterReason
+                local reason = eligibilityReason(id) or laterReason
                 later[#later + 1] = {id = id, title = record.title, reason = reason}
                 pendingReason = pendingReason or (record.title .. " stays under Later: " .. reason)
                 if guide.collectionRequired[id] and not guide.collectionGoals[id] then
@@ -608,7 +614,7 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
                 reason = giver and ("Ask " .. giver .. " which quest unlocks " .. record.title .. ". Keep it under Later until then.")
                     or ("Ask the quest giver which quest unlocks " .. record.title .. ". Keep it under Later until then.")
             else
-                reason = ns.QuestStartGapReason(id)
+                reason = eligibilityReason(id) or ns.QuestStartGapReason(id)
                     or ("A pickup or route step for " .. record.title .. " is not mapped yet.")
             end
             if not (quest and not quest.prerequisitesUnverified and hasUnverifiedParent(id)) then
