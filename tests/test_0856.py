@@ -93,11 +93,28 @@ class TerrainRoutingTests(unittest.TestCase):
         route = c.lua.table_from({'mapID': 501, 'stops': [goal]}, recursive=True)
         c.ns.ActivateRoute(guide(c), route)
         c.ns.UpdateNavigation()
-        c.lua.globals().playerY, c.lua.globals().clock = .9, 4
+        c.lua.globals().playerY, c.lua.globals().clock = .9, 7
         c.ns.UpdateNavigation()
         self.assertEqual(c.ns.travelPath.origin.y, .9)
         self.assertEqual(c.ns.selectedRoute.stops[1].id, 900)
         self.assertFalse(c.ns.Completed(900))
+
+    def test_elevator_sized_position_changes_do_not_replan_more_than_once_per_five_seconds(self):
+        c = terrain_client(); goal = destination(c)
+        route = c.lua.table_from({'mapID': 501, 'stops': [goal]}, recursive=True)
+        c.ns.ActivateRoute(guide(c), route)
+        c.ns.UpdateNavigation()
+        c.lua.execute('''local ns=...; old=ns.FindTravelPath; replans=0
+          ns.FindTravelPath=function(...) replans=replans+1; return old(...) end''', c.ns)
+        initial = c.lua.globals().replans
+        c.lua.globals().playerY, c.lua.globals().clock = .9, 4
+        c.ns.TravelNetworkDestination(goal)
+        self.assertEqual(c.lua.globals().replans, initial)
+        self.assertNotEqual(c.ns.travelPath.origin.y, .9)
+        c.lua.globals().clock = 6.1
+        c.ns.TravelNetworkDestination(goal)
+        self.assertEqual(c.lua.globals().replans, initial + 1)
+        self.assertEqual(c.ns.travelPath.origin.y, .9)
 
     def test_open_ground_and_unmapped_zones_keep_direct_local_travel(self):
         c = terrain_client()

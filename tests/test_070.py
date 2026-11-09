@@ -137,14 +137,18 @@ class TravelSearchTests(unittest.TestCase):
         self.assertIsNone(c.ns.TravelNetworkDestination(goal))
         self.assertEqual(order(g), before)
 
-    def test_new_zone_and_large_detour_recompute_travel_only(self):
+    def test_new_zone_replans_immediately_and_large_detour_waits_for_cooldown(self):
         c = network_client(); c.lua.execute('clock=1;function GetTime() return clock end')
         stop = point(c, 502, .2); stop.id, stop.kind, stop.title = 900, 'a', 'Remote'
         c.ns.TravelNetworkDestination(stop)
+        original_x = c.ns.travelPath.origin.x
         c.lua.execute('playerX=.7;clock=4')
         c.ns.TravelNetworkDestination(stop)
+        self.assertEqual(c.ns.travelPath.origin.x, original_x)
+        c.lua.execute('clock=6.1')
+        c.ns.TravelNetworkDestination(stop)
         self.assertEqual(c.ns.travelPath.origin.x, .7)
-        c.lua.execute('playerMap=502;playerX=.15;clock=5')
+        c.lua.execute('playerMap=502;playerX=.15;clock=7')
         self.assertIsNone(c.ns.TravelNetworkDestination(stop))
         self.assertEqual(c.ns.travelPath.origin.mapID, 502)
 
