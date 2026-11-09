@@ -159,25 +159,24 @@ function ns.ShowPartyRouteInvite()
     if not invite or ns.RouteInCombat() then return end
     if not currentPeer(invite.sender) then ns.pendingPartyRouteInvite = nil; return end
     if not ns.partyRoutePrompt then
-        local frame = CreateFrame("Frame", "WowTogetherPartyRoutePrompt", UIParent, "BackdropTemplate")
+        local frame = ns.SuggestionChipFacade("partyRoute")
+        frame.title, frame.text = {text = ""}, {text = ""}
+        frame.follow, frame.keep = {caption = {text = "Follow"}}, {caption = {text = "Keep mine"}}
         ns.partyRoutePrompt = frame
-        frame:SetSize(500, 210); frame:SetPoint("CENTER"); frame:SetClampedToScreen(true); frame:SetFrameStrata("DIALOG"); ns.UIPanel(frame)
-        frame.title = ns.UILabel(frame, "GameFontNormalLarge", 18); frame.title:SetPoint("TOPLEFT", 22, -22); frame.title:SetWidth(456)
-        frame.text = ns.UILabel(frame, nil, 12); frame.text:SetPoint("TOPLEFT", 22, -55); frame.text:SetSize(456, 100)
-        frame.follow = ns.UIButton(frame, "Follow route", 190, function()
-            local request = frame.invite; frame:Hide()
-            if request then ns.FollowPartyRoute(request) end
-        end, true); frame.follow:SetPoint("BOTTOMLEFT", 22, 18)
-        frame.keep = ns.UIButton(frame, "Keep my route", 190, function() ns.waitingPartyRoute = nil; frame:Hide() end); frame.keep:SetPoint("BOTTOMRIGHT", -22, 18)
-        ns.ResizeChoicePopup(frame, "party-invite", {frame.follow, frame.keep}, 500, 210)
     end
     local frame = ns.partyRoutePrompt
     frame.invite = invite; ns.pendingPartyRouteInvite = nil
-    frame.title:SetText(ns.MemberLabel(invite.sender) .. " started a route")
-    frame.text:SetText((invite.catchup and "Catch up party" or invite.guideKey and "Full zone/questline guide" or ns.QuestTitle(invite.target))
+    frame.title.text = ns.MemberLabel(invite.sender) .. " started a route"
+    frame.text.text = (invite.catchup and "Catch up party" or invite.guideKey and "Full zone/questline guide" or ns.QuestTitle(invite.target))
         .. " • " .. (invite.guideKey and ("levels " .. invite.rangeLow .. "–" .. invite.rangeHigh) or (#invite.ids .. " quest(s)")) .. " • " .. ns.MapName(invite.mapID)
-        .. "\n\nFollow the same quest selection using your own progress. Ready turn-ins and unfinished friends stay on the plan.")
-    frame:Show()
+        .. " • Follow the same quest selection using your own progress."
+    frame.follow.OnClick = function() if ns.HasSuggestionChipKind("partyRoute") then ns.HideSuggestionChip(true); ns.FollowPartyRoute(invite) end end
+    frame.keep.OnClick = function() if ns.HasSuggestionChipKind("partyRoute") then ns.waitingPartyRoute = nil; ns.HideSuggestionChip(true) end end
+    ns.ShowSuggestionChip("partyRoute", tostring(invite.sender) .. ":" .. tostring(invite.revision),
+        frame.title.text .. " · " .. (invite.guideKey and ("levels " .. invite.rangeLow .. "–" .. invite.rangeHigh)
+            or (#invite.ids .. " quest(s)")),
+        {{label = "Follow", callback = function() ns.FollowPartyRoute(invite) end},
+            {label = "Keep mine", callback = function() ns.waitingPartyRoute = nil end}})
 end
 
 function ns.ReceivePartyRouteMessage(message, sender)

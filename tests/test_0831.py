@@ -263,18 +263,18 @@ class StopGuideTests(unittest.TestCase):
         self.assertIsNone(c.ns.routeSelection); self.assertIsNone(c.ns.pendingPartyRouteStart)
         self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
 
-    def test_bg_only_changes_opacity_and_exit_also_stops_standalone_arrow(self):
+    def test_background_toggle_and_hide_keep_the_guide_and_separate_arrow(self):
         c = navigator(); frame = c.ns.navigation
         before = c.ns.routeSelection.key
         opaque = c.ns.Option('guideOpaque')
-        frame.background.OnClick()
+        frame.titleToggle.OnMouseUp(frame.titleToggle, 'RightButton')
         self.assertNotEqual(c.ns.Option('guideOpaque'), opaque)
         self.assertEqual(c.ns.routeSelection.key, before)
         c.ns.SetOption('standaloneArrow', True)
         frame.close.OnClick()
-        self.assertIsNone(c.ns.routeSelection)
+        self.assertEqual(c.ns.routeSelection.key, before)
         self.assertFalse(frame.IsShown(frame))
-        self.assertFalse(c.ns.standaloneNavigation.IsShown(c.ns.standaloneNavigation))
+        self.assertTrue(c.ns.standaloneNavigation.IsShown(c.ns.standaloneNavigation))
 
 
 if __name__ == '__main__':

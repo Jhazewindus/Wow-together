@@ -45,17 +45,13 @@ function ns.CreateStandaloneArrow()
     end)
     frame.training.skip:SetPoint("RIGHT"); frame.training.skip:SetHeight(22)
     frame.training:Hide()
-    frame.tip = CreateFrame("Frame", nil, frame, "BackdropTemplate")
-    frame.tip:SetSize(248, 52); frame.tip:SetPoint("TOP", frame, "TOP", 0, -106)
-    ns.UIPanel(frame.tip, ns.UIColors.background); frame.tip:EnableMouse(true)
-    frame.tip.text = ns.UILabel(frame.tip, nil, 10, ns.UIColors.gold)
-    frame.tip.text:SetPoint("LEFT", 8, 0); frame.tip.text:SetSize(214, 44); frame.tip.text:SetWordWrap(true)
-    frame.tip.close = ns.UIButton(frame.tip, "×", 20, ns.DismissGuideTip)
-    frame.tip.close:SetHeight(20); frame.tip.close:SetPoint("RIGHT", -4, 0)
-    frame.tip:SetScript("OnMouseUp", function(_, button)
-        if button == "LeftButton" then ns.AcceptInventoryServiceTip(frame.guideTip) end
-    end)
-    frame.tip:Hide()
+    frame.tip = ns.SuggestionChipFacade("guideTip")
+    frame.tip.text = {text = ""}
+    frame.tip.close = {OnClick = ns.DismissGuideTip}
+    function frame.tip:IsShown() return self.visible == true end
+    function frame.tip:OnMouseUp(button)
+        if button == "LeftButton" and self.value and self.value.kind == "service" then ns.AcceptInventoryServiceTip(self.value) end
+    end
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -85,9 +81,7 @@ function ns.LayoutStandaloneDetails(frame)
         local lines = finite(measured) and math.max(26, measured + 2) or 42
         frame.reason:SetHeight(lines); height = height + lines + 4
     end
-    frame.tip:ClearAllPoints(); frame.tip:SetPoint("TOP", frame, "TOP", 0, -height - 4)
-    if frame.tip:IsShown() then height = height + 56 end
-    frame:SetWidth((frame.reason:IsShown() or frame.tip:IsShown()) and 248 or 180)
+    frame:SetWidth(frame.reason:IsShown() and 248 or 180)
     frame:SetHeight(height)
 end
 

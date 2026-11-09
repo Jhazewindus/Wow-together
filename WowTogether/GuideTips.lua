@@ -6,6 +6,7 @@ local addonName, ns = ...
 local RANGE, HUB = 150 / 0.9144, 400 / 0.9144
 local FLIGHT_NEAR, FLIGHT_AHEAD, FLIGHT_EXTRA = 350 / 0.9144, 750 / 0.9144, 200 / 0.9144
 local indexed, innsByMap, cached = nil, {}, nil
+local displayedTip
 
 local function saved()
     return ns.char and ns.char.guideServices
@@ -204,27 +205,51 @@ function ns.CurrentGuideTip(state)
 end
 
 function ns.DismissGuideTip()
-    local value = ns.navigation and ns.navigation.tip and ns.navigation.tip.value
+    local value = displayedTip
     local state = saved()
-    if value and value.flightDiscovery then ns.DismissFlightCheck(value.flightDiscovery); return end
-    if value and value.kind == "service" then ns.DismissInventoryServiceTip(value); return end
-    if state and value then state.dismissed[value.key] = true; cached = nil; ns.UpdateNavigation() end
+    if value and value.flightDiscovery then ns.DismissFlightCheck(value.flightDiscovery)
+    elseif value and value.kind == "service" then ns.DismissInventoryServiceTip(value)
+    elseif state and value then state.dismissed[value.key] = true; cached = nil end
+    if value then ns.HideSuggestionChip(true); ns.UpdateNavigation() end
 end
 
 function ns.UpdateGuideTip(state)
-    local frame = ns.navigation and ns.navigation.tip
-    if not frame then return end
     local value = state.visible and ns.CurrentGuideTip(state) or nil
-    frame.value = value
-    frame:SetShown(value ~= nil and ns.Option("routeArrow"))
-    if value then frame.text:SetText(value.text) end
-    local standalone = ns.standaloneNavigation
-    if standalone then
-        standalone.guideTip = value
-        standalone.tip:SetShown(value ~= nil and standalone:IsShown() and not ns.Option("routeArrow"))
-        if value then standalone.tip.text:SetText(value.text) end
-        ns.LayoutStandaloneDetails(standalone)
+    if not value then
+        if displayedTip then ns.ClearSuggestionChip("guideTip", displayedTip.key) end
+        displayedTip = nil
+    else
+        displayedTip = value
+        local active = ns.CurrentSuggestionChip()
+        if not active or active.kind == "guideTip" then
+            local label, callback
+            if value.kind == "service" then
+                label, callback = "Route", function() ns.AcceptInventoryServiceTip(value) end
+            elseif value.flightDiscovery then
+                label, callback = "Route", function() ns.SetOption("routeArrow", true); ns.UpdateNavigation() end
+            else
+                label, callback = "Open map", function()
+                    local mapID = value.place and value.place.mapID
+                    if mapID and WorldMapFrame and type(WorldMapFrame.SetMapID) == "function" then
+                        WorldMapFrame:SetMapID(mapID); WorldMapFrame:Show()
+                    end
+                end
+            end
+            local chipText = string.match(value.text or "", "([^\n]+)") or "Nearby guide tip"
+            ns.ShowSuggestionChip("guideTip", value.key, chipText,
+                {{label = label, callback = callback}, {label = value.kind == "hearth" and "Done" or "Skip",
+                    callback = function() ns.DismissGuideTip() end}})
+        end
     end
+    local function updateFacade(hud, show)
+        local tip = hud and hud.tip
+        if not tip then return end
+        tip.value = value
+        if tip.text then tip.text.text = value and value.text or "" end
+        tip.visible = show and value ~= nil and ns.HasSuggestionChipKind("guideTip") or false
+    end
+    updateFacade(ns.navigation, ns.Option("routeArrow"))
+    updateFacade(ns.standaloneNavigation, ns.standaloneNavigation and ns.standaloneNavigation:IsShown() and not ns.Option("routeArrow"))
 end
 
 function ns.GuideTipDiagnostics(output)

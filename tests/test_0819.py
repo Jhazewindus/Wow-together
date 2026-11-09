@@ -447,7 +447,8 @@ class GuideQuestItemTests(unittest.TestCase):
         nav=c.ns.navigation
         same=c.lua.eval('rawequal')
         self.assertTrue(same(nav.questItem.point[2],nav))
-        self.assertTrue(same(nav.tip.point[2],nav.questItem))
+        if c.ns.suggestionChipFrame:
+            self.assertFalse(same(c.ns.suggestionChipFrame.GetParent(c.ns.suggestionChipFrame),nav.questItem))
         c.ns.db.config.routeArrow=False
         c.ns.UpdateNavigation()
         self.assertFalse(nav.questItem.IsShown(nav.questItem))

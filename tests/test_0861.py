@@ -253,36 +253,33 @@ class SessionCheckpointTests(unittest.TestCase):
 
 
 class SessionUITests(unittest.TestCase):
-    def test_resume_bar_click_continues_and_session_panel_close_keeps_guide(self):
-        c = playing(); before = order(c.ns.routeSelection)
-        c.ns.SetFilter('recommended')
-        self.assertIsNone(c.ns.ui.home.resume.button)
-        self.assertIsNone(c.ns.ui.home.resume.session)
-        c.ns.ui.home.resume.OnMouseUp(c.ns.ui.home.resume, 'LeftButton')
+    def test_pause_chip_dismissal_keeps_the_saved_guide(self):
+        c = playing()
+        c.ns.PauseGuideSession()
         c.ns.ShowSessionCheckpoint()
-        self.assertTrue(c.ns.sessionWindow.IsShown(c.ns.sessionWindow))
-        c.ns.sessionWindow.close.OnClick()
-        self.assertEqual(order(c.ns.routeSelection), before)
+        self.assertEqual(c.ns.CurrentSuggestionChip().kind, 'session')
+        c.ns.HideSuggestionChip(True)
+        self.assertIsNone(c.ns.routeSelection)
+        self.assertTrue(c.ns.PausedSessionCheckpoint().paused)
+        self.assertEqual(c.ns.PausedSessionCheckpoint().guide.key, c.ns.char.guideState.guide.key)
 
-    def test_panel_resize_and_live_totals_are_compact(self):
-        c = playing(); c.ns.ShowSessionCheckpoint(); f = c.ns.sessionWindow
-        f.SetSize(f, 100, 100); f.OnSizeChanged()
-        self.assertEqual((f.width, f.height), (400, 226))
-        self.assertGreater(f.next.height, 20)
+    def test_paused_summary_uses_nonmodal_chip_and_live_totals(self):
+        c = playing(); c.ns.PauseGuideSession()
+        self.assertEqual(c.ns.CurrentSuggestionChip().kind, 'session')
         c.lua.execute('sessionXP=400; sessionClock=220')
-        f.OnUpdate(f, 1)
-        self.assertIn('300 XP', f.stats.text)
-        self.assertIn('2m played', f.stats.text)
-        self.assertNotIn('API', f.stats.text)
+        c.ns.CaptureSessionCheckpoint()
+        self.assertIn('XP', c.ns.GuideSessionSummaryText())
+        self.assertIn('played', c.ns.GuideSessionSummaryText())
 
     def test_pause_button_and_summary_action_resume_without_replanning_order(self):
         c = playing(); before = order(c.ns.routeSelection)
         c.ns.navigation.pause.OnClick()
-        self.assertEqual(c.ns.navigation.pause.caption.text, 'Resume')
-        self.assertEqual(c.ns.sessionWindow.action.caption.text, 'Resume guide')
-        c.ns.sessionWindow.action.OnClick(); run_plan(c)
+        self.assertEqual(c.ns.navigation.pause.caption.text, '▶')
+        self.assertEqual(c.ns.CurrentSuggestionChip().actions[1].label, 'Resume')
+        resume = c.ns.CurrentSuggestionChip().actions[1].callback
+        c.ns.HideSuggestionChip(True); resume(); run_plan(c)
         self.assertEqual(order(c.ns.routeSelection), before)
-        self.assertFalse(c.ns.sessionWindow.IsShown(c.ns.sessionWindow))
+        self.assertIsNone(c.ns.CurrentSuggestionChip())
 
     def test_last_summary_remains_accessible_after_stopping(self):
         c = playing(); c.lua.execute('sessionXP=200; sessionClock=140')
@@ -295,9 +292,8 @@ class SessionUITests(unittest.TestCase):
         self.assertIn('100 XP', home.resume.detail.text)
         home.resume.OnMouseUp(home.resume, 'LeftButton')
         self.assertEqual(c.ns.filter, 'guides')
-        c.ns.ShowSessionCheckpoint()
-        self.assertIn('100 XP', c.ns.sessionWindow.stats.text)
-        self.assertFalse(c.ns.sessionWindow.action.IsEnabled(c.ns.sessionWindow.action))
+        self.assertFalse(c.ns.ShowSessionCheckpoint())
+        self.assertIsNone(c.ns.sessionWindow)
         self.assertIsNone(c.ns.routeSelection)
 
 

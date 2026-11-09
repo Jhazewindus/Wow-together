@@ -463,13 +463,23 @@ ns.RouteInCombat = inCombat
 function ns.StopIcon(stop)
     local handled, icon = ns.FirstHook("stopIcon", stop)
     if handled then return icon end
+    if stop.kind == "q" and ns.Option("npcMarker") == "star" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1" end
+    if stop.kind == "q" and ns.Option("npcMarker") == "cross" then return "Interface\\RaidFrame\\ReadyCheck-NotReady" end
+    local key
+    if stop.kind == "a" then key = "accept"
+    elseif stop.kind == "t" then key = stop.finished and "turninIncomplete" or "turnin"
+    elseif stop.kind == "q" or stop.kind == "a" then
+        key = stop.action == "kill" and "kill" or stop.action == "talk" and "talk" or "collect"
+    elseif stop.kind == "travel" or stop.kind == "f" or stop.kind == "corpse" then key = "travel"
+    elseif stop.memberKey or stop.kind == "party" then key = "party" end
+    local sharedIcon
+    if key then local glyph; glyph, sharedIcon = ns.StepSymbolFor(key) end
+    if sharedIcon then return sharedIcon end
     if stop.confirmation then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1" end
     if stop.kind == "a" then return "Interface\\GossipFrame\\AvailableQuestIcon" end
     if stop.kind == "t" then return "Interface\\GossipFrame\\ActiveQuestIcon" end
     if stop.kind == "f" then return "Interface\\Icons\\Ability_Mount_Wyvern_01" end
     if stop.kind == "corpse" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
-    if stop.kind == "q" and ns.Option("npcMarker") == "star" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1" end
-    if stop.kind == "q" and ns.Option("npcMarker") == "cross" then return "Interface\\RaidFrame\\ReadyCheck-NotReady" end
     if stop.action == "kill" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
     return nil
 end
@@ -477,6 +487,15 @@ end
 function ns.StopSymbol(stop)
     local handled, symbol = ns.FirstHook("stopSymbol", stop)
     if handled then return symbol end
+    local key
+    if stop.kind == "a" then key = "accept"
+    elseif stop.kind == "t" then key = stop.finished and "turninIncomplete" or "turnin"
+    elseif stop.action == "kill" then key = "kill"
+    elseif stop.action == "talk" or stop.kind == "trainer" then key = "talk"
+    elseif stop.action == "collect" or stop.itemID then key = "collect"
+    elseif stop.kind == "party" or stop.memberKey then key = "party"
+    elseif stop.kind == "travel" or stop.kind == "f" or stop.kind == "corpse" then key = "travel" end
+    if key then local glyph; glyph = ns.StepSymbolFor(key); return glyph end
     return stop.kind == "trainer" and "T" or stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+"
 end
 

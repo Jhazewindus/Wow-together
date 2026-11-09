@@ -211,10 +211,13 @@ class VisibleReasonTests(unittest.TestCase):
         f = c.ns.standaloneNavigation
         self.assertTrue(f.tip.IsShown(f.tip))
         self.assertFalse(f.reason.IsShown(f.reason))
-        self.assertEqual(f.tip.point[5], -106)
+        chip = c.ns.suggestionChipFrame
+        self.assertEqual(chip.point[1], 'BOTTOM')
+        self.assertTrue(c.lua.eval('rawequal')(chip.point[2], f))
+        self.assertEqual(chip.point[5], -38)
         before = f.height; f.tip.close.OnClick()
         self.assertFalse(f.reason.IsShown(f.reason))
-        self.assertEqual(f.height, before - 56)
+        self.assertEqual(f.height, before)
         self.assertFalse(c.ns.GuideQuestSkipped(900))
 
     def test_main_grows_for_the_reason_without_changing_saved_size(self):
