@@ -153,7 +153,7 @@ function ns.ShowPartyCatchup(base, manual)
     local guide, reason = ns.PartyCatchupGuide(base)
     ns.partyCatchupStatus = reason or guide.reason
     if not guide then ns.guideAction = reason; return false end
-    if ns.activityPrompt and ns.activityPrompt:IsShown() or ns.partyRoutePrompt and ns.partyRoutePrompt:IsShown() then return false end
+    if ns.HasSuggestionChipKind("activity") or ns.HasSuggestionChipKind("partyRoute") then return false end
     local key = "catchup:" .. guide.homeMapID .. ":" .. table.concat(ns.partyNames, ",")
     if manual and ns.db.activityNotices then ns.db.activityNotices[ns.ActivityNoticeKey(key)] = nil end
     ns.ShowActivityPrompt(key, "Catch up party in " .. guide.zone .. "?", guide.reason .. "\n\nYour current guide stays selected until you start this route.",

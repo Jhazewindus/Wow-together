@@ -52,31 +52,30 @@ class GuideBackgroundTests(unittest.TestCase):
         c.ns.navigationPreview = 2
         c.ns.flightPlanCache = c.lua.table_from({'sentinel': True})
         c.ns.char.guideSkips.quests[900] = True
-        click(nav.background)
+        nav.titleToggle.OnMouseUp(nav.titleToggle, 'RightButton')
         self.assertFalse(c.ns.Option('guideOpaque'))
-        for panel in (nav, nav.tip, nav.work):
+        for panel in (nav, nav.work):
             self.assertEqual(panel.fill[4], .18)
             self.assertIsNone(panel.frameAlpha)
-        self.assertEqual(nav.background.fill[4], .98)  # Controls stay readable.
         self.assertEqual((nav.status.text, nav.context.text, nav.title.text), before_text)
         self.assertEqual(c.ns.navigationPreview, 2)
         self.assertTrue(c.ns.flightPlanCache.sentinel)
         self.assertTrue(c.ns.char.guideSkips.quests[900])
         self.assertEqual(order(g), before)
-        click(nav.background)
+        nav.titleToggle.OnMouseUp(nav.titleToggle, 'RightButton')
         self.assertTrue(c.ns.Option('guideOpaque'))
-        for panel in (nav, nav.tip, nav.work): self.assertEqual(panel.fill[4], 1)
+        for panel in (nav, nav.work): self.assertEqual(panel.fill[4], 1)
 
     def test_settings_and_button_share_one_persistent_choice(self):
         c = ui_client(); c.ns.ToggleSettings(); nav = c.ns.navigation
         check = c.ns.settings.checks.guideOpaque
         self.assertTrue(check.checked)
-        click(nav.background)
+        nav.titleToggle.OnMouseUp(nav.titleToggle, 'RightButton')
         self.assertFalse(check.checked)
         check.SetChecked(check, True); click(check)
         self.assertTrue(c.ns.Option('guideOpaque'))
         self.assertEqual(nav.fill[4], 1)
-        click(nav.background)
+        nav.titleToggle.OnMouseUp(nav.titleToggle, 'RightButton')
         fresh = ui_client(primitive(c.ns.db))
         fresh.ns.ToggleSettings()
         self.assertFalse(fresh.ns.Option('guideOpaque'))
@@ -85,16 +84,15 @@ class GuideBackgroundTests(unittest.TestCase):
         fresh.ns.UpdateNavigation()
         self.assertEqual(fresh.ns.navigation.fill[4], .18)
 
-    def test_small_button_explains_current_state_and_next_action(self):
-        c = ui_client(); nav = c.ns.navigation; button = nav.background
+    def test_title_bar_right_click_toggles_solid_background(self):
+        c = ui_client(); nav = c.ns.navigation; button = nav.titleToggle
         self.assertEqual(nav.width, 360); self.assertEqual(nav.height, 168)
-        self.assertEqual(button.caption.text, 'Solid')
-        self.assertLessEqual(14 + nav.title.width, nav.width - 10 - button.width)
-        self.assertEqual(button.caption.fontFlags, '')
-        button.OnEnter(button)
-        self.assertEqual(c.lua.globals().GameTooltip.lines[1], 'Opaque background')
-        click(button); button.OnEnter(button)
-        self.assertEqual(c.lua.globals().GameTooltip.lines[1], 'Opaque background')
+        self.assertEqual(button.width, 158)
+        self.assertTrue(c.ns.Option('guideOpaque'))
+        button.OnMouseUp(button, 'RightButton')
+        self.assertFalse(c.ns.Option('guideOpaque'))
+        button.OnMouseUp(button, 'RightButton')
+        self.assertTrue(c.ns.Option('guideOpaque'))
 
 
 RESEARCH_FILE = ROOT / 'research/2026-10-06-durotar-orc-rogue-build-70235.json'

@@ -201,27 +201,30 @@ function ns.ZoneTransition()
 end
 
 function ns.ShowActivityPrompt(key, title, text, callback, acceptLabel, declineLabel)
-    if ns.activityPrompt and ns.activityPrompt:IsShown() then return end
     ns.db.activityNotices = ns.db.activityNotices or {}
     key = ns.ActivityNoticeKey(key)
     if ns.db.activityNotices[key] then return end
     if not ns.activityPrompt then
-        local frame = CreateFrame("Frame", "WowTogetherActivityPrompt", UIParent, "BackdropTemplate")
-        ns.activityPrompt = frame
-        frame:SetSize(480, 210); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG"); frame:SetClampedToScreen(true); ns.UIPanel(frame)
-        frame.title = ns.UILabel(frame, "GameFontNormalLarge", 18); frame.title:SetPoint("TOPLEFT", 22, -22); frame.title:SetWidth(436)
-        frame.text = ns.UILabel(frame, nil, 12); frame.text:SetPoint("TOPLEFT", 22, -52); frame.text:SetWidth(436); frame.text:SetHeight(100)
-        frame.accept = ns.UIButton(frame, "Show collection plan", 200, function() end, true); frame.accept:SetPoint("BOTTOMLEFT", 22, 18)
-        frame.later = ns.UIButton(frame, "Later", 130, function() frame:Hide() end); frame.later:SetPoint("BOTTOMRIGHT", -22, 18)
-        ns.ResizeChoicePopup(frame, "activity", {frame.accept, frame.later}, 480, 210)
+        ns.activityPrompt = ns.SuggestionChipFacade("activity")
+        ns.activityPrompt.title, ns.activityPrompt.text = {text = ""}, {text = ""}
+        ns.activityPrompt.accept, ns.activityPrompt.later = {caption = {text = ""}}, {caption = {text = ""}}
     end
     ns.db.activityNotices[key] = true
     ns.activityPrompt.noticeKey = key
-    ns.activityPrompt.title:SetText(title); ns.activityPrompt.text:SetText(text)
-    ns.activityPrompt.accept.caption:SetText(acceptLabel or (string.find(key, "transition:", 1, true) and "Show next zone route" or "Show collection plan"))
-    ns.activityPrompt.later.caption:SetText(declineLabel or "Later")
-    ns.activityPrompt.accept:SetScript("OnClick", function() ns.activityPrompt:Hide(); callback() end)
-    ns.activityPrompt:Show()
+    ns.activityPrompt.title.text, ns.activityPrompt.text.text = title, text
+    local accept = acceptLabel or (string.find(key, "transition:", 1, true) and "Follow" or "Show plan")
+    if string.find(string.lower(accept), "route", 1, true) then accept = "Follow"
+    elseif string.find(string.lower(accept), "collection plan", 1, true) then accept = "Show plan" end
+    local later = declineLabel or "Later"
+    if later == "Not now" then later = "Later" end
+    ns.activityPrompt.accept.caption.text, ns.activityPrompt.later.caption.text = accept, later
+    ns.activityPrompt.accept.OnClick = function()
+        if ns.HasSuggestionChipKind("activity") then ns.HideSuggestionChip(true); if callback then callback() end end
+    end
+    ns.activityPrompt.later.OnClick = function() if ns.HasSuggestionChipKind("activity") then ns.HideSuggestionChip(true) end end
+    ns.ShowSuggestionChip("activity", key, title, {
+        {label = accept, callback = callback}, {label = later},
+    })
 end
 
 function ns.ActivityNoticeKey(key) return (ns.self or "player") .. ":" .. key end
@@ -246,7 +249,7 @@ function ns.ScheduleActivitySuggestions()
     pending = true
     C_Timer.After(1, function()
         pending = false
-        if ns.RouteInCombat() or ns.routePlanning or ns.guideScanning or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
+        if ns.RouteInCombat() or ns.routePlanning or ns.guideScanning or ns.HasSuggestionChipKind("activity") then return end
         lastContext = context
         local selection = ns.routeSelection
         if ns.Option("dungeonPrompts") and ns.questReady then

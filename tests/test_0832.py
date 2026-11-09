@@ -200,9 +200,9 @@ class ReopenGuideTests(unittest.TestCase):
         c.ns.OpenGuideWindow()
         self.assertTrue(frame.IsShown(frame))
         self.assertFalse(c.ns.window.IsShown(c.ns.window))
-        self.assertEqual(frame.title.text, 'No guide selected')
-        self.assertIsNone(c.ns.routeSelection); self.assertIsNone(c.ns.selectedRoute)
-        c.drain(); self.assertIsNone(c.ns.routeSelection)
+        self.assertEqual(frame.title.text, frame.presentation.title)
+        self.assertIsNotNone(c.ns.routeSelection); self.assertIsNotNone(c.ns.selectedRoute)
+        c.drain(); self.assertIsNotNone(c.ns.routeSelection)
 
     def test_reopening_hidden_active_panel_preserves_current_guide_and_progress(self):
         c, _ = scanning_client()

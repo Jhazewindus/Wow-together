@@ -143,10 +143,14 @@ class CatchupTests(unittest.TestCase):
         self.assertEqual(c.ns.routeSelection.key, current.key)
         c.ns.activityPrompt.later.OnClick()
         self.assertEqual(c.ns.routeSelection.key, current.key)
-        c.ns.ShowPartyCatchup(None, True); c.ns.activityPrompt.accept.OnClick(); run_plan(c)
-        self.assertTrue(c.ns.routeSelection.catchup)
-        self.assertFalse(c.ns.routeSelection.fixedRoute)
-        self.assertTrue(any(msg.endswith('|catchup') for _, msg, _ in c.drain() if msg.startswith('1|V|')))
+        c.ns.ShowPartyCatchup(None, True)
+        self.assertIsNone(c.ns.CurrentSuggestionChip())  # dismissed trigger does not return
+        fresh = party(); fresh.ns.ActivateRoute(guide(fresh, (902,)))
+        self.assertTrue(fresh.ns.ShowPartyCatchup(None, True))
+        fresh.ns.activityPrompt.accept.OnClick(); run_plan(fresh)
+        self.assertTrue(fresh.ns.routeSelection.catchup)
+        self.assertFalse(fresh.ns.routeSelection.fixedRoute)
+        self.assertTrue(any(msg.endswith('|catchup') for _, msg, _ in fresh.drain() if msg.startswith('1|V|')))
 
     def test_friends_still_choose_follow_or_keep_for_catchup_invitations(self):
         c = party(); c.ns.ActivateRoute(guide(c, (902,)))

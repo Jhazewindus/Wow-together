@@ -30,6 +30,7 @@ Sync.lua
 DungeonArtwork.lua
 GuideThemes.lua
 UI.lua
+SuggestionChips.lua
 UIControls.lua
 UIResize.lua
 LuaConsole.lua

@@ -5,10 +5,7 @@
 - Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
   wrappers with `ns.hooks` registry points, preserve the public module API and
   Gold API version, and remove travel-summary string substitutions.
-- Brief 11 fast party sync: exchange two-bit quest history over the shared
-  catalogue, retain per-peer state and bounded change journals, prioritize
-  planning traffic, and pace transfers by bytes while preserving throttle
-  retries and scoped legacy fallback.
+
 
 ## 0.8.107
 

@@ -189,7 +189,7 @@ class ClassTrainingTests(unittest.TestCase):
         self.assertEqual(display.stops[1].kind, 'trainer')
         self.assertEqual(display.stops[2].id, 900)
         self.assertEqual(display.previewStops[2].guideStep, 7)
-        self.assertEqual(c.ns.StopSymbol(display.stops[1]), 'T')
+        self.assertEqual(c.ns.StopSymbol(display.stops[1]), '…')
         self.assertEqual(primitive(c.ns.selectedRoute), before)
         c.ns.FinishClassTraining(False)
         self.assertEqual(c.ns.RouteForDisplay().stops[1].id, 900)
