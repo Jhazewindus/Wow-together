@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "cmangos": {
+    "repository": "https://github.com/cmangos/classic-db",
+    "commit": "ec4f596146be6467ea93c57397858e329e2db852",
+    "path": "Full_DB/ClassicDB_1_12_1_z2815.sql.gz",
+    "sha256": "4f92db520868ab4e566726f68b5b2e380ae781209beaf22237b4f7f04600d0c0",
+    "license": "GPL-3.0",
+    "scope": [
+      "creature_template names and levels",
+      "gameobject_template names and type",
+      "item_template names and starting quest IDs",
+      "creature_loot_template and gameobject_loot_template numeric rows",
+      "creature and gameobject spawn coordinates and respawn-time ranges"
+    ]
+  },
+  "questieChangedIdFlags": {
+    "repository": "https://github.com/Questie/QuestieDB",
+    "commit": "aa1d7e7294596cf50a6fd0946dfae0d969cb9623",
+    "permittedUse": "ID membership only; set changed=true on matching CMaNGOS NPC or item rows.",
+    "files": {
+      "npc": {
+        "path": "src/corrections/Forever/foreverNPCFixes.lua",
+        "sha256": "65f14296430d119ea80aed05a98578f6cf4d4993cc4703b744d446a702670e11"
+      },
+      "item": {
+        "path": "src/corrections/Forever/foreverItemFixes.lua",
+        "sha256": "a3b2bb0857cb80449171015e4f936fef1e578edb521c143ac4fe58efdc213fd1"
+      }
+    }
+  },
+  "copyrightNotice": "World of Warcraft content and materials are trademarks and copyrights of Blizzard or its licensors. All rights reserved.\n\nAll content and materials protected by copyright are here after called Copyrighted Material.\n\nCMaNGOS project intends to make a Fair Use of the Copyrighted Material as:\n- a non-commercial demo content for its source code\n- a testimony of the Copyrighted Material as it previously was and that is no longer available to public in its current state\n\nAll Copyrighted Material contained within the source code cannot be modified, altered, sold, used for commercial purpose or in any way that would infringe copy rights without the authorisation of Blizzard Inc.\n\nLimitations and exceptions to copyright laws and the fair use doctrine can vary depending on national laws.\n\nCMaNGOS is an educational, non-commercial and nonprofit project.\nCMaNGOS project is not affiliated with Blizzard or its licensors.\n\nCMaNGOS classic-db is distributed under GPL-3.0. These reference-only factual extracts retain the source revision, checksum and transformations above. See LEGACY_DATA_COPYRIGHT.md and LEGACY_DATA_LICENSE.txt."
+}
