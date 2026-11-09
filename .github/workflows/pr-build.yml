@@ -1,0 +1,64 @@
+name: PR build
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions:
+  contents: read
+concurrency:
+  group: pr-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  host-tests:
+    name: Host tests (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pytest lupa
+      - run: python tools/run_ci_tests.py --shard "${{ matrix.shard }}" --total 4
+  checks:
+    if: always()
+    needs: host-tests
+    name: PR checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every test shard to pass
+        env:
+          TEST_RESULT: ${{ needs.host-tests.result }}
+        run: test "$TEST_RESULT" = success
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/ci_release.py preflight --root . --notes dist/release-notes.md
+      - run: python -m pip install pytest lupa
+      - run: python tools/syntax_check.py
+      - run: python tools/boundary_check.py
+      - name: Build beta archive
+        env:
+          BRANCH: ${{ github.head_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python tools/build_release.py --output dist/ --label "$BRANCH" --sha "$HEAD_SHA"
+      - name: Capture changelog diff
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: git diff "$BASE_SHA" "$HEAD_SHA" -- CHANGELOG.md > dist/changelog.diff
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beta-build
+          path: dist/
+          retention-days: 14
+          if-no-files-found: error
