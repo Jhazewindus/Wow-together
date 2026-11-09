@@ -164,8 +164,8 @@ renderRows = function(list, groups, force)
             local collapsed = panel.collapsed[group.key] == true
             local startY = y
             group:ClearAllPoints(); group:SetPoint("TOPLEFT", 0, -y)
-            group.toggle.caption:SetText((collapsed and "+ " or "− ") .. index .. ". " .. data.name)
-            group.detail:SetText("~" .. data.crafts .. " crafts • Skill " .. data.start .. (data.finish and " → " .. data.finish or ""))
+            group.toggle.caption:SetText((collapsed and "+ " or "- ") .. index .. ". " .. data.name)
+            group.detail:SetText("~" .. data.crafts .. " crafts • Skill " .. data.start .. (data.finish and " to " .. data.finish or ""))
             group.cost:SetText(data.estimatedCost and (data.estimatedCost == 0 and "Materials covered by bags / earlier crafts"
                 or "Est. buy cost: " .. ns.MoneyText(data.estimatedCost)) or "Buy cost not fully priced")
             local preparation = {}
@@ -205,7 +205,7 @@ local function startForecast(id, target, signature)
         if coroutine.status(worker) == "dead" then
             forecast = nil; panel.materials = result.materials; panel.forecast = result
             renderRows(result.materials, result.groups)
-            panel.notice:SetText("Skill " .. result.start .. " → " .. target .. " • buy one recipe at a time.\n"
+            panel.notice:SetText("Skill " .. result.start .. " to " .. target .. " • buy one recipe at a time.\n"
                 .. (result.estimatedCost and ("Est. materials: " .. ns.MoneyText(result.estimatedCost)) or "Scan for material prices")
                 .. (result.incomplete and " • partial guide" or ""))
         elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run)

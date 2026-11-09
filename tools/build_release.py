@@ -167,6 +167,29 @@ def main():
         if hashlib.sha256((media / name).read_bytes()).hexdigest() != texture['sha256']:
             raise ValueError('Guide texture checksum mismatch: ' + name)
         media_names.append(name)
+    icons_media = addon / 'Media' / 'Icons'
+    icon_manifest = json.loads((icons_media / 'manifest.json').read_text())
+    if icon_manifest.get('schema') != 1 or icon_manifest.get('size') != 64 \
+            or icon_manifest.get('format') != 'TGA 32-bit RGBA, uncompressed, straight alpha' \
+            or len(icon_manifest.get('icons', [])) != 20:
+        raise ValueError('Incomplete generated icon manifest')
+    icon_media_names = ['manifest.json']
+    icon_names = set()
+    for texture in icon_manifest['icons']:
+        name = texture.get('file')
+        if not isinstance(name, str) or not re.fullmatch(r'[a-z]+(?:-[a-z]+)*\.tga', name) \
+                or name in icon_names:
+            raise ValueError('Unexpected generated icon path: ' + str(name))
+        path = icons_media / name
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != texture.get('sha256'):
+            raise ValueError('Generated icon checksum mismatch: ' + name)
+        icon_names.add(name)
+        icon_media_names.append(name)
+    if icon_names != {name + '.tga' for name in (
+            'kill', 'collect', 'use', 'talk', 'accept', 'turnin', 'turnin-pending',
+            'travel', 'fly', 'hearth', 'teleport', 'ship', 'party', 'wait', 'farm',
+            'dungeon', 'pause', 'menu', 'close', 'scan')}:
+        raise ValueError('Generated icon manifest names do not match the required set')
     gold_install = ('If present, copy WowTogether_Gold beside the core and data folders; it is optional.\n'
                     if gold_sources is not None else '')
     instructions = f'''Wow Together {release_label} — World of Warcraft: Forever (live)
@@ -905,6 +928,8 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
                 archive.write(ROOT / folder / name, folder + '/' + name)
         for name in media_names:
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
+        for name in icon_media_names:
+            archive.write(icons_media / name, 'WowTogether/Media/Icons/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             if name == 'CHANGELOG.md':
                 archive.writestr('WowTogether/' + name, packaged_changelog)

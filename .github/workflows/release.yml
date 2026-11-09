@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install pytest lupa
+      - run: python -m pip install pytest lupa -r tools/requirements-icons.txt
       - run: python tools/run_ci_tests.py --shard "${{ matrix.shard }}" --total 4
   release:
     needs: host-tests
@@ -38,6 +38,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python -m pip install pytest lupa -r tools/requirements-icons.txt
       - name: Collect fragments since the last release tag
         id: plan
         run: python tools/ci_release.py plan --root . --notes dist/release-notes.md
@@ -64,6 +65,7 @@ jobs:
           CI_DISCORD_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
         run: |
           python tools/syntax_check.py
+          python tools/build_icons.py --check
           python tools/boundary_check.py
           python tools/build_release.py --output dist/ --version "$VERSION" --release-name "$RELEASE_NAME" --notes-file dist/release-notes.md
           python tools/ci_release.py post --kind release --dist dist/ --dry-run

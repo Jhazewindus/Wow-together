@@ -415,7 +415,8 @@ class EntranceIntegrationTests(unittest.TestCase):
         card = c.ns.ui.cards[1]
         self.assertIn('Lv ', card.count.text)
         self.assertIn('quests', card.reason.text)
-        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
+        self.assertEqual(card.detailsButton.caption.text, 'Follow')
         card.OnClick()
         c.ns.dungeonViewer.questList.OnClick()
         self.assertTrue(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))

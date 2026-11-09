@@ -33,9 +33,10 @@ class HudTitleTests(unittest.TestCase):
     def test_shared_step_icon_table_has_probed_texture_or_glyph_for_every_kind(self):
         c = navigator()
         symbols = c.ns.STEP_SYMBOLS
-        coreKinds = {'accept', 'turnin', 'turninIncomplete', 'kill', 'collect', 'talk', 'travel', 'party'}
+        coreKinds = {'accept', 'turnin', 'turninIncomplete', 'kill', 'collect', 'use', 'talk', 'travel',
+                     'fly', 'hearth', 'teleport', 'ship', 'party', 'wait', 'farm', 'dungeon'}
         self.assertTrue(coreKinds.issubset(set(symbols.keys())))
-        self.assertEqual({'farm'}, set(symbols.keys()) - coreKinds)  # Optional module extension.
+        self.assertEqual(coreKinds, set(symbols.keys()))
         for key in coreKinds:
             symbol = symbols[key]
             self.assertTrue(symbol.glyph)

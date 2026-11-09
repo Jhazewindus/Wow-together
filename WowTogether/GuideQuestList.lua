@@ -206,8 +206,7 @@ function ns.RenderGuideQuestList()
         row.title:SetWidth(stop.inLogLowValue and 310 or 470)
         local shortStatus = presentation.status
         local level = quest and (quest.minLevel or quest.level)
-        if shortStatus == "Done" then shortStatus = "✓"
-        elseif shortStatus == "Later" or string.match(shortStatus or "", "^Later") then shortStatus = "Later" .. (level and (" " .. level) or "")
+        if shortStatus == "Later" or string.match(shortStatus or "", "^Later") then shortStatus = "Later" .. (level and (" " .. level) or "")
         elseif shortStatus == "Optional, on the way" then shortStatus = "" end
         row.state:SetText(shortStatus)
         local stateColor = presentation.statusColor == "green" and ns.UIColors.success

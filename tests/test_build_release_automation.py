@@ -46,6 +46,9 @@ class BuildAutomationTests(unittest.TestCase):
                     {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData'})
                 self.assertTrue(all('/' in p and not p.startswith('/') and '..' not in p.split('/') for p in z.namelist()))
                 self.assertIn('## Version: 0.0.0-dev', z.read('WowTogether/WowTogether.toc').decode())
+                icons = {p for p in z.namelist() if p.startswith('WowTogether/Media/Icons/')}
+                self.assertEqual(len(icons), 21)  # Manifest plus twenty generated textures.
+                self.assertIn('WowTogether/Media/Icons/kill.tga', icons)
         self.assertIn('## Version: @project-version@', (ROOT / 'WowTogether/WowTogether.toc').read_text())
 
     def test_build_stamps_fragment_version_and_notes_without_editing_repo_history(self):

@@ -82,7 +82,8 @@ class GuidePreviewTests(unittest.TestCase):
         self.assertTrue(card.count.IsShown(card.count))
         c.ns.SetFilter('guides')
         self.assertFalse(card.count.IsShown(card.count))
-        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
+        self.assertEqual(card.detailsButton.caption.text, 'Follow')
 
     def test_travel_card_previews_without_navigation_then_starts_normally(self):
         c = travel_client(); c.ns.guideSearch = 'orgrimmar'; c.ns.SetFilter('guides')

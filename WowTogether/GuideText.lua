@@ -1,62 +1,111 @@
 local addonName, ns = ...
 
+local ICON_NAMES = {
+    "kill", "collect", "use", "talk", "accept", "turnin", "turnin-pending",
+    "travel", "fly", "hearth", "teleport", "ship", "party", "wait", "farm",
+    "dungeon", "pause", "menu", "close", "scan",
+}
+local ICON_TEXTURES = {}
+for _, name in ipairs(ICON_NAMES) do
+    ICON_TEXTURES[name] = "Interface\\AddOns\\WowTogether\\Media\\Icons\\" .. name
+end
+ns.STEP_ICON_TEXTURES = ICON_TEXTURES
+
 local STEP_SYMBOLS = {
-    accept = {texture = "Interface\\GossipFrame\\AvailableQuestIcon", glyph = "!"},
-    turnin = {texture = "Interface\\GossipFrame\\ActiveQuestIcon", glyph = "?"},
-    turninIncomplete = {texture = "Interface\\GossipFrame\\IncompleteQuestIcon", glyph = "?"},
-    kill = {texture = "Interface\\CURSOR\\Attack", glyph = "⚔"},
-    collect = {texture = "Interface\\CURSOR\\Pickup", glyph = "✋"},
-    talk = {texture = "Interface\\CURSOR\\Speak", glyph = "…"},
-    travel = {texture = "Interface\\CURSOR\\Point", glyph = "➤"},
-    party = {texture = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1", glyph = "⇄"},
+    accept = {icon = "accept", glyph = "!"},
+    turnin = {icon = "turnin", glyph = "?"},
+    turninIncomplete = {icon = "turnin-pending", glyph = "?"},
+    kill = {icon = "kill", glyph = "x"},
+    collect = {icon = "collect", glyph = "+"},
+    use = {icon = "use", glyph = "u"},
+    talk = {icon = "talk", glyph = "..."},
+    travel = {icon = "travel", glyph = ">"},
+    fly = {icon = "fly", glyph = "f"},
+    hearth = {icon = "hearth", glyph = "h"},
+    teleport = {icon = "teleport", glyph = "t"},
+    ship = {icon = "ship", glyph = "s"},
+    party = {icon = "party", glyph = "&"},
+    wait = {icon = "wait", glyph = "w"},
+    farm = {icon = "farm", glyph = "$"},
+    dungeon = {icon = "dungeon", glyph = "D"},
 }
 ns.STEP_SYMBOLS = STEP_SYMBOLS
 
+local STEP_KIND_ALIASES = {
+    ["travel-walk"] = "travel", ["travel-fly"] = "fly", ["travel-hearth"] = "hearth",
+    ["travel-teleport"] = "teleport", ["travel-ship"] = "ship",
+    trainer = "talk", vendor = "use", corpse = "travel",
+}
+local ICON_AVAILABLE = {}
+
 local function probeStepSymbols()
     local total, available = 0, 0
-    for key, symbol in pairs(STEP_SYMBOLS) do
+    for _, name in ipairs(ICON_NAMES) do
         total = total + 1
         local ok = false
         if type(GetFileIDFromPath) == "function" then
-            local success, fileID = pcall(GetFileIDFromPath, symbol.texture)
+            local success, fileID = pcall(GetFileIDFromPath, ICON_TEXTURES[name] .. ".tga")
             ok = success and type(fileID) == "number" and fileID > 0
         end
         if not ok and CreateFrame then
             local probe = CreateFrame("Frame")
             local texture = probe:CreateTexture(nil, "ARTWORK")
             if texture and type(texture.SetTexture) == "function" and type(texture.GetTexture) == "function" then
-                local success = pcall(texture.SetTexture, texture, symbol.texture)
+                local asset = ICON_TEXTURES[name] .. ".tga"
+                local success = pcall(texture.SetTexture, texture, asset)
                 local valid, found = false, nil
                 if success then valid, found = pcall(texture.GetTexture, texture) end
-                ok = valid and (found == symbol.texture or type(found) == "number")
+                ok = valid and (found == asset or type(found) == "number")
             end
             if probe.Hide then probe:Hide() end
         end
-        symbol.available = ok
+        ICON_AVAILABLE[name] = ok
         if ok then available = available + 1 end
     end
     local fallback = {}
-    for key, symbol in pairs(STEP_SYMBOLS) do if not symbol.available then fallback[#fallback + 1] = key end end
+    for key, symbol in pairs(STEP_SYMBOLS) do
+        symbol.texture = ICON_TEXTURES[symbol.icon]
+        symbol.available = ICON_AVAILABLE[symbol.icon] == true
+    end
+    for _, name in ipairs(ICON_NAMES) do
+        if not ICON_AVAILABLE[name] then fallback[#fallback + 1] = name end
+    end
     table.sort(fallback)
-    ns.stepIconStatus = "Step icons: " .. available .. "/" .. total .. " textures"
-        .. (#fallback > 0 and (", " .. table.concat(fallback, ", ") .. " using glyph") or "")
+    ns.stepIconStatus = "Step icons: " .. available .. "/" .. total .. " addon textures"
+        .. (#fallback > 0 and (", missing " .. table.concat(fallback, ", ")) or "")
 end
 probeStepSymbols()
 
 function ns.StepSymbolFor(kind)
-    local symbol = STEP_SYMBOLS[kind] or STEP_SYMBOLS.travel
+    local symbol = STEP_SYMBOLS[kind] or STEP_SYMBOLS[STEP_KIND_ALIASES[kind]] or STEP_SYMBOLS.travel
+    if type(symbol) == "string" then return nil, symbol end
     return symbol.glyph, symbol.available and symbol.texture or nil
+end
+
+function ns.StepIconTexture(name)
+    return ICON_AVAILABLE[name] == true and ICON_TEXTURES[name] or nil
 end
 
 function ns.StepSymbolKind(stop, facts)
     if stop.kind == "a" then return "accept" end
     if stop.kind == "t" then return facts and facts.finished and "turninIncomplete" or "turnin" end
     if stop.kind == "party" or stop.memberKey then return "party" end
+    if stop.kind == "wait" then return "wait" end
+    if stop.kind == "farm" then return "farm" end
+    if stop.dungeonEntrance then return "dungeon" end
     if stop.kind == "trainer" then return "talk" end
-    if stop.kind == "travel" or stop.kind == "f" or stop.kind == "corpse" then return "travel" end
+    if stop.kind == "travel" or stop.kind == "f" or stop.kind == "corpse" then
+        local method = stop.flightPlan and "taxi" or stop.travelLeg and stop.travelLeg.method
+        if method == "taxi" then return "fly" end
+        if method == "hearth" then return "hearth" end
+        if method == "teleport" then return "teleport" end
+        if method == "ship" or method == "zeppelin" or method == "tram" then return "ship" end
+        return "travel"
+    end
     local action = facts and facts.action or stop.action
     if action == "kill" then return "kill" end
     if action == "talk" or action == "escort" then return "talk" end
+    if action == "use" or action == "heal" or action == "interact" or action == "event" then return "use" end
     if action == "collect" or action == "interact" or stop.itemID then return "collect" end
     return "collect"
 end
@@ -382,6 +431,9 @@ end
 local function presentationKind(stop, facts)
     if stop.kind == "a" then return "accept" end
     if stop.kind == "t" then return "turnin" end
+    if stop.kind == "party" or stop.memberKey then return "party" end
+    if stop.kind == "wait" then return "wait" end
+    if stop.kind == "farm" then return "farm" end
     if stop.kind == "trainer" then return "trainer" end
     if stop.inventoryService then return "vendor" end
     if stop.professionStep then return "vendor" end
@@ -390,7 +442,7 @@ local function presentationKind(stop, facts)
     if stop.kind == "corpse" then return "corpse" end
     if stop.kind == "notice" or stop.kind == "loading" then return "notice" end
     if stop.kind == "travel" or stop.kind == "f" then
-        local method = stop.travelLeg and stop.travelLeg.method
+        local method = stop.flightPlan and "taxi" or stop.travelLeg and stop.travelLeg.method
         if method == "taxi" then return "travel-fly" end
         if method == "ship" or method == "zeppelin" or method == "tram" then return "travel-ship" end
         if method == "hearth" then return "travel-hearth" end
