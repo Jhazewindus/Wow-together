@@ -340,6 +340,7 @@ class RouteTests(unittest.TestCase):
         self.assertFalse(c.ns.CatalogueScopeIDs()[901] or False)
         c.ns.OpenLibraryZone('map:502', 502)
         self.assertTrue(c.ns.CatalogueScopeIDs()[901])
+        c.ns.members['Bob-TestRealm'] = c.lua.table_from({'planSupport': False})
         c.ns.SyncNow()
         messages = [msg for _, msg, _ in c.drain()]
         self.assertIn('1|Z|502', messages)

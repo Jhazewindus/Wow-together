@@ -515,6 +515,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeSync()
     ns.MigrateCharacterStorage()
     ns.InitializeQuestHistory()
+    if ns.SyncStateInitialize then ns.SyncStateInitialize() end
     ns.InitializeGuideXP()
     ns.InitializeGuideControls()
     ns.InitializeTravel()
@@ -541,6 +542,10 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeSessionCheckpoints()
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
+end)
+
+ns.On("PLAYER_LOGOUT", function()
+    if ns.SyncStatePersistAll then ns.SyncStatePersistAll() end
 end)
 
 ns.On("PLAYER_LOGIN", function()

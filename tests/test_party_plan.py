@@ -50,7 +50,7 @@ class PartyPlanDigestTests(unittest.TestCase):
         c = Client(quests=())
         sent = []
         c.ns.PartyFeaturesEnabled = lambda: True
-        c.ns.QueueMessage = lambda message: sent.append(message) or True
+        c.ns.QueueMessage = lambda message, *_: sent.append(message) or True
         c.ns.syncReady = True
         c.ns.partyNames = c.lua.table_from(['Bob-TestRealm'])
         c.ns.profile.level = 24
@@ -94,7 +94,7 @@ class PartyPlanDigestTests(unittest.TestCase):
         c = Client(quests=())
         sent = []
         c.ns.PartyFeaturesEnabled = lambda: True
-        c.ns.QueueMessage = lambda message: sent.append(message) or True
+        c.ns.QueueMessage = lambda message, *_: sent.append(message) or True
         c.ns.syncReady = True
         c.ns.partyNames = c.lua.table_from(['Bob-TestRealm'])
         c.ns.profile.level = 60

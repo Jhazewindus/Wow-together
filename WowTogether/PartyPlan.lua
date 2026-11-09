@@ -127,6 +127,10 @@ local function scopeForGuide()
     return currentScope()
 end
 
+function ns.PartyPlanCurrentScope()
+    return scopeForGuide()
+end
+
 function ns.ResetPartyPlanTraffic()
     lastScopeHash, lastDigestSignature = nil, nil
     scopeAssemblies, digestAssemblies = {}, {}
@@ -172,15 +176,28 @@ function ns.SendPartyPlanDigest(force)
     if #ids == 0 then return false end
     local hash = hashIDs(ids)
     cachedLocalSnapshot = localSnapshot(ids)
+    local needsScope = false
     if hash ~= lastScopeHash or force then
-        scopeRevision = scopeRevision + 1
-        local total = math.max(1, math.ceil(#ids / 18))
-        for part = 1, total do
-            local chunk = {}
-            for index = (part - 1) * 18 + 1, math.min(part * 18, #ids) do chunk[#chunk + 1] = tostring(ids[index]) end
-            if not ns.QueueMessage(table.concat({"2", "C", scopeRevision, hash, part, total, table.concat(chunk, ",")}, "|")) then
-                lastScopeHash = nil
-                return false
+        needsScope = true
+        local catalogueHash = ns.SyncStateCatalogueHash and ns.SyncStateCatalogueHash()
+        if catalogueHash then
+            needsScope = false
+            for _, key in ipairs(ns.partyNames) do
+                local peer = ns.members[key]
+                if not peer or peer.planSupport ~= true or peer.stateHashFromPeer ~= catalogueHash
+                    or peer.stateScopeHashFromPeer ~= hash then needsScope = true; break end
+            end
+        end
+        if needsScope then
+            scopeRevision = scopeRevision + 1
+            local total = math.max(1, math.ceil(#ids / 18))
+            for part = 1, total do
+                local chunk = {}
+                for index = (part - 1) * 18 + 1, math.min(part * 18, #ids) do chunk[#chunk + 1] = tostring(ids[index]) end
+                if not ns.QueueMessage(table.concat({"2", "C", scopeRevision, hash, part, total, table.concat(chunk, ",")}, "|"), "background") then
+                    lastScopeHash = nil
+                    return false
+                end
             end
         end
         lastScopeHash = hash
@@ -193,7 +210,7 @@ function ns.SendPartyPlanDigest(force)
     local total = math.max(1, math.ceil(#payload / 200))
     for part = 1, total do
         local chunk = string.sub(payload, (part - 1) * 200 + 1, part * 200)
-        if not ns.QueueMessage(table.concat({"2", "S", digestRevision, hash, level, part, total, chunk}, "|")) then
+        if not ns.QueueMessage(table.concat({"2", "S", digestRevision, hash, level, part, total, chunk}, "|"), needsScope and "background" or "now") then
             return false
         end
     end
@@ -239,6 +256,7 @@ local function receiveScope(message, sender)
         if hashIDs(all) ~= hash then return true, false, "party-plan scope hash mismatch" end
         ns.members[sender] = ns.members[sender] or {}
         ns.members[sender].partyPlanScope = {hash = hash, revision = rev, ids = all}
+        if ns.SyncStateApplyPendingScope then ns.SyncStateApplyPendingScope(sender, all, hash) end
         ns.Refresh(true)
     end
     return true, true
@@ -254,6 +272,16 @@ local function receiveDigest(message, sender)
         return true, false, "invalid party-plan digest header"
     end
     local scope = scopeAssemblies[sender]
+    if not scope or not scope.revision then
+        local localIDs = scopeForGuide()
+        if hashIDs(localIDs) == hash then
+            scope = {revision = rev, hash = hash, total = 1, parts = {[1] = localIDs}, count = 1}
+            scopeAssemblies[sender] = scope
+            ns.members[sender] = ns.members[sender] or {}
+            ns.members[sender].partyPlanScope = {hash = hash, revision = rev, ids = localIDs}
+            if ns.SyncStateApplyPendingScope then ns.SyncStateApplyPendingScope(sender, localIDs, hash) end
+        end
+    end
     if not scope or not scope.revision or not ns.members[sender] or not ns.members[sender].partyPlanScope
         or ns.members[sender].partyPlanScope.hash ~= hash then return true, false, "party-plan digest before matching scope" end
     digestAssemblies[sender] = digestAssemblies[sender] or {}
@@ -300,11 +328,12 @@ function ns.PartyPlanMissingLine()
     local hash = hashIDs(ids)
     if not cachedLocalSnapshot or cachedLocalSnapshot.hash ~= hash then cachedLocalSnapshot = localSnapshot(ids) end
     local own = {}; for index, id in ipairs(ids) do own[id] = cachedLocalSnapshot.states[index] end
-    local gaps, waiting, oldVersion = {}, false, false
+    local gaps, waiting, oldVersion, versionMismatch = {}, false, false, nil
     for _, name in ipairs(ns.partyNames) do
         local member = ns.members[name]
         local digest = member and member.partyPlan
-        if member and member.planSupport == false then oldVersion, waiting = true, true
+        if member and member.catalogueMismatch then versionMismatch = versionMismatch or name; waiting = true
+        elseif member and member.planSupport == false then oldVersion, waiting = true, true
         elseif not digest or digest.hash ~= hash then waiting = true
         else
             for index, id in ipairs(ids) do
@@ -322,6 +351,7 @@ function ns.PartyPlanMissingLine()
         end
         if #gaps >= 2 then break end
     end
+    if versionMismatch then return "Missing vs party: " .. ns.MemberLabel(versionMismatch) .. " has a different quest-data version." end
     if #gaps > 0 then return "Missing vs party: " .. table.concat(gaps, " · ") end
     if oldVersion then return "Missing vs party: update party addons to compare quest gaps." end
     if waiting then return "Missing vs party: waiting for matching quest data." end

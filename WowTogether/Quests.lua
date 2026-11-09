@@ -63,6 +63,7 @@ end
 function ns.ReadQuests()
     -- Commit a whole public snapshot. Zone loading must not look like every
     -- quest was abandoned when one entry or the log API is temporarily nil.
+    local previousActive = ns.active or {}
     local active, titles, levels, incomplete, lingering = {}, {}, {}, false, {}
     ns.restrictedQuests = 0
     if not C_QuestLog or type(C_QuestLog.GetNumQuestLogEntries) ~= "function"
@@ -110,6 +111,7 @@ function ns.ReadQuests()
     acceptedPending = {}
     for id in pairs(turnedInPending) do if not lingering[id] then turnedInPending[id] = nil end end
     ns.active, ns.localTitles, ns.questLevels = active, titles, levels
+    if ns.SyncStateRefreshActive then ns.SyncStateRefreshActive(previousActive, active) end
     ns.questReady = true
     return true
 end
@@ -133,11 +135,13 @@ function ns.RememberQuestCompletion(id)
     if not ns.questHistory or not ns.Public(id) or type(id) ~= "number" or id <= 0 or id >= 2147483647 or id ~= math.floor(id)
         or ns.IsRepeatableQuest(id) or ns.questHistory[id] or ns.questHistoryCount >= 8192 then return end
     ns.questHistory[id], ns.questHistoryCount = true, ns.questHistoryCount + 1
+    if ns.SyncStateMarkDirty then ns.SyncStateMarkDirty(id) end
 end
 
 function ns.ForgetQuestCompletion(id)
     if ns.Public(id) and ns.questHistory and ns.questHistory[id] then
         ns.questHistory[id], ns.questHistoryCount = nil, ns.questHistoryCount - 1
+        if ns.SyncStateMarkDirty then ns.SyncStateMarkDirty(id) end
     end
 end
 
