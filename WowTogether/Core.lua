@@ -13,7 +13,8 @@ ns.hooks = {
     optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},
     slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {},
     routeAfterUpdate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
-    stepPresentation = {}, researchExport = {},
+    stepPresentation = {}, researchExport = {}, goldPrice = {}, goldSuggestions = {},
+    goldSessionCard = {}, goldFunctionPublished = {},
 }
 function ns.HookResults(name, ...)
     local results = {}

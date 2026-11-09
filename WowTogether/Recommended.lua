@@ -123,3 +123,15 @@ ns.RegisterRecommendationProvider("professions", function()
     end
     return result, #result == 0 and "Learn a crafting profession to get a personal recommendation here." or "ready"
 end)
+
+-- Optional Gold recommendations are data records returned through the
+-- module hook. The core provider and card renderer own the query/UI lifetime.
+local function goldRecommendations()
+    local handled, cards = ns.FirstHook("goldSuggestions")
+    if not handled or type(cards) ~= "table" then return {}, nil end
+    return cards, #cards > 0 and "ready" or nil
+end
+ns.RegisterRecommendationProvider("gold", goldRecommendations)
+ns.hooks.goldFunctionPublished[#ns.hooks.goldFunctionPublished + 1] = function(name)
+    if name == "Suggestions" then ns.RegisterRecommendationProvider("gold", goldRecommendations) end
+end

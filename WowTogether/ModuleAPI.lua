@@ -7,10 +7,91 @@ ns.STEP_SYMBOLS = ns.STEP_SYMBOLS or {}
 ns.STEP_SYMBOLS.farm = "Interface\\Icons\\INV_Misc_Coin_01"
 
 local modules, names, order, options, syncKinds, exportHooks, stops = {}, {}, {}, {}, {}, {}, {}
+local goldFunctions = {}
+local goldHookNames = {Price = "goldPrice", Suggestions = "goldSuggestions", SessionCard = "goldSessionCard"}
 local reservedKinds = {H=true, Q=true, T=true, S=true, C=true, O=true, K=true,
     Y=true, R=true, Z=true, G=true, P=true, D=true, V=true, W=true}
 local function validName(name)
     return type(name) == "string" and string.match(name, "^[A-Za-z][A-Za-z0-9_]*$") ~= nil
+end
+local function safeCardText(value, maximum)
+    return ns.Public(value) and type(value) == "string" and value ~= "" and #value <= maximum
+        and not string.find(value, "[%z\1-\8\11\12\14-\31\127]")
+end
+local function safeActionCard(spec, suggestion)
+    if type(spec) ~= "table" or not safeCardText(spec.title, 100)
+        or not safeCardText(spec.detail, 360) or type(spec.action) ~= "function"
+        or type(spec.start) == "function" or type(spec.inspect) == "function" then return end
+    for key in pairs(spec) do
+        if suggestion and key ~= "key" and key ~= "title" and key ~= "detail"
+            and key ~= "priority" and key ~= "action" then return end
+        if not suggestion and key ~= "title" and key ~= "detail" and key ~= "action" then return end
+    end
+    if suggestion then
+        if not safeCardText(spec.key, 64) or not string.match(spec.key, "^[%w:_%-]+$")
+            or not ns.Public(spec.priority) or not ns.GuideInteger(spec.priority, 1000) or spec.priority < 1 then return end
+        return {key = "gold:" .. spec.key, kind = "gold", category = "Gold", title = spec.title,
+            detail = spec.detail, priority = spec.priority, action = "Follow", start = spec.action}
+    end
+    return {kind = "gold", category = "Gold session", title = spec.title,
+        detail = spec.detail, action = spec.action}
+end
+local function safeSuggestions(value)
+    if type(value) ~= "table" then return end
+    local count = #value
+    if count > 5 then return end
+    for key in pairs(value) do
+        if not ns.Public(key) or not ns.GuideInteger(key, 5) or key < 1 or key > count then return end
+    end
+    local result, keys = {}, {}
+    for index = 1, count do
+        local card = safeActionCard(value[index], true)
+        if not card or keys[card.key] then return end
+        keys[card.key] = true; result[#result + 1] = card
+    end
+    return result
+end
+local function copySessionSummary(summary)
+    if type(summary) ~= "table" or not safeCardText(summary.title, 120)
+        or not ns.Public(summary.quests) or not ns.Public(summary.xp)
+        or not ns.GuideInteger(summary.quests, 4096)
+        or not ns.GuideInteger(summary.xp, 10000000000)
+        or not ns.Public(summary.seconds) or type(summary.seconds) ~= "number"
+        or summary.seconds ~= summary.seconds or summary.seconds < 0 or summary.seconds > 100000000 then return end
+    return {title = summary.title, quests = summary.quests, xp = summary.xp, seconds = summary.seconds,
+        xpKnown = summary.xpKnown == true, xpPartial = summary.xpPartial == true,
+        timePartial = summary.timePartial == true,
+        startLevel = ns.GuideInteger(summary.startLevel, 60) and summary.startLevel or nil,
+        endLevel = ns.GuideInteger(summary.endLevel, 60) and summary.endLevel or nil}
+end
+
+function ns.PublishGoldFunction(name, callback)
+    if not goldHookNames[name] then return false, "Unsupported Gold function name." end
+    if type(callback) ~= "function" then return false, "Gold function must be callable." end
+    goldFunctions[name] = callback
+    ns.RunHooks("goldFunctionPublished", name)
+    return true, nil
+end
+
+ns.hooks.goldPrice[#ns.hooks.goldPrice + 1] = function(itemID, quantity)
+    local callback = goldFunctions.Price
+    if not callback then return false end
+    return true, callback(itemID, quantity)
+end
+ns.hooks.goldSuggestions[#ns.hooks.goldSuggestions + 1] = function()
+    local callback = goldFunctions.Suggestions
+    if not callback then return false end
+    local cards = safeSuggestions(callback())
+    if not cards then return false end
+    return true, cards
+end
+ns.hooks.goldSessionCard[#ns.hooks.goldSessionCard + 1] = function(summary)
+    local callback = goldFunctions.SessionCard
+    local copy = copySessionSummary(summary)
+    if not callback or not copy then return false end
+    local card = safeActionCard(callback(copy), false)
+    if not card then return false end
+    return true, card
 end
 local function optionKey(name, key)
     return type(key) == "string" and #key > #name + 1
@@ -404,7 +485,8 @@ local publicAPI = {
 for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance", "PlayerPoint",
     "TrailLoop", "RouteCostModel", "PushGuideStop", "ClearModuleStops", "RegisterSyncKind",
     "CatalogueQuest", "ReadPublic", "Public", "GuideInteger", "SafeTitle",
-    "Option", "SetOption", "Print", "On", "ResearchExportHook"}) do
+    "Option", "SetOption", "Print", "On", "ResearchExportHook",
+    "StartFarmCandidateScan", "PublishGoldFunction"}) do
     publicAPI[name] = ns[name]
 end
 setmetatable(publicAPI, {__index = function(_, name)

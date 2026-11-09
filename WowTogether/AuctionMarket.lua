@@ -20,12 +20,29 @@ local function validQuote(quote, timestamp)
         and (quote.unavailable == true or ns.GuideInteger(quote.unitPrice, 9000000000000) and quote.unitPrice > 0)
 end
 
+local function bookMedian(offers)
+    local total = 0
+    for _, offer in ipairs(offers or {}) do
+        if ns.GuideInteger(offer[2], 10000000) and offer[2] > 0 then total = total + offer[2] end
+    end
+    if total == 0 then return end
+    local lowerRank, upperRank = math.floor((total + 1) / 2), math.floor(total / 2) + 1
+    local accumulated, lower, upper = 0
+    for _, offer in ipairs(offers) do
+        accumulated = accumulated + offer[2]
+        if not lower and accumulated >= lowerRank then lower = offer[1] end
+        if accumulated >= upperRank then upper = offer[1]; break end
+    end
+    if lower and upper then return (lower + upper) / 2 end
+end
+
 function ns.InitializeAuctionMarket()
     local saved, key, timestamp = ns.professionSaved, scope(), now()
     if not saved or not key then return end
     if ns.auctionMarketScope and ns.auctionMarketScope ~= key then
-        ns.marketQuotes, ns.auctionPriceAssessment = {}, nil
+        ns.marketQuotes, ns.marketQuoteRevisions, ns.auctionPriceAssessment = {}, {}, nil
     end
+    ns.marketQuoteRevisions = ns.marketQuoteRevisions or {}
     ns.auctionMarketScope = key
     if type(saved.market) ~= "table" or saved.market.scope ~= key or type(saved.market.quotes) ~= "table" then
         saved.market = {scope = key, quotes = {}}
@@ -35,7 +52,8 @@ function ns.InitializeAuctionMarket()
     for id, quote in pairs(saved.market.quotes) do
         if ns.GuideInteger(id) and id > 0 and validQuote(quote, timestamp) and count < maxQuotes then
             local restored = {unitPrice = quote.unitPrice, quantity = quote.quantity, time = quote.time,
-                complete = quote.complete == true, unavailable = quote.unavailable == true, cached = true, offers = {}}
+                median = quote.median, complete = quote.complete == true,
+                unavailable = quote.unavailable == true, cached = true, offers = {}}
             for index, offer in ipairs(type(quote.offers) == "table" and quote.offers or {}) do
                 if index > maxOffers then break end
                 if type(offer) == "table" and ns.GuideInteger(offer[1], 9000000000000) and offer[1] > 0
@@ -44,6 +62,7 @@ function ns.InitializeAuctionMarket()
                 end
             end
             table.sort(restored.offers, function(a, b) return a[1] < b[1] end)
+            restored.median = restored.median or bookMedian(restored.offers)
             ns.marketQuotes[id], count = restored, count + 1
         else saved.market.quotes[id] = nil end
     end
@@ -59,10 +78,22 @@ function ns.AuctionQuote(id)
     return quote
 end
 
+function ns.AuctionQuoteRevision(id)
+    return ns.marketQuoteRevisions and ns.marketQuoteRevisions[id] or 0
+end
+
 function ns.AuctionUnitPrice(id, quantity)
+    quantity = ns.Public(quantity) and ns.GuideInteger(quantity, 10000000) and quantity > 0 and quantity or 1
+    local handled, extensionPrice, extensionComplete = false, nil, nil
+    if ns.Public(id) and ns.GuideInteger(id, 100000000) and id > 0 then
+        handled, extensionPrice, extensionComplete = ns.FirstHook("goldPrice", id, quantity)
+    end
+    if handled and ns.Public(extensionPrice) and type(extensionPrice) == "number"
+        and extensionPrice == extensionPrice and extensionPrice > 0 and extensionPrice < math.huge then
+        return extensionPrice, extensionComplete == true
+    end
     local quote = ns.AuctionQuote(id)
     if not quote or quote.unavailable or not quote.unitPrice then return end
-    quantity = ns.GuideInteger(quantity, 10000000) and quantity > 0 and quantity or 1
     if not quote.offers or #quote.offers == 0 then return quote.unitPrice end
     local remaining, total = quantity, 0
     for _, offer in ipairs(quote.offers) do
@@ -97,9 +128,12 @@ function ns.StoreAuctionQuote(id, offers, complete, empty)
         else complete = false; break end
         total = total + offer[2]
     end
-    local quote = {unitPrice = book[1] and book[1][1], quantity = total,
+    local quote = {unitPrice = book[1] and book[1][1], median = bookMedian(book), quantity = total,
         offers = book, complete = complete == true, unavailable = empty == true, time = now()}
-    ns.marketQuotes[id] = quote; save(id, quote)
+    ns.marketQuotes[id] = quote
+    ns.marketQuoteRevisions = ns.marketQuoteRevisions or {}
+    ns.marketQuoteRevisions[id] = (ns.marketQuoteRevisions[id] or 0) + 1
+    save(id, quote)
     ns.auctionPriceAssessment = true
     ns.auctionMarketRevision = (ns.auctionMarketRevision or 0) + 1
     if ns.ProfessionPricesChanged then ns.ProfessionPricesChanged() end
