@@ -455,19 +455,15 @@ local function presentationTravelSummary(stop, fallback)
             return sentence(result, 180)
         end
     end
-    if not fallback then return nil end
-    local first = (stop.travelLeg or stop.flightPlan) and (presentationTravelAction(stop, ns.GuideDestination(stop)) .. ".")
-    fallback = string.gsub(fallback, "Follow the travel instructions for this leg%.?", "")
-    if first then fallback = string.gsub(fallback, "^%s*" .. first, "") end
-    fallback = string.gsub(fallback, "Lands at ", "Lands in ")
-    fallback = string.gsub(fallback, "[\n]+", " ")
-    fallback = string.gsub(fallback, "%s+%.", ".")
-    fallback = string.gsub(fallback, "%s+", " ")
-    return sentence(fallback, 180)
+    -- Keep the authored summary intact. Core prose is already composed at its
+    -- source and must not be rewritten here with string substitutions.
+    return fallback and sentence(fallback, 180) or nil
 end
 
 function ns.GuideStepPresentation(stop, facts, guide, route, state)
     if not stop then return nil end
+    local handled, presentation = ns.FirstHook("stepPresentation", stop, facts, guide, route, state)
+    if handled then return presentation end
     guide, route = guide or ns.routeSelection, route or ns.selectedRoute
     local goal = ns.GuideDestination(stop)
     facts = facts and facts.stop == goal and facts or ns.GuideStepFacts(goal)

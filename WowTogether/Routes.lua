@@ -461,6 +461,8 @@ end
 ns.RouteInCombat = inCombat
 
 function ns.StopIcon(stop)
+    local handled, icon = ns.FirstHook("stopIcon", stop)
+    if handled then return icon end
     if stop.confirmation then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1" end
     if stop.kind == "a" then return "Interface\\GossipFrame\\AvailableQuestIcon" end
     if stop.kind == "t" then return "Interface\\GossipFrame\\ActiveQuestIcon" end
@@ -472,7 +474,11 @@ function ns.StopIcon(stop)
     return nil
 end
 
-function ns.StopSymbol(stop) return stop.kind == "trainer" and "T" or stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+" end
+function ns.StopSymbol(stop)
+    local handled, symbol = ns.FirstHook("stopSymbol", stop)
+    if handled then return symbol end
+    return stop.kind == "trainer" and "T" or stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+"
+end
 
 local function hideDrawing(provider)
     ns.HideEliteSpawnMarkers(provider)
@@ -1036,7 +1042,7 @@ local function routeSignature(route)
     return table.concat(parts, "|")
 end
 
-function ns.UpdateSelectedRoute(choices, query)
+local function updateSelectedRoute(choices, query)
     if ns.guideScanning or ns.routePlanning then return end
     local selection = ns.routeSelection
     if not selection then return end
@@ -1156,6 +1162,13 @@ function ns.UpdateSelectedRoute(choices, query)
     ns.guideAction = #route.stops .. " route stop(s): " .. after.label .. "."
     if route.pendingReason then ns.guideAction = ns.guideAction .. " " .. route.pendingReason end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
+end
+
+function ns.UpdateSelectedRoute(...)
+    ns.RunHooks("routeBeforeUpdate")
+    local result = updateSelectedRoute(...)
+    ns.RunHooks("routeAfterUpdate", result)
+    return result
 end
 
 function ns.ClearRoute(preserveCheckpoint)

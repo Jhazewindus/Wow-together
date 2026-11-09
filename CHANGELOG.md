@@ -1,5 +1,11 @@
 # Wow Together changelog
 
+## Unreleased
+
+- Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
+  wrappers with `ns.hooks` registry points, preserve the public module API and
+  Gold API version, and remove travel-summary string substitutions.
+
 ## 0.8.107
 
 **GOLD MODULE API FOUNDATION**

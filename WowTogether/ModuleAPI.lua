@@ -17,25 +17,6 @@ local function optionKey(name, key)
         and string.sub(key, 1, #name + 1) == string.lower(name) .. "."
 end
 
-local oldOption, oldSetOption = ns.Option, ns.SetOption
-function ns.Option(key)
-    local item = options[key]
-    if item then
-        local value = item.group.get(key)
-        if value == nil then return item.default end
-        return value
-    end
-    return oldOption(key)
-end
-function ns.SetOption(key, value)
-    local item = options[key]
-    if not item then return oldSetOption(key, value) end
-    if type(value) ~= type(item.default) then return false end
-    item.group.set(key, value)
-    if ns.RenderSettings then ns.RenderSettings() end
-    return true
-end
-
 local function addDropdownEntry(control, key, title, callback)
     if not control or control.options[key] then return end
     local index = #control.entries + 1
@@ -104,6 +85,67 @@ local function addSettings(name)
     end)
 end
 
+ns.hooks.optionGet[#ns.hooks.optionGet + 1] = function(key)
+    local item = options[key]
+    if not item then return false end
+    local value = item.group.get(key)
+    if value == nil then value = item.default end
+    return true, value
+end
+ns.hooks.optionSet[#ns.hooks.optionSet + 1] = function(key, value)
+    local item = options[key]
+    if not item then return false end
+    if type(value) ~= type(item.default) then return true, false end
+    item.group.set(key, value)
+    if ns.RenderSettings then ns.RenderSettings() end
+    return true, true
+end
+ns.hooks.uiCreated[#ns.hooks.uiCreated + 1] = function()
+    for _, name in ipairs(order) do addTab(name) end
+end
+ns.hooks.settingsCreated[#ns.hooks.settingsCreated + 1] = function()
+    for _, name in ipairs(order) do addSettings(name) end
+end
+ns.hooks.render[#ns.hooks.render + 1] = function()
+    if not ns.ui then return end
+    for _, name in ipairs(order) do
+        local entry = modules[name]
+        if entry.page then
+            local selected = entry.tab and ns.filter == "module:" .. string.lower(name)
+            entry.page:SetShown(selected == true)
+            if selected then
+                ns.ui.empty:Hide()
+                ns.ui.viewDescription:SetText(entry.tab.title)
+                ns.ui.hint:SetText("")
+                entry.tab.render(entry.page)
+                ns.ui.content:SetHeight(math.max(250, entry.page:GetHeight() or 250))
+            end
+        end
+    end
+end
+ns.hooks.slash[#ns.hooks.slash + 1] = function(command)
+    local word, rest = string.match(command or "", "^%s*([%w_]+)%s*(.-)%s*$")
+    local entry = word and modules[word] or nil
+    if not entry and word then
+        for name, spec in pairs(modules) do
+            if string.lower(name) == string.lower(word) then entry = spec; break end
+        end
+    end
+    if entry and entry.slash then return true, entry.slash(rest) end
+    return false
+end
+ns.hooks.diagnostics[#ns.hooks.diagnostics + 1] = function()
+    local lines = {}
+    for _, name in ipairs(order) do
+        local probe = modules[name].probe
+        if probe then
+            lines[#lines + 1] = "\n" .. name .. ":"
+            probe(function(line) lines[#lines + 1] = tostring(line) end)
+        end
+    end
+    return table.concat(lines, "\n")
+end
+
 -- tab.render(page) owns only its page. settingsGroup entries are
 -- {key, label, help, default, choices?}; get/set use the module's own store.
 function ns.RegisterModule(name, spec)
@@ -138,69 +180,6 @@ function ns.RegisterModule(name, spec)
     return true
 end
 
-local createUI, createSettings, render = ns.CreateUI, ns.CreateSettings, ns.Render
-function ns.CreateUI(...)
-    local result = createUI(...)
-    for _, name in ipairs(order) do addTab(name) end
-    return result
-end
-function ns.CreateSettings(...)
-    local result = createSettings(...)
-    for _, name in ipairs(order) do addSettings(name) end
-    return result
-end
-function ns.Render(...)
-    local result = render(...)
-    if not ns.ui then return result end
-    for _, name in ipairs(order) do
-        local entry = modules[name]
-        if entry.page then
-            local selected = ns.filter == "module:" .. string.lower(name)
-            entry.page:SetShown(selected)
-            if selected then
-                ns.ui.empty:Hide()
-                ns.ui.viewDescription:SetText(entry.tab.title)
-                ns.ui.hint:SetText("")
-                entry.tab.render(entry.page)
-                ns.ui.content:SetHeight(math.max(250, entry.page:GetHeight() or 250))
-            end
-        end
-    end
-    return result
-end
-
-local slash = SlashCmdList.WOWTOGETHER
-SlashCmdList.WOWTOGETHER = function(command)
-    local word, rest = string.match(command or "", "^%s*([%w_]+)%s*(.-)%s*$")
-    local entry = word and modules[word] or nil
-    if not entry and word then
-        for name, spec in pairs(modules) do
-            if string.lower(name) == string.lower(word) then entry = spec; break end
-        end
-    end
-    if entry and entry.slash then return entry.slash(rest) end
-    return slash(command)
-end
-
-local showDiagnostics = ns.ShowDiagnostics
-function ns.ShowDiagnostics(report, caption, onRefresh)
-    if caption == nil and type(report) == "string" then
-        local lines = {report}
-        for _, name in ipairs(order) do
-            local probe = modules[name].probe
-            if probe then
-                lines[#lines + 1] = "\n" .. name .. ":"
-                probe(function(line) lines[#lines + 1] = tostring(line) end)
-            end
-        end
-        report = table.concat(lines, "\n")
-    end
-    return showDiagnostics(report, caption, onRefresh)
-end
-
--- The core's Receive function has already checked prefix, party membership,
--- sender identity and packet size when it reaches this extension point.
-local receivePartyPlan = ns.ReceivePartyPlanMessage
 function ns.RegisterSyncKind(letter, handler)
     assert(type(letter) == "string" and string.match(letter, "^[A-Z]$")
         and type(handler) == "function", "Invalid sync registration")
@@ -208,14 +187,12 @@ function ns.RegisterSyncKind(letter, handler)
     syncKinds[letter] = handler
     return true
 end
-ns.ReceivePartyPlanMessage = function(message, sender)
+ns.hooks.syncReceive[#ns.hooks.syncReceive + 1] = function(message, sender)
     local letter = type(message) == "string" and string.match(message, "^1|([A-Z])|")
     local handler = letter and syncKinds[letter]
-    if handler then
-        local ok, accepted, reason = pcall(handler, message, sender)
-        return true, ok and accepted == true, ok and reason or "module handler failed"
-    end
-    return receivePartyPlan(message, sender)
+    if not handler then return false end
+    local ok, accepted, reason = pcall(handler, message, sender)
+    return true, ok and accepted == true, ok and reason or "module handler failed"
 end
 
 local function finite(value)
@@ -353,35 +330,31 @@ function ns.ClearModuleStops(name)
     applyStops()
     if ns.ScheduleRefresh then ns.ScheduleRefresh(true) end
 end
-local updateRoute, stopIcon, stopSymbol = ns.UpdateSelectedRoute, ns.StopIcon, ns.StopSymbol
-function ns.UpdateSelectedRoute(...)
+ns.hooks.routeBeforeUpdate[#ns.hooks.routeBeforeUpdate + 1] = function()
     removeStops(ns.selectedRoute)
-    local result = updateRoute(...)
+end
+ns.hooks.routeAfterUpdate[#ns.hooks.routeAfterUpdate + 1] = function()
     applyStops()
-    return result
 end
-function ns.StopIcon(stop)
-    if stop and stop.kind == "farm" and stop.moduleStop then return ns.STEP_SYMBOLS.farm end
-    return stopIcon(stop)
+ns.hooks.stopIcon[#ns.hooks.stopIcon + 1] = function(stop)
+    if stop and stop.kind == "farm" and stop.moduleStop then return true, ns.STEP_SYMBOLS.farm end
+    return false
 end
-function ns.StopSymbol(stop)
-    if stop and stop.kind == "farm" and stop.moduleStop then return "G" end
-    return stopSymbol(stop)
+ns.hooks.stopSymbol[#ns.hooks.stopSymbol + 1] = function(stop)
+    if stop and stop.kind == "farm" and stop.moduleStop then return true, "G" end
+    return false
 end
-
-local destinationDecision = ns.GuideDestinationDecision
-function ns.GuideDestinationDecision(stop, guide, route)
+ns.hooks.destinationDecision[#ns.hooks.destinationDecision + 1] = function(stop, guide, route)
     if stop and stop.kind == "farm" and stop.moduleStop then
-        return {code = "module-farm", why = stop.reason, specificBenefit = true, confidence = "module-provided"}
+        return true, {code = "module-farm", why = stop.reason, specificBenefit = true, confidence = "module-provided"}
     end
-    return destinationDecision(stop, guide, route)
+    return false
 end
 
 -- Give module-provided farm work the same structured player-facing fields as
 -- native steps. The module supplies its actionable instruction and reason;
 -- the core does not invent Gold-specific farming advice.
-local presentGuideStep = ns.GuideStepPresentation
-function ns.GuideStepPresentation(stop, facts, guide, route, state)
+ns.hooks.stepPresentation[#ns.hooks.stepPresentation + 1] = function(stop, facts, guide, route, state)
     if stop and stop.kind == "farm" and stop.moduleStop then
         local why = string.gsub(string.gsub(stop.reason, "%s+$", ""), "[%.!]+$", "")
         local distance = state and ns.Public(state.distance) and type(state.distance) == "number"
@@ -392,40 +365,16 @@ function ns.GuideStepPresentation(stop, facts, guide, route, state)
                 or ("~" .. math.floor(seconds / 60) .. " min " .. string.format("%02d", math.floor(seconds % 60)) .. " s"))
             or nil
         local location = ns.StopLocationText(stop)
-        return {kind = "farm", icon = ns.STEP_SYMBOLS.farm, title = stop.title or stop.label,
+        return true, {kind = "farm", icon = ns.STEP_SYMBOLS.farm, title = stop.title or stop.label,
             stepLine = "Optional module task", what = stop.label, why = why,
             status = "Optional, on the way", statusColor = "text",
             time = distance and timing and (distance .. ", " .. timing) or distance or timing,
             location = location, details = {}, decision = ns.GuideDestinationDecision(stop, guide, route),
             stop = stop, goal = stop, facts = facts or {stop = stop}}
     end
-    return presentGuideStep(stop, facts, guide, route, state)
+    return false
 end
 
-local function encode(value, depth)
-    if not ns.Public(value) or depth > 8 then return "null" end
-    local kind = type(value)
-    if kind == "nil" then return "null" end
-    if kind == "boolean" then return value and "true" or "false" end
-    if kind == "number" then return finite(value) and tostring(value) or "null" end
-    if kind == "string" then
-        local escaped = string.gsub(string.gsub(value, "\\", "\\\\"), '"', '\\"')
-        escaped = string.gsub(escaped, "%c", function(c) return string.format("\\u%04x", string.byte(c)) end)
-        return '"' .. escaped .. '"'
-    end
-    if kind ~= "table" then return "null" end
-    local keys, values = {}, {}
-    for key in pairs(value) do keys[#keys + 1] = key end
-    if #keys == #value then
-        for _, item in ipairs(value) do values[#values + 1] = encode(item, depth + 1) end
-        return "[" .. table.concat(values, ",") .. "]"
-    end
-    table.sort(keys)
-    for _, key in ipairs(keys) do
-        values[#values + 1] = encode(key, depth + 1) .. ":" .. encode(value[key], depth + 1)
-    end
-    return "{" .. table.concat(values, ",") .. "}"
-end
 -- Hooks return an array of observation event tables. They are appended to the
 -- existing /wt research JSON events array without exposing core research state.
 function ns.ResearchExportHook(fn)
@@ -433,25 +382,17 @@ function ns.ResearchExportHook(fn)
     exportHooks[#exportHooks + 1] = fn
     return true
 end
-local exportResearch = ns.ExportQuestResearch
-function ns.ExportQuestResearch(...)
-    local result = exportResearch(...)
-    if #exportHooks == 0 then return result end
+ns.hooks.researchExport[#ns.hooks.researchExport + 1] = function()
     local events = {}
     for _, hook in ipairs(exportHooks) do
         local rows = hook()
         assert(type(rows) == "table", "Research hook must return event array")
         for _, row in ipairs(rows) do
             assert(type(row) == "table" and type(row.event) == "string", "Invalid research event")
-            events[#events + 1] = encode(row, 0)
+            events[#events + 1] = row
         end
     end
-    if #events == 0 then return result end
-    local start, finish = string.find(result, "%]%}%s*$")
-    assert(start, "Unexpected research export format")
-    local prefix = string.sub(result, 1, start - 1)
-    local hasEvents = string.match(prefix, "%[%s*$") == nil
-    return prefix .. (hasEvents and "," or "") .. table.concat(events, ",") .. string.sub(result, start, finish)
+    return events
 end
 
 -- A separately loaded optional addon has a different private namespace. Give
