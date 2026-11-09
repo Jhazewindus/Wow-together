@@ -2,8 +2,7 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.111
-## X-ReleaseName: GOLD FARM QUOTE HOOKS
+## Version: @project-version@
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua

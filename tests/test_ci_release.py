@@ -17,7 +17,8 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from ci_release import (PublicationError, archive_metadata, blocks, message_for,
-                        main, post, preflight, prepare, section_for)
+                        main, next_version, parse_fragment, plan_release, post,
+                        prepare, section_for, validate_pr)
 
 HOOK = 'https://discord.com/api/webhooks/123/synthetic-token'
 SECTION = '''**CLEAR GUIDANCE**
@@ -169,21 +170,53 @@ class CIReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'names'):
             prepare(self.root, 'release')
 
-    def test_preflight_exports_notes_and_blocks_existing_tag(self):
-        (self.root / 'WowTogether').mkdir()
-        (self.root / 'WowTogether/WowTogether.toc').write_text('## Version: 1.2.3\n## X-ReleaseName: CLEAR GUIDANCE\n')
-        (self.root / 'CHANGELOG.md').write_text('## 1.2.3\n' + SECTION)
+    def test_plan_uses_fragments_and_skips_internal_only_updates(self):
+        fragment = self.root / 'changes/core/test.md'
+        fragment.parent.mkdir(parents=True)
+        fragment.write_text('# CLEAR GUIDANCE\n\nFor players:\n- Routes update in short steps.\n\nPlease check:\n- Rescan a zone guide.\n\nDeveloper notes:\n- Memoize policy work.\n')
+        def runner(command, **kwargs):
+            if command[1] == 'describe': return SimpleNamespace(returncode=0, stdout='v1.2.3\n')
+            if command[1] == 'diff': return SimpleNamespace(returncode=0, stdout='changes/core/test.md\n')
+            raise AssertionError(command)
         output = self.root / 'outputs'
         with patch.dict(os.environ, {'GITHUB_OUTPUT': str(output)}):
-            version, name, notes = preflight(self.root, self.root / 'notes.md',
-                lambda *args, **kwargs: SimpleNamespace(returncode=1))
-        self.assertEqual(version, '1.2.3')
-        self.assertEqual((self.root / 'notes.md').read_text().strip(), SECTION.strip())
-        self.assertIn('version=1.2.3', output.read_text())
-        with self.assertRaisesRegex(ValueError, 'already exists'):
-            preflight(self.root, self.root / 'notes.md', lambda *a, **k: SimpleNamespace(returncode=0))
-        with self.assertRaisesRegex(ValueError, 'tag history'):
-            preflight(self.root, self.root / 'notes.md', lambda *a, **k: SimpleNamespace(returncode=128))
+            version, name, notes = plan_release(self.root, self.root / 'notes.md', runner)
+        self.assertEqual(version, '1.2.4')
+        self.assertEqual(name, 'CLEAR GUIDANCE')
+        self.assertIn('Memoize policy work.', (self.root / 'notes.md').read_text())
+        self.assertIn('version=1.2.4', output.read_text())
+        fragment.write_text('# TOOLING\n\ninternal: true\n')
+        with patch.dict(os.environ, {'GITHUB_OUTPUT': str(output)}):
+            self.assertIsNone(plan_release(self.root, self.root / 'notes.md', runner))
+        self.assertIn('release=false', output.read_text())
+
+    def test_fragment_rules_and_next_patch_version(self):
+        valid = self.root / 'valid.md'
+        valid.write_text('# SAMPLE CHANGE\n\nFor players:\n- One visible improvement.\n\nPlease check:\n- Check it.\n\nDeveloper notes:\n- Covered by tests.\n')
+        self.assertEqual(parse_fragment(valid)['name'], 'SAMPLE CHANGE')
+        valid.write_text('# TOOLING\n\ninternal: true\n')
+        self.assertTrue(parse_fragment(valid)['internal'])
+        valid.write_text('# TOO MUCH\n\nFor players:\n- One\n- Two\n- Three\n- Four\n\nPlease check:\n- Check\n\nDeveloper notes:\n- Test\n')
+        with self.assertRaisesRegex(ValueError, 'three lines'):
+            parse_fragment(valid)
+        self.assertEqual(next_version(self.root, lambda *a, **k: SimpleNamespace(returncode=0, stdout='v0.8.111\n')),
+                         '0.8.112')
+
+    def test_pull_request_must_add_one_branch_fragment_without_version_or_history_edits(self):
+        fragment = self.root / 'changes/core/test.md'
+        fragment.parent.mkdir(parents=True)
+        fragment.write_text('# SAMPLE CHANGE\n\nFor players:\n- Visible.\n\nPlease check:\n- Check.\n\nDeveloper notes:\n- Test.\n')
+        responses = [SimpleNamespace(returncode=0, stdout='A\tchanges/core/test.md\n'),
+                     SimpleNamespace(returncode=0, stdout='')]
+        self.assertEqual(validate_pr(self.root, 'base', 'head', 'core/test',
+                         lambda *a, **k: responses.pop(0)), 'changes/core/test.md')
+        responses = [SimpleNamespace(returncode=0, stdout='M\tCHANGELOG.md\n')]
+        with self.assertRaisesRegex(ValueError, 'must not edit CHANGELOG'):
+            validate_pr(self.root, 'base', 'head', 'core/test', lambda *a, **k: responses.pop(0))
+        responses = [SimpleNamespace(returncode=0, stdout='A\tchanges/core/test.md\n'),
+                     SimpleNamespace(returncode=0, stdout='-## Version: 1.2.3\n+## Version: 1.2.4\n')]
+        with self.assertRaisesRegex(ValueError, 'must not edit ## Version'):
+            validate_pr(self.root, 'base', 'head', 'core/test', lambda *a, **k: responses.pop(0))
 
 
 if __name__ == '__main__':

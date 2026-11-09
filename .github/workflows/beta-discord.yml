@@ -54,7 +54,7 @@ jobs:
           import json, os, subprocess
           from pathlib import Path
           pr = json.loads(Path('/tmp/pr.json').read_text())
-          subprocess.run(['python', 'tools/ci_release.py', 'post', '--kind', 'beta', '--dist', 'dist', '--branch', os.environ['BRANCH'], '--pr', str(pr['number']), '--title', pr['title'], '--diff-file', 'dist/changelog.diff'], check=True)
+          subprocess.run(['python', 'tools/ci_release.py', 'post', '--kind', 'beta', '--dist', 'dist', '--branch', os.environ['BRANCH'], '--pr', str(pr['number']), '--title', pr['title']], check=True)
           PY
       - uses: actions/upload-artifact@v4
         if: always()

@@ -1,26 +1,44 @@
 # Automated builds and releases
 
-A pull request runs `PR checks` and produces a beta ZIP; a successful same-repository
-PR build sends that ZIP to the beta channel. The message names the branch, PR and
-commit, and explicitly says it is not a release. Fork PRs run checks without access
-to repository webhook secrets. The beta archive remains a workflow artifact for
-14 days. Beta delivery runs from trusted default-branch code after the checks,
-without executing files from the PR artifact.
+Each pull request adds exactly one `changes/<branch>.md` release fragment. A
+visible-change fragment has a release-name heading, `For players` (at most three
+lines), `Please check` (one to three items), and developer notes. A change with no
+player-visible result uses `internal: true` and developer notes. The PR check
+rejects missing or extra fragments, TOC-version edits, and edits to
+`CHANGELOG.md`. The one-time `core/release-fragments` bootstrap establishes this
+policy and freezes the repository changelog at 0.8.110.
 
-A push to `main` validates the TOC version, matching changelog entry, player notes
-and unused `v<version>` tag, runs all checks, and builds the release. GitHub Releases
-stores the ZIP and full changelog section. Discord receives the ZIP attachment,
-player notes, install instruction and quick checks; developer notes are spoilers.
-CHANGELOG.md and TESTING.md are not separate Discord attachments. If the build
-exceeds 25 MB, core and data ZIPs must each fit the limit and arrive on one message.
+A pull request runs the host suite and other PR checks, then builds a beta ZIP.
+The next beta version is derived from the latest reachable `v*` tag and stamped
+into the packaged TOC as `<next>-beta.<pr>.<sha>`; the repository TOC remains
+`@project-version@`. A successful same-repository PR build sends that ZIP to the
+beta channel from trusted default-branch code. The message names the branch, PR
+and commit, and says it is not a release. Fork PRs cannot access webhook secrets.
+The beta archive remains a workflow artifact for 14 days.
+
+On a push to `main`, CI collects newly added fragments since the latest reachable
+`v*` tag. No fragments, or internal-only fragments, means no release and no post.
+Otherwise CI calculates the next patch version, assembles the visible fragments,
+runs checks, stamps the version and release name into the packaged TOC, builds a
+release ZIP, creates the GitHub Release and posts the ZIP to Discord. It never
+commits to `main`. The generated package has a release section prepended to its
+copy of `CHANGELOG.md`; the repository copy remains frozen history. If the build
+exceeds 25 MB, core and data ZIPs must each fit the limit and arrive on one
+message.
+
+Discord receives player notes, install instructions and quick checks; developer
+notes are spoiler-wrapped. Release posts require a confirmed message ID and the
+full attachment list. If delivery is ambiguous, inspect the workflow receipt and
+channel history before any retry. Successful uploads save `discord-receipt.json`
+with the message ID and confirmed attachment names; webhook values are excluded.
 
 The trusted beta-publishing workflow must first be merged onto the default
 branch. A PR that introduces it cannot demonstrate the beta-posting path before
-that bootstrap merge. Subsequent PR builds exercise the complete flow. The full host suite is divided by test file across four isolated runners to
-target beta delivery within five minutes. A local sequential run takes about nine
-minutes; runner queues and measured CI shard timings still need rollout verification.
+that bootstrap merge. Subsequent PR builds exercise the complete flow. The full
+host suite is divided by test file across four isolated runners. Local sequential
+runs take longer; runner queues and CI timing should be monitored after rollout.
 
-## Owner setup, once
+## Owner setup
 
 In GitHub repository Settings → Secrets and variables → Actions, create these
 repository secrets using the intended channels' webhook URLs:
@@ -43,40 +61,19 @@ Pin this line in `#releases`:
 
 > Download the ZIP from #releases, unzip its addon folders into Interface/AddOns, replace the matching folders and fully restart; #beta-builds is for testing branches only.
 
-The old manual uploader remains for historical releases; the new workflows are
-the normal publication path. Do not manually trigger a second webhook post after
-an ambiguous network failure. Check the channel and workflow receipt first.
-Successful CI uploads save `discord-receipt.json` with the message ID and confirmed
-attachment names; webhook values are excluded.
-
 ## Updating the addon
 
-Bump `## Version:` in `WowTogether/WowTogether.toc` and add its exact `## <version>`
-changelog entry. Include `For players` (at most three short lines), `Please check`
-(at most three quick checks), then any developer notes. Keep the TOC as the single
-runtime source of the version. Release preflight runs before publishing anything,
-so a missing version entry, missing player notes or an existing release tag stops
-the release with an error.
+Add one `changes/<branch>.md` file per PR. Do not change the TOC version or
+`CHANGELOG.md`. Release versions are calculated from the last reachable `v*`
+tag, and only generated packages receive a stamped version. `CHANGELOG.md` ends
+at 0.8.110 and remains the historical reference.
 
 ## Verify the rollout
 
 Open a same-repository PR and check the beta message and downloadable ZIP. Merge
-a reviewed version bump and check the new GitHub Release plus the Discord message
-ID and attachment names. Install by replacing the sibling addon folders and fully
-restarting WoW. Host checks validate the packaging and message protocol; they do
-not establish a live webhook's credentials, channel permissions, GitHub settings,
-runner latency or in-game behavior.
-
-## Resume Discord delivery after a failed post
-
-GitHub release creation and Discord delivery are separate jobs. The normal push
-path always rejects an existing version tag. If a release was created but delivery
-failed, first check the Discord channel and the delivery receipt artifact. Never
-retry when a message ID or the ZIP attachment confirms delivery.
-
-Only after confirming the message is absent, open Actions → Release → Run workflow
-on `main`, enter the existing version without `v`, and check **confirmed_absent**.
-This downloads the existing GitHub Release assets, checks their version and sends
-those same ZIPs. It does not rebuild, retag, or create another GitHub Release.
-The checkbox defaults to false; without it no delivery job runs. No timeout or
-HTTP failure automatically triggers this path.
+a reviewed visible-change PR and check the new GitHub Release, Discord message ID
+and attachment names. Merge an internal-only PR and confirm the workflow creates
+no release. Install by replacing the sibling addon folders and fully restarting
+WoW. Host checks validate packaging and the message protocol; they do not
+establish live webhook credentials, channel permissions, GitHub settings, runner
+latency or in-game behavior.

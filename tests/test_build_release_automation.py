@@ -45,6 +45,26 @@ class BuildAutomationTests(unittest.TestCase):
                 self.assertEqual({p.split('/')[0] for p in z.namelist()},
                     {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData'})
                 self.assertTrue(all('/' in p and not p.startswith('/') and '..' not in p.split('/') for p in z.namelist()))
+                self.assertIn('## Version: 0.0.0-dev', z.read('WowTogether/WowTogether.toc').decode())
+        self.assertIn('## Version: @project-version@', (ROOT / 'WowTogether/WowTogether.toc').read_text())
+
+    def test_build_stamps_fragment_version_and_notes_without_editing_repo_history(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            notes = Path(tmp) / 'release-notes.md'
+            notes.write_text('For players:\n- A clear change.\n\nPlease check:\n- Check the change.\n\nDeveloper notes:\n- Added a regression test.\n')
+            output = Path(tmp) / 'dist'
+            with patch('sys.argv', ['build_release.py', '--output', str(output), '--version', '0.8.112',
+                                    '--release-name', 'SAMPLE CHANGE', '--notes-file', str(notes)]):
+                with contextlib.redirect_stdout(io.StringIO()): builder.main()
+            archive = next(output.glob('*.zip'))
+            with zipfile.ZipFile(archive) as package:
+                toc = package.read('WowTogether/WowTogether.toc').decode()
+                changelog = package.read('WowTogether/CHANGELOG.md').decode()
+            self.assertIn('## Version: 0.8.112', toc)
+            self.assertIn('## X-ReleaseName: SAMPLE CHANGE', toc)
+            self.assertIn('## 0.8.112', changelog)
+            self.assertIn('A clear change.', changelog)
+            self.assertNotIn('## 0.8.112', (ROOT / 'CHANGELOG.md').read_text())
 
     def test_oversize_splits_without_losing_or_rewriting_files(self):
         with tempfile.TemporaryDirectory() as tmp:

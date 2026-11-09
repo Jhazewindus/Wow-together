@@ -88,6 +88,9 @@ def main():
     parser.add_argument('--output', type=Path, default=Path('/workspace/artifacts'))
     parser.add_argument('--label', help='Branch label for a beta archive; never a release filename.')
     parser.add_argument('--sha', help='Git SHA for a beta archive (defaults to HEAD).')
+    parser.add_argument('--version', help='Version to stamp into the packaged TOC only.')
+    parser.add_argument('--release-name', help='Release name to stamp into the packaged TOC only.')
+    parser.add_argument('--notes-file', type=Path, help='Validated release-fragment notes to add to the packaged changelog.')
     parser.add_argument('--post-discord', action='store_true', help='Post the verified release and its matching changelog/test checklist.')
     args = parser.parse_args()
     addon = ROOT / 'WowTogether'
@@ -95,9 +98,23 @@ def main():
     toc = (addon / 'WowTogether.toc').read_text()
     if not re.search(r'^## Interface: 16001$', toc, re.M):
         raise ValueError('Release must target Forever interface 16001')
-    version = re.search(r'^## Version: ([0-9]+\.[0-9]+\.[0-9]+)$', toc, re.M).group(1)
-    release_name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})$', toc, re.M)
-    release_label = version + (' — ' + release_name.group(1) if release_name else '')
+    source_version = re.search(r'^## Version: ([A-Za-z0-9.@-]+)$', toc, re.M)
+    if not source_version:
+        raise ValueError('TOC must declare ## Version: @project-version@.')
+    version = args.version or (source_version.group(1) if source_version.group(1) != '@project-version@' else '0.0.0-dev')
+    if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+(?:-beta\.[0-9]+\.[0-9a-f]{7,40})?|0\.0\.0-dev', version):
+        raise ValueError('Invalid build version: ' + version)
+    original_release_name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})$', toc, re.M)
+    release_name = args.release_name or (original_release_name.group(1) if original_release_name else 'DEVELOPMENT BUILD')
+    if not re.fullmatch(r'[A-Za-z0-9 -]{1,80}', release_name):
+        raise ValueError('Invalid release name')
+    toc = re.sub(r'^## Version: .*$', '## Version: ' + version, toc, count=1, flags=re.M)
+    release_line = '## X-ReleaseName: ' + release_name
+    if original_release_name:
+        toc = re.sub(r'^## X-ReleaseName: .*$', release_line, toc, count=1, flags=re.M)
+    else:
+        toc = toc.replace('## Version: ' + version, '## Version: ' + version + '\n' + release_line, 1)
+    release_label = version + ' — ' + release_name
     names = toc_sources(addon)
     for name in names:
         if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name):
@@ -863,13 +880,25 @@ Read README.md for full behavior and limits, CHANGELOG.md for this release,
 and TESTING.md for the labeled friend-testing checklist. Host checks alone do not
 establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
+    packaged_changelog = (ROOT / 'CHANGELOG.md').read_text()
+    if args.notes_file:
+        notes = args.notes_file.read_text().strip()
+        note_lines = notes.splitlines()
+        if note_lines and note_lines[0].startswith('# '):
+            notes = '\n'.join(note_lines[1:]).strip()
+        history = packaged_changelog.split('\n', 1)[1].lstrip()
+        packaged_changelog = ('# Wow Together changelog\n\n## ' + version + '\n\n**' + release_name
+                              + '**\n\n' + notes + '\n\n' + history)
     args.output.mkdir(parents=True, exist_ok=True)
     sha = args.sha or (subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() if args.label else None)
     destination = args.output / archive_name(version, args.label, sha)
     files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideFlowAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'EliteSpawnData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
-            archive.write(addon / name, 'WowTogether/' + name)
+            if name == 'WowTogether.toc':
+                archive.writestr('WowTogether/' + name, toc)
+            else:
+                archive.write(addon / name, 'WowTogether/' + name)
         for folder, sources in data_packages.items():
             archive.write(ROOT / folder / f'{folder}.toc', folder + '/' + f'{folder}.toc')
             for name in sources:
@@ -877,7 +906,10 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         for name in media_names:
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
-            archive.write(ROOT / name, 'WowTogether/' + name)
+            if name == 'CHANGELOG.md':
+                archive.writestr('WowTogether/' + name, packaged_changelog)
+            else:
+                archive.write(ROOT / name, 'WowTogether/' + name)
         for name in ('PERFORMANCE.md', 'ROUTE_OPTIMIZATION.md', 'RECOMMENDED.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'GUIDE_REASONS.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
