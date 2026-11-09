@@ -1,0 +1,65 @@
+# Run trusted default-branch code only; never expose secrets to PR code.
+name: Deliver beta build
+on:
+  workflow_run:
+    workflows: [PR build]
+    types: [completed]
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+jobs:
+  deliver:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: beta-build
+          path: dist/
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Resolve pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          gh api --method GET "repos/$REPO/pulls" -f state=open -f "head=${REPO%%/*}:$BRANCH" > /tmp/pulls.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          pulls = [p for p in json.loads(Path('/tmp/pulls.json').read_text()) if p['head']['sha'] == os.environ['HEAD_SHA']]
+          if len(pulls) != 1:
+              raise SystemExit('No unique open PR matches the completed build; no post sent')
+          Path('/tmp/pr.json').write_text(json.dumps(pulls[0]))
+          PY
+      - name: Post beta ZIP attachments
+        env:
+          CI_DISCORD_WEBHOOK: ${{ secrets.DISCORD_BETA_WEBHOOK }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          pr = json.loads(Path('/tmp/pr.json').read_text())
+          subprocess.run(['python', 'tools/ci_release.py', 'post', '--kind', 'beta', '--dist', 'dist', '--branch', os.environ['BRANCH'], '--pr', str(pr['number']), '--title', pr['title'], '--diff-file', 'dist/changelog.diff'], check=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: beta-delivery-record
+          path: dist/discord-receipt.json
+          retention-days: 14
+          if-no-files-found: ignore

@@ -1,15 +1,14 @@
 local addonName, ns = ...
 
--- The TOC is the only place a version is typed. The literal fallback exists
--- for builds whose metadata API is unavailable; keep it equal to the TOC.
+-- Release identity comes only from the TOC metadata.
 local function metadata(field)
     local reader = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
     if type(reader) ~= "function" then return end
     local okay, value = pcall(reader, addonName, field)
     if okay and type(value) == "string" and value ~= "" then return value end
 end
-ns.VERSION = metadata("Version") or "0.8.108"
-ns.RELEASE_NAME = metadata("X-ReleaseName") or "CLEARER ROUTE GUIDANCE"
+ns.VERSION = metadata("Version") or "unknown"
+ns.RELEASE_NAME = metadata("X-ReleaseName") or ""
 ns.hooks = {
     optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},
     slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {},
