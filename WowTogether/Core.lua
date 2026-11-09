@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
--- The TOC is the only version source. Do not add a second version fallback.
+-- Release identity comes only from the TOC metadata.
 local function metadata(field)
     local reader = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
     if type(reader) ~= "function" then return end
@@ -8,7 +8,7 @@ local function metadata(field)
     if okay and type(value) == "string" and value ~= "" then return value end
 end
 ns.VERSION = metadata("Version") or "unknown"
-ns.RELEASE_NAME = metadata("X-ReleaseName") or "GOLD FARM QUOTE HOOKS"
+ns.RELEASE_NAME = metadata("X-ReleaseName") or ""
 ns.hooks = {
     optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},
     slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {},

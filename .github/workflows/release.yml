@@ -1,0 +1,137 @@
+name: Release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Existing release version to deliver (without v)
+        required: true
+        type: string
+      confirmed_absent:
+        description: I checked the channel and this release message is absent
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: write
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+jobs:
+  host-tests:
+    if: github.event_name == 'push'
+    name: Host tests (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pytest lupa
+      - run: python tools/run_ci_tests.py --shard "${{ matrix.shard }}" --total 4
+  release:
+    if: github.event_name == 'push'
+    outputs:
+      version: ${{ steps.notes.outputs.version }}
+    needs: host-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate version and release notes
+        id: notes
+        run: python tools/ci_release.py preflight --root . --notes dist/release-notes.md
+      - run: python -m pip install pytest lupa
+      - run: python tools/syntax_check.py
+      - run: python tools/boundary_check.py
+      - run: python tools/build_release.py --output dist/
+      - name: Validate Discord post before creating a release
+        env:
+          CI_DISCORD_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+        run: |
+          python - <<'PYCODE'
+          import os, sys
+          sys.path.insert(0, 'tools')
+          from post_discord_release import webhook_endpoint
+          value = os.environ.get('CI_DISCORD_WEBHOOK')
+          if not value:
+              raise SystemExit('Configure DISCORD_RELEASE_WEBHOOK in repository secrets before releasing')
+          webhook_endpoint(value)
+          PYCODE
+          python tools/ci_release.py post --kind release --dist dist/ --dry-run
+      - name: Create archive of record
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.notes.outputs.version }}
+          RELEASE_NAME: ${{ steps.notes.outputs.release_name }}
+        run: gh release create "v$VERSION" dist/*.zip --target "$GITHUB_SHA" --title "Wow Together $VERSION — $RELEASE_NAME" --notes-file dist/release-notes.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-record
+          path: dist/
+          retention-days: 14
+          if-no-files-found: ignore
+  deliver:
+    needs: release
+    if: >-
+      always() && github.ref == 'refs/heads/main' &&
+      (needs.release.result == 'success' ||
+       (github.event_name == 'workflow_dispatch' && inputs.confirmed_absent))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      VERSION: ${{ needs.release.outputs.version || inputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate delivery target
+        run: |
+          python - <<'PYCODE'
+          import os, re
+          if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+', os.environ['VERSION']):
+              raise SystemExit('Supply an existing release version without v')
+          PYCODE
+      - name: Download published assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download "v$VERSION" --pattern 'WowTogether*.zip' --dir dist/
+      - name: Verify the published version
+        run: |
+          python - <<'PYCODE'
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'tools')
+          from ci_release import archive_metadata
+          version, _, _ = archive_metadata(sorted(Path('dist').glob('*.zip')))
+          if version != os.environ['VERSION']:
+              raise SystemExit('Published ZIP metadata does not match the selected release')
+          PYCODE
+      - name: Post release ZIP attachments
+        env:
+          CI_DISCORD_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+        run: python tools/ci_release.py post --kind release --dist dist/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-delivery-record
+          path: dist/discord-receipt.json
+          retention-days: 14
+          if-no-files-found: ignore

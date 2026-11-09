@@ -1,13 +1,6 @@
 # Wow Together changelog
 
-## Unreleased
-
-- Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
-  wrappers with `ns.hooks` registry points, preserve the public module API and
-  Gold API version, and remove travel-summary string substitutions.
-
-
-## 0.8.108
+## 0.8.111
 
 **GOLD FARM QUOTE HOOKS**
 
@@ -18,6 +11,30 @@ For players:
 Please check:
 - With Gold enabled, request a farm scan while the auction house is open.
 - With Gold absent or a callback failing, core recommendations and prices still work.
+
+## 0.8.109
+
+**AUTOMATED BUILDS AND RELEASES**
+
+For players:
+- Test builds arrive in the beta channel with a clearly labelled ZIP.
+- Merged releases arrive in the release channel with installation steps and short checks.
+
+Please check:
+- Download a beta ZIP and confirm its filename says beta and names the branch.
+- Install a release by replacing the addon folders and fully restarting the client.
+
+Developer notes:
+- Release automation brief: add checked PR builds, trusted Discord delivery,
+  version-gated GitHub releases and automatic ZIP splitting above 25 MB.
+- Keep release identity in the TOC and validate every declared package source.
+
+## Unreleased
+
+- Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
+  wrappers with `ns.hooks` registry points, preserve the public module API and
+  Gold API version, and remove travel-summary string substitutions.
+
 
 ## 0.8.107
 
