@@ -17,13 +17,14 @@ class HubTests(unittest.TestCase):
         self.assertIsNone(legacy.ns.ui.titleIcon)
         self.assertEqual(legacy.ns.ui.settingsButton.caption.text, "⚙")
 
-    def test_hub_rail_uses_full_height_selected_rows_without_settings_tab(self):
+    def test_hub_rail_uses_full_height_selected_rows_and_settings_tab(self):
         client = self.hub_client(quests=(), default_guide=True)
         ns = client.ns
         self.assertTrue(ns.ui.hubRail.IsShown(ns.ui.hubRail))
         self.assertEqual(ns.ui.hubButtons.Play.height, 40)
         self.assertEqual(ns.ui.hubButtons.Play.selectedBar.IsShown(ns.ui.hubButtons.Play.selectedBar), True)
-        self.assertIsNone(ns.ui.hubButtons.Settings)
+        self.assertIsNotNone(ns.ui.hubButtons.Settings)
+        self.assertTrue(ns.ui.hubButtons.Settings.IsShown(ns.ui.hubButtons.Settings))
 
     def test_left_rail_switches_play_group_browse_and_settings(self):
         client = self.hub_client(quests=(), default_guide=True)
@@ -47,6 +48,10 @@ class HubTests(unittest.TestCase):
         self.assertEqual(ui.hubTab, "Group")
         self.assertTrue(ui.groupPage.IsShown(ui.groupPage))
         self.assertFalse(ui.scroll.IsShown(ui.scroll))
+
+        ui.hubButtons.Settings.OnClick()
+        self.assertEqual(ui.hubTab, "Settings")
+        self.assertTrue(ui.settingsPage.IsShown(ui.settingsPage))
 
         ui.settingsButton.OnClick()
         self.assertTrue(ns.settings.IsShown(ns.settings))
@@ -94,12 +99,25 @@ class HubTests(unittest.TestCase):
         self.assertTrue(home.resume.continueControl.IsShown(home.resume.continueControl))
         self.assertTrue(home.resume.orderControl.IsShown(home.resume.orderControl))
         self.assertTrue(home.resume.stopControl.IsShown(home.resume.stopControl))
+        self.assertTrue(home.resume.glanceControl.IsShown(home.resume.glanceControl))
         self.assertEqual(home.resume.detail.text, "step 2 of 8 · 3 levels left · exit at 25")
         self.assertAlmostEqual(home.resume.fraction, 0.125)
         self.assertEqual(home.nextCount, 1)
         self.assertEqual(home.nextRows[1].action.caption.text, "Follow")
         home.nextRows[1].action.OnClick()
         self.assertTrue(client.lua.globals().followed)
+
+    def test_browse_filter_labels_fit_and_cards_use_mockup_grid(self):
+        client = self.hub_client(quests=(), default_guide=True)
+        ns = client.ns
+        ui = ns.ui
+        ns.SetHubTab("Browse")
+        widths = [ui.browseButtons[key].width for key in ("guides", "classquests", "dungeons", "professions", "library")]
+        self.assertGreaterEqual(widths[3], 96)
+        if ui.visibleCards >= 2:
+            first, second = ui.cards[1], ui.cards[2]
+            self.assertLess(first.width, ns.ui.contentWidth)
+            self.assertNotEqual(first.point, second.point)
 
     def test_next_for_you_is_capped_at_five_cards(self):
         client = self.hub_client(quests=(), default_guide=True)

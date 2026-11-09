@@ -627,7 +627,8 @@ function ns.CreateNavigation()
     ns.UIHelp(frame.close, "Hide the guide window.")
     frame.step = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.step:SetPoint("TOPLEFT", 14, -30); frame.step:SetSize(332, 14)
     frame.stepButton = CreateFrame("Button", nil, frame)
-    frame.stepButton:SetSize(332, 14); frame.stepButton:SetPoint("TOPLEFT", 14, -30)
+    -- Keep the Glance toggle easy to hit even when the step label is short.
+    frame.stepButton:SetSize(332, 22); frame.stepButton:SetPoint("TOPLEFT", 14, -26)
     frame.stepButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
     frame.stepButton:SetScript("OnMouseUp", function(_, button)
         if button == "RightButton" then
@@ -761,6 +762,16 @@ function ns.CreateNavigation()
 end
 
 function ns.ToggleNavigation()
+    -- Closing the card with X only hides its frame for this session. If the
+    -- saved setting is still on, the first toggle should restore that frame
+    -- instead of turning the setting off and leaving the player with no HUD.
+    if ns.Option("routeArrow") and ns.guideWindowHidden then
+        ns.guideWindowHidden = nil
+        if not ns.navigation then ns.CreateNavigation() end
+        ns.UpdateNavigation()
+        if ns.navigation then ns.navigation:Raise() end
+        return
+    end
     local enabled = not ns.Option("routeArrow")
     if enabled then ns.guideWindowHidden = nil end
     ns.SetOption("routeArrow", enabled)

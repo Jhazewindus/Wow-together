@@ -20,6 +20,28 @@ class HudTitleTests(unittest.TestCase):
         self.assertTrue(c.ns.window.IsShown(c.ns.window))
         self.assertEqual(c.ns.filter, 'recommended')
 
+    def test_arrow_command_restores_a_hidden_hud_without_first_turning_it_off(self):
+        c = navigator(); frame = c.ns.navigation
+        frame.close.OnClick()
+        self.assertTrue(c.ns.guideWindowHidden)
+        self.assertTrue(c.ns.Option('routeArrow'))
+        c.ns.ToggleNavigation()
+        self.assertFalse(c.ns.guideWindowHidden)
+        self.assertTrue(c.ns.Option('routeArrow'))
+        self.assertTrue(frame.IsShown(frame))
+
+    def test_play_tab_glance_action_opens_the_hud_in_glance_mode(self):
+        c = navigator()
+        c.ns.SetOption('uiNext', True)
+        c.ns.OpenGuideWindow()
+        c.ns.window.Hide(c.ns.window)
+        c.ns.SetHubTab('Play')
+        home = c.ns.ui.home
+        self.assertTrue(home.resume.glanceControl.IsShown(home.resume.glanceControl))
+        home.resume.glanceControl.OnClick()
+        self.assertTrue(c.ns.Option('guideGlance'))
+        self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
+
     def test_step_counter_toggles_one_line_glance_and_back(self):
         c = navigator(); frame = c.ns.navigation
         frame.stepButton.OnMouseUp(frame.stepButton, 'LeftButton')

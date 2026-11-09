@@ -182,6 +182,7 @@ local function refreshHubRail()
     end
     if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetShown(ns.ui.hubTab == "Browse") end
     if ns.ui.browseRow then ns.ui.browseRow:SetShown(ns.ui.hubTab == "Browse") end
+    if ns.ui.hubButtons and ns.ui.hubButtons.Settings then ns.ui.hubButtons.Settings:SetShown(ns.Option("uiNext") == true) end
 end
 
 function ns.RefreshHubModuleTabs()
@@ -479,20 +480,29 @@ function ns.CreateUI()
         control.selectedBar:Hide()
         ns.ui.hubButtons[key] = control
     end
+    local settingsControl = button(ns.ui.hubRail, "Settings", 132, function() ns.SetHubTab("Settings") end)
+    settingsControl:SetPoint("BOTTOMLEFT", 9, 16); settingsControl:SetHeight(40)
+    settingsControl:SetBackdropColor(0.12, 0.115, 0.105, 0)
+    settingsControl.selectedBar = settingsControl:CreateTexture(nil, "OVERLAY")
+    settingsControl.selectedBar:SetColorTexture(unpack(colors.gold)); settingsControl.selectedBar:SetWidth(3)
+    settingsControl.selectedBar:SetPoint("TOPLEFT", 0, -1); settingsControl.selectedBar:SetPoint("BOTTOMLEFT", 0, 1)
+    settingsControl.selectedBar:Hide(); ns.ui.hubButtons.Settings = settingsControl
     ns.ui.hubRail:Hide()
     ns.ui.browseRow = CreateFrame("Frame", nil, window)
     ns.ui.browseRow:SetPoint("TOPLEFT", 150, -57); ns.ui.browseRow:SetPoint("TOPRIGHT", -18, -57); ns.ui.browseRow:SetHeight(30)
-    local browseEntries = {{"guides", "Leveling"}, {"classquests", "Class"}, {"dungeons", "Dungeons"},
-        {"professions", "Professions"}, {"library", "Quests"}}
-    for index, entry in ipairs(browseEntries) do
-        local key, caption = entry[1], entry[2]
-        local control = button(ns.ui.browseRow, caption, 74, function() ns.ui.browseFilter = key; ns.SetFilter(key, true) end)
-        control:SetPoint("LEFT", (index - 1) * 76, 0)
-        control:SetWidth(72)
+    local browseEntries = {{"guides", "Leveling", 84}, {"classquests", "Class", 68}, {"dungeons", "Dungeons", 86},
+        {"professions", "Professions", 100}, {"library", "Quests", 68}}
+    local browseOffset = 0
+    for _, entry in ipairs(browseEntries) do
+        local key, caption, width = entry[1], entry[2], entry[3]
+        local control = button(ns.ui.browseRow, caption, width, function() ns.ui.browseFilter = key; ns.SetFilter(key, true) end)
+        control:SetPoint("LEFT", browseOffset, 0)
+        control:SetWidth(width)
         ns.ui.browseButtons[key] = control
+        browseOffset = browseOffset + width + 6
     end
     ns.ui.hubBrowseSearch = searchBox(window, "Search guides, zones or quests")
-    ns.ui.hubBrowseSearch:SetSize(220, 26); ns.ui.hubBrowseSearch:SetPoint("TOPRIGHT", -18, -57)
+    ns.ui.hubBrowseSearch:SetSize(220, 26); ns.ui.hubBrowseSearch:SetPoint("TOPLEFT", 604, -57); ns.ui.hubBrowseSearch:SetPoint("TOPRIGHT", -18, -57)
     ns.ui.hubBrowseSearch:SetScript("OnTextChanged", function(self)
         local value = self:GetText()
         if not ns.Public(value) or type(value) ~= "string" then return end
@@ -729,7 +739,8 @@ end
 function ns.LayoutBrowserCards()
     if ns.filter == "recommended" then ns.LayoutRecommended(); return end
     local width, top = ns.ui.contentWidth, 0
-    local columns = width >= 900 and 3 or 2
+    local browseCards = ns.Option("uiNext") == true and ns.ui.hubTab == "Browse"
+    local columns = browseCards and 2 or (width >= 900 and 3 or 2)
     local gap, tileHeight = 12, 150
     local tileWidth = (width - (columns - 1) * gap) / columns
     for index = 1, ns.ui.visibleCards or 0 do
@@ -738,7 +749,15 @@ function ns.LayoutBrowserCards()
         card:ClearAllPoints()
         card.title:ClearAllPoints(); card.title:SetPoint("TOPLEFT", 14, -26)
         card.count:ClearAllPoints(); card.reason:ClearAllPoints()
-        if dungeon then
+        if browseCards then
+            local row, column = math.floor((index - 1) / columns), (index - 1) % columns
+            card:SetPoint("TOPLEFT", column * (tileWidth + gap), -row * (tileHeight + gap))
+            card:SetSize(tileWidth, tileHeight)
+            card.title:SetSize(tileWidth - 28, 34); card.title:SetWordWrap(true)
+            card.count:SetPoint("TOPLEFT", 14, -53); card.count:SetWidth(tileWidth - 28); card.count:SetJustifyH("LEFT")
+            card.reason:SetPoint("TOPLEFT", 14, -73); card.reason:SetSize(tileWidth - 28, 40)
+            top = (row + 1) * (tileHeight + gap) - gap
+        elseif dungeon then
             local row, column = math.floor((index - 1) / columns), (index - 1) % columns
             card:SetPoint("TOPLEFT", column * (tileWidth + gap), -row * (tileHeight + gap))
             card:SetSize(tileWidth, tileHeight)
@@ -805,7 +824,7 @@ function ns.Layout()
     end
     ns.ui.viewDescription:SetWidth(width - 292)
     ns.ui.viewDescription:SetWordWrap(false)
-    if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetWidth(math.max(120, ns.ui.contentWidth - 404)) end
+    if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetWidth(math.max(120, ns.ui.contentWidth - 454)) end
     ns.LayoutBrowserCards()
 end
 
@@ -1262,10 +1281,11 @@ function ns.Render(queryContext, routeUpdated)
             if card.compactGuide then
                 height = 84
                 local count = guide.enabledCount or #guide.records
-                card.count:SetText("")
-                card.reason:SetText(guide.mode == "travel" and "Travel guide" or (count .. " quest" .. (count == 1 and "" or "s")))
+                card.reason:SetText(guide.mode == "travel" and "Travel guide" or (count .. " quest" .. (count == 1 and "" or "s")
+                    .. (selected and " • Following now" or "")))
                 card.reason:SetHeight(16)
                 card.mapButton:Hide(); card.detailsButton:SetShown(browseCard)
+                if browseCard and selected then card.detailsButton.caption:SetText("Following") end
                 card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)) end)
                 card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(colors.border)) end)
             else
@@ -1287,7 +1307,9 @@ function ns.Render(queryContext, routeUpdated)
                 if guide.fullGuide then ns.GuideXPHelp(card)
                 else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
                 card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
-                card.detailsButton.caption:SetText(browseCard and "Follow" or (guide.classLineGuide and "Start class guide" or "Start route"))
+                card.detailsButton.caption:SetText(browseCard and (selected and "Following" or "Follow")
+                    or (guide.classLineGuide and "Start class guide" or "Start route"))
+                if browseCard and selected then card.detailsButton.caption:SetText("Following") end
                 card.detailsButton:SetShown(browseCard or guide.classLineGuide or not guide.personal or guide.mode == "travel")
                 if guide.classLineGuide then card.mapButton:Hide() end
                 card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true or guide.classLineGuide == true)
