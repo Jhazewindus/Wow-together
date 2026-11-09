@@ -54,6 +54,10 @@ end
 
 function ns.CatalogueCompletion(key, id, query)
     if key == ns.self then return ns.Completed(id, query) end
+    local state = ns.SyncStateForQuest and ns.SyncStateForQuest(key, id)
+    if state == 3 then return true end
+    if state == 1 or state == 2 then return false end
+    if state == 0 then return nil end
     local member = ns.members[key]
     if member and member.completed and member.completed[id] then return true end
     if member and member.historyRevision and member.historyRevision == member.completionRevision
@@ -334,11 +338,11 @@ end
 
 function ns.CatalogueScopeIDs()
     local maps, ids = {}, {}
-    if ns.profile and ns.profile.mapID > 0 then maps[ns.profile.mapID] = true end
+    if ns.profile and type(ns.profile.mapID) == "number" and ns.profile.mapID > 0 then maps[ns.profile.mapID] = true end
     for _, person in ipairs(ns.PartyProfiles and ns.PartyProfiles() or {}) do
-        if person.profile and person.profile.mapID > 0 then maps[person.profile.mapID] = true end
+        if person.profile and type(person.profile.mapID) == "number" and person.profile.mapID > 0 then maps[person.profile.mapID] = true end
         local member = ns.members[person.key]
-        if member and member.catalogueMapID and member.catalogueMapID > 0 then maps[member.catalogueMapID] = true end
+        if member and type(member.catalogueMapID) == "number" and member.catalogueMapID > 0 then maps[member.catalogueMapID] = true end
     end
     if ns.libraryMapID then maps[ns.libraryMapID] = true end
     if ns.NearbyZoneMaps then

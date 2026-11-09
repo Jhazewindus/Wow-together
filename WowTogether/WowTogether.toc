@@ -23,6 +23,7 @@ TravelRoadData.lua
 TravelTrails.lua
 Catalogue.lua
 Quests.lua
+SyncState.lua
 GuideXP.lua
 RouteCost.lua
 Sync.lua
