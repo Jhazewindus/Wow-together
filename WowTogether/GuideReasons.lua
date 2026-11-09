@@ -358,8 +358,11 @@ end
 function ns.GuideReasonDiagnostics(output)
     local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
     if not stop then output("Destination reason: no current guide step."); return end
-    local decision = ns.GuideDestinationDecision(stop)
-    output("Destination reason: " .. decision.code .. "; " .. decision.why)
-    output("Reason evidence: " .. (decision.specificBenefit and "specific quest/plan benefit" or "selected guide only")
-        .. "; review " .. (decision.needsReview and "needed" or "not flagged") .. ".")
+    -- A probe is diagnostic-only: do not enter destination explanation here.
+    -- That path prepares guide policy and may rebuild the zone XP projection
+    -- or walk quest chains, which can stall a weak client.
+    local code = ns.Public(stop.reasonCode) and type(stop.reasonCode) == "string" and stop.reasonCode or "unavailable"
+    local label = ns.Public(stop.label) and type(stop.label) == "string" and stop.label or "current route step"
+    output("Destination reason: " .. code .. "; " .. label .. ".")
+    output("Reason evidence: cached route metadata only; not recalculated by probe.")
 end

@@ -165,10 +165,14 @@ class XPProjectionTests(unittest.TestCase):
         self.assertEqual((estimate.reward,estimate.startLevel,estimate.finishLevel), (1200,12,13))
         self.assertTrue(estimate.baseline)
         c.ns.CaptureGuideXP(g)
+        self.assertIsNone(g.xpFinishLevel)  # Capture yields to the timer-driven worker.
+        while len(c.lua.globals().timers):
+            callback = c.lua.globals().timers[1]
+            c.lua.eval('table.remove')(c.lua.globals().timers, 1)
+            callback()
         c.ns.RememberQuestCompletion(900)
         c.ns.profile.level = 13
-        self.assertIn('Remaining here:', c.ns.GuideXPText(g))
-        self.assertIn('leaves you at level 13', c.ns.GuideXPText(g))
+        self.assertIn('Quest XP estimate:', c.ns.GuideXPText(g))
         self.assertEqual(g.xpReward, 1200)  # Captured baseline survives live progress updates.
 
     def test_missing_reward_and_curve_are_reported_not_fabricated(self):
@@ -179,8 +183,18 @@ class XPProjectionTests(unittest.TestCase):
         estimate = c.ns.GuideXPProjection(g)
         self.assertEqual(estimate.unknown, 1)
         self.assertTrue(estimate.unavailable)
-        self.assertIn('Remaining here:', c.ns.GuideXPText(g))
+        c.ns.CaptureGuideXP(g)
+        while len(c.lua.globals().timers):
+            callback = c.lua.globals().timers[1]
+            c.lua.eval('table.remove')(c.lua.globals().timers, 1)
+            callback()
+        self.assertIn('XP curve incomplete', c.ns.GuideXPText(g))
         g.xpStartLevel, g.xpUnknown = 'corrupt', None
+        self.assertIn('Calculating quest XP', c.ns.GuideXPText(g))
+        while len(c.lua.globals().timers):
+            callback = c.lua.globals().timers[1]
+            c.lua.eval('table.remove')(c.lua.globals().timers, 1)
+            callback()
         self.assertIn('XP curve incomplete', c.ns.GuideXPText(g))
         self.assertNotIn('leaves you at level', c.ns.GuideXPText(g))
 

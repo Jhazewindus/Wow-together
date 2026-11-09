@@ -51,6 +51,52 @@ class XPModelTests(unittest.TestCase):
         projection = c.ns.ZoneExitProjection(guide, c.ns.profile)
         self.assertEqual((projection.level, projection.xp), (16, 0))
 
+    def test_probe_reads_cached_step_metadata_without_replanning(self):
+        c = self.client()
+        c.ns.navigation.state.stop = c.lua.table_from({'id': 100, 'kind': 'a',
+            'reasonCode': 'quest-pickup', 'label': 'Collect Old quest'})
+        c.lua.execute('''
+          local ns = ...
+          ns.GuideDestinationDecision = function() error('probe recomputed destination policy') end
+          ns.LevelingValue = function() error('probe entered quest policy') end
+          ns.ChainValue = function() error('probe evaluated quest chains') end
+          ns.ZoneExitProjection = function() error('probe recalculated XP projection') end
+        ''', c.ns)
+        c.ns.Diagnostics()  # Exact /wt probe entry point, with an active guide step.
+        report = str(c.ns.diagnosticsText.text)
+        self.assertIn('Destination reason: quest-pickup; Collect Old quest.', report)
+        self.assertIn('cached route metadata only', report)
+
+    def test_guide_xp_text_queues_one_record_per_timer_without_chain_planning(self):
+        c = self.client()
+        c.lua.execute('timers = {}; delays = {}')
+        c.ns.QueueBackgroundRender = c.lua.eval('function() end')
+        c.lua.execute('xpEligibilityCalls = 0')
+        c.ns.LevelingValue = c.lua.eval('''function(id)
+            xpEligibilityCalls = xpEligibilityCalls + 1
+            return false, 'keep under Later'
+        end''')
+        guide = c.lua.table_from({'fullGuide': True, 'key': 'large', 'mode': 'bundle', 'rangeLow': 1,
+            'records': c.lua.table_from([{'id': 100}, {'id': 101}, {'id': 102}])})
+        self.assertEqual(c.ns.GuideXPText(guide), 'Calculating quest XP…')
+        self.assertIsNone(guide.xpStartLevel)
+        self.assertEqual(c.lua.globals().xpEligibilityCalls, 0)
+        timers = c.lua.globals().timers
+        self.assertEqual(len(timers), 1)
+        c.lua.eval('table.remove')(timers, 1)()
+        self.assertIsNone(guide.xpStartLevel)  # First callback yields before the first record calculation.
+        calls = 1
+        while len(timers):
+            callback = timers[1]
+            c.lua.eval('table.remove')(timers, 1)
+            callback()
+            calls += 1
+            self.assertLess(calls, 10)
+        self.assertGreater(calls, 3)
+        self.assertEqual(guide.xpReward, 2200)
+        self.assertEqual(c.lua.globals().xpEligibilityCalls, 1)
+        self.assertIn('Quest XP estimate:', c.ns.GuideXPText(guide))
+
     def test_turnin_samples_calibrate_only_after_twenty_unrested_observations(self):
         c = self.client()
         c.ns.db.config.xpModel = True

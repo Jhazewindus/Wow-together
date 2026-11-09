@@ -2,6 +2,7 @@ local addonName, ns = ...
 
 local cachedLevelingSignature, cachedLevelingValues, cachedLevelingCount
 local lastLevelingDiagnostic
+local pendingGuideXP = setmetatable({}, {__mode = "k"})
 
 local function number(value, maximum)
     return ns.Public(value) and type(value) == "number" and value >= 0 and value <= maximum and value == math.floor(value)
@@ -281,6 +282,7 @@ function ns.GuideXPProjection(guide, query)
     local function add(id)
         if ids[id] then return end
         ids[id] = true
+        if query.cooperative then coroutine.yield() end
         local quest = ns.CatalogueQuest(id)
         if not quest or ns.Completed(id, query) == true or ns.GuideQuestSkipped(id) or ns.IsRepeatableQuest(id)
             or ns.IsLevelingExcludedQuest(id) or ns.IsProfessionQuest(id) or ns.IsDungeonQuest(id) or not ns.ClassQuestEnabled(id)
@@ -289,8 +291,10 @@ function ns.GuideXPProjection(guide, query)
             or ns.CatalogueIdentityAllowed(id, ns.profile) ~= true
             or (quest.level or 0) < result.startLevel - 3 and ns.LevelingValue(id, query) == false then return end
         if not number(quest.xp, 10000000) then result.unknown = result.unknown + 1; return end
-        -- Published reward is nominal. The older-world overlevel reduction is
-        -- an estimate, not a claim about the current Forever reward formula.
+        -- Keep the same XP/eligibility estimate; `query.cooperative` makes the
+        -- zone and quest-chain work yield to the timer-driven caller above.
+        -- Published reward is nominal. The older-world overlevel reduction
+        -- is an estimate, not a claim about the current Forever formula.
         local reward = ns.QuestXP(id, level)
         result.reward, progress = result.reward + reward, progress + reward
         while level < 60 do
@@ -309,12 +313,26 @@ function ns.GuideXPProjection(guide, query)
 end
 
 function ns.CaptureGuideXP(guide)
-    if snapshot(guide) then return end
-    local result = ns.GuideXPProjection(guide)
-    if not result then return end
-    guide.xpStartLevel, guide.xpStart = result.startLevel, result.startXP
-    guide.xpFinishLevel, guide.xpReward, guide.xpUnknown = result.finishLevel, result.reward, result.unknown
-    guide.xpBaseline, guide.xpUnavailable, guide.xpAssumedStart = result.baseline, result.unavailable, result.assumedStart
+    if snapshot(guide) or pendingGuideXP[guide] then return end
+    if not C_Timer or type(C_Timer.After) ~= "function" then return end
+    local query = ns.NewQuestQuery()
+    query.guide, query.cooperative = guide, true
+    local job = coroutine.create(function() return ns.GuideXPProjection(guide, query) end)
+    local token = {}
+    pendingGuideXP[guide] = token
+    local function advance()
+        if pendingGuideXP[guide] ~= token then return end
+        local okay, result = coroutine.resume(job)
+        if not okay then pendingGuideXP[guide] = nil; return end
+        if coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
+        pendingGuideXP[guide] = nil
+        if not result then return end
+        guide.xpStartLevel, guide.xpStart = result.startLevel, result.startXP
+        guide.xpFinishLevel, guide.xpReward, guide.xpUnknown = result.finishLevel, result.reward, result.unknown
+        guide.xpBaseline, guide.xpUnavailable, guide.xpAssumedStart = result.baseline, result.unavailable, result.assumedStart
+        if ns.QueueBackgroundRender then ns.QueueBackgroundRender() end
+    end
+    C_Timer.After(0.01, advance)
 end
 
 function ns.GuideXPText(guide, query)
@@ -322,36 +340,10 @@ function ns.GuideXPText(guide, query)
     if current and current.key == guide.key and current.xpStartLevel then guide = current end
     local result = snapshot(guide) and {startLevel = guide.xpStartLevel, finishLevel = guide.xpFinishLevel,
         reward = guide.xpReward, unknown = guide.xpUnknown, unavailable = guide.xpUnavailable, baseline = guide.xpBaseline, assumedStart = guide.xpAssumedStart}
-        or ns.GuideXPProjection(guide, query)
-    if not result then return "" end
-    if guide.mode == "zone" then
-        local projection = ns.ZoneExitProjection(guide, ns.profile, query)
-        if projection then
-            local state = ns.XPState()
-            local remainingLevels = projection.remaining / math.max(1, state and state.xpMax or 1)
-            if projection.curveIncomplete then
-                return string.format("Remaining here: ~%.1f levels • XP curve incomplete; projected exit unavailable",
-                    remainingLevels)
-            end
-            local percent = projection.percent and (" (" .. math.floor(projection.percent * 100 + 0.5) .. "%)") or ""
-            local nextGuide = projection.nextGuide
-            local line
-            local zoneFinishing = ns.GuideZoneFinishing and ns.GuideZoneFinishing(guide, ns.profile, projection, query)
-            if zoneFinishing then
-                local eligible = 0
-                for _, record in ipairs(guide.records or {}) do
-                    if ns.LevelingValue(record.id, query) ~= false then eligible = eligible + 1 end
-                end
-                line = "Finishing " .. (guide.zone or "this zone") .. ": " .. eligible
-                    .. " quests left worth doing" .. (nextGuide and (", then " .. nextGuide.zone .. " at " .. tostring(nextGuide.rangeLow)) or "")
-            else
-                line = string.format("Remaining here: ~%.1f levels • leaves you at level %d%s",
-                    remainingLevels, projection.level, percent)
-            end
-            if nextGuide and not zoneFinishing then line = line .. "\nThen: " .. nextGuide.zone .. " ("
-                .. tostring(nextGuide.rangeLow or "?") .. "–" .. tostring(nextGuide.rangeHigh or "?") .. ")" end
-            return line
-        end
+        or nil
+    if not result then
+        ns.CaptureGuideXP(guide)
+        return "Calculating quest XP…"
     end
     local finish = result.unavailable and "XP curve incomplete" or ("Lv " .. result.startLevel .. " to ~Lv " .. result.finishLevel)
     return "Quest XP estimate: " .. finish .. " • " .. result.reward .. " XP"
