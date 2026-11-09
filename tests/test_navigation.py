@@ -16,6 +16,29 @@ def navigator(x=.21, y=.27):
 
 
 class NavigationTests(unittest.TestCase):
+    def test_standalone_arrow_is_default_on_separate_and_independently_configurable(self):
+        c = navigator()
+        arrow = c.ns.standaloneNavigation
+        self.assertTrue(c.ns.Option('standaloneArrow'))
+        self.assertTrue(arrow.IsShown(arrow))
+        self.assertTrue(c.ns.navigation.icon.IsShown(c.ns.navigation.icon))  # the card retains its step icon
+        self.assertIn(arrow.point[1], ('BOTTOM', 'BOTTOMLEFT'))
+        c.ns.SetOption('standaloneArrowScale', .75)
+        self.assertEqual(c.ns.Option('standaloneArrowScale'), .75)
+        c.ns.SetOption('standaloneArrow', False)
+        self.assertFalse(arrow.IsShown(arrow))
+        self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
+
+    def test_standalone_arrow_arrival_is_a_check_and_missing_target_hides_it(self):
+        c = navigator(.21, .37)
+        arrow = c.ns.standaloneNavigation
+        self.assertTrue(arrow.IsShown(arrow))
+        self.assertTrue(c.ns.navigation.state.arrived)
+        self.assertEqual(arrow.symbol.text, '✓')
+        self.assertEqual(arrow.distance.text, 'Here')
+        c.ns.ClearRoute(); c.ns.UpdateNavigation()
+        self.assertFalse(arrow.IsShown(arrow))
+
     def test_cardinal_bearings_and_distance_follow_public_map_scale(self):
         for x, y, angle in ((.21, .27, 0), (.31, .37, -math.pi/2),
                             (.21, .47, math.pi), (.11, .37, math.pi/2)):
@@ -31,8 +54,8 @@ class NavigationTests(unittest.TestCase):
         c.lua.globals().facing = math.pi/2
         c.ns.navigation.OnUpdate(c.ns.navigation, .1)
         self.assertAlmostEqual(c.ns.navigation.state.angle, -math.pi/2)
-        point = c.ns.navigation.icon.lines[1].startPoint
-        self.assertAlmostEqual(point[3], 21)
+        point = c.ns.standaloneNavigation.icon.lines[1].startPoint
+        self.assertAlmostEqual(point[3], 35)
         self.assertAlmostEqual(point[4], 0, places=5)
         c.lua.execute('C_Map.GetPlayerMapPosition=function() return {GetXY=function() return .21,.32 end} end')
         c.ns.navigation.OnUpdate(c.ns.navigation, .1)
@@ -73,8 +96,9 @@ class NavigationTests(unittest.TestCase):
             c.ns.UpdateNavigation()
             self.assertEqual(c.ns.navigation.state.status, status)
             self.assertIsNone(c.ns.navigation.state.angle)
-            self.assertTrue(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
-            for line in c.ns.navigation.icon.lines.values():
+            self.assertTrue(c.ns.navigation.kindIcon.IsShown(c.ns.navigation.kindIcon)
+                or c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
+            for line in c.ns.standaloneNavigation.icon.lines.values():
                 self.assertFalse(line.IsShown(line))
 
     def test_missing_drawing_api_is_reported_without_crashing(self):

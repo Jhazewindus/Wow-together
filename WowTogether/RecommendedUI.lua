@@ -94,6 +94,8 @@ local function createHome()
     home:SetPoint("TOPLEFT", 0, 0)
     home.title = heading(home, "Next for you", 19, ns.UIColors.text)
     home.title:SetPoint("TOPLEFT", 0, -2)
+    home.nextHeading = heading(home, "NEXT FOR YOU", 12, ns.UIColors.muted)
+    home.nextRows = {}
     home.browseLeveling = ns.UIButton(home, "Browse all leveling guides", 208, function() ns.SetFilter("guides") end)
     home.browseLeveling:SetPoint("TOPRIGHT", 0, 0)
     home.resume = CreateFrame("Frame", nil, home, "BackdropTemplate")
@@ -113,6 +115,12 @@ local function createHome()
     home.resume.title:SetPoint("TOPLEFT", 14, -23); home.resume.title:SetHeight(18)
     home.resume.detail = ns.UILabel(home.resume, nil, 10, ns.UIColors.muted)
     home.resume.detail:SetPoint("TOPLEFT", 14, -46); home.resume.detail:SetHeight(28); home.resume.detail:SetWordWrap(true)
+    home.resume.track = home.resume:CreateTexture(nil, "ARTWORK")
+    home.resume.track:SetColorTexture(0.30, 0.28, 0.23, 0.75); home.resume.track:SetHeight(3)
+    home.resume.track:SetPoint("BOTTOMLEFT", 14, 40)
+    home.resume.fill = home.resume:CreateTexture(nil, "OVERLAY")
+    home.resume.fill:SetColorTexture(unpack(ns.UIColors.gold)); home.resume.fill:SetHeight(3)
+    home.resume.fill:SetPoint("LEFT", home.resume.track, "LEFT", 0, 0); home.resume.fill:SetWidth(1); home.resume.fill:Hide()
     home.resume.continueControl = ns.UIButton(home.resume, "Continue", 88, function()
         if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession()
         elseif ns.routeSelection then ns.OpenGuideWindow()
@@ -146,6 +154,107 @@ local function createHome()
     return home
 end
 
+local function createNextRow(home)
+    local row = CreateFrame("Frame", nil, home, "BackdropTemplate")
+    ns.UIPanel(row, ns.UIColors.background)
+    row.icon = row:CreateTexture(nil, "ARTWORK"); row.icon:SetPoint("LEFT", 12, 0); row.icon:SetSize(24, 24)
+    row.glyph = ns.UILabel(row, "GameFontNormalLarge", 18, ns.UIColors.gold)
+    row.glyph:SetPoint("LEFT", 12, 0); row.glyph:SetSize(24, 24); row.glyph:SetJustifyH("CENTER")
+    row.title = ns.UILabel(row, "GameFontNormal", 13, ns.UIColors.text)
+    row.title:SetPoint("TOPLEFT", 48, -8); row.title:SetHeight(17); row.title:SetWordWrap(false)
+    row.detail = ns.UILabel(row, nil, 11, ns.UIColors.muted)
+    row.detail:SetPoint("TOPLEFT", 48, -27); row.detail:SetHeight(15); row.detail:SetWordWrap(false)
+    row.action = ns.UIButton(row, "Follow", 78, function()
+        local item = row.data
+        if not item then return end
+        if item.start then item.start() elseif item.inspect then item.inspect() end
+    end, true)
+    row.action:SetPoint("RIGHT", -10, 0); row.action:SetHeight(28)
+    return row
+end
+
+local nextGlyph = {leveling = "!", classquests = "!", dungeon = "D", dungeons = "D",
+    professions = "⚒", travel = "→", gold = "◉"}
+
+local function activeGuideDetail(guide, route)
+    local fields, step = {}, route and (route.pendingStop or route.stops and route.stops[1])
+    local number = step and tonumber(step.guideStep)
+    local total = tonumber(guide and (guide.enabledCount or guide.classQuestStepCount))
+        or guide and type(guide.records) == "table" and #guide.records
+    if number and total and total > 0 then fields[#fields + 1] = "step " .. number .. " of " .. total end
+    local exit = tonumber(guide and (guide.mainLevelHigh or guide.rangeHigh or guide.maxLevel))
+    local level = tonumber(ns.profile and ns.profile.level)
+    if exit then
+        if level then fields[#fields + 1] = math.max(0, exit - level) .. " levels left" end
+        fields[#fields + 1] = "exit at " .. exit
+    end
+    return table.concat(fields, " · "), number, total
+end
+ns.HubActiveGuideProgress = activeGuideDetail
+
+local function layoutNext(home)
+    local width, top = ns.ui.contentWidth, 8
+    home:SetWidth(width); home.title:Hide()
+    if home.resume:IsShown() then
+        home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 104)
+        home.resume.category:Hide()
+        home.resume.title:ClearAllPoints(); home.resume.title:SetPoint("TOPLEFT", 14, -10)
+        home.resume.detail:ClearAllPoints(); home.resume.detail:SetPoint("TOPLEFT", 14, -31)
+        home.resume.detail:SetWidth(width - 28); home.resume.detail:SetHeight(16); home.resume.detail:SetWordWrap(false)
+        home.resume.track:ClearAllPoints(); home.resume.track:SetPoint("TOPLEFT", 14, -54); home.resume.track:SetWidth(width - 28)
+        home.resume.fill:SetWidth(math.max(1, (width - 28) * (home.resume.fraction or 0)))
+        home.resume.fill:SetShown((home.resume.fraction or 0) > 0)
+        home.resume.continueControl:ClearAllPoints(); home.resume.continueControl:SetPoint("BOTTOMLEFT", 12, 7); home.resume.continueControl:SetSize(94, 28)
+        home.resume.orderControl:ClearAllPoints(); home.resume.orderControl:SetPoint("LEFT", home.resume.continueControl, "RIGHT", 8, 0); home.resume.orderControl:SetSize(122, 28)
+        home.resume.stopControl:ClearAllPoints(); home.resume.stopControl:SetPoint("LEFT", home.resume.orderControl, "RIGHT", 8, 0); home.resume.stopControl:SetSize(126, 28)
+        top = top + 116
+    end
+    home.nextHeading:ClearAllPoints(); home.nextHeading:SetPoint("TOPLEFT", 0, -top); home.nextHeading:SetWidth(width)
+    top = top + 28
+    for index = 1, home.nextCount or 0 do
+        local row = home.nextRows[index]
+        row:ClearAllPoints(); row:SetPoint("TOPLEFT", 0, -top); row:SetSize(width, 50)
+        row.title:SetWidth(math.max(100, width - 170)); row.detail:SetWidth(math.max(100, width - 170))
+        top = top + 58
+    end
+    home:SetHeight(top); ns.ui.content:SetHeight(math.max(250, top))
+end
+
+local function renderNext(home, query)
+    local items = ns.RecommendedItems(query)
+    home.professionCount, home.extraCount, home.nextCount = 0, 0, 0
+    for _, card in ipairs(home.cards) do card:Hide() end
+    for _, card in ipairs(home.extraCards) do card:Hide() end
+    home.leveling:Hide(); home.goldSession:Hide(); home.professionEmpty:Hide()
+    home.professionTitle:Hide(); home.browseLeveling:Hide(); home.browseProfessions:Hide(); home.moreTitle:Hide()
+    ns.UpdateSessionResumeBar()
+    local running = ns.routeSelection ~= nil and ns.selectedRoute ~= nil and ns.selectedRoute.complete ~= true
+    home.resume.continueControl:SetShown(home.resume:IsShown())
+    home.resume.orderControl:SetShown(running)
+    home.resume.stopControl:SetShown(running)
+    for _, item in ipairs(items) do
+        if home.nextCount >= 5 then break end
+        if type(item) == "table" and type(item.title) == "string" and item.title ~= ""
+            and (type(item.start) == "function" or type(item.inspect) == "function") then
+            home.nextCount = home.nextCount + 1
+            local index = home.nextCount
+            home.nextRows[index] = home.nextRows[index] or createNextRow(home)
+            local row = home.nextRows[index]
+            row.data = item; row.title:SetText(item.title); row.detail:SetText(type(item.detail) == "string" and item.detail or "")
+            local kind = item.kind == "dungeons" and "dungeon" or item.kind
+            local texture = item.icon or (type(ns.StepIconTexture) == "function" and ns.StepIconTexture(kind))
+            row.icon:SetTexture(type(texture) == "string" and texture or nil)
+            row.icon:SetShown(type(texture) == "string")
+            row.glyph:SetText(type(texture) == "string" and "" or nextGlyph[kind] or "•")
+            row.glyph:SetShown(type(texture) ~= "string")
+            local action = string.find(string.lower(item.action or ""), "view", 1, true) and "Open" or "Follow"
+            row.action.caption:SetText(action); row:Show()
+        end
+    end
+    for index = (home.nextCount or 0) + 1, #home.nextRows do home.nextRows[index]:Hide() end
+    home:Show(); layoutNext(home)
+end
+
 local function layoutCard(card, width, height)
     card:SetSize(width, height)
     card.category:SetWidth(width - 145)
@@ -162,6 +271,7 @@ end
 function ns.LayoutRecommended()
     local home = ns.ui.home
     if not home then return end
+    if ns.Option("uiNext") then layoutNext(home); return end
     local width, top, gap = ns.ui.contentWidth, 32, 12
     home:SetWidth(width); home.title:SetWidth(width - 226)
     if home.resume:IsShown() then
@@ -203,6 +313,7 @@ end
 
 function ns.RenderRecommended(query)
     local home = ns.ui.home or createHome()
+    if ns.Option("uiNext") then renderNext(home, query); return end
     local items, states = ns.RecommendedItems(query)
     home.professionCount, home.extraCount = 0, 0
     for _, card in ipairs(home.cards) do card:Hide() end

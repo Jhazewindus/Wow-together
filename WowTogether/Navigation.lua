@@ -167,17 +167,19 @@ function ns.NavigationState()
     return state
 end
 
-function ns.DrawNavigationArrow(angle, icon)
+function ns.DrawNavigationArrow(angle, icon, color)
     icon = icon or ns.navigation.icon
     local cosine, sine = math.cos(angle), math.sin(angle)
     local shape = {{0, 21}, {-12, -6}, {0, 0}, {12, -6}, {0, 21}}
+    local scale = finite(icon:GetWidth()) and math.max(1, icon:GetWidth() / 48) or 1
+    color = color or {1, 0.82, 0.30, 1}
     for index = 1, #shape - 1 do
         local line = icon.lines[index]
         if not line then line = icon:CreateLine(nil, "OVERLAY"); icon.lines[index] = line end
         local a, b = shape[index], shape[index + 1]
-        line:SetThickness(3); line:SetColorTexture(1, 0.82, 0.30, 1)
-        line:SetStartPoint("CENTER", icon, a[1] * cosine - a[2] * sine, a[1] * sine + a[2] * cosine)
-        line:SetEndPoint("CENTER", icon, b[1] * cosine - b[2] * sine, b[1] * sine + b[2] * cosine)
+        line:SetThickness(3 * scale); line:SetColorTexture(unpack(color))
+        line:SetStartPoint("CENTER", icon, (a[1] * cosine - a[2] * sine) * scale, (a[1] * sine + a[2] * cosine) * scale)
+        line:SetEndPoint("CENTER", icon, (b[1] * cosine - b[2] * sine) * scale, (b[1] * sine + b[2] * cosine) * scale)
         line:Show()
     end
 end
@@ -260,8 +262,8 @@ function ns.UpdateNavigation()
     else
         frame.kindIcon:SetSize(34, 34)
         frame.context:Show(); frame.distance:Show()
-        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", frame.separateArrow and 14 or 82, -52)
-        frame.status:SetSize(frame:GetWidth() - (frame.separateArrow and 28 or 96), 18)
+        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 82, -52)
+        frame.status:SetSize(frame:GetWidth() - 96, 18)
         frame.context:SetShown(presentation.why ~= nil and presentation.why ~= "")
         frame.distance:Show()
         frame.status:Show()
@@ -276,17 +278,13 @@ function ns.UpdateNavigation()
     else frame.peek:SetText(""); frame.peek:Hide() end
     updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
-    local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
-    frame.icon:SetShown(not separate)
-    if frame.separateArrow ~= separate then
-        frame.separateArrow = separate
-        ns.LayoutNavigation()
-    end
-    local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
-    frame.kindIcon:SetTexture(presentation.icon)
-    frame.kindIcon:SetShown(state.angle == nil and iconOnly and not state.busy)
-    frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
-    frame.symbol:SetShown(state.busy and state.angle == nil or state.angle == nil and not iconOnly and not state.busy)
+    frame.icon:SetShown(true)
+    local kind = ns.StepSymbolKind(state.stop, presentation.facts)
+    local glyph, texture = ns.StepSymbolFor(kind)
+    frame.kindIcon:SetTexture(texture or presentation.icon)
+    frame.kindIcon:SetShown((texture ~= nil or presentation.icon ~= nil) and not state.busy)
+    frame.symbol:SetText(glyph or "•"); frame.symbol:SetTextColor(unpack(ns.UIColors.text))
+    frame.symbol:SetShown(texture == nil and presentation.icon == nil and not state.busy)
     local training = ns.IsClassTrainingStep(state.stop)
     local service = ns.IsInventoryServiceStep(state.stop)
     frame.skipStep.caption:SetText(service and "Skip visit" or training and "Skip training" or "Skip step")
@@ -353,11 +351,7 @@ function ns.UpdateNavigation()
     ns.UIHelp(frame.pause, paused and "Resume your saved guide using current progress." or "Save your guide, pause it and see your session summary.")
     ns.UIHelp(frame.close, paused and "Close this window. Your paused guide stays saved." or "Exit guide. Stop and close this window.")
     if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
-    if not separate then
-        if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
-        elseif state.arrived then frame.symbol:Hide()
-        elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
-    end
+    if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon)) end
 end
 
 function ns.SaveNavigationPosition()
@@ -373,7 +367,7 @@ function ns.LayoutNavigation()
     if not frame or not frame.layoutReady then return end
     local width = frame:GetWidth()
     if not finite(width) then return end
-    local left = frame.separateArrow and 14 or 82
+    local left = 82
     local offset = (width - 360) / 2
     frame.title:SetWidth(width - 108); frame.step:SetWidth(width - 28)
     frame.stepButton:SetWidth(width - 28)

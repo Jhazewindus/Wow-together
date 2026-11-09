@@ -127,20 +127,13 @@ class GuideSpinnerTests(unittest.TestCase):
         c.ns.navigation.scan.OnClick()
         self.assertEqual(c.ns.navigation.state.status, 'Scanning guide…')
         self.assertFalse(c.ns.navigation.scan.enabled)
-        for frame in (c.ns.standaloneNavigation,):
-            self.assertTrue(all(line.IsShown(line) for line in frame.icon.spinnerLines.values()))
-            self.assertTrue(all(not line.IsShown(line) for line in frame.icon.lines.values()))
-            self.assertFalse(frame.symbol.IsShown(frame.symbol))
-        self.assertFalse(c.ns.navigation.icon.IsShown(c.ns.navigation.icon))
-        first = tuple(c.ns.standaloneNavigation.icon.spinnerLines[1].startPoint.values())
-        c.ns.navigation.OnUpdate(c.ns.navigation, .1)
-        self.assertNotEqual(first, tuple(c.ns.standaloneNavigation.icon.spinnerLines[1].startPoint.values()))
+        self.assertFalse(c.ns.standaloneNavigation.IsShown(c.ns.standaloneNavigation))  # no target while scanning
+        self.assertTrue(all(line.IsShown(line) for line in c.ns.navigation.icon.spinnerLines.values()))
         c.drain()
         self.assertIsNone(c.ns.guideScanning)
         self.assertEqual(order(g), before)
-        for frame in (c.ns.standaloneNavigation,):
-            self.assertTrue(all(not line.IsShown(line) for line in frame.icon.spinnerLines.values()))
-            self.assertTrue(any(line.IsShown(line) for line in frame.icon.lines.values()))
+        self.assertTrue(c.ns.standaloneNavigation.IsShown(c.ns.standaloneNavigation))
+        self.assertTrue(any(line.IsShown(line) for line in c.ns.standaloneNavigation.icon.lines.values()))
 
     def test_large_scan_yields_between_history_batches_and_coalesces_clicks(self):
         c, g = scanning_client(85)
@@ -191,9 +184,8 @@ class GuideSpinnerTests(unittest.TestCase):
         c.ns.SetOption('standaloneArrow', True); c.ns.SetOption('routeArrow', False)
         c.ns.ScanGuideProgress()
         small = c.ns.standaloneNavigation
-        first = tuple(small.icon.spinnerLines[1].startPoint.values())
+        self.assertFalse(small.IsShown(small))  # scans have no navigable target
         small.OnUpdate(small, .1)
-        self.assertNotEqual(first, tuple(small.icon.spinnerLines[1].startPoint.values()))
         c.drain()
         self.assertTrue(small.IsShown(small))
         self.assertFalse(c.ns.navigation.IsShown(c.ns.navigation))

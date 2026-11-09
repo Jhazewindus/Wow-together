@@ -213,7 +213,7 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         c = ratchet_client()
         c.ns.SetOption('routeArrow', False); c.ns.SetOption('standaloneArrow', True)
         arrow = c.ns.standaloneNavigation
-        self.assertEqual(arrow.title.text, 'Visit Ratchet')
+        self.assertTrue(arrow.IsShown(arrow))
         self.assertTrue(arrow.tip.IsShown(arrow.tip))
         self.assertIn('Potential saving', arrow.tip.text.text)
         arrow.tip.close.OnClick()

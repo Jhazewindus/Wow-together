@@ -179,7 +179,7 @@ class StandaloneTests(unittest.TestCase):
         self.assertFalse(c.ns.navigation.IsShown(c.ns.navigation))
         small = c.ns.standaloneNavigation
         self.assertTrue(small.IsShown(small))
-        self.assertIn(c.ns.FormatDistance(c.ns.navigation.state.distance), small.timer.text)
+        self.assertIn(c.ns.FormatDistance(c.ns.navigation.state.distance), small.distance.text)
         before = small.state.angle
         c.lua.execute('facing=1')
         small.OnUpdate(small, .1)
