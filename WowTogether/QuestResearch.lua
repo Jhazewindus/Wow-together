@@ -154,6 +154,14 @@ function ns.ExportQuestResearch()
     local saved, lines = state(), {}
     local learned = ns.ObjectiveAreaResearchEvents and ns.ObjectiveAreaResearchEvents() or {}
     local pickups = ns.ExportNPCPickupResearchEvents and ns.ExportNPCPickupResearchEvents() or {}
+    local moduleEvents = {}
+    for _, rows in ipairs(ns.HookResults("researchExport")) do
+        assert(type(rows) == "table", "Research hook must return event array")
+        for _, row in ipairs(rows) do
+            assert(type(row) == "table" and type(row.event) == "string", "Invalid research event")
+            moduleEvents[#moduleEvents + 1] = row
+        end
+    end
     local header = {format = "wow-together-quest-research", schema = 1, addon = ns.VERSION,
         capacity = LIMIT, dropped = saved and saved.dropped or 0,
         objectiveAreaCount = #learned, pickupLocationCount = #pickups}
@@ -170,18 +178,21 @@ function ns.ExportQuestResearch()
     local encoded = json(header)
     lines[#lines + 1] = string.sub(encoded, 1, -2) .. ',"events":['
     local events = saved and saved.events or {}
-    local total = #events + #learned + #pickups + #xpEvents
+    local total = #events + #learned + #pickups + #xpEvents + #moduleEvents
     for index, record in ipairs(events) do
         lines[#lines + 1] = json(record) .. (index < total and "," or "")
     end
     for index, record in ipairs(learned) do
-        lines[#lines + 1] = json(record) .. ((index < #learned + #pickups or #xpEvents > 0) and "," or "")
+        lines[#lines + 1] = json(record) .. ((index < #learned or #pickups > 0 or #xpEvents > 0 or #moduleEvents > 0) and "," or "")
     end
     for index, record in ipairs(pickups) do
-        lines[#lines + 1] = json(record) .. ((index < #pickups or #xpEvents > 0) and "," or "")
+        lines[#lines + 1] = json(record) .. ((index < #pickups or #xpEvents > 0 or #moduleEvents > 0) and "," or "")
     end
     for index, record in ipairs(xpEvents) do
-        lines[#lines + 1] = json(record) .. (index < #xpEvents and "," or "")
+        lines[#lines + 1] = json(record) .. ((index < #xpEvents or #moduleEvents > 0) and "," or "")
+    end
+    for index, record in ipairs(moduleEvents) do
+        lines[#lines + 1] = json(record) .. (index < #moduleEvents and "," or "")
     end
     lines[#lines + 1] = "]}"
     return table.concat(lines, "\n")

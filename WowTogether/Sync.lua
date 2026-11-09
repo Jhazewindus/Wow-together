@@ -456,6 +456,11 @@ function ns.Receive(prefix, message, channel, sender)
         ns.Refresh(true)
         return
     end
+    local moduleHandled, moduleAccepted, moduleReason = ns.FirstHook("syncReceive", message, sender)
+    if moduleHandled then
+        if moduleAccepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(moduleReason or "module handler rejected packet") end
+        return
+    end
     if ns.ReceivePartyPlanMessage then
         local handled, accepted, reason = ns.ReceivePartyPlanMessage(message, sender)
         if handled then

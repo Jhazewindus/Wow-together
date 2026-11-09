@@ -13,10 +13,12 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     unitNumbers = false, approachMaps = true, xpModel = false, partyMode = "ask"}
 
 function ns.Option(key)
-    local value = ns.db and ns.db.config and ns.db.config[key]
-    if key == "shareObservations" and value == nil and ns.db and ns.db.config then value = ns.db.config.shareRoads end
-    if value == nil then return defaults[key] end
-    return value
+    local handled, value = ns.FirstHook("optionGet", key)
+    if handled then return value end
+    local stored = ns.db and ns.db.config and ns.db.config[key]
+    if key == "shareObservations" and stored == nil and ns.db and ns.db.config then stored = ns.db.config.shareRoads end
+    if stored == nil then return defaults[key] end
+    return stored
 end
 
 function ns.PartyFeaturesEnabled()
@@ -129,6 +131,8 @@ function ns.InitializeConfig()
 end
 
 function ns.SetOption(key, value)
+    local handled, result = ns.FirstHook("optionSet", key, value)
+    if handled then return result end
     if defaults[key] == nil or type(value) ~= type(defaults[key]) then return end
     local changed = ns.Option(key) ~= value
     if key == "recordQuestData" and ns.Option(key) ~= value then ns.ResearchCaptureBoundary() end
@@ -259,6 +263,7 @@ function ns.CreateSettings()
     frame.note:Hide()
     frame:Hide()
     if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherSettings") end
+    ns.RunHooks("settingsCreated", frame)
 end
 
 function ns.RenderSettings()

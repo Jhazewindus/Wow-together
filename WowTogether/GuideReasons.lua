@@ -274,6 +274,8 @@ local function explain(goal, ctx)
 end
 
 function ns.GuideDestinationDecision(stop, guide, route)
+    local handled, decision = ns.FirstHook("destinationDecision", stop, guide, route)
+    if handled then return decision end
     if stop and stop.reasonCode == "zone-exit" then
         return result("zone-exit", text(stop.label) or "Gain more experience before starting the next zone.", true)
     end

@@ -372,6 +372,7 @@ function ns.CreateUI()
     resizeReady = true
     ns.Layout()
     window:Hide()
+    ns.RunHooks("uiCreated", ns.ui)
 end
 
 function ns.FinishWindowResize()
@@ -680,6 +681,7 @@ function ns.Render(queryContext, routeUpdated)
     if ns.filter == "recommended" then
         ns.ui.visibleCards = 0; ns.ui.empty:Hide()
         ns.RenderRecommended(queryContext)
+        ns.RunHooks("render", queryContext, routeUpdated)
         return
     end
     local visible, top = 0, 0
@@ -915,9 +917,15 @@ function ns.Render(queryContext, routeUpdated)
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
         or "No quests in this view yet.\nTry All quests or compare more progress with friends.")))))
     ns.LayoutBrowserCards()
+    ns.RunHooks("render", queryContext, routeUpdated)
 end
 
 function ns.ShowDiagnostics(report, caption, onRefresh)
+    if caption == nil and type(report) == "string" then
+        for _, addition in ipairs(ns.HookResults("diagnostics", report)) do
+            if type(addition) == "string" and addition ~= "" then report = report .. addition end
+        end
+    end
     if not ns.diagnosticsWindow then
         local window = CreateFrame("Frame", "WowTogetherDiagnostics", UIParent, "BackdropTemplate")
         ns.diagnosticsWindow = window

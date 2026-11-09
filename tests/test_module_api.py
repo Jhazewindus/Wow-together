@@ -5,6 +5,7 @@ import io
 import json
 import tempfile
 import unittest
+import re
 from pathlib import Path
 from unittest.mock import patch
 from zipfile import ZipFile
@@ -28,6 +29,28 @@ class ModuleAPITests(unittest.TestCase):
         self.ns = self.client.ns
         self.lua = self.client.lua
 
+    def test_ns_function_owners_are_not_overridden_across_files(self):
+        definitions = re.compile(
+            r'^\s*function\s+ns\.([A-Za-z_]\w*)\s*\('
+            r'|^\s*ns\.([A-Za-z_]\w*)\s*=\s*function\s*\(', re.MULTILINE)
+        assignments = re.compile(r'^\s*ns\.([A-Za-z_]\w*)\s*=', re.MULTILINE)
+        owners, writes = {}, {}
+        for path in ROOT.rglob('*.lua'):
+            if '.git' in path.parts:
+                continue
+            source = path.read_text(encoding='utf-8')
+            for first, second in definitions.findall(source):
+                owners.setdefault(first or second, set()).add(path.resolve())
+            for name in assignments.findall(source):
+                writes.setdefault(name, set()).add(path.resolve())
+        violations = {
+            name: (owner_paths, write_paths - owner_paths)
+            for name, owner_paths in owners.items()
+            if len(owner_paths) == 1
+            and (write_paths := writes.get(name, set())) - owner_paths
+        }
+        self.assertEqual(violations, {})
+
     def test_existing_routing_and_utility_contract_is_present(self):
         for name in ('FindTravelPath', 'TravelPointDistance', 'PlayerPoint',
                      'RouteCostModel', 'CatalogueQuest', 'ReadPublic', 'Public',
@@ -36,6 +59,18 @@ class ModuleAPITests(unittest.TestCase):
         self.assertEqual(self.ns.GoldAPIVersion, 1)
         self.assertIsNotNone(self.ns.catalogue)
         self.assertIsNotNone(self.ns.RouteCostModel().weights)
+
+    def test_public_module_api_surface_and_version_are_unchanged(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        expected = {'version', 'STEP_SYMBOLS', 'RegisterModule', 'FindTravelPath',
+                    'TravelPointDistance', 'PlayerPoint', 'TrailLoop', 'RouteCostModel',
+                    'PushGuideStop', 'ClearModuleStops', 'RegisterSyncKind',
+                    'CatalogueQuest', 'ReadPublic', 'Public', 'GuideInteger',
+                    'SafeTitle', 'Option', 'SetOption', 'Print', 'On',
+                    'ResearchExportHook'}
+        self.assertEqual({key for key, _ in api.items()}, expected)
+        self.assertEqual(api.version, 1)
+        self.assertEqual(self.ns.GoldAPIVersion, 1)
 
     def test_optional_addon_uses_public_api_from_its_own_namespace(self):
         api = self.lua.globals().WowTogetherModuleAPI

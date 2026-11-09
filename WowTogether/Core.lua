@@ -10,6 +10,30 @@ local function metadata(field)
 end
 ns.VERSION = metadata("Version") or "0.8.107"
 ns.RELEASE_NAME = metadata("X-ReleaseName") or "GOLD MODULE API FOUNDATION"
+ns.hooks = {
+    optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},
+    slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {},
+    routeAfterUpdate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
+    stepPresentation = {}, researchExport = {},
+}
+function ns.HookResults(name, ...)
+    local results = {}
+    for _, callback in ipairs(ns.hooks[name] or {}) do
+        local ok, value = pcall(callback, ...)
+        if ok and value ~= nil then results[#results + 1] = value end
+    end
+    return results
+end
+function ns.FirstHook(name, ...)
+    for _, callback in ipairs(ns.hooks[name] or {}) do
+        local ok, handled, value, extra = pcall(callback, ...)
+        if ok and handled then return true, value, extra end
+    end
+    return false
+end
+function ns.RunHooks(name, ...)
+    for _, callback in ipairs(ns.hooks[name] or {}) do pcall(callback, ...) end
+end
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -566,6 +590,8 @@ SLASH_WOWTOGETHER1 = "/wt"
 SLASH_WOWTOGETHER2 = "/wowtogether"
 SlashCmdList.WOWTOGETHER = function(command)
     command = string.lower(command or "")
+    local handled, result = ns.FirstHook("slash", command)
+    if handled then return result end
     if command == "probe" then ns.Diagnostics()
     elseif command == "sync" then ns.SyncNow(true)
     elseif command == "lua" then ns.ShowLuaConsole()
