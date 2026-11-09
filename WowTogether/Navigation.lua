@@ -334,7 +334,7 @@ function ns.LayoutNavigation()
     frame.continue:ClearAllPoints(); frame.continue:SetPoint("BOTTOMLEFT", offset + 42, 8)
     frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, 8)
     frame.next:ClearAllPoints(); frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8)
-    frame.tip:SetWidth(width); frame.tip.text:SetWidth(width - 44)
+    frame.tip.point = {"TOPLEFT", frame.work}
     frame.questItem:SetWidth(width); frame.questItem.caption:SetWidth(width - 50)
     ns.LayoutAreaObjectives(width)
 end
@@ -355,7 +355,7 @@ function ns.UpdateNavigationBackground()
     local opaque = ns.Option("guideOpaque")
     local color, alpha = ns.UIColors.background, opaque and 1 or 0.18
     -- Fade only the fill, never the text, arrow or child controls.
-    for _, panel in ipairs({frame, frame.tip, frame.work, frame.questItem}) do
+    for _, panel in ipairs({frame, frame.work, frame.questItem}) do
         panel:SetBackdropColor(color[1], color[2], color[3], alpha)
     end
     ns.UIButtonTone(frame.background, opaque)
@@ -443,18 +443,13 @@ function ns.CreateNavigation()
     frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 12, 8)
     frame.next = ns.UIButton(frame, "›", 24, function() ns.PreviewGuideStep(1) end)
     frame.next:SetHeight(24); frame.next:SetPoint("BOTTOMRIGHT", -12, 8)
-    frame.tip = CreateFrame("Frame", nil, frame, "BackdropTemplate")
-    frame.tip:SetSize(360, 44); frame.tip:SetPoint("TOPLEFT", frame, "BOTTOMLEFT", 0, -4)
-    ns.UIPanel(frame.tip, ns.UIColors.background); frame.tip:EnableMouse(true)
-    frame.tip.text = ns.UILabel(frame.tip, nil, 10, ns.UIColors.gold)
-    frame.tip.text:SetPoint("LEFT", 10, 0); frame.tip.text:SetSize(316, 36); frame.tip.text:SetWordWrap(true)
-    frame.tip.close = ns.UIButton(frame.tip, "×", 20, ns.DismissGuideTip)
-    frame.tip.close:SetHeight(20); frame.tip.close:SetPoint("RIGHT", -4, 0)
-    frame.tip.close.caption:ClearAllPoints(); frame.tip.close.caption:SetPoint("CENTER"); frame.tip.close.caption:SetSize(16, 16)
-    frame.tip:SetScript("OnMouseUp", function(self, button)
-        if button == "LeftButton" then ns.AcceptInventoryServiceTip(self.value) end
-    end)
-    frame.tip:Hide()
+    frame.tip = ns.SuggestionChipFacade("guideTip")
+    frame.tip.text = {text = ""}; frame.tip.point = {"TOPLEFT", frame.work}
+    frame.tip.close = {OnClick = ns.DismissGuideTip}
+    function frame.tip:IsShown() return self.visible == true end
+    function frame.tip:OnMouseUp(button)
+        if button == "LeftButton" and self.value and self.value.kind == "service" then ns.AcceptInventoryServiceTip(self.value) end
+    end
     ns.CreateQuestItemButton(frame)
     ns.CreateAreaObjectives(frame)
     ns.EnableWindowResize(frame, {minWidth = 360, minHeight = 168, maxWidth = 720, maxHeight = 480,

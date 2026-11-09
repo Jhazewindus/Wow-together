@@ -562,21 +562,35 @@ function ns.CheckDungeonViewerEntry()
             if viewer.followPlayer ~= false then ns.LocateDungeonPlayer(viewer); ns.RenderDungeonViewer() end
         end
     end
-    if not key then entered = nil; if ns.dungeonEntryPrompt then ns.dungeonEntryPrompt:Hide() end; return end
+    if not key then
+        if entered then ns.ClearSuggestionChip("dungeon", entered) end
+        entered = nil
+        if ns.dungeonEntryPrompt then ns.dungeonEntryPrompt:Hide() end
+        return
+    end
     local entry = key .. ":" .. instance
-    if entered == entry or not ns.Option("dungeonMapPrompt") or ns.RouteInCombat() then return end
+    if entered and entered ~= entry then ns.ClearSuggestionChip("dungeon", entered) end
+    if not ns.Option("dungeonMapPrompt") then
+        ns.ClearSuggestionChip("dungeon", entry)
+        if ns.dungeonEntryPrompt then ns.dungeonEntryPrompt:Hide() end
+        return
+    end
+    if entered == entry or ns.RouteInCombat() then return end
     entered = entry
     if not ns.dungeonEntryPrompt then
-        local frame = CreateFrame("Frame", "WowTogetherDungeonEntryPrompt", UIParent, "BackdropTemplate")
+        local frame = ns.SuggestionChipFacade("dungeon")
+        frame.title, frame.text = {text = ""}, {text = ""}
+        frame.open, frame.later = {caption = {text = "Open map"}}, {caption = {text = "Not now"}}
         ns.dungeonEntryPrompt = frame
-        frame:SetSize(360, 150); frame:SetPoint("CENTER", 0, 170); frame:SetClampedToScreen(true); frame:SetFrameStrata("DIALOG"); ns.UIPanel(frame)
-        frame.title = heading(frame, "Open map?", 18, 18, -16, 320)
-        frame.text = ns.UILabel(frame, nil, 12, colors.muted); frame.text:SetPoint("TOPLEFT", 18, -48); frame.text:SetSize(324, 38)
-        frame.open = ns.UIButton(frame, "Open map", 144, function() local dungeon = frame.key; frame:Hide(); ns.ShowDungeonViewer(dungeon, true) end, true); frame.open:SetPoint("BOTTOMLEFT", 18, 16)
-        frame.later = ns.UIButton(frame, "Not now", 120, function() frame:Hide() end); frame.later:SetPoint("BOTTOMRIGHT", -18, 16)
     end
     local frame = ns.dungeonEntryPrompt
-    frame.key = key; frame.text:SetText(ns.dungeonData.dungeons[key].name .. "\nBrowse the map, bosses and their loot."); frame:Show()
+    frame.key = key
+    frame.title.text = "Open map?"
+    frame.text.text = ns.dungeonData.dungeons[key].name .. " — Browse the map, bosses and loot."
+    frame.open.OnClick = function() ns.HideSuggestionChip(true); ns.ShowDungeonViewer(key, true) end
+    frame.later.OnClick = function() ns.HideSuggestionChip(true) end
+    ns.ShowSuggestionChip("dungeon", entry, frame.title.text .. " — " .. ns.dungeonData.dungeons[key].name,
+        {{label = "Open map", callback = function() ns.ShowDungeonViewer(key, true) end}, {label = "Not now"}})
 end
 function ns.InitializeDungeonViewer()
     local function listen(event, callback) ns.On(event, callback) end

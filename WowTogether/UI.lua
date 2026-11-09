@@ -75,6 +75,7 @@ function ns.HandlePartyModeRoster()
     local signature = normalPartySignature()
     if signature ~= lastPartySignature then
         declinedPartySignature, ns.partyModeDeclinedThisGroup, lastPartySignature = nil, nil, signature
+        if ns.ClearSuggestionChipKind then ns.ClearSuggestionChipKind("partyMode") end
     end
     if ns.partyModeTemporary and not signature then
         ns.partyModeTemporary = nil
@@ -82,36 +83,40 @@ function ns.HandlePartyModeRoster()
     end
     if ns.Option("partyMode") ~= "ask" or ns.partyModeTemporary or not signature then
         if partyPrompt then partyPrompt:Hide() end
+        if ns.HasSuggestionChipKind and ns.HasSuggestionChipKind("partyMode") then ns.HideSuggestionChip(false) end
         return
     end
     if declinedPartySignature == signature then return end
     if not partyPrompt then
-        local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-        frame:SetSize(490, 56); frame:SetPoint("TOP", UIParent, "TOP", 0, -110)
-        frame:SetFrameStrata("HIGH"); frame:SetClampedToScreen(true); panel(frame)
-        frame.label = label(frame, "GameFontNormal", 12, colors.text)
-        frame.label:SetPoint("LEFT", 12, 0); frame.label:SetWidth(225); frame.label:SetWordWrap(false)
-        frame.yes = button(frame, "Yes", 58, function()
-            ns.partyModeTemporary = true; ns.partyModeDeclinedThisGroup = nil; partyPrompt:Hide()
-            if ns.ApplyPartyMode then ns.ApplyPartyMode() end
-            if ns.SyncNow then ns.SyncNow(true) end
-        end, true)
-        frame.yes:SetPoint("RIGHT", -178, 0)
-        frame.later = button(frame, "Not now", 76, function()
-            if partyPrompt.signature then declinedPartySignature = partyPrompt.signature; ns.partyModeDeclinedThisGroup = true end
-            partyPrompt:Hide()
-        end)
-        frame.later:SetPoint("RIGHT", -94, 0)
-        frame.never = button(frame, "Never ask", 82, function()
-            partyPrompt:Hide(); ns.SetOption("partyMode", "never")
-        end)
-        frame.never:SetPoint("RIGHT", -6, 0)
+        local frame = ns.SuggestionChipFacade("partyMode")
+        frame.label = {text = ""}
+        frame.yes, frame.later, frame.never = {caption = {text = "Yes"}}, {caption = {text = "Not now"}}, {caption = {text = "Never ask"}}
         partyPrompt = frame
         ns.partyPrompt = frame
     end
     partyPrompt.signature = signature
-    partyPrompt.label:SetText("You're grouped — switch to party mode?")
-    partyPrompt:Show()
+    partyPrompt.label.text = "You're grouped — switch to party mode?"
+    partyPrompt.yes.OnClick = function()
+        if not ns.HasSuggestionChipKind("partyMode") then return end
+        ns.partyModeTemporary = true; ns.partyModeDeclinedThisGroup = nil; ns.HideSuggestionChip(true)
+        if ns.ApplyPartyMode then ns.ApplyPartyMode() end
+        if ns.SyncNow then ns.SyncNow(true) end
+    end
+    partyPrompt.later.OnClick = function()
+        if partyPrompt.signature then declinedPartySignature = partyPrompt.signature; ns.partyModeDeclinedThisGroup = true end
+        ns.HideSuggestionChip(true)
+    end
+    partyPrompt.never.OnClick = function() ns.HideSuggestionChip(true); ns.SetOption("partyMode", "never") end
+    ns.ShowSuggestionChip("partyMode", signature, partyPrompt.label.text, {
+        {label = "Yes", callback = function()
+            ns.partyModeTemporary = true; ns.partyModeDeclinedThisGroup = nil
+            if ns.ApplyPartyMode then ns.ApplyPartyMode() end
+            if ns.SyncNow then ns.SyncNow(true) end
+        end},
+        {label = "Not now", callback = function()
+            declinedPartySignature = signature; ns.partyModeDeclinedThisGroup = true
+        end},
+    })
 end
 
 function ns.UIDivider(parent, y)

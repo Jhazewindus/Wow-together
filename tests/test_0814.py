@@ -54,7 +54,7 @@ class GuideBackgroundTests(unittest.TestCase):
         c.ns.char.guideSkips.quests[900] = True
         click(nav.background)
         self.assertFalse(c.ns.Option('guideOpaque'))
-        for panel in (nav, nav.tip, nav.work):
+        for panel in (nav, nav.work):
             self.assertEqual(panel.fill[4], .18)
             self.assertIsNone(panel.frameAlpha)
         self.assertEqual(nav.background.fill[4], .98)  # Controls stay readable.
@@ -65,7 +65,7 @@ class GuideBackgroundTests(unittest.TestCase):
         self.assertEqual(order(g), before)
         click(nav.background)
         self.assertTrue(c.ns.Option('guideOpaque'))
-        for panel in (nav, nav.tip, nav.work): self.assertEqual(panel.fill[4], 1)
+        for panel in (nav, nav.work): self.assertEqual(panel.fill[4], 1)
 
     def test_settings_and_button_share_one_persistent_choice(self):
         c = ui_client(); c.ns.ToggleSettings(); nav = c.ns.navigation

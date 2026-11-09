@@ -16,7 +16,7 @@ class GuideWindowTests(unittest.TestCase):
         self.assertEqual(frame.status.width, 444)
         self.assertEqual(frame.status.height, 18)  # The structured instruction stays a single line at every saved frame size.
         self.assertEqual(frame.context.height, 14)
-        self.assertEqual(frame.tip.width, 540)
+        self.assertIsNone(frame.tip.width)  # Tips are rendered by the separate shared chip strip.
         self.assertEqual(frame.questItem.width, 540)
         self.assertEqual(frame.work.width, 540)
         self.assertEqual(frame.work.scroll.width, 524)

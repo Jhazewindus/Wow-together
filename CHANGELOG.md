@@ -5,6 +5,9 @@
 - Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
   wrappers with `ns.hooks` registry points, preserve the public module API and
   Gold API version, and remove travel-summary string substitutions.
+- CODEX_APP_REDESIGN step 1: replace collection, dungeon-entry, party-route,
+  pause and nearby-tip pop-ups with one non-modal HUD chip; expire after 30
+  seconds and remember dismissed triggers.
 
 ## 0.8.107
 

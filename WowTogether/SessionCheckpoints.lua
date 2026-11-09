@@ -185,61 +185,16 @@ end
 
 function ns.UpdateSessionUI()
     ns.UpdateSessionResumeBar()
-    local frame = ns.sessionWindow
-    if not frame or not frame:IsShown() then return end
-    local saved, summary = ns.PausedSessionCheckpoint(), ns.GuideSessionSummary()
-    frame.guide:SetText(ns.routeSelection and ns.routeSelection.title or saved and saved.guide.title or summary and summary.title or "No guide selected")
-    frame.stats:SetText(ns.GuideSessionSummaryText())
-    local levels = summary and summary.startLevel and summary.endLevel
-    frame.levels:SetText(levels and ("Level " .. summary.startLevel .. (summary.endLevel ~= summary.startLevel and " → " .. summary.endLevel or "")) or "")
-    local entry = saved or ns.char.guideState
-    local checkpoint = type(entry) == "table" and type(entry.checkpoint) == "table" and entry.checkpoint or nil
-    local nextStep = checkpoint and ns.SafeTitle(checkpoint.next)
-    frame.next:SetText(nextStep and ("Next: " .. nextStep) or checkpoint and checkpoint.complete and "Guide complete." or "")
-    frame.action.caption:SetText(saved and "Resume guide" or "Save & pause")
-    frame.action:SetEnabled(saved ~= nil or ns.routeSelection ~= nil and not ns.routePlanning and not ns.guideScanning)
 end
 
 function ns.ShowSessionCheckpoint()
-    if not ns.sessionWindow then
-        local frame = CreateFrame("Frame", "WowTogetherSessionCheckpoint", UIParent, "BackdropTemplate")
-        ns.sessionWindow = frame
-        frame:SetSize(480, 226); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG"); ns.UIPanel(frame)
-        frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
-        frame:SetScript("OnDragStart", frame.StartMoving)
-        frame.title = ns.UILabel(frame, "GameFontNormalLarge", 17, ns.UIColors.gold)
-        frame.title:SetPoint("TOPLEFT", 18, -16); frame.title:SetText("Session checkpoint")
-        frame.close = ns.UIClose(frame)
-        frame.guide = ns.UILabel(frame, "GameFontNormal", 13)
-        frame.guide:SetPoint("TOPLEFT", 18, -48); frame.guide:SetHeight(20); frame.guide:SetWordWrap(false)
-        frame.stats = ns.UILabel(frame, nil, 12)
-        frame.stats:SetPoint("TOPLEFT", 18, -80); frame.stats:SetHeight(32); frame.stats:SetWordWrap(true)
-        frame.levels = ns.UILabel(frame, nil, 11, ns.UIColors.gold)
-        frame.levels:SetPoint("TOPLEFT", 18, -118); frame.levels:SetHeight(16)
-        frame.next = ns.UILabel(frame, nil, 11, ns.UIColors.muted)
-        frame.next:SetPoint("TOPLEFT", 18, -143); frame.next:SetWordWrap(true); frame.next:SetJustifyV("TOP")
-        frame.action = ns.UIButton(frame, "Save & pause", 134, function()
-            if ns.PausedSessionCheckpoint() then
-                if ns.ResumeGuideSession() then frame:Hide() end
-            else ns.PauseGuideSession() end
-        end, true)
-        frame.action:SetPoint("BOTTOMRIGHT", -18, 16)
-        ns.EnableWindowResize(frame, {key = "sessionCheckpoint", minWidth = 400, minHeight = 226,
-            maxWidth = 700, maxHeight = 420, layout = function(self)
-                local width, height = self:GetWidth(), self:GetHeight()
-                self.title:SetWidth(width - 64)
-                for _, key in ipairs({"guide", "stats", "levels", "next"}) do self[key]:SetWidth(width - 36) end
-                self.next:SetHeight(height - 196)
-            end})
-        -- Only the visible summary repaints on a one-second clock. No recurring
-        -- timer or hidden-window scan; guide checkpoints follow existing events.
-        frame:SetScript("OnUpdate", function(self, elapsed)
-            self.elapsed = (self.elapsed or 0) + elapsed
-            if self.elapsed >= 1 then self.elapsed = 0; ns.CaptureSessionCheckpoint() end
-        end)
-        UISpecialFrames[#UISpecialFrames + 1] = "WowTogetherSessionCheckpoint"
-    end
-    ns.sessionWindow:Show(); ns.sessionWindow:Raise(); ns.CaptureSessionCheckpoint(); ns.UpdateSessionUI()
+    ns.CaptureSessionCheckpoint()
+    local saved = ns.PausedSessionCheckpoint()
+    if not saved then return false end
+    ns.ShowSuggestionChip("session", saved.guide.key,
+        "Guide paused — " .. saved.guide.title .. " · " .. ns.GuideSessionSummaryText(),
+        {{label = "Resume", callback = function() ns.ResumeGuideSession() end}, {label = "Dismiss"}})
+    return true
 end
 
 function ns.InitializeSessionCheckpoints()
