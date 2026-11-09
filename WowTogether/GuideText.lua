@@ -475,8 +475,11 @@ local function presentationTravelAction(stop, goal)
         local transport = leg.method == "ship" and "ship" or leg.method == "zeppelin" and "zeppelin" or "tram"
         return "Take the " .. transport .. " to " .. (text(leg.name) or ns.MapName(leg.to.mapID))
     end
-    if leg.to and leg.to.terrain then return "Follow the road around " .. (text(leg.to.terrain.name) or "the terrain") end
-    if leg.to and leg.to.trail then return "Follow the road towards " .. (text(leg.to.name) or ns.MapName(leg.to.mapID)) end
+    local destination = text(goal.objectiveAreaName) or text(goal.areaName) or text(goal.sourceZone)
+        or text(goal.placeName) or text(goal.targetName) or text(goal.npcName)
+        or (goal.mapID and ns.MapName(goal.mapID)) or "the quest area"
+    if leg.to and leg.to.terrain then return "Follow the road towards " .. destination end
+    if leg.to and leg.to.trail then return "Follow the road towards " .. destination end
     if leg.waypoint or leg.toID and string.find(leg.toID, "^BORDER_") then
         return "Walk to " .. (text(leg.name) or text(leg.to.name) or ns.MapName(leg.to.mapID))
     end
