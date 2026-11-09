@@ -160,6 +160,15 @@ class ModuleAPITests(unittest.TestCase):
             ns.RegisterModule("Gold", {tab={title="Gold", render=function() end}})
         ''')
         self.assertIsNotNone(self.ns.ui.viewChoice.options['module:gold'])
+        self.assertIsNotNone(self.ns.ui.hubModuleButtons['module:gold'])
+
+    def test_module_tab_registered_before_hub_creation_is_added_to_rail(self):
+        self.ns.ui = None
+        self.ns.settings = None
+        self.lua.execute('''local ns=...; ns.RegisterModule("Early", {
+            tab={title="Early tab", render=function() end}})''', self.ns)
+        self.ns.CreateUI()
+        self.assertIsNotNone(self.ns.ui.hubModuleButtons['module:early'])
 
     def test_false_module_setting_default_survives_nil_store_value(self):
         self.lua.execute('''
@@ -195,6 +204,7 @@ class ModuleAPITests(unittest.TestCase):
                 probe=function(output) output("API ready") end})
         ''', self.ns)
         self.assertIsNotNone(self.ns.ui.viewChoice.options['module:gold'])
+        self.assertIsNotNone(self.ns.ui.hubModuleButtons['module:gold'])
         self.assertIsNotNone(self.ns.settings.pages['module:gold'])
         self.assertTrue(self.ns.Option('gold.recordLoot'))
         self.ns.SetOption('gold.recordLoot', False)
@@ -241,10 +251,10 @@ class ModuleAPITests(unittest.TestCase):
                                     'reason': 'Gather herbs for your crafting goal.'}, recursive=True)
         self.ns.PushGuideStop(stop)
         self.assertEqual(self.ns.selectedRoute.stops[1].kind, 'farm')
-        self.assertEqual(self.ns.StopIcon(self.ns.selectedRoute.stops[1]), self.ns.STEP_SYMBOLS.farm)
+        self.assertEqual(self.ns.StopIcon(self.ns.selectedRoute.stops[1]), self.ns.StepIconTexture('farm'))
         self.assertEqual(self.ns.StopSymbol(self.ns.selectedRoute.stops[1]), 'G')
         presentation = self.ns.GuideStepPresentation(self.ns.selectedRoute.stops[1])
-        self.assertEqual(presentation.icon, self.ns.STEP_SYMBOLS.farm)
+        self.assertEqual(presentation.icon, self.ns.StepIconTexture('farm'))
         self.assertEqual(presentation.what, 'Farm Silverleaf')
         self.assertEqual(presentation.why, 'Gather herbs for your crafting goal')
         self.assertEqual(presentation.status, 'Optional, on the way')

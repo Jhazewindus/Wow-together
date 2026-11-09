@@ -16,6 +16,7 @@ ns.hooks = {
     routeAfterUpdate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
     stepPresentation = {}, researchExport = {}, goldPrice = {}, goldSuggestions = {},
     goldSessionCard = {}, goldFunctionPublished = {},
+    hubTabs = {}, hubTabRegistered = {},
 }
 function ns.HookResults(name, ...)
     local results = {}

@@ -118,7 +118,7 @@ class OptionalClassGuideTests(unittest.TestCase):
         c.ns.Render()
         self.assertEqual(c.ns.ui.visibleCards, 1)
         self.assertEqual(c.ns.ui.cards[1].detailsButton.caption.GetText(c.ns.ui.cards[1].detailsButton.caption),
-                         'Start class guide')
+                         'Follow')
         self.assertEqual(c.ns.ui.cards[1].guide.classLineGuide, True)
 
     def test_class_guide_unifies_known_class_quests_and_reports_next_level(self):

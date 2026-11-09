@@ -194,7 +194,8 @@ class CityTravelGuideTests(unittest.TestCase):
         card = c.ns.ui.cards[1]
         self.assertEqual(card.category.text, 'TRAVEL GUIDE')
         self.assertFalse(card.count.IsShown(card.count))
-        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
+        self.assertEqual(card.detailsButton.caption.text, 'Follow')
         card.OnClick()
         self.assertEqual(c.ns.guideQuestList.guide.key, 'travel:orgrimmar')
         self.assertIsNone(c.ns.routeSelection)

@@ -274,7 +274,7 @@ class SessionUITests(unittest.TestCase):
     def test_pause_button_and_summary_action_resume_without_replanning_order(self):
         c = playing(); before = order(c.ns.routeSelection)
         c.ns.navigation.pause.OnClick()
-        self.assertEqual(c.ns.navigation.pause.caption.text, '▶')
+        self.assertEqual(c.ns.navigation.pause.caption.text, '>')
         self.assertEqual(c.ns.CurrentSuggestionChip().actions[1].label, 'Resume')
         resume = c.ns.CurrentSuggestionChip().actions[1].callback
         c.ns.HideSuggestionChip(True); resume(); run_plan(c)

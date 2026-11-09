@@ -496,7 +496,7 @@ function ns.StopSymbol(stop)
     elseif stop.kind == "party" or stop.memberKey then key = "party"
     elseif stop.kind == "travel" or stop.kind == "f" or stop.kind == "corpse" then key = "travel" end
     if key then local glyph; glyph = ns.StepSymbolFor(key); return glyph end
-    return stop.kind == "trainer" and "T" or stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+"
+    return stop.kind == "trainer" and "T" or stop.kind == "travel" and ">" or stop.action == "collect" and "*" or "+"
 end
 
 local function hideDrawing(provider)
@@ -903,7 +903,7 @@ function ns.DrawRoute(provider, geometryOnly)
         local x, y
         if location then x, y = ns.RouteProject(surface, location) end
         if x and x >= 0 and x <= width and y >= 0 and y <= height then
-            groups[#groups + 1] = {point = waypoint, x = x, y = y, stops = {waypoint}, numbers = {"›"}}
+            groups[#groups + 1] = {point = waypoint, x = x, y = y, stops = {waypoint}, numbers = {">"}}
         end
     end
     for index, p in ipairs(displayed) do

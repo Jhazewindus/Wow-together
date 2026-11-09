@@ -28,16 +28,28 @@ function ns.NavigationTravelTime(state)
     end
 end
 
-local function nextDisplayedStop(state)
-    if not state or state.stop.historyPreview or not ns.selectedRoute or type(ns.selectedRoute.stops) ~= "table" then return nil end
+local function nextDisplayedStops(state, limit)
+    if not state or state.stop.historyPreview or not ns.selectedRoute or type(ns.selectedRoute.stops) ~= "table" then return {} end
     local stops, goal = ns.selectedRoute.stops, ns.GuideDestination(state.stop)
+    if not goal then return {} end
     for index, stop in ipairs(stops) do
         if stop == goal or stop.id == goal.id and stop.kind == goal.kind
             and (not stop.memberKey or not goal.memberKey or stop.memberKey == goal.memberKey) then
-            return stops[index + 1]
+            local result = {}
+            for nextIndex = index + 1, #stops do
+                result[#result + 1] = stops[nextIndex]
+                if #result >= (limit or 1) then break end
+            end
+            return result
         end
     end
-    return stops[2]
+    local result = {}
+    for index = 2, math.min(#stops, (limit or 1) + 1) do result[#result + 1] = stops[index] end
+    return result
+end
+
+local function nextDisplayedStop(state)
+    return nextDisplayedStops(state, 1)[1]
 end
 
 local function updateTooltip(frame, opening)
@@ -65,14 +77,50 @@ local function glanceDistance(yards)
     return string.format("%.1f km", yards / 1093.6133)
 end
 
+local glanceFallback = {
+    accept = "!", turnin = "?", turninIncomplete = "?", kill = "x", collect = "+",
+    use = "+", talk = "...", travel = ">", party = "&", farm = "$", dungeon = "D",
+    fly = ">", hearth = ">", teleport = ">", ship = ">", wait = "&",
+}
+
+local presentationSymbols = {
+    ["travel-fly"] = "fly", ["travel-hearth"] = "hearth",
+    ["travel-teleport"] = "teleport", ["travel-ship"] = "ship",
+    ["travel-walk"] = "travel", wait = "wait", farm = "farm", dungeon = "dungeon",
+}
+
+local function symbolKindForPresentation(stop, presentation)
+    return presentationSymbols[presentation and presentation.kind]
+        or ns.StepSymbolKind(stop, presentation and presentation.facts)
+end
+
+local function setGeneratedIcon(texture, name)
+    local path
+    if type(ns.StepIconTexture) == "function" then path = ns.StepIconTexture(name)
+    else
+        local icons = ns.STEP_ICON_TEXTURES
+        path = type(icons) == "table" and icons[name]
+    end
+    if type(path) ~= "string" or path == "" then return false end
+    local asset = path .. ".tga"
+    local fileID = type(GetFileIDFromPath) == "function" and ns.ReadPublic(GetFileIDFromPath, asset)
+    if type(fileID) == "number" and fileID > 0 then texture:SetTexture(fileID)
+    else texture:SetTexture(asset) end
+    return true
+end
+
 local function glanceText(presentation, state)
     local facts, stop = presentation.facts or {}, presentation.goal or presentation.stop
     local object = facts.target or facts.item or facts.npc or facts.objective and facts.objective.text
         or stop.label or stop.title or presentation.title
     if type(object) ~= "string" or object == "" then object = presentation.what or presentation.title end
-    object = string.gsub(object, "^(Kill|Collect|Talk to|Turn in|Go to) ", "")
+    for _, verb in ipairs({"Kill ", "Collect ", "Talk to ", "Turn in ", "Go to "}) do
+        if object:sub(1, #verb) == verb then object = object:sub(#verb + 1); break end
+    end
     local parts = {object}
-    if facts.progress then parts[#parts + 1] = facts.progress end
+    if facts.progress and not string.match(presentation.kind or "", "^travel%-") then
+        parts[#parts + 1] = facts.progress
+    end
     local travelKind = presentation.kind == "travel-fly" and "fly"
         or presentation.kind == "travel-hearth" and "hearth"
         or presentation.kind == "travel-walk" and "walk"
@@ -84,6 +132,31 @@ local function glanceText(presentation, state)
     if distance then parts[#parts + 1] = distance
     elseif presentation.location then parts[#parts + 1] = presentation.location end
     return table.concat(parts, " · ")
+end
+
+local function peekInstruction(stop)
+    local facts = ns.GuideStepFacts(stop)
+    local presentation = ns.GuideStepPresentation(stop, facts, ns.routeSelection, ns.selectedRoute)
+    local object = facts.target or facts.item or facts.npc or facts.objective and facts.objective.text
+        or stop.targetName or stop.itemName or stop.npcName or stop.title
+    if type(object) ~= "string" or object == "" then object = presentation and presentation.what or stop.label or "the next step" end
+    local action = facts.action or stop.action
+    local verb = stop.kind == "a" and "Accept"
+        or stop.kind == "t" and "Turn in"
+        or action == "kill" and "Kill"
+        or (action == "collect" or action == "loot" or action == "gather" or action == "item") and "Collect"
+        or action == "use" and "Use"
+        or action == "talk" and "Talk to"
+        or action == "escort" and "Escort"
+        or action == "interact" and "Interact with"
+        or (stop.kind == "travel" or stop.kind == "f") and "Go to"
+    if not verb and presentation and presentation.what and not string.find(presentation.what, "^Work on ") then
+        return presentation.what
+    end
+    verb = verb or "Go to"
+    local count = facts.progress or (facts.need and tostring(facts.need))
+        or (stop.quantity and tostring(stop.quantity))
+    return verb .. " " .. object .. (count and (" " .. count) or "")
 end
 
 -- Compatibility surface for older integrations. New renderers consume fields.
@@ -212,10 +285,11 @@ function ns.UpdateNavigation()
     frame.state = state
     local zoneExit = state.stop and state.stop.reasonCode == "zone-exit"
     if frame.zoneExit ~= zoneExit then frame.zoneExit = zoneExit; ns.LayoutNavigation() end
-    frame.next.caption:SetText(zoneExit and "Follow" or "›")
+    frame.next.caption:SetText(zoneExit and "Follow" or ">")
     frame.next:SetWidth(zoneExit and 62 or 24)
     ns.RefreshEliteSpawnMarkers()
     frame:SetShown(state.visible == true and ns.Option("routeArrow") and not ns.guideWindowHidden)
+    if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
     ns.UpdateStandaloneArrow(state)
     ns.UpdateQuestItemButton(state)
     ns.UpdateAreaObjectives(state)
@@ -227,15 +301,12 @@ function ns.UpdateNavigation()
     frame.title:SetText(presentation.title)
     local guide = ns.routeSelection
     local modeVisible = guide and (guide.mode == "zone" or guide.mode == "bundle")
-    frame.modeButton:SetShown(modeVisible == true)
-    if modeVisible then
-        local mode = ns.GuideEfficiencyMode(guide)
-        frame.modeButton.caption:SetText(mode == "complete" and "Eff" or "Full")
-        ns.UIHelp(frame.modeButton, mode == "complete" and "Switch to Efficient routing for this guide." or "Complete the zone, including lower-value quests after better work.")
-    end
+    frame.modeVisible = modeVisible == true
     frame.step:SetText(presentation.stepLine or "")
     frame.stepButton:SetShown(true)
-    frame.status:SetText(presentation.what .. (presentation.progress and (" " .. presentation.progress) or ""))
+    local progress = presentation.progress and not string.match(presentation.kind or "", "^travel%-")
+        and (" " .. presentation.progress) or ""
+    frame.status:SetText(presentation.what .. progress)
     frame.status:SetTextColor(unpack(ns.UIColors.text))
     frame.context:SetText(presentation.why or "")
     frame.distance:SetText(presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
@@ -247,28 +318,61 @@ function ns.UpdateNavigation()
     local glance = ns.Option("guideGlance") == true
     frame.glance = glance
     if glance then
-        local key = ns.StepSymbolKind(state.stop, presentation.facts)
+        local key = symbolKindForPresentation(state.stop, presentation)
         local glyph, texture = ns.StepSymbolFor(key)
+        frame.icon:ClearAllPoints(); frame.icon:SetSize(20, 20); frame.icon:SetPoint("TOPLEFT", 14, -50)
         frame.kindIcon:SetSize(20, 20); frame.kindIcon:SetTexture(texture or presentation.icon)
+        frame.kindIcon:SetVertexColor(unpack(ns.UIColors.text))
         frame.kindIcon:SetShown(texture ~= nil and not state.busy)
-        frame.symbol:SetText(glyph or "➤"); frame.symbol:SetShown(texture == nil and not state.busy)
-        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 54, -58)
-        frame.status:SetSize(frame:GetWidth() - 66, 28); frame.status:SetWordWrap(false)
+        frame.symbol:SetText(texture and "" or glanceFallback[key] or glyph or ">")
+        frame.symbol:SetTextColor(unpack(ns.UIColors.text))
+        frame.symbol:SetShown(texture == nil and not state.busy)
+        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 42, -50)
+        frame.status:SetSize(frame:GetWidth() - 56, 22); frame.status:SetWordWrap(false)
         frame.status:SetText(glanceText(presentation, state))
+        frame.status:SetTextColor(unpack(ns.UIColors.text))
         frame.status:Show()
         frame.context:Hide(); frame.distance:Hide(); frame.peek:Hide()
+        local upcoming = nextDisplayedStops(state, 2)
+        for index = 1, 2 do
+            local row, stop = frame.glanceRows[index], upcoming[index]
+            if stop then
+                local facts = ns.GuideStepFacts(stop)
+                local nextPresentation = ns.GuideStepPresentation(stop, facts, ns.routeSelection, ns.selectedRoute)
+                local rowKey = symbolKindForPresentation(stop, nextPresentation)
+                local rowGlyph, rowTexture = ns.StepSymbolFor(rowKey)
+                row.icon:SetTexture(rowTexture or nextPresentation.icon)
+                row.icon:SetVertexColor(unpack(ns.UIColors.muted))
+                row.icon:SetShown(rowTexture ~= nil)
+                row.symbol:SetText(rowTexture and "" or glanceFallback[rowKey] or rowGlyph or ">")
+                row.symbol:SetTextColor(unpack(ns.UIColors.muted))
+                row.symbol:SetShown(rowTexture == nil)
+                row.text:SetText(glanceText(nextPresentation, {stop = stop}))
+                row.text:SetTextColor(unpack(ns.UIColors.muted))
+                row.frame:Show()
+            else
+                row.text:SetText(""); row.frame:Hide()
+            end
+        end
     else
+        frame.icon:ClearAllPoints(); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
         frame.kindIcon:SetSize(34, 34)
+        frame.kindIcon:SetVertexColor(1, 1, 1, 1)
+        frame.symbol:SetTextColor(1, 1, 1, 1)
         frame.context:Show(); frame.distance:Show()
         frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", frame.separateArrow and 14 or 82, -52)
         frame.status:SetSize(frame:GetWidth() - (frame.separateArrow and 28 or 96), 18)
         frame.context:SetShown(presentation.why ~= nil and presentation.why ~= "")
         frame.distance:Show()
         frame.status:Show()
+        for _, row in ipairs(frame.glanceRows) do
+            row.icon:SetVertexColor(1, 1, 1, 1)
+            row.text:SetText(""); row.frame:Hide()
+        end
     end
     local nextStop = not glance and ns.Option("guidePeek") and nextDisplayedStop(state) or nil
     if nextStop then
-        local nextWhat = ns.StopInstruction(nextStop)
+        local nextWhat = peekInstruction(nextStop)
         local nextZone = nextStop.mapID and ns.MapName(nextStop.mapID)
         frame.peek:SetText("Next: " .. (nextWhat or nextStop.title or "Next step")
             .. (nextZone and (" (" .. nextZone .. ")") or ""))
@@ -282,11 +386,13 @@ function ns.UpdateNavigation()
         frame.separateArrow = separate
         ns.LayoutNavigation()
     end
-    local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
-    frame.kindIcon:SetTexture(presentation.icon)
-    frame.kindIcon:SetShown(state.angle == nil and iconOnly and not state.busy)
-    frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
-    frame.symbol:SetShown(state.busy and state.angle == nil or state.angle == nil and not iconOnly and not state.busy)
+    if not glance then
+        local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
+        frame.kindIcon:SetTexture(presentation.icon)
+        frame.kindIcon:SetShown(state.angle == nil and iconOnly and not state.busy)
+        frame.symbol:SetText("..."); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
+        frame.symbol:SetShown(state.busy and state.angle == nil or state.angle == nil and not iconOnly and not state.busy)
+    end
     local training = ns.IsClassTrainingStep(state.stop)
     local service = ns.IsInventoryServiceStep(state.stop)
     frame.skipStep.caption:SetText(service and "Skip visit" or training and "Skip training" or "Skip step")
@@ -348,12 +454,12 @@ function ns.UpdateNavigation()
     else ns.UIHelp(frame.next, "Preview the next guide step.") end
     local paused = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
     frame.stop:SetEnabled(not state.idle or paused ~= nil)
-    frame.pause.caption:SetText(paused and "▶" or "⏸")
+    frame.pause.caption:SetText(frame.pause.hasIcon and "" or (paused and ">" or "II"))
     frame.pause:SetEnabled(paused ~= nil or not state.idle and not state.busy)
     ns.UIHelp(frame.pause, paused and "Resume your saved guide using current progress." or "Save your guide, pause it and see your session summary.")
     ns.UIHelp(frame.close, paused and "Close this window. Your paused guide stays saved." or "Exit guide. Stop and close this window.")
     if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
-    if not separate then
+    if not separate and not glance then
         if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
         elseif state.arrived then frame.symbol:Hide()
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
@@ -366,19 +472,43 @@ function ns.SaveNavigationPosition()
     local point, _, relative, x, y = frame:GetPoint()
     if ns.Public(point) and ns.Public(relative) and type(point) == "string" and type(relative) == "string"
         and finite(x) and finite(y) then ns.db.arrowPosition = {point = point, relative = relative, x = x, y = y} end
+    if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
 end
 
-function ns.LayoutNavigation()
+function ns.LayoutNavigation(layoutFrame)
     local frame = ns.navigation
     if not frame or not frame.layoutReady then return end
     local width = frame:GetWidth()
     if not finite(width) then return end
+    local glance = ns.Option("guideGlance") == true
+    local chipHeight = ns.SuggestionChipStripHeight and ns.SuggestionChipStripHeight() or 0
+    if layoutFrame == frame and not glance then
+        frame.normalHeight = math.max(168, math.min(480, (frame:GetHeight() or 168) - chipHeight))
+    end
+    local baseHeight = glance and 150 or (frame.normalHeight or 168)
+    local wantedHeight = baseHeight + chipHeight
+    if math.abs((frame:GetHeight() or 0) - wantedHeight) > 0.5 then frame:SetHeight(wantedHeight) end
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
     frame.title:SetWidth(width - 108); frame.step:SetWidth(width - 28)
     frame.stepButton:SetWidth(width - 28)
-    frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
-    frame.status:SetSize(width - left - 14, 18); frame.status:SetWordWrap(false)
+    if glance then
+        frame.icon:ClearAllPoints(); frame.icon:SetSize(20, 20); frame.icon:SetPoint("TOPLEFT", 14, -50)
+        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 42, -50)
+        frame.status:SetSize(width - 56, 22); frame.status:SetWordWrap(false)
+        for index, row in ipairs(frame.glanceRows) do
+            row.frame:ClearAllPoints(); row.frame:SetPoint("TOPLEFT", 14, -50 - index * 22)
+            row.frame:SetSize(width - 28, 22)
+            row.icon:ClearAllPoints(); row.icon:SetSize(20, 20); row.icon:SetPoint("LEFT", 0, 0)
+            row.symbol:ClearAllPoints(); row.symbol:SetPoint("CENTER", row.icon)
+            row.text:ClearAllPoints(); row.text:SetPoint("LEFT", 28, 0)
+            row.text:SetSize(width - 56, 22); row.text:SetWordWrap(false)
+        end
+    else
+        frame.icon:ClearAllPoints(); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
+        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
+        frame.status:SetSize(width - left - 14, 18); frame.status:SetWordWrap(false)
+    end
     frame.context:ClearAllPoints(); frame.context:SetPoint("TOPLEFT", left, -71)
     frame.context:SetSize(width - left - 14, 14); frame.context:SetWordWrap(false)
     frame.distance:ClearAllPoints(); frame.distance:SetPoint("TOPLEFT", left, -87)
@@ -386,18 +516,21 @@ function ns.LayoutNavigation()
     frame.peek:ClearAllPoints(); frame.peek:SetPoint("TOPLEFT", left, -103)
     frame.peek:SetWidth(width - left - 14); frame.peek:SetWordWrap(false)
     local training = frame.trainingLayout
+    local buttonBottom = chipHeight + 8
     frame.skipStep:SetWidth(training and 84 or 80)
-    frame.skipStep:ClearAllPoints(); frame.skipStep:SetPoint("BOTTOMLEFT", offset + (training and 36 or 42), 8)
+    frame.skipStep:ClearAllPoints(); frame.skipStep:SetPoint("BOTTOMLEFT", offset + (training and 36 or 42), buttonBottom)
     frame.skipQuest:SetWidth(training and 88 or 80)
-    frame.skipQuest:ClearAllPoints(); frame.skipQuest:SetPoint("BOTTOMLEFT", offset + (training and 124 or 128), 8)
-    frame.continue:ClearAllPoints(); frame.continue:SetPoint("BOTTOMLEFT", offset + 42, 8)
-    frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, 8)
+    frame.skipQuest:ClearAllPoints(); frame.skipQuest:SetPoint("BOTTOMLEFT", offset + (training and 124 or 128), buttonBottom)
+    frame.continue:ClearAllPoints(); frame.continue:SetPoint("BOTTOMLEFT", offset + 42, buttonBottom)
+    frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, buttonBottom)
     frame.next:ClearAllPoints()
-    if frame.zoneExit then frame.next:SetPoint("BOTTOMRIGHT", -12, 8)
-    else frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8) end
+    if frame.zoneExit then frame.next:SetPoint("BOTTOMRIGHT", -12, buttonBottom)
+    else frame.next:SetPoint("BOTTOMLEFT", offset + 316, buttonBottom) end
+    frame.scan:ClearAllPoints(); frame.scan:SetPoint("BOTTOMRIGHT", -38, buttonBottom)
     frame.tip.point = {"TOPLEFT", frame.work}
     frame.questItem:SetWidth(width); frame.questItem.caption:SetWidth(width - 50)
     ns.LayoutAreaObjectives(width)
+    if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
 end
 
 function ns.SaveNavigationSize()
@@ -405,7 +538,10 @@ function ns.SaveNavigationSize()
     frame:StopMovingOrSizing()
     local width, height = frame:GetWidth(), frame:GetHeight()
     if finite(width) and finite(height) then
-        ns.db.arrowSize = {width = math.max(360, math.min(720, width)), height = math.max(168, math.min(480, height))}
+        local chipHeight = ns.SuggestionChipStripHeight and ns.SuggestionChipStripHeight() or 0
+        local baseHeight = height - chipHeight
+        if ns.Option("guideGlance") ~= true then frame.normalHeight = math.max(168, math.min(480, baseHeight)) end
+        ns.db.arrowSize = {width = math.max(360, math.min(720, width)), height = frame.normalHeight or 168}
     end
     ns.SaveNavigationPosition()
 end
@@ -437,40 +573,90 @@ function ns.CreateNavigation()
     frame.title = ns.UILabel(frame, "GameFontNormal", 13, ns.UIColors.gold)
     frame.title:SetPoint("TOPLEFT", 14, -10)
     frame.title:SetSize(158, 18); frame.title:SetWordWrap(false)
-    frame.modeButton = ns.UIButton(frame, "Full", 48, function()
-        local guide = ns.routeSelection
-        if guide then ns.SetGuideEfficiencyMode(guide, ns.GuideEfficiencyMode(guide) == "efficient" and "complete" or "efficient") end
-    end)
-    frame.modeButton:SetHeight(18); frame.modeButton:SetPoint("BOTTOMRIGHT", -88, 8)
-    frame.modeButton.caption:ClearAllPoints(); frame.modeButton.caption:SetPoint("CENTER")
-    frame.modeButton.caption:SetSize(44, 14); frame.modeButton.caption:SetFont("Fonts\\ARIALN.TTF", 8, "")
-    ns.UIHelp(frame.modeButton, "Choose Efficient or Complete zone routing.")
-    frame.pause = ns.UIButton(frame, "⏸", 26, function()
+    frame.pause = ns.UIButton(frame, "II", 26, function()
         if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession() else ns.PauseGuideSession() end
     end)
     frame.pause:SetHeight(20); frame.pause:SetPoint("TOPRIGHT", -80, -8)
     frame.pause.caption:ClearAllPoints(); frame.pause.caption:SetPoint("CENTER")
-    frame.pause.caption:SetSize(24, 18); frame.pause.caption:SetFont("Fonts\\ARIALN.TTF", 14, "")
+    frame.pause.caption:SetSize(24, 18); frame.pause.caption:SetFont("Fonts\\ARIALN.TTF", 10, "")
+    frame.pause.icon = frame.pause:CreateTexture(nil, "ARTWORK")
+    frame.pause.icon:SetSize(16, 16); frame.pause.icon:SetPoint("CENTER")
+    frame.pause.hasIcon = setGeneratedIcon(frame.pause.icon, "pause")
+    if not frame.pause.hasIcon then
+        local pausePath = "Interface\\TimeManager\\PauseButton"
+        local pauseID = type(GetFileIDFromPath) == "function" and ns.ReadPublic(GetFileIDFromPath, pausePath)
+        if type(pauseID) == "number" and pauseID > 0 then
+            frame.pause.icon:SetTexture(pauseID); frame.pause.hasIcon = true
+        else frame.pause.icon:Hide() end
+    end
+    if frame.pause.hasIcon then
+        frame.pause.icon:SetVertexColor(unpack(ns.UIColors.gold)); frame.pause.caption:SetText("")
+    else frame.pause.caption:SetText("II") end
     ns.UIHelp(frame.pause, "Pause or resume your guide.")
-    frame.menu = ns.UIButton(frame, "☰", 26, function()
+    frame.menu = ns.UIButton(frame, "", 26, function()
         if ns.window and not ns.window:IsShown() then ns.ToggleWindow(); ns.SetFilter("recommended")
         elseif ns.window then ns.window:Hide() end
     end)
     frame.menu:SetHeight(20); frame.menu:SetPoint("TOPRIGHT", -48, -8)
     frame.menu.caption:ClearAllPoints(); frame.menu.caption:SetPoint("CENTER")
-    frame.menu.caption:SetSize(24, 18); frame.menu.caption:SetFont("Fonts\\ARIALN.TTF", 14, "")
+    frame.menu.caption:SetSize(24, 18); frame.menu.caption:SetFont("Fonts\\ARIALN.TTF", 10, "")
+    frame.menu.bars = {}
+    for index = 1, 3 do
+        local bar = frame.menu:CreateTexture(nil, "ARTWORK")
+        bar:SetColorTexture(unpack(ns.UIColors.gold))
+        bar:SetSize(12, 2); bar:SetPoint("CENTER", 0, (index - 2) * 4)
+        frame.menu.bars[index] = bar
+    end
+    frame.menu.icon = frame.menu:CreateTexture(nil, "ARTWORK")
+    frame.menu.icon:SetSize(16, 16); frame.menu.icon:SetPoint("CENTER")
+    frame.menu.hasIcon = setGeneratedIcon(frame.menu.icon, "menu")
+    if frame.menu.hasIcon then
+        frame.menu.icon:SetVertexColor(unpack(ns.UIColors.gold))
+        for _, bar in ipairs(frame.menu.bars) do bar:Hide() end
+    else frame.menu.icon:Hide() end
     ns.UIHelp(frame.menu, "Open the guide hub.")
-    frame.close = ns.UIClose(frame, function() ns.guideWindowHidden = true; frame:Hide() end)
+    frame.close = ns.UIClose(frame, function()
+        ns.guideWindowHidden = true; frame:Hide()
+        if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
+    end)
     frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -12, -9)
     frame.close.caption:ClearAllPoints(); frame.close.caption:SetPoint("CENTER"); frame.close.caption:SetSize(16, 14)
+    frame.close.caption:SetText("x")
+    frame.close.icon = frame.close:CreateTexture(nil, "ARTWORK")
+    frame.close.icon:SetSize(14, 14); frame.close.icon:SetPoint("CENTER")
+    frame.close.hasIcon = setGeneratedIcon(frame.close.icon, "close")
+    if frame.close.hasIcon then
+        frame.close.icon:SetVertexColor(unpack(ns.UIColors.gold)); frame.close.caption:SetText("")
+    else frame.close.icon:Hide() end
     ns.UIHelp(frame.close, "Hide the guide window.")
     frame.step = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.step:SetPoint("TOPLEFT", 14, -30); frame.step:SetSize(332, 14)
     frame.stepButton = CreateFrame("Button", nil, frame)
     frame.stepButton:SetSize(332, 14); frame.stepButton:SetPoint("TOPLEFT", 14, -30)
-    frame.stepButton:SetScript("OnClick", function()
-        ns.SetOption("guideGlance", not ns.Option("guideGlance")); ns.UpdateNavigation()
+    frame.stepButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+    frame.stepButton:SetScript("OnMouseUp", function(_, button)
+        if button == "RightButton" then
+            if ns.routeSelection and (ns.routeSelection.mode == "zone" or ns.routeSelection.mode == "bundle") then
+                frame.modeMenu:Show()
+            end
+        else
+            ns.SetOption("guideGlance", not ns.Option("guideGlance")); ns.UpdateNavigation(); ns.LayoutNavigation()
+        end
     end)
-    ns.UIHelp(frame.stepButton, "Click to switch between full and Glance step text.")
+    ns.UIHelp(frame.stepButton, "Click to switch between full and Glance step text. Right-click to choose zone routing mode.")
+    frame.modeMenu = CreateFrame("Frame", nil, frame, "BackdropTemplate")
+    frame.modeMenu:SetSize(156, 62); frame.modeMenu:SetFrameStrata("DIALOG"); ns.UIPanel(frame.modeMenu)
+    frame.modeMenu:SetPoint("TOPLEFT", frame.stepButton, "BOTTOMLEFT", 0, -2)
+    frame.modeMenu.efficient = ns.UIButton(frame.modeMenu, "Efficient", 140, function()
+        if ns.routeSelection then ns.SetGuideEfficiencyMode(ns.routeSelection, "efficient") end
+        frame.modeMenu:Hide(); ns.UpdateNavigation()
+    end)
+    frame.modeMenu.efficient:SetPoint("TOPLEFT", 8, -4); frame.modeMenu.efficient:SetHeight(24)
+    frame.modeMenu.complete = ns.UIButton(frame.modeMenu, "Complete", 140, function()
+        if ns.routeSelection then ns.SetGuideEfficiencyMode(ns.routeSelection, "complete") end
+        frame.modeMenu:Hide(); ns.UpdateNavigation()
+    end)
+    frame.modeMenu.complete:SetPoint("TOPLEFT", 8, -32); frame.modeMenu.complete:SetHeight(24)
+    frame.modeMenu:Hide()
     ns.UIDivider(frame, -48)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
     frame.icon.lines = {}
@@ -487,6 +673,17 @@ function ns.CreateNavigation()
     frame.context:SetSize(264, 14); frame.context:SetWordWrap(false); frame.context:SetJustifyV("TOP")
     frame.peek = ns.UILabel(frame, nil, 10, ns.UIColors.muted)
     frame.peek:SetPoint("TOPLEFT", 82, -103); frame.peek:SetSize(264, 14); frame.peek:SetWordWrap(false)
+    frame.glanceRows = {}
+    for index = 1, 2 do
+        local row = {frame = CreateFrame("Frame", nil, frame)}
+        row.icon = row.frame:CreateTexture(nil, "ARTWORK"); row.icon:SetSize(20, 20); row.icon:SetPoint("LEFT", 0, 0)
+        row.symbol = row.frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+        row.symbol:SetFont("Fonts\\FRIZQT__.TTF", 18, "OUTLINE"); row.symbol:SetPoint("CENTER", row.icon)
+        row.text = ns.UILabel(row.frame, nil, 11, ns.UIColors.muted)
+        row.text:SetPoint("LEFT", 28, 0); row.text:SetSize(304, 22); row.text:SetWordWrap(false)
+        row.frame:SetSize(332, 22); row.frame:SetPoint("TOPLEFT", 14, -50 - index * 22)
+        row.frame:Hide(); frame.glanceRows[index] = row
+    end
     frame.skipStep = ns.UIButton(frame, "Skip step", 80, function() ns.SkipGuide("step") end)
     frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 42, 8)
     frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function()
@@ -500,14 +697,16 @@ function ns.CreateNavigation()
     frame.scan = ns.UIButton(frame, "", 22, function() ns.ScanGuideProgress() end)
     frame.scan:SetHeight(18); frame.scan:SetPoint("BOTTOMRIGHT", -38, 8)
     frame.scan.icon = frame.scan:CreateTexture(nil, "ARTWORK"); frame.scan.icon:SetSize(14, 14); frame.scan.icon:SetPoint("CENTER")
-    frame.scan.icon:SetTexture("Interface\\Buttons\\UI-RefreshButton")
+    frame.scan.hasIcon = setGeneratedIcon(frame.scan.icon, "scan")
+    if frame.scan.hasIcon then frame.scan.icon:SetVertexColor(unpack(ns.UIColors.gold))
+    else frame.scan.icon:SetTexture("Interface\\Buttons\\UI-RefreshButton") end
     ns.UIHelp(frame.scan, "Re-scan quest log and rebuild the route")
     frame.continue = ns.UIButton(frame, "Continue anyway", 166, ns.ContinueGuideAnyway, true)
     frame.continue:SetHeight(24); frame.continue:SetPoint("BOTTOMLEFT", 42, 8); frame.continue:Hide()
     ns.UIHelp(frame.continue, "Include quests outside the recommended level range for this guide. Pickup requirements and manual skips still apply; elite quests may need a party. Saved across reloads; Stop guide restores the normal range.")
-    frame.back = ns.UIButton(frame, "‹", 24, function() ns.PreviewGuideStep(-1) end)
+    frame.back = ns.UIButton(frame, "<", 24, function() ns.PreviewGuideStep(-1) end)
     frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 12, 8)
-    frame.next = ns.UIButton(frame, "›", 24, function()
+    frame.next = ns.UIButton(frame, ">", 24, function()
         local stop = frame.state and frame.state.stop
         if stop and stop.reasonCode == "zone-exit" and stop.nextGuide then ns.RequestStartRoute(stop.nextGuide)
         else ns.PreviewGuideStep(1) end
@@ -536,13 +735,14 @@ function ns.CreateNavigation()
     if type(size) == "table" and finite(size.width) and finite(size.height) then
         frame:SetSize(math.max(360, math.min(720, size.width)), math.max(168, math.min(480, size.height)))
     end
+    frame.normalHeight = frame:GetHeight()
     frame.layoutReady = true
     ns.LayoutNavigation()
     ns.UpdateNavigationBackground()
     frame.titleToggle = CreateFrame("Button", nil, frame)
     frame.titleToggle:SetSize(158, 22); frame.titleToggle:SetPoint("TOPLEFT", 10, -6)
     frame.titleToggle:SetScript("OnMouseUp", function(_, button)
-        if button == "RightButton" then ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end
+        if button == "RightButton" then ns.SetOption("guideOpaque", not ns.Option("guideOpaque")); ns.UpdateNavigationBackground() end
     end)
     ns.UIHelp(frame.titleToggle, "Right-click the title bar to toggle a solid background.")
     frame:SetScript("OnEnter", function(self)
@@ -578,6 +778,7 @@ function ns.OpenGuideWindow()
     if not ns.navigation then ns.CreateNavigation() end
     if not ns.Option("routeArrow") then ns.SetOption("routeArrow", true) end
     ns.UpdateNavigation()
+    if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
     ns.navigation:Raise()
     if ns.window then ns.window:Hide() end
 end

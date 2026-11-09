@@ -1,5 +1,7 @@
 """Load-on-demand data packs, exercised through the host addon bootstrap."""
+import json
 import unittest
+from pathlib import Path
 
 from test_addon import Client
 
@@ -15,14 +17,22 @@ class OptionalDataTests(unittest.TestCase):
     def test_startup_and_catalogue_summary_do_not_parse_quest_payload(self):
         client = Client(quests=(), use_lazy_data=True, default_guide=True)
         self.assertEqual(client.data_addons_loaded, set())
-        self.assertEqual(client.ns.catalogue.count, 5230)
-        self.assertEqual(client.ns.catalogue.captured, "2026-10-10")
+        self.assertEqual(client.ns.catalogue.count, 5337)
+        self.assertEqual(client.ns.catalogue.captured, "2026-11-08")
         self.assertEqual(len(client.ns.xpBaseline), 60)
         self.assertEqual(client.data_addons_loaded, set())
 
         quest = client.ns.CatalogueQuest(789)
         self.assertEqual(quest.title, "Sting of the Scorpid")
         self.assertEqual(client.data_addons_loaded, {"WowTogether_QuestData"})
+
+    def test_startup_fallback_metadata_matches_catalogue_source(self):
+        root = Path(__file__).resolve().parents[1]
+        metadata = json.loads((root / "WowTogether/QuestCatalogue.json").read_text(encoding="utf-8"))
+        client = Client(quests=(), use_lazy_data=True, default_guide=True)
+        self.assertEqual(client.ns.catalogue.count, metadata["count"])
+        self.assertEqual(client.ns.catalogue.captured, metadata["captured"])
+        self.assertEqual(client.data_addons_loaded, set())
 
     def test_native_active_quest_waypoint_does_not_load_catalogue(self):
         client = Client(use_lazy_data=True, default_guide=True, before_load=NATIVE_WAYPOINTS)
