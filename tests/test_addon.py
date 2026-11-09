@@ -125,7 +125,7 @@ C_QuestLog = {
 '''
 
 class Client:
-    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, saved_character=None, before_load=None):
+    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, saved_character=None, before_load=None, party_mode='always'):
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         g = self.lua.globals()
@@ -183,8 +183,12 @@ class Client:
         if not use_catalogue and not use_lazy_data:
             self.ns.catalogue = self.lua.table_from({'count': 0, 'quests': self.lua.table()})
             self.ns.dungeonData = None  # Synthetic quest fixtures have their own dungeon definitions.
-        if saved_variables is not None:
-            g.WowTogetherDB = self.lua.table_from(saved_variables, recursive=True)
+        saved_variables = dict(saved_variables or {})
+        config = dict(saved_variables.get('config') or {})
+        if 'partyMode' not in config and 'soloMode' not in config:
+            config['partyMode'] = party_mode
+        saved_variables['config'] = config
+        g.WowTogetherDB = self.lua.table_from(saved_variables, recursive=True)
         if saved_character is not None:
             g.WowTogetherCharDB = self.lua.table_from(saved_character, recursive=True)
         self.ns.handlers.ADDON_LOADED('WowTogether')
@@ -541,6 +545,13 @@ class AddonTests(unittest.TestCase):
         self.assertLessEqual(len(title.encode('utf-8')), 255)
         self.assertIn('é', title)
 
+    def test_catalogue_quests_do_not_send_redundant_titles(self):
+        c = Client(quests=(50,))
+        c.ns.catalogue.quests[50] = c.lua.table_from({'id': 50, 'title': 'Shared catalogue title'})
+        c.ns.SyncNow()
+        messages = [message for _, message, _ in c.drain()]
+        self.assertFalse(any(message.startswith('1|T|') for message in messages))
+
     def test_three_player_shared_quest_count(self):
         c = Client(quests=(2,))
         c.unit_names({'player': ('Barry', 'Batsman'), 'party1': ('Shamoone', 'Heehee'),
@@ -592,17 +603,29 @@ class AddonTests(unittest.TestCase):
         self.assertIn(4, delays)
         self.assertEqual(c.ns.TransportState().queued, 0)
 
-    def test_permanent_throttle_stops_bounded_transfer_and_can_retry(self):
+    def test_permanent_throttle_keeps_queued_transfer_for_later_retry(self):
         c = Client()
-        c.lua.globals().sendResults = c.lua.table_from([8] * 6)
+        c.lua.globals().sendResults = c.lua.table_from([8] * 10)
         c.ns.SyncNow()
-        messages = c.drain()
-        self.assertEqual(len(messages), 6)
-        self.assertEqual(c.ns.syncStats.failures, 1)
-        self.assertEqual(c.ns.TransportState().queued, 0)
-        self.assertIn('Delivery failed', c.ns.status)
+        for _ in range(6):
+            timers = c.lua.globals().timers
+            callback = timers[1]
+            c.lua.eval('table.remove')(timers, 1)
+            callback()
+        self.assertEqual(c.ns.syncStats.failures, 0)
+        self.assertGreaterEqual(c.ns.syncStats.retries, 5)
+        self.assertGreater(c.ns.TransportState().queued, 0)
+        self.assertIn('Delivery slowed', c.ns.ui.status.text)
+
+    def test_priority_queue_sends_control_and_log_before_background_history(self):
+        c = Client()
         c.ns.SyncNow()
-        self.assertTrue(any(message.startswith('1|S|') for _, message, _ in c.drain()))
+        messages = [message for _, message, _ in c.drain()]
+        self.assertEqual(messages[0], '1|H')
+        self.assertTrue(messages[1].startswith('2|H|'))
+        log_index = next(i for i, message in enumerate(messages) if message.startswith('1|S|'))
+        history_index = next(i for i, message in enumerate(messages) if message.startswith('1|C|'))
+        self.assertLess(log_index, history_index)
 
     def test_send_failure_discards_dependent_titles(self):
         c = Client()

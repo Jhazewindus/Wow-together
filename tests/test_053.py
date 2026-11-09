@@ -185,6 +185,16 @@ class EligibilityTests(unittest.TestCase):
 
 
 class PartyRouteTests(unittest.TestCase):
+    def test_selecting_a_guide_in_a_party_sends_its_invitation_automatically(self):
+        c = party_client()
+        c.unit_names({'player': ('Alice', 'TestRealm'), 'party1': ('Bob', 'TestRealm')})
+        c.lua.execute('function IsInGroup() return true end; function IsInRaid() return false end')
+        c.ns.UpdateRoster()
+        selected = guide(c, (900,), key='series:900')
+        self.assertTrue(c.ns.ShowGuideOnMap(selected))
+        packets = [message for _, message, _ in c.drain() if message.startswith('1|V|')]
+        self.assertEqual(len(packets), 1)
+
     def test_two_clients_exchange_real_start_packets_and_follow_without_echoing_invites(self):
         a, b = party_client(), party_client('Bob', 'Alice')
         a.ns.SyncNow(True); b.ns.SyncNow(True)
@@ -200,13 +210,11 @@ class PartyRouteTests(unittest.TestCase):
         self.assertEqual(b.ns.selectedRoute.stops[1].id, 900)
         self.assertFalse(any(p.startswith('1|V|') for _, p, _ in b.drain()))
 
-    def test_show_route_is_local_and_start_route_sends_selected_future_steps(self):
+    def test_show_route_starts_party_route_and_sends_selected_future_steps(self):
         c = party_client()
         catalogue(c, {900: quest(), 901: quest('Later step', previousQuest=900)})
         selected = guide(c, (900, 901), key='series:900')
-        c.ns.ShowGuideOnMap(selected)
-        self.assertFalse(any('|V|' in m for _, m, _ in c.drain()))
-        self.assertTrue(c.ns.StartPartyRoute(selected))
+        self.assertTrue(c.ns.ShowGuideOnMap(selected))
         packets = [m for _, m, _ in c.drain() if m.startswith('1|V|')]
         self.assertEqual(len(packets), 1)
         self.assertEqual(packets[0].split('|')[-1], '900,901')
@@ -229,7 +237,7 @@ class PartyRouteTests(unittest.TestCase):
         stops = list(c.ns.selectedRoute.stops.values())
         self.assertEqual(stops[0].kind, 't')
         self.assertTrue(any(s.kind == 'q' and s.forPlayer == c.ns.MemberLabel('Alice-TestRealm') for s in stops))
-        self.assertFalse(any(m.startswith('1|V|') for _, m, _ in c.drain()))
+        self.assertTrue(any(m.startswith('1|V|') for _, m, _ in c.drain()))
 
     def test_multipart_out_of_order_is_atomic_and_duplicates_do_not_change_route(self):
         c = party_client()

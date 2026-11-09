@@ -319,13 +319,13 @@ class OptionalClassGuideTests(unittest.TestCase):
         c.lua.globals().finished[902] = True; c.ns.Refresh()
         self.assertIn(901, ids(c.ns.selectedRoute.stops))
 
-    def test_disabled_class_followup_cannot_justify_low_level_farming(self):
+    def test_class_followup_still_requires_an_efficient_chain(self):
         c = class_client(); c.ns.catalogue.quests[900].level = 1
         c.ns.catalogue.quests[902].previousQuest = 900
         self.assertFalse(c.ns.LevelingValue(900)[0])
         c.ns.SetOption('classQuests', True)
         value, reason = c.ns.LevelingValue(900)
-        self.assertTrue(value); self.assertIn('Shaman task', reason)
+        self.assertFalse(value); self.assertIn('Chain worth', reason)
 
     def test_npc_autoaccept_respects_checkbox_even_for_personal_guide(self):
         c = class_client(); g = zone(c); c.ns.ActivateRoute(g)

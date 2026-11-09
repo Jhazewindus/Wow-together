@@ -4,6 +4,76 @@ local function number(value, maximum)
     return ns.Public(value) and type(value) == "number" and value >= 0 and value <= maximum and value == math.floor(value)
 end
 
+local function median(values)
+    table.sort(values)
+    local count = #values
+    if count == 0 then return nil end
+    if count % 2 == 1 then return values[(count + 1) / 2] end
+    return (values[count / 2] + values[count / 2 + 1]) / 2
+end
+
+local cachedSamples, cachedSampleCount, cachedSampleRevision, cachedObserved = nil, -1, -1, {}
+local function indexObservedSamples()
+    local samples = ns.char and ns.char.xpSamples or {}
+    if samples == cachedSamples and #samples == cachedSampleCount and (ns.xpSampleRevision or 0) == cachedSampleRevision then return end
+    cachedSamples, cachedSampleCount, cachedSampleRevision, cachedObserved = samples, #samples, ns.xpSampleRevision or 0, {}
+    for _, sample in ipairs(samples) do
+        if type(sample) == "table" and sample.difference and sample.rested ~= true and ns.Public(sample.multiplier)
+            and type(sample.multiplier) == "number" and sample.multiplier >= 0 and sample.multiplier <= 2 then
+            local values = cachedObserved[sample.difference] or {}
+            values[#values + 1] = sample.multiplier
+            cachedObserved[sample.difference] = values
+        end
+    end
+    for difference, values in pairs(cachedObserved) do
+        if #values >= 20 then cachedObserved[difference] = median(values) else cachedObserved[difference] = nil end
+    end
+end
+
+local function observedMultiplier(difference)
+    indexObservedSamples()
+    local values = cachedObserved[difference]
+    if values then return values, 20 end
+    return nil, 0
+end
+
+function ns.QuestXPMultiplier(difference)
+    difference = number(difference, 60) and difference or 0
+    if difference <= ns.ROUTE_WEIGHTS.questRewardFullThroughLevels then return 1, "table", 0 end
+    local observed, count = observedMultiplier(difference)
+    if observed then return math.max(0, math.min(1, observed)), "observed", count end
+    local weights = ns.ROUTE_WEIGHTS
+    return math.max(weights.minimumQuestRewardFactor,
+        1 - (difference - weights.questRewardFullThroughLevels) * weights.questRewardPenaltyPerLevel), "table", count
+end
+
+function ns.RecordQuestXPSample(id, xpReward)
+    local quest = ns.CatalogueQuest(id)
+    local level = ns.profile and ns.profile.level
+    if not ns.char or not quest or not number(xpReward, 10000000) or xpReward <= 0 or not number(level, 60) then return false end
+    ns.char.xpSamples = type(ns.char.xpSamples) == "table" and ns.char.xpSamples or {}
+    local rested = (ns.ReadPublic(GetXPExhaustion) or 0) > 0
+    local difference = math.max(0, level - (quest.level or level))
+    local nominal = number(quest.xp, 10000000) and quest.xp or nil
+    local multiplier = nominal and nominal > 0 and xpReward / nominal or nil
+    ns.char.xpSamples[#ns.char.xpSamples + 1] = {questID = id, questLevel = quest.level or level,
+        playerLevel = level, xpReward = xpReward, rested = rested,
+        difference = difference, multiplier = multiplier}
+    while #ns.char.xpSamples > 500 do table.remove(ns.char.xpSamples, 1) end
+    ns.xpSampleRevision = (ns.xpSampleRevision or 0) + 1
+    return true
+end
+
+function ns.XPCalibrationSummary()
+    local observed, tableBuckets, counts = 0, 0, {}
+    for difference = 0, 8 do
+        local _, source, count = ns.QuestXPMultiplier(difference)
+        counts[difference] = count
+        if source == "observed" then observed = observed + 1 else tableBuckets = tableBuckets + 1 end
+    end
+    return observed, tableBuckets, counts
+end
+
 function ns.XPState()
     local level = ns.ReadPublic(UnitLevel, "player")
     local xp = ns.ReadPublic(UnitXP, "player")
@@ -25,9 +95,7 @@ function ns.QuestXP(id, level)
     level = number(level, 60) and level or ns.profile and ns.profile.level
     if not number(level, 60) then return end
     local difference = level - (quest.level or level)
-    local factor = difference <= ns.ROUTE_WEIGHTS.questRewardFullThroughLevels and 1
-        or math.max(ns.ROUTE_WEIGHTS.minimumQuestRewardFactor,
-            1 - (difference - ns.ROUTE_WEIGHTS.questRewardFullThroughLevels) * ns.ROUTE_WEIGHTS.questRewardPenaltyPerLevel)
+    local factor = ns.QuestXPMultiplier(difference)
     return math.floor(quest.xp * factor)
 end
 
@@ -61,12 +129,8 @@ function ns.ZoneExitProjection(guide, profile, query)
         if xp < threshold then break end
         xp, level = xp - threshold, level + 1
     end
-    local nextGuide
-    for _, candidate in ipairs(ns.LevelingGuides and ns.LevelingGuides(query) or {}) do
-        if candidate.mode == "zone" and candidate.key ~= guide.key and candidate.rangeLow
-            and candidate.rangeLow <= level and candidate.rangeLow > (guide.rangeLow or 0)
-            and (not nextGuide or candidate.rangeLow < nextGuide.rangeLow) then nextGuide = candidate end
-    end
+    local nextGuide = ns.NextZoneBaselineGuide and ns.NextZoneBaselineGuide(guide, true)
+    if nextGuide and (nextGuide.rangeLow or 255) > level then nextGuide = nil end
     local threshold = ns.xpCurve and ns.xpCurve[level] or ns.xpBaseline and ns.xpBaseline[level]
     return {remaining = remaining, unknown = unknown, level = level, xp = xp, curveIncomplete = curveIncomplete,
         percent = level >= 60 and 1 or threshold and threshold > 0 and xp / threshold or nil,
@@ -219,10 +283,21 @@ function ns.GuideXPText(guide, query)
                     remainingLevels)
             end
             local percent = projection.percent and (" (" .. math.floor(projection.percent * 100 + 0.5) .. "%)") or ""
-            local line = string.format("Remaining here: ~%.1f levels • leaves you at level %d%s",
-                remainingLevels, projection.level, percent)
             local nextGuide = projection.nextGuide
-            if nextGuide then line = line .. "\nThen: " .. nextGuide.zone .. " ("
+            local line
+            local zoneFinishing = ns.GuideZoneFinishing and ns.GuideZoneFinishing(guide, ns.profile, projection)
+            if zoneFinishing then
+                local eligible = 0
+                for _, record in ipairs(guide.records or {}) do
+                    if ns.LevelingValue(record.id, query) ~= false then eligible = eligible + 1 end
+                end
+                line = "Finishing " .. (guide.zone or "this zone") .. ": " .. eligible
+                    .. " quests left worth doing" .. (nextGuide and (", then " .. nextGuide.zone .. " at " .. tostring(nextGuide.rangeLow)) or "")
+            else
+                line = string.format("Remaining here: ~%.1f levels • leaves you at level %d%s",
+                    remainingLevels, projection.level, percent)
+            end
+            if nextGuide and not zoneFinishing then line = line .. "\nThen: " .. nextGuide.zone .. " ("
                 .. tostring(nextGuide.rangeLow or "?") .. "–" .. tostring(nextGuide.rangeHigh or "?") .. ")" end
             return line
         end

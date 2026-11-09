@@ -194,6 +194,14 @@ function ns.UpdateNavigation()
     local presentation = ns.GuideStepPresentation(state.stop, facts, ns.routeSelection, ns.selectedRoute, state)
     frame.presentation = presentation
     frame.title:SetText(presentation.title)
+    local guide = ns.routeSelection
+    local modeVisible = guide and (guide.mode == "zone" or guide.mode == "bundle")
+    frame.modeButton:SetShown(modeVisible == true)
+    if modeVisible then
+        local mode = ns.GuideEfficiencyMode(guide)
+        frame.modeButton.caption:SetText(mode == "complete" and "Eff" or "Full")
+        ns.UIHelp(frame.modeButton, mode == "complete" and "Switch to Efficient routing for this guide." or "Complete the zone, including lower-value quests after better work.")
+    end
     frame.step:SetText(presentation.stepLine or "")
     frame.status:SetText(presentation.what .. (presentation.progress and (" " .. presentation.progress) or ""))
     frame.status:SetTextColor(unpack(ns.UIColors.text))
@@ -309,7 +317,7 @@ function ns.LayoutNavigation()
     if not finite(width) then return end
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
-    frame.title:SetWidth(width - 190); frame.step:SetWidth(width - 28)
+    frame.title:SetWidth(width - 232); frame.step:SetWidth(width - 28)
     frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
     frame.status:SetSize(width - left - 14, 18); frame.status:SetWordWrap(false)
     frame.context:ClearAllPoints(); frame.context:SetPoint("TOPLEFT", left, -71)
@@ -368,7 +376,15 @@ function ns.CreateNavigation()
     end
     frame.title = ns.UILabel(frame, "GameFontNormal", 13, ns.UIColors.gold)
     frame.title:SetPoint("TOPLEFT", 14, -10)
-    frame.title:SetSize(306, 18); frame.title:SetWordWrap(false)
+    frame.title:SetSize(132, 18); frame.title:SetWordWrap(false)
+    frame.modeButton = ns.UIButton(frame, "Full", 48, function()
+        local guide = ns.routeSelection
+        if guide then ns.SetGuideEfficiencyMode(guide, ns.GuideEfficiencyMode(guide) == "efficient" and "complete" or "efficient") end
+    end)
+    frame.modeButton:SetHeight(18); frame.modeButton:SetPoint("TOPRIGHT", -170, -10)
+    frame.modeButton.caption:ClearAllPoints(); frame.modeButton.caption:SetPoint("CENTER")
+    frame.modeButton.caption:SetSize(44, 14); frame.modeButton.caption:SetFont("Fonts\\ARIALN.TTF", 8, "")
+    ns.UIHelp(frame.modeButton, "Choose Efficient or Complete zone routing.")
     frame.pause = ns.UIButton(frame, "Pause", 42, function()
         if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession() else ns.PauseGuideSession() end
     end)

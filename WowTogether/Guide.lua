@@ -481,7 +481,12 @@ function ns.GuideChoices(discoveryOnly)
     return choices
 end
 
-function ns.ShowGuideOnMap(guide)
+function ns.ShowGuideOnMap(guide, localOnly)
+    if not localOnly and guide and not guide.personal and ns.PartyFeaturesEnabled()
+        and ns.ReadPublic(IsInGroup) == true and ns.ReadPublic(IsInRaid) ~= true
+        and #(ns.partyNames or {}) > 0 and ns.StartPartyRoute then
+        return ns.StartPartyRoute(guide)
+    end
     local prepared = ns.preparedLevelingRoute and ns.preparedLevelingRoute.guide == guide and ns.preparedLevelingRoute.route
     if guide and guide.fullGuide and not prepared then return ns.PlanLevelingGuide(guide, false) end
     if guide and guide.mode == "dungeon" and not prepared then return ns.PlanLevelingGuide(guide, false) end

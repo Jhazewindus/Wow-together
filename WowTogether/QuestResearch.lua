@@ -157,18 +157,31 @@ function ns.ExportQuestResearch()
     local header = {format = "wow-together-quest-research", schema = 1, addon = ns.VERSION,
         capacity = LIMIT, dropped = saved and saved.dropped or 0,
         objectiveAreaCount = #learned, pickupLocationCount = #pickups}
+    local samples, xpEvents = ns.char and ns.char.xpSamples or {}, {}
+    for index = math.max(1, #samples - 499), #samples do
+        local sample = samples[index]
+        if type(sample) == "table" and ns.GuideInteger(sample.questID) and ns.GuideInteger(sample.playerLevel, 60)
+            and ns.GuideInteger(sample.questLevel, 60) and ns.GuideInteger(sample.xpReward, 10000000) then
+            xpEvents[#xpEvents + 1] = {event = "xp-sample", questID = sample.questID,
+                questLevel = sample.questLevel, playerLevel = sample.playerLevel,
+                xpReward = sample.xpReward, rested = sample.rested == true}
+        end
+    end
     local encoded = json(header)
     lines[#lines + 1] = string.sub(encoded, 1, -2) .. ',"events":['
     local events = saved and saved.events or {}
-    local total = #events + #learned + #pickups
+    local total = #events + #learned + #pickups + #xpEvents
     for index, record in ipairs(events) do
         lines[#lines + 1] = json(record) .. (index < total and "," or "")
     end
     for index, record in ipairs(learned) do
-        lines[#lines + 1] = json(record) .. (index < #learned + #pickups and "," or "")
+        lines[#lines + 1] = json(record) .. ((index < #learned + #pickups or #xpEvents > 0) and "," or "")
     end
     for index, record in ipairs(pickups) do
-        lines[#lines + 1] = json(record) .. (index < #pickups and "," or "")
+        lines[#lines + 1] = json(record) .. ((index < #pickups or #xpEvents > 0) and "," or "")
+    end
+    for index, record in ipairs(xpEvents) do
+        lines[#lines + 1] = json(record) .. (index < #xpEvents and "," or "")
     end
     lines[#lines + 1] = "]}"
     return table.concat(lines, "\n")

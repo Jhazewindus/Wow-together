@@ -10,7 +10,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     standaloneArrow = false, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
-    unitNumbers = false, approachMaps = true, xpModel = false}
+    unitNumbers = false, approachMaps = true, xpModel = false, partyMode = "ask"}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -19,7 +19,12 @@ function ns.Option(key)
     return value
 end
 
-function ns.PartyFeaturesEnabled() return not ns.Option("soloMode") end
+function ns.PartyFeaturesEnabled()
+    local mode = ns.Option("partyMode")
+    if mode == "never" then return false end
+    if mode == "always" then return true end
+    return ns.partyModeTemporary == true
+end
 
 local sections = {
     {"leveling", "Leveling", {
@@ -72,7 +77,7 @@ local sections = {
         {"npcMarker", "Enemy marker style", "Choose the marker beside quest enemies.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull"}, {"quest", "Quest !"}}}},
         "Choose which quest targets are marked in the world."},
     {"party", "Party and group finder", {
-        {"soloMode", "Use solo leveling mode", "Turn off party messages, shared progress, invites and catch-up routes."},
+        {"partyMode", "Party mode", "Ask when you join a party, always enable party guides, or never use party features.", {{"ask", "Ask me"}, {"always", "Always"}, {"never", "Never"}}},
         {"groupFinderRoles", "Add filters to Looking For Group", "Filter Blizzard's player list by role and class."},
         {"trackerAuto", "Show party progress when grouped", "Show in a party; hide when solo or in a raid. You can close it for this session."},
         {"trackerOpacity", "Party panel background", "Choose how dark the progress panel appears.", {{0, "Clear"}, {0.08, "Light"}, {0.25, "Medium"}, {0.5, "Dark"}}},
@@ -94,6 +99,9 @@ local sections = {
 
 function ns.InitializeConfig()
     if type(ns.db.config) ~= "table" then ns.db.config = {} end
+    if ns.db.config.partyMode == nil then
+        ns.db.config.partyMode = ns.db.config.soloMode == true and "never" or "ask"
+    end
     if ns.db.config.shareObservations == nil then ns.db.config.shareObservations = ns.db.config.shareRoads ~= false end
     -- Adopt the requested star default once; later explicit choices survive.
     if not ns.db.config.starMarkerDefault then
@@ -106,6 +114,9 @@ function ns.InitializeConfig()
         local configured = ns.db.config[key]
         if type(configured) ~= type(value) or (type(configured) == "number"
             and (configured ~= configured or configured == math.huge or configured == -math.huge)) then ns.db.config[key] = value end
+    end
+    if ns.db.config.partyMode ~= "ask" and ns.db.config.partyMode ~= "always" and ns.db.config.partyMode ~= "never" then
+        ns.db.config.partyMode = "ask"
     end
     ns.db.config.trackerOpacity = math.max(0, math.min(0.8, ns.db.config.trackerOpacity))
     ns.db.config.trackerHeight = math.max(180, math.min(600, ns.db.config.trackerHeight))
@@ -138,7 +149,16 @@ function ns.SetOption(key, value)
         if ns.RenderSettings then ns.RenderSettings() end
         return
     end
-    if key == "soloMode" and changed then ns.ApplyPartyMode() end
+    if key == "soloMode" and changed then
+        ns.db.config.partyMode = value and "never" or "always"
+        ns.partyModeTemporary = nil
+        if ns.ApplyPartyMode then ns.ApplyPartyMode() end
+    end
+    if key == "partyMode" and changed then
+        ns.partyModeTemporary = nil
+        if ns.ApplyPartyMode then ns.ApplyPartyMode() end
+        if ns.HandlePartyModeRoster then ns.HandlePartyModeRoster() end
+    end
     if key == "inventoryServices" and not value then ns.ClearInventoryService() end
     if key == "inventoryServices" and value or key == "restockSupplies" or key == "supplyTarget" then ns.QueueServiceInventory() end
     ns.flightPlanCache = nil

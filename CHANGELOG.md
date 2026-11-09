@@ -1,5 +1,49 @@
 # Wow Together changelog
 
+## 0.8.106
+
+**FAST PARTY SYNC HOTFIX**
+
+- Keep route construction from assigning stops to a party member until their
+  fresh quest snapshot arrives. Show who is still syncing when progress is the
+  only blocker.
+- Prioritize hello, route invitation, active quest and progress messages;
+  move background history behind them. Keep queued packets through throttle
+  backoff instead of abandoning the transfer after five retries.
+- Restrict completed/checked history packets to the current route history
+  scope and stop sending catalogue titles that peers can resolve locally.
+- Add a per-group prompt to enable party features temporarily, suppress it for
+  the current roster on “Not now,” and register the addon prefix even while
+  party features are off. Existing `soloMode` saves migrate to Ask/Never.
+- Send a route invitation whenever a non-personal guide is selected in a
+  normal party. The personal route remains available when the group ends.
+- Validation: host tests cover queue order, retained throttled transfers,
+  scope/title reduction, unknown-progress routing, party-mode consent and
+  route invitation paths. The shared-plan and compact bitset redesign remains
+  staged; no single leader-computed group route ships in this hotfix.
+
+## 0.8.105
+
+**EFFICIENT CHAINS AND ZONE EXIT**
+
+- Value an eligible prerequisite chain by its remaining XP, estimated time,
+  completion progress and projected endpoint level. Low-value uncommitted work
+  stays out of the current route and appears under the collapsed “Also in this
+  zone” section; Complete mode includes available guide work.
+- In zone-finish mode, defer new below-band chains while retaining committed
+  work and hand-ins. Explain the next recommended zone and level in the guide
+  status when the XP projection can support it.
+- Add per-character XP reward samples from quest turn-ins, capped at 500 and
+  exported anonymously through `/wt research`. Observed medians replace the
+  Classic estimate only after 20 un-rested samples for a level-difference
+  bucket. The XP model remains opt-in.
+- Keep dungeon collection prerequisites routable and expose chain value in the
+  step reasons. The explicit level-24 Stonetalon example remains eligible;
+  source XP and time estimates still need confirmation against live Forever
+  rewards.
+- Validation: full host test results are recorded in `TESTING.md`. Fixed-guide
+  compilation and audits are unchanged.
+
 ## 0.8.104
 
 **PARTY QUEST DIGEST**

@@ -8,8 +8,8 @@ local function metadata(field)
     local okay, value = pcall(reader, addonName, field)
     if okay and type(value) == "string" and value ~= "" then return value end
 end
-ns.VERSION = metadata("Version") or "0.8.104"
-ns.RELEASE_NAME = metadata("X-ReleaseName") or "PARTY QUEST DIGEST"
+ns.VERSION = metadata("Version") or "0.8.106"
+ns.RELEASE_NAME = metadata("X-ReleaseName") or "FAST PARTY SYNC HOTFIX"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -356,6 +356,10 @@ function ns.Diagnostics()
             .. xpState.rested .. "; zone remaining " .. tostring(remaining or "unknown")
             .. ", projected exit " .. tostring(projection and projection.level or "unknown")
             .. (projection and projection.percent and (" (" .. math.floor(projection.percent * 100) .. "%)") or ""))
+        if ns.XPCalibrationSummary then
+            local observed, tableBuckets = ns.XPCalibrationSummary()
+            output("XP curve (d=0–8): " .. observed .. " observed buckets, " .. tableBuckets .. " still using the Classic table.")
+        end
     end
     output("Travel: " .. ns.travelStatus)
     ns.TravelDiagnostics(output)
@@ -369,7 +373,7 @@ function ns.Diagnostics()
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
 
-local CHARACTER_STORES = {"flights", "questHistory", "guideState", "guideSkips", "questResearch",
+local CHARACTER_STORES = {"flights", "questHistory", "guideState", "guideModes", "guideSkips", "questResearch", "xpSamples",
     "questResearchObserverIDs", "questLearning", "guideSessions", "classTraining", "professions",
     "inventoryServiceCharacters", "pickupRechecks", "confirmationWaypoints"}
 
@@ -537,10 +541,11 @@ ns.On("QUEST_ACCEPTED", function(_, id)
     ns.autoGossipAttempt, ns.autoAcceptAttempt = nil, nil
     ns.ScheduleSync()
 end)
-ns.On("QUEST_TURNED_IN", function(id)
+ns.On("QUEST_TURNED_IN", function(id, xpReward)
     ns.RememberQuestCompletion(id)
     ns.NoteQuestTurnedIn(id)
-    ns.RecordQuestResearch("turn-in", {questID = id})
+    if ns.RecordQuestXPSample then ns.RecordQuestXPSample(id, xpReward) end
+    ns.RecordQuestResearch("turn-in", {questID = id, xpReward = xpReward})
     ns.InvalidateNPCOffers()
     ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()
 end)
@@ -550,6 +555,7 @@ ns.On("UPDATE_FACTION", function()
     ns.InvalidateNPCOffers(); ns.ScheduleSync()
 end)
 ns.On("GROUP_ROSTER_UPDATE", function()
+    if ns.HandlePartyModeRoster then ns.HandlePartyModeRoster() end
     if not ns.PartyFeaturesEnabled() then return end
     ns.UpdateRoster()
     ns.RenderTracker()

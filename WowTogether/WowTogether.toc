@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.104
-## X-ReleaseName: PARTY QUEST DIGEST
+## Version: 0.8.106
+## X-ReleaseName: FAST PARTY SYNC HOTFIX
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua

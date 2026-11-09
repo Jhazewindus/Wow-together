@@ -2,9 +2,17 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.104 — PARTY QUEST DIGEST** targets
+progress. Version **0.8.106 — FAST PARTY SYNC HOTFIX** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.106 prioritizes party sync and route invitations**, avoids routing work
+for members whose progress has not arrived, and asks before temporarily
+enabling party features.
+
+**0.8.105 evaluates prerequisite chains by projected XP pace and effort**, with
+per-guide Efficient/Complete choices and a collapsed list for optional work.
+An opt-in XP model can learn reward multipliers from your own quest turn-ins.
 
 **0.8.104 compares quest-log gaps with supporting party members** in the
 existing tracker using a bounded history digest. It keeps each player's

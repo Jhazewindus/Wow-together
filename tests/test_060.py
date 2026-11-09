@@ -10,7 +10,7 @@ from test_057 import plain
 
 
 class ProgressionTests(unittest.TestCase):
-    def test_level_25_discards_low_level_junk_but_explains_a_useful_chain(self):
+    def test_level_25_discards_low_value_chain_steps_and_reports_the_chain_rate(self):
         c = solo()
         c.ns.profile.level = 25
         catalogue(c, {900: nearby('Old junk', level=10),
@@ -18,10 +18,12 @@ class ProgressionTests(unittest.TestCase):
                       902: nearby('Relevant followup', level=24, previousQuest=901)})
         self.assertFalse(c.ns.LevelingQuestEnabled(900))
         allowed, reason = c.ns.LevelingValue(901)
-        self.assertTrue(allowed)
-        self.assertIn('Relevant followup', reason)
+        self.assertFalse(allowed)
+        self.assertIn('Chain worth', reason)
         stop = c.lua.table_from({'id': 901, 'kind': 'a', 'mapID': 501})
-        self.assertIn('Unlocks Relevant followup', c.ns.RouteContext(stop, 501))
+        decision = c.ns.GuideDestinationDecision(stop)
+        self.assertEqual(decision.code, 'chain-value')
+        self.assertFalse(decision.specificBenefit)
 
     def test_remote_future_dungeon_or_wrong_faction_does_not_justify_old_junk(self):
         c = solo(); c.ns.profile.level = 25
@@ -30,7 +32,7 @@ class ProgressionTests(unittest.TestCase):
                       902: nearby('Alliance followup', level=24, side='Alliance', previousQuest=900)})
         self.assertFalse(c.ns.LevelingValue(900)[0])
 
-    def test_completed_followup_on_ahead_player_does_not_exclude_friends_catchup(self):
+    def test_one_completed_followup_does_not_commit_an_old_chain_for_party_catchup(self):
         c = party_client(ids=(901,))
         c.ns.profile.level = 25
         c.ns.members['Bob-TestRealm'].profile.level = 25
@@ -39,13 +41,13 @@ class ProgressionTests(unittest.TestCase):
         c.lua.globals().finished[901] = True
         c.receive('1|C|2|1|1|')
         c.receive('1|K|2|1|1|900,901')
-        self.assertTrue(c.ns.LevelingValue(900)[0])
+        self.assertFalse(c.ns.LevelingValue(900)[0])
 
-    def test_useful_dungeon_prerequisite_is_disclosed(self):
+    def test_low_xp_dungeon_prerequisite_reports_chain_value(self):
         c = solo(); c.ns.profile.level = 25
         catalogue(c, {900: nearby(level=10),
                       901: nearby('Dungeon pickup', level=26, minLevel=20, previousQuest=900, questType='Dungeon')})
-        self.assertIn('dungeon quest', c.ns.LevelingValue(900)[1])
+        self.assertIn('Chain worth', c.ns.LevelingValue(900)[1])
 
     def test_elites_are_labeled_and_solo_discovery_keeps_them(self):
         c = solo()

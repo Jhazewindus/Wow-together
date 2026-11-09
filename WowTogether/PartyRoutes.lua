@@ -26,7 +26,7 @@ end
 
 function ns.StartPartyRoute(guide)
     if not guide or guide.personal then return false end
-    if not ns.PartyFeaturesEnabled() then return ns.ShowGuideOnMap(guide) end
+    if not ns.PartyFeaturesEnabled() then return ns.ShowGuideOnMap(guide, true) end
     if ns.RouteInCombat() then
         ns.pendingPartyRouteStart = guide
         ns.guideAction = "Your route will start after combat."; ns.Refresh(); return false
@@ -35,7 +35,7 @@ function ns.StartPartyRoute(guide)
         return ns.PlanLevelingGuide(guide, true)
     end
     ns.RouteHistoryScope(guide.records)
-    if not ns.ShowGuideOnMap(guide) then return false end
+    if not ns.ShowGuideOnMap(guide, true) then return false end
     if not ns.selectedRoute or ns.selectedRoute.complete then ns.partyRouteStatus = "Guide already completed for your party."; return false end
     local ids, seen = {}, {}
     -- Share the selected quests, not another player's stage or coordinates.
@@ -135,7 +135,7 @@ function ns.FollowPartyRoute(invite)
     ns.ScheduleSync()
     if guide.fullGuide then
         ns.partyRouteStatus = "Generating " .. ns.MemberLabel(invite.sender) .. "'s guide from your party's progress."
-        return ns.ShowGuideOnMap(guide)
+        return ns.ShowGuideOnMap(guide, true)
     end
     local plan = ns.BuildGuideRoute(guide, false)
     if #plan.stops == 0 then
@@ -144,7 +144,7 @@ function ns.FollowPartyRoute(invite)
         ns.partyRouteStatus = "Waiting for an eligible next step: " .. (requirement or "sync the party quest logs and prerequisite history.")
         ns.guideAction = ns.partyRouteStatus; ns.Refresh(); return false
     end
-    if not ns.ShowGuideOnMap(guide) then
+    if not ns.ShowGuideOnMap(guide, true) then
         ns.partyRouteStatus = "No eligible next step yet. Sync prerequisite history or finish the required earlier quest."
         ns.guideAction = ns.partyRouteStatus; ns.Refresh(); return false
     end

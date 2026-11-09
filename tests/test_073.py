@@ -46,9 +46,9 @@ class LevelBandTests(unittest.TestCase):
         self.assertEqual(c.ns.CatalogueQuest(855).level, 14)
         value, reason = c.ns.LevelingValue(855)
         self.assertFalse(value)
-        self.assertIn('20–26', reason)
+        self.assertIn('below your pace', reason)
         c.ns.ShowQuestDetails(855)
-        self.assertIn('20–26', c.ns.questDetails.body.text)
+        self.assertIn('below your pace', c.ns.questDetails.body.text)
         self.assertIn('actual reward varies', c.ns.questDetails.body.text)
 
     def test_fixed_adaptive_and_current_routes_all_filter_accepted_low_work(self):
@@ -96,14 +96,14 @@ class LevelBandTests(unittest.TestCase):
             old = [s.kind for s in stops.values() if s.id == 855]
             self.assertEqual(old, ['t'])
 
-    def test_known_useful_chain_is_kept_with_a_reason_but_unrelated_old_work_is_not(self):
+    def test_low_value_chain_is_deferred_with_a_reason(self):
         c = leveling_client()
         c.ns.catalogue.quests[901].previousQuest = 855
         value, reason = c.ns.LevelingValue(855)
-        self.assertTrue(value)
-        self.assertIn('Unlocks Current work', reason)
+        self.assertFalse(value)
+        self.assertIn('Chain worth', reason)
         g = zone(c)
-        self.assertIn(855, {s.id for s in c.ns.BuildFixedGuideRoute(g, False).stops.values()})
+        self.assertNotIn(855, {s.id for s in c.ns.BuildFixedGuideRoute(g, False).stops.values()})
         self.assertFalse(c.ns.Completed(855))
 
     def test_band_is_close_at_high_levels_and_uses_lowest_synced_level(self):

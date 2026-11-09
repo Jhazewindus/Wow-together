@@ -12,6 +12,10 @@ ns.ROUTE_WEIGHTS = {
     questRewardPenaltyPerLevel = 0.2,
     minimumQuestRewardFactor = 0.1,
     minUsefulXP = 0.4,
+    chainEfficiency = 0.8,
+    chainCommitSteps = 2,
+    chainCommitShare = 0.4,
+    lowValueDelay = 0.5,
     stickiness = 0,
 }
 

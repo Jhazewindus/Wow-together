@@ -33,7 +33,7 @@ local function activeForParty(id, readyOnly, personal)
     end
     for _, person in ipairs(ns.PartyProfiles()) do
         local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
-        if active and active[id] and (not readyOnly or ns.QuestProgressReady(person.key, id) == true
+        if person.synced and active and active[id] and (not readyOnly or ns.QuestProgressReady(person.key, id) == true
             or person.key == ns.self and ns.readyToTurnIn[id] == true) then return true end
     end
     return false
@@ -125,6 +125,8 @@ local function availableTasks(guide)
                     or active or ns.QuestProgressReady(ns.self, record.id) == true)
                     or not guide.classLineGuide and (ns.LevelingValue(record.id) ~= false
                         or activeForParty(record.id, true, guide.personal)
+                        or guide.collectionRequired and guide.collectionRequired[record.id]
+                        or guide.collectionGoals and guide.collectionGoals[record.id]
                         or guide.catchupRequired and guide.catchupRequired[record.id]))
             if not ns.GuideQuestSkipped(record.id) and readyTask then
                 local candidate = live[record.id] or record
@@ -234,6 +236,10 @@ local function chooseBatch(guide, tasks, mapID, position, metrics)
                 local value = d + detour * 0.12 - math.min(80, task.xp / 20)
                 if task.active then value = value - 250 end
                 if task.ready and d < 400 then value = value - 600 end
+                local chain = ns.ChainValue and ns.ChainValue(task.id)
+                if chain and chain.baseline and chain.rate < chain.baseline then
+                    value = value + ns.ROUTE_WEIGHTS.lowValueDelay * (chain.baseline - chain.rate)
+                end
                 if not cost or value < cost or value == cost and task.id < best.id then best, cost = task, value end
             end
         end

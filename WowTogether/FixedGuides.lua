@@ -241,7 +241,7 @@ end
 local function remaining(stop, query, guide)
     if not ns.ClassQuestEnabled(stop.id) or ns.IsLevelingExcludedQuest(stop.id)
         or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
-    local waiting, chosen, unfinished
+    local waiting, chosen, unfinished, awaiting
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false
             and not ns.CatalogueAlternativeTaken(stop.id, person.key, query) then
@@ -249,16 +249,17 @@ local function remaining(stop, query, guide)
                 or guide.catchupRequired and guide.catchupRequired[stop.id]
             -- Keep the compiled order intact. Level-filtered steps receive no
             -- completion/skip credit and can return if party context changes.
-            if not person.synced or not doneFor(stop, person.key, query) then
+            if not person.synced then
+                unfinished, awaiting = true, awaiting or person.name
+            elseif not doneFor(stop, person.key, query) then
                 unfinished = true
                 if keep then
-                    if not person.synced then waiting = true
-                    else chosen = chosen or person end
+                    chosen = chosen or person
                 end
             end
         end
     end
-    return chosen, waiting, unfinished
+    return chosen, waiting, unfinished, awaiting
 end
 
 local function completionProgress(guide, query)
@@ -299,10 +300,11 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     query = query or ns.NewQuestQuery()
     local stops, preview, eligibility, mapped, incomplete, unknown, pending, pendingStop = {}, {}, {}, {}, 0, 0, nil, nil
     local filteredSteps = 0
-    local deferred, firstDeferred, firstReason = {}, nil, nil
+    local deferred, firstDeferred, firstReason, awaitingPeer = {}, nil, nil, nil
     guide.observedDeferrals = guide.observedDeferrals or {}
     for _, stop in ipairs(plan) do
-        local person, waiting, unfinished = remaining(stop, query, guide)
+        local person, waiting, unfinished, awaiting = remaining(stop, query, guide)
+        awaitingPeer = awaitingPeer or awaiting
         if unfinished then incomplete = incomplete + 1 end
         if unfinished and not person and not waiting then filteredSteps = filteredSteps + 1 end
         if person or waiting then
@@ -357,6 +359,9 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     end
     if #stops == 0 and not pending and firstDeferred then
         pendingStop, pending = firstDeferred, firstReason or "No pickups are currently available. Progress and NPC offers will recheck this guide."
+    end
+    if #stops == 0 and not pending and awaitingPeer then
+        pending = "Waiting for " .. awaitingPeer .. "'s progress (sync pending)."
     end
     local progress, level = completionProgress(guide, query), ns.PartyLevelFloor(query)
     local rangePaused

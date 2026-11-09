@@ -56,6 +56,64 @@ end
 ns.UIPanel, ns.UILabel, ns.UIButton = panel, label, button
 ns.UIColors = colors
 
+local partyPrompt, declinedPartySignature, lastPartySignature = nil, nil, nil
+
+local function normalPartySignature()
+    if ns.ReadPublic(IsInRaid) == true or ns.ReadPublic(IsInGroup) ~= true then return nil end
+    local names = {}
+    for index = 1, 4 do
+        local first, second = ns.ReadPublic(UnitFullName, "party" .. index)
+        if type(first) == "string" and first ~= "" then
+            names[#names + 1] = first .. (type(second) == "string" and second ~= "" and ("-" .. second) or "")
+        end
+    end
+    table.sort(names)
+    return table.concat(names, "|")
+end
+
+function ns.HandlePartyModeRoster()
+    local signature = normalPartySignature()
+    if signature ~= lastPartySignature then
+        declinedPartySignature, ns.partyModeDeclinedThisGroup, lastPartySignature = nil, nil, signature
+    end
+    if ns.partyModeTemporary and not signature then
+        ns.partyModeTemporary = nil
+        if ns.ApplyPartyMode then ns.ApplyPartyMode() end
+    end
+    if ns.Option("partyMode") ~= "ask" or ns.partyModeTemporary or not signature then
+        if partyPrompt then partyPrompt:Hide() end
+        return
+    end
+    if declinedPartySignature == signature then return end
+    if not partyPrompt then
+        local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+        frame:SetSize(490, 56); frame:SetPoint("TOP", UIParent, "TOP", 0, -110)
+        frame:SetFrameStrata("HIGH"); frame:SetClampedToScreen(true); panel(frame)
+        frame.label = label(frame, "GameFontNormal", 12, colors.text)
+        frame.label:SetPoint("LEFT", 12, 0); frame.label:SetWidth(225); frame.label:SetWordWrap(false)
+        frame.yes = button(frame, "Yes", 58, function()
+            ns.partyModeTemporary = true; ns.partyModeDeclinedThisGroup = nil; partyPrompt:Hide()
+            if ns.ApplyPartyMode then ns.ApplyPartyMode() end
+            if ns.SyncNow then ns.SyncNow(true) end
+        end, true)
+        frame.yes:SetPoint("RIGHT", -178, 0)
+        frame.later = button(frame, "Not now", 76, function()
+            if partyPrompt.signature then declinedPartySignature = partyPrompt.signature; ns.partyModeDeclinedThisGroup = true end
+            partyPrompt:Hide()
+        end)
+        frame.later:SetPoint("RIGHT", -94, 0)
+        frame.never = button(frame, "Never ask", 82, function()
+            partyPrompt:Hide(); ns.SetOption("partyMode", "never")
+        end)
+        frame.never:SetPoint("RIGHT", -6, 0)
+        partyPrompt = frame
+        ns.partyPrompt = frame
+    end
+    partyPrompt.signature = signature
+    partyPrompt.label:SetText("You're grouped — switch to party mode?")
+    partyPrompt:Show()
+end
+
 function ns.UIDivider(parent, y)
     local line = parent:CreateTexture(nil, "ARTWORK")
     line:SetColorTexture(unpack(colors.border)); line:SetHeight(1)
@@ -569,8 +627,12 @@ function ns.Render(queryContext, routeUpdated)
         or ns.filter == "classquests" and "One guide for your class quests, including the prerequisites recorded for your character."
         or partyEnabled and "Choose a guide or explore your party's progress." or "Choose a solo guide or browse quests.")
     local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
-    local synced, shared, own = 1, 0, 0
-    for _, member in pairs(ns.members) do if member.active and not member.syncPending then synced = synced + 1 end end
+    local synced, shared, own, pendingPeers = 1, 0, 0, {}
+    for name, member in pairs(ns.members) do
+        if member.active and not member.syncPending then synced = synced + 1
+        elseif member.syncPending or not member.active then pendingPeers[#pendingPeers + 1] = ns.MemberLabel(name) end
+    end
+    table.sort(pendingPeers)
     for _, row in ipairs(rows) do if row.active >= 2 then shared = shared + 1 end end
     for _ in pairs(ns.active or {}) do own = own + 1 end
     ns.ui.metrics[1].caption:SetText(partyEnabled and "PARTY SYNC" or "PLAY MODE")
@@ -595,7 +657,7 @@ function ns.Render(queryContext, routeUpdated)
     for _, name in ipairs(partyEnabled and ns.partyNames or {}) do
         local member = ns.members[name]
         local profile = member and member.profile
-        local syncLabel = member and member.syncPending and " |cffe4b66arefreshing|r" or (member and member.active and " |cff70d6a0synced|r" or " |cffe4b66awaiting|r")
+        local syncLabel = member and member.syncPending and " |cffe4b66waiting for progress|r" or (member and member.active and " |cff70d6a0synced|r" or " |cffe4b66awaiting progress|r")
         peers[#peers + 1] = ns.MemberLabel(name) .. (profile and profile.level > 0 and (" • Lv " .. profile.level) or " • level pending") .. syncLabel
     end
     ns.ui.party:SetText(#peers > 0 and table.concat(peers, "    /    ") or "Join a party to compare progress with friends running Wow Together.")
@@ -609,6 +671,7 @@ function ns.Render(queryContext, routeUpdated)
     elseif not ns.questReady then status = "Quest data unavailable; see Diagnostics"
     elseif not partyEnabled then status = ns.routePlanningError or ns.guideAction or "Solo leveling ready"
     elseif not ns.syncReady then status = "Sync unavailable; see Diagnostics"
+    elseif #pendingPeers > 0 then status = "Waiting for " .. table.concat(pendingPeers, ", ") .. "'s progress"
     else status = ns.routePlanningError or ns.guideAction or (synced > 1 and "Party progress received" or "Waiting for friends") end
     ns.ui.status:SetText(status)
     ns.ui.viewChoice:SetChoice(ns.filter)

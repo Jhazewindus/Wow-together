@@ -180,17 +180,15 @@ class SharedEventTests(unittest.TestCase):
         self.assertGreater(c.ns.guideProgressStats.updates, updates)
         self.assertFalse(any(p.IsShown(p) and p.group.entityID == 11834 for p in f.questPins.values()))
 
-    def test_party_event_registers_again_after_explicit_solo_unsubscription(self):
+    def test_party_prefix_remains_registered_when_party_features_are_disabled(self):
         c = Client()
-        c.ns.db.config.soloMode = True
-        c.ns.ApplyPartyMode()
-        self.assertIsNone(c.ns.handlers.CHAT_MSG_ADDON)
-        self.assertIsNone(c.ns.frame.registeredEvents.CHAT_MSG_ADDON)
-        c.ns.db.config.soloMode = False
-        c.ns.ApplyPartyMode()
+        c.ns.SetOption('partyMode', 'never')
         self.assertTrue(c.ns.frame.registeredEvents.CHAT_MSG_ADDON)
         self.assertIsNotNone(c.ns.handlers.CHAT_MSG_ADDON)
         self.assertIsNone(c.ns.eventFailures.CHAT_MSG_ADDON)
+        self.assertFalse(c.ns.PartyFeaturesEnabled())
+        c.ns.SetOption('partyMode', 'always')
+        self.assertTrue(c.ns.PartyFeaturesEnabled())
 
 
 if __name__ == '__main__':

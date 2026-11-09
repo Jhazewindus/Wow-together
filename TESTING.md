@@ -1,5 +1,62 @@
 # Wow Together — friend test script
 
+For **0.8.106** — **FAST PARTY SYNC HOTFIX**, live World of Warcraft: Forever.
+
+## Fast party sync hotfix — 0.8.106
+
+1. Set Party mode to **Ask me** and join a normal party. Confirm the small
+   “You're grouped — switch to party mode?” chip appears. **Not now** should
+   hide it for this roster; leaving and regrouping should ask again. **Yes**
+   enables party features for this group only; leaving or joining a raid
+   returns to solo. **Never ask** persists in settings.
+2. With party mode enabled, select a guide. Confirm the route invitation is
+   queued automatically. Both clients should get hello and active quest data
+   before background history packets.
+3. Reconnect with one member's quest snapshot still pending. Their stale or
+   unknown quest state must not add route stops; the panel should say whose
+   progress is pending. When the snapshot arrives, the route can rebuild.
+4. Let a client throttle addon messages. The current queue should remain
+   intact and retry with capped backoff. Catalogue-known active quests should
+   not generate redundant title packets. Check completion/checked packets
+   against the current route's history scope.
+5. Repeat on two clients running the same addon. This is a transport hotfix;
+   it does not yet compute or broadcast one shared group ordering. Live
+   throttle behavior and the native prompt need an in-game check.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,890 tests and 385 subtests** in 513.72 seconds. The targeted
+sync/party-mode/party-route set passes **114 tests and 5 subtests**. All 95
+addon Lua files compile under Lua 5.1. Fixed-guide audits pass unchanged.
+
+For **0.8.105** — **EFFICIENT CHAINS AND ZONE EXIT**, live World of Warcraft: Forever.
+
+## Efficient chains and zone exit — 0.8.105
+
+1. At level 24, open the Stonetalon zone guide in Efficient mode. Super Reaper
+   6000 and its level-27 continuation should be available as requested. At
+   level 28, the uncommitted chain should be under **Also in this zone**, not
+   the current step. Complete mode should make eligible zone work available.
+2. Complete two early steps of a longer chain and confirm its remaining steps
+   are treated as committed. With only one completed step, the normal pace and
+   level checks still apply. A ready hand-in remains available in zone-finish
+   mode.
+3. Use **Complete the zone** and **Efficient** from the guide list and HUD.
+   Confirm each choice is remembered for that character and guide. Inspect a
+   low-value entry under the collapsed **Also in this zone** list for its
+   XP/time reason.
+4. Turn the optional XP model on for testing. Turn in quests and inspect
+   `/wt probe` for observed XP-difference buckets; `/wt research` should export
+   anonymous `xp-sample` events. Classic estimates remain in effect until a
+   bucket has 20 un-rested samples. The default XP model stays off.
+5. On a live Forever character, verify quest XP, objectives, faction/character
+   eligibility and the next-zone recommendation. Host tests cannot establish
+   actual reward values or live route behavior.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,882 tests and 385 subtests** in 499.42 seconds. The fixed-guide
+compiler and its audit fixtures pass unchanged. The live Forever checks above
+remain necessary for XP values and route behavior.
+
 For **0.8.104** — **PARTY QUEST DIGEST**, live World of Warcraft: Forever.
 
 ## Party quest digest — 0.8.104

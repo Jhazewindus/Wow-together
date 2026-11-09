@@ -5,7 +5,7 @@ local ROW_HEIGHT, VIEW_HEIGHT = 44, 396
 local function layout(frame)
     local width, height = frame:GetWidth() - 76, math.max(100, frame:GetHeight() - 164)
     frame.viewHeight = height
-    frame.title:SetWidth(frame:GetWidth() - 80); frame.summary:SetWidth(frame:GetWidth() - 50)
+    frame.title:SetWidth(frame:GetWidth() - 210); frame.summary:SetWidth(frame:GetWidth() - 50)
     frame.scroll:SetSize(width, height); frame.content:SetWidth(width); frame.slider:SetHeight(height - 32)
     frame.empty:SetSize(width - 40, math.max(80, height - 40))
     for _, row in ipairs(frame.rows) do row:SetWidth(width); row.title:SetWidth(width - 210) end
@@ -21,6 +21,13 @@ local function create()
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
     frame.title = ns.UILabel(frame, "GameFontNormalLarge", 18); frame.title:SetPoint("TOPLEFT", 22, -18); frame.title:SetSize(660, 24); frame.title:SetWordWrap(false)
     frame.summary = ns.UILabel(frame, nil, 11, ns.UIColors.muted); frame.summary:SetPoint("TOPLEFT", 22, -51); frame.summary:SetSize(690, 42)
+    frame.efficiency = ns.UIButton(frame, "Complete zone", 126, function()
+        if not frame.guide or not ns.SetGuideEfficiencyMode then return end
+        local guide = frame.guide
+        ns.SetGuideEfficiencyMode(guide, ns.GuideEfficiencyMode(guide) == "efficient" and "complete" or "efficient")
+        ns.ShowGuideQuestList(guide)
+    end)
+    frame.efficiency:SetPoint("TOPRIGHT", -54, -16)
     ns.UIClose(frame); ns.UIDivider(frame, -99)
     frame.scroll = CreateFrame("ScrollFrame", nil, frame); frame.scroll:SetPoint("TOPLEFT", 22, -110); frame.scroll:SetSize(664, VIEW_HEIGHT)
     frame.content = CreateFrame("Frame", nil, frame.scroll); frame.content:SetSize(664, VIEW_HEIGHT); frame.scroll:SetScrollChild(frame.content)
@@ -72,24 +79,53 @@ function ns.RenderGuideQuestList()
     end
     frame.visiblePlan = plan
     frame.reasonRoute = {stops = plan}
+    local also = {}
+    if frame.guide.mode == "zone" and ns.GuideEfficiencyMode(frame.guide) == "efficient" then
+        for _, record in ipairs(frame.guide.records or {}) do
+            if not quests[record.id] and ns.ClassQuestEnabled(record.id) then
+                local chain = ns.ChainValue and ns.ChainValue(record.id, query)
+                local zoneExit = chain and ns.GuideZoneFinishing and ns.GuideZoneFinishing(frame.guide) and not chain.committed
+                if chain and (not chain.included or zoneExit) then
+                    local quest = ns.CatalogueQuest(record.id)
+                    also[#also + 1] = {id = record.id, kind = "a", mapID = quest and quest.mapID or frame.guide.mapID,
+                        x = quest and quest.starts and quest.starts[1] and quest.starts[1].x,
+                        y = quest and quest.starts and quest.starts[1] and quest.starts[1].y,
+                        title = ns.QuestTitle(record.id), label = zoneExit and ("Finish current work first. " .. chain.reason) or chain.reason,
+                        reasonCode = zoneExit and "zone-finishing" or "chain-value", optional = true}
+                end
+            end
+        end
+    end
+    table.sort(also, function(a, b) return a.id < b.id end)
+    local displayPlan = {}
+    for _, stop in ipairs(plan) do displayPlan[#displayPlan + 1] = stop end
+    if #also > 0 then
+        displayPlan[#displayPlan + 1] = {sectionHeader = true, title = "Also in this zone (" .. #also .. ")"}
+        if frame.showAlsoInZone then for _, stop in ipairs(also) do displayPlan[#displayPlan + 1] = stop end end
+    end
+    frame.displayPlan = displayPlan
     if frame.plan then
         local count = 0; for _ in pairs(quests) do count = count + 1 end
+        local mode = ns.GuideEfficiencyMode and ns.GuideEfficiencyMode(frame.guide) or "efficient"
+        frame.efficiency:SetShown(frame.guide.mode == "zone" or frame.guide.mode == "bundle")
+        frame.efficiency.caption:SetText(mode == "complete" and "Efficient" or "Complete zone")
         frame.summary:SetText(frame.guide.mode == "travel" and "Travel guide"
-            or (count .. " quests • " .. #plan .. " steps\n" .. ns.GuideXPText(frame.xpGuide or frame.guide, query)))
+            or (count .. " quests • " .. #plan .. " steps • " .. (mode == "complete" and "Complete the zone" or "Efficient")
+                .. "\n" .. ns.GuideXPText(frame.xpGuide or frame.guide, query)))
     end
     frame.empty:SetShown(frame.plan ~= nil and #plan == 0)
     frame.empty:SetText(frame.guide.mode == "travel"
         and ("Travel to " .. frame.guide.zone .. " using your known flight paths and transport connections.")
         or "No quests to show with your current settings.")
     local viewHeight = frame.viewHeight or VIEW_HEIGHT
-    frame.maximum = math.max(0, #plan * ROW_HEIGHT - viewHeight)
+    frame.maximum = math.max(0, #displayPlan * ROW_HEIGHT - viewHeight)
     frame.offset = math.min(frame.offset or 0, frame.maximum)
-    frame.content:SetHeight(math.max(viewHeight, #plan * ROW_HEIGHT))
+    frame.content:SetHeight(math.max(viewHeight, #displayPlan * ROW_HEIGHT))
     frame.scroll:SetVerticalScroll(frame.offset); frame.slider:SetMinMaxValues(0, frame.maximum); frame.slider:SetValue(frame.offset)
     frame.slider:SetShown(frame.maximum > 0)
     local first = math.floor(frame.offset / ROW_HEIGHT) + 1
-    for index = first, math.min(#plan, first + math.ceil(viewHeight / ROW_HEIGHT)) do
-        local stop, slot = plan[index], index - first + 1
+    for index = first, math.min(#displayPlan, first + math.ceil(viewHeight / ROW_HEIGHT)) do
+        local stop, slot = displayPlan[index], index - first + 1
         local row = frame.rows[slot]
         if not row then
             row = CreateFrame("Frame", nil, frame.content)
@@ -104,21 +140,40 @@ function ns.RenderGuideQuestList()
             row:SetScript("OnEnter", function(self)
                 if not GameTooltip or not self.stop then return end
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                if self.sectionHeader then
+                    GameTooltip:AddLine(self.stop.title, 1, 0.82, 0.3, true)
+                    GameTooltip:AddLine("Click to show or hide lower-value quests in this zone.", 1, 1, 1, true)
+                    GameTooltip:Show(); return
+                end
                 local presentation = ns.GuideStepPresentation(self.stop, nil, frame.guide, frame.reasonRoute)
                 GameTooltip:AddLine(presentation.title, 1, 0.82, 0.3, true)
+                if self.stop.reasonCode == "chain-value" or self.stop.reasonCode == "zone-finishing" then
+                    GameTooltip:AddLine(self.stop.label, 1, 1, 1, true)
+                end
                 for _, line in ipairs(ns.GuidePresentationTooltipLines(presentation, true)) do GameTooltip:AddLine(line, 1, 1, 1, true) end
                 GameTooltip:Show()
             end)
             row:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+            row:SetScript("OnMouseUp", function(self)
+                if self.sectionHeader then frame.showAlsoInZone = not frame.showAlsoInZone; ns.RenderGuideQuestList() end
+            end)
             frame.rows[slot] = row
         end
+        row.sectionHeader = stop.sectionHeader == true
         local quest = ns.CatalogueQuest(stop.id)
+        if row.sectionHeader then
+            row:ClearAllPoints(); row:SetPoint("TOPLEFT", 0, -(index - 1) * ROW_HEIGHT)
+            row.icon:Hide(); row.number:Hide(); row.title:SetText(stop.title); row.title:SetTextColor(unpack(ns.UIColors.gold))
+            row.state:SetText(frame.showAlsoInZone and "Hide" or "Show")
+            row.state:SetTextColor(unpack(ns.UIColors.muted)); row.stop, row.step = stop, index; row:Show()
+        else
         local presentation = ns.GuideStepPresentation(stop, nil, frame.guide, frame.reasonRoute)
         local active = ns.navigation and ns.navigation.state and ns.navigation.state.stop
         local current = active and active.id == stop.id and active.kind == stop.kind
             or ns.selectedRoute and ns.selectedRoute.stops and ns.selectedRoute.stops[1]
                 and ns.selectedRoute.stops[1].id == stop.id and ns.selectedRoute.stops[1].kind == stop.kind
         row:ClearAllPoints(); row:SetPoint("TOPLEFT", 0, -(index - 1) * ROW_HEIGHT)
+        row.icon:Show(); row.number:Show()
         row.icon:SetTexture(presentation.icon); row.icon:SetAlpha(presentation.status == "Optional, on the way" and 0.6 or 1)
         row.number:SetText(stop.guideStep or index)
         row.title:SetText(stop.title); row.title:SetTextColor(unpack(current and ns.UIColors.text or ns.UIColors.muted))
@@ -133,6 +188,7 @@ function ns.RenderGuideQuestList()
             or current and ns.UIColors.text or ns.UIColors.muted
         row.state:SetTextColor(unpack(stateColor))
         row.stop, row.step = stop, stop.guideStep or index; row:Show()
+        end
     end
     layout(frame); frame.rendering = nil
 end
@@ -145,8 +201,11 @@ function ns.ShowGuideQuestList(guide)
     local current = ns.routeSelection
     local startGuide = current and current.key == guide.key and current or guide
     frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide, frame.startGuide = nil, nil, nil, 0, guide, startGuide
+    frame.showAlsoInZone = false
     frame.start:SetEnabled(true); frame.more:Hide()
     frame.title:SetText(guide.title or (guide.zone .. " leveling guide"))
+    frame.efficiency:SetShown(guide.mode == "zone" or guide.mode == "bundle")
+    frame.efficiency.caption:SetText(ns.GuideEfficiencyMode(guide) == "complete" and "Efficient" or "Complete zone")
     frame:SetFrameLevel((ns.window and ns.window:GetFrameLevel() or 0) + 30)
     frame.summary:SetText("Preparing the ordered quest list… You can start the route now.")
     frame:Show(); ns.RenderGuideQuestList()

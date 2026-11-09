@@ -26,11 +26,11 @@ def giver_client():
 
 
 class SoloTests(unittest.TestCase):
-    def test_saved_solo_mode_skips_message_registration_and_party_roster(self):
+    def test_saved_solo_mode_keeps_prefix_registered_but_skips_party_roster(self):
         c = Client(saved_variables={'config': {'soloMode': True}})
-        self.assertFalse(c.ns.syncReady)
-        self.assertIsNone(c.ns.syncStats.registration)
-        self.assertIsNone(c.ns.handlers.CHAT_MSG_ADDON)
+        self.assertTrue(c.ns.syncReady)
+        self.assertIn('Success', c.ns.syncStats.registration)
+        self.assertIsNotNone(c.ns.handlers.CHAT_MSG_ADDON)
         self.assertEqual(len(c.ns.partyNames), 0)
         self.assertEqual(len(c.ns.PartyProfiles()), 1)
         self.assertTrue(c.ns.questReady)
@@ -103,7 +103,7 @@ class SoloTests(unittest.TestCase):
         other = Client(saved_variables=plain(c.ns.db))
         self.assertTrue(other.ns.Option('soloMode'))
         other.ns.Diagnostics()
-        self.assertIn('party features disabled', other.ns.diagnosticsText.text)
+        self.assertIn('solo (never ask)', other.ns.diagnosticsText.text)
         self.assertNotIn('Sync unavailable', other.ns.ui.status.text)
 
 
@@ -141,6 +141,17 @@ class GiverTests(unittest.TestCase):
 
 
 class GuideBrowseTests(unittest.TestCase):
+    def test_unsynced_party_member_does_not_add_quest_stops(self):
+        c = guide_client(2); g = zone(c)
+        c.unit_names({'player': ('Alice', 'TestRealm'), 'party1': ('Bob', 'TestRealm')})
+        c.ns.members['Bob-TestRealm'] = c.lua.table_from({'active': {900: 'Quest 0'},
+            'profile': {'level': 2, 'faction': 'Horde'}, 'syncPending': True}, recursive=True)
+        route = c.ns.BuildFixedGuideRoute(g, False)
+        self.assertFalse(any(stop.memberKey == 'Bob-TestRealm' for stop in route.stops.values()))
+        c.lua.globals().finished[900] = True; c.lua.globals().finished[901] = True
+        route = c.ns.BuildFixedGuideRoute(g, False)
+        self.assertIn("Waiting for Bob TestRealm's progress", route.pendingReason)
+
     def test_carry_your_weight_is_low_value_at_twelve_and_fixed_guides_do_not_bypass_it(self):
         c = Client(quests=(), use_catalogue=True); c.guide_environment(level=12)
         self.assertFalse(c.ns.LevelingValue(791)[0])
@@ -158,7 +169,7 @@ class GuideBrowseTests(unittest.TestCase):
         c.ns.GenerateFixedGuide(starter, False)
         self.assertTrue(any(s.id == 791 and s.kind == 'q' for s in starter.fixedPlan.values()))
 
-    def test_fixed_guide_keeps_useful_chains_and_ready_turnins_but_filters_current_old_work(self):
+    def test_fixed_guide_defers_low_value_chains_and_keeps_ready_turnins(self):
         c = guide_client(2)
         catalogue(c, {900: world_quest('Old work', level=7),
                       901: world_quest('Current work')})
@@ -173,8 +184,8 @@ class GuideBrowseTests(unittest.TestCase):
         catalogue(c, {900: world_quest('Old work', level=7),
                       901: world_quest('Current work', previousQuest=900)})
         c.ns.GenerateFixedGuide(g, False)
-        self.assertIn('Current work', c.ns.LevelingValue(900)[1])
-        self.assertEqual(c.ns.BuildFixedGuideRoute(g, False).stops[1].id, 900)
+        self.assertIn('Chain worth', c.ns.LevelingValue(900)[1])
+        self.assertIsNone(c.ns.BuildFixedGuideRoute(g, False).stops[1])
 
     def test_fixed_start_asks_before_including_active_low_level_quests(self):
         c = guide_client(2); g = zone(c); c.ns.active[900] = 'Quest 0'

@@ -174,9 +174,29 @@ local function explain(goal, ctx)
     if goal.kind ~= "a" and goal.kind ~= "q" and goal.kind ~= "t" then
         return result("guide-status", text(goal.label) or "Waiting for the next step of your selected guide.", false)
     end
+    ctx.query.guide = guide
     local useful, exception = ns.LevelingValue(goal.id, ctx.query)
     if guide and guide.catchupRequired and guide.catchupRequired[goal.id] then
         return result("party-prerequisite", "This prerequisite helps your party catch up through the quest chain.", true)
+    end
+    if guide and guide.mode == "dungeon" and guide.collectionRequired and guide.collectionRequired[goal.id] then
+        local child
+        for id, parents in pairs(guide.collectionDependencies or {}) do
+            for _, parent in ipairs(parents) do if parent == goal.id then child = id; break end end
+            if child then break end
+        end
+        return result("dungeon-prerequisite", "Required before collecting " .. (child and ns.QuestTitle(child) or "the dungeon quest")
+            .. " for " .. (text(guide.zone) or "this dungeon") .. ".", true, child and {child} or nil)
+    end
+    local levelingGuide = not guide or ((guide.mode == "zone" or guide.mode == "bundle")
+        and not guide.catchup)
+    local continueOverride = ns.GuideDifficultyOverride(guide)
+    if levelingGuide and not continueOverride and goal.kind == "a" and exception and string.find(exception, "^Chain worth") then
+        return result("chain-value", exception, useful == true)
+    elseif levelingGuide and not continueOverride and goal.kind == "a" and exception and string.find(exception, "^Finishing this chain") then
+        return result("chain-value", exception, true)
+    elseif levelingGuide and not continueOverride and goal.kind == "a" and exception and string.find(exception, "^zone-finishing:") then
+        return result("zone-finishing", string.gsub(exception, "^zone%-finishing:%s*", ""), false)
     end
     if useful == true and exception and not ns.IsClassQuest(goal.id) then
         return result("useful-prerequisite", "Lower-level step: " .. exception, true)
@@ -256,6 +276,9 @@ end
 function ns.GuideDestinationDecision(stop, guide, route)
     if stop and stop.reasonCode == "zone-exit" then
         return result("zone-exit", text(stop.label) or "Gain more experience before starting the next zone.", true)
+    end
+    if stop and stop.reasonCode == "zone-finishing" then
+        return result("zone-finishing", text(stop.label) or "Finish your worthwhile work before taking on more in this zone.", false)
     end
     if stop and stop.flightDiscovery then
         local decision = result("flight-check", ns.TravelPathSummary(stop) or "Check the nearer flight master's connections.", true)

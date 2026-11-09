@@ -13,6 +13,7 @@ local labels = {}
 local assemblies = {}
 local repairs = {}
 local pump, transportGeneration, prefixReady = nil, 0, false
+local receiveRegistered = false
 local MAX_PARTS = 64
 ns.syncStats = {sendAttempts = 0, received = 0, accepted = 0, snapshots = 0, titles = 0, ignored = 0, throttled = 0, retries = 0, failures = 0, coalesced = 0, repairs = 0, trace = {}}
 
@@ -70,7 +71,8 @@ function ns.UpdateRoster()
         return key
     end
     ns.self = addUnit("player")
-    if ns.PartyFeaturesEnabled() then
+    local grouped = ns.ReadPublic(IsInGroup) == true and ns.ReadPublic(IsInRaid) ~= true
+    if ns.PartyFeaturesEnabled() or ns.Option("partyMode") == "ask" and grouped then
         for index = 1, 4 do
             local key = addUnit("party" .. index)
             if key then roster[key] = true end
@@ -138,14 +140,39 @@ local function resolveSender(sender)
     return nil, "sender outside detected roster: " .. sender
 end
 
-local function inParty()
-    if not ns.PartyFeaturesEnabled() then return false end
+local function normalParty()
     local raid, grouped = IsInRaid(), IsInGroup()
     return ns.Public(raid) and ns.Public(grouped) and not raid and grouped
 end
 
+local function inParty() return ns.PartyFeaturesEnabled() and normalParty() end
+
 local function sendPlanHello()
     if ns.QueueMessage then ns.QueueMessage("2|H|" .. tostring(ns.VERSION or "0") .. "|1") end
+end
+
+local function messagePriority(message)
+    if string.match(message, "^1|[HVQ]|") or string.match(message, "^2|H|") then return 1 end
+    if string.match(message, "^1|[SPGR]|") then return 2 end
+    return 3
+end
+
+local function enqueue(message, priority)
+    local entry = {message = message, priority = priority or messagePriority(message)}
+    local index = #queue + 1
+    while index > 1 and queue[index - 1].priority > entry.priority do
+        queue[index] = queue[index - 1]
+        index = index - 1
+    end
+    queue[index] = entry
+end
+
+function ns.RefreshSyncStatus()
+    if not ns.ui or not ns.ui.status then return end
+    local count = #queue
+    if count > 0 then
+        ns.ui.status:SetText(retryCount > 0 and "Delivery slowed; retrying" or ("Sending updates: " .. count .. " left"))
+    end
 end
 
 local function schedulePump(delay)
@@ -165,7 +192,7 @@ pump = function()
         return
     end
     -- Keep the head until accepted; dropping throttled snapshot parts loses data.
-    local message = queue[1]
+    local message = queue[1].message
     ns.syncStats.sendAttempts = ns.syncStats.sendAttempts + 1
     local result = C_ChatInfo.SendAddonMessage(PREFIX, message, "PARTY")
     ns.syncStats.lastSend = ns.ResultText(result, "SendAddonMessageResult")
@@ -176,12 +203,15 @@ pump = function()
         and type(throttle) == "number" and result == throttle
     trace("Send " .. (string.sub(message, 1, 3) == "1|H" and "hello" or string.sub(message, 3, 3))
         .. ": " .. ns.syncStats.lastSend)
-    if throttled and retryCount < 5 then
+    if throttled then
         retryCount = retryCount + 1
         ns.syncStats.throttled = ns.syncStats.throttled + 1
         ns.syncStats.retries = ns.syncStats.retries + 1
         sendDelay = math.min(16, sendDelay * 2)
         trace("Keep packet; retry in " .. sendDelay .. " seconds")
+        ns.RefreshSyncStatus()
+        schedulePump(sendDelay)
+        return
     elseif ns.Public(result) and (result == true or result == nil
         or (ns.Public(success) and type(success) == "number" and result == success)) then
         table.remove(queue, 1)
@@ -201,7 +231,7 @@ pump = function()
         ns.Refresh(true)
         return
     end
-    ns.Refresh(true)
+    ns.RefreshSyncStatus()
     schedulePump(sendDelay)
 end
 
@@ -211,9 +241,9 @@ end
 
 function ns.ActiveSnapshotRevision() return lastActiveRevision end
 
-function ns.QueueMessage(message)
+function ns.QueueMessage(message, priority)
     if not ns.syncReady or not inParty() or type(message) ~= "string" or #message > 255 or #queue >= 256 then return false end
-    queue[#queue + 1] = message
+    enqueue(message, priority)
     if not pumping then pumping = true; schedulePump(0) end
     return true
 end
@@ -245,7 +275,7 @@ local function send(kind, ids, sharedRevision)
     for part = 1, total do
         local chunk = {}
         for i = (part - 1) * 18 + 1, math.min(part * 18, #sorted) do chunk[#chunk + 1] = tostring(sorted[i]) end
-        queue[#queue + 1] = "1|" .. kind .. "|" .. transferRevision .. "|" .. part .. "|" .. total .. "|" .. table.concat(chunk, ",")
+        enqueue("1|" .. kind .. "|" .. transferRevision .. "|" .. part .. "|" .. total .. "|" .. table.concat(chunk, ","))
     end
     if not pumping then pumping = true; C_Timer.After(0, pump) end
     return transferRevision
@@ -270,14 +300,21 @@ function ns.SendActiveSnapshot(force)
         return
     end
     for _, id in ipairs(ids) do
-        queue[#queue + 1] = "1|T|" .. activeRevision .. "|" .. id .. "|" .. ns.localTitles[id]
+        if not (ns.CatalogueQuest and ns.CatalogueQuest(id)) then
+            enqueue("1|T|" .. activeRevision .. "|" .. id .. "|" .. ns.localTitles[id])
+        end
     end
     if not pumping and #queue > 0 then pumping = true; C_Timer.After(0, pump) end
 end
 
 function ns.SendCompletion(force)
     local completed, checked = {}, {}
-    for id in pairs(ns.QuestIDs()) do
+    local scope
+    if ns.routeSelection and ns.routeSelection.records and ns.RouteHistoryScope then
+        ns.RouteHistoryScope(ns.routeSelection.records)
+        scope = ns.partyRouteHistoryScope
+    else scope = ns.partyRouteHistoryScope end
+    for id in pairs(scope or ns.QuestIDs()) do
         local result = ns.Completed(id)
         if result ~= nil then checked[id] = true end
         if result == true then completed[id] = true end
@@ -320,7 +357,7 @@ function ns.SyncNow(force)
         ns.status = "Quest progress queued for your party."
         if not announced then
             announced = true
-            queue[#queue + 1] = "1|H"
+            enqueue("1|H", 1)
             sendPlanHello()
         end
         if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(force) end
@@ -380,7 +417,8 @@ local function repairPeer(sender)
 end
 
 function ns.Receive(prefix, message, channel, sender)
-    if not ns.PartyFeaturesEnabled() then return end
+    local passiveHello = not ns.PartyFeaturesEnabled() and ns.Option("partyMode") == "ask" and normalParty()
+    if not ns.PartyFeaturesEnabled() and not passiveHello then return end
     if not ns.Public(prefix) then return end
     if prefix ~= PREFIX then return end
     ns.syncStats.received = ns.syncStats.received + 1
@@ -391,7 +429,7 @@ function ns.Receive(prefix, message, channel, sender)
     if type(message) ~= "string" or type(sender) ~= "string" or #message > 255 then
         ignored("invalid envelope"); return
     end
-    if not inParty() then ignored("not in a normal party"); return end
+    if not (passiveHello or inParty()) then ignored("not in a normal party"); return end
     local identity, matchReason = resolveSender(sender)
     if not identity then ignored(matchReason); return end
     if identity.unit == "player" then ignored("self echo (" .. matchReason .. ")"); return end
@@ -399,6 +437,16 @@ function ns.Receive(prefix, message, channel, sender)
     sender = identity.key
     if not roster[sender] then ignored("sender left roster"); return end
     trace("Receive from " .. transportSender .. "; matched " .. matchReason)
+    if passiveHello then
+        local peerVersion, peerSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$")
+        if message ~= "1|H" and not peerVersion then ignored("party mode disabled; ignored non-hello packet"); return end
+        local member = ns.members[sender] or {}; ns.members[sender] = member
+        member.version, member.planSupport = peerVersion, peerSupport == "1"
+        ns.syncStats.accepted = ns.syncStats.accepted + 1
+        trace("Received peer hello while Ask mode is waiting for consent")
+        ns.Refresh(true)
+        return
+    end
     local planVersion, planSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$")
     if planVersion then
         local member = ns.members[sender] or {}
@@ -607,7 +655,7 @@ function ns.Receive(prefix, message, channel, sender)
 end
 
 function ns.InitializeSync(reusePrefix)
-    ns.syncReady = ns.PartyFeaturesEnabled() and C_ChatInfo and type(C_ChatInfo.RegisterAddonMessagePrefix) == "function"
+    ns.syncReady = C_ChatInfo and type(C_ChatInfo.RegisterAddonMessagePrefix) == "function"
         and type(C_ChatInfo.SendAddonMessage) == "function"
         and C_Timer and type(C_Timer.After) == "function"
     if ns.syncReady then
@@ -633,10 +681,8 @@ function ns.InitializeSync(reusePrefix)
         trace("Prefix registration: " .. ns.syncStats.registration .. "; ready: " .. tostring(ns.syncReady))
         prefixReady = ns.syncReady
     end
-    if ns.PartyFeaturesEnabled() then ns.On("CHAT_MSG_ADDON", ns.Receive)
-    else
-        ns.handlers.CHAT_MSG_ADDON = nil
-        ns.frame:UnregisterEvent("CHAT_MSG_ADDON")
+    if not receiveRegistered then ns.On("CHAT_MSG_ADDON", ns.Receive); receiveRegistered = true end
+    if not ns.PartyFeaturesEnabled() then
         ns.status = "Solo leveling mode. Party features are disabled."
     end
     ns.UpdateRoster()
@@ -673,7 +719,14 @@ function ns.SyncDiagnostics(output)
     output("")
     output("Sync runtime")
     if ns.PartyPlanDiagnostics then ns.PartyPlanDiagnostics(output) end
-    output("Play mode: " .. (ns.PartyFeaturesEnabled() and "Party features enabled" or "Solo leveling; party features disabled"))
+    local mode = ns.Option("partyMode")
+    local playMode = ns.partyModeTemporary and "party (temporary, this group)"
+        or mode == "always" and "party (always)"
+        or mode == "never" and "solo (never ask)"
+        or ns.partyModeDeclinedThisGroup and "solo (prompt declined for this group)"
+        or ns.ReadPublic(IsInGroup) == true and ns.ReadPublic(IsInRaid) ~= true and "solo (prompt pending)"
+        or "solo (not grouped)"
+    output("Play mode: " .. playMode)
     output("Player name candidates: " .. safe(ns.self) .. " / " .. safe(ns.MemberLabel(ns.self)))
     output("Sender matching: qualified name, or unique exact first-name + surname in the current roster")
     output("Grouped: " .. safe(IsInGroup()) .. "; raid: " .. safe(IsInRaid()))

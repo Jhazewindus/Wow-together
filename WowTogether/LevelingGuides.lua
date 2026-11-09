@@ -458,6 +458,25 @@ local function coreRange(entry)
     return levels[1 + trim], levels[#levels - trim]
 end
 
+function ns.NextZoneBaselineGuide(currentGuide, afterCurrentBand)
+    ns.ResolveCatalogueMaps(); rebuildIndex()
+    local nextEntry, nextLow, nextHigh
+    local currentLow = currentGuide and (afterCurrentBand and currentGuide.rangeHigh or currentGuide.rangeLow)
+        or (ns.profile and ns.profile.level or 1)
+    for _, entry in pairs(entries or {}) do
+        if entry.mode == "zone" and entry.key ~= (currentGuide and currentGuide.key) then
+            local low, high = coreRange(entry)
+            if low and low > currentLow and (not nextLow or low < nextLow
+                or low == nextLow and ns.ZonePreference(entry.mapID) < ns.ZonePreference(nextEntry.mapID)) then
+                nextEntry, nextLow, nextHigh = entry, low, high
+            end
+        end
+    end
+    if not nextEntry then return end
+    return {key = nextEntry.key, title = nextEntry.title, zone = nextEntry.zone, mode = "zone",
+        mapID = nextEntry.mapID, rangeLow = nextLow, rangeHigh = nextHigh, records = entryRecords(nextEntry)}
+end
+
 local function buildChoice(entry, low, high, query, section)
     query = query or ns.NewQuestQuery()
     local relevant, search = 0, {entry.title, entry.zone}

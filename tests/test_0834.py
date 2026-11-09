@@ -87,7 +87,7 @@ class SectionScopeTests(unittest.TestCase):
         c.ns.GenerateFixedGuide(g, False)
         ops = [(s.id, s.kind) for s in g.fixedPlan.values()]
         self.assertLess(ops.index((899, 't')), ops.index((910, 'a')))
-        self.assertIn('Middle one', c.ns.LevelingValue(899)[1])
+        self.assertIn('Chain worth', c.ns.LevelingValue(899)[1])
         self.assertNotIn(900, ids(g))
 
     def test_branching_and_observed_dependencies_stay_in_section_scope(self):

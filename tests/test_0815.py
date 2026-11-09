@@ -240,7 +240,7 @@ class PersonalProgressTests(unittest.TestCase):
 
 
 class UsefulPrerequisiteTests(unittest.TestCase):
-    def test_scan_keeps_useful_low_prerequisite_explains_unlock_and_filters_junk(self):
+    def test_scan_defers_a_low_rate_prerequisite_chain_but_keeps_junk_unskipped(self):
         c = solo(); map_canvas(c)
         catalogue(c, {
             900: world_quest('Useful setup', level=16),
@@ -255,10 +255,8 @@ class UsefulPrerequisiteTests(unittest.TestCase):
         entries(c, 902)  # Unfinished current low junk follows the same filter.
         c.ns.ScanGuideProgress(); c.drain()
         self.assertEqual(c.ns.PreferredQuestLevels(), (18, 24))
-        self.assertEqual({s.id for s in c.ns.selectedRoute.stops.values()}, {900})
-        self.assertIn('Step 1 of', c.ns.navigation.step.text)
-        self.assertEqual(c.ns.navigation.presentation.status, 'Required')
-        self.assertIn('Unlocks Useful reward (level 20)', c.ns.navigation.context.text)
+        self.assertNotIn(900, {s.id for s in c.ns.selectedRoute.stops.values()})
+        self.assertIn('Chain worth cannot be estimated', c.ns.ChainValue(900).reason)
         self.assertFalse(c.ns.GuideQuestSkipped(902))
         self.assertFalse(c.ns.GuideQuestSkipped(903))
         self.assertEqual(order(g), before)
@@ -272,14 +270,15 @@ class UsefulPrerequisiteTests(unittest.TestCase):
         self.assertEqual(c.ns.navigation.state.stop.kind, 't')
         self.assertFalse(c.ns.Completed(900))
 
-    def test_actual_barrens_data_distinguishes_useful_chain_from_unrelated_low_quest(self):
+    def test_actual_barrens_data_uses_chain_xp_rate_for_low_level_quests(self):
         c = Client(quests=(), use_catalogue=True)
         c.guide_environment(level=21)
         c.lua.globals().grouped = False
         c.unit_names({'player': ['Alice', 'TestRealm']})
         self.assertEqual(c.ns.CatalogueQuest(875).previousQuest, 867)
-        self.assertIn('no worthwhile follow-up is known', c.ns.LevelingValue(875)[1])
-        self.assertEqual(c.ns.LevelingValue(888)[0], False)
+        self.assertIn('Chain worth', c.ns.LevelingValue(875)[1])
+        self.assertFalse(c.ns.ChainValue(888).included)
+        self.assertIn('below your pace', c.ns.LevelingValue(888)[1])
 
 
 class LevelReadyZoneTests(unittest.TestCase):
