@@ -31,8 +31,12 @@ only for a trusted repo.
   PERFORMANCE.md). Add a timing test when touching a policy loop.
 - Player-facing text follows docs/CODEX_STEP_TEXT.md: verb first, no addon
   vocabulary, no hedges, no reason codes on cards or tooltips.
-- The TOC is the only version. Every PR bumps it and adds a `## <version>`
-  entry with `For players` (≤3 lines) and `Please check` (≤3 items).
+- Every PR adds exactly one `changes/<branch>.md` fragment with a release-name
+  heading, `For players` (≤3 lines), `Please check` (≤3 items), and developer
+  notes; use `internal: true` when there is no player-visible change. PRs never
+  edit the TOC version or `CHANGELOG.md`.
+- Release versions come from the last `v*` tag. CI stamps the version and
+  release name into packaged TOCs only; `CHANGELOG.md` is frozen at 0.8.110.
 - Branches `core/<topic>` (A) and `gold/<topic>` (B); squash-merge via PR.
   You never merge. Build and release happen in CI; never build zips by hand.
 - Module boundary: docs/MODULE_BOUNDARY.md. B edits only `WowTogether_Gold/`
@@ -73,8 +77,8 @@ nickname_candidates = ["Argus", "Lens", "Scribe"]
 
 ### reviewer (read-only, strong model)
 Checks: only the brief's files changed; no `ns.*` reassignment across files;
-no forbidden strings (list in docs/CODEX_UI_PRESENTATION.md §6); version
-bumped and changelog entry has `For players`/`Please check`; tests exist for
+no forbidden strings (list in docs/CODEX_UI_PRESENTATION.md §6); exactly one
+valid branch fragment and no TOC version/`CHANGELOG.md` edits; tests exist for
 each behaviour named in the brief; module boundary respected; player text
 rules. Output: the checklist with pass/fail per line and file:line for each
 fail. Never edits, never suggests "acceptable for now".
@@ -110,11 +114,11 @@ source queue, licence check before any import. Writes only under
 `data-tools/` (or `tools/`) JSON inputs; never Lua. Reports facts with
 confidence and source.
 
-### release-scribe (edits: CHANGELOG.md and the TOC only)
-Writes `For players` (plain language, ≤3 lines) and `Please check` (≤3
-items) from the diff and the brief; bumps the TOC; refuses to write
-"internal work" unless the diff truly has no visible effect; checks the
-heading matches the version.
+### release-scribe (edits: one `changes/<branch>.md` file only)
+Writes a release-name heading, `For players` (plain language, ≤3 lines),
+`Please check` (≤3 items), and developer notes from the diff and brief. For
+no player-visible change, write `internal: true`. Never edits the TOC version
+or `CHANGELOG.md`.
 
 ### gold-worker (environment B only; edits WowTogether_Gold/ and tools/gold/)
 The lua-implementer with the boundary baked in: any reference outside the
@@ -143,5 +147,6 @@ public `WowTogetherModuleAPI` is a stop-and-report. Runs
   #N" runs reviewer+tester and returns the checklist without edits.
 - A brief with two disjoint file lists runs two implementers in parallel
   and one tester afterwards.
-- reviewer rejects a PR that reassigns an `ns.*` function or lacks `For
-  players`; tester rejects one whose timing test fails.
+- reviewer rejects a PR that reassigns an `ns.*` function, lacks one valid
+  fragment, edits the TOC version/`CHANGELOG.md`, or omits `For players`; tester
+  rejects one whose timing test fails.

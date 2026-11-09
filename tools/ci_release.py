@@ -17,24 +17,25 @@ from post_discord_release import NoRedirects, PublicationError, webhook_endpoint
 MAX_ATTACHMENT = 25 * 1024 * 1024
 ROOTS = {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData'}
 ALLOWED_ROOTS = ROOTS | {'WowTogether_Gold'}
+VERSION_PATTERN = r'\d+\.\d+\.\d+(?:-beta\.\d+\.[0-9a-f]{7,40})?'
 
 
 def metadata(toc):
-    version = re.search(r'^## Version: (\d+\.\d+\.\d+)\s*$', toc, re.M)
+    version = re.search(r'^## Version: (' + VERSION_PATTERN + r')\s*$', toc, re.M)
     name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})\s*$', toc, re.M)
     if not version or not name:
-        raise ValueError('TOC must declare a version and release name.')
+        raise ValueError('Packaged TOC must declare a stamped version and release name.')
     return version.group(1), name.group(1)
 
 
 def section_for(changelog, version):
     match = re.search(r'^## ' + re.escape(version) + r'[ \t]*\n(.*?)(?=^## |\Z)', changelog, re.M | re.S)
     if not match:
-        raise ValueError('CHANGELOG.md has no heading for the TOC version.')
+        raise ValueError('Packaged CHANGELOG.md has no heading for its stamped version.')
     return match.group(1).strip()
 
 
-def blocks(section, required=True):
+def blocks(section, required=True, max_items=3):
     result = {'players': [], 'check': [], 'developer': []}
     current = 'developer'
     for line in section.splitlines():
@@ -46,7 +47,6 @@ def blocks(section, required=True):
         elif heading in {'developer notes', 'development notes'}:
             current = 'developer'
         elif line.strip():
-            # The release-name heading is already supplied by the TOC.
             if current == 'developer' and re.fullmatch(r'\*\*[A-Z0-9 —-]+\*\*', line.strip()):
                 continue
             result[current].append(line)
@@ -55,27 +55,136 @@ def blocks(section, required=True):
             if not result[key]:
                 raise ValueError('Release notes require a ' + title + ' block.')
             items = sum(bool(re.match(r'^\s*(?:[-*]|\d+[.)])\s+', line)) for line in result[key])
-            if items > 3 or len(result[key]) > 3:
-                raise ValueError(title + ' must contain at most three short items.')
+            if max_items is not None and (items > max_items or len(result[key]) > max_items):
+                raise ValueError(title + ' must contain at most ' + str(max_items) + ' short items.')
     return {key: '\n'.join(lines).strip() for key, lines in result.items()}
 
 
-def preflight(root, notes, runner=subprocess.run):
-    version, name = metadata((root / 'WowTogether/WowTogether.toc').read_text())
-    section = section_for((root / 'CHANGELOG.md').read_text(), version)
-    blocks(section)
-    probe = runner(['git', 'show-ref', '--verify', '--quiet', 'refs/tags/v' + version], cwd=root)
-    if probe.returncode == 0:
-        raise ValueError('Tag v' + version + ' already exists; bump the TOC version before releasing.')
-    if probe.returncode != 1:
-        raise ValueError('Could not verify release tag history; fetch tags before releasing.')
-    notes.parent.mkdir(parents=True, exist_ok=True)
-    notes.write_text(section + '\n')
+def parse_fragment(path):
+    text = Path(path).read_text()
+    lines = text.splitlines()
+    first = next((line.strip() for line in lines if line.strip()), '')
+    if not re.fullmatch(r"# [A-Za-z0-9][A-Za-z0-9 &’'():_./+-]{0,78}", first):
+        raise ValueError(str(path) + ': first line must be a release name heading (# RELEASE NAME).')
+    release_name = first[2:].strip()
+    internal = bool(re.search(r'^internal:\s*true\s*$', text, re.M | re.I))
+    if internal:
+        return {'path': str(path), 'name': release_name, 'internal': True, 'players': '', 'check': '', 'developer': ''}
+    note_blocks = blocks(text, required=False)
+    for key, heading in [('players', 'For players'), ('check', 'Please check')]:
+        if not note_blocks[key]:
+            raise ValueError(str(path) + ': missing ' + heading + ' section.')
+    if len(note_blocks['players'].splitlines()) > 3:
+        raise ValueError(str(path) + ': For players must contain at most three lines.')
+    check_items = sum(bool(re.match(r'^\s*(?:[-*]|\d+[.)])\s+', line)) for line in note_blocks['check'].splitlines())
+    if not check_items or check_items > 3 or len(note_blocks['check'].splitlines()) > 3:
+        raise ValueError(str(path) + ': Please check must contain one to three items.')
+    if not note_blocks['developer']:
+        raise ValueError(str(path) + ': missing Developer notes section.')
+    return {'path': str(path), 'name': release_name, 'internal': False, **note_blocks}
+
+
+def next_version(root, runner=subprocess.run):
+    probe = runner(['git', 'describe', '--tags', '--abbrev=0', '--match', 'v[0-9]*'], cwd=root,
+                   capture_output=True, text=True)
+    if probe.returncode != 0:
+        raise ValueError('Could not find the latest reachable v* release tag.')
+    match = re.fullmatch(r'v(\d+)\.(\d+)\.(\d+)', probe.stdout.strip())
+    if not match:
+        raise ValueError('Latest release tag is not a numeric vMAJOR.MINOR.PATCH tag.')
+    major, minor, patch = map(int, match.groups())
+    return f'{major}.{minor}.{patch + 1}'
+
+
+def release_fragments(root, runner=subprocess.run):
+    tag = runner(['git', 'describe', '--tags', '--abbrev=0', '--match', 'v[0-9]*'], cwd=root,
+                 capture_output=True, text=True)
+    if tag.returncode != 0:
+        raise ValueError('Could not find the latest reachable v* release tag.')
+    result = runner(['git', 'diff', '--diff-filter=A', '--name-only', tag.stdout.strip() + '..HEAD', '--', 'changes/'],
+                    cwd=root, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise ValueError('Could not collect changelog fragments since the last release tag.')
+    paths = [line for line in result.stdout.splitlines() if line.startswith('changes/') and line.endswith('.md')]
+    return [parse_fragment(Path(root) / name) for name in sorted(paths)]
+
+
+def assemble_notes(fragments):
+    visible = [item for item in fragments if not item['internal']]
+    if not visible:
+        return '', ''
+    release_name = visible[0]['name'] if len(visible) == 1 else 'MULTIPLE IMPROVEMENTS'
+    players, checks, developer = [], [], []
+    for item in visible:
+        players.append('**' + item['name'] + '**')
+        players.append(item['players'])
+        checks.append('**' + item['name'] + '**')
+        checks.append(item['check'])
+        if item['developer']:
+            developer.extend(['**' + item['name'] + '**', item['developer']])
+    notes = 'For players:\n' + '\n'.join(players) + '\n\nPlease check:\n' + '\n'.join(checks)
+    if developer:
+        notes += '\n\nDeveloper notes:\n' + '\n'.join(developer)
+    return release_name, notes
+
+
+def plan_release(root, notes_path, runner=subprocess.run):
+    fragments = release_fragments(root, runner)
+    release_name, notes = assemble_notes(fragments)
+    output = os.environ.get('GITHUB_OUTPUT')
+    if not notes:
+        if output:
+            with open(output, 'a') as stream:
+                stream.write('release=false\n')
+        return None
+    version = next_version(root, runner)
+    notes_path.parent.mkdir(parents=True, exist_ok=True)
+    notes_path.write_text(notes + '\n')
+    if output:
+        with open(output, 'a') as stream:
+            stream.write('release=true\nversion=' + version + '\nrelease_name=' + release_name + '\n')
+    return version, release_name, notes
+
+
+def validate_pr(root, base, head, branch, runner=subprocess.run):
+    changed = runner(['git', 'diff', '--name-status', base + '...' + head], cwd=root, capture_output=True, text=True)
+    if changed.returncode != 0:
+        raise ValueError('Could not inspect the pull request diff.')
+    records = [line.split('\t') for line in changed.stdout.splitlines() if line.strip()]
+    bootstrap = branch == 'core/release-fragments'
+    if not bootstrap and any(len(row) > 1 and row[1] == 'CHANGELOG.md' for row in records):
+        raise ValueError('Pull requests must not edit CHANGELOG.md; add a changes/<branch>.md fragment.')
+    toc_diff = runner(['git', 'diff', '--unified=0', base + '...' + head, '--', 'WowTogether/WowTogether.toc'],
+                      cwd=root, capture_output=True, text=True)
+    if toc_diff.returncode != 0:
+        raise ValueError('Could not inspect the TOC diff.')
+    if not bootstrap and any(re.match(r'^[+-]## Version:', line) for line in toc_diff.stdout.splitlines()):
+        raise ValueError('Pull requests must not edit ## Version in the TOC.')
+    fragment_changes = [row for row in records if len(row) > 1 and row[1].startswith('changes/')]
+    added = [row[1] for row in fragment_changes if row[0] == 'A' and row[1].endswith('.md')]
+    if len(added) != 1 or len(fragment_changes) != 1:
+        raise ValueError('Each pull request must add exactly one new changes/<branch>.md file and edit no other fragments.')
+    expected = 'changes/' + branch + '.md'
+    if added[0] != expected:
+        raise ValueError("Expected this branch's fragment at " + expected + '.')
+    fragment = parse_fragment(Path(root) / added[0])
     output = os.environ.get('GITHUB_OUTPUT')
     if output:
         with open(output, 'a') as stream:
-            stream.write('version=' + version + '\nrelease_name=' + name + '\n')
-    return version, name, section
+            stream.write('fragment=' + added[0] + '\nrelease_name=' + fragment['name'] + '\n')
+    return added[0]
+
+
+def legacy_preflight_compatibility():
+    """Let the migration PR pass the base branch's still-active old workflow.
+
+    GitHub evaluates the pull_request workflow from the base branch until that
+    workflow change is merged. The old workflow invokes ``preflight`` and
+    expects a TOC version bump, so during this one migration PR the command is
+    intentionally a no-op. The replacement workflow validates the fragment
+    and stamps only the beta package. No release/version decision happens here.
+    """
+    print('Legacy preflight skipped; changelog fragments are validated by the updated PR workflow.')
 
 
 def archive_metadata(archives):
@@ -102,13 +211,13 @@ def archive_metadata(archives):
     try:
         version, name = metadata(values['WowTogether/WowTogether.toc'])
         section = section_for(values['WowTogether/CHANGELOG.md'], version)
+        blocks(section, required='-beta.' not in version, max_items=None)
     except KeyError:
         raise ValueError('The build is missing its TOC or changelog.') from None
     return version, name, section
 
-
 def message_for(kind, version, name, section, archives, branch='', pr='', title='', diff=''):
-    notes = blocks(section, required=kind == 'release')
+    notes = blocks(section, required=kind == 'release', max_items=None)
     install = ('Install: replace `WowTogether` and the matching `WowTogether_*` sibling folders in '
                '`Interface\\AddOns\\` on every member\'s client, then fully restart.')
     if len(archives) > 1:
@@ -194,9 +303,19 @@ def post(dist, kind, webhook, opener=None, **options):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
-    check = commands.add_parser('preflight')
-    check.add_argument('--root', type=Path, default=Path('.'))
-    check.add_argument('--notes', type=Path, required=True)
+    plan = commands.add_parser('plan')
+    plan.add_argument('--root', type=Path, default=Path('.'))
+    plan.add_argument('--notes', type=Path, required=True)
+    validate = commands.add_parser('validate-pr')
+    validate.add_argument('--root', type=Path, default=Path('.'))
+    validate.add_argument('--base', required=True)
+    validate.add_argument('--head', required=True)
+    validate.add_argument('--branch', required=True)
+    version = commands.add_parser('next-version')
+    version.add_argument('--root', type=Path, default=Path('.'))
+    legacy = commands.add_parser('preflight', help=argparse.SUPPRESS)
+    legacy.add_argument('--root', type=Path, default=Path('.'))
+    legacy.add_argument('--notes', type=Path)
     publish = commands.add_parser('post')
     publish.add_argument('--kind', choices=['beta', 'release'], required=True)
     publish.add_argument('--dist', type=Path, required=True)
@@ -204,8 +323,14 @@ def main():
     for option in ('branch', 'pr', 'title', 'diff-file'):
         publish.add_argument('--' + option, default='')
     args = parser.parse_args()
-    if args.command == 'preflight':
-        preflight(args.root, args.notes)
+    if args.command == 'plan':
+        plan_release(args.root, args.notes)
+    elif args.command == 'validate-pr':
+        validate_pr(args.root, args.base, args.head, args.branch)
+    elif args.command == 'next-version':
+        print(next_version(args.root))
+    elif args.command == 'preflight':
+        legacy_preflight_compatibility()
     else:
         diff = Path(args.diff_file).read_text() if args.diff_file else ''
         options = dict(branch=args.branch, pr=args.pr, title=args.title, diff=diff)

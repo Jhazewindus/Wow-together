@@ -7,7 +7,8 @@ local function metadata(field)
     local okay, value = pcall(reader, addonName, field)
     if okay and type(value) == "string" and value ~= "" then return value end
 end
-ns.VERSION = metadata("Version") or "unknown"
+ns.VERSION = metadata("Version") or "dev"
+if ns.VERSION == "@project-version@" then ns.VERSION = "dev" end
 ns.RELEASE_NAME = metadata("X-ReleaseName") or ""
 ns.hooks = {
     optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},

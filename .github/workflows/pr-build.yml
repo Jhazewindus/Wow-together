@@ -42,20 +42,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python tools/ci_release.py preflight --root . --notes dist/release-notes.md
+      - name: Validate this branch's release fragment
+        id: fragment
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BRANCH: ${{ github.head_ref }}
+        run: python tools/ci_release.py validate-pr --root . --base "$BASE_SHA" --head "$HEAD_SHA" --branch "$BRANCH"
+      - name: Resolve next beta version
+        id: version
+        run: echo "version=$(python tools/ci_release.py next-version --root .)" >> "$GITHUB_OUTPUT"
       - run: python -m pip install pytest lupa
       - run: python tools/syntax_check.py
       - run: python tools/boundary_check.py
       - name: Build beta archive
         env:
           BRANCH: ${{ github.head_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: python tools/build_release.py --output dist/ --label "$BRANCH" --sha "$HEAD_SHA"
-      - name: Capture changelog diff
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: git diff "$BASE_SHA" "$HEAD_SHA" -- CHANGELOG.md > dist/changelog.diff
+          NEXT_VERSION: ${{ steps.version.outputs.version }}
+          RELEASE_NAME: ${{ steps.fragment.outputs.release_name }}
+          FRAGMENT: ${{ steps.fragment.outputs.fragment }}
+        run: python tools/build_release.py --output dist/ --label "$BRANCH" --sha "$HEAD_SHA" --version "$NEXT_VERSION-beta.$PR_NUMBER.$HEAD_SHA" --release-name "$RELEASE_NAME" --notes-file "$FRAGMENT"
       - uses: actions/upload-artifact@v4
         with:
           name: beta-build

@@ -1,16 +1,5 @@
 # Wow Together changelog
 
-## 0.8.111
-
-**GOLD FARM QUOTE HOOKS**
-
-For players:
-- The optional Gold module can request paced auction quotes for its farming suggestions.
-- Gold suggestions and session cards use core-owned recommendation cards.
-
-Please check:
-- With Gold enabled, request a farm scan while the auction house is open.
-- With Gold absent or a callback failing, core recommendations and prices still work.
 ## 0.8.110
 
 **CLEARER ROUTE GUIDANCE**
@@ -41,13 +30,6 @@ Developer notes:
 - Release automation brief: add checked PR builds, trusted Discord delivery,
   version-gated GitHub releases and automatic ZIP splitting above 25 MB.
 - Keep release identity in the TOC and validate every declared package source.
-
-## Unreleased
-
-- Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
-  wrappers with `ns.hooks` registry points, preserve the public module API and
-  Gold API version, and remove travel-summary string substitutions.
-
 
 ## 0.8.107
 
