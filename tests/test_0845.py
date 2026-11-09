@@ -260,13 +260,38 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         self.assertIsNone(c.ns.char.flights.edges['80:25'])
         self.assertEqual(c.ns.char.flights.unreachable['80:25'], c.ns.flightTimingBuild)
 
-    def test_navigation_refresh_reuses_calculation_but_movement_reconsiders_it(self):
+    def test_navigation_refresh_reuses_discovery_until_thirty_seconds_of_movement(self):
         c = ratchet_client()
         c.lua.execute('''local ns=...; old=ns.FindFlightDiscoveryPlan; calculations=0
           ns.FindFlightDiscoveryPlan=function(...) calculations=calculations+1; return old(...) end''', c.ns)
         for _ in range(10): c.ns.UpdateNavigation()
         self.assertEqual(c.lua.globals().calculations, 0)
         c.lua.execute('playerX=.55; now=10'); c.ns.UpdateNavigation()
+        self.assertEqual(c.lua.globals().calculations, 0)
+        c.lua.execute('now=30'); c.ns.UpdateNavigation()
+        self.assertGreater(c.lua.globals().calculations, 0)
+        previous = c.lua.globals().calculations
+        c.lua.execute('playerX=.54; now=31.5'); c.ns.UpdateNavigation()
+        self.assertEqual(c.lua.globals().calculations, previous)
+
+    def test_no_nearby_unlearned_flight_master_means_no_discovery_path_calls(self):
+        c = ratchet_client()
+        c.lua.execute('''local ns=...; playerX=.1; ns.flightDiscoveryCache=nil; discoveryCalls,pathCalls=0,0
+          local discovery,path=ns.FindFlightDiscoveryPlan,ns.FindTravelPath
+          ns.FindFlightDiscoveryPlan=function(...) discoveryCalls=discoveryCalls+1; return discovery(...) end
+          ns.FindTravelPath=function(...) pathCalls=pathCalls+1; return path(...) end''', c.ns)
+        goal = c.ns.selectedRoute.stops[1]
+        self.assertIsNone(c.ns.FlightDiscoveryDestination(goal))
+        self.assertEqual(c.lua.globals().discoveryCalls, 0)
+        self.assertEqual(c.lua.globals().pathCalls, 0)
+
+    def test_goal_change_still_checks_flight_discovery_immediately(self):
+        c = ratchet_client()
+        c.lua.execute('''local ns=...; old=ns.FindFlightDiscoveryPlan; calculations=0
+          ns.FindFlightDiscoveryPlan=function(...) calculations=calculations+1; return old(...) end''', c.ns)
+        for _ in range(10): c.ns.UpdateNavigation()
+        c.ns.selectedRoute.stops[1].id = c.ns.selectedRoute.stops[1].id + 1
+        c.ns.FlightDiscoveryDestination(c.ns.selectedRoute.stops[1])
         self.assertGreater(c.lua.globals().calculations, 0)
 
     def test_movement_does_not_count_the_old_walk_twice_when_comparing_savings(self):
@@ -282,7 +307,8 @@ class FlightDiscoveryRoutingTests(unittest.TestCase):
         fresh = c.ns.FindTravelPath(origin, goal, True)
         plan = c.ns.FindFlightDiscoveryPlan(origin, goal, old)
         self.assertIsNotNone(plan)
-        self.assertAlmostEqual(plan.savedSeconds, fresh.seconds - plan.seconds)
+        self.assertAlmostEqual(plan.savedSeconds, old.seconds - plan.seconds)
+        self.assertNotAlmostEqual(plan.savedSeconds, fresh.seconds - plan.seconds)
 
     def test_options_combat_preview_and_private_position_do_not_create_checks(self):
         for code in ('combat=true', 'C_Map.GetPlayerMapPosition=function() return secret end'):

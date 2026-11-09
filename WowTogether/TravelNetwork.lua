@@ -530,7 +530,7 @@ function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
 end
 
 function ns.ResetTravelPath()
-    ns.travelPath, ns.travelPathSignature, ns.travelPathChecked, ns.travelWaypoint = nil, nil, nil, nil
+    ns.travelPath, ns.travelPathSignature, ns.travelPathChecked, ns.travelPathReplanned, ns.travelWaypoint = nil, nil, nil, nil, nil
     ns.flightDiscoveryCache, ns.activeFlightCheck = nil, nil
 end
 
@@ -677,19 +677,24 @@ function ns.TravelNetworkDestination(stop)
         if reached then path.cursor, path.transportIndex = reached + 1, nil end
     end
     local moved = checkMovement and ns.TravelPointDistance(position, path.origin)
-    local detour = moved and moved > 175
+    local detour = moved and moved > 250
     if checkMovement and (path.hasTerrain or path.hasTrail) then
         local leg = path.legs[path.cursor]
         local distance = leg and leg.method == "walk" and ns.TravelSegmentDistance(position, leg.from, leg.to)
         -- Following the same segment is progress, not a reason to replace a
         -- corner waypoint. Reattach only after a real departure from it.
-        if distance then detour = distance > (leg.to.trail and 60 or 100) end
+        if distance then detour = distance > 90 end
     end
     if checkMovement then ns.travelPathChecked = finite(now) and now or nil end
-    if not holding and (ns.travelPathSignature ~= signature or detour
+    local signatureChanged = ns.travelPathSignature ~= signature
+    local lastReplan = ns.travelPathReplanned
+    local detourReady = finite(now) and (not finite(lastReplan) or now < lastReplan or now - lastReplan >= 5)
+        or not finite(now) and lastReplan == nil
+    if not holding and (signatureChanged or detour and detourReady
         or not path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 1)) then
         ns.travelPathSignature = signature
         ns.travelPathChecked = finite(now) and now or nil
+        ns.travelPathReplanned = finite(now) and now or false
         ns.travelPath = ns.FindTravelPath(position, stop, ns.Option("suggestFlights"))
         if ns.travelPath then ns.travelPath.selectionKey = ns.routeSelection and ns.routeSelection.key end
         ns.travelNetworkStatus = ns.travelPath and (ns.travelPath.hasTrail
