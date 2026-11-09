@@ -40,6 +40,34 @@ def observation_client():
 
 
 class GoldObservationTests(unittest.TestCase):
+    def test_loot_and_cast_events_replay_through_registered_handlers(self):
+        client, _, private = observation_client()
+        client.lua.execute('''
+            lootGUID = "Creature-0-0-0-0-123-00000001"
+            GetNumLootItems = function() return 1 end
+            GetLootSourceInfo = function() return lootGUID, 1 end
+            GetLootSlotLink = function() return "|Hitem:42|h[Test item]|h" end
+            GetLootSlotInfo = function() return nil, nil, 2 end
+        ''')
+        client.ns.frame.OnEvent(client.ns.frame, "LOOT_OPENED")
+        record = private.db.observations["70009"].mobs[123]
+        self.assertEqual((record.looted, record.drops[42].total), (1, 2))
+        client.ns.frame.OnEvent(client.ns.frame, "UNIT_SPELLCAST_SUCCEEDED", "player", "Cast-1", 77)
+        client.lua.globals().lootGUID = NODE
+        client.ns.frame.OnEvent(client.ns.frame, "LOOT_OPENED")
+        self.assertEqual(private.db.observations["70009"].nodes[501][1].visits, 1)
+        client.lua.execute('''
+            now = 110
+            CombatLogGetCurrentEventInfo = function()
+                return 0, "PARTY_KILL", false, nil, nil, nil, nil,
+                    "Creature-0-0-0-0-123-00000002"
+            end
+        ''')
+        client.ns.frame.OnEvent(client.ns.frame, "COMBAT_LOG_EVENT_UNFILTERED")
+        client.ns.frame.OnEvent(client.ns.frame, "CHAT_MSG_LOOT",
+                                "Bob receives loot: |Hitem:43|h[Other item]|h|r x3")
+        self.assertEqual((record.looted, record.drops[43].total), (2, 3))
+
     def test_kills_are_deduplicated_and_pace_uses_party_size(self):
         client, observations, private = observation_client()
         self.assertTrue(observations.RecordKill(GUID, 100))

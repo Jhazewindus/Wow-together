@@ -284,7 +284,7 @@ function observations.PartyLoot(message)
     if ns.Option("gold.recordLoot") ~= true or not ns.Public(message) or type(message) ~= "string" then return end
     local id = itemID(message)
     if not id then return end
-    local count = tonumber(string.match(message, "|h|r[xX](%d+)")) or 1
+    local count = tonumber(string.match(message, "|h|r%s*[xX](%d+)")) or 1
     local now = clock()
     for index = #recentDeaths, 1, -1 do
         local death = recentDeaths[index]
