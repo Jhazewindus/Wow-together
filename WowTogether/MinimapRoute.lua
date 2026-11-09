@@ -11,6 +11,13 @@ local DIAMETER = {
     outdoor = {[0] = 466 + 2 / 3, [1] = 400, [2] = 333 + 1 / 3, [3] = 266 + 2 / 3, [4] = 200, [5] = 133 + 1 / 3},
 }
 local overlay, lines, shadows, used, elapsed = nil, {}, {}, 0, 0
+local origin = {}
+local points, projected, projectedSource, screen = {}, {}, {}, {}
+local projection, pointCount, previousPointCount = {}, 0, 0
+local cachedRoute, cachedStops, cachedPreview, cachedTravelPath, cachedTravelCursor
+local cachedTravelRevision, cachedProgressRevision, cachedMapID, cachedFullRoute, cachedRouteAhead
+local safetyContext, safetyFaction, safetyData, terrainContext, terrainData
+local statusLines, statusRadius, statusRotate = nil, nil, nil
 
 local function finite(value)
     return ns.Public(value) and type(value) == "number" and value == value and value > -math.huge and value < math.huge
@@ -71,54 +78,94 @@ local function segment(x1, y1, x2, y2, alpha)
     line:SetStartPoint("CENTER", overlay, x1, y1); line:SetEndPoint("CENTER", overlay, x2, y2); line:Show()
 end
 
-local function draw()
+local function setStatus(value)
+    if ns.minimapRouteStatus ~= value then
+        ns.minimapRouteStatus = value
+        statusLines, statusRadius, statusRotate = nil, nil, nil
+    end
+end
+
+local function rebuildPoints(route, mapID, player)
+    local stops = ns.RouteDisplayStops(route)
+    local count, travel = 0, not route.flying and player and stops[1] and ns.TravelLinePoints(player, stops[1])
+    local function add(point)
+        count = count + 1
+        points[count] = point or false
+    end
+    if travel then
+        for index = 1, #travel do add(travel[index]) end
+        for index = 2, #stops do add(stops[index]) end
+    else
+        add(player)
+        for index = 1, #stops do add(stops[index]) end
+    end
+    for index = count + 1, previousPointCount do points[index], projected[index], projectedSource[index], screen[index] = nil, nil, nil, nil end
+    previousPointCount, pointCount = count, count
+    cachedRoute, cachedStops, cachedPreview = route, route.stops, route.previewStops
+    cachedTravelPath, cachedTravelCursor = ns.travelPath, ns.travelPath and ns.travelPath.cursor
+    cachedTravelRevision, cachedProgressRevision, cachedMapID = ns.travelRevision or 0, ns.guideProgressRevision or 0, mapID
+    cachedFullRoute, cachedRouteAhead = ns.Option("fullRoute"), ns.Option("routeAhead")
+    projection, projectedSource = {}, {}
+end
+
+local function drawRoute()
     if not overlay then return end
     if not ns.Option("minimapRoute") or not ns.selectedRoute or ns.navigationPreview
         or ns.ReadPublic(UnitOnTaxi, "player") == true or not ns.ReadPublic(Minimap.IsVisible, Minimap) then
-        hideAll(); ns.minimapRouteStatus = "Hidden (setting, no route, flight or minimap hidden)."; return
+        hideAll(); setStatus("Hidden (setting, no route, flight or minimap hidden)."); return
     end
     local route = ns.RouteForDisplay()
-    if not route or route.flying then hideAll(); ns.minimapRouteStatus = "No displayable route."; return end
+    if not route or route.flying then hideAll(); setStatus("No displayable route."); return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local origin = ns.GuideInteger(mapID) and mapID > 0 and ns.PlayerPoint(mapID)
+    local player = ns.GuideInteger(mapID) and mapID > 0 and ns.PlayerPoint(mapID, origin)
     local width, height
-    if origin then width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID) end
+    if player then width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID) end
     local radius = radiusYards()
     local size = ns.ReadPublic(Minimap.GetWidth, Minimap)
-    if not origin or not finite(width) or not finite(height) or width <= 0 or height <= 0 or not radius
+    if not player or not finite(width) or not finite(height) or width <= 0 or height <= 0 or not radius
         or not finite(size) or size <= 0 then
-        hideAll(); ns.minimapRouteStatus = "Position, map scale or minimap zoom unavailable."; return
+        hideAll(); setStatus("Position, map scale or minimap zoom unavailable."); return
     end
-    local displayed = ns.RouteDisplayStops(route)
-    local points = {}
-    local travel = displayed[1] and ns.TravelLinePoints(origin, displayed[1])
-    if travel then
-        for _, point in ipairs(travel) do points[#points + 1] = point end
-        for index = 2, #displayed do points[#points + 1] = displayed[index] end
-    else
-        points[1] = origin
-        for _, stop in ipairs(displayed) do points[#points + 1] = stop end
+    if route ~= cachedRoute or route.stops ~= cachedStops or route.previewStops ~= cachedPreview
+        or ns.travelPath ~= cachedTravelPath or ns.travelPath and ns.travelPath.cursor ~= cachedTravelCursor
+        or (ns.travelRevision or 0) ~= cachedTravelRevision or (ns.guideProgressRevision or 0) ~= cachedProgressRevision
+        or mapID ~= cachedMapID or ns.Option("fullRoute") ~= cachedFullRoute or ns.Option("routeAhead") ~= cachedRouteAhead then
+        rebuildPoints(route, mapID, player)
     end
     local rotate = ns.ReadPublic(GetCVar, "rotateMinimap") == "1"
     local facing = rotate and ns.ReadPublic(GetPlayerFacing)
     local cosine, sine = 1, 0
     if rotate and finite(facing) then cosine, sine = math.cos(facing), math.sin(facing) end
     local scale, half, round = size / (2 * radius), size / 2, shape() == "ROUND"
-    local projection, screen = {}, {}
-    for index, point in ipairs(points) do
-        if index > MAX_POINTS then break end
-        local projected = point and ns.ProjectMapPoint(point, mapID, projection)
-        if projected then
-            local east, north = (projected.x - origin.x) * width, (origin.y - projected.y) * height
+    for index = 1, math.min(pointCount, MAX_POINTS) do
+        local point = points[index]
+        if point and point ~= false then
+            local target = point.mapID == mapID and point or projectedSource[index] == point and projected[index]
+                or ns.ProjectMapPoint(point, mapID, projection)
+            if projectedSource[index] ~= point then projectedSource[index], projected[index] = point, target end
+            if target then
+            local east, north = (target.x - player.x) * width, (player.y - target.y) * height
             -- A rotating minimap keeps the facing direction up.
             local sx, sy = east * cosine + north * sine, north * cosine - east * sine
-            screen[index] = {sx * scale, sy * scale}
+            local scaled = screen[index]
+            if not scaled then scaled = {}; screen[index] = scaled end
+            scaled[1], scaled[2] = sx * scale, sy * scale
+            else screen[index] = false end
         else screen[index] = false end
     end
     hideAll()
     local alpha = ns.routePaused and 0.45 or 1
-    local safety, terrain = ns.TravelSafetyContext(), ns.Option("travelNetwork") and ns.TravelTerrainContext()
-    for index = 2, math.min(#points, MAX_POINTS) do
+    local faction, data = ns.profile and ns.SafeTitle(ns.profile.faction), ns.travelData
+    if not safetyContext or faction ~= safetyFaction or data ~= safetyData then
+        safetyContext, safetyFaction, safetyData = ns.TravelSafetyContext(), faction, data
+    end
+    local safety = safetyContext
+    local terrainDataNow = ns.travelTerrainData
+    if not terrainContext or terrainDataNow ~= terrainData then
+        terrainContext, terrainData = ns.TravelTerrainContext(), terrainDataNow
+    end
+    local terrain = ns.Option("travelNetwork") and terrainContext
+    for index = 2, math.min(pointCount, MAX_POINTS) do
         local a, b = screen[index - 1], screen[index]
         if a and b and not ns.HostileWalkCrossing(points[index - 1], points[index], safety, index == 2, false)
             and not (terrain and ns.TerrainWalkCrossing(points[index - 1], points[index], terrain)) then
@@ -131,7 +178,18 @@ local function draw()
             if x1 and math.abs(x2 - x1) + math.abs(y2 - y1) >= 0.5 then segment(x1, y1, x2, y2, alpha) end
         end
     end
-    ns.minimapRouteStatus = used .. " line(s) at " .. string.format("%.0f", radius) .. "-yard radius" .. (rotate and ", rotating" or "") .. "."
+    local roundedRadius = math.floor(radius + 0.5)
+    if used ~= statusLines or roundedRadius ~= statusRadius or rotate ~= statusRotate then
+        statusLines, statusRadius, statusRotate = used, roundedRadius, rotate
+        local status = used .. " line(s) at " .. tostring(roundedRadius) .. "-yard radius" .. (rotate and ", rotating" or "") .. "."
+        ns.minimapRouteStatus = status
+    end
+end
+
+local function draw()
+    local before = ns.StartMemorySample and ns.StartMemorySample(ns.MemorySampleSection.minimap)
+    drawRoute()
+    if ns.EndMemorySample then ns.EndMemorySample(ns.MemorySampleSection.minimap, before) end
 end
 
 function ns.CreateMinimapRoute()
@@ -147,7 +205,7 @@ function ns.CreateMinimapRoute()
         if elapsed < REFRESH then return end
         elapsed = 0
         local okay, err = pcall(draw)
-        if not okay then hideAll(); ns.minimapRouteStatus = "Minimap line error: " .. tostring(err) end
+        if not okay then hideAll(); setStatus("Minimap line error: " .. tostring(err)) end
     end)
     ns.minimapRoute = overlay
 end

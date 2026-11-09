@@ -18,6 +18,14 @@ function ns.GuideQuestSkipped(id)
     return state and state.quests[id] == true or false
 end
 
+function ns.GuideStepSkipped(stop)
+    local state = saved()
+    local steps = state and stop and state.steps[stop.id]
+    if not steps then return false end
+    local key = ns.GuideStepKey(stop)
+    return steps[key] == true or stop.legacyStepKey and steps[stop.legacyStepKey] == true or false
+end
+
 function ns.GuideStepKey(stop)
     if stop.fixedStepKey then return stop.fixedStepKey end
     local kind = stop.stepKind or stop.kind
@@ -31,10 +39,9 @@ function ns.GuideStepKey(stop)
 end
 
 function ns.FilterGuideStages(stages)
-    local state, result = saved(), {}
+    local result = {}
     for _, stop in ipairs(stages) do
-        local steps = state and state.steps[stop.id]
-        if not steps or steps[ns.GuideStepKey(stop)] ~= true and (not stop.legacyStepKey or steps[stop.legacyStepKey] ~= true) then
+        if not ns.GuideStepSkipped(stop) then
             result[#result + 1] = stop
         end
     end

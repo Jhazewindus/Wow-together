@@ -123,11 +123,22 @@ end
 
 -- Cheap state key so a route re-plans when the bind point or the Hearthstone
 -- cooldown minute changes, without rebuilding the graph every frame.
+local personalSignature, personalEnabled, personalBind, personalMinute
 function ns.PersonalTransportSignature()
-    if not ns.Option("useHearthstone") then return "p:off" end
-    local bind = ns.SafeTitle(ns.ReadPublic(GetBindLocation)) or ""
-    local remaining = itemCount(HEARTHSTONE) > 0 and itemCooldown(HEARTHSTONE) or -60
-    return "p:" .. bind .. ":" .. math.floor(remaining / 60)
+    local enabled = ns.Option("useHearthstone") == true
+    local bind, minute
+    if enabled then
+        bind = ns.SafeTitle(ns.ReadPublic(GetBindLocation)) or ""
+        local remaining = itemCount(HEARTHSTONE) > 0 and itemCooldown(HEARTHSTONE) or -60
+        minute = math.floor(remaining / 60)
+    else
+        bind, minute = "", -60
+    end
+    if personalSignature == nil or enabled ~= personalEnabled or bind ~= personalBind or minute ~= personalMinute then
+        personalEnabled, personalBind, personalMinute = enabled, bind, minute
+        personalSignature = enabled and ("p:" .. bind .. ":" .. minute) or "p:off"
+    end
+    return personalSignature
 end
 
 function ns.PersonalTransportLabel(leg)

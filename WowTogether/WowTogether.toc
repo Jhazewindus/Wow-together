@@ -6,6 +6,7 @@
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua
+PerformanceLedger.lua
 DataStore.lua
 EliteSpawnData.lua
 ZoneConnections.lua

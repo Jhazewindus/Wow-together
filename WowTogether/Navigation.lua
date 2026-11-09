@@ -5,6 +5,13 @@ local function finite(value)
         and value > -math.huge and value < math.huge
 end
 
+local arrowShape = {{0, 21}, {-12, -6}, {0, 0}, {12, -6}, {0, 21}}
+local rowPresentations, rowPresentationRevisions, rowStates = {}, {}, {{}, {}}
+
+local function setText(frame, cacheKey, text)
+    if frame[cacheKey] ~= text then frame[cacheKey] = text; frame:SetText(text) end
+end
+
 function ns.FormatDistance(value)
     if ns.Option("distanceUnits") == "metres" then return string.format("%.0f m", value * 0.9144) end
     return string.format("%.0f yd", value)
@@ -28,14 +35,17 @@ function ns.NavigationTravelTime(state)
     end
 end
 
-local function nextDisplayedStops(state, limit)
-    if not state or state.stop.historyPreview or not ns.selectedRoute or type(ns.selectedRoute.stops) ~= "table" then return {} end
+local upcomingStopCache, nextStopCache = {}, {}
+local function nextDisplayedStops(state, limit, result)
+    result = result or nextStopCache
+    for index = #result, 1, -1 do result[index] = nil end
+    if not state or state.stop.historyPreview or not ns.selectedRoute or type(ns.selectedRoute.stops) ~= "table" then return result end
     local stops, goal = ns.selectedRoute.stops, ns.GuideDestination(state.stop)
-    if not goal then return {} end
-    for index, stop in ipairs(stops) do
+    if not goal then return result end
+    for index = 1, #stops do
+        local stop = stops[index]
         if stop == goal or stop.id == goal.id and stop.kind == goal.kind
             and (not stop.memberKey or not goal.memberKey or stop.memberKey == goal.memberKey) then
-            local result = {}
             for nextIndex = index + 1, #stops do
                 result[#result + 1] = stops[nextIndex]
                 if #result >= (limit or 1) then break end
@@ -43,18 +53,18 @@ local function nextDisplayedStops(state, limit)
             return result
         end
     end
-    local result = {}
     for index = 2, math.min(#stops, (limit or 1) + 1) do result[#result + 1] = stops[index] end
     return result
 end
 
 local function nextDisplayedStop(state)
-    return nextDisplayedStops(state, 1)[1]
+    return nextDisplayedStops(state, 1, nextStopCache)[1]
 end
 
 local function updateTooltip(frame, opening)
     if not GameTooltip then return end
     if not opening and ns.ReadPublic(GameTooltip.IsOwned, GameTooltip, frame) ~= true then return end
+    if not opening and frame.tooltipPresentation == frame.presentation then return end
     local state = frame.state
     local stop = state and state.stop
     local presentation = frame.presentation or stop and ns.GuideStepPresentation(stop, nil, ns.routeSelection, ns.selectedRoute, state)
@@ -64,11 +74,47 @@ local function updateTooltip(frame, opening)
     if opening or type(GameTooltip.ClearLines) ~= "function" then GameTooltip:SetOwner(frame, "ANCHOR_RIGHT")
     else GameTooltip:ClearLines() end
     frame.tooltipContent = content
+    frame.tooltipPresentation = frame.presentation
     if presentation then
         GameTooltip:AddLine(presentation.title, 1, 0.82, 0.3, true)
         for _, line in ipairs(ns.GuidePresentationTooltipLines(presentation, false)) do GameTooltip:AddLine(line, 1, 1, 1, true) end
     end
     GameTooltip:Show()
+end
+
+local function unchangedFastFrame(frame, state, zoneExit, progressRevision)
+    local stop, flight = state.stop, state.flight
+    local distance = finite(state.distance) and math.floor(state.distance + 0.5) or nil
+    local walk = finite(state.walkSeconds) and math.floor(state.walkSeconds + 0.5) or nil
+    local flightTime = flight and finite(flight.remaining) and math.floor(flight.remaining + 0.5) or nil
+    return frame.fastStop == stop and frame.fastLabel == (stop and stop.label)
+        and frame.fastTitle == (stop and stop.title) and frame.fastMap == (stop and stop.mapID)
+        and frame.fastX == (stop and stop.x) and frame.fastY == (stop and stop.y)
+        and frame.fastStatus == state.status and frame.fastDistance == distance and frame.fastWalk == walk
+        and frame.fastAngle == state.angle and frame.fastFlight == flight and frame.fastFlightTime == flightTime
+        and frame.fastVisible == state.visible and frame.fastIdle == state.idle and frame.fastBusy == state.busy
+        and frame.fastArrived == state.arrived and frame.fastZoneExit == zoneExit
+        and frame.fastProgress == progressRevision and frame.fastObjective == (ns.objectiveDisplayRevision or 0)
+        and frame.fastTravelRevision == (ns.travelRevision or 0) and frame.fastSelection == ns.routeSelection
+        and frame.fastRoute == ns.selectedRoute and frame.fastPreview == ns.navigationPreview
+        and frame.fastRouteArrow == ns.Option("routeArrow") and frame.fastStandalone == ns.Option("standaloneArrow")
+        and frame.fastGlance == ns.Option("guideGlance") and frame.fastPeek == ns.Option("guidePeek")
+        and frame.fastWindowHidden == ns.guideWindowHidden
+end
+
+local function rememberFastFrame(frame, state, zoneExit, progressRevision)
+    local stop, flight = state.stop, state.flight
+    frame.fastStop, frame.fastLabel, frame.fastTitle = stop, stop and stop.label, stop and stop.title
+    frame.fastMap, frame.fastX, frame.fastY = stop and stop.mapID, stop and stop.x, stop and stop.y
+    frame.fastStatus, frame.fastDistance = state.status, finite(state.distance) and math.floor(state.distance + 0.5) or nil
+    frame.fastWalk, frame.fastAngle = finite(state.walkSeconds) and math.floor(state.walkSeconds + 0.5) or nil, state.angle
+    frame.fastFlight, frame.fastFlightTime = flight, flight and finite(flight.remaining) and math.floor(flight.remaining + 0.5) or nil
+    frame.fastVisible, frame.fastIdle, frame.fastBusy = state.visible, state.idle, state.busy
+    frame.fastArrived, frame.fastZoneExit, frame.fastProgress = state.arrived, zoneExit, progressRevision
+    frame.fastObjective, frame.fastTravelRevision = ns.objectiveDisplayRevision or 0, ns.travelRevision or 0
+    frame.fastSelection, frame.fastRoute, frame.fastPreview = ns.routeSelection, ns.selectedRoute, ns.navigationPreview
+    frame.fastRouteArrow, frame.fastStandalone = ns.Option("routeArrow"), ns.Option("standaloneArrow")
+    frame.fastGlance, frame.fastPeek, frame.fastWindowHidden = ns.Option("guideGlance"), ns.Option("guidePeek"), ns.guideWindowHidden
 end
 
 local function glanceDistance(yards)
@@ -167,18 +213,33 @@ function ns.RouteContext(stop, mapID, facts, travelDistance)
     return presentation.why or presentation.status or presentation.location
 end
 
+local navigationState, pendingStop, idleStop, flightStop, playerPosition = {}, {}, {}, {}, {}
+local navigationProjection = {}
+
+local function clearState(state)
+    for key in pairs(state) do state[key] = nil end
+    return state
+end
+
 function ns.NavigationState()
-    if not ns.Option("routeArrow") and not ns.Option("standaloneArrow") then return {status = "Disabled in settings"} end
+    local state = clearState(navigationState)
+    if not ns.Option("routeArrow") and not ns.Option("standaloneArrow") then state.status = "Disabled in settings"; return state end
     if ns.guideStopped and not ns.routeSelection and not ns.routePlanning then
         local saved = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
-        return {visible = ns.guideWindowIdle == true, idle = true, status = saved and "Session saved. Resume when ready." or "Choose a guide to begin.",
-            stop = {id = 0, kind = "notice", title = saved and saved.guide.title or "No guide selected", mapID = 0}}
+        clearState(idleStop)
+        idleStop.id, idleStop.kind, idleStop.title, idleStop.mapID = 0, "notice", saved and saved.guide.title or "No guide selected", 0
+        state.visible, state.idle, state.status, state.stop = ns.guideWindowIdle == true, true,
+            saved and "Session saved. Resume when ready." or "Choose a guide to begin.", idleStop
+        return state
     end
     if ns.guideScanning or ns.routePlanning then
         local scan = ns.guideScanning
         local work = scan or ns.routePlanning
-        return {visible = true, busy = true, status = scan and "Scanning guide…" or work.status or "Loading route…",
-            stop = {id = 0, kind = "loading", action = scan and "scan" or "plan", title = work.guide.title}}
+        clearState(pendingStop)
+        pendingStop.id, pendingStop.kind, pendingStop.action, pendingStop.title = 0, "loading", scan and "scan" or "plan", work.guide.title
+        state.visible, state.busy = true, true
+        state.status, state.stop = scan and "Scanning guide…" or work.status or "Loading route…", pendingStop
+        return state
     end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection, true) end
     local route = ns.routeSelection and ns.selectedRoute
@@ -188,11 +249,13 @@ function ns.NavigationState()
         or route and route.stops and route.stops[1]
     if not stop and ns.routeSelection then
         local pending = route and route.pendingStop
-        stop = {kind = "notice", id = pending and pending.id or 0, title = pending and pending.title or ns.routeSelection.title, mapID = route and route.mapID or 0,
-            stepKind = pending and pending.kind, guideStep = pending and pending.guideStep,
-            sourceStop = pending,
-            learnedSource = pending and pending.learnedSource,
-            x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
+        clearState(pendingStop)
+        pendingStop.kind, pendingStop.id = "notice", pending and pending.id or 0
+        pendingStop.title, pendingStop.mapID = pending and pending.title or ns.routeSelection.title, route and route.mapID or 0
+        pendingStop.stepKind, pendingStop.guideStep, pendingStop.sourceStop = pending and pending.kind, pending and pending.guideStep, pending
+        pendingStop.learnedSource, pendingStop.x, pendingStop.y = pending and pending.learnedSource, 0, 0
+        pendingStop.label = ns.routePaused or "Waiting for the next available guide step."
+        stop = pendingStop
     end
     if not profession and not ns.navigationPreview then
         stop = ns.InventoryServiceDestination(stop)
@@ -201,11 +264,16 @@ function ns.NavigationState()
     stop = ns.CorpseDestination() or ns.TravelDestination(stop)
     local flight = ns.FlightState()
     if flight then
-        return {visible = true, stop = stop or {title = "Flight travel", kind = "f", label = "Flying", id = 0, mapID = 0},
-            status = "Flying to " .. flight.name, flight = flight}
+        if not stop then
+            clearState(flightStop)
+            flightStop.title, flightStop.kind, flightStop.label, flightStop.id, flightStop.mapID = "Flight travel", "f", "Flying", 0, 0
+            stop = flightStop
+        end
+        state.visible, state.stop, state.status, state.flight = true, stop, "Flying to " .. flight.name, flight
+        return state
     end
-    if not stop then return {status = "No route selected"} end
-    local state = {visible = true, stop = stop}
+    if not stop then state.status = "No route selected"; return state end
+    state.visible, state.stop = true, stop
     if stop.professionStep and stop.unknownLocation then state.status = stop.label; return state end
     if stop.unsafeTransit or stop.unsafeTerrain then state.status = stop.label; return state end
     if stop.kind == "notice" then state.status = stop.label; return state end
@@ -217,12 +285,13 @@ function ns.NavigationState()
     if not ns.GuideInteger(mapID) or mapID <= 0 then state.status = "Position unavailable"; return state end
     local destination = stop
     if mapID ~= stop.mapID then
-        destination = ns.ProjectMapPoint(stop, mapID)
+        destination = ns.ProjectMapPoint(stop, mapID, navigationProjection)
         if not destination then state.status = "Travel to " .. ns.MapName(stop.mapID); return state end
         state.crossZone = true
     end
-    local position = ns.PlayerPoint(mapID)
+    local position = ns.PlayerPoint(mapID, playerPosition)
     if not position then state.status = "Position unavailable"; return state end
+    state.position = position
     local width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID)
     if not finite(width) or not finite(height) or width <= 0 or height <= 0
         or width >= 1000000 or height >= 1000000 then state.status = "Map scale unavailable"; return state end
@@ -242,12 +311,13 @@ end
 
 function ns.DrawNavigationArrow(angle, icon)
     icon = icon or ns.navigation.icon
+    if icon.navigationArrowAngle == angle then return end
+    icon.navigationArrowAngle = angle
     local cosine, sine = math.cos(angle), math.sin(angle)
-    local shape = {{0, 21}, {-12, -6}, {0, 0}, {12, -6}, {0, 21}}
-    for index = 1, #shape - 1 do
+    for index = 1, #arrowShape - 1 do
         local line = icon.lines[index]
         if not line then line = icon:CreateLine(nil, "OVERLAY"); icon.lines[index] = line end
-        local a, b = shape[index], shape[index + 1]
+        local a, b = arrowShape[index], arrowShape[index + 1]
         line:SetThickness(3); line:SetColorTexture(1, 0.82, 0.30, 1)
         line:SetStartPoint("CENTER", icon, a[1] * cosine - a[2] * sine, a[1] * sine + a[2] * cosine)
         line:SetEndPoint("CENTER", icon, b[1] * cosine - b[2] * sine, b[1] * sine + b[2] * cosine)
@@ -256,13 +326,21 @@ function ns.DrawNavigationArrow(angle, icon)
 end
 
 function ns.HideNavigationGeometry(icon)
+    icon.navigationArrowAngle = nil
     for _, line in ipairs(icon.lines) do line:Hide() end
-    for _, line in ipairs(icon.spinnerLines or {}) do line:Hide() end
+    ns.HideNavigationSpinner(icon)
+end
+
+function ns.HideNavigationSpinner(icon)
+    if not icon.spinnerShown then return end
+    icon.spinnerShown = nil
+    for index = 1, #icon.spinnerLines do icon.spinnerLines[index]:Hide() end
 end
 
 function ns.DrawNavigationSpinner(icon)
     if type(icon.CreateLine) ~= "function" then return false end
     icon.spinnerLines = icon.spinnerLines or {}
+    icon.spinnerShown = true
     local now = ns.ReadPublic(GetTime)
     icon.spinnerPhase = finite(now) and -now * 4 or (icon.spinnerPhase or 0) - 0.4
     for index = 1, 12 do
@@ -278,39 +356,95 @@ function ns.DrawNavigationSpinner(icon)
     return true
 end
 
-function ns.UpdateNavigation()
+local function updateNavigation(fast)
     local frame = ns.navigation
     if not frame then return end
     local state = ns.NavigationState()
     frame.state = state
     local zoneExit = state.stop and state.stop.reasonCode == "zone-exit"
+    local progressRevision = ns.guideProgressRevision or 0
+    local routeChanged = frame.subsystemStop ~= state.stop or frame.subsystemProgressRevision ~= progressRevision
+    local now = ns.ReadPublic(GetTime)
+    local updateNearby
+    if not fast then updateNearby = true
+    elseif finite(now) then
+        updateNearby = not finite(frame.nearbyUpdateTime) or now < frame.nearbyUpdateTime
+            or now - frame.nearbyUpdateTime >= 0.5 or routeChanged
+    else
+        frame.nearbyFallbackTicks = (frame.nearbyFallbackTicks or 0) + 1
+        updateNearby = frame.nearbyFallbackTicks >= 5 or routeChanged
+        if updateNearby then frame.nearbyFallbackTicks = 0 end
+    end
+    if fast and not updateNearby and unchangedFastFrame(frame, state, zoneExit, progressRevision) then return end
     if frame.zoneExit ~= zoneExit then frame.zoneExit = zoneExit; ns.LayoutNavigation() end
-    frame.next.caption:SetText(zoneExit and "Follow" or ">")
+    setText(frame.next.caption, "cachedText", zoneExit and "Follow" or ">")
     frame.next:SetWidth(zoneExit and 62 or 24)
-    ns.RefreshEliteSpawnMarkers()
+    if not fast or routeChanged then ns.RefreshEliteSpawnMarkers(); ns.UpdateQuestItemButton(state) end
     frame:SetShown(state.visible == true and ns.Option("routeArrow") and not ns.guideWindowHidden)
-    if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
-    ns.UpdateStandaloneArrow(state)
-    ns.UpdateQuestItemButton(state)
-    ns.UpdateAreaObjectives(state)
-    ns.UpdateGuideTip(state)
-    if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
-    local facts = ns.GuideStepFacts(state.stop)
-    local presentation = ns.GuideStepPresentation(state.stop, facts, ns.routeSelection, ns.selectedRoute, state)
-    frame.presentation = presentation
-    frame.title:SetText(presentation.title)
+    if routeChanged then
+        frame.subsystemStop, frame.subsystemProgressRevision = state.stop, progressRevision
+        if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
+    end
+    if updateNearby then
+        frame.nearbyUpdateTime = finite(now) and now or nil
+        ns.UpdateAreaObjectives(state)
+    end
+    if not state.visible then
+        ns.UpdateStandaloneArrow(state)
+        if updateNearby then ns.UpdateGuideTip(state) end
+        ns.HideNavigationGeometry(frame.icon)
+        return
+    end
+    local stop = state.stop
+    local roundedDistance = finite(state.distance) and math.floor(state.distance + 0.5) or nil
+    local roundedWalkTime = finite(state.walkSeconds) and math.floor(state.walkSeconds + 0.5) or nil
+    local flight = state.flight
+    local roundedFlightTime = flight and finite(flight.remaining) and math.floor(flight.remaining + 0.5) or nil
+    local changed = frame.presentationStop ~= stop or frame.presentationLabel ~= stop.label
+        or frame.presentationTitle ~= stop.title or frame.presentationMapID ~= stop.mapID
+        or frame.presentationX ~= stop.x or frame.presentationY ~= stop.y
+        or frame.presentationTravelLeg ~= stop.travelLeg or frame.presentationFlight ~= flight
+        or frame.presentationFlightTime ~= roundedFlightTime or frame.presentationDistance ~= roundedDistance
+        or frame.presentationWalkTime ~= roundedWalkTime or frame.presentationStatus ~= state.status
+        or frame.presentationArrived ~= state.arrived or frame.presentationBusy ~= state.busy
+        or frame.presentationProgressRevision ~= progressRevision
+        or frame.presentationObjectiveRevision ~= (ns.objectiveDisplayRevision or 0)
+        or frame.presentationSelection ~= ns.routeSelection or frame.presentationRoute ~= ns.selectedRoute
+        or frame.presentationTravelRevision ~= (ns.travelRevision or 0)
+    local presentation = frame.presentation
+    if changed or not presentation then
+        local facts = ns.GuideStepFacts(stop)
+        presentation = ns.GuideStepPresentation(stop, facts, ns.routeSelection, ns.selectedRoute, state)
+        frame.presentation = presentation
+        frame.presentationStop, frame.presentationLabel, frame.presentationTitle = stop, stop.label, stop.title
+        frame.presentationMapID, frame.presentationX, frame.presentationY = stop.mapID, stop.x, stop.y
+        frame.presentationTravelLeg, frame.presentationFlight = stop.travelLeg, flight
+        frame.presentationFlightTime, frame.presentationDistance = roundedFlightTime, roundedDistance
+        frame.presentationWalkTime, frame.presentationStatus = roundedWalkTime, state.status
+        frame.presentationArrived, frame.presentationBusy = state.arrived, state.busy
+        frame.presentationProgressRevision, frame.presentationObjectiveRevision = progressRevision, ns.objectiveDisplayRevision or 0
+        frame.presentationSelection, frame.presentationRoute = ns.routeSelection, ns.selectedRoute
+        frame.presentationTravelRevision = ns.travelRevision or 0
+        local progress = presentation.progress and not string.match(presentation.kind or "", "^travel%-")
+            and (" " .. presentation.progress) or ""
+        frame.presentationStatusText = presentation.what .. progress
+        frame.presentationDistanceText = presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
+            .. ((presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport") and " • Route re-plans after you land" or "")
+        frame.presentationGlanceText = glanceText(presentation, state)
+        frame.tooltipPresentation = nil
+    end
+    ns.UpdateStandaloneArrow(state, presentation)
+    if updateNearby then ns.UpdateGuideTip(state) end
+    setText(frame.title, "cachedText", presentation.title)
     local guide = ns.routeSelection
     local modeVisible = guide and (guide.mode == "zone" or guide.mode == "bundle")
     frame.modeVisible = modeVisible == true
-    frame.step:SetText(presentation.stepLine or "")
+    setText(frame.step, "cachedText", presentation.stepLine or "")
     frame.stepButton:SetShown(true)
-    local progress = presentation.progress and not string.match(presentation.kind or "", "^travel%-")
-        and (" " .. presentation.progress) or ""
-    frame.status:SetText(presentation.what .. progress)
+    setText(frame.status, "cachedText", frame.presentationStatusText)
     frame.status:SetTextColor(unpack(ns.UIColors.text))
-    frame.context:SetText(presentation.why or "")
-    frame.distance:SetText(presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
-        .. ((presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport") and " • Route re-plans after you land" or ""))
+    setText(frame.context, "cachedText", presentation.why or "")
+    setText(frame.distance, "cachedText", frame.presentationDistanceText)
     local statusColor = presentation.statusColor == "green" and ns.UIColors.success
         or presentation.statusColor == "gold" and ns.UIColors.gold
         or presentation.statusColor == "muted" and ns.UIColors.muted or ns.UIColors.text
@@ -320,67 +454,89 @@ function ns.UpdateNavigation()
     if glance then
         local key = symbolKindForPresentation(state.stop, presentation)
         local glyph, texture = ns.StepSymbolFor(key)
-        frame.icon:ClearAllPoints(); frame.icon:SetSize(20, 20); frame.icon:SetPoint("TOPLEFT", 14, -50)
+        if frame.renderGlance ~= true then
+            frame.icon:ClearAllPoints(); frame.icon:SetSize(20, 20); frame.icon:SetPoint("TOPLEFT", 14, -50)
+            frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 42, -50)
+            frame.status:SetSize(frame:GetWidth() - 56, 22); frame.status:SetWordWrap(false)
+            frame.renderGlance = true
+        end
         frame.kindIcon:SetSize(20, 20); frame.kindIcon:SetTexture(texture or presentation.icon)
         frame.kindIcon:SetVertexColor(unpack(ns.UIColors.text))
         frame.kindIcon:SetShown(texture ~= nil and not state.busy)
-        frame.symbol:SetText(texture and "" or glanceFallback[key] or glyph or ">")
+        setText(frame.symbol, "cachedText", texture and "" or glanceFallback[key] or glyph or ">")
         frame.symbol:SetTextColor(unpack(ns.UIColors.text))
         frame.symbol:SetShown(texture == nil and not state.busy)
-        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 42, -50)
-        frame.status:SetSize(frame:GetWidth() - 56, 22); frame.status:SetWordWrap(false)
-        frame.status:SetText(glanceText(presentation, state))
+        setText(frame.status, "cachedText", frame.presentationGlanceText)
         frame.status:SetTextColor(unpack(ns.UIColors.text))
         frame.status:Show()
         frame.context:Hide(); frame.distance:Hide(); frame.peek:Hide()
-        local upcoming = nextDisplayedStops(state, 2)
+        local upcoming = nextDisplayedStops(state, 2, upcomingStopCache)
         for index = 1, 2 do
             local row, stop = frame.glanceRows[index], upcoming[index]
             if stop then
-                local facts = ns.GuideStepFacts(stop)
-                local nextPresentation = ns.GuideStepPresentation(stop, facts, ns.routeSelection, ns.selectedRoute)
-                local rowKey = symbolKindForPresentation(stop, nextPresentation)
-                local rowGlyph, rowTexture = ns.StepSymbolFor(rowKey)
-                row.icon:SetTexture(rowTexture or nextPresentation.icon)
+                local nextPresentation = rowPresentations[index]
+                if row.presentationStop ~= stop or rowPresentationRevisions[index] ~= progressRevision then
+                    local facts = ns.GuideStepFacts(stop)
+                    nextPresentation = ns.GuideStepPresentation(stop, facts, ns.routeSelection, ns.selectedRoute)
+                    local rowKey = symbolKindForPresentation(stop, nextPresentation)
+                    local rowGlyph, rowTexture = ns.StepSymbolFor(rowKey)
+                    rowStates[index].stop = stop
+                    local rowText = glanceText(nextPresentation, rowStates[index])
+                    rowPresentations[index], rowPresentationRevisions[index] = nextPresentation, progressRevision
+                    row.presentationStop, row.key, row.texture = stop, rowKey, rowTexture or nextPresentation.icon
+                    row.symbolText, row.textValue = rowTexture and "" or glanceFallback[rowKey] or rowGlyph or ">", rowText
+                end
+                rowStates[index].stop = stop
+                nextPresentation = rowPresentations[index]
+                if row.icon.cachedTexture ~= row.texture then row.icon.cachedTexture = row.texture; row.icon:SetTexture(row.texture) end
                 row.icon:SetVertexColor(unpack(ns.UIColors.muted))
-                row.icon:SetShown(rowTexture ~= nil)
-                row.symbol:SetText(rowTexture and "" or glanceFallback[rowKey] or rowGlyph or ">")
+                row.icon:SetShown(row.texture ~= nil)
+                setText(row.symbol, "cachedText", row.symbolText)
                 row.symbol:SetTextColor(unpack(ns.UIColors.muted))
-                row.symbol:SetShown(rowTexture == nil)
-                row.text:SetText(glanceText(nextPresentation, {stop = stop}))
+                row.symbol:SetShown(row.texture == nil)
+                setText(row.text, "cachedText", row.textValue)
                 row.text:SetTextColor(unpack(ns.UIColors.muted))
                 row.frame:Show()
             else
-                row.text:SetText(""); row.frame:Hide()
+                setText(row.text, "cachedText", ""); row.frame:Hide()
             end
         end
     else
-        frame.icon:ClearAllPoints(); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
+        if frame.renderGlance ~= false then
+            frame.icon:ClearAllPoints(); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
+            frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", frame.separateArrow and 14 or 82, -52)
+            frame.status:SetSize(frame:GetWidth() - (frame.separateArrow and 28 or 96), 18)
+            frame.renderGlance = false
+        end
         frame.kindIcon:SetSize(34, 34)
         frame.kindIcon:SetVertexColor(1, 1, 1, 1)
         frame.symbol:SetTextColor(1, 1, 1, 1)
         frame.context:Show(); frame.distance:Show()
-        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", frame.separateArrow and 14 or 82, -52)
-        frame.status:SetSize(frame:GetWidth() - (frame.separateArrow and 28 or 96), 18)
         frame.context:SetShown(presentation.why ~= nil and presentation.why ~= "")
         frame.distance:Show()
         frame.status:Show()
-        for _, row in ipairs(frame.glanceRows) do
+        for index = 1, #frame.glanceRows do
+            local row = frame.glanceRows[index]
             row.icon:SetVertexColor(1, 1, 1, 1)
-            row.text:SetText(""); row.frame:Hide()
+            setText(row.text, "cachedText", ""); row.frame:Hide()
         end
     end
     local nextStop = not glance and ns.Option("guidePeek") and nextDisplayedStop(state) or nil
     if nextStop then
-        local nextWhat = peekInstruction(nextStop)
-        local nextZone = nextStop.mapID and ns.MapName(nextStop.mapID)
-        frame.peek:SetText("Next: " .. (nextWhat or nextStop.title or "Next step")
-            .. (nextZone and (" (" .. nextZone .. ")") or ""))
+        if frame.peekStop ~= nextStop or frame.peekRevision ~= progressRevision then
+            local nextWhat = peekInstruction(nextStop)
+            local nextZone = nextStop.mapID and ns.MapName(nextStop.mapID)
+            frame.peekStop, frame.peekRevision = nextStop, progressRevision
+            frame.peekCacheText = "Next: " .. (nextWhat or nextStop.title or "Next step")
+                .. (nextZone and (" (" .. nextZone .. ")") or "")
+        end
+        setText(frame.peek, "cachedText", frame.peekCacheText)
         frame.peek:SetShown(true)
-    else frame.peek:SetText(""); frame.peek:Hide() end
+    else frame.peekStop, frame.peekRevision = nil, nil; setText(frame.peek, "cachedText", ""); frame.peek:Hide() end
     updateTooltip(frame)
-    ns.HideNavigationGeometry(frame.icon)
     local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
+    if separate or glance or state.busy or state.arrived or state.angle == nil then ns.HideNavigationGeometry(frame.icon) end
+    if not state.busy and not separate and not glance and state.angle ~= nil then ns.HideNavigationSpinner(frame.icon) end
     frame.icon:SetShown(not separate)
     if frame.separateArrow ~= separate then
         frame.separateArrow = separate
@@ -390,13 +546,13 @@ function ns.UpdateNavigation()
         local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
         frame.kindIcon:SetTexture(presentation.icon)
         frame.kindIcon:SetShown(state.angle == nil and iconOnly and not state.busy)
-        frame.symbol:SetText("..."); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
+        setText(frame.symbol, "cachedText", "..."); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
         frame.symbol:SetShown(state.busy and state.angle == nil or state.angle == nil and not iconOnly and not state.busy)
     end
     local training = ns.IsClassTrainingStep(state.stop)
     local service = ns.IsInventoryServiceStep(state.stop)
-    frame.skipStep.caption:SetText(service and "Skip visit" or training and "Skip training" or "Skip step")
-    frame.skipQuest.caption:SetText(service and "Done" or training and "Done training" or "Skip quest")
+    setText(frame.skipStep.caption, "cachedText", service and "Skip visit" or training and "Skip training" or "Skip step")
+    setText(frame.skipQuest.caption, "cachedText", service and "Done" or training and "Done training" or "Skip quest")
     if frame.trainingLayout ~= (training or service) then
         frame.trainingLayout = training or service
         ns.LayoutNavigation()
@@ -406,7 +562,7 @@ function ns.UpdateNavigation()
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
     frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.idle and not state.flight and state.stop.kind ~= "loading")
     if state.stop.flightDiscovery then
-        frame.skipStep.caption:SetText("Keep walking")
+        setText(frame.skipStep.caption, "cachedText", "Keep walking")
         frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(false)
     end
     frame.back:SetEnabled(not state.idle and state.stop.kind ~= "loading"); frame.next:SetEnabled(not state.idle and state.stop.kind ~= "loading")
@@ -425,8 +581,8 @@ function ns.UpdateNavigation()
     end
     if ns.routeSelection and ns.routeSelection.mode == "profession" then
         local route = ns.selectedRoute
-        frame.step:SetText("Personal crafting guide")
-        frame.skipStep.caption:SetText("Next recipe"); frame.skipQuest.caption:SetText("Materials")
+        setText(frame.step, "cachedText", "Personal crafting guide")
+        setText(frame.skipStep.caption, "cachedText", "Next recipe"); setText(frame.skipQuest.caption, "cachedText", "Materials")
         frame.skipStep:SetEnabled(editable and route and route.recipe ~= nil)
         frame.skipQuest:SetEnabled(route and route.materials and #route.materials > 0)
         frame.back:SetEnabled(false); frame.next:SetEnabled(false)
@@ -454,7 +610,7 @@ function ns.UpdateNavigation()
     else ns.UIHelp(frame.next, "Preview the next guide step.") end
     local paused = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
     frame.stop:SetEnabled(not state.idle or paused ~= nil)
-    frame.pause.caption:SetText(frame.pause.hasIcon and "" or (paused and ">" or "II"))
+    setText(frame.pause.caption, "cachedText", frame.pause.hasIcon and "" or (paused and ">" or "II"))
     frame.pause:SetEnabled(paused ~= nil or not state.idle and not state.busy)
     ns.UIHelp(frame.pause, paused and "Resume your saved guide using current progress." or "Save your guide, pause it and see your session summary.")
     ns.UIHelp(frame.close, paused and "Close this window. Your paused guide stays saved." or "Exit guide. Stop and close this window.")
@@ -464,6 +620,13 @@ function ns.UpdateNavigation()
         elseif state.arrived then frame.symbol:Hide()
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
     end
+    rememberFastFrame(frame, state, zoneExit, progressRevision)
+end
+
+function ns.UpdateNavigation(fast)
+    local before = ns.StartMemorySample and ns.StartMemorySample(ns.MemorySampleSection.navigation)
+    updateNavigation(fast)
+    if ns.EndMemorySample then ns.EndMemorySample(ns.MemorySampleSection.navigation, before) end
 end
 
 function ns.SaveNavigationPosition()
@@ -757,7 +920,7 @@ function ns.CreateNavigation()
         self.elapsed = self.elapsed + elapsed
         if self.elapsed < 0.1 then return end
         self.elapsed = 0
-        ns.UpdateNavigation()
+        ns.UpdateNavigation(true)
     end)
     ns.CreateStandaloneArrow()
     frame:Hide()

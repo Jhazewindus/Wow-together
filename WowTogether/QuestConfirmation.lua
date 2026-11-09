@@ -8,7 +8,7 @@ function ns.CurrentQuestConfirmation()
     if not route or not ns.routeSelection or ns.guideScanning or ns.routePlanning or ns.navigationPreview then return end
     local pending = route.stops and route.stops[1] or route.pendingStop
     if not pending or pending.kind ~= "a" or pending.action == "start-item" or ns.GuideQuestSkipped(pending.id)
-        or #ns.FilterGuideStages({pending}) == 0 then return end
+        or ns.GuideStepSkipped(pending) then return end
     local quest = ns.CatalogueQuest(pending.id)
     if not quest or not quest.prerequisitesUnverified then return end
     local key = pending.memberKey or ns.self

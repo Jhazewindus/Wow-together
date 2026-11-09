@@ -4,6 +4,10 @@ local function finite(value)
     return ns.Public(value) and type(value) == "number" and value == value and value > -math.huge and value < math.huge
 end
 
+local function setText(frame, cacheKey, text)
+    if frame[cacheKey] ~= text then frame[cacheKey] = text; frame:SetText(text) end
+end
+
 function ns.CreateStandaloneArrow()
     if ns.standaloneNavigation then return end
     local frame = CreateFrame("Frame", "WowTogetherStandaloneArrow", UIParent)
@@ -68,15 +72,18 @@ function ns.CreateStandaloneArrow()
     frame:SetScript("OnUpdate", function(self, elapsed)
         if ns.navigation:IsShown() or not finite(elapsed) or elapsed < 0 then return end
         self.elapsed = self.elapsed + elapsed
-        if self.elapsed >= 0.1 then self.elapsed = 0; ns.UpdateNavigation() end
+        if self.elapsed >= 0.1 then self.elapsed = 0; ns.UpdateNavigation(true) end
     end)
     frame:Hide()
 end
 
 function ns.LayoutStandaloneDetails(frame)
+    local reasonShown = frame.reason:IsShown()
     local height = frame.training:IsShown() and 130 or 102
+    if frame.detailHeight == height and frame.detailReasonShown == reasonShown then return end
+    frame.detailHeight, frame.detailReasonShown = height, reasonShown
     frame.reason:ClearAllPoints(); frame.reason:SetPoint("TOP", frame, "TOP", 0, -height - 4)
-    if frame.reason:IsShown() then
+    if reasonShown then
         local measured = ns.ReadPublic(frame.reason.GetStringHeight, frame.reason)
         local lines = finite(measured) and math.max(26, measured + 2) or 42
         frame.reason:SetHeight(lines); height = height + lines + 4
@@ -85,31 +92,60 @@ function ns.LayoutStandaloneDetails(frame)
     frame:SetHeight(height)
 end
 
-function ns.UpdateStandaloneArrow(state)
+local function updateStandaloneArrow(state, presentation)
     local frame = ns.standaloneNavigation
     if not frame then return end
     frame.state = state
-    frame:SetShown(state.visible == true and not state.idle and ns.Option("standaloneArrow"))
+    local shown = state.visible == true and not state.idle and ns.Option("standaloneArrow")
+    if frame:IsShown() ~= shown then frame:SetShown(shown) end
+    if not shown then
+        if frame.wasShown then
+            frame.wasShown = nil
+            ns.HideNavigationGeometry(frame.icon)
+        end
+        return
+    end
+    frame.wasShown = true
     local training = (ns.IsClassTrainingStep(state.stop) or ns.IsInventoryServiceStep(state.stop)) and not state.flight and not state.busy
         and not ns.navigationPreview and not ns.Option("routeArrow")
     frame.training:SetShown(training == true)
     frame.reason:Hide()
     ns.LayoutStandaloneDetails(frame)
-    ns.HideNavigationGeometry(frame.icon)
-    if not frame:IsShown() then return end
-    local presentation = ns.GuideStepPresentation(state.stop, nil, ns.routeSelection, ns.selectedRoute, state)
+    if state.busy or state.arrived or state.angle == nil then ns.HideNavigationGeometry(frame.icon)
+    else ns.HideNavigationSpinner(frame.icon) end
+    if not presentation then
+        local roundedDistance = finite(state.distance) and math.floor(state.distance + 0.5) or nil
+        if frame.presentationStop ~= state.stop or frame.presentationLabel ~= state.stop.label
+            or frame.presentationDistance ~= roundedDistance or frame.presentationRevision ~= (ns.guideProgressRevision or 0)
+            or not frame.presentation then
+            presentation = ns.GuideStepPresentation(state.stop, nil, ns.routeSelection, ns.selectedRoute, state)
+            frame.presentationStop, frame.presentationLabel = state.stop, state.stop.label
+            frame.presentationDistance, frame.presentationRevision = roundedDistance, ns.guideProgressRevision or 0
+        else presentation = frame.presentation end
+    end
     frame.presentation = presentation
-    frame.timer:SetText(presentation.time or ""); frame.timer:SetShown(presentation.time ~= nil)
+    setText(frame.timer, "cachedText", presentation.time or ""); frame.timer:SetShown(presentation.time ~= nil)
     frame.distance:Hide()
     local drawable = type(frame.icon.CreateLine) == "function"
     local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
     frame.kindIcon:SetTexture(presentation.icon); frame.kindIcon:SetShown(state.angle == nil and iconOnly)
-    frame.symbol:SetText("…")
+    setText(frame.symbol, "cachedText", "…")
     frame.symbol:SetShown(state.angle == nil and not iconOnly)
     if drawable then
         if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
         elseif state.arrived then frame.symbol:Hide()
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle, frame.icon) end
     end
-    frame.title:SetText(presentation.what .. (presentation.progress and (" " .. presentation.progress) or ""))
+    local title = frame.presentationText
+    if frame.presentationTextFor ~= presentation then
+        title = presentation.what .. (presentation.progress and (" " .. presentation.progress) or "")
+        frame.presentationTextFor, frame.presentationText = presentation, title
+    end
+    setText(frame.title, "cachedText", title)
+end
+
+function ns.UpdateStandaloneArrow(state, presentation)
+    local before = ns.StartMemorySample and ns.StartMemorySample(ns.MemorySampleSection.arrow)
+    updateStandaloneArrow(state, presentation)
+    if ns.EndMemorySample then ns.EndMemorySample(ns.MemorySampleSection.arrow, before) end
 end

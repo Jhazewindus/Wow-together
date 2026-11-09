@@ -476,6 +476,7 @@ function ns.FindFlightDiscoveryPlan(origin, goal, baseline, candidates)
     return best
 end
 
+local discoveryPosition = {}
 function ns.FlightDiscoveryDestination(stop)
     if not ns.Option("suggestFlights") or not ns.Option("nearbyFlights") or not ns.HasTravelPathTo(stop)
         or ns.RouteInCombat() or ns.routePaused or ns.navigationPreview or ns.guideScanning or ns.routePlanning
@@ -484,20 +485,32 @@ function ns.FlightDiscoveryDestination(stop)
         or ns.routeSelection and ns.routeSelection.mode == "profession"
         or ns.ReadPublic(UnitOnTaxi, "player") == true then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
+    local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID, discoveryPosition)
     if not ns.ValidTravelPoint(position) then return end
-    local signature = table.concat({discoveryKey(stop, 0), mapID, ns.travelRevision or 0,
-        ns.profile and ns.profile.faction or "", ns.TravelWalkSpeed()}, ":")
     local cache = ns.flightDiscoveryCache
     local moved = cache and ns.TravelPointDistance(position, cache.position)
     local now = ns.ReadPublic(GetTime)
-    local newGoal = not cache or cache.signature ~= signature
+    local selectionKey = ns.routeSelection and ns.routeSelection.key or ""
+    local faction, speed = ns.profile and ns.profile.faction or "", ns.TravelWalkSpeed()
+    local newGoal = not cache or cache.selectionKey ~= selectionKey or cache.id ~= stop.id or cache.kind ~= stop.kind
+        or cache.mapID ~= stop.mapID or cache.x ~= stop.x or cache.y ~= stop.y
+        or cache.playerMap ~= mapID or cache.revision ~= (ns.travelRevision or 0)
+        or cache.faction ~= faction or cache.speed ~= speed
     local movingCheckDue = cache and moved and moved > 1 and number(now) and number(cache.checkedAt)
         and (now < cache.checkedAt or now - cache.checkedAt >= 30)
     if newGoal or movingCheckDue then
         local candidates = nearbyDiscoveryCandidates(position, stop)
-        cache = {signature = signature, position = position, checkedAt = number(now) and now or false,
-            plan = #candidates > 0 and ns.FindFlightDiscoveryPlan(position, stop, ns.travelPath, candidates) or nil}
+        cache = cache or {}
+        cache.selectionKey, cache.id, cache.kind = selectionKey, stop.id, stop.kind
+        cache.mapID, cache.x, cache.y, cache.playerMap = stop.mapID, stop.x, stop.y, mapID
+        cache.revision, cache.faction, cache.speed = ns.travelRevision or 0, faction, speed
+        cache.position = cache.position or {}
+        cache.position.mapID, cache.position.x, cache.position.y = position.mapID, position.x, position.y
+        cache.checkedAt = number(now) and now or false
+        cache.plan = #candidates > 0 and ns.FindFlightDiscoveryPlan(position, stop, ns.travelPath, candidates) or nil
+        cache.result = nil
+        local plan = cache.plan
+        cache.label = plan and ("Visit " .. plan.source.name .. " flight master") or nil
         ns.flightDiscoveryCache = cache
     end
     local plan = cache.plan
@@ -505,8 +518,12 @@ function ns.FlightDiscoveryDestination(stop)
     local node = flights().nodes[plan.source.id]
     if (node and ns.Public(node.known) and node.known == true) or (ns.checkedFlightNodes and ns.checkedFlightNodes[plan.source.id]) then return end
     local p = plan.source.point
-    return {id = stop.id, kind = "travel", action = "flight-check", title = stop.title, mapID = p.mapID, x = p.x, y = p.y,
-        label = "Visit " .. plan.source.name .. " flight master", goal = stop, guideStep = stop.guideStep, flightDiscovery = plan}
+    local result = cache.result or {}
+    result.id, result.kind, result.action, result.title = stop.id, "travel", "flight-check", stop.title
+    result.mapID, result.x, result.y = p.mapID, p.x, p.y
+    result.label, result.goal, result.guideStep, result.flightDiscovery = cache.label, stop, stop.guideStep, plan
+    cache.result = result
+    return result
 end
 
 function ns.DismissFlightCheck(stop)
@@ -528,13 +545,19 @@ function ns.TravelDestination(stop)
     local now = ns.ReadPublic(GetTime)
     now = number(now) and now or nil
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local signature = table.concat({stop.id, stop.kind, stop.mapID, stop.x, stop.y, mapID or 0,
-        ns.travelRevision or 0, ns.profile and ns.SafeTitle(ns.profile.faction) or "Unknown"}, ":")
     local cache = ns.flightPlanCache
-    if not cache or cache.signature ~= signature or not now or not cache.time or now - cache.time > 1 then
+    local faction = ns.profile and ns.SafeTitle(ns.profile.faction) or "Unknown"
+    local changed = not cache or cache.id ~= stop.id or cache.kind ~= stop.kind or cache.map ~= stop.mapID
+        or cache.x ~= stop.x or cache.y ~= stop.y or cache.playerMap ~= (mapID or 0)
+        or cache.revision ~= (ns.travelRevision or 0) or cache.faction ~= faction
+    if changed or not now or not cache.time or now - cache.time > 1 then
         -- A terminal Dijkstra walking leg returns no intermediate waypoint.
         -- It still is a decision: do not replace it with a second flight solver.
-        cache = {signature = signature, time = now}
+        cache = cache or {}
+        cache.id, cache.kind, cache.map = stop.id, stop.kind, stop.mapID
+        cache.x, cache.y, cache.playerMap = stop.x, stop.y, mapID or 0
+        cache.revision, cache.faction, cache.time = ns.travelRevision or 0, faction, now
+        cache.plan, cache.hostile, cache.label, cache.result = nil, nil, nil, nil
         if not ns.HasTravelPathTo(stop) then
             local safety = ns.TravelSafetyContext()
             cache.plan = ns.FindFlightPlan(stop, safety)
@@ -545,17 +568,22 @@ function ns.TravelDestination(stop)
     local plan = not ns.HasTravelPathTo(stop) and cache.plan or nil
     if plan then
         local p = plan.source.point
-        local flightStop = {id = stop.id, kind = "f", action = "flight", title = stop.title, npcName = plan.source.name,
-            targetName = plan.source.name, mapID = p.mapID, x = p.x, y = p.y,
-            label = "Fly to " .. plan.destination.name, flightPlan = plan, goal = stop}
+        local flightStop = cache.result or {}
+        flightStop.id, flightStop.kind, flightStop.action, flightStop.title = stop.id, "f", "flight", stop.title
+        flightStop.npcName, flightStop.targetName = plan.source.name, plan.source.name
+        flightStop.mapID, flightStop.x, flightStop.y = p.mapID, p.x, p.y
+        if not cache.label then cache.label = "Fly to " .. plan.destination.name end
+        flightStop.label, flightStop.flightPlan, flightStop.goal = cache.label, plan, stop
+        cache.result = flightStop
         if #ns.FilterGuideStages({flightStop}) > 0 then return flightStop end
     end
     if cache.hostile and not ns.HasTravelPathTo(stop) then
         -- Retain the real quest/marker; do not aim straight through an enemy
         -- town when the graph has no supported bypass. No invented road points.
-        local caution = {}; for key, value in pairs(stop) do caution[key] = value end
+        local caution = cache.caution or {}; for key, value in pairs(stop) do caution[key] = value end
         caution.kind, caution.unsafeTransit = "travel", cache.hostile
         caution.label = "Route around " .. cache.hostile.name .. " (" .. cache.hostile.faction .. ")."
+        cache.caution = caution
         return caution
     end
     if ns.Option("travelNetwork") and not ns.HasTravelPathTo(stop) then

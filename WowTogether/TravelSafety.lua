@@ -12,6 +12,39 @@ local function inside(p, area)
     return p.x >= area.minX and p.x <= area.maxX and p.y >= area.minY and p.y <= area.maxY
 end
 
+local function crossesOnMap(a, b, mapID, context, allowDeparture, allowArrival)
+    local areas = context.areas[mapID]
+    if not areas then return end
+    local p = a.mapID == mapID and a or ns.ProjectMapPoint(a, mapID, context.projection)
+    local q = b.mapID == mapID and b or ns.ProjectMapPoint(b, mapID, context.projection)
+    if not p or not q then return end
+    for _, area in ipairs(areas) do
+        if not (allowDeparture and inside(p, area) and not inside(q, area))
+            and not (allowArrival and inside(q, area)) then
+            local low, high = 0, 1
+            local delta, lo, hi = q.x - p.x, area.minX, area.maxX
+            if delta == 0 then
+                if p.x < lo or p.x > hi then high = -1 end
+            else
+                local first, last = (lo - p.x) / delta, (hi - p.x) / delta
+                if first > last then first, last = last, first end
+                low, high = math.max(low, first), math.min(high, last)
+            end
+            if low <= high then
+                delta, lo, hi = q.y - p.y, area.minY, area.maxY
+                if delta == 0 then
+                    if p.y < lo or p.y > hi then high = -1 end
+                else
+                    local first, last = (lo - p.y) / delta, (hi - p.y) / delta
+                    if first > last then first, last = last, first end
+                    low, high = math.max(low, first), math.min(high, last)
+                end
+            end
+            if low <= high then return area end
+        end
+    end
+end
+
 function ns.TravelSafetyContext()
     local context = {areas = {}, projection = {}, faction = ns.profile and ns.SafeTitle(ns.profile.faction)}
     if context.faction ~= "Horde" and context.faction ~= "Alliance" then return context end
@@ -49,33 +82,9 @@ end
 function ns.HostileWalkCrossing(a, b, context, allowDeparture, allowArrival)
     if not point(a) or not point(b) then return end
     context = context or ns.TravelSafetyContext()
-    local maps = {a.mapID}; if b.mapID ~= a.mapID then maps[2] = b.mapID end
-    for _, mapID in ipairs(maps) do
-        local areas = context.areas[mapID]
-        if areas then
-            local p = ns.ProjectMapPoint(a, mapID, context.projection)
-            local q = ns.ProjectMapPoint(b, mapID, context.projection)
-            if p and q then
-                for _, area in ipairs(areas) do
-                    if not (allowDeparture and inside(p, area) and not inside(q, area))
-                        and not (allowArrival and inside(q, area)) then
-                        local low, high = 0, 1
-                        for _, axis in ipairs({"x", "y"}) do
-                            local delta, lo, hi = q[axis] - p[axis], area[axis == "x" and "minX" or "minY"], area[axis == "x" and "maxX" or "maxY"]
-                            if delta == 0 then
-                                if p[axis] < lo or p[axis] > hi then high = -1; break end
-                            else
-                                local first, last = (lo - p[axis]) / delta, (hi - p[axis]) / delta
-                                if first > last then first, last = last, first end
-                                low, high = math.max(low, first), math.min(high, last)
-                            end
-                        end
-                        if low <= high then return area end
-                    end
-                end
-            end
-        end
-    end
+    local area = crossesOnMap(a, b, a.mapID, context, allowDeparture, allowArrival)
+    if area then return area end
+    if b.mapID ~= a.mapID then return crossesOnMap(a, b, b.mapID, context, allowDeparture, allowArrival) end
 end
 
 function ns.TravelNodeAllowed(id, p, owned, context)

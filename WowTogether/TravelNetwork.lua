@@ -219,6 +219,9 @@ end
 
 function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
     if not ns.ValidTravelPoint(origin) or not ns.ValidTravelPoint(goal) then return end
+    -- Callers may pass a reusable position scratch table. Keep this search's
+    -- graph and retained path anchors immutable across later samples.
+    origin = {mapID = origin.mapID, x = origin.x, y = origin.y}
     local data, speed, positions = ns.travelData or {nodes = {}, edges = {}, factors = {}}, ns.TravelWalkSpeed(), {}
     local nodes, adjacency = {START = origin, GOAL = goal}, {}
     local faction = ns.profile and ns.profile.faction
@@ -525,8 +528,10 @@ function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
         if edge.method == "walk" and (nodes[edge.from].trail or nodes[edge.to].trail) then hasTrail = true end
         if edge.method == "hearth" or edge.method == "teleport" then hasPersonal = true end
     end
-    return {legs = legs, seconds = costs.GOAL, cursor = 1, origin = origin, goal = goal,
-        hasTerrain = hasTerrain, hasTrail = hasTrail, hasPersonal = hasPersonal}
+    return {legs = legs, seconds = costs.GOAL, cursor = 1,
+        origin = {mapID = origin.mapID, x = origin.x, y = origin.y}, goal = goal,
+        hasTerrain = hasTerrain, hasTrail = hasTrail, hasPersonal = hasPersonal,
+        safety = safety, terrain = terrain}
 end
 
 function ns.ResetTravelPath()
@@ -630,8 +635,8 @@ local function smoothedTarget(path, position)
             local off = ns.TravelSegmentDistance(path.legs[between].to, position, candidate.to)
             if not off or off > 25 then straight = false; break end
         end
-        if not straight or ns.TerrainWalkCrossing(position, candidate.to)
-            or ns.HostileWalkCrossing(position, candidate.to, nil, true, false) then break end
+        if not straight or ns.TerrainWalkCrossing(position, candidate.to, path.terrain)
+            or ns.HostileWalkCrossing(position, candidate.to, path.safety, true, false) then break end
         target = candidate.to
     end
     return target
@@ -648,7 +653,31 @@ local function runDestination(path, stop)
     return "your destination"
 end
 
-function ns.TravelNetworkDestination(stop)
+local waypointResult = {}
+local signatureState = {}
+local travelPosition = {}
+local function signatureChanged(stop, mapID)
+    local state = signatureState
+    local selection = ns.routeSelection
+    local key, faction = selection and selection.key or "", ns.profile and ns.profile.faction or "Unknown"
+    local speed = ns.TravelWalkSpeed()
+    local flights, enabled = ns.Option("suggestFlights") == true, ns.Option("travelNetwork") == true
+    local travelGuide = selection and selection.mode == "travel"
+    local personal = ns.PersonalTransportSignature and ns.PersonalTransportSignature() or ""
+    local changed = not state.ready or state.key ~= key or state.id ~= (stop.id or 0) or state.kind ~= (stop.kind or "")
+        or state.map ~= stop.mapID or state.x ~= stop.x or state.y ~= stop.y or state.playerMap ~= (mapID or 0)
+        or state.revision ~= (ns.travelRevision or 0) or state.flights ~= flights or state.faction ~= faction
+        or state.speed ~= speed or state.personal ~= personal or state.enabled ~= enabled or state.travelGuide ~= travelGuide
+    if changed then
+        state.ready, state.key, state.id, state.kind = true, key, stop.id or 0, stop.kind or ""
+        state.map, state.x, state.y, state.playerMap = stop.mapID, stop.x, stop.y, mapID or 0
+        state.revision, state.flights, state.faction, state.speed = ns.travelRevision or 0, flights, faction, speed
+        state.personal, state.enabled, state.travelGuide = personal, enabled, travelGuide
+    end
+    return changed, speed, flights, travelGuide
+end
+
+local function travelNetworkDestination(stop)
     ns.travelWaypoint = nil
     local travelGuide = ns.routeSelection and ns.routeSelection.mode == "travel"
     if not ns.Option("travelNetwork") and not travelGuide or not ns.ValidTravelPoint(stop) or ns.navigationPreview
@@ -657,11 +686,9 @@ function ns.TravelNetworkDestination(stop)
     local holding = path and path.transportIndex == path.cursor and path.selectionKey == (ns.routeSelection and ns.routeSelection.key)
         and path.goal.id == stop.id and path.goal.mapID == stop.mapID and path.goal.x == stop.x and path.goal.y == stop.y
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
+    local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID, travelPosition)
     if not ns.ValidTravelPoint(position) and not holding then ns.ResetTravelPath(); return end
-    local signature = table.concat({ns.routeSelection and ns.routeSelection.key or "", stop.id or 0, stop.kind or "", stop.mapID,
-        stop.x, stop.y, mapID or 0, ns.travelRevision or 0, tostring(ns.Option("suggestFlights")), ns.profile and ns.profile.faction or "Unknown",
-        ns.TravelWalkSpeed(), ns.PersonalTransportSignature and ns.PersonalTransportSignature() or ""}, ":")
+    local changed, _, flights, useTravelGuide = signatureChanged(stop, mapID)
     local now = ns.ReadPublic(GetTime)
     local checkMovement = not holding and path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 2)
     -- Reaching any of the next few recorded points counts as progress along
@@ -686,16 +713,15 @@ function ns.TravelNetworkDestination(stop)
         if distance then detour = distance > 90 end
     end
     if checkMovement then ns.travelPathChecked = finite(now) and now or nil end
-    local signatureChanged = ns.travelPathSignature ~= signature
+    local needsPath = changed or not ns.travelPath
     local lastReplan = ns.travelPathReplanned
     local detourReady = finite(now) and (not finite(lastReplan) or now < lastReplan or now - lastReplan >= 5)
         or not finite(now) and lastReplan == nil
-    if not holding and (signatureChanged or detour and detourReady
+    if not holding and (needsPath or detour and detourReady
         or not path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 1)) then
-        ns.travelPathSignature = signature
         ns.travelPathChecked = finite(now) and now or nil
         ns.travelPathReplanned = finite(now) and now or false
-        ns.travelPath = ns.FindTravelPath(position, stop, ns.Option("suggestFlights"))
+        ns.travelPath = ns.FindTravelPath(position, stop, flights)
         if ns.travelPath then ns.travelPath.selectionKey = ns.routeSelection and ns.routeSelection.key end
         ns.travelNetworkStatus = ns.travelPath and (ns.travelPath.hasTrail
             and "Dijkstra directions along recorded/bundled ground; chords off it are estimates."
@@ -710,13 +736,26 @@ function ns.TravelNetworkDestination(stop)
         end
         return
     end
+    -- Direction output and waypoint progress are sampled on the existing
+    -- two-second movement cadence. Reuse the last rendered destination on
+    -- intervening HUD ticks; no route geometry or text needs rebuilding.
+    local movedSinceOutput = path.result and ns.TravelPointDistance(position, path.outputPosition)
+    if not holding and not checkMovement and path.result and path.resultCursor == path.cursor
+        and (not movedSinceOutput or movedSinceOutput <= 8) then
+        ns.travelWaypoint = path.result
+        return path.result
+    end
     while path.legs[path.cursor] do
         local connection = nextConnection(path)
-        ns.travelNetworkStatus = connection and ("Dijkstra next connection: " .. transportAction(connection.method)
-            .. " from " .. nodeName(connection.fromID, connection.from) .. " to " .. connection.name .. "; times are estimates.")
-            or (path.hasTrail and "Dijkstra directions along recorded/bundled ground; chords off it are estimates."
-                or path.hasTerrain and "Dijkstra directions around mapped terrain; footprints are estimates."
-                or "Dijkstra travel directions; walk segments are estimates.")
+        if path.connectionStatus == nil or path.connectionStatusLeg ~= connection then
+            path.connectionStatusLeg = connection
+            path.connectionStatus = connection and ("Dijkstra next connection: " .. transportAction(connection.method)
+                .. " from " .. nodeName(connection.fromID, connection.from) .. " to " .. connection.name .. "; times are estimates.")
+                or (path.hasTrail and "Dijkstra directions along recorded/bundled ground; chords off it are estimates."
+                    or path.hasTerrain and "Dijkstra directions around mapped terrain; footprints are estimates."
+                    or "Dijkstra travel directions; walk segments are estimates.")
+        end
+        ns.travelNetworkStatus = path.connectionStatus
         local leg = path.legs[path.cursor]
         local remaining = ns.TravelPointDistance(position, leg.to)
         if leg.toID == "GOAL" then return end
@@ -725,8 +764,8 @@ function ns.TravelNetworkDestination(stop)
         if leg.to.terrain and position and remaining then
             local _, along = ns.TravelSegmentDistance(position, leg.from, leg.to)
             arrived = (arrived or along == 1 and remaining <= 100) and following
-                and not ns.TerrainWalkCrossing(position, following.to)
-                and not ns.HostileWalkCrossing(position, following.to, nil, true, following.toID == "GOAL")
+                and not ns.TerrainWalkCrossing(position, following.to, path.terrain)
+                and not ns.HostileWalkCrossing(position, following.to, path.safety, true, following.toID == "GOAL")
         end
         if position and position.mapID == leg.to.mapID and arrived then
             path.transportIndex = nil
@@ -735,14 +774,24 @@ function ns.TravelNetworkDestination(stop)
             local personal = leg.method == "hearth" or leg.method == "teleport"
             local transport = leg.method ~= "walk" and not personal
             local target = transport and leg.from or personal and leg.to or smoothedTarget(path, position)
-            local instruction
-            if personal then instruction = ns.PersonalTransportLabel(leg)
-            elseif transport then instruction = transportAction(leg.method) .. " to " .. leg.name
-            elseif following and following.flight then instruction = "Walk to " .. following.flight.source.name .. " (flight master)"
-            elseif leg.to.trail then instruction = "Follow the " .. (leg.to.bundled and "road" or "known path") .. " towards " .. runDestination(path, stop)
-            else instruction = (leg.waypoint and "Go to " or "Head to ") .. leg.name end
-            local result = {id = stop.id, kind = "travel", title = stop.title, mapID = target.mapID, x = target.x, y = target.y,
-                action = "travel", label = instruction, travelLeg = leg, goal = stop, guideStep = stop.guideStep}
+            local instruction = leg.cachedInstruction
+            if not instruction then
+                if personal then instruction = ns.PersonalTransportLabel(leg)
+                elseif transport then instruction = transportAction(leg.method) .. " to " .. leg.name
+                elseif following and following.flight then instruction = "Walk to " .. following.flight.source.name .. " (flight master)"
+                elseif leg.to.trail then instruction = "Follow the " .. (leg.to.bundled and "road" or "known path") .. " towards " .. runDestination(path, stop)
+                else instruction = (leg.waypoint and "Go to " or "Head to ") .. leg.name end
+                leg.cachedInstruction = instruction
+            end
+            if path.resultCursor ~= path.cursor then
+                path.result, path.flightPlan, path.resultCursor = {}, nil, path.cursor
+            end
+            local result = path.result or waypointResult
+            result.id, result.kind, result.title = stop.id, "travel", stop.title
+            result.mapID, result.x, result.y = target.mapID, target.x, target.y
+            result.action, result.label, result.travelLeg, result.goal, result.guideStep = "travel", instruction, leg, stop, stop.guideStep
+            path.result = result
+            result.flightMasterTarget, result.personalTransport, result.transportWaiting, result.flightPlan = nil, nil, nil, nil
             if following and following.flight then result.flightMasterTarget = following.flight.source end
             if personal then result.personalTransport = true end
             if leg.method == "ship" or leg.method == "zeppelin" or leg.method == "tram" then
@@ -751,16 +800,27 @@ function ns.TravelNetworkDestination(stop)
                 result.transportWaiting = path.transportIndex == path.cursor
             end
             if leg.flight then
-                result.kind, result.action, result.flightPlan = "f", "flight", {}
-                for key, value in pairs(leg.flight) do result.flightPlan[key] = value end
-                result.flightPlan.seconds = path.seconds
+                result.kind, result.action = "f", "flight"
+                local plan = result.flightPlan or {}; result.flightPlan = plan
+                for key in pairs(plan) do plan[key] = nil end
+                for key, value in pairs(leg.flight) do plan[key] = value end
+                plan.seconds = path.seconds
                 local direct = ns.TravelPointDistance(position, stop)
-                result.flightPlan.walkingSeconds = direct and direct / ns.TravelWalkSpeed()
+                plan.walkingSeconds = direct and direct / ns.TravelWalkSpeed()
             end
+            path.outputPosition = path.outputPosition or {}
+            path.outputPosition.mapID, path.outputPosition.x, path.outputPosition.y = position.mapID, position.x, position.y
             ns.travelWaypoint = result
             return result
         end
     end
+end
+
+function ns.TravelNetworkDestination(stop)
+    local before = ns.StartMemorySample and ns.StartMemorySample(ns.MemorySampleSection.travel)
+    local result = travelNetworkDestination(stop)
+    if ns.EndMemorySample then ns.EndMemorySample(ns.MemorySampleSection.travel, before) end
+    return result
 end
 
 function ns.TravelNetworkDiagnostics(output)
@@ -789,19 +849,32 @@ function ns.TravelNetworkDiagnostics(output)
     end
 end
 
-function ns.TravelLinePoints(origin, goal)
+local activeFlightPoints = {false, nil, false}
+local function travelLinePoints(origin, goal)
     local check = ns.activeFlightCheck
     if check and check.goal.mapID == goal.mapID and check.goal.x == goal.x and check.goal.y == goal.y then
         -- Only draw the visit. Reference air links are not confirmed flights.
-        return {origin, check, false}
+        activeFlightPoints[1], activeFlightPoints[2] = origin, check
+        return activeFlightPoints
     end
     local path = (ns.Option("travelNetwork") or ns.routeSelection and ns.routeSelection.mode == "travel") and ns.travelPath
     if not path or path.goal.mapID ~= goal.mapID or path.goal.x ~= goal.x or path.goal.y ~= goal.y then return end
-    local points = path.transportIndex == path.cursor and {false} or {origin}
-    for index = path.cursor, #path.legs do
-        local leg = path.legs[index]
-        if leg.method ~= "walk" then points[#points + 1] = leg.from; points[#points + 1] = false end
-        points[#points + 1] = leg.to
+    local points = path.renderPoints
+    local cursor = path.cursor * 2 + (path.transportIndex == path.cursor and 1 or 0)
+    if not points or path.renderCursor ~= cursor then
+        points = points or {}
+        for index = #points, 1, -1 do points[index] = nil end
+        path.renderPoints, path.renderCursor = points, cursor
+        if path.transportIndex == path.cursor then points[1] = false else points[1] = origin end
+        for index = path.cursor, #path.legs do
+            local leg = path.legs[index]
+            if leg.method ~= "walk" then points[#points + 1] = leg.from; points[#points + 1] = false end
+            points[#points + 1] = leg.to
+        end
+    else
+        points[1] = path.transportIndex == path.cursor and false or origin
     end
     return points
 end
+
+ns.TravelLinePoints = travelLinePoints

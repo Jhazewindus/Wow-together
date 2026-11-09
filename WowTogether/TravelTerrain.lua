@@ -36,6 +36,19 @@ local function intersection(a, b, area)
     return low < high and high > EPSILON and low < 1 - EPSILON
 end
 
+local function crossesOnMap(a, b, mapID, context)
+    local map = context.maps[mapID]
+    if not map then return end
+    local p = a.mapID == mapID and a or ns.ProjectMapPoint(a, mapID, context.projection)
+    local q = b.mapID == mapID and b or ns.ProjectMapPoint(b, mapID, context.projection)
+    if not p or not q then return end
+    for _, area in ipairs(map.areas) do
+        -- An endpoint atop a mesa needs a ramp/lift approach. Don't invent
+        -- that approach from a 2D map silhouette.
+        if not (inside(p, area) and inside(q, area)) and intersection(p, q, area) then return area end
+    end
+end
+
 local function compile(mapID, source)
     local result = {areas = {}, nodes = {}, edges = {}}
     local padding = type(source.padding) == "number" and math.max(0.001, math.min(0.02, source.padding)) or 0.005
@@ -103,21 +116,9 @@ end
 function ns.TerrainWalkCrossing(a, b, context)
     if not mapPoint(a) or not mapPoint(b) then return end
     context = context or ns.TravelTerrainContext()
-    local maps = {a.mapID}; if b.mapID ~= a.mapID then maps[2] = b.mapID end
-    for _, mapID in ipairs(maps) do
-        local map = context.maps[mapID]
-        if map then
-            local p = ns.ProjectMapPoint(a, mapID, context.projection)
-            local q = ns.ProjectMapPoint(b, mapID, context.projection)
-            if p and q then
-                for _, area in ipairs(map.areas) do
-                    -- An endpoint atop a mesa needs a ramp/lift approach.
-                    -- Don't invent that approach from a 2D map silhouette.
-                    if not (inside(p, area) and inside(q, area)) and intersection(p, q, area) then return area end
-                end
-            end
-        end
-    end
+    local area = crossesOnMap(a, b, a.mapID, context)
+    if area then return area end
+    if b.mapID ~= a.mapID then return crossesOnMap(a, b, b.mapID, context) end
 end
 
 function ns.TravelSegmentDistance(p, a, b)

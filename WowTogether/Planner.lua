@@ -330,12 +330,14 @@ function ns.IsRepeatableQuest(id)
     return quest and quest.repeatable == true or false
 end
 
-function ns.PlayerPoint(mapID)
+function ns.PlayerPoint(mapID, reuse)
     local point = C_Map and ns.ReadPublic(C_Map.GetPlayerMapPosition, mapID, "player")
     local x, y
     if point then x, y = ns.ReadPublic(point.GetXY, point) end
     if type(x) == "number" and type(y) == "number" and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
-        return {mapID = mapID, x = x, y = y}
+        local result = reuse or {}
+        result.mapID, result.x, result.y = mapID, x, y
+        return result
     end
 end
 

@@ -240,4 +240,5 @@ function ns.MemoryDiagnostics(output)
         output(string.format("Data %s: %d/%d records loaded; %d/%d detail fields unpacked; %.2f MiB still packed.",
             stat.name, stat.loadedRows, stat.totalRows, stat.decoded, stat.total, stat.packedBytes / 1048576))
     end
+    if ns.AllocationDiagnostics then ns.AllocationDiagnostics(output) end
 end

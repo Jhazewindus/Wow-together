@@ -72,6 +72,8 @@ function ns.UIDropdown(parent, entries, width, callback)
 end
 
 function ns.UIHelp(frame, text)
+    if frame.wowTogetherHelpText == text then return end
+    frame.wowTogetherHelpText = text
     frame:SetScript("OnEnter", function(self)
         if self.caption then self:SetBackdropBorderColor(unpack(ns.UIColors.gold)) end
         if not GameTooltip then return end

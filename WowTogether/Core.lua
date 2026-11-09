@@ -329,6 +329,7 @@ local diagnosticsProbes = {
         }
 
 function ns.Diagnostics()
+    local probeAllocationStart = ns.StartMemorySample and ns.StartMemorySample(ns.MemorySampleSection.probe)
     local lines = {"Wow Together " .. ns.VERSION .. " — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
@@ -385,6 +386,7 @@ function ns.Diagnostics()
     ns.ResearchDiagnostics(output)
     ns.MemoryDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
+    if ns.EndMemorySample then ns.EndMemorySample(ns.MemorySampleSection.probe, probeAllocationStart) end
 end
 
 local CHARACTER_STORES = {"flights", "questHistory", "guideState", "guideModes", "guideSkips", "questResearch", "xpSamples",

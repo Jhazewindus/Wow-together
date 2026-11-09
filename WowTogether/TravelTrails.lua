@@ -17,6 +17,7 @@ local MIN_COVERAGE = 12                      -- nodes before a map is considered
 local SHARE_INTERVAL, SHARE_TRICKLE, SHARE_MAP_MESSAGES, SHARE_PENDING = 30, 3, 80, 400
 local graphs, scales, last, elapsed, status = {}, {}, nil, 0, "Not started."
 local pendingShare, sentEdges, sharedMaps, shareClock, shareStats = {}, {}, {}, 0, {sent = 0, received = 0, points = 0}
+local currentPoint = {}
 
 local function finite(value)
     return ns.Public(value) and type(value) == "number" and value == value and value > -math.huge and value < math.huge
@@ -98,6 +99,30 @@ local function nearest(map, p, radius, count)
         end
     end
     return scan(map, p, radius, count, w, h)
+end
+
+local function nearestOne(map, p, radius)
+    local w, h = scale(map.mapID)
+    if not w or map.count == 0 then return end
+    local rx, ry = radius / w, radius / h
+    local x0, x1 = math.floor((p.x - rx) / CELL), math.floor((p.x + rx) / CELL)
+    local y0, y1 = math.floor((p.y - ry) / CELL), math.floor((p.y + ry) / CELL)
+    if x1 - x0 > 60 then x0, x1 = math.floor(p.x / CELL) - 30, math.floor(p.x / CELL) + 30 end
+    if y1 - y0 > 60 then y0, y1 = math.floor(p.y / CELL) - 30, math.floor(p.y / CELL) + 30 end
+    local best, bestDistance
+    for cx = x0, x1 do
+        for cy = y0, y1 do
+            for _, id in ipairs(map.cells[cx .. ":" .. cy] or {}) do
+                local node = map.nodes[id]
+                local distance = yards(map.mapID, p, node)
+                if distance and distance <= radius and (not bestDistance or distance < bestDistance
+                    or distance == bestDistance and id < best) then
+                    best, bestDistance = id, distance
+                end
+            end
+        end
+    end
+    return best
 end
 
 local function compileBundled(map, source)
@@ -222,7 +247,7 @@ local function sample()
     local speed = ns.ReadPublic(GetUnitSpeed, "player")
     if not finite(speed) or speed <= 0 then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local p = ns.GuideInteger(mapID) and mapID > 0 and ns.PlayerPoint(mapID)
+    local p = ns.GuideInteger(mapID) and mapID > 0 and ns.PlayerPoint(mapID, currentPoint)
     if not p then last = nil; status = "Position unavailable."; return end
     if not scale(mapID) then last = nil; status = "Map scale unavailable for map " .. mapID .. "."; return end
     local map = graph(mapID)
@@ -233,14 +258,14 @@ local function sample()
         if moved and moved > JUMP then last = nil
         elseif moved and moved < STEP then return end
     end
-    local near = nearest(map, p, SNAP, 1)[1]
-    local id = near and near.id
+    local id = nearestOne(map, p, SNAP)
     local store = saved()
     local record = store[mapID]
     if not id then
         if map.learned >= MAX_NODES then
             status = ns.MapName(mapID) .. " has reached " .. MAX_NODES .. " recorded points; existing ground stays in use."
-            last = {mapID = mapID, x = p.x, y = p.y}
+            last = last or {}
+            last.mapID, last.x, last.y, last.id = mapID, p.x, p.y, nil
             return
         end
         record = record or {n = {}, e = {}}
@@ -258,7 +283,8 @@ local function sample()
         -- goal); bumping the travel revision here would re-plan every sample.
         map.revision = map.revision + 1
     end
-    last = {mapID = mapID, id = id, x = p.x, y = p.y}
+    last = last or {}
+    last.mapID, last.id, last.x, last.y = mapID, id, p.x, p.y
     status = "Recording ground in " .. ns.MapName(mapID) .. ": " .. map.learned .. " points, " .. map.bundled .. " bundled."
 end
 
@@ -276,7 +302,9 @@ function ns.InitializeTravelTrails()
         elapsed = elapsed + (finite(dt) and dt or 0)
         if elapsed < SAMPLE then return end
         elapsed = 0
+        local before = ns.StartMemorySample and ns.StartMemorySample(ns.MemorySampleSection.recorders)
         local okay, err = pcall(sample)
+        if ns.EndMemorySample then ns.EndMemorySample(ns.MemorySampleSection.recorders, before) end
         if not okay then status = "Recorder error: " .. tostring(err); last = nil end
         shareClock = shareClock + SAMPLE
         if shareClock >= 2 then
