@@ -103,7 +103,7 @@ class GoldPriceTests(unittest.TestCase):
         self.assertIn('confidence 100%', output)
         self.assertIn('samples 1', output)
         client.lua.globals().SlashCmdList.WOWTOGETHER('gold prices')
-        self.assertIn('farm AH scan unavailable', logs[len(logs)])
+        self.assertIn('farm AH scan available', logs[len(logs)])
 
 
 if __name__ == '__main__':
