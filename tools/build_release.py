@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import sys
+import subprocess
 import zipfile
 from pathlib import Path
 
@@ -39,9 +40,54 @@ def optional_gold_sources(root):
     return sources
 
 
+MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024
+
+
+def toc_sources(folder):
+    """Validate every source declared by a package, including added data files."""
+    toc = folder / (folder.name + '.toc')
+    names = [line.strip() for line in toc.read_text().splitlines()
+             if line.strip() and not line.lstrip().startswith('#')]
+    for name in names:
+        if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name) or not (folder / name).is_file():
+            raise ValueError('Missing or invalid TOC source: ' + folder.name + '/' + name)
+    return names
+
+
+def archive_name(version, label=None, sha=None):
+    if not label:
+        return f'WowTogether-{version}.zip'
+    safe = re.sub(r'[^A-Za-z0-9_.-]+', '-', label).strip('.-')[:100]
+    if not safe:
+        raise ValueError('Beta branch label is empty')
+    if not sha or not re.fullmatch(r'[0-9a-f]{7,40}', sha):
+        raise ValueError('A valid Git SHA is required for beta builds')
+    return f'WowTogether-beta-{safe}-{sha[:12]}.zip'
+
+
+def split_archive(path, limit=MAX_ATTACHMENT_BYTES):
+    """Keep addon folders intact when a release exceeds Discord's limit."""
+    if path.stat().st_size <= limit:
+        return [path]
+    core = path.with_name(path.stem + '-core.zip')
+    data = path.with_name(path.stem + '-data.zip' if '-beta-' in path.stem else path.stem.replace('WowTogether-', 'WowTogether-data-', 1) + '.zip')
+    with zipfile.ZipFile(path) as source:
+        with zipfile.ZipFile(core, 'w', zipfile.ZIP_DEFLATED) as a, zipfile.ZipFile(data, 'w', zipfile.ZIP_DEFLATED) as b:
+            for info in source.infolist():
+                target = a if info.filename.startswith('WowTogether/') else b
+                target.writestr(info, source.read(info))
+    if any(p.stat().st_size > limit for p in (core, data)):
+        core.unlink(); data.unlink()
+        raise ValueError('An addon package still exceeds the 25 MB attachment limit')
+    core.replace(path)
+    return [path, data]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('/workspace/artifacts'))
+    parser.add_argument('--label', help='Branch label for a beta archive; never a release filename.')
+    parser.add_argument('--sha', help='Git SHA for a beta archive (defaults to HEAD).')
     parser.add_argument('--post-discord', action='store_true', help='Post the verified release and its matching changelog/test checklist.')
     args = parser.parse_args()
     addon = ROOT / 'WowTogether'
@@ -52,7 +98,7 @@ def main():
     version = re.search(r'^## Version: ([0-9]+\.[0-9]+\.[0-9]+)$', toc, re.M).group(1)
     release_name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})$', toc, re.M)
     release_label = version + (' — ' + release_name.group(1) if release_name else '')
-    names = [line.strip() for line in toc.splitlines() if line.strip() and not line.startswith('#')]
+    names = toc_sources(addon)
     for name in names:
         if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name):
             raise ValueError('Unexpected addon source path: ' + name)
@@ -76,6 +122,8 @@ def main():
     if not isinstance(catalogue_count, int) or not re.search(
             r'(?:\["count"\]\s*=\s*|\bcount\s*=\s*)' + str(catalogue_count) + r'\b', catalogue_header):
         raise ValueError('Quest catalogue summary metadata does not match its data payload')
+    for folder in data_packages:
+        data_packages[folder] = toc_sources(ROOT / folder)
     for folder, sources in data_packages.items():
         package = ROOT / folder
         package_toc = package / f'{folder}.toc'
@@ -816,7 +864,8 @@ and TESTING.md for the labeled friend-testing checklist. Host checks alone do no
 establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
-    destination = args.output / f'WowTogether-{version}.zip'
+    sha = args.sha or (subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() if args.label else None)
+    destination = args.output / archive_name(version, args.label, sha)
     files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideFlowAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'EliteSpawnData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
@@ -846,8 +895,14 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
     with zipfile.ZipFile(destination) as archive:
         if archive.testzip() is not None:
             raise ValueError('Release archive failed verification')
-    print(f'{destination}: {len(names)} Lua files, {destination.stat().st_size} bytes')
-    print('SHA256 ' + hashlib.sha256(destination.read_bytes()).hexdigest())
+    if args.post_discord and args.label:
+        raise ValueError('Beta builds are posted by CI using the beta webhook')
+    outputs = split_archive(destination)
+    for output in outputs:
+        print(f'{output}: {output.stat().st_size} bytes')
+        print('SHA256 ' + hashlib.sha256(output.read_bytes()).hexdigest())
+    if args.post_discord and len(outputs) != 1:
+        raise ValueError('Split archives must be posted together by CI')
     if args.post_discord:
         from post_discord_release import PublicationError, configured_webhook, post_release
         try:
