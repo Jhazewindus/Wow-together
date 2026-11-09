@@ -1127,7 +1127,19 @@ local function updateSelectedRoute(choices, query)
             for _, person in ipairs(ns.PartyProfiles()) do if not person.synced then waiting = true; break end end
         end
     end
-    local route = guide and ns.BuildGuideRoute(guide, false)
+    local route
+    local prepared = ns.preparedLevelingRoute
+    if prepared and guide and prepared.guide and prepared.guide.key == guide.key then
+        route = prepared.route
+        ns.preparedLevelingRoute = nil
+    elseif guide and guide.fullGuide and guide.mode == "zone" and ns.Option("xpModel")
+        and ns.PlanLevelingGuide and not ns.routeRefreshSync then
+        ns.guideAction = "Updating route…"
+        ns.PlanLevelingGuide(guide, false, true)
+        return
+    else
+        route = guide and ns.BuildGuideRoute(guide, false)
+    end
     if route and old and selection.mode ~= "dungeon" then route = ns.PinCurrentDestination(old, route) end
     if route then route = ns.AddNPCVisitPickups(guide, route, query) end
     if route and guide and route.mapID ~= guide.mapID then

@@ -210,7 +210,9 @@ function ns.GuideStepAction(stop, facts)
         local verb = facts.npc and facts.item and "Loot " or action == "gather" and "Gather " or "Collect "
         return verb .. amount .. (target or title)
     end
-    return target and ("Complete the " .. target .. " objective") or (text(stop.label) or ("Work on " .. title))
+    if target then return "Complete the " .. target .. " objective" end
+    if stop.kind == "q" then return "Complete the objectives of " .. title end
+    return text(stop.label) or "Continue with the quest"
 end
 
 local function guideStepHintSource(stop, facts)
@@ -486,38 +488,9 @@ local function presentationTime(state)
     return distance or timing
 end
 
-local function presentationTravelSummary(stop, fallback)
-    local path = ns.travelPath
-    if (stop.travelLeg or stop.flightPlan) and not stop.flightPlan
-        and type(path) == "table" and type(path.legs) == "table" then
-        local parts, landing = {}, nil
-        local cursor = math.max(1, path.cursor or 1)
-        for index = cursor, #path.legs do
-            local leg = path.legs[index]
-            local method, label = leg.method, text(leg.name)
-            local action
-            if method == "teleport" then action, landing = "Teleport", leg.name
-            elseif method == "hearth" then action, landing = "Hearthstone", leg.name
-            elseif method == "taxi" then
-                local flight = type(leg.flight) == "table" and leg.flight
-                local seconds = flight and (flight.flightSeconds or flight.seconds) or leg.seconds
-                action = "Fly to " .. (label or "the next flight point")
-                    .. (seconds and (" (~" .. ns.FormatTravelDuration(seconds) .. ")") or "")
-            elseif method == "ship" or method == "zeppelin" or method == "tram" then
-                action = "Take the " .. method .. (label and (" to " .. label) or "")
-            elseif method == "walk" then
-                action = "walk" .. (leg.seconds and (" ~" .. ns.FormatTravelDuration(leg.seconds)) or "")
-            end
-            if action then parts[#parts + 1] = action end
-        end
-        if #parts > 0 then
-            local result = table.concat(parts, ", then ")
-            if landing then result = result .. ". Lands in " .. landing end
-            return sentence(result, 180)
-        end
-    end
+local function presentationTravelSummary(_, fallback)
     -- Keep the authored summary intact. Core prose is already composed at its
-    -- source and must not be rewritten here with string substitutions.
+    -- source and already collapses consecutive walks in TravelPathSummary.
     return fallback and sentence(fallback, 180) or nil
 end
 
@@ -566,7 +539,11 @@ function ns.GuideStepPresentation(stop, facts, guide, route, state)
             addDetail("Watch for: " .. watch.name .. " (" .. watch.members .. ")")
         end
         addDetail(ns.QuestGroupWarning(goal.id))
-        addDetail(goal.forPlayer and ("For " .. text(goal.forPlayer)))
+        local localName = ns.profile and ns.profile.name or ns.ReadPublic(UnitName, "player")
+        local namedPlayer = type(goal.forPlayer) == "string" and text(goal.forPlayer)
+        local forSelf = goal.memberKey == ns.self or namedPlayer and type(localName) == "string"
+            and string.lower(namedPlayer) == string.lower(localName)
+        if namedPlayer and not forSelf then addDetail("For " .. namedPlayer) end
         if goal.clientLocation then addDetail("Quest tracker marked area") end
         local quest = ns.CatalogueQuest(goal.id)
         for _, item in ipairs(quest and quest.providedItems or {}) do
@@ -587,10 +564,13 @@ function ns.GuideStepPresentation(stop, facts, guide, route, state)
     local icon = ns.StopIcon(stop) or ns.StopIcon(goal) or (facts.action == "kill" and "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8")
         or "Interface\\Icons\\INV_Misc_Map_01"
     local thenText
-    if isTravel then thenText = "Then: " .. ns.StopInstruction(goal, facts)
-        .. (location and (" (" .. location .. ")") or "") .. "." end
+    if isTravel then
+        local questLocation = (goal.mapID or goal.location) and ns.StopLocationText(goal) or nil
+        thenText = "Then: " .. ns.StopInstruction(goal, facts)
+            .. (questLocation and (" (" .. questLocation .. ")") or "") .. "."
+    end
     local travel = presentationTravelSummary(stop, ns.TravelPathSummary(stop))
-    local evidence = decision and decision.code and ("Reason: " .. decision.code
+    local evidence = ns.Option("debugReasons") and decision and decision.code and ("Reason: " .. decision.code
         .. (decision.confidence and (" • " .. decision.confidence) or "")
         .. (decision.estimated and " • estimated" or "") .. ".")
     return {kind = kind, icon = icon, title = title, stepLine = capped(statusLineForGuide(guide, route, goal, status), 110),
@@ -617,7 +597,7 @@ function ns.GuidePresentationTooltipLines(presentation, includeCard)
         value = text(value)
         if not value then return end
         local key = keyFor(value)
-        if key == "" or seen[key] or #output >= 5 then return end
+        if key == "" or seen[key] or #output >= 8 then return end
         seen[key], output[#output + 1] = true, value
     end
     local function mark(value)
@@ -633,11 +613,14 @@ function ns.GuidePresentationTooltipLines(presentation, includeCard)
         else add(presentation.why); add(presentation.status) end
     end
     add(presentation.then_)
-    if not (presentation.then_ and presentation.location
-        and string.find(presentation.then_, presentation.location, 1, true)) then add(presentation.location) end
+    if not presentation.then_ then add(presentation.location) end
     add(presentation.travel)
-    for _, detail in ipairs(presentation.details or {}) do add(detail) end
-    add(presentation.evidence)
+    if ns.Option("debugReasons") or includeCard == true then
+        for _, detail in ipairs(presentation.details or {}) do add(detail) end
+    end
+    if ns.Option("debugReasons") then
+        add(presentation.evidence)
+    end
     return output
 end
 

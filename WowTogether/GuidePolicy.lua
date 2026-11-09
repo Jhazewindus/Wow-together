@@ -2,6 +2,38 @@ local addonName, ns = ...
 
 local indexed, followups
 local cachedBaselineSignature, cachedBaseline
+local keptLowValue = {}
+
+function ns.KeepLowValueQuest(id)
+    if not ns.GuideInteger(id) or id <= 0 then return false end
+    keptLowValue[id] = true
+    if ns.Refresh then ns.Refresh() end
+    return true
+end
+
+function ns.AbandonLowValueQuest(id)
+    if not ns.GuideInteger(id) or id <= 0 or not ns.active[id] then return false end
+    local combat = type(InCombatLockdown) == "function" and InCombatLockdown()
+    if not ns.Public(combat) or combat == true then
+        ns.Print("Leave combat before abandoning a quest.")
+        return false
+    end
+    local log = C_QuestLog
+    local index = log and ns.ReadPublic(log.GetLogIndexForQuestID, id)
+    if not index then return false end
+    if log.SetSelectedQuest then ns.ReadPublic(log.SetSelectedQuest, id) end
+    if log and type(log.AbandonQuest) == "function" then
+        local okay = pcall(log.AbandonQuest)
+        if not okay then return false end
+    elseif type(AbandonQuest) == "function" then
+        local okay = pcall(AbandonQuest)
+        if not okay then return false end
+    else return false end
+    keptLowValue[id] = nil
+    if ns.ReadQuests then ns.ReadQuests() end
+    if ns.Refresh then ns.Refresh() end
+    return true
+end
 
 -- Prefer worthwhile leveling work, rather than the entire green difficulty
 -- band. Lower quests can still qualify through their useful continuations.
@@ -196,7 +228,7 @@ local function chainPaths(root, key, query, level)
     return paths
 end
 
-function ns.ChainValue(id, query)
+local function computeChainValue(id, query)
     local root = ns.CatalogueQuest(id)
     if not root then return nil end
     local level, key = ns.PartyLevelFloor(query)
@@ -242,7 +274,7 @@ function ns.ChainValue(id, query)
         -- still fits the chain; the explicit Stonetalon level-24 example
         -- keeps its level-27 endpoint eligible even before it turns green.
         local finalInRange = finalDifference and finalDifference >= -5 and finalDifference <= 5
-        local committed = completed >= ns.ROUTE_WEIGHTS.chainCommitSteps
+        local committed = keptLowValue[id] == true or completed >= ns.ROUTE_WEIGHTS.chainCommitSteps
             and completed / #path > ns.ROUTE_WEIGHTS.chainCommitShare and finalDifference and finalDifference >= -5
         local included = committed or (#path > 1 and rate >= baseline * ns.ROUTE_WEIGHTS.chainEfficiency and finalInRange)
         local candidate = {questID = id, steps = path, totalSteps = #path, completedSteps = completed,
@@ -254,6 +286,24 @@ function ns.ChainValue(id, query)
         if not best or candidate.included and not best.included or candidate.rate > best.rate then best = candidate end
     end
     return best
+end
+
+function ns.ChainValue(id, query)
+    if not query then return computeChainValue(id, query) end
+    local profileKey = ns.PartyLevelFloor(query)
+    local guide = query.guide or ns.routeSelection
+    local key = table.concat({tostring(id), tostring(profileKey), tostring(guide and guide.key),
+        tostring(guide and guide.mode), tostring(ns.guideProgressRevision or 0),
+        tostring(ns.char and ns.char.questLearning and ns.char.questLearning.revision or 0)}, ":")
+    local cache = query.policyCache
+    if not cache then cache = {}; query.policyCache = cache end
+    cache.chains = cache.chains or {}
+    local cached = cache.chains[key]
+    if cached ~= nil then return cached ~= false and cached or nil end
+    local value = computeChainValue(id, query)
+    cache.chains[key] = value or false
+    if ns.policyMetrics then ns.policyMetrics.chainValueCalls = (ns.policyMetrics.chainValueCalls or 0) + 1 end
+    return value
 end
 
 function ns.GuideEfficiencyMode(guide)
@@ -272,18 +322,41 @@ function ns.SetGuideEfficiencyMode(guide, mode)
     return true
 end
 
-function ns.GuideZoneFinishing(guide, profile, projection)
+function ns.GuideZoneFinishing(guide, profile, projection, query)
     if not guide or guide.mode ~= "zone" or ns.GuideEfficiencyMode(guide) == "complete" then return false end
     profile = profile or ns.profile or {}
     local level = profile.level
     if not ns.GuideInteger(level) then return false end
-    if ns.Option("xpModel") then
-        if not ns.ZoneExitProjection then return false end
-        projection = projection or ns.ZoneExitProjection(guide, profile)
-        if not projection or projection.curveIncomplete then return false end
-        return projection.level - level <= 1
+    local cache, cacheKey
+    if query then
+        local revisions = table.concat({tostring(guide.key), tostring(guide.mode), tostring(guide.rangeHigh),
+            tostring(level), tostring(ns.guideProgressRevision or 0), tostring(ns.questHistoryCount or 0),
+            tostring(ns.objectiveDisplayRevision or 0), tostring(ns.xpSampleRevision or 0)}, ":")
+        local state = query.policyXPState
+        if query.policyXPRevision ~= revisions or not state then
+            state = ns.XPState and ns.XPState() or nil
+            query.policyXPRevision, query.policyXPState = revisions, state
+        end
+        cache = query.policyCache
+        if not cache then cache = {}; query.policyCache = cache end
+        cache.zoneFinishing = cache.zoneFinishing or {}
+        cacheKey = table.concat({revisions, tostring(state and state.level), tostring(state and state.xp),
+            tostring(state and state.xpMax), tostring(ns.GuideEfficiencyMode(guide))}, ":")
+        local cached = cache.zoneFinishing[cacheKey]
+        if cached ~= nil then return cached end
     end
-    return ns.GuideInteger(guide.rangeHigh) and level >= guide.rangeHigh - 1 or false
+    local result = false
+    if ns.Option("xpModel") then
+        if ns.ZoneExitProjection then projection = projection or ns.ZoneExitProjection(guide, profile, query) end
+        if projection and not projection.curveIncomplete then result = projection.level - level <= 1 end
+    else
+        result = ns.GuideInteger(guide.rangeHigh) and level >= guide.rangeHigh - 1 or false
+    end
+    if cache then
+        cache.zoneFinishing[cacheKey] = result
+        if ns.policyMetrics then ns.policyMetrics.zoneFinishingCalls = (ns.policyMetrics.zoneFinishingCalls or 0) + 1 end
+    end
+    return result
 end
 
 local function legacyUsefulQuestReason(id, key, level, query)
@@ -329,8 +402,20 @@ local function levelingValue(id, query)
             if record.id == id then return true, "Complete the zone; this quest is in the selected guide." end
         end
     end
-    if ns.GuideZoneFinishing(activeGuide) then
-        if ns.active[id] ~= nil then return true, "Finish the quest already in your log." end
+    local zoneFinishing = query and query.zoneFinishing
+    if zoneFinishing == nil then zoneFinishing = ns.GuideZoneFinishing(activeGuide, nil, nil, query) end
+    if zoneFinishing then
+        if ns.active[id] ~= nil then
+            local activeChain = ns.ChainValue(id, query)
+            if activeChain and activeChain.baseline and not activeChain.included and not activeChain.committed then
+                activeChain.inLogLowValue = true
+                local sentence = (ns.QuestTitle(id) or quest.title or "This quest") .. " is worth ~"
+                    .. tostring(math.floor((activeChain.xp or 0) + 0.5)) .. " XP for a ~"
+                    .. tostring(math.floor((activeChain.minutes or 0) + 0.5)) .. " min trip."
+                return false, "in-log-low-value:" .. sentence
+            end
+            return true, "Finish the quest already in your log."
+        end
         if ns.readyToTurnIn[id] == true then return true, "Turn in this ready quest." end
     end
     -- Difficulty informs the player's choice; solo status must not hide work.
@@ -356,7 +441,7 @@ local function levelingValue(id, query)
     end
     local chain = ns.ChainValue(id, query)
     if chain then
-        if ns.GuideZoneFinishing(ns.routeSelection) and not chain.committed then
+        if zoneFinishing and not chain.committed then
             return false, chain.reason
         end
         if ns.GuideEfficiencyMode(ns.routeSelection) == "complete" then
@@ -375,6 +460,29 @@ local function levelingValue(id, query)
     end
     if reason then return true, reason end
     return false, "Below preferred quest levels " .. preferredFloor(level) .. "–" .. (level + 3) .. "; no worthwhile follow-up is known."
+end
+
+function ns.PrepareGuidePolicy(guide, query)
+    if not query then return end
+    query.guide = guide or query.guide
+    local level = ns.profile and ns.profile.level
+    local state = query.policyXPState
+    local revisions = table.concat({tostring(guide and guide.key), tostring(guide and guide.mode),
+        tostring(guide and guide.rangeHigh), tostring(level), tostring(ns.guideProgressRevision or 0),
+        tostring(ns.questHistoryCount or 0), tostring(ns.objectiveDisplayRevision or 0),
+        tostring(ns.xpSampleRevision or 0)}, ":")
+    if query.policyXPRevision ~= revisions or not state then
+        state = ns.XPState and ns.XPState() or nil
+        query.policyXPRevision, query.policyXPState = revisions, state
+    end
+    local preparedKey = table.concat({revisions, tostring(state and state.level), tostring(state and state.xp),
+        tostring(state and state.xpMax), tostring(guide and ns.GuideEfficiencyMode(guide))}, ":")
+    if query.policyPreparedFor == guide and query.policyPreparedKey == preparedKey then return query.zoneFinishing end
+    query.policyPreparedFor, query.policyPreparedKey = guide, preparedKey
+    query.zoneProjection = ns.Option("xpModel") and guide and guide.mode == "zone"
+        and ns.ZoneExitProjection and ns.ZoneExitProjection(guide, ns.profile, query) or nil
+    query.zoneFinishing = ns.GuideZoneFinishing(guide, ns.profile, query.zoneProjection, query)
+    return query.zoneFinishing
 end
 
 function ns.LevelingValue(id, query)
