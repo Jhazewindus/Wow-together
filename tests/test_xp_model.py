@@ -1,6 +1,7 @@
 """Quest XP estimates are explicit and opt-in until Forever rewards are verified."""
 import unittest
 import json
+from pathlib import Path
 
 from test_addon import Client
 
@@ -35,6 +36,7 @@ class XPModelTests(unittest.TestCase):
         self.assertTrue(result)
         self.assertIn('Next quest', reason)
         c.ns.catalogue.quests[102].previousQuest = None
+        c.ns.catalogue = c.lua.table_from({'quests': c.ns.catalogue.quests})
         result, reason = c.ns.XPLevelingValue(100)
         self.assertFalse(result)
         self.assertIn('Later', reason)
@@ -142,7 +144,7 @@ class XPModelTests(unittest.TestCase):
         growth = c.lua.eval('''function(guide)
             collectgarbage('collect')
             local before = collectgarbage('count')
-            for _ = 1, 3 do ns.BuildLevelingRoute(guide, false, false) end
+            for _ = 1, 10 do ns.BuildLevelingRoute(guide, false, false) end
             collectgarbage('collect')
             return collectgarbage('count') - before
         end''')(guide)
@@ -166,6 +168,83 @@ class XPModelTests(unittest.TestCase):
         self.assertEqual(sample['event'], 'xp-sample')
         self.assertEqual((sample['questID'], sample['questLevel'], sample['playerLevel'], sample['xpReward']), (100, 5, 15, 500))
         self.assertTrue(sample['rested'])
+
+    def test_xp_model_is_disabled_by_default(self):
+        c = self.client()
+        self.assertFalse(c.ns.Option('xpModel'))
+
+    def test_catalogue_xp_and_followers_share_one_index_for_many_records(self):
+        c = self.client()
+        quests = c.lua.table()
+        for quest_id in range(1, 502):
+            quests[quest_id] = c.lua.table_from({'id': quest_id, 'title': 'Quest ' + str(quest_id),
+                'level': 15, 'xp': 1000, 'side': 'Both'})
+        quests[2].previousQuest = 1
+        quests[3].prerequisiteAll = c.lua.table_from([1])
+        quests[4].prerequisiteAny = c.lua.table_from([1])
+        quests[5].series = c.lua.table_from([200, 501])
+        c.ns.catalogue = c.lua.table_from({'quests': quests})
+        c.ns.db.config.xpModel = True
+        c.lua.globals().ns = c.ns
+        c.lua.execute('''
+            originalPairs = pairs
+            cataloguePairCount = 0
+            pairs = function(value)
+                if value == ns.catalogue.quests then cataloguePairCount = cataloguePairCount + 1 end
+                return originalPairs(value)
+            end
+        ''')
+        query = c.ns.NewQuestQuery()
+        for quest_id in range(1, 502):
+            self.assertIsNotNone(c.ns.XPLevelingValue(quest_id, query)[0])
+        self.assertEqual(c.lua.globals().cataloguePairCount, 1)
+        followers = c.ns.CatalogueFollowers(1)
+        for quest_id in (2, 3, 4): self.assertTrue(followers[quest_id])
+        self.assertTrue(c.ns.CatalogueFollowers(200)[501])
+        self.assertEqual(c.ns.CatalogueXPReference(15), 1000)
+        self.assertEqual(len(c.ns.CatalogueQuestIDsAtLevel(15)), 501)
+
+    def test_xp_leveling_memo_is_cleared_when_completion_revision_changes(self):
+        c = self.client()
+        c.ns.db.config.xpModel = True
+        c.ns.questHistory = c.lua.table()
+        c.ns.questHistoryCount = 0
+        self.assertTrue(c.ns.XPLevelingValue(100)[0])
+        c.ns.questHistory[102] = True
+        c.ns.questHistoryCount = 1
+        value, reason = c.ns.XPLevelingValue(100)
+        self.assertFalse(value)
+        self.assertIn('Later', reason)
+
+    def test_diagnostics_with_xp_on_never_calls_planning_functions(self):
+        c = self.client()
+        c.ns.db.config.xpModel = True
+        self.assertEqual(c.ns.XPDiagnosticsText(), 'on; not computed yet')
+        c.lua.globals().ns = c.ns
+        elapsed, calls, okay = c.lua.eval('''function()
+            local names = {'GuideDestinationDecision', 'LevelingQuestEnabled', 'ChainValue',
+                'ZoneExitProjection', 'XPLevelingValue'}
+            local originals, count = {}, 0
+            for _, name in ipairs(names) do
+                originals[name] = ns[name]
+                ns[name] = function() count = count + 1; error(name .. ' called by probe') end
+            end
+            local start = os.clock()
+            local okay = pcall(ns.Diagnostics)
+            local elapsed = os.clock() - start
+            for _, name in ipairs(names) do ns[name] = originals[name] end
+            return elapsed, count, okay
+        end''')()
+        self.assertTrue(okay)
+        self.assertEqual(calls, 0)
+        self.assertLess(elapsed, 0.02)
+
+    def test_per_record_functions_do_not_scan_the_full_catalogue(self):
+        root = Path(__file__).resolve().parents[1]
+        for filename in ('GuideXP.lua', 'GuidePolicy.lua'):
+            source = (root / 'WowTogether' / filename).read_text(encoding='utf-8')
+            self.assertNotIn('pairs(ns.catalogue and ns.catalogue.quests or {})', source)
+            self.assertNotIn('pairs(ns.catalogue.quests)', source)
 
     def test_old_solo_mode_gets_one_party_setting_notice_at_login(self):
         c = Client(quests=(), saved_variables={'config': {'soloMode': True, 'partyMode': 'never'}})

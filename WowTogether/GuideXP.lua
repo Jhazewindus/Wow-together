@@ -1,5 +1,8 @@
 local addonName, ns = ...
 
+local cachedLevelingSignature, cachedLevelingValues, cachedLevelingCount
+local lastLevelingDiagnostic
+
 local function number(value, maximum)
     return ns.Public(value) and type(value) == "number" and value >= 0 and value <= maximum and value == math.floor(value)
 end
@@ -164,38 +167,59 @@ function ns.ZoneExitProjection(guide, profile, query)
     return result
 end
 
+local function xpCompletionRevision()
+    return table.concat({tostring(ns.catalogue), tostring(ns.guideProgressRevision or 0),
+        tostring(ns.questHistoryCount or 0), tostring(ns.objectiveDisplayRevision or 0),
+        tostring(ns.xpSampleRevision or 0), tostring(ns.profile and ns.profile.faction),
+        tostring(ns.profile and ns.profile.class), tostring(ns.profile and ns.profile.level)}, ":")
+end
+
+function ns.XPDiagnosticsText()
+    if not ns.Option("xpModel") then return "off" end
+    local revision = xpCompletionRevision()
+    if not lastLevelingDiagnostic or lastLevelingDiagnostic.revision ~= revision
+        or lastLevelingDiagnostic.level ~= (ns.profile and ns.profile.level) then return "on; not computed yet" end
+    return "on; " .. lastLevelingDiagnostic.count .. " quest estimates cached for level " .. lastLevelingDiagnostic.level
+end
+
 function ns.XPLevelingValue(id, query)
     local level = ns.PartyLevelFloor(query)
     if not level then return end
-    local quest = ns.CatalogueQuest(id)
-    if not quest then return true end
-    local own = ns.QuestXP(id, level) or 0
-    local reference, count = 0, 0
-    for _, candidate in pairs(ns.catalogue and ns.catalogue.quests or {}) do
-        if candidate.level == level and number(candidate.xp, 10000000) then reference, count = reference + candidate.xp, count + 1 end
+    local revision = xpCompletionRevision()
+    local signature = revision .. ":" .. tostring(query)
+    if cachedLevelingSignature ~= signature then
+        cachedLevelingSignature, cachedLevelingValues, cachedLevelingCount = signature, {}, 0
     end
-    reference = count > 0 and reference / count or quest.xp or 0
+    local levelValues = cachedLevelingValues[level]
+    if not levelValues then levelValues = {}; cachedLevelingValues[level] = levelValues end
+    local cached = levelValues[id]
+    if cached then return cached.value, cached.reason end
+    local function save(value, reason)
+        levelValues[id] = {value = value, reason = reason}
+        cachedLevelingCount = cachedLevelingCount + 1
+        lastLevelingDiagnostic = {revision = revision, level = level, count = cachedLevelingCount}
+        return value, reason
+    end
+    local quest = ns.CatalogueQuest(id)
+    if not quest then return save(true) end
+    local own = ns.QuestXP(id, level) or 0
+    local reference = ns.CatalogueXPReference(level) or quest.xp or 0
     local minimum = reference * ns.ROUTE_WEIGHTS.minUsefulXP
     local best, nextID = own, nil
     -- A low-level pickup remains useful when it directly unlocks a worthwhile
     -- next quest. Follow-up eligibility is still checked by existing policy.
-    for nextQuestID, candidate in pairs(ns.catalogue and ns.catalogue.quests or {}) do
-        local follows = candidate.previousQuest == id
-        if not follows then
-            for _, parent in ipairs(candidate.prerequisiteAll or {}) do if parent == id then follows = true; break end end
-            for _, parent in ipairs(candidate.prerequisiteAny or {}) do if parent == id then follows = true; break end end
-        end
-        if follows and ns.CatalogueIdentityAllowed(nextQuestID, ns.profile) == true
+    for nextQuestID in pairs(ns.CatalogueFollowers(id)) do
+        if ns.CatalogueIdentityAllowed(nextQuestID, ns.profile) == true
             and ns.CatalogueCompletion(ns.self, nextQuestID, query) ~= true then
             local value = ns.QuestXP(nextQuestID, level) or 0
             if value > best then best, nextID = value, nextQuestID end
         end
     end
     if best >= minimum and best > 0 then
-        if nextID and own < minimum then return true, "Unlocks " .. ns.QuestTitle(nextID) .. " for its quest XP." end
-        return true, "Quest XP fits your current level."
+        if nextID and own < minimum then return save(true, "Unlocks " .. ns.QuestTitle(nextID) .. " for its quest XP.") end
+        return save(true, "Quest XP fits your current level.")
     end
-    return false, "Low XP for your current level; keep it under Later."
+    return save(false, "Low XP for your current level; keep it under Later.")
 end
 
 function ns.CatalogueFreshnessText(now)

@@ -1,6 +1,5 @@
 local addonName, ns = ...
 
-local indexed, followups
 local cachedBaselineSignature, cachedBaseline
 local keptLowValue = {}
 
@@ -120,24 +119,8 @@ function ns.QuestDifficultyLabel(id)
 end
 
 local function nextQuests(id, key)
-    if indexed ~= ns.catalogue then
-        indexed, followups = ns.catalogue, {}
-        local function add(previous, nextID)
-            if previous and previous ~= nextID then
-                followups[previous] = followups[previous] or {}
-                followups[previous][nextID] = true
-            end
-        end
-        for nextID, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
-            add(quest.previousQuest, nextID)
-            for _, previous in ipairs(quest.prerequisiteAll or {}) do add(previous, nextID) end
-            for _, previous in ipairs(quest.prerequisiteAny or {}) do add(previous, nextID) end
-            for position, current in ipairs(quest.series or {}) do
-                if quest.series[position + 1] then add(current, quest.series[position + 1]) end
-            end
-        end
-    end
-    local result = {}; for nextID in pairs(followups[id] or {}) do result[nextID] = true end
+    local result = {}
+    for nextID in pairs(ns.CatalogueFollowers(id)) do result[nextID] = true end
     for _, nextID in ipairs(ns.LearnedFollowers and ns.LearnedFollowers(id, key) or {}) do result[nextID] = true end
     return result
 end
@@ -159,7 +142,8 @@ end
 local function baselineRate(level, query)
     local guide = ns.routeSelection
     local signature = table.concat({tostring(ns.catalogue), level, guide and guide.key or "", #((guide and guide.records) or {}),
-        ns.guideProgressRevision or 0, ns.char and ns.char.questLearning and ns.char.questLearning.revision or 0}, ":")
+        ns.guideProgressRevision or 0, ns.questHistoryCount or 0, ns.objectiveDisplayRevision or 0,
+        ns.xpSampleRevision or 0, ns.char and ns.char.questLearning and ns.char.questLearning.revision or 0}, ":")
     if signature == cachedBaselineSignature then return cachedBaseline end
     local candidates = {}
     local function consider(id, low, high)
@@ -183,7 +167,9 @@ local function baselineRate(level, query)
     end
     if #candidates < 3 then
         candidates = {}
-        for id in pairs(ns.catalogue and ns.catalogue.quests or {}) do consider(id) end
+        for questLevel = math.max(1, level - 3), math.min(60, level + 3) do
+            for _, id in ipairs(ns.CatalogueQuestIDsAtLevel(questLevel)) do consider(id) end
+        end
     end
     table.sort(candidates)
     if #candidates == 0 then cachedBaselineSignature, cachedBaseline = signature, nil; return nil end

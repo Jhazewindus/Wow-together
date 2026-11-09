@@ -342,7 +342,7 @@ function ns.ReadFlightMap(attempt)
     ns.RefreshTravelDirections(true)
 end
 
-function ns.TravelDiagnostics(output)
+function ns.TravelDiagnostics(output, cachedOnly)
     local known, located, edges = counts()
     output("Flight paths: " .. known .. " known; " .. located .. " with locations; " .. edges .. " observed connections. Personal to this character.")
     output("Flight unlock scan: " .. ns.flightDiscoveryStatus)
@@ -354,6 +354,10 @@ function ns.TravelDiagnostics(output)
     output("Nearer flight-master check: " .. (check and (check.source.name .. " towards " .. check.destination.name
         .. "; prospective saving " .. math.floor(check.savedSeconds) .. " seconds; fallback detour " .. math.floor(check.extraSeconds) .. " seconds (estimates).")
         or "No qualifying discovery detour."))
+    if cachedOnly then
+        output("Mapped travel detail: " .. (ns.travelDiagnosticsCache or "not computed yet"))
+        return
+    end
     ns.TravelNetworkDiagnostics(output)
 end
 
