@@ -4,7 +4,6 @@ local addonName, ns = ...
 -- module never needs the core's saved variables, route internals, or UI frames.
 ns.GoldAPIVersion = 1
 ns.STEP_SYMBOLS = ns.STEP_SYMBOLS or {}
-ns.STEP_SYMBOLS.farm = "Interface\\Icons\\INV_Misc_Coin_01"
 
 local modules, names, order, options, syncKinds, exportHooks, stops = {}, {}, {}, {}, {}, {}, {}
 local reservedKinds = {H=true, Q=true, T=true, S=true, C=true, O=true, K=true,
@@ -337,7 +336,7 @@ ns.hooks.routeAfterUpdate[#ns.hooks.routeAfterUpdate + 1] = function()
     applyStops()
 end
 ns.hooks.stopIcon[#ns.hooks.stopIcon + 1] = function(stop)
-    if stop and stop.kind == "farm" and stop.moduleStop then return true, ns.STEP_SYMBOLS.farm end
+    if stop and stop.kind == "farm" and stop.moduleStop then return true, ns.StepIconTexture("farm") end
     return false
 end
 ns.hooks.stopSymbol[#ns.hooks.stopSymbol + 1] = function(stop)
@@ -365,7 +364,7 @@ ns.hooks.stepPresentation[#ns.hooks.stepPresentation + 1] = function(stop, facts
                 or ("~" .. math.floor(seconds / 60) .. " min " .. string.format("%02d", math.floor(seconds % 60)) .. " s"))
             or nil
         local location = ns.StopLocationText(stop)
-        return true, {kind = "farm", icon = ns.STEP_SYMBOLS.farm, title = stop.title or stop.label,
+        return true, {kind = "farm", icon = ns.StepIconTexture("farm"), title = stop.title or stop.label,
             stepLine = "Optional module task", what = stop.label, why = why,
             status = "Optional, on the way", statusColor = "text",
             time = distance and timing and (distance .. ", " .. timing) or distance or timing,
@@ -399,7 +398,7 @@ end
 -- it a deliberately limited public table instead of exposing core `ns`.
 local publicAPI = {
     version = ns.GoldAPIVersion,
-    STEP_SYMBOLS = {farm = ns.STEP_SYMBOLS.farm},
+    STEP_SYMBOLS = {farm = ns.STEP_ICON_TEXTURES.farm},
 }
 for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance", "PlayerPoint",
     "TrailLoop", "RouteCostModel", "PushGuideStop", "ClearModuleStops", "RegisterSyncKind",

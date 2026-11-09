@@ -97,8 +97,8 @@ function ns.ShowDungeonMapQuests(group, key)
             row.state = ns.UILabel(row, nil, 9, ns.UIColors.muted); row.state:SetPoint("TOPLEFT", 0, -47); row.state:SetSize(344, 12)
             frame.rows[index] = row
         end
-        frame.previous = ns.UIButton(frame, "‹", 28, function() frame.page = frame.page - 1; render() end); frame.previous:SetPoint("BOTTOMLEFT", 18, 14)
-        frame.next = ns.UIButton(frame, "›", 28, function() frame.page = frame.page + 1; render() end); frame.next:SetPoint("BOTTOMRIGHT", -18, 14)
+        frame.previous = ns.UIButton(frame, "<", 28, function() frame.page = frame.page - 1; render() end); frame.previous:SetPoint("BOTTOMLEFT", 18, 14)
+        frame.next = ns.UIButton(frame, ">", 28, function() frame.page = frame.page + 1; render() end); frame.next:SetPoint("BOTTOMRIGHT", -18, 14)
         frame.pageText = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.pageText:SetPoint("BOTTOM", 0, 22)
         frame.empty = ns.UILabel(frame, nil, 12, ns.UIColors.muted); frame.empty:SetPoint("TOPLEFT", 18, -92); frame.empty:SetText("No unfinished quests here.")
         ns.EnableWindowResize(frame, {key = "dungeon-map-quests", minWidth = 340, minHeight = 196, maxWidth = 820, maxHeight = 720,

@@ -42,7 +42,7 @@ function ns.RefreshProfessionShopping()
         if coroutine.status(worker) == "dead" then
             pending = nil; context.loading = nil
             ns.shoppingList = result.materials
-            context.notice = "Skill " .. result.start .. " → " .. target .. " • approximate quantities; skill-ups vary."
+            context.notice = "Skill " .. result.start .. " to " .. target .. " • approximate quantities; skill-ups vary."
                 .. (result.incomplete and "\nPartial estimate: some recipe or bag data is missing." or "\nIncludes intermediates you will craft. Buy for the next batch first.")
             ns.RenderShoppingList()
         elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run)

@@ -45,6 +45,9 @@ class BuildAutomationTests(unittest.TestCase):
                 self.assertEqual({p.split('/')[0] for p in z.namelist()},
                     {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData'})
                 self.assertTrue(all('/' in p and not p.startswith('/') and '..' not in p.split('/') for p in z.namelist()))
+                icons = {p for p in z.namelist() if p.startswith('WowTogether/Media/Icons/')}
+                self.assertEqual(len(icons), 21)  # Manifest plus twenty generated textures.
+                self.assertIn('WowTogether/Media/Icons/kill.tga', icons)
 
     def test_oversize_splits_without_losing_or_rewriting_files(self):
         with tempfile.TemporaryDirectory() as tmp:

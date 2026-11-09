@@ -1,5 +1,17 @@
 # Wow Together changelog
 
+## 0.8.112
+
+**GENERATED STEP ICONS**
+
+For players:
+- Step and HUD icons now use a consistent, clear icon style.
+- Missing icons fall back to clear action symbols.
+
+Please check:
+- Confirm the HUD probe reports 20/20 step textures.
+- Check icons remain centered at 20 px and 34 px on the HUD and Hub.
+
 ## 0.8.109
 
 **AUTOMATED BUILDS AND RELEASES**

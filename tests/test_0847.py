@@ -60,7 +60,7 @@ class RecipeShoppingTests(unittest.TestCase):
         self.assertTrue(panel.collapsed[key])
         first.toggle.OnClick()
         self.assertFalse(panel.collapsed[key])
-        self.assertTrue(first.toggle.caption.text.startswith('− '))
+        self.assertTrue(first.toggle.caption.text.startswith('- '))
 
     def test_prices_update_recipe_boxes_and_bag_changes_reduce_purchases(self):
         c = scanner(); c.ns.StoreAuctionQuote(101, c.lua.table_from([[10, 1000]], recursive=True), True)

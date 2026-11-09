@@ -102,8 +102,8 @@ end
 local function paging(parent, previous, nextPage)
     local bar = CreateFrame("Frame", nil, parent)
     bar:SetSize(180, 26); bar:SetPoint("BOTTOM", 0, 10)
-    bar.prev = ns.UIButton(bar, "‹", 26, previous); bar.prev:SetPoint("LEFT")
-    bar.next = ns.UIButton(bar, "›", 26, nextPage); bar.next:SetPoint("RIGHT")
+    bar.prev = ns.UIButton(bar, "<", 26, previous); bar.prev:SetPoint("LEFT")
+    bar.next = ns.UIButton(bar, ">", 26, nextPage); bar.next:SetPoint("RIGHT")
     bar.text = ns.UILabel(bar, nil, 10, colors.muted); bar.text:SetPoint("CENTER"); bar.text:SetSize(120, 18); bar.text:SetJustifyH("CENTER")
     return bar
 end

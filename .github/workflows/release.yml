@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install pytest lupa
+      - run: python -m pip install pytest lupa -r tools/requirements-icons.txt
       - run: python tools/run_ci_tests.py --shard "${{ matrix.shard }}" --total 4
   release:
     if: github.event_name == 'push'
@@ -53,8 +53,9 @@ jobs:
       - name: Validate version and release notes
         id: notes
         run: python tools/ci_release.py preflight --root . --notes dist/release-notes.md
-      - run: python -m pip install pytest lupa
+      - run: python -m pip install pytest lupa -r tools/requirements-icons.txt
       - run: python tools/syntax_check.py
+      - run: python tools/build_icons.py --check
       - run: python tools/boundary_check.py
       - run: python tools/build_release.py --output dist/
       - name: Validate Discord post before creating a release

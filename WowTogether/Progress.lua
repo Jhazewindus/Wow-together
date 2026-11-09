@@ -255,7 +255,7 @@ function ns.TrackerValue(key, id, index)
     local objective = progress and progress.objectives[index]
     if not objective then return "…" end
     if objective.have and objective.need and objective.need > 0 then return objective.have .. "/" .. objective.need end
-    if objective.finished == true then return "✓" end
+    if objective.finished == true then return "Done" end
     return objective.finished == false and "In progress" or "…"
 end
 
