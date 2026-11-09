@@ -212,7 +212,7 @@ function ns.UpdateNavigation()
     frame.state = state
     local zoneExit = state.stop and state.stop.reasonCode == "zone-exit"
     if frame.zoneExit ~= zoneExit then frame.zoneExit = zoneExit; ns.LayoutNavigation() end
-    frame.next.caption:SetText(zoneExit and "Follow" or "›")
+    frame.next.caption:SetText(zoneExit and "Follow" or ">")
     frame.next:SetWidth(zoneExit and 62 or 24)
     ns.RefreshEliteSpawnMarkers()
     frame:SetShown(state.visible == true and ns.Option("routeArrow") and not ns.guideWindowHidden)
@@ -505,9 +505,9 @@ function ns.CreateNavigation()
     frame.continue = ns.UIButton(frame, "Continue anyway", 166, ns.ContinueGuideAnyway, true)
     frame.continue:SetHeight(24); frame.continue:SetPoint("BOTTOMLEFT", 42, 8); frame.continue:Hide()
     ns.UIHelp(frame.continue, "Include quests outside the recommended level range for this guide. Pickup requirements and manual skips still apply; elite quests may need a party. Saved across reloads; Stop guide restores the normal range.")
-    frame.back = ns.UIButton(frame, "‹", 24, function() ns.PreviewGuideStep(-1) end)
+    frame.back = ns.UIButton(frame, "<", 24, function() ns.PreviewGuideStep(-1) end)
     frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 12, 8)
-    frame.next = ns.UIButton(frame, "›", 24, function()
+    frame.next = ns.UIButton(frame, ">", 24, function()
         local stop = frame.state and frame.state.stop
         if stop and stop.reasonCode == "zone-exit" and stop.nextGuide then ns.RequestStartRoute(stop.nextGuide)
         else ns.PreviewGuideStep(1) end

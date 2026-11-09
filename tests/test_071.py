@@ -260,7 +260,8 @@ class GuideBrowseTests(unittest.TestCase):
         c=guide_client(12);c.ns.SetFilter('guides');c.ns.Refresh()
         card=c.ns.ui.cards[1]
         self.assertFalse(card.mapButton.IsShown(card.mapButton))
-        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
+        self.assertEqual(card.detailsButton.caption.text, 'Follow')
         card.OnClick();frame=c.ns.guideQuestList
         self.assertIn('ordered quest list',frame.summary.text)
         self.assertTrue(frame.start.IsEnabled(frame.start));frame.Hide(frame);c.drain()

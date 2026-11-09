@@ -161,16 +161,153 @@ function ns.ToggleWindow()
     if ns.window:IsShown() then ns.window:Hide(); return end
     if ns.ReadProfessionSkills then ns.ReadProfessionSkills() end
     ns.window:Show()
-    ns.SetFilter("recommended")
+    ns.SetHubTab("Play")
 end
 
 function ns.IsPartyView(filter)
     return filter == "all" or filter == "shared" or filter == "different" or filter == "suggestions"
 end
 
-function ns.SetFilter(filter)
+local function refreshHubRail()
+    if not ns.ui or not ns.ui.hubButtons then return end
+    for key, control in pairs(ns.ui.hubButtons) do
+        local selected = key == ns.ui.hubTab or key == ns.ui.hubModule
+        ns.UIButtonTone(control, selected)
+    end
+    for key, control in pairs(ns.ui.browseButtons or {}) do
+        ns.UIButtonTone(control, key == ns.ui.browseFilter)
+        control:SetShown(ns.ui.hubTab == "Browse")
+    end
+    if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetShown(ns.ui.hubTab == "Browse") end
+    if ns.ui.browseRow then ns.ui.browseRow:SetShown(ns.ui.hubTab == "Browse") end
+end
+
+function ns.RefreshHubModuleTabs()
+    if not ns.ui or not ns.ui.hubModuleButtons then return end
+    for _, control in pairs(ns.ui.hubModuleButtons) do control:Hide() end
+    local entries = {}
+    for _, list in ipairs(ns.HookResults("hubTabs")) do
+        if type(list) == "table" then
+            if list.key then entries[#entries + 1] = list
+            else for _, item in ipairs(list) do if type(item) == "table" and item.key then entries[#entries + 1] = item end end end
+        end
+    end
+    table.sort(entries, function(a, b) return tostring(a.title) < tostring(b.title) end)
+    for index, entry in ipairs(entries) do
+        local control = ns.ui.hubModuleButtons[entry.key]
+        if not control then
+            control = button(ns.ui.hubRail, entry.title, 112, function()
+                ns.SetFilter(entry.key)
+            end)
+            ns.ui.hubModuleButtons[entry.key] = control
+        end
+        control:SetPoint("TOPLEFT", 8, -200 - (index - 1) * 32)
+        control.caption:SetText(entry.title)
+        control:Show()
+    end
+    refreshHubRail()
+end
+
+function ns.SetHubTab(tab)
+    if not ns.ui then return end
+    local moduleFilter = tab == "Module" and (ns.ui.hubModule or ns.filter) or nil
+    if tab ~= "Module" then ns.ui.hubModule = nil end
+    ns.ui.hubTab = tab
+    local filter = tab == "Play" and "recommended"
+        or tab == "Browse" and (ns.ui.browseFilter or "guides")
+        or tab == "Group" and "all"
+        or tab == "Module" and moduleFilter
+    ns.ui.settingsPage:SetShown(tab == "Settings")
+    ns.ui.groupPage:SetShown(tab == "Group")
+    ns.ui.scroll:SetShown(tab == "Browse" or tab == "Play" or tab == "Module")
+    if tab == "Browse" then ns.ui.browseFilter = filter end
+    refreshHubRail()
+    if tab == "Settings" then ns.RenderSettings(); return end
+    if tab == "Group" then ns.filter = "all"; ns.RenderHubGroup(); return end
+    if filter then ns.SetFilter(filter, true) end
+end
+
+local function dayNumber(year, month, day)
+    local adjusted = year - (month <= 2 and 1 or 0)
+    local era = math.floor(adjusted / 400)
+    local yearOfEra = adjusted - era * 400
+    local shifted = month + (month > 2 and -3 or 9)
+    local dayOfYear = math.floor((153 * shifted + 2) / 5) + day - 1
+    return era * 146097 + yearOfEra * 365 + math.floor(yearOfEra / 4)
+        - math.floor(yearOfEra / 100) + dayOfYear
+end
+
+function ns.HubQuestDataAge()
+    local captured = ns.catalogue and ns.catalogue.captured
+    if type(captured) ~= "string" then return "age unknown" end
+    local year, month, day = string.match(captured, "^(%d%d%d%d)%-(%d%d)%-(%d%d)$")
+    year, month, day = tonumber(year), tonumber(month), tonumber(day)
+    if not year or not month or not day then return "captured " .. captured end
+    local current = ns.ReadPublic(date, "!*t")
+    if type(current) ~= "table" or type(current.year) ~= "number"
+        or type(current.month) ~= "number" or type(current.day) ~= "number" then
+        return "captured " .. captured
+    end
+    local age = math.max(0, dayNumber(current.year, current.month, current.day) - dayNumber(year, month, day))
+    return age == 1 and "1 day old" or (age .. " days old"), age
+end
+
+function ns.UpdateHubFooter()
+    if not ns.ui or not ns.ui.status then return end
+    local sync = "solo"
+    if ns.PartyFeaturesEnabled() then
+        if not ns.syncReady then sync = "unavailable"
+        else
+            local total, synced = #(ns.partyNames or {}) + 1, 1
+            for _, name in ipairs(ns.partyNames or {}) do
+                local member = ns.members[name]
+                if member and member.active and not member.syncPending then synced = synced + 1 end
+            end
+            sync = synced .. "/" .. total .. " synced"
+        end
+    end
+    local age, ageDays = ns.HubQuestDataAge()
+    local status = ns.hubStatusText and (ns.hubStatusText .. " · ") or ""
+    ns.ui.status:SetText(status .. "sync: " .. sync .. " · quest data: " .. age .. " · " .. tostring(ns.VERSION or "unknown"))
+    ns.ui.status:SetTextColor(unpack(ageDays and ageDays > 21 and {0.95, 0.42, 0.38, 1} or colors.muted))
+end
+
+function ns.RenderHubGroup()
+    local page = ns.ui and ns.ui.groupPage
+    if not page then return end
+    local enabled = ns.PartyFeaturesEnabled()
+    local names = enabled and ns.partyNames or {}
+    local synced, pending, rows = 0, 0, {"You" .. (ns.profile and ns.profile.level and (" · level " .. ns.profile.level) or "")}
+    for _, name in ipairs(names or {}) do
+        local member = ns.members[name]
+        local profile = member and member.profile
+        if member and member.active and not member.syncPending then synced = synced + 1 else pending = pending + 1 end
+        rows[#rows + 1] = ns.MemberLabel(name) .. (profile and profile.level and (" · level " .. profile.level) or " · level pending")
+            .. (profile and profile.zone and (" · " .. profile.zone) or "")
+            .. (member and member.syncPending and " · syncing" or "")
+    end
+    page.summary:SetText(not enabled and "Party mode is off. Change it in Settings to compare plans with friends."
+        or #names == 0 and "You are ready to make a plan when your party joins."
+        or (synced .. " synced · " .. pending .. " waiting for progress"))
+    page.members:SetText(table.concat(rows, "\n"))
+    page.sync:SetEnabled(enabled and #names > 0)
+    page.tracker:SetShown(enabled)
+    ns.UpdateHubFooter()
+end
+
+function ns.SetFilter(filter, keepHubTab)
     if not ns.PartyFeaturesEnabled() and ns.IsPartyView(filter) then filter = "guides" end
     ns.filter = filter
+    if ns.ui then
+        if string.sub(filter, 1, 7) == "module:" then
+            ns.ui.hubTab, ns.ui.hubModule = "Module", filter
+        elseif ns.IsPartyView(filter) then
+            -- Keep legacy party filters callable without replacing the current tab.
+        elseif not keepHubTab then
+            if filter == "recommended" then ns.ui.hubTab = "Play"
+            else ns.ui.hubTab, ns.ui.browseFilter = "Browse", filter end
+        elseif ns.ui.hubTab == "Browse" then ns.ui.browseFilter = filter end
+    end
     if filter == "classquests" then
         ns.libraryZone, ns.libraryMapID, ns.libraryPage = nil, nil, 1
         ns.librarySearch, ns.librarySearchDraft = "", ""
@@ -180,28 +317,28 @@ function ns.SetFilter(filter)
     ns.ui.scroll:SetVerticalScroll(0)
     if ns.ui.librarySearch then
         for _, control in ipairs(ns.ui.libraryControls) do
-            if control == ns.ui.libraryBack then control:SetShown(filter == "library" and ns.libraryZone ~= nil)
-            else control:SetShown(filter == "library") end
+            control:Hide()
         end
     end
-    for _, control in ipairs(ns.ui.guideControls or {}) do control:SetShown(filter == "guides") end
+    for _, control in ipairs(ns.ui.guideControls or {}) do control:Hide() end
     ns.ui.scroll:ClearAllPoints()
-    ns.ui.scroll:SetPoint("TOPLEFT", 26, scrollTop(filter))
-    ns.ui.scroll:SetPoint("BOTTOMRIGHT", -44, 64)
+    ns.ui.scroll:SetPoint("TOPLEFT", 150, filter == "library" and -120 or -112)
+    ns.ui.scroll:SetPoint("BOTTOMRIGHT", -18, 64)
+    refreshHubRail()
     ns.Refresh()
 end
 
 function ns.CreateUI()
     local window = CreateFrame("Frame", "WowTogetherWindow", UIParent, "BackdropTemplate")
     ns.window = window
-    ns.ui = {cards = {}, filterButtons = {}}
+    ns.ui = {cards = {}, filterButtons = {}, hubButtons = {}, hubModuleButtons = {}, browseButtons = {}, hubTab = "Play", browseFilter = "guides"}
     ns.filter = "recommended"
     local saved = ns.db.windowSize
     local width = type(saved) == "table" and type(saved.width) == "number" and math.max(760, math.min(1280, saved.width)) or 860
-    local height = type(saved) == "table" and type(saved.height) == "number" and math.max(580, math.min(1000, saved.height)) or 640
+    local height = type(saved) == "table" and type(saved.height) == "number" and math.max(520, math.min(1000, saved.height)) or 520
     window:SetSize(width, height)
     window:SetResizable(true)
-    if type(window.SetResizeBounds) == "function" then window:SetResizeBounds(760, 580, 1280, 1000) end
+    if type(window.SetResizeBounds) == "function" then window:SetResizeBounds(760, 520, 1280, 1000) end
     window:SetPoint("CENTER")
     window:SetClampedToScreen(true)
     window:SetFrameStrata("HIGH")
@@ -219,24 +356,24 @@ function ns.CreateUI()
     accent:SetPoint("TOPRIGHT", -1, -1)
     accent:SetHeight(2)
     local icon = window:CreateTexture(nil, "ARTWORK")
-    icon:SetTexture("Interface\\Icons\\INV_Misc_Map_01")
+    local menuIcon = type(ns.StepIconTexture) == "function" and ns.StepIconTexture("menu") or nil
+    icon:SetTexture(type(menuIcon) == "string" and menuIcon or "Interface\\Icons\\INV_Misc_Map_01")
     icon:SetSize(28, 28)
-    icon:SetPoint("TOPLEFT", 26, -19)
+    icon:SetPoint("TOPLEFT", 151, -18)
+    icon:SetVertexColor(unpack(colors.gold))
     icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+    ns.ui.titleIcon = icon
     local eyebrow = label(window, "GameFontNormalSmall", nil, colors.gold)
-    eyebrow:SetPoint("TOPLEFT", 65, -39)
-    eyebrow:SetText("FOREVER  /  YOUR NEXT ADVENTURE")
+    eyebrow:Hide()
     local title = label(window, "GameFontNormalLarge", 20, colors.text)
-    title:SetPoint("TOPLEFT", 64, -16)
+    title:SetPoint("TOPLEFT", 188, -16)
     title:SetText("Wow Together")
     local subtitle = label(window, nil, nil, colors.muted)
     ns.ui.subtitle = subtitle
     subtitle:Hide()
     subtitle:SetText("Choose a questline, compare your party, and find the next stop.")
     ns.ui.zone = label(window, "GameFontNormal", nil, colors.gold)
-    ns.ui.zone:SetPoint("TOPRIGHT", -154, -22)
-    ns.ui.zone:SetWidth(200)
-    ns.ui.zone:SetJustifyH("RIGHT")
+    ns.ui.zone:Hide()
     ns.UIClose(window)
     ns.UIDivider(window, -58)
 
@@ -252,6 +389,7 @@ function ns.CreateUI()
         metric.value = label(metric, nil, 12, colors.gold)
         metric.value:SetPoint("RIGHT", -18, 0)
         ns.ui.metrics[i] = metric
+        metric:Hide()
     end
     ns.ui.party = label(window, nil, nil, colors.muted)
     ns.ui.party:SetPoint("TOPLEFT", 26, -88)
@@ -259,24 +397,91 @@ function ns.CreateUI()
     ns.ui.party:SetHeight(16)
     ns.ui.party:SetWordWrap(false)
     ns.ui.party:SetJustifyV("TOP")
+    ns.ui.party:Hide()
     local filters = {{"recommended", "Recommended"}, {"guides", "Leveling"}, {"classquests", "Class quests"},
         {"professions", "Professions"}, {"dungeons", "Dungeons"}, {"review", "Quest log"}, {"library", "All quests"}}
     ns.ui.viewChoice = ns.UIDropdown(window, filters, 200, ns.SetFilter)
-    ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter)
+    ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter); ns.ui.viewChoice:Hide()
     ns.ui.viewDescription = label(window, nil, 11, colors.muted)
-    ns.ui.viewDescription:SetPoint("LEFT", ns.ui.viewChoice, "RIGHT", 16, 0)
     ns.ui.viewDescription:SetText("Choose a guide or explore your party's progress.")
+    ns.ui.viewDescription:Hide()
     ns.ui.status = label(window, nil, nil, colors.muted)
     local config = button(window, "Settings", 86, function() ns.ToggleSettings() end)
-    config:SetPoint("TOPRIGHT", -48, -10); config:SetHeight(24)
-    ns.ui.status:SetPoint("BOTTOMLEFT", 184, 31)
-    ns.ui.status:SetWidth(450)
+    config:SetPoint("TOPRIGHT", -48, -10); config:SetHeight(24); config:Hide()
+    ns.ui.status:SetPoint("BOTTOMLEFT", 150, 18)
+    ns.ui.status:SetWidth(590)
     ns.ui.status:SetJustifyH("LEFT")
+
+    ns.ui.hubRail = CreateFrame("Frame", nil, window)
+    ns.ui.hubRail:SetPoint("TOPLEFT", 10, -64); ns.ui.hubRail:SetSize(126, 420)
+    for index, entry in ipairs({{"Play", "Play"}, {"Group", "Group"}, {"Browse", "Browse"}, {"Settings", "Settings"}}) do
+        local key, caption = entry[1], entry[2]
+        local control = button(ns.ui.hubRail, caption, 112, function() ns.SetHubTab(key) end)
+        control:SetPoint("TOPLEFT", 8, -(index - 1) * 34)
+        ns.ui.hubButtons[key] = control
+    end
+    ns.ui.browseRow = CreateFrame("Frame", nil, window)
+    ns.ui.browseRow:SetPoint("TOPLEFT", 150, -57); ns.ui.browseRow:SetPoint("TOPRIGHT", -18, -57); ns.ui.browseRow:SetHeight(30)
+    local browseEntries = {{"guides", "Leveling"}, {"classquests", "Class"}, {"dungeons", "Dungeons"},
+        {"professions", "Professions"}, {"library", "Quests"}}
+    for index, entry in ipairs(browseEntries) do
+        local key, caption = entry[1], entry[2]
+        local control = button(ns.ui.browseRow, caption, 74, function() ns.ui.browseFilter = key; ns.SetFilter(key, true) end)
+        control:SetPoint("LEFT", (index - 1) * 76, 0)
+        control:SetWidth(72)
+        ns.ui.browseButtons[key] = control
+    end
+    ns.ui.hubBrowseSearch = searchBox(window, "Search guides, zones or quests")
+    ns.ui.hubBrowseSearch:SetSize(220, 26); ns.ui.hubBrowseSearch:SetPoint("TOPRIGHT", -18, -57)
+    ns.ui.hubBrowseSearch:SetScript("OnTextChanged", function(self)
+        local value = self:GetText()
+        if not ns.Public(value) or type(value) ~= "string" then return end
+        self.placeholder:SetShown(value == "")
+        ns.hubBrowseSearch = value
+        if ns.filter == "library" then ns.QueueLibrarySearch(value)
+        elseif ns.filter == "guides" then ns.QueueGuideSearch(value)
+        else ns.Refresh() end
+    end)
+    ns.ui.hubBrowseSearch:SetScript("OnEnterPressed", function(self)
+        if ns.filter == "library" then ns.ApplyLibrarySearch()
+        elseif ns.filter == "guides" then ns.ApplyGuideSearch()
+        else ns.Refresh() end
+        self:ClearFocus()
+    end)
+    ns.ui.hubBrowseSearch:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
+    ns.ui.hubBrowseSearch:Hide()
+
+    ns.ui.groupPage = CreateFrame("Frame", nil, window)
+    ns.ui.groupPage:SetPoint("TOPLEFT", 150, -100); ns.ui.groupPage:SetPoint("BOTTOMRIGHT", -18, 62)
+    ns.ui.groupPage.title = label(ns.ui.groupPage, "GameFontNormalLarge", 18, colors.text)
+    ns.ui.groupPage.title:SetPoint("TOPLEFT", 0, 0); ns.ui.groupPage.title:SetText("Group")
+    ns.ui.groupPage.summary = label(ns.ui.groupPage, nil, 12, colors.muted)
+    ns.ui.groupPage.summary:SetPoint("TOPLEFT", 0, -32); ns.ui.groupPage.summary:SetSize(620, 42); ns.ui.groupPage.summary:SetWordWrap(true)
+    ns.ui.groupPage.members = label(ns.ui.groupPage, nil, 12, colors.text)
+    ns.ui.groupPage.members:SetPoint("TOPLEFT", 0, -82); ns.ui.groupPage.members:SetSize(620, 230); ns.ui.groupPage.members:SetWordWrap(true)
+    ns.ui.groupPage.sync = button(ns.ui.groupPage, "Sync party", 120, function() if ns.SyncNow then ns.SyncNow(true) end end, true)
+    ns.ui.groupPage.sync:SetPoint("BOTTOMLEFT", 0, 0)
+    ns.ui.groupPage.tracker = button(ns.ui.groupPage, "Open tracker", 130, function() if ns.ToggleTracker then ns.ToggleTracker() end end)
+    ns.ui.groupPage.tracker:SetPoint("LEFT", ns.ui.groupPage.sync, "RIGHT", 8, 0)
+    ns.ui.groupPage:Hide()
+
+    ns.ui.settingsPage = CreateFrame("Frame", nil, window)
+    ns.ui.settingsPage:SetPoint("TOPLEFT", 150, -100); ns.ui.settingsPage:SetPoint("BOTTOMRIGHT", -18, 62)
+    ns.ui.settingsPage.title = label(ns.ui.settingsPage, "GameFontNormalLarge", 18, colors.text)
+    ns.ui.settingsPage.title:SetPoint("TOPLEFT", 0, 0); ns.ui.settingsPage.title:SetText("Settings")
+    ns.ui.settingsPage.detail = label(ns.ui.settingsPage, nil, 12, colors.muted)
+    ns.ui.settingsPage.detail:SetPoint("TOPLEFT", 0, -34); ns.ui.settingsPage.detail:SetSize(600, 40); ns.ui.settingsPage.detail:SetWordWrap(true)
+    ns.ui.settingsPage.detail:SetText("Open the existing settings window to change addon options.")
+    ns.ui.settingsPage.open = button(ns.ui.settingsPage, "Open settings", 136, function() ns.ToggleSettings() end, true)
+    ns.ui.settingsPage.open:SetPoint("TOPLEFT", 0, -88)
+    ns.ui.settingsPage:Hide()
+    ns.hooks.hubTabRegistered[#ns.hooks.hubTabRegistered + 1] = function() ns.RefreshHubModuleTabs() end
+    ns.hooks.uiCreated[#ns.hooks.uiCreated + 1] = function() ns.RefreshHubModuleTabs() end
 
     local scroll = CreateFrame("ScrollFrame", nil, window, "UIPanelScrollFrameTemplate")
     ns.ui.scroll = scroll
-    scroll:SetPoint("TOPLEFT", 26, scrollTop(ns.filter))
-    scroll:SetPoint("BOTTOMRIGHT", -44, 64)
+    scroll:SetPoint("TOPLEFT", 150, -112)
+    scroll:SetPoint("BOTTOMRIGHT", -18, 64)
     local content = CreateFrame("Frame", nil, scroll)
     content:SetSize(786, 250)
     scroll:SetScrollChild(content)
@@ -312,9 +517,9 @@ function ns.CreateUI()
         ns.ui.levelButtons[#ns.ui.levelButtons + 1] = chip
         ns.ui.libraryControls[#ns.ui.libraryControls + 1] = chip
     end
-    ns.ui.libraryPrev = button(window, "‹", 36, function() ns.libraryPage = math.max(1, (ns.libraryPage or 1) - 1); ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
+    ns.ui.libraryPrev = button(window, "Prev", 42, function() ns.libraryPage = math.max(1, (ns.libraryPage or 1) - 1); ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
     ns.ui.libraryPrev:SetPoint("TOPLEFT", 26, -214)
-    ns.ui.libraryNext = button(window, "›", 36, function() ns.libraryPage = (ns.libraryPage or 1) + 1; ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
+    ns.ui.libraryNext = button(window, "Next", 42, function() ns.libraryPage = (ns.libraryPage or 1) + 1; ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
     ns.ui.libraryNext:SetPoint("TOPLEFT", 68, -214)
     ns.ui.libraryCount = label(window, nil, 10, colors.muted)
     ns.ui.libraryCount:SetPoint("TOPLEFT", 118, -221)
@@ -337,9 +542,9 @@ function ns.CreateUI()
     guideSearch:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
     ns.ui.guideSubmit = button(window, "Search", 100, function() ns.ApplyGuideSearch(); guideSearch:ClearFocus() end, true)
     ns.ui.guideSubmit:SetPoint("TOPRIGHT", -26, -146)
-    ns.ui.guidePrev = button(window, "‹", 36, function() ns.guidePage = math.max(1, ns.guidePage - 1); ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
+    ns.ui.guidePrev = button(window, "Prev", 42, function() ns.guidePage = math.max(1, ns.guidePage - 1); ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
     ns.ui.guidePrev:SetPoint("TOPLEFT", 26, -180)
-    ns.ui.guideNext = button(window, "›", 36, function() ns.guidePage = ns.guidePage + 1; ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
+    ns.ui.guideNext = button(window, "Next", 42, function() ns.guidePage = ns.guidePage + 1; ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
     ns.ui.guideNext:SetPoint("TOPLEFT", 68, -180)
     ns.ui.guideCount = label(window, nil, 10, colors.muted)
     ns.ui.guideCount:SetPoint("TOPLEFT", 118, -187)
@@ -369,7 +574,7 @@ function ns.CreateUI()
     texture:SetAllPoints()
     texture:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
     local resizeReady = false
-    ns.EnableWindowResize(window, {grip = grip, minWidth = 760, minHeight = 580, maxWidth = 1280, maxHeight = 1000,
+    ns.EnableWindowResize(window, {grip = grip, minWidth = 760, minHeight = 520, maxWidth = 1280, maxHeight = 1000,
         onBegin = function() ns.ui.resizing = true end, layout = function()
             ns.Layout(); if resizeReady and not ns.ui.resizing then ns.QueueWindowRender() end
         end,
@@ -457,9 +662,9 @@ end
 
 local function layoutStatus()
     local width = ns.window:GetWidth() or 860
-    local left = 120
+    local left = 150
     ns.ui.status:ClearAllPoints(); ns.ui.status:SetPoint("BOTTOMLEFT", left, 19)
-    ns.ui.status:SetWidth(width - left - 186); ns.ui.status:SetWordWrap(false)
+    ns.ui.status:SetWidth(width - left - 28); ns.ui.status:SetWordWrap(false)
 end
 
 function ns.Layout()
@@ -490,6 +695,7 @@ function ns.Layout()
     end
     ns.ui.viewDescription:SetWidth(width - 292)
     ns.ui.viewDescription:SetWordWrap(false)
+    if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetWidth(math.max(120, width - 640)) end
     ns.LayoutBrowserCards()
 end
 
@@ -613,6 +819,73 @@ local function renderMembers(card, members, top)
     end
 end
 
+local function matchesHubSearch(query, ...)
+    query = string.lower(type(query) == "string" and query or "")
+    if query == "" then return true end
+    for index = 1, select("#", ...) do
+        local value = select(index, ...)
+        if type(value) == "string" and string.find(string.lower(value), query, 1, true) then return true end
+    end
+    return false
+end
+
+local function guideMatchesHubSearch(query, guide)
+    if not guide then return false end
+    if matchesHubSearch(query, guide.title, guide.zone, guide.kind) then return true end
+    for _, record in ipairs(guide.records or {}) do
+        local quest = record.id and ns.CatalogueQuest(record.id) or record
+        if matchesHubSearch(query, quest and quest.title, quest and ns.CatalogueZone(quest), record.title) then return true end
+    end
+    return false
+end
+
+local function libraryItemMatchesHubSearch(query, item)
+    local quest = item and item.quest
+    return matchesHubSearch(query, item and item.zone, item and item.search,
+        quest and quest.title, quest and ns.CatalogueZone(quest))
+end
+
+local function singleQuestGuide(id)
+    if not id then return nil end
+    local guide = ns.IsClassQuest(id) and ns.BuildClassQuestGuide(id)
+    if guide then return guide end
+    local record = ns.CatalogueRecord(id)
+    if not record then return nil end
+    guide = {key = "quest:" .. id, title = record.title, records = {record}, target = record,
+        focusKey = ns.self, personal = ns.IsProfessionQuest(id)}
+    local route = ns.BuildGuideRoute(guide, false)
+    guide.hasPoint = route and route.stops and #route.stops > 0 or false
+    return guide
+end
+
+local function dungeonMatchesHubSearch(query, group, activity)
+    if matchesHubSearch(query, activity.title, activity.detail, activity.category) then return true end
+    for _, id in ipairs(group.ids or {}) do
+        local quest = ns.CatalogueQuest(id)
+        if matchesHubSearch(query, quest and quest.title, quest and ns.CatalogueZone(quest)) then return true end
+    end
+    return false
+end
+
+local function followActivity(activity)
+    if activity.dungeon then return ns.ShowDungeonQuests(activity.dungeon, true) end
+    local professionID = activity.profession or activity.professionID
+    if not professionID then
+        for id in pairs(ns.professionData or {}) do
+            local facts = ns.ProfessionFacts(id)
+            if facts and (activity.title == facts.name or activity.title == facts.name .. " crafting guide") then
+                professionID = id
+                break
+            end
+        end
+    end
+    if professionID then return ns.StartProfessionGuide(professionID) end
+    if activity.questID then
+        local guide = singleQuestGuide(activity.questID)
+        if guide and (guide.fullGuide or guide.hasPoint or guide.classLineGuide) then return ns.RequestStartRoute(guide) end
+    end
+end
+
 function ns.Render(queryContext, routeUpdated)
     if not ns.ui then return end
     local partyEnabled = ns.PartyFeaturesEnabled()
@@ -628,6 +901,7 @@ function ns.Render(queryContext, routeUpdated)
         ns.ui.guideLevel.options.party.caption:SetText(ns.ui.guideLevel.entries[1][2])
         for _, chip in ipairs(ns.ui.levelButtons) do if chip.levelKey == "party" then chip.caption:SetText(partyEnabled and "Near party" or "My level") end end
     end
+    if ns.ui.hubTab == "Group" then ns.RenderHubGroup(); return end
     queryContext = queryContext or ns.NewQuestQuery()
     ns.ui.viewDescription:SetText(ns.filter == "recommended" and "Suggestions for your character, ready when you are."
         or ns.filter == "classquests" and "One guide for your class quests, including the prerequisites recorded for your character."
@@ -679,7 +953,8 @@ function ns.Render(queryContext, routeUpdated)
     elseif not ns.syncReady then status = "Sync unavailable; see Diagnostics"
     elseif #pendingPeers > 0 then status = "Waiting for " .. table.concat(pendingPeers, ", ") .. "'s progress"
     else status = ns.routePlanningError or ns.guideAction or (synced > 1 and "Party progress received" or "Waiting for friends") end
-    ns.ui.status:SetText(status)
+    ns.hubStatusText = status
+    ns.UpdateHubFooter()
     ns.ui.viewChoice:SetChoice(ns.filter)
     for _, card in ipairs(ns.ui.cards) do card:Hide() end
     if ns.ui.home then ns.ui.home:Hide() end
@@ -692,22 +967,35 @@ function ns.Render(queryContext, routeUpdated)
     local visible, top = 0, 0
     local display = {}
     if ns.filter == "classquests" then
-        if classGuide then display[#display + 1] = {guide = classGuide} end
+        if guideMatchesHubSearch(ns.hubBrowseSearch, classGuide) then display[#display + 1] = {guide = classGuide} end
     elseif libraryView then
+        for _, review in ipairs(ns.QuestLogReview()) do
+            if matchesHubSearch(ns.hubBrowseSearch, review.title, review.reason) then
+                local id = review.id
+                display[#display + 1] = {activity = {title = review.title, category = "QUEST LOG",
+                    detail = review.reason, questID = id, action = "Review quest", click = function() ns.ShowQuestDetails(id) end}}
+            end
+        end
         local items, total, pages = ns.LibraryPageItems()
-        for _, item in ipairs(items) do display[#display + 1] = {libraryItem = item} end
+        for _, item in ipairs(items) do
+            if libraryItemMatchesHubSearch(ns.hubBrowseSearch, item) then display[#display + 1] = {libraryItem = item} end
+        end
         ns.ui.libraryCount:SetText(total .. " results • Page " .. ns.libraryPage .. " / " .. pages .. " • Enter or pause to search")
         ns.ui.libraryBack:SetShown(ns.filter == "library" and ns.libraryZone ~= nil)
         ns.ui.libraryPrev:SetEnabled(ns.libraryPage > 1)
         ns.ui.libraryNext:SetEnabled(ns.libraryPage < pages)
         for _, chip in ipairs(ns.ui.levelButtons) do chip:SetBackdropBorderColor(unpack(chip.levelKey == ns.libraryLevel and colors.gold or colors.border)) end
     elseif ns.filter == "guides" then
-        local pages = math.max(1, math.ceil(#choices / 12))
-        ns.guidePage = math.max(1, math.min(pages, ns.guidePage or 1))
-        for index = (ns.guidePage - 1) * 12 + 1, math.min(#choices, ns.guidePage * 12) do
-            display[#display + 1] = {guide = choices[index], recommended = index == 1 and choices[index].levelReady == true}
+        local matched = {}
+        for _, guide in ipairs(choices) do
+            if guideMatchesHubSearch(ns.hubBrowseSearch, guide) then matched[#matched + 1] = guide end
         end
-        ns.ui.guideCount:SetText(#choices .. " guides • " .. ns.guidePage .. " / " .. pages)
+        local pages = math.max(1, math.ceil(#matched / 12))
+        ns.guidePage = math.max(1, math.min(pages, ns.guidePage or 1))
+        for index = (ns.guidePage - 1) * 12 + 1, math.min(#matched, ns.guidePage * 12) do
+            display[#display + 1] = {guide = matched[index], recommended = index == 1 and matched[index].levelReady == true}
+        end
+        ns.ui.guideCount:SetText(#matched .. " guides • " .. ns.guidePage .. " / " .. pages)
         ns.ui.guidePrev:SetEnabled(ns.guidePage > 1); ns.ui.guideNext:SetEnabled(ns.guidePage < pages)
         ns.ui.guideLevel:SetChoice(ns.guideLevel)
     elseif ns.filter == "suggestions" then
@@ -723,16 +1011,22 @@ function ns.Render(queryContext, routeUpdated)
                 .. (readiness.count == 1 and "" or "s") .. (readiness.unknown == 0 and (" • Collect from Lv " .. readiness.pickupLevel) or ""))
             local activity = {title = group.name, category = "DUNGEON", dungeon = group,
                 detail = summary .. "\nMap, bosses & loot", click = function() ns.ShowDungeonViewer(dungeon) end}
-            display[#display + 1] = {activity = activity}
+            if dungeonMatchesHubSearch(ns.hubBrowseSearch, group, activity) then
+                display[#display + 1] = {activity = activity}
+            end
         end
     elseif ns.filter == "professions" then
-        for _, activity in ipairs(ns.ProfessionChoices()) do display[#display + 1] = {activity = activity} end
+        for _, activity in ipairs(ns.ProfessionChoices()) do
+            if matchesHubSearch(ns.hubBrowseSearch, activity.title, activity.detail, activity.category) then
+                display[#display + 1] = {activity = activity}
+            end
+        end
     elseif ns.filter == "review" then
         for _, review in ipairs(ns.QuestLogReview()) do
             local id = review.id
             display[#display + 1] = {activity = {title = review.title, category = "QUEST LOG REVIEW",
                 detail = review.reason .. " Consider abandoning it if you no longer want to finish it.",
-                action = "Review quest", click = function() ns.ShowQuestDetails(id) end}}
+                questID = id, action = "Review quest", click = function() ns.ShowQuestDetails(id) end}}
         end
     else
         if ns.filter == "all" then
@@ -747,14 +1041,9 @@ function ns.Render(queryContext, routeUpdated)
     for _, item in ipairs(display) do
         local row, suggestion, guide, libraryItem, activity = item.row, item.suggestion, item.guide, item.libraryItem, item.activity
         if libraryItem and libraryItem.id then
-            guide = ns.IsClassQuest(libraryItem.id) and ns.BuildClassQuestGuide(libraryItem.id)
-            if not guide then
-                local record = ns.CatalogueRecord(libraryItem.id)
-                guide = {key = "quest:" .. libraryItem.id, title = libraryItem.quest.title, records = {record}, target = record, focusKey = ns.self,
-                    personal = ns.IsProfessionQuest(libraryItem.id)}
-            end
-            local plan = ns.BuildGuideRoute(guide, false)
-            guide.hasPoint = #plan.stops > 0
+            guide = singleQuestGuide(libraryItem.id)
+        elseif libraryItem and libraryItem.mapID then
+            guide = ns.ZoneGuideForMap(libraryItem.mapID, true, queryContext)
         end
         visible = visible + 1
         local card = ns.ui.cards[visible]
@@ -777,13 +1066,19 @@ function ns.Render(queryContext, routeUpdated)
         card.detailsButton:ClearAllPoints()
         card.detailsButton:SetPoint("BOTTOMLEFT", 14, 10)
         card.mapButton:SetShown(not (activity and (activity.dungeon or activity.profession)) and (guide ~= nil or libraryItem ~= nil or activity ~= nil))
-        card.detailsButton:SetShown(guide ~= nil)
-        card.detailsButton.caption:SetText("Quest details")
+        local browseCard = ns.ui.hubTab == "Browse"
+        card.detailsButton:SetShown(browseCard or guide ~= nil)
+        card.detailsButton.caption:SetText(browseCard and "Follow" or "Quest details")
         ns.UIButtonTone(card.detailsButton, true)
         card.detailsButton:SetEnabled(true)
         card.buyButton:SetShown(not card.compactGuide and guide ~= nil and #ns.QuestShoppingList(guide.records, queryContext) > 0)
         card.catchupButton:SetShown(not card.compactGuide and guide ~= nil and guide.mode == "zone" and guide.fullGuide
             and not guide.catchup and partyEnabled and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true)
+        if browseCard then
+            card.mapButton:Hide(); card.buyButton:Hide(); card.catchupButton:Hide()
+            card.detailsButton:ClearAllPoints(); card.detailsButton:SetPoint("BOTTOMRIGHT", -14, 10)
+            card.detailsButton:SetWidth(112)
+        end
         card.mapButton:SetEnabled(true)
         local height
         if activity then
@@ -794,12 +1089,17 @@ function ns.Render(queryContext, routeUpdated)
             card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
             ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
             card.mapButton.caption:SetText(activity.action or "")
+            card.detailsButton:SetScript("OnClick", function() followActivity(activity) end)
             if activity.dungeon or activity.profession then
                 local enter, leave = card:GetScript("OnEnter"), card:GetScript("OnLeave")
                 card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)); if enter then enter(self) end end)
                 card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(colors.border)); if leave then leave(self) end end)
             end
         elseif libraryItem then
+            card.detailsButton:SetScript("OnClick", function()
+                if guide and (guide.fullGuide or guide.hasPoint or guide.classLineGuide) then ns.RequestStartRoute(guide) end
+            end)
+            card.detailsButton:SetEnabled(guide ~= nil and (guide.fullGuide or guide.hasPoint or guide.classLineGuide) == true)
             height = libraryItem.id and 122 or 108
             card.accent:SetColorTexture(unpack(colors.gold))
             card.category:SetText(libraryItem.id and (ns.ClassQuestLabel(libraryItem.id) or (ns.IsProfessionQuest(libraryItem.id) and "PERSONAL PROFESSION QUEST") or ns.CatalogueZone(libraryItem.quest)) or "EXPLORE A ZONE")
@@ -817,13 +1117,15 @@ function ns.Render(queryContext, routeUpdated)
                     .. (reason or (quest.starts and ("Start: " .. quest.starts[1].name) or "Quest giver location unavailable.")))
                 card.mapButton.caption:SetText(guide.kind == "Class questline" and (guide.hasPoint and "Show line" or "View details")
                     or (guide.hasPoint and "Show route" or "View details"))
-                if guide.kind == "Class questline" then card.detailsButton.caption:SetText("Start questline") end
             else
                 card.reason:SetText(libraryItem.count .. " quests")
                 card.mapButton.caption:SetText("Browse quests")
             end
             ns.UIHelp(card, card.title:GetText() .. "\n" .. card.reason:GetText())
         elseif guide then
+            card.detailsButton:SetScript("OnClick", function()
+                if guide.fullGuide or guide.hasPoint or guide.classLineGuide then ns.RequestStartRoute(guide) end
+            end)
             height = 122
             if guide.mode == "bundle" then height = height + 52 end
             local selected = ns.routeSelection and ns.routeSelection.key == guide.key
@@ -852,7 +1154,7 @@ function ns.Render(queryContext, routeUpdated)
                 card.count:SetText("")
                 card.reason:SetText(guide.mode == "travel" and "Travel guide" or (count .. " quest" .. (count == 1 and "" or "s")))
                 card.reason:SetHeight(16)
-                card.mapButton:Hide(); card.detailsButton:Hide()
+                card.mapButton:Hide(); card.detailsButton:SetShown(browseCard)
                 card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)) end)
                 card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(colors.border)) end)
             else
@@ -874,12 +1176,13 @@ function ns.Render(queryContext, routeUpdated)
                 if guide.fullGuide then ns.GuideXPHelp(card)
                 else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
                 card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
-                card.detailsButton.caption:SetText(guide.classLineGuide and "Start class guide" or "Start route")
-                card.detailsButton:SetShown(guide.classLineGuide or not guide.personal or guide.mode == "travel")
+                card.detailsButton.caption:SetText(browseCard and "Follow" or (guide.classLineGuide and "Start class guide" or "Start route"))
+                card.detailsButton:SetShown(browseCard or guide.classLineGuide or not guide.personal or guide.mode == "travel")
                 if guide.classLineGuide then card.mapButton:Hide() end
-                card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true)
+                card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true or guide.classLineGuide == true)
             end
         else
+            card.detailsButton:SetScript("OnClick", nil)
             height = suggestion and 169 or 110
             card.accent:SetColorTexture(unpack(row.active >= 2 and {0.35, 0.77, 0.57, 1} or colors.gold))
             card.category:SetText(suggestion and string.upper(suggestion.category)
@@ -903,7 +1206,7 @@ function ns.Render(queryContext, routeUpdated)
                 card.professionIcon = card:CreateTexture(nil, "ARTWORK"); card.professionIcon:SetSize(80, 80)
                 card.professionIcon:SetPoint("BOTTOMRIGHT", -12, 14); card.professionIcon:SetAlpha(1)
             end
-            card.professionIcon:SetTexture(activity.icon); card.professionIcon:Show()
+            card.professionIcon:SetTexture(activity.icon); card.professionIcon:SetVertexColor(1, 1, 1, 1); card.professionIcon:Show()
         elseif card.professionIcon then card.professionIcon:Hide() end
         card:Show()
         top = top + height + 8

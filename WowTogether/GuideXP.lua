@@ -353,7 +353,7 @@ function ns.GuideXPText(guide, query)
             return line
         end
     end
-    local finish = result.unavailable and "XP curve incomplete" or ("Lv " .. result.startLevel .. " → ~Lv " .. result.finishLevel)
+    local finish = result.unavailable and "XP curve incomplete" or ("Lv " .. result.startLevel .. " to ~Lv " .. result.finishLevel)
     return "Quest XP estimate: " .. finish .. " • " .. result.reward .. " XP"
         .. (result.baseline and " • Classic curve estimate" or " • Quest rewards only")
         .. (result.unknown > 0 and ("; " .. result.unknown .. " rewards unknown") or "")

@@ -689,7 +689,7 @@ function ns.BuildProfessionGuideRoute(guide)
                 else current = stop(id, "read", "Check the materials for " .. nextRecipe.name,
                     "Open your profession window, then Refresh.") end
             end
-            current.description = "Skill " .. info.skill .. " → " .. workTarget .. " • Goal " .. target .. ".\n" .. current.description
+            current.description = "Skill " .. info.skill .. " to " .. workTarget .. " • Goal " .. target .. ".\n" .. current.description
             current.recipeID = recipe.id
             if current.action == "craft" then current.craftRecipeID = nextRecipe.id end
             route.estimatedCost = cost

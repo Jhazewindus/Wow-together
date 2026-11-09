@@ -9,6 +9,7 @@ end
 local function makeCard(parent, featured)
     local c = ns.UIColors
     local card = CreateFrame("Frame", nil, parent, "BackdropTemplate")
+    card.featured = featured == true
     ns.UIPanel(card)
     card:EnableMouse(true)
     card:SetScript("OnMouseUp", function(self, mouseButton)
@@ -36,6 +37,13 @@ local function makeCard(parent, featured)
     card.track:SetPoint("BOTTOMLEFT", 16, 17)
     card.fill = card:CreateTexture(nil, "OVERLAY")
     card.fill:SetColorTexture(unpack(c.gold)); card.fill:SetHeight(2); card.fill:SetPoint("LEFT", card.track, "LEFT", 0, 0)
+    card.follow = ns.UIButton(card, "Follow", 82, function()
+        local item = card.data
+        if not item then return end
+        if item.start then item.start() elseif item.inspect then item.inspect() end
+    end, true)
+    card.follow:SetPoint("BOTTOMRIGHT", -12, 8)
+    card.follow:Show()
     if not featured then
         card.icon = card:CreateTexture(nil, "ARTWORK")
         card.icon:SetPoint("TOPLEFT", 16, -32); card.icon:SetSize(44, 44); card.icon:SetAlpha(1)
@@ -48,7 +56,10 @@ local function updateCard(card, item)
     card.category:SetText(item.category or "RECOMMENDED")
     card.title:SetText(item.title); card.count:SetText(item.count or "")
     card.detail:SetText(item.detail or ""); card.progress:SetText(item.progress or "")
-    if card.icon then card.icon:SetTexture(item.icon or "Interface\\Icons\\INV_Misc_Book_09") end
+    if card.icon then
+        card.icon:SetTexture(item.icon or "Interface\\Icons\\INV_Misc_Book_09")
+        card.icon:SetVertexColor(1, 1, 1, 1)
+    end
     local total, value = tonumber(item.progressTotal) or 0, tonumber(item.progressValue) or 0
     card.fraction = total > 0 and math.max(0, math.min(1, value / total)) or 0
     ns.ApplyGuideCardTheme(card, item.guide)
@@ -81,7 +92,7 @@ end
 local function createHome()
     local home = CreateFrame("Frame", nil, ns.ui.content)
     home:SetPoint("TOPLEFT", 0, 0)
-    home.title = heading(home, "Recommended for you", 19, ns.UIColors.text)
+    home.title = heading(home, "Next for you", 19, ns.UIColors.text)
     home.title:SetPoint("TOPLEFT", 0, -2)
     home.browseLeveling = ns.UIButton(home, "Browse all leveling guides", 208, function() ns.SetFilter("guides") end)
     home.browseLeveling:SetPoint("TOPRIGHT", 0, 0)
@@ -102,6 +113,23 @@ local function createHome()
     home.resume.title:SetPoint("TOPLEFT", 14, -23); home.resume.title:SetHeight(18)
     home.resume.detail = ns.UILabel(home.resume, nil, 10, ns.UIColors.muted)
     home.resume.detail:SetPoint("TOPLEFT", 14, -46); home.resume.detail:SetHeight(28); home.resume.detail:SetWordWrap(true)
+    home.resume.continueControl = ns.UIButton(home.resume, "Continue", 88, function()
+        if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession()
+        elseif ns.routeSelection then ns.OpenGuideWindow()
+        else ns.SetFilter("guides") end
+    end, true)
+    home.resume.continueControl:SetPoint("RIGHT", -12, 0)
+    home.resume.continueControl:Show()
+    home.resume.orderControl = ns.UIButton(home.resume, "Change order…", 116, function()
+        if ns.routeSelection then ns.ShowGuideQuestList(ns.routeSelection) end
+    end)
+    home.resume.orderControl:SetPoint("RIGHT", home.resume.continueControl, "LEFT", -8, 0)
+    home.resume.orderControl:Hide()
+    home.resume.stopControl = ns.UIButton(home.resume, "Stop this guide", 120, function()
+        if ns.routeSelection then ns.StopGuide(false) end
+    end)
+    home.resume.stopControl:SetPoint("RIGHT", home.resume.orderControl, "LEFT", -8, 0)
+    home.resume.stopControl:Hide()
     home.goldSession = makeCard(home, false)
     home.goldSession:Hide()
     home.leveling = makeCard(home, true)
@@ -123,9 +151,9 @@ local function layoutCard(card, width, height)
     card.category:SetWidth(width - 145)
     card.title:SetWidth(width - (card.icon and 88 or 32))
     card.count:SetWidth(120)
-    card.detail:SetWidth(width - 32); card.progress:SetWidth(width - 32)
-    card.track:SetWidth(width - 32)
-    card.fill:SetWidth(math.max(1, (width - 32) * (card.fraction or 0)))
+    card.detail:SetWidth(width - (card.featured and 126 or 122)); card.progress:SetWidth(width - 122)
+    card.track:SetWidth(width - 122)
+    card.fill:SetWidth(math.max(1, (width - 122) * (card.fraction or 0)))
     card.fill:SetShown((card.fraction or 0) > 0)
     ns.LayoutGuideCardTheme(card)
 end
@@ -138,7 +166,7 @@ function ns.LayoutRecommended()
     home:SetWidth(width); home.title:SetWidth(width - 226)
     if home.resume:IsShown() then
         home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 82)
-        home.resume.title:SetWidth(width - 28); home.resume.detail:SetWidth(width - 28); top = top + 94
+        home.resume.title:SetWidth(width - 390); home.resume.detail:SetWidth(width - 390); top = top + 94
     end
     if home.goldSession:IsShown() then
         home.goldSession:ClearAllPoints(); home.goldSession:SetPoint("TOPLEFT", 0, -top)
@@ -179,16 +207,19 @@ function ns.RenderRecommended(query)
     home.professionCount, home.extraCount = 0, 0
     for _, card in ipairs(home.cards) do card:Hide() end
     for _, card in ipairs(home.extraCards) do card:Hide() end
-    local featured
+    local featured, shown = nil, 0
     for _, item in ipairs(items) do
-        if item.kind == "leveling" and not featured then featured = item
-        else
-            local profession = item.kind == "professions"
-            local countKey, pool = profession and "professionCount" or "extraCount", profession and home.cards or home.extraCards
-            home[countKey] = home[countKey] + 1
-            local index = home[countKey]
-            pool[index] = pool[index] or makeCard(home, false)
-            updateCard(pool[index], item)
+        if shown < 5 then
+            shown = shown + 1
+            if item.kind == "leveling" and not featured then featured = item
+            else
+                local profession = item.kind == "professions"
+                local countKey, pool = profession and "professionCount" or "extraCount", profession and home.cards or home.extraCards
+                home[countKey] = home[countKey] + 1
+                local index = home[countKey]
+                pool[index] = pool[index] or makeCard(home, false)
+                updateCard(pool[index], item)
+            end
         end
     end
     updateCard(home.leveling, featured or {title = "Your next zone", category = "LEVELING",
@@ -199,6 +230,9 @@ function ns.RenderRecommended(query)
     home.professionEmpty.text:SetText(states.professions or "Browse professions to find a crafting guide.")
     home.moreTitle:SetShown(home.extraCount > 0)
     ns.UpdateSessionResumeBar()
+    local running = ns.routeSelection ~= nil and ns.selectedRoute ~= nil
+    if running then home.resume.stopControl:Show(); home.resume.orderControl:Show()
+    else home.resume.stopControl:Hide(); home.resume.orderControl:Hide() end
     ns.ui.metrics[2].caption:SetText("RECOMMENDATIONS"); ns.ui.metrics[2].value:SetText(tostring(#items))
     home:Show(); ns.LayoutRecommended()
 end

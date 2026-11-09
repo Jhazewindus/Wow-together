@@ -4,7 +4,6 @@ local addonName, ns = ...
 -- module never needs the core's saved variables, route internals, or UI frames.
 ns.GoldAPIVersion = 1
 ns.STEP_SYMBOLS = ns.STEP_SYMBOLS or {}
-ns.STEP_SYMBOLS.farm = "Interface\\Icons\\INV_Misc_Coin_01"
 
 local modules, names, order, options, syncKinds, exportHooks, stops = {}, {}, {}, {}, {}, {}, {}
 local goldFunctions = {}
@@ -184,6 +183,17 @@ end
 ns.hooks.uiCreated[#ns.hooks.uiCreated + 1] = function()
     for _, name in ipairs(order) do addTab(name) end
 end
+ns.hooks.hubTabs[#ns.hooks.hubTabs + 1] = function()
+    local tabs = {}
+    for _, name in ipairs(order) do
+        local entry = modules[name]
+        if entry.tab then
+            tabs[#tabs + 1] = {key = "module:" .. string.lower(name), name = name,
+                title = entry.tab.title, render = entry.tab.render}
+        end
+    end
+    return tabs
+end
 ns.hooks.settingsCreated[#ns.hooks.settingsCreated + 1] = function()
     for _, name in ipairs(order) do addSettings(name) end
 end
@@ -258,6 +268,7 @@ function ns.RegisterModule(name, spec)
         options[item.key] = {group = group, default = item.default}
     end
     addTab(name); addSettings(name)
+    if spec.tab then ns.RunHooks("hubTabRegistered", name, spec.tab) end
     return true
 end
 
@@ -418,7 +429,7 @@ ns.hooks.routeAfterUpdate[#ns.hooks.routeAfterUpdate + 1] = function()
     applyStops()
 end
 ns.hooks.stopIcon[#ns.hooks.stopIcon + 1] = function(stop)
-    if stop and stop.kind == "farm" and stop.moduleStop then return true, ns.STEP_SYMBOLS.farm end
+    if stop and stop.kind == "farm" and stop.moduleStop then return true, ns.StepIconTexture("farm") end
     return false
 end
 ns.hooks.stopSymbol[#ns.hooks.stopSymbol + 1] = function(stop)
@@ -446,7 +457,7 @@ ns.hooks.stepPresentation[#ns.hooks.stepPresentation + 1] = function(stop, facts
                 or ("~" .. math.floor(seconds / 60) .. " min " .. string.format("%02d", math.floor(seconds % 60)) .. " s"))
             or nil
         local location = ns.StopLocationText(stop)
-        return true, {kind = "farm", icon = ns.STEP_SYMBOLS.farm, title = stop.title or stop.label,
+        return true, {kind = "farm", icon = ns.StepIconTexture("farm"), title = stop.title or stop.label,
             stepLine = "Optional module task", what = stop.label, why = why,
             status = "Optional, on the way", statusColor = "text",
             time = distance and timing and (distance .. ", " .. timing) or distance or timing,
@@ -480,7 +491,7 @@ end
 -- it a deliberately limited public table instead of exposing core `ns`.
 local publicAPI = {
     version = ns.GoldAPIVersion,
-    STEP_SYMBOLS = {farm = ns.STEP_SYMBOLS.farm},
+    STEP_SYMBOLS = {farm = ns.STEP_ICON_TEXTURES.farm},
 }
 for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance", "PlayerPoint",
     "TrailLoop", "RouteCostModel", "PushGuideStop", "ClearModuleStops", "RegisterSyncKind",
