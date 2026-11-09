@@ -1,116 +1,147 @@
-# Wow Together release workflow
+# Brief — Project agents for Wow Together (AGENTS.md + .codex/agents)
 
-Always reply in English, including when friends' reports are written in Dutch.
+Goal: make the process we already run by hand (brief → implement → test →
+review → scribe → release) something Codex orchestrates itself with narrow
+subagents, in parallel where file ownership allows. Applies to both
+environments; B gets the same agents with the Gold boundary baked in.
 
-The user has authorized posting every completed addon update to their configured
-Discord channel webhook. Include the full release archive, the changelog and
-the friend-testing checklist in one message. Do not ask for posting permission
-again for ordinary updates to this addon and channel.
+Validate every file below against the current schema at
+https://developers.openai.com/codex/subagents before relying on it: the
+shape is right, individual field names may have moved. Project agents load
+only for a trusted repo.
 
-The user has also authorized publishing the addon source and release history to
-`Jhazewindus/Wow-together` on GitHub, including future completed updates. The user
-requires direct pushes to `main` for tested updates. Work on `main` in the existing
-checkout, fetch and incorporate remote changes, then push normally with the
-matching annotated release tag. Do not require pull requests or ask for posting
-permission again; create a pull request only if specifically requested. Preserve
-history: do not force-push or replace existing tags. Verify remote commit/tag IDs
-before reporting success. GitHub source publication complements Discord builds.
+---
 
-## Include the quest-guide agent's work before releases
+## 1. `AGENTS.md` (repo root) — the standing rules, finally where Codex reads them
 
-Before every addon release, check `origin/guides/coverage` for new quest-guide
-commits as well as checking `origin/main`. The checkout may fetch only `main`;
-explicitly fetch the guide branch with
-`git fetch origin main refs/heads/guides/coverage:refs/remotes/origin/guides/coverage`
-or retain an equivalent fetch mapping. Check at the start of an update and again
-before the final build/publication.
+```md
+# Wow Together — how work is done here
 
-Review the guide commits not yet in `main`, including their source evidence,
-data changes, generated outputs and tests. Incorporate completed, relevant
-changes into the release on `main`; do not silently omit ready guide updates.
-Preserve both agents' work when resolving ordinary merge conflicts. Ask the
-user before resolving contradictory product choices or changing established
-guide fundamentals. Do not blindly merge experimental/unrelated branches or
-unfinished work. Explain any deferred guide commits and the concrete reason.
+## Ground rules
+- One brief per change (`docs/briefs/`). Read the brief, then only the
+  files it names. If you need another file, stop and say which and why.
+- Data over code: a correction with a source beats a rule; a rule beats a
+  special case; a special case for one quest ID in guide code is rejected.
+- Never reassign an `ns.*` function defined in another file. Extend through
+  `ns.hooks`. Never edit generated Lua (`*Data.lua`, `QuestCatalogue.lua`);
+  edit the JSON inputs and rebuild.
+- Every client read goes through `ns.ReadPublic`; every optional API is
+  feature-detected and reported in `/wt probe`.
+- A per-record function may not call a per-guide function (see
+  PERFORMANCE.md). Add a timing test when touching a policy loop.
+- Player-facing text follows docs/CODEX_STEP_TEXT.md: verb first, no addon
+  vocabulary, no hedges, no reason codes on cards or tooltips.
+- The TOC is the only version. Every PR bumps it and adds a `## <version>`
+  entry with `For players` (≤3 lines) and `Please check` (≤3 items).
+- Branches `core/<topic>` (A) and `gold/<topic>` (B); squash-merge via PR.
+  You never merge. Build and release happen in CI; never build zips by hand.
+- Module boundary: docs/MODULE_BOUNDARY.md. B edits only `WowTogether_Gold/`
+  and `tools/gold/`; A edits everything else. A missing core function is a
+  report, not a patch.
 
-Test the combined code and quest data after integration, then finalize the
-version, changelog, test checklist and ZIP. If more guide commits arrive before
-publication, review them and repeat affected integration/checks before building
-the final archive. Record integrated guide work in the release notes. Publish
-that release's ZIP and matching docs to Discord first. Only after Discord
-confirms the post and all attachments, push the tested combined `main` and
-annotated tag to GitHub and verify their remote IDs. If Discord is blocked or
-unconfirmed, do not push the release to GitHub. A workflow instruction change
-alone does not require an addon version or Discord release.
+## Verify before claiming done
+`python3 tools/syntax_check.py`, the host test suite, `python3
+tools/boundary_check.py`, `python3 tools/build_release.py --output /tmp/b`.
+Say "needs play-test" or "checks sufficient" in the PR.
 
-For each addon release:
+## Orchestration
+For a brief: implementer → tester → reviewer → release-scribe, in that
+order; stop at the first failure and fix. Two briefs may run in parallel
+only when their file lists do not overlap (use the symptom→file table in
+docs/CODEX_APP_REDESIGN.md §1 and the module boundary). Use
+data-researcher for any fact you do not have; never invent coordinates,
+levels, prerequisites or drop rates. Use perf-auditor on any change to
+GuidePolicy, GuideOptimizer, QuestFlow, Routes, TravelNetwork or Sync.
+```
 
-1. Keep Forever interface `16001` and Lua 5.1. Update the version in the TOC and
-   diagnostic heading; update README, CHANGELOG.md and TESTING.md for the release.
-2. Run relevant host checks with `/workspace/.wow-together-tests/bin/python`.
-   These cannot establish actual WoW beta API behavior or map rendering.
-3. Build and publish using `python3 tools/build_release.py --post-discord`.
-   The uploader attaches docs extracted from that ZIP so versions cannot drift.
-   Use `python3 tools/post_discord_release.py <archive> --dry-run` to preview.
-4. Report a Discord post as successful only after the API confirms its message
-   ID and all three attachments. Receipts in the artifact directory prevent
-   reposting the same release; changed files require a new release version.
-5. If posting is blocked, finish the complete ZIP and report the specific
-   external blocker without pushing the release to GitHub. Preserve proxy
-   routing and certificate verification. Ambiguous failures require checking
-   channel history before retrying.
-6. After confirmed Discord delivery, commit the tested source and matching
-   release notes, create the annotated version tag, and push `main` and that
-   tag directly to GitHub. Verify the remote IDs and report both outcomes.
+---
 
-Read `DISCORD_WEBHOOK_URL` from the environment. For a webhook supplied in the
-current conversation, `--prompt` permits hidden input without writing it to a
-file. Never commit or print the webhook token, store it in release archives or
-add it to the addon. Persistent values belong in environment settings.
+## 2. Agents — `.codex/agents/*.toml`
 
-Work in the existing checkout; preserve user changes. Do not push to GitHub or
-publish a new environment solely to make the Discord release appear successful.
+Common shape (adjust names to the current schema):
+```toml
+name = "reviewer"
+description = "Read-only review of a PR against its brief and the repo rules."
+model = "<strongest available>"
+model_reasoning_effort = "high"
+sandbox_mode = "read-only"
+developer_instructions = """
+...role text...
+"""
+nickname_candidates = ["Argus", "Lens", "Scribe"]
+```
 
-## Reviewing reports from the user and friends
+### reviewer (read-only, strong model)
+Checks: only the brief's files changed; no `ns.*` reassignment across files;
+no forbidden strings (list in docs/CODEX_UI_PRESENTATION.md §6); version
+bumped and changelog entry has `For players`/`Please check`; tests exist for
+each behaviour named in the brief; module boundary respected; player text
+rules. Output: the checklist with pass/fail per line and file:line for each
+fail. Never edits, never suggests "acceptable for now".
 
-Before implementing feedback, compare all reports supplied for that batch.
-The user will identify their own report; preserve that label and each friend's
-identity. Do not assume an unlabeled report belongs to the user.
+### tester (sandboxed commands, no file edits)
+Runs the four commands from AGENTS.md plus any test the brief names.
+Reports each failure with the first assertion message and file:line. If a
+test is missing for a behaviour in the brief, reports that as a failure.
 
-Group overlapping symptoms and likely shared causes, and track issues observed
-by individual players. Compare the reported addon version, client build, level,
-faction, class, zone, party state, settings and selected route where available.
-Distinguish evidence from hypotheses; similar symptoms can have different causes.
-Briefly share the comparison and fix priorities before changing addon code.
-If suggestions contradict each other or the user's established preferences,
-explain the conflict and ask the user which direction to take before implementing
-changes from that batch. Wait for their answer; do not silently choose a side or
-implement a compromise. Read-only investigation may continue to clarify the
-options. Different observations alone are not necessarily conflicting requests.
-If the user explicitly says more reports are still coming for the batch, collect
-them before implementing fixes. Otherwise continue within the authorized task.
+### perf-auditor (read-only)
+Finds per-record loops calling per-guide functions (`levelingValue`,
+`LevelingQuestEnabled`, record iterations in builders) and functions
+without a memo that are called inside them; runs timing tests; reports the
+call chain like the watchdog trace. Model: strong, effort high.
 
-Changes to this review workflow alone do not constitute a new addon release.
+### lua-implementer (edits allowed)
+Implements one brief. Developer instructions: "Edit only the files the
+brief names. Write the test first when the brief names a behaviour. Follow
+AGENTS.md. When blocked by a missing function or fact, stop and report the
+exact signature or fact needed." Model: strong for routing/sync/policy
+briefs; a cheaper model for mechanical ones (the orchestrator picks).
 
-## Project direction
+### ui-implementer (edits allowed, UI files only)
+Files: UI.lua, Navigation.lua, StandaloneArrow.lua, GuideQuestList.lua,
+Config.lua (presentation), GuideText.lua, SuggestionChips.lua. Builds
+behind `uiNext` per docs/CODEX_APP_REDESIGN.md; keeps frame names; follows
+the icon table and copy rules; pastes three before/after cards in the PR.
 
-Treat WoW Together as a **WoW Forever companion**. This is the user's standing
-product direction from 6 October 2026. Keep the product name **WoW Together**;
-"WoW Forever companion" describes the mindset, not a rename. Keep leveling as
-the backbone, with supporting tools for travel, dungeon preparation, training
-and solo/group play.
-Party quest sync remains one part of that wider companion.
+### data-researcher (read + web, no Lua edits)
+Follows docs/CODEX_GUIDE_QUALITY.md §4: source ranking, capture with
+provenance, corrections with a source sentence, dead ends recorded in the
+source queue, licence check before any import. Writes only under
+`data-tools/` (or `tools/`) JSON inputs; never Lua. Reports facts with
+confidence and source.
 
-Use this direction when evaluating features, naming and interface design.
-Keep supporting tools optional and the interface compact and coherent. Prioritize
-reliable, useful guidance for the player's current situation, with clear next
-steps and build-tested behavior. Preserve working guide fundamentals and the
-user's established preferences while developing the wider companion. Work toward
-a polished 1.0 release; current updates remain beta releases until that milestone.
+### release-scribe (edits: CHANGELOG.md and the TOC only)
+Writes `For players` (plain language, ≤3 lines) and `Please check` (≤3
+items) from the diff and the brief; bumps the TOC; refuses to write
+"internal work" unless the diff truly has no visible effect; checks the
+heading matches the version.
 
-Keep player-facing screens concise. Show quest actions, destinations, progress,
-levels and useful choices. Keep developer discussion, API limitations, source
-coverage, raw IDs and chat commands in diagnostics/help/documentation rather than
-routine screens and tooltips. Use brief, honest empty states such as "Map
-unavailable" when content is missing; preserve explanations that help a player
-make a decision, including useful low-level prerequisite exceptions.
+### gold-worker (environment B only; edits WowTogether_Gold/ and tools/gold/)
+The lua-implementer with the boundary baked in: any reference outside the
+public `WowTogetherModuleAPI` is a stop-and-report. Runs
+`tools/boundary_check.py` before claiming done.
+
+---
+
+## 3. Skills (optional, `.agents/skills/` or `.codex/skills/` per current docs)
+- `new-brief`: scaffold `docs/briefs/NN_<topic>.md` with the four blocks
+  (why / what changes / tests / acceptance).
+- `pr-review`: run reviewer + tester + perf-auditor and assemble one report.
+- `release-notes`: run release-scribe on the current branch.
+
+---
+
+## 4. What not to do
+- No agent with broad edit rights and a vague job ("improve the addon").
+- No parallel implementers on overlapping files; the boundary and the
+  symptom→file table decide.
+- No agent that merges, tags, builds zips or posts to Discord; CI does that.
+- Don't spawn subagents for one-line fixes; the overhead is real.
+
+## 5. Acceptance
+- `codex` in the trusted repo lists the custom agents; a prompt "review PR
+  #N" runs reviewer+tester and returns the checklist without edits.
+- A brief with two disjoint file lists runs two implementers in parallel
+  and one tester afterwards.
+- reviewer rejects a PR that reassigns an `ns.*` function or lacks `For
+  players`; tester rejects one whose timing test fails.
