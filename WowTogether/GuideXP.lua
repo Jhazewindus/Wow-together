@@ -101,13 +101,15 @@ end
 
 function ns.ZoneXPRemaining(guide, profile, query)
     if type(guide) ~= "table" then return end
-    local total, unknown, seen = 0, 0, {}
+    local total, unknown, seen, work = 0, 0, {}, 0
     local function add(id)
         if seen[id] then return end
         seen[id] = true
         if ns.CatalogueCompletion(ns.self, id, query) == true and not ns.active[id] then return end
         local reward = ns.QuestXP(id, profile and profile.level)
         if reward then total = total + reward else unknown = unknown + 1 end
+        work = work + 1
+        if query and query.cooperative and work % 100 == 0 then coroutine.yield() end
     end
     for _, record in ipairs(guide.records or {}) do add(record.id) end
     for id in pairs(ns.active or {}) do
@@ -116,7 +118,7 @@ function ns.ZoneXPRemaining(guide, profile, query)
     return total, unknown
 end
 
-function ns.ZoneExitProjection(guide, profile, query)
+local function zoneProjection(guide, profile, query)
     profile = profile or ns.profile
     local state = ns.XPState()
     if not state or not profile or not number(profile.level, 60) then return end
@@ -135,6 +137,26 @@ function ns.ZoneExitProjection(guide, profile, query)
     return {remaining = remaining, unknown = unknown, level = level, xp = xp, curveIncomplete = curveIncomplete,
         percent = level >= 60 and 1 or threshold and threshold > 0 and xp / threshold or nil,
         nextGuide = nextGuide}
+end
+
+function ns.ZoneExitProjection(guide, profile, query)
+    if type(guide) ~= "table" then return end
+    profile = profile or ns.profile
+    local state = ns.XPState()
+    if not state or not profile then return zoneProjection(guide, profile, query) end
+    if not query then return zoneProjection(guide, profile, query) end
+    local key = table.concat({tostring(guide.key), tostring(profile.level), tostring(state.level), tostring(state.xp),
+        tostring(state.xpMax), tostring(ns.guideProgressRevision or 0), tostring(ns.xpSampleRevision or 0),
+        tostring(ns.questHistoryCount or 0), tostring(ns.objectiveDisplayRevision or 0)}, ":")
+    local cache = query.policyCache
+    if not cache then cache = {}; query.policyCache = cache end
+    cache.zoneExit = cache.zoneExit or {}
+    local cached = cache.zoneExit[key]
+    if cached ~= nil then return cached ~= false and cached or nil end
+    local result = zoneProjection(guide, profile, query)
+    cache.zoneExit[key] = result or false
+    if ns.policyMetrics then ns.policyMetrics.zoneExitCalls = (ns.policyMetrics.zoneExitCalls or 0) + 1 end
+    return result
 end
 
 function ns.XPLevelingValue(id, query)

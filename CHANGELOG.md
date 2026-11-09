@@ -6,6 +6,11 @@
   wrappers with `ns.hooks` registry points, preserve the public module API and
   Gold API version, and remove travel-summary string substitutions.
 
+**ROUTE POLICY WATCHDOG HOTFIX**
+
+- Prepare zone-exit valuation once per guide query, memoize chain values for
+  that query, and cooperatively build XP-model zone routes with an updating
+  status instead of recalculating the whole guide for every quest.
 
 ## 0.8.107
 

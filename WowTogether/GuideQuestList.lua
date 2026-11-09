@@ -74,6 +74,8 @@ function ns.RenderGuideQuestList()
     for _, row in ipairs(frame.rows) do row:Hide() end
     local plan, quests, query = {}, {}, ns.NewQuestQuery()
     local policyGuide = ns.routeSelection and ns.routeSelection.key == frame.guide.key and ns.routeSelection or frame.guide
+    query.guide = policyGuide
+    if ns.PrepareGuidePolicy then ns.PrepareGuidePolicy(policyGuide, query) end
     for _, stop in ipairs(frame.plan or {}) do
         if ns.ClassQuestEnabled(stop.id) then plan[#plan + 1], quests[stop.id] = stop, true end
     end
@@ -84,7 +86,7 @@ function ns.RenderGuideQuestList()
         for _, record in ipairs(frame.guide.records or {}) do
             if not quests[record.id] and ns.ClassQuestEnabled(record.id) then
                 local chain = ns.ChainValue and ns.ChainValue(record.id, query)
-                local zoneExit = chain and ns.GuideZoneFinishing and ns.GuideZoneFinishing(frame.guide) and not chain.committed
+                local zoneExit = chain and ns.GuideZoneFinishing and ns.GuideZoneFinishing(frame.guide, nil, nil, query) and not chain.committed
                 if chain and (not chain.included or zoneExit) then
                     local quest = ns.CatalogueQuest(record.id)
                     also[#also + 1] = {id = record.id, kind = "a", mapID = quest and quest.mapID or frame.guide.mapID,

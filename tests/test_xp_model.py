@@ -51,6 +51,7 @@ class XPModelTests(unittest.TestCase):
 
     def test_turnin_samples_calibrate_only_after_twenty_unrested_observations(self):
         c = self.client()
+        c.ns.db.config.xpModel = True
         c.ns.profile.level = 21
         c.ns.char = c.lua.table_from({})
         c.lua.execute('function GetXPExhaustion() return 0 end')
@@ -64,6 +65,37 @@ class XPModelTests(unittest.TestCase):
         self.assertEqual(c.ns.QuestXPMultiplier(6)[1], 'observed')
         self.assertEqual(c.ns.QuestXP(100, 21), 600)
         self.assertEqual(len(c.ns.char.xpSamples), 20)
+
+    def test_zone_projection_is_prepared_once_for_per_quest_policy(self):
+        c = self.client()
+        c.ns.profile.level = 29
+        c.ns.profile.faction = 'Horde'
+        c.ns.db.config.xpModel = True
+        c.ns.xpCurve = c.lua.table_from({29: 100000, 30: 110000})
+        records, quests = c.lua.table(), c.lua.table()
+        for quest_id in range(1, 601):
+            records[quest_id] = c.lua.table_from({'id': quest_id})
+            quests[quest_id] = c.lua.table_from({'id': quest_id, 'title': 'Quest ' + str(quest_id),
+                'level': 29, 'xp': 1000, 'side': 'Both'})
+        c.ns.catalogue = c.lua.table_from({'quests': quests})
+        c.lua.globals().ns = c.ns
+        guide = c.lua.table_from({'key': 'zone:large', 'mode': 'zone', 'rangeLow': 21,
+            'rangeHigh': 29, 'records': records}, recursive=True)
+        c.ns.policyMetrics = c.lua.table_from({'zoneExitCalls': 0})
+        elapsed, yields = c.lua.eval('''function(guide)
+            local start, count = os.clock(), 0
+            local job = coroutine.create(function() return ns.BuildLevelingRoute(guide, true, true) end)
+            local okay, result
+            repeat
+                okay, result = coroutine.resume(job)
+                if not okay then error(result) end
+                if coroutine.status(job) ~= 'dead' then count = count + 1 end
+            until coroutine.status(job) == 'dead'
+            return os.clock() - start, count
+        end''')(guide)
+        self.assertLess(elapsed, 0.05)
+        self.assertGreater(yields, 0)
+        self.assertEqual(c.ns.policyMetrics.zoneExitCalls, 1)
 
     def test_xp_sample_history_is_bounded_to_five_hundred(self):
         c = self.client()

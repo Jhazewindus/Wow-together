@@ -196,7 +196,7 @@ local function chainPaths(root, key, query, level)
     return paths
 end
 
-function ns.ChainValue(id, query)
+local function computeChainValue(id, query)
     local root = ns.CatalogueQuest(id)
     if not root then return nil end
     local level, key = ns.PartyLevelFloor(query)
@@ -256,6 +256,24 @@ function ns.ChainValue(id, query)
     return best
 end
 
+function ns.ChainValue(id, query)
+    if not query then return computeChainValue(id, query) end
+    local profileKey = ns.PartyLevelFloor(query)
+    local guide = query.guide or ns.routeSelection
+    local key = table.concat({tostring(id), tostring(profileKey), tostring(guide and guide.key),
+        tostring(guide and guide.mode), tostring(ns.guideProgressRevision or 0),
+        tostring(ns.char and ns.char.questLearning and ns.char.questLearning.revision or 0)}, ":")
+    local cache = query.policyCache
+    if not cache then cache = {}; query.policyCache = cache end
+    cache.chains = cache.chains or {}
+    local cached = cache.chains[key]
+    if cached ~= nil then return cached ~= false and cached or nil end
+    local value = computeChainValue(id, query)
+    cache.chains[key] = value or false
+    if ns.policyMetrics then ns.policyMetrics.chainValueCalls = (ns.policyMetrics.chainValueCalls or 0) + 1 end
+    return value
+end
+
 function ns.GuideEfficiencyMode(guide)
     local modes = ns.char and ns.char.guideModes
     local mode = guide and modes and modes[guide.key]
@@ -272,14 +290,14 @@ function ns.SetGuideEfficiencyMode(guide, mode)
     return true
 end
 
-function ns.GuideZoneFinishing(guide, profile, projection)
+function ns.GuideZoneFinishing(guide, profile, projection, query)
     if not guide or guide.mode ~= "zone" or ns.GuideEfficiencyMode(guide) == "complete" then return false end
     profile = profile or ns.profile or {}
     local level = profile.level
     if not ns.GuideInteger(level) then return false end
     if ns.Option("xpModel") then
         if not ns.ZoneExitProjection then return false end
-        projection = projection or ns.ZoneExitProjection(guide, profile)
+        projection = projection or ns.ZoneExitProjection(guide, profile, query)
         if not projection or projection.curveIncomplete then return false end
         return projection.level - level <= 1
     end
@@ -329,7 +347,9 @@ local function levelingValue(id, query)
             if record.id == id then return true, "Complete the zone; this quest is in the selected guide." end
         end
     end
-    if ns.GuideZoneFinishing(activeGuide) then
+    local zoneFinishing = query and query.zoneFinishing
+    if zoneFinishing == nil then zoneFinishing = ns.GuideZoneFinishing(activeGuide, nil, nil, query) end
+    if zoneFinishing then
         if ns.active[id] ~= nil then return true, "Finish the quest already in your log." end
         if ns.readyToTurnIn[id] == true then return true, "Turn in this ready quest." end
     end
@@ -356,7 +376,7 @@ local function levelingValue(id, query)
     end
     local chain = ns.ChainValue(id, query)
     if chain then
-        if ns.GuideZoneFinishing(ns.routeSelection) and not chain.committed then
+        if zoneFinishing and not chain.committed then
             return false, chain.reason
         end
         if ns.GuideEfficiencyMode(ns.routeSelection) == "complete" then
@@ -375,6 +395,17 @@ local function levelingValue(id, query)
     end
     if reason then return true, reason end
     return false, "Below preferred quest levels " .. preferredFloor(level) .. "–" .. (level + 3) .. "; no worthwhile follow-up is known."
+end
+
+function ns.PrepareGuidePolicy(guide, query)
+    if not query then return end
+    query.guide = guide or query.guide
+    if query.policyPreparedFor == guide then return query.zoneFinishing end
+    query.policyPreparedFor = guide
+    query.zoneProjection = ns.Option("xpModel") and guide and guide.mode == "zone"
+        and ns.ZoneExitProjection and ns.ZoneExitProjection(guide, ns.profile, query) or nil
+    query.zoneFinishing = ns.GuideZoneFinishing(guide, ns.profile, query.zoneProjection, query)
+    return query.zoneFinishing
 end
 
 function ns.LevelingValue(id, query)

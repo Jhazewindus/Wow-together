@@ -41,6 +41,8 @@ local function context(guide, route)
             guideRevision = ns.guideProgressRevision, useLearned = ns.Option("useLearnedQuests"),
             level = profile.level, class = profile.classID, race = profile.raceID, faction = profile.faction,
             classQuests = ns.Option("classQuests"), query = ns.NewQuestQuery(), decisions = {}}
+        cached.query.guide = guide
+        if ns.PrepareGuidePolicy then ns.PrepareGuidePolicy(guide, cached.query) end
     end
     return cached
 end

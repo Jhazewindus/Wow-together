@@ -104,7 +104,7 @@ local function prerequisiteRecords(guide)
     return records
 end
 
-local function availableTasks(guide)
+local function availableTasks(guide, query)
     local tasks, missing, complete, live = {}, 0, 0, ns.AllGuideRecords()
     local records = {}
     for _, record in ipairs(prerequisiteRecords(guide)) do
@@ -123,7 +123,7 @@ local function availableTasks(guide)
             local readyTask = not seriesBlocked and (guide.personal or ns.FocusCanStartRecord(record, focus))
                 and (guide.classLineGuide and (ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true
                     or active or ns.QuestProgressReady(ns.self, record.id) == true)
-                    or not guide.classLineGuide and (ns.LevelingValue(record.id) ~= false
+                    or not guide.classLineGuide and (ns.LevelingValue(record.id, query) ~= false
                         or activeForParty(record.id, true, guide.personal)
                         or guide.collectionRequired and guide.collectionRequired[record.id]
                         or guide.collectionGoals and guide.collectionGoals[record.id]
@@ -174,7 +174,7 @@ local function splitReasonReadyTasks(guide, tasks)
     return ready, later
 end
 
-local function chooseBatch(guide, tasks, mapID, position, metrics)
+local function chooseBatch(guide, tasks, mapID, position, metrics, query)
     local selected, seen, previous, stops = {}, {}, position, 0
     -- Keep the trip's quest set until its work is finished; accepting a pickup
     -- must not discard its objective or change the rest of the committed loop.
@@ -236,7 +236,7 @@ local function chooseBatch(guide, tasks, mapID, position, metrics)
                 local value = d + detour * 0.12 - math.min(80, task.xp / 20)
                 if task.active then value = value - 250 end
                 if task.ready and d < 400 then value = value - 600 end
-                local chain = ns.ChainValue and ns.ChainValue(task.id)
+                local chain = ns.ChainValue and ns.ChainValue(task.id, query)
                 if chain and chain.baseline and chain.rate < chain.baseline then
                     value = value + ns.ROUTE_WEIGHTS.lowValueDelay * (chain.baseline - chain.rate)
                 end
@@ -418,9 +418,13 @@ local function completePreview(tasks, position, cooperative, metrics)
     return ordered
 end
 
-function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
+function ns.BuildLevelingRoute(guide, includeOrigin, cooperative, query)
     guide.pendingReason = nil
-    local tasks, missing, complete, enabled = availableTasks(guide)
+    query = query or ns.NewQuestQuery()
+    query.guide = guide
+    query.cooperative = cooperative == true
+    if ns.PrepareGuidePolicy then ns.PrepareGuidePolicy(guide, query) end
+    local tasks, missing, complete, enabled = availableTasks(guide, query)
     local laterTasks
     tasks, laterTasks = splitReasonReadyTasks(guide, tasks)
     local mapID = guide.mapID or 0
@@ -431,7 +435,7 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     if not hasMap and tasks[1] then mapID = tasks[1].first.mapID end
     local position = current == mapID and ns.PlayerPoint(mapID) or nil
     local metrics = {}
-    local batch = chooseBatch(guide, tasks, mapID, position, metrics)
+    local batch = chooseBatch(guide, tasks, mapID, position, metrics, query)
     local localTasks, otherMaps, partial = {}, 0, false
     for _, task in ipairs(batch) do
         local stages = {}
@@ -445,7 +449,7 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     end
     local stops, cost, method = optimize(localTasks, mapID, position, cooperative, metrics)
     if ns.Option("xpModel") and guide.mode == "zone" and ns.ZoneExitProjection then
-        local projection = ns.ZoneExitProjection(guide, ns.profile)
+        local projection = ns.ZoneExitProjection(guide, ns.profile, query)
         local nextGuide = projection and projection.nextGuide
         if nextGuide and projection.level < (nextGuide.rangeLow or 1) then
             local state, required = ns.XPState(), 0
@@ -517,7 +521,7 @@ local function fingerprint(guide)
     return table.concat(values, "|")
 end
 
-function ns.PlanLevelingGuide(guide, invite)
+function ns.PlanLevelingGuide(guide, invite, refreshOnly)
     ns.guideStopped, ns.guideWindowIdle = nil, nil
     if ns.guideScanning and not ns.guideScanning.executing then ns.CancelGuideScan() end
     if not guide then return false end
@@ -526,7 +530,8 @@ function ns.PlanLevelingGuide(guide, invite)
     ns.ScanGuideProgress(guide, false)
     local generation, before = ns.planningGeneration, fingerprint(guide)
     local job = coroutine.create(function() return ns.BuildGuideRoute(guide, true, true) end)
-    ns.routePlanning = {guide = guide, generation = generation}
+    ns.routePlanning = {guide = guide, generation = generation,
+        status = refreshOnly and "Updating route…" or "Loading route…"}
     ns.UpdateNavigation()
     local restarts = 0
     local function advance()
@@ -565,9 +570,14 @@ function ns.PlanLevelingGuide(guide, invite)
             ns.Refresh(); return
         end
         ns.preparedLevelingRoute = {guide = guide, route = result}
-        if invite then ns.StartPartyRoute(guide) else ns.ShowGuideOnMap(guide) end
-        ns.preparedLevelingRoute = nil
-        ns.Refresh()
+        if refreshOnly then
+            ns.Refresh()
+            if ns.preparedLevelingRoute and ns.preparedLevelingRoute.guide == guide then ns.preparedLevelingRoute = nil end
+        else
+            if invite then ns.StartPartyRoute(guide) else ns.ShowGuideOnMap(guide) end
+            ns.preparedLevelingRoute = nil
+            ns.Refresh()
+        end
     end
     if not C_Timer or type(C_Timer.After) ~= "function" then
         ns.routePlanning = nil

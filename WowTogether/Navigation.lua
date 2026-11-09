@@ -104,7 +104,7 @@ function ns.NavigationState()
     if ns.guideScanning or ns.routePlanning then
         local scan = ns.guideScanning
         local work = scan or ns.routePlanning
-        return {visible = true, busy = true, status = scan and "Scanning guide…" or "Loading route…",
+        return {visible = true, busy = true, status = scan and "Scanning guide…" or work.status or "Loading route…",
             stop = {id = 0, kind = "loading", action = scan and "scan" or "plan", title = work.guide.title}}
     end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection, true) end
