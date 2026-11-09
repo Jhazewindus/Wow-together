@@ -210,6 +210,10 @@ function ns.UpdateNavigation()
     if not frame then return end
     local state = ns.NavigationState()
     frame.state = state
+    local zoneExit = state.stop and state.stop.reasonCode == "zone-exit"
+    if frame.zoneExit ~= zoneExit then frame.zoneExit = zoneExit; ns.LayoutNavigation() end
+    frame.next.caption:SetText(zoneExit and "Follow" or "›")
+    frame.next:SetWidth(zoneExit and 62 or 24)
     ns.RefreshEliteSpawnMarkers()
     frame:SetShown(state.visible == true and ns.Option("routeArrow") and not ns.guideWindowHidden)
     ns.UpdateStandaloneArrow(state)
@@ -336,8 +340,12 @@ function ns.UpdateNavigation()
     end
     local continue = ns.CanContinueGuideAnyway() and not ns.navigationPreview and not state.flight
         and state.stop.kind == "notice" and not state.busy
-    frame.continue:SetShown(continue); frame.continue:SetEnabled(continue)
-    frame.skipStep:SetShown(not continue); frame.skipQuest:SetShown(not continue)
+    frame.continue:SetShown(continue and not zoneExit); frame.continue:SetEnabled(continue and not zoneExit)
+    frame.skipStep:SetShown(not continue and not zoneExit); frame.skipQuest:SetShown(not continue and not zoneExit)
+    frame.back:SetShown(not zoneExit); frame.next:SetShown(true)
+    frame.next:SetEnabled(zoneExit and state.stop.nextGuide ~= nil or not zoneExit and not state.idle and state.stop.kind ~= "loading")
+    if zoneExit then ns.UIHelp(frame.next, "Follow the next zone guide.")
+    else ns.UIHelp(frame.next, "Preview the next guide step.") end
     local paused = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
     frame.stop:SetEnabled(not state.idle or paused ~= nil)
     frame.pause.caption:SetText(paused and "▶" or "⏸")
@@ -384,7 +392,9 @@ function ns.LayoutNavigation()
     frame.skipQuest:ClearAllPoints(); frame.skipQuest:SetPoint("BOTTOMLEFT", offset + (training and 124 or 128), 8)
     frame.continue:ClearAllPoints(); frame.continue:SetPoint("BOTTOMLEFT", offset + 42, 8)
     frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, 8)
-    frame.next:ClearAllPoints(); frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8)
+    frame.next:ClearAllPoints()
+    if frame.zoneExit then frame.next:SetPoint("BOTTOMRIGHT", -12, 8)
+    else frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8) end
     frame.tip.point = {"TOPLEFT", frame.work}
     frame.questItem:SetWidth(width); frame.questItem.caption:SetWidth(width - 50)
     ns.LayoutAreaObjectives(width)
@@ -497,7 +507,11 @@ function ns.CreateNavigation()
     ns.UIHelp(frame.continue, "Include quests outside the recommended level range for this guide. Pickup requirements and manual skips still apply; elite quests may need a party. Saved across reloads; Stop guide restores the normal range.")
     frame.back = ns.UIButton(frame, "‹", 24, function() ns.PreviewGuideStep(-1) end)
     frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 12, 8)
-    frame.next = ns.UIButton(frame, "›", 24, function() ns.PreviewGuideStep(1) end)
+    frame.next = ns.UIButton(frame, "›", 24, function()
+        local stop = frame.state and frame.state.stop
+        if stop and stop.reasonCode == "zone-exit" and stop.nextGuide then ns.RequestStartRoute(stop.nextGuide)
+        else ns.PreviewGuideStep(1) end
+    end)
     frame.next:SetHeight(24); frame.next:SetPoint("BOTTOMRIGHT", -12, 8)
     frame.background = {OnClick = function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end}
     frame.stop = {enabled = true, OnClick = function()

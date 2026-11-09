@@ -1,16 +1,18 @@
 # Wow Together changelog
 
-## Unreleased
+## 0.8.108
 
-- Module boundary (MODULE_BOUNDARY §§2, 7): replace post-definition core
-  wrappers with `ns.hooks` registry points, preserve the public module API and
-  Gold API version, and remove travel-summary string substitutions.
+**CLEARER ROUTE GUIDANCE**
 
-**ROUTE POLICY WATCHDOG HOTFIX**
+**For players**
+- Large XP-model route updates now run in short steps and show “Updating route…” while they finish.
+- Travel tips combine consecutive walks, point to the quest location, and hide internal reason codes unless advanced diagnostics are enabled.
+- Zone guides use the Classic reward table by default, list low-value work separately, and offer Keep, Abandon or Follow choices.
 
-- Prepare zone-exit valuation once per guide query, memoize chain values for
-  that query, and cooperatively build XP-model zone routes with an updating
-  status instead of recalculating the whole guide for every quest.
+**Please check**
+1. Rescan a large zone guide with the XP model enabled; confirm the route updates without a long freeze.
+2. Inspect a travel step with several walk legs and confirm it names the quest destination and gives one combined walking time.
+3. In a finishing zone, review a low-value quest in your log and verify Keep/Abandon are explicit; when useful work ends, Follow opens the next zone.
 
 ## 0.8.107
 

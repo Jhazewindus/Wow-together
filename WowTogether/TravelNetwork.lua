@@ -553,6 +553,52 @@ local function transportAction(method)
         or method == "hearth" and "Use your Hearthstone" or method == "teleport" and "Teleport" or "Use the passage"
 end
 
+local function travelMinutes(seconds)
+    if not finite(seconds) or seconds < 0 then return end
+    if seconds < 60 then return "~" .. math.floor(seconds + 0.5) .. " sec" end
+    return "~" .. math.floor(seconds / 60 + 0.5) .. " min"
+end
+
+local function summarizedLegs(path)
+    local parts, walking, flight = {}, 0, nil
+    local function flushWalk()
+        if walking <= 0 then return end
+        parts[#parts + 1] = "walk " .. (travelMinutes(walking) or "")
+        walking = 0
+    end
+    for index = math.max(1, path.cursor or 1), #(path.legs or {}) do
+        local leg = path.legs[index]
+        local method = leg.method
+        if method == "walk" then
+            walking = walking + (finite(leg.seconds) and leg.seconds or 0)
+        else
+            flushWalk()
+            local label = leg.name
+            if method == "teleport" then parts[#parts + 1] = "Teleport"
+            elseif method == "hearth" then parts[#parts + 1] = "Use your Hearthstone"
+            elseif method == "taxi" then
+                local info = type(leg.flight) == "table" and leg.flight
+                flight = info or flight
+                local target = info and info.destination and info.destination.name or label or "the next flight point"
+                local detail = info and (info.measured and "Timed flight: "
+                    or info.unconfirmed and "Published estimate: " or "Estimated flight: ")
+                if detail and finite(info.flightSeconds) then detail = detail .. ns.FormatTravelDuration(info.flightSeconds) end
+                parts[#parts + 1] = "Fly to " .. target .. (detail and (" (" .. detail .. ")") or "")
+            elseif method == "ship" or method == "zeppelin" or method == "tram" then
+                parts[#parts + 1] = transportAction(method) .. (label and (" to " .. label) or "")
+            else
+                parts[#parts + 1] = transportAction(method) .. (label and (" to " .. label) or "")
+            end
+        end
+    end
+    flushWalk()
+    if #parts == 0 then return end
+    parts[1] = string.upper(string.sub(parts[1], 1, 1)) .. string.sub(parts[1], 2)
+    local summary = table.concat(parts, ", then ")
+    if flight and finite(path.seconds) then summary = summary .. " (journey ~" .. ns.FormatTravelDuration(path.seconds) .. ")" end
+    return summary
+end
+
 function ns.TravelPathSummary(stop)
     if ns.ReadPublic(UnitOnTaxi, "player") == true then return end
     if stop.flightDiscovery then
@@ -562,45 +608,9 @@ function ns.TravelPathSummary(stop)
     end
     if not ns.HasTravelPathTo(stop.goal or stop) then return end
     local path = ns.travelPath
-    if stop.travelLeg and (stop.travelLeg.method == "hearth" or stop.travelLeg.method == "teleport") then
-        local leg = stop.travelLeg
-        local transport = leg.to.personal
-        return ns.PersonalTransportLabel(leg) .. ".\nLands " .. (transport and transport.approximate and "near " or "at ") .. leg.name
-            .. "; journey ~" .. ns.FormatTravelDuration(path.seconds) .. "."
-    end
-    if stop.travelLeg and stop.travelLeg.method == "walk" and stop.travelLeg.to.terrain then
-        return "Go around " .. stop.travelLeg.to.terrain.name .. "."
-    end
-    if stop.travelLeg and stop.travelLeg.method == "walk" and stop.travelLeg.to.trail then
-        local connection = nextConnection(path)
-        local onward = connection and (transportAction(connection.method) .. " to " .. connection.name .. " from " .. nodeName(connection.fromID, connection.from) .. ".")
-            or ("Continue towards " .. ns.MapName(stop.goal.mapID) .. ".")
-        return (stop.travelLeg.to.bundled and "Bundled road" or "Ground you have walked before") .. ". " .. onward
-    end
-    if stop.travelLeg and stop.travelLeg.method ~= "walk" and stop.travelLeg.method ~= "taxi" then
-        local leg = stop.travelLeg
-        local boarding = nodeName(leg.fromID, leg.from)
-        return "Board at " .. boarding .. " — " .. pointLocation(leg.from) .. ".\nWaiting time varies; continue towards " .. ns.MapName(stop.goal.mapID) .. "."
-    end
-    local connection = nextConnection(path)
-    if connection and not connection.flight then
-        return "Go to " .. nodeName(connection.fromID, connection.from) .. ".\n"
-            .. transportAction(connection.method) .. " to " .. connection.name .. "."
-    end
-    local flight = connection and connection.flight and connection
-    if flight then
-        local source, target = flight.flight.source.name, flight.flight.destination.name
-        return (stop.kind == "f" and ("Fly to " .. target .. ".") or ("Walk to " .. source .. "; then fly to " .. target .. "."))
-            .. "\n" .. (flight.flight.measured and "Timed flight: ~" or flight.flight.unconfirmed and "Published estimate: " or "Estimated flight: ")
-            .. ns.FormatTravelDuration(flight.flight.flightSeconds) .. "; journey ~" .. ns.FormatTravelDuration(path.seconds) .. "."
-            .. (flight.flight.unconfirmed and " Confirm the connection on the flight map." or "")
-    end
-    if stop.travelLeg then
-        return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n"
-            .. (stop.travelLeg.method == "walk" and (stop.travelLeg.waypoint
-                and "Follow roads and terrain to this waypoint." or "Follow roads and terrain.")
-                or "Board the correct transport; waiting time varies.")
-    end
+    local summary = summarizedLegs(path)
+    if summary then return summary .. "." end
+    if stop.travelLeg then return "Travel towards " .. ns.MapName(stop.goal.mapID) .. "." end
 end
 
 -- The furthest upcoming proven-ground node that a straight walk from the

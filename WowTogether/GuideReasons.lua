@@ -178,6 +178,9 @@ local function explain(goal, ctx)
     end
     ctx.query.guide = guide
     local useful, exception = ns.LevelingValue(goal.id, ctx.query)
+    if not useful and exception and string.find(exception, "^in%-log%-low%-value:") then
+        return result("in-log-low-value", string.gsub(exception, "^in%-log%-low%-value:", ""), false)
+    end
     if guide and guide.catchupRequired and guide.catchupRequired[goal.id] then
         return result("party-prerequisite", "This prerequisite helps your party catch up through the quest chain.", true)
     end

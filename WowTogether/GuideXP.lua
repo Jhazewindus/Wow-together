@@ -40,8 +40,12 @@ end
 function ns.QuestXPMultiplier(difference)
     difference = number(difference, 60) and difference or 0
     if difference <= ns.ROUTE_WEIGHTS.questRewardFullThroughLevels then return 1, "table", 0 end
-    local observed, count = observedMultiplier(difference)
-    if observed then return math.max(0, math.min(1, observed)), "observed", count end
+    local count = 0
+    if ns.Option("xpModel") then
+        local observed
+        observed, count = observedMultiplier(difference)
+        if observed then return math.max(0, math.min(1, observed)), "observed", count end
+    end
     local weights = ns.ROUTE_WEIGHTS
     return math.max(weights.minimumQuestRewardFactor,
         1 - (difference - weights.questRewardFullThroughLevels) * weights.questRewardPenaltyPerLevel), "table", count
@@ -120,7 +124,7 @@ end
 
 local function zoneProjection(guide, profile, query)
     profile = profile or ns.profile
-    local state = ns.XPState()
+    local state = query and query.policyXPState or ns.XPState()
     if not state or not profile or not number(profile.level, 60) then return end
     local remaining, unknown = ns.ZoneXPRemaining(guide, profile, query)
     if not remaining then return end
@@ -142,7 +146,8 @@ end
 function ns.ZoneExitProjection(guide, profile, query)
     if type(guide) ~= "table" then return end
     profile = profile or ns.profile
-    local state = ns.XPState()
+    local state = query and query.policyXPState or ns.XPState()
+    if query and state then query.policyXPState = state end
     if not state or not profile then return zoneProjection(guide, profile, query) end
     if not query then return zoneProjection(guide, profile, query) end
     local key = table.concat({tostring(guide.key), tostring(profile.level), tostring(state.level), tostring(state.xp),
@@ -307,7 +312,7 @@ function ns.GuideXPText(guide, query)
             local percent = projection.percent and (" (" .. math.floor(projection.percent * 100 + 0.5) .. "%)") or ""
             local nextGuide = projection.nextGuide
             local line
-            local zoneFinishing = ns.GuideZoneFinishing and ns.GuideZoneFinishing(guide, ns.profile, projection)
+            local zoneFinishing = ns.GuideZoneFinishing and ns.GuideZoneFinishing(guide, ns.profile, projection, query)
             if zoneFinishing then
                 local eligible = 0
                 for _, record in ipairs(guide.records or {}) do

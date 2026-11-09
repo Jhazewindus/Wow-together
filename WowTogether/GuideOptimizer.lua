@@ -120,10 +120,14 @@ local function availableTasks(guide, query)
             local seriesBlocked = seriesPrevious and ns.Completed(seriesPrevious) ~= true
             local seriesReason = seriesBlocked and ("Finish " .. ns.QuestTitle(seriesPrevious) .. " first.")
             local active = activeForParty(record.id, false, guide.personal)
+            local levelAllowed, levelReason = true, nil
+            if not guide.classLineGuide then levelAllowed, levelReason = ns.LevelingValue(record.id, query) end
+            local inLogLowValue = levelAllowed == false and type(levelReason) == "string"
+                and string.find(levelReason, "^in%-log%-low%-value:") ~= nil
             local readyTask = not seriesBlocked and (guide.personal or ns.FocusCanStartRecord(record, focus))
                 and (guide.classLineGuide and (ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true
                     or active or ns.QuestProgressReady(ns.self, record.id) == true)
-                    or not guide.classLineGuide and (ns.LevelingValue(record.id, query) ~= false
+                    or not guide.classLineGuide and (levelAllowed ~= false
                         or activeForParty(record.id, true, guide.personal)
                         or guide.collectionRequired and guide.collectionRequired[record.id]
                         or guide.collectionGoals and guide.collectionGoals[record.id]
@@ -145,7 +149,9 @@ local function availableTasks(guide, query)
             else
                 missing = missing + 1
                 local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)
-                guide.pendingReason = guide.pendingReason or seriesReason or reason or ns.QuestStartGapReason(record.id)
+                if not inLogLowValue then
+                    guide.pendingReason = guide.pendingReason or seriesReason or reason or ns.QuestStartGapReason(record.id)
+                end
                 local quest = ns.CatalogueQuest(record.id)
                 if guide.classLineGuide and not seriesBlocked and quest and quest.minLevel
                     and (ns.profile.level or 0) < quest.minLevel
@@ -471,6 +477,18 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative, query)
                         .. "; next zone starts at level " .. nextGuide.rangeLow .. ".",
                     title = guide.zone}
             end
+        end
+    end
+    if #stops == 0 and #tasks == 0 and guide.mode == "zone" and query.zoneFinishing
+        and complete < enabled and not guide.pendingReason and ns.NextZoneBaselineGuide then
+        local nextGuide = ns.NextZoneBaselineGuide(guide, true)
+        if nextGuide then
+            local low, high = nextGuide.rangeLow or "?", nextGuide.rangeHigh or "?"
+            local label = (guide.zone or guide.title or "This zone") .. " finished — next: "
+                .. (nextGuide.zone or nextGuide.title or "the next zone") .. " (" .. tostring(low)
+                .. "–" .. tostring(high) .. ")"
+            stops[1] = {id = 0, kind = "notice", mapID = mapID, reasonCode = "zone-exit",
+                nextGuide = nextGuide, label = label, title = guide.zone or guide.title, optional = true}
         end
     end
     if #stops == 0 and not guide.pendingReason then
