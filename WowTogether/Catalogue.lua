@@ -6,6 +6,67 @@ function ns.CatalogueQuest(id)
     return ns.catalogue and ns.catalogue.quests[id]
 end
 
+local xpIndexCatalogue, xpIndexQuests
+local questFollowers, questIDsByLevel, questXPByLevel = {}, {}, {}
+local emptyQuestIndex = {}
+
+local function addCatalogueFollower(followers, previous, id)
+    if previous and previous ~= id then
+        followers[previous] = followers[previous] or {}
+        followers[previous][id] = true
+    end
+end
+
+local function buildXPIndex()
+    local catalogue = ns.catalogue
+    local quests = catalogue and catalogue.quests
+    if xpIndexCatalogue == catalogue and xpIndexQuests == quests then return end
+    local followers, idsByLevel, xpByLevel = {}, {}, {}
+    for id, quest in pairs(quests or {}) do
+        addCatalogueFollower(followers, quest.previousQuest, id)
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do addCatalogueFollower(followers, previous, id) end
+        for _, previous in ipairs(quest.prerequisiteAny or {}) do addCatalogueFollower(followers, previous, id) end
+        for position, current in ipairs(quest.series or {}) do
+            if quest.series[position + 1] then
+                addCatalogueFollower(followers, current, quest.series[position + 1])
+            end
+        end
+
+        local referenceLevel = ns.Public(quest.level) and type(quest.level) == "number" and quest.level
+        local level = referenceLevel
+            or ns.Public(quest.minLevel) and type(quest.minLevel) == "number" and quest.minLevel
+        if level and level >= 1 and level <= 60 and level == math.floor(level) then
+            idsByLevel[level] = idsByLevel[level] or {}
+            idsByLevel[level][#idsByLevel[level] + 1] = id
+            local xp = quest.xp
+            if referenceLevel == level and ns.Public(xp) and type(xp) == "number"
+                and xp >= 0 and xp <= 10000000 and xp == math.floor(xp) then
+                local bucket = xpByLevel[level] or {sum = 0, count = 0}
+                bucket.sum, bucket.count = bucket.sum + xp, bucket.count + 1
+                xpByLevel[level] = bucket
+            end
+        end
+    end
+    xpIndexCatalogue, xpIndexQuests = catalogue, quests
+    questFollowers, questIDsByLevel, questXPByLevel = followers, idsByLevel, xpByLevel
+end
+
+function ns.CatalogueFollowers(id)
+    buildXPIndex()
+    return questFollowers[id] or emptyQuestIndex
+end
+
+function ns.CatalogueXPReference(level)
+    buildXPIndex()
+    local bucket = questXPByLevel[level]
+    return bucket and bucket.count > 0 and bucket.sum / bucket.count or nil
+end
+
+function ns.CatalogueQuestIDsAtLevel(level)
+    buildXPIndex()
+    return questIDsByLevel[level] or emptyQuestIndex
+end
+
 -- Explain a missing pickup with captured item-source facts when available.
 -- These facts can identify what starts a quest, but do not imply a map point.
 function ns.QuestStartGapReason(id)

@@ -615,11 +615,18 @@ function ns.InitializeDungeonViewer()
     ns.CheckDungeonViewerEntry()
 end
 function ns.DungeonViewerDiagnostics(output)
-    local counts = ns.dungeonJournalData and ns.dungeonJournalData.counts or {}
-    output("Dungeon viewer: " .. (counts.bosses or 0) .. " encounters; " .. (counts.lootEntries or 0) .. " notable boss-drop entries; " .. (counts.mapReferences or 0) .. " client layout references. Native map/portrait availability needs beta testing.")
-    local positions = ns.dungeonMapData and ns.dungeonMapData.counts or {}
-    output("Dungeon reference markers: " .. (positions.mappedBosses or 0) .. " bosses; " .. (positions.questsWithInteriorMarkers or 0)
-        .. " quests with interior positions. Exact matching floor artwork required; native coordinates take precedence.")
+    local journal = rawget(ns, "dungeonJournalData")
+    local maps = rawget(ns, "dungeonMapData")
+    local counts = type(journal) == "table" and rawget(journal, "counts")
+    local positions = type(maps) == "table" and rawget(maps, "counts")
+    if type(counts) == "table" then
+        output("Dungeon viewer: " .. (counts.bosses or 0) .. " encounters; " .. (counts.lootEntries or 0)
+            .. " notable boss-drop entries; " .. (counts.mapReferences or 0) .. " client layout references. Native map/portrait availability needs beta testing.")
+    else output("Dungeon viewer: not computed yet (optional dungeon data is not loaded).") end
+    if type(positions) == "table" then
+        output("Dungeon reference markers: " .. (positions.mappedBosses or 0) .. " bosses; " .. (positions.questsWithInteriorMarkers or 0)
+            .. " quests with interior positions. Exact matching floor artwork required; native coordinates take precedence.")
+    else output("Dungeon reference markers: not computed yet (optional dungeon data is not loaded).") end
     output("Dungeon player: " .. ns.dungeonPlayerStatus)
     local viewer = ns.dungeonViewer
     ns.DungeonPlayerDiagnostics(output, viewer)
