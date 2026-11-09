@@ -37,6 +37,7 @@ end
 local function historyReady(person)
     if person.key == ns.self then return ns.questReady == true end
     local peer = ns.members[person.key]
+    if person.synced and peer and (peer.stateReady or peer.scopeState) and not peer.syncPending then return true end
     return person.synced and peer and peer.activeRevision and peer.completionRevision and peer.historyRevision
         and peer.historyRevision == peer.completionRevision and peer.completionRevision >= peer.activeRevision
         and not peer.syncPending

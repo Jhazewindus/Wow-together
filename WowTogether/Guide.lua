@@ -319,6 +319,7 @@ function ns.ReceiveGuideMessage(message, sender)
         ns.members[sender] = ns.members[sender] or {}
         ns.members[sender].profile = {level = level, faction = faction == 2 and "Horde" or (faction == 1 and "Alliance" or "Unknown"),
             mapID = mapID, zone = text(zone, 40), classID = classID, raceID = raceID}
+        if ns.SyncStateSavePeer then ns.SyncStateSavePeer(sender) end
         return true, true
     end
     if string.sub(message, 1, 4) ~= "1|G|" then return false end

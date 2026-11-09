@@ -355,8 +355,10 @@ class AddonTests(unittest.TestCase):
             self.fail('sync did not settle')
         self.assertTrue(a.ns.members['Bob-TestRealm'].active[50])
         self.assertTrue(b.ns.members['Alice-TestRealm'].active[40])
-        self.assertTrue(a.ns.members['Bob-TestRealm'].completed[1])
-        self.assertTrue(b.ns.members['Alice-TestRealm'].completed[50])
+        # Empty-catalogue host fixtures use the scoped C/K compatibility path;
+        # off-scope historical completions are deliberately not broadcast.
+        self.assertTrue(a.ns.members['Bob-TestRealm'].historyChecked[2])
+        self.assertTrue(b.ns.members['Alice-TestRealm'].historyChecked[2])
         rows = a.ns.Rows()
         self.assertEqual(rows[1].id, 2)
         self.assertEqual(rows[1].active, 2)
@@ -465,8 +467,8 @@ class AddonTests(unittest.TestCase):
                 b.receive(message, 'Shamoone Heehee-ClassicBetaPvP', channel)
         else:
             self.fail('surname sync did not settle')
-        self.assertTrue(a.ns.members['Shamoone-Heehee'].completed[1])
-        self.assertTrue(b.ns.members['Barry-Batsman'].completed[3])
+        self.assertTrue(a.ns.members['Shamoone-Heehee'].historyChecked[2])
+        self.assertTrue(b.ns.members['Barry-Batsman'].historyChecked[2])
         self.assertEqual(a.ns.Rows()[1].active, 2)
         self.assertGreater(a.ns.syncStats.accepted, 0)
 

@@ -5,8 +5,11 @@ local queue, pumping, pending = {}, false, false
 local revision = 0
 local announced = false
 local lastSnapshot, lastCompletion, lastRoster, lastOffers
+local lastHelloHash
 local lastActiveRevision
 local retryCount, sendDelay = 0, 1
+local byteBudget, byteTokens, tokenTime, lastSendTime = 600, 2000, nil, nil
+local budgetRecoveryAt, logicalClock, lastSentLane, lastBackgroundTime = nil, 0, nil, nil
 local roster = {}
 local identities = {}
 local labels = {}
@@ -99,7 +102,9 @@ function ns.UpdateRoster()
         queue = {}
         retryCount = 0
         announced = false
+        lastHelloHash = nil
         lastSnapshot, lastCompletion, lastOffers = nil, nil, nil
+        if ns.ResetSyncStateTraffic then ns.ResetSyncStateTraffic() end
         if ns.ResetGuideTraffic then ns.ResetGuideTraffic() end
         if ns.ResetCatchupHistory then ns.ResetCatchupHistory() end
     end
@@ -147,18 +152,63 @@ end
 
 local function inParty() return ns.PartyFeaturesEnabled() and normalParty() end
 
-local function sendPlanHello()
-    if ns.QueueMessage then ns.QueueMessage("2|H|" .. tostring(ns.VERSION or "0") .. "|1") end
+local function peerCapabilitiesKnown()
+    if not ns.partyNames or #ns.partyNames == 0 then return false end
+    for _, key in ipairs(ns.partyNames) do
+        local member = ns.members[key]
+        if not member or member.planSupport == nil then return false end
+    end
+    return true
+end
+
+local function sendPlanHello(onlyTarget)
+    if not ns.QueueMessage then return end
+    local hash = ns.SyncStateCatalogueHash and ns.SyncStateCatalogueHash() or "0"
+    local revision = ns.SyncStateRevision and ns.SyncStateRevision() or 0
+    local profile = ns.profile or {}
+    local scope = ns.PartyPlanCurrentScope and ns.PartyPlanCurrentScope() or {}
+    local scopeHash = ns.SyncStateScopeHash and ns.SyncStateScopeHash(scope) or "0"
+    lastHelloHash = hash
+    for _, target in ipairs(ns.partyNames or {}) do
+        if not onlyTarget or target == onlyTarget then
+            local peer = ns.SyncStatePeer and ns.SyncStatePeer(target)
+            local acknowledged = peer and peer.receivedRev or 0
+            -- Keep the 0.8.106 capability reply intact while adding the state
+            -- revision fields understood by this protocol.
+            ns.QueueMessage("2|H|" .. tostring(ns.VERSION or "0") .. "|1", "control")
+            local message = table.concat({"2", "H", tostring(ns.VERSION or "0"), "1", hash, revision,
+                acknowledged, profile.level or 0, profile.classID or 0, target, scopeHash}, "|")
+            ns.QueueMessage(message, "control")
+        end
+    end
 end
 
 local function messagePriority(message)
-    if string.match(message, "^1|[HVQ]|") or string.match(message, "^2|H|") then return 1 end
-    if string.match(message, "^1|[SPGR]|") then return 2 end
+    if string.match(message, "^1|[HVQ]|") or string.match(message, "^2|[HC]|") then return 1 end
+    if string.match(message, "^1|[SPTGRZU]|") or string.match(message, "^2|S|") then return 2 end
     return 3
 end
 
+local function now()
+    local value = ns.ReadPublic and ns.ReadPublic(GetTime)
+    if type(value) == "number" then return value end
+    return os.clock() + logicalClock
+end
+
+local function updateBudget()
+    local current = now()
+    if tokenTime then byteTokens = math.min(2000, byteTokens + math.max(0, current - tokenTime) * byteBudget) end
+    tokenTime = current
+    while budgetRecoveryAt and current >= budgetRecoveryAt and byteBudget < 600 do
+        byteBudget = math.min(600, byteBudget * 1.25)
+        budgetRecoveryAt = byteBudget >= 600 and nil or budgetRecoveryAt + 10
+    end
+end
+
 local function enqueue(message, priority)
-    local entry = {message = message, priority = priority or messagePriority(message)}
+    local lanes = {control = 1, now = 2, background = 3}
+    local lane = type(priority) == "number" and priority or lanes[priority]
+    local entry = {message = message, priority = lane or messagePriority(message)}
     local index = #queue + 1
     while index > 1 and queue[index - 1].priority > entry.priority do
         queue[index] = queue[index - 1]
@@ -171,12 +221,19 @@ function ns.RefreshSyncStatus()
     if not ns.ui or not ns.ui.status then return end
     local count = #queue
     if count > 0 then
-        ns.ui.status:SetText(retryCount > 0 and "Delivery slowed; retrying" or ("Sending updates: " .. count .. " left"))
+        local background = 0
+        for _, item in ipairs(queue) do if item.priority == 3 then background = background + 1 end end
+        if queue[1].priority == 3 and background > 0 then
+            ns.ui.status:SetText("Ready to plan (history syncing in background: " .. background .. " left)")
+        else
+            ns.ui.status:SetText(retryCount > 0 and "Delivery slowed; retrying" or ("Sending updates: " .. count .. " left"))
+        end
     end
 end
 
 local function schedulePump(delay)
     local generation = transportGeneration
+    if not ns.ReadPublic or not ns.ReadPublic(GetTime) then logicalClock = logicalClock + (delay or 0) end
     C_Timer.After(delay, function() if generation == transportGeneration then pump() end end)
 end
 
@@ -187,12 +244,23 @@ pump = function()
         retryCount = 0
         pumping = false
         lastSnapshot, lastCompletion, lastOffers = nil, nil, nil
+        if ns.ResetSyncStateTraffic then ns.ResetSyncStateTraffic() end
         if ns.ResetGuideTraffic then ns.ResetGuideTraffic() end
         ns.Refresh(true)
         return
     end
-    -- Keep the head until accepted; dropping throttled snapshot parts loses data.
-    local message = queue[1].message
+    -- Use a byte token bucket and a four-message/second ceiling. Keep the head
+    -- until accepted; dropping throttled snapshot parts loses the transfer.
+    updateBudget()
+    local entry, current = queue[1], now()
+    if entry.priority == 3 and lastBackgroundTime and current - lastBackgroundTime < 2 then
+        schedulePump(2 - (current - lastBackgroundTime)); return
+    end
+    local rateWait = lastSendTime and math.max(0, 0.25 - (current - lastSendTime)) or 0
+    local byteWait = byteTokens >= #entry.message and 0 or (#entry.message - byteTokens) / byteBudget
+    local wait = math.max(rateWait, byteWait)
+    if wait > 0 then schedulePump(wait); return end
+    local message = entry.message
     ns.syncStats.sendAttempts = ns.syncStats.sendAttempts + 1
     local result = C_ChatInfo.SendAddonMessage(PREFIX, message, "PARTY")
     ns.syncStats.lastSend = ns.ResultText(result, "SendAddonMessageResult")
@@ -208,6 +276,8 @@ pump = function()
         ns.syncStats.throttled = ns.syncStats.throttled + 1
         ns.syncStats.retries = ns.syncStats.retries + 1
         sendDelay = math.min(16, sendDelay * 2)
+        byteBudget = math.max(75, byteBudget / 2)
+        budgetRecoveryAt = now() + 30
         trace("Keep packet; retry in " .. sendDelay .. " seconds")
         ns.RefreshSyncStatus()
         schedulePump(sendDelay)
@@ -215,8 +285,11 @@ pump = function()
     elseif ns.Public(result) and (result == true or result == nil
         or (ns.Public(success) and type(success) == "number" and result == success)) then
         table.remove(queue, 1)
+        byteTokens = math.max(0, byteTokens - #message)
+        lastSendTime = current
+        if entry.priority == 3 then lastBackgroundTime = current end
         retryCount = 0
-        sendDelay = math.max(1, sendDelay * 0.8)
+        sendDelay = 1
     else
         -- A failed snapshot invalidates its dependent title transfer as well.
         ns.syncStats.failures = ns.syncStats.failures + 1
@@ -227,16 +300,29 @@ pump = function()
         retryCount = 0
         pumping = false
         lastSnapshot, lastCompletion, lastOffers = nil, nil, nil
+        if ns.ResetSyncStateTraffic then ns.ResetSyncStateTraffic() end
         if ns.ResetGuideTraffic then ns.ResetGuideTraffic() end
         ns.Refresh(true)
         return
     end
-    ns.RefreshSyncStatus()
-    schedulePump(sendDelay)
+    local nextEntry = queue[1]
+    if not nextEntry or nextEntry.priority ~= entry.priority then
+        lastSentLane = entry.priority
+        ns.Refresh(true)
+    else
+        ns.RefreshSyncStatus()
+    end
+    if not nextEntry then pumping = false; return end
+    updateBudget()
+    local currentTime = now()
+    local nextWait = math.max(0.25 - (currentTime - (lastSendTime or currentTime)),
+        byteTokens >= #nextEntry.message and 0 or (#nextEntry.message - byteTokens) / byteBudget)
+    schedulePump(nextWait)
 end
 
 function ns.TransportState()
-    return {queued = #queue, retrying = retryCount > 0, failures = ns.syncStats.failures}
+    return {queued = #queue, retrying = retryCount > 0, failures = ns.syncStats.failures,
+        budget = math.floor(byteBudget), bytes = math.floor(byteTokens)}
 end
 
 function ns.ActiveSnapshotRevision() return lastActiveRevision end
@@ -244,6 +330,17 @@ function ns.ActiveSnapshotRevision() return lastActiveRevision end
 function ns.QueueMessage(message, priority)
     if not ns.syncReady or not inParty() or type(message) ~= "string" or #message > 255 or #queue >= 256 then return false end
     enqueue(message, priority)
+    if not pumping then pumping = true; schedulePump(0) end
+    return true
+end
+
+function ns.QueueMessages(messages, priority)
+    if not ns.syncReady or not inParty() or type(messages) ~= "table" or #messages == 0
+        or #queue + #messages > 256 then return false end
+    for _, message in ipairs(messages) do
+        if type(message) ~= "string" or #message > 255 then return false end
+    end
+    for _, message in ipairs(messages) do enqueue(message, priority) end
     if not pumping then pumping = true; schedulePump(0) end
     return true
 end
@@ -307,17 +404,50 @@ function ns.SendActiveSnapshot(force)
     if not pumping and #queue > 0 then pumping = true; C_Timer.After(0, pump) end
 end
 
-function ns.SendCompletion(force)
+function ns.SendCompletion(force, forceFallback)
+    local useFallback = forceFallback == true
+    local catalogue = ns.catalogue
+    local catalogueQuests = type(catalogue) == "table" and rawget(catalogue, "quests")
+    local catalogueReady = type(catalogueQuests) == "table" and not getmetatable(catalogue)
+        or type(catalogueQuests) == "table" and ns.optionalDataState
+            and ns.optionalDataState.WowTogether_QuestData == "loaded"
+    if not catalogueReady or not next(catalogueQuests) then
+        useFallback = true
+    end
+    for _, key in ipairs(ns.partyNames or {}) do
+        local member = ns.members[key]
+        if member and (member.planSupport == false
+            or member.planSupport == true and (not member.stateHashFromPeer or member.catalogueMismatch)) then
+            useFallback = true; break
+        end
+    end
+    if not useFallback then return end
     local completed, checked = {}, {}
-    local scope
-    if ns.routeSelection and ns.routeSelection.records and ns.RouteHistoryScope then
-        ns.RouteHistoryScope(ns.routeSelection.records)
-        scope = ns.partyRouteHistoryScope
-    else scope = ns.partyRouteHistoryScope end
-    for id in pairs(scope or ns.QuestIDs()) do
+    local scope = {}
+    local ordered = ns.PartyPlanCurrentScope and ns.PartyPlanCurrentScope() or {}
+    for index = 1, math.min(#ordered, 512) do scope[ordered[index]] = true end
+    if not next(scope) then
+        for id in pairs(ns.partyRouteHistoryScope or {}) do scope[id] = true end
+    end
+    if not next(scope) and ns.CatalogueScopeIDs then
+        local currentView = ns.CatalogueScopeIDs()
+        local count = 0
+        for id in pairs(currentView or {}) do
+            if count >= 512 then break end
+            scope[id], count = true, count + 1
+        end
+    end
+    for id in pairs(scope) do
         local result = ns.Completed(id)
         if result ~= nil then checked[id] = true end
         if result == true then completed[id] = true end
+    end
+    if not next(scope) and not catalogueReady and ns.QuestIDs then
+        for _, id in ipairs(ns.QuestIDs()) do
+            local result = ns.Completed(id)
+            if result ~= nil then checked[id] = true end
+            if result == true then completed[id] = true end
+        end
     end
     local signature = (lastActiveRevision or 0) .. "|" .. fingerprint(completed) .. "|" .. fingerprint(checked)
     if not force and signature == lastCompletion then
@@ -359,10 +489,14 @@ function ns.SyncNow(force)
             announced = true
             enqueue("1|H", 1)
             sendPlanHello()
+        elseif ns.SyncStateCatalogueHash and ns.SyncStateCatalogueHash()
+            and ns.SyncStateCatalogueHash() ~= lastHelloHash then
+            sendPlanHello()
         end
-        if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(force) end
+        if ns.SendPartyPlanDigest and peerCapabilitiesKnown() then ns.SendPartyPlanDigest(force) end
         ns.SendActiveSnapshot(force)
         if ns.SendProgress then ns.SendProgress(force, lastActiveRevision) end
+        if ns.SyncStateSendCurrent then ns.SyncStateSendCurrent() end
         ns.SendCompletion(force)
         ns.SendOffers(force)
         if ns.SendGuideContext then ns.SendGuideContext(force) end
@@ -382,14 +516,15 @@ function ns.ScheduleSync(localReady)
     C_Timer.After(2, function() pending = false; ns.SyncNow(false) end)
 end
 
-local function replySnapshot()
+local function replySnapshot(forceLegacy)
     if not ns.ReadQuests() then return end
     if ns.ReadGuide then ns.ReadGuide() end
     sendPlanHello()
-    if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(true) end
+    if ns.SendPartyPlanDigest and peerCapabilitiesKnown() then ns.SendPartyPlanDigest(true) end
     ns.SendActiveSnapshot(true)
     if ns.SendProgress then ns.SendProgress(true, lastActiveRevision) end
-    ns.SendCompletion(true)
+    if ns.SyncStateSendCurrent then ns.SyncStateSendCurrent() end
+    ns.SendCompletion(true, forceLegacy)
     ns.SendOffers(true)
     if ns.SendGuideContext then ns.SendGuideContext(true) end
     if ns.SendRouteLocations then ns.SendRouteLocations(true, lastActiveRevision) end
@@ -438,20 +573,43 @@ function ns.Receive(prefix, message, channel, sender)
     if not roster[sender] then ignored("sender left roster"); return end
     trace("Receive from " .. transportSender .. "; matched " .. matchReason)
     if passiveHello then
-        local peerVersion, peerSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$")
+        local peerVersion, peerSupport, peerHash, peerRevision, acknowledged, peerLevel, peerClass, target, peerScope =
+            string.match(message, "^2|H|([^|]+)|([01])|(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|([^|]+)|(%d+)$")
+        if not peerVersion then peerVersion, peerSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$") end
         if message ~= "1|H" and not peerVersion then ignored("party mode disabled; ignored non-hello packet"); return end
+        if target and target ~= ns.self then return end
         local member = ns.members[sender] or {}; ns.members[sender] = member
         member.version, member.planSupport = peerVersion, peerSupport == "1"
+        if peerHash and ns.SyncStatePeerHello then
+            ns.SyncStatePeerHello(sender, peerHash, tonumber(peerRevision), tonumber(acknowledged), tonumber(peerLevel), tonumber(peerClass), peerScope)
+        end
         ns.syncStats.accepted = ns.syncStats.accepted + 1
         trace("Received peer hello while Ask mode is waiting for consent")
         ns.Refresh(true)
         return
     end
-    local planVersion, planSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$")
+    local planVersion, planSupport, peerHash, peerRevision, acknowledged, peerLevel, peerClass, target, peerScope =
+        string.match(message, "^2|H|([^|]+)|([01])|(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|([^|]+)|(%d+)$")
+    if not planVersion then planVersion, planSupport = string.match(message, "^2|H|(%d+%.%d+%.%d+)|([01])$") end
     if planVersion then
+        if target and target ~= ns.self then return end
         local member = ns.members[sender] or {}
         ns.members[sender] = member
         member.version, member.planSupport = planVersion, planSupport == "1"
+        if peerHash and ns.SyncStatePeerHello then
+            ns.SyncStatePeerHello(sender, peerHash, tonumber(peerRevision), tonumber(acknowledged), tonumber(peerLevel), tonumber(peerClass), peerScope)
+            if ns.SyncStateSendPeer then ns.SyncStateSendPeer(sender) end
+            if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(true) end
+            if member.catalogueMismatch and ns.SendCompletion then ns.SendCompletion(true) end
+        elseif ns.SendCompletion then
+            C_Timer.After(3, function()
+                if ns.members[sender] == member and not member.stateHashFromPeer then
+                    if member.planSupport == nil then member.planSupport = false end
+                    if ns.SendCompletion then ns.SendCompletion(true) end
+                    if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(true) end
+                end
+            end)
+        end
         ns.syncStats.accepted = ns.syncStats.accepted + 1
         ns.Refresh(true)
         return
@@ -460,6 +618,17 @@ function ns.Receive(prefix, message, channel, sender)
     if moduleHandled then
         if moduleAccepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(moduleReason or "module handler rejected packet") end
         return
+    end
+    if ns.ReceiveSyncStateMessage then
+        local handled, accepted, reason, completed = ns.ReceiveSyncStateMessage(message, sender)
+        if handled then
+            if accepted then
+                ns.syncStats.accepted = ns.syncStats.accepted + 1
+                if completed or string.sub(message, 1, 4) == "1|U|" then sendPlanHello(sender) end
+                ns.Refresh(true)
+            else ignored(reason or "invalid quest state packet") end
+            return
+        end
     end
     if ns.ReceivePartyPlanMessage then
         local handled, accepted, reason = ns.ReceivePartyPlanMessage(message, sender)
@@ -477,7 +646,7 @@ function ns.Receive(prefix, message, channel, sender)
         if ns.ResetPartyPlanPeer then ns.ResetPartyPlanPeer(sender) end
         local member = ns.members[sender] or {}
         ns.members[sender] = member
-        member.planSupport, member.version, member.partyPlan = false, nil, nil
+        member.version, member.partyPlan = nil, nil
         member.partyPlanScope = nil
         member.syncPending, member.activeRevision = true, nil
         member.completionRevision, member.historyRevision, member.routeLocations = nil, nil, nil
@@ -485,13 +654,25 @@ function ns.Receive(prefix, message, channel, sender)
         member.offered, member.offerRevision = nil, nil
         repairs[sender] = nil
         replySnapshot()
+        C_Timer.After(3, function()
+            if ns.members[sender] == member and not member.stateHashFromPeer then
+                if member.planSupport == nil then member.planSupport = false end
+                ns.SendCompletion(true)
+                if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(true) end
+            end
+        end)
         repairPeer(sender)
         ns.Refresh(true)
         return
     end
     if string.sub(message, 1, 4) == "1|Q|" then
         local target = string.sub(message, 5)
-        if target == ns.self then ns.syncStats.accepted = ns.syncStats.accepted + 1; replySnapshot() end
+        if target == ns.self then
+            ns.syncStats.accepted = ns.syncStats.accepted + 1
+            local member = ns.members[sender]
+            local legacy = not member or not member.stateHashFromPeer or member.catalogueMismatch
+            replySnapshot(legacy)
+        end
         return
     end
     if ns.ReceiveCatchupHistory then
@@ -697,10 +878,12 @@ function ns.ApplyPartyMode()
     -- Old queued callbacks must never pump a new session after toggling back on.
     transportGeneration = transportGeneration + 1
     queue, pumping, retryCount, sendDelay, announced = {}, false, 0, 1, false
+    lastHelloHash = nil
     assemblies, repairs, ns.members = {}, {}, {}
     if ns.ResetPartyPlanTraffic then ns.ResetPartyPlanTraffic() end
     lastSnapshot, lastCompletion, lastOffers, lastActiveRevision = nil, nil, nil, nil
     ns.ResetGuideTraffic(); ns.ResetCatchupHistory()
+    if ns.ResetSyncStateTraffic then ns.ResetSyncStateTraffic() end
     ns.pendingPartyRouteStart, ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil, nil
     ns.partyFollowContext = nil
     if ns.partyRoutePrompt then ns.partyRoutePrompt:Hide() end
@@ -740,6 +923,13 @@ function ns.SyncDiagnostics(output)
         local member = ns.members[name]
         output("  " .. ns.MemberLabel(name) .. ": " .. (member and member.syncPending and "waiting for refreshed quest snapshot; last progress retained"
             or (member and member.active and "quest snapshot received" or "waiting for quest snapshot")))
+    end
+    local savedPeers, savedCount = ns.db and ns.db.peers or {}, 0
+    for _ in pairs(savedPeers or {}) do savedCount = savedCount + 1 end
+    output("Fast sync: " .. savedCount .. " peers known (" .. #queue .. " queued; " .. math.floor(byteBudget) .. " B/s budget)")
+    if ns.syncStats.lastFullSendMessages then
+        output("Last full state send: " .. ns.syncStats.lastFullSendMessages .. " messages at revision "
+            .. tostring(ns.syncStats.lastFullSendRevision or "unknown"))
     end
     output("Quest giver offer API ready: " .. safe(ns.offerReady))
     output("Quest greeting list ready: " .. safe(ns.greetingReady) .. "; " .. (ns.greetingReadStatus or "not read this session"))
