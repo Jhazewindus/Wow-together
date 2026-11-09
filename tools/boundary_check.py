@@ -12,28 +12,48 @@ ALLOWED = {
     'ReadPublic', 'Public', 'GuideInteger', 'SafeTitle', 'Option', 'SetOption',
     'Print', 'On', 'ResearchExportHook', 'Gold', 'STEP_SYMBOLS',
 }
-ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
-DYNAMIC = re.compile(r'\bns\s*\[')
-GOLD_MEMBER = re.compile(r'\bns\s*\.\s*Gold\s*\.\s*([A-Za-z_]\w*)')
-SYMBOL_MEMBER = re.compile(r'\bns\s*\.\s*STEP_SYMBOLS\s*\.\s*([A-Za-z_]\w*)')
+TOKEN = re.compile(r'''"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|--\[\[.*?\]\]|--[^\n]*|\[\[.*?\]\]''', re.S)
+ALIAS = re.compile(r'\b(?:local\s+)?([A-Za-z_]\w*)\s*=\s*([A-Za-z_]\w*)\b')
+GOLD_FIELDS = {'Price', 'Suggestions', 'SessionCard'}
+
+
+def code_only(source):
+    """Mask strings and comments while retaining offsets and line numbers."""
+    return TOKEN.sub(lambda match: ''.join('\n' if c == '\n' else ' ' for c in match.group()), source)
 
 
 def violations(source):
+    code = code_only(source)
     problems = []
-    for number, line in enumerate(source.splitlines(), 1):
-        code = line.split('--', 1)[0]
-        for match in ACCESS.finditer(code):
-            name = match.group(1) or match.group(3)
+    aliases = {'ns'}
+    changed = True
+    while changed:
+        changed = False
+        for match in ALIAS.finditer(code):
+            target, origin = match.groups()
+            if origin in aliases and target not in aliases:
+                aliases.add(target)
+                changed = True
+    for alias in aliases:
+        access = re.compile(r'\b' + re.escape(alias) + r'\s*(?:\.\s*([A-Za-z_]\w*)|(\[))')
+        for match in access.finditer(code):
+            number = code.count('\n', 0, match.start()) + 1
+            name = match.group(1)
+            if not name:
+                problems.append(f'{number}: dynamic namespace lookup is outside the module API')
+                continue
             if name not in ALLOWED:
-                problems.append(f'{number}: ns.{name} is outside the module API')
-        if len(DYNAMIC.findall(code)) > sum(1 for match in ACCESS.finditer(code) if match.group(3)):
-            problems.append(f'{number}: dynamic namespace lookup is outside the module API')
-        for match in GOLD_MEMBER.finditer(code):
-            if match.group(1) not in {'Price', 'Suggestions', 'SessionCard'}:
-                problems.append(f'{number}: ns.Gold.{match.group(1)} is not an exported result')
-        for match in SYMBOL_MEMBER.finditer(code):
-            if match.group(1) != 'farm':
-                problems.append(f'{number}: only ns.STEP_SYMBOLS.farm is public')
+                problems.append(f'{number}: {alias}.{name} is outside the module API')
+            if name in {'Gold', 'STEP_SYMBOLS'}:
+                member = re.match(r'\s*(?:\.\s*([A-Za-z_]\w*)|(\[))', code[match.end():])
+                if member:
+                    field = member.group(1)
+                    allowed = GOLD_FIELDS if name == 'Gold' else {'farm'}
+                    if field not in allowed:
+                        problems.append(f'{number}: {alias}.{name} member is outside the module API')
+    for match in re.finditer(r'\b_G\s*\.\s*WowTogetherSharedNamespace\b', code):
+        number = code.count('\n', 0, match.start()) + 1
+        problems.append(f'{number}: raw core namespace handoff is forbidden')
     return problems
 
 

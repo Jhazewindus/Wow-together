@@ -22,7 +22,8 @@ function ns.Option(key)
     local item = options[key]
     if item then
         local value = item.group.get(key)
-        return value == nil and item.default or value
+        if value == nil then return item.default end
+        return value
     end
     return oldOption(key)
 end
@@ -417,3 +418,43 @@ function ns.ExportQuestResearch(...)
     local hasEvents = string.match(prefix, "%[%s*$") == nil
     return prefix .. (hasEvents and "," or "") .. table.concat(events, ",") .. string.sub(result, start, finish)
 end
+
+-- A load-on-demand addon gets its own private namespace. Publish only the
+-- contract above through a separate handoff, not the core addon namespace.
+-- Core results remain readable as ns.Gold.Price/Suggestions/SessionCard;
+-- the module may publish only those three functions through api.Gold.
+local goldResults = {}
+local goldNames = {Price = true, Suggestions = true, SessionCard = true}
+local function publishedResult(_, key) return goldResults[key] end
+local goldPublisher = setmetatable({}, {
+    __index = publishedResult,
+    __newindex = function(_, key, value)
+        assert(goldNames[key] and type(value) == "function", "Invalid Gold export")
+        goldResults[key] = value
+    end,
+})
+ns.Gold = setmetatable({}, {
+    __index = publishedResult,
+    __newindex = function() error("Gold results are read-only to core", 2) end,
+})
+local publicNames = {
+    GoldAPIVersion = true, RegisterModule = true, FindTravelPath = true,
+    TravelPointDistance = true, PlayerPoint = true, TrailLoop = true,
+    RouteCostModel = true, PushGuideStop = true, ClearModuleStops = true,
+    RegisterSyncKind = true, CatalogueQuest = true, catalogue = true,
+    ReadPublic = true, Public = true, GuideInteger = true, SafeTitle = true,
+    Option = true, SetOption = true, Print = true, On = true,
+    ResearchExportHook = true,
+}
+local symbols = setmetatable({}, {
+    __index = function(_, key) if key == "farm" then return ns.STEP_SYMBOLS.farm end end,
+    __newindex = function() error("Step symbols are read-only", 2) end,
+})
+_G.WowTogetherGoldAPI = setmetatable({}, {
+    __index = function(_, key)
+        if key == "Gold" then return goldPublisher end
+        if key == "STEP_SYMBOLS" then return symbols end
+        if publicNames[key] then return ns[key] end
+    end,
+    __newindex = function() error("Module API is read-only", 2) end,
+})

@@ -32,8 +32,9 @@ def optional_gold_sources(root):
         if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name) or not (folder / name).is_file():
             raise ValueError('Invalid Gold package source: ' + name)
         source = (folder / name).read_text()
-        if not source.startswith('local addonName, namespace = ...\n'):
-            raise ValueError('Missing Gold shared namespace declaration: ' + name)
+        if not re.match(r'^local addonName, [A-Za-z_]\w* = \.\.\.\n'
+                        r'local ns = _G\.WowTogetherGoldAPI\n', source):
+            raise ValueError('Missing limited Gold API handoff: ' + name)
     return sources
 
 
@@ -84,7 +85,7 @@ def main():
             raise ValueError('Invalid load-on-demand data package metadata: ' + folder)
         for name in sources:
             path = package / name
-            if not path.read_text().startswith('local addonName, namespace = ...\n'):
+            if folder != 'WowTogether_Gold' and not path.read_text().startswith('local addonName, namespace = ...\n'):
                 raise ValueError('Missing shared namespace declaration: ' + str(path))
     media = addon / 'Media' / 'GuideThemes'
     art = json.loads((media / 'manifest.json').read_text())
