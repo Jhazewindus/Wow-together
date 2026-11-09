@@ -218,6 +218,19 @@ class CIReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'must not edit ## Version'):
             validate_pr(self.root, 'base', 'head', 'core/test', lambda *a, **k: responses.pop(0))
 
+    def test_legacy_preflight_compatibility_does_not_require_a_version_bump(self):
+        # The migration PR is checked once using main's old workflow, which
+        # still invokes this command. Its check must not reintroduce the old
+        # release-tag-versus-TOC version gate.
+        addon = self.root / 'WowTogether'
+        addon.mkdir()
+        (addon / 'WowTogether.toc').write_text('## Version: @project-version@\n')
+        output = io.StringIO()
+        with patch('sys.argv', ['ci_release.py', 'preflight', '--root', str(self.root)]), \
+                contextlib.redirect_stdout(output):
+            main()
+        self.assertIn('Legacy preflight skipped', output.getvalue())
+
 
 if __name__ == '__main__':
     unittest.main()
