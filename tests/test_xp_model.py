@@ -51,6 +51,7 @@ class XPModelTests(unittest.TestCase):
 
     def test_turnin_samples_calibrate_only_after_twenty_unrested_observations(self):
         c = self.client()
+        c.ns.db.config.xpModel = True
         c.ns.profile.level = 21
         c.ns.char = c.lua.table_from({})
         c.lua.execute('function GetXPExhaustion() return 0 end')
@@ -64,6 +65,88 @@ class XPModelTests(unittest.TestCase):
         self.assertEqual(c.ns.QuestXPMultiplier(6)[1], 'observed')
         self.assertEqual(c.ns.QuestXP(100, 21), 600)
         self.assertEqual(len(c.ns.char.xpSamples), 20)
+
+    def test_observed_multiplier_is_opt_in(self):
+        c = self.client()
+        c.ns.profile.level = 21
+        c.ns.char = c.lua.table_from({'xpSamples': c.lua.table_from([
+            {'difference': 6, 'multiplier': 0.5, 'rested': False} for _ in range(20)], recursive=True)})
+        self.assertEqual(c.ns.QuestXPMultiplier(6)[1], 'table')
+        c.ns.db.config.xpModel = True
+        self.assertEqual(c.ns.QuestXPMultiplier(6)[1], 'observed')
+
+    def test_zone_projection_is_prepared_once_for_per_quest_policy(self):
+        c = self.client()
+        c.ns.profile.level = 29
+        c.ns.profile.faction = 'Horde'
+        c.ns.db.config.xpModel = True
+        c.ns.xpCurve = c.lua.table_from({29: 100000, 30: 110000})
+        records, quests = c.lua.table(), c.lua.table()
+        for quest_id in range(1, 601):
+            records[quest_id] = c.lua.table_from({'id': quest_id})
+            quests[quest_id] = c.lua.table_from({'id': quest_id, 'title': 'Quest ' + str(quest_id),
+                'level': 29, 'xp': 1000, 'side': 'Both'})
+        c.ns.catalogue = c.lua.table_from({'quests': quests})
+        c.lua.globals().ns = c.ns
+        guide = c.lua.table_from({'key': 'zone:large', 'mode': 'zone', 'rangeLow': 21,
+            'rangeHigh': 29, 'records': records}, recursive=True)
+        c.ns.policyMetrics = c.lua.table_from({'zoneExitCalls': 0, 'zoneFinishingCalls': 0})
+        elapsed, yields = c.lua.eval('''function(guide)
+            local start, count = os.clock(), 0
+            local job = coroutine.create(function() return ns.BuildLevelingRoute(guide, true, true) end)
+            local okay, result
+            repeat
+                okay, result = coroutine.resume(job)
+                if not okay then error(result) end
+                if coroutine.status(job) ~= 'dead' then count = count + 1 end
+            until coroutine.status(job) == 'dead'
+            return os.clock() - start, count
+        end''')(guide)
+        self.assertLess(elapsed, 0.05)
+        self.assertGreater(yields, 0)
+        self.assertEqual(c.ns.policyMetrics.zoneExitCalls, 1)
+        self.assertEqual(c.ns.policyMetrics.zoneFinishingCalls, 1)
+
+    def test_zone_finishing_is_cached_per_query_and_invalidated_by_progress_revision(self):
+        c = self.client()
+        c.ns.profile.level = 29
+        c.ns.db.config.xpModel = True
+        c.ns.xpCurve = c.lua.table_from({29: 100000, 30: 110000})
+        guide = c.lua.table_from({'key': 'zone:cached', 'mode': 'zone', 'rangeLow': 21,
+            'rangeHigh': 29, 'records': [{'id': 101}]}, recursive=True)
+        c.ns.policyMetrics = c.lua.table_from({'zoneExitCalls': 0, 'zoneFinishingCalls': 0})
+        query = c.ns.NewQuestQuery()
+        c.ns.PrepareGuidePolicy(guide, query)
+        self.assertTrue(c.ns.GuideZoneFinishing(guide, c.ns.profile, None, query))
+        self.assertTrue(c.ns.GuideZoneFinishing(guide, c.ns.profile, None, query))
+        self.assertEqual(c.ns.policyMetrics.zoneFinishingCalls, 1)
+        c.ns.guideProgressRevision = 1
+        c.ns.PrepareGuidePolicy(guide, query)
+        self.assertEqual(c.ns.policyMetrics.zoneFinishingCalls, 2)
+
+    def test_zone_route_refresh_does_not_retain_policy_tables(self):
+        c = self.client()
+        c.ns.profile.level = 29
+        c.ns.profile.faction = 'Horde'
+        c.ns.db.config.xpModel = True
+        c.ns.xpCurve = c.lua.table_from({29: 100000, 30: 110000})
+        records, quests = c.lua.table(), c.lua.table()
+        for quest_id in range(1, 601):
+            records[quest_id] = c.lua.table_from({'id': quest_id})
+            quests[quest_id] = c.lua.table_from({'id': quest_id, 'title': 'Quest ' + str(quest_id),
+                'level': 29, 'xp': 1000, 'side': 'Both'})
+        c.ns.catalogue = c.lua.table_from({'quests': quests})
+        guide = c.lua.table_from({'key': 'zone:memory', 'mode': 'zone', 'rangeLow': 21,
+            'rangeHigh': 29, 'records': records}, recursive=True)
+        c.lua.globals().ns = c.ns
+        growth = c.lua.eval('''function(guide)
+            collectgarbage('collect')
+            local before = collectgarbage('count')
+            for _ = 1, 3 do ns.BuildLevelingRoute(guide, false, false) end
+            collectgarbage('collect')
+            return collectgarbage('count') - before
+        end''')(guide)
+        self.assertLess(growth, 2 * 1024)
 
     def test_xp_sample_history_is_bounded_to_five_hundred(self):
         c = self.client()
@@ -83,6 +166,28 @@ class XPModelTests(unittest.TestCase):
         self.assertEqual(sample['event'], 'xp-sample')
         self.assertEqual((sample['questID'], sample['questLevel'], sample['playerLevel'], sample['xpReward']), (100, 5, 15, 500))
         self.assertTrue(sample['rested'])
+
+    def test_old_solo_mode_gets_one_party_setting_notice_at_login(self):
+        c = Client(quests=(), saved_variables={'config': {'soloMode': True, 'partyMode': 'never'}})
+        c.ns.handlers.PLAYER_LOGIN()
+        first = sum('Set Settings > Party mode to Ask me' in str(message)
+            for message in c.lua.globals().logs.values())
+        c.ns.handlers.PLAYER_LOGIN()
+        second = sum('Set Settings > Party mode to Ask me' in str(message)
+            for message in c.lua.globals().logs.values())
+        self.assertEqual((first, second), (1, 1))
+        self.assertEqual(c.ns.Option('partyMode'), 'never')
+
+    def test_old_solo_mode_gets_one_party_setting_notice_at_login(self):
+        c = Client(quests=(), saved_variables={'config': {'soloMode': True, 'partyMode': 'never'}})
+        before = len(c.lua.globals().logs)
+        c.ns.handlers.PLAYER_LOGIN()
+        messages = [str(c.lua.globals().logs[index]) for index in range(before + 1, len(c.lua.globals().logs) + 1)]
+        self.assertEqual(sum('Set Settings > Party mode to Ask me' in message for message in messages), 1)
+        c.ns.handlers.PLAYER_LOGIN()
+        self.assertEqual(sum('Set Settings > Party mode to Ask me' in str(message)
+            for message in c.lua.globals().logs.values()), 1)
+        self.assertEqual(c.ns.Option('partyMode'), 'never')
 
     def test_quest_turned_in_handler_records_the_xp_reward_argument(self):
         c = self.client()
@@ -118,9 +223,34 @@ class XPModelTests(unittest.TestCase):
         self.assertIn('below your pace', at_28.reason)
         self.assertFalse(c.ns.LevelingValue(1093)[0])
         self.assertTrue(c.ns.GuideZoneFinishing(guide))
+        c.ns.profile.level = 29
+        self.assertFalse(c.ns.LevelingValue(1093)[0])
+        reason = c.ns.LevelingValue(1093)[1]
+        self.assertIn('below your pace', reason)
+        stop = c.lua.table_from({'id': 1093, 'kind': 'a', 'title': 'Super Reaper 6000'})
+        decision = c.ns.GuideDestinationDecision(stop, guide)
+        self.assertIn(decision.code, ('chain-value', 'zone-finishing'))
+        c.ns.profile.level = 28
         c.ns.active[1093] = 'Super Reaper 6000'
-        self.assertTrue(c.ns.LevelingValue(1093)[0])  # Zone finish retains work already in the log.
+        self.assertFalse(c.ns.LevelingValue(1093)[0])  # Old in-log work stays out of the current route.
+        self.assertTrue(c.ns.LevelingValue(1093)[1].startswith('in-log-low-value:'))
+        c.ns.active[1093] = 'Super Reaper 6000'
+        c.ns.NextZoneBaselineGuide = c.lua.eval("function() return {key='zone:needles', title='Thousand Needles', zone='Thousand Needles', mode='zone', rangeLow=25, rangeHigh=35, records={}} end")
+        route = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual(route.stops[1].reasonCode, 'zone-exit')
+        self.assertEqual(route.stops[1].label, 'Stonetalon Mountains finished — next: Thousand Needles (25–35)')
+        guide.fullGuide = True
+        guide.fixedPlan = c.lua.table()
+        c.ns.ShowGuideQuestList(guide)
+        frame = c.ns.guideQuestList
+        frame.rows[1].OnMouseUp(frame.rows[1])  # Expand Also in this zone.
+        low_value_row = next(row for row in frame.rows.values() if row.stop and row.stop.id == 1093)
+        self.assertTrue(low_value_row.stop.inLogLowValue)
+        self.assertIn('worth ~', low_value_row.stop.label)
+        self.assertTrue(low_value_row.abandon.IsShown(low_value_row.abandon))
+        self.assertTrue(low_value_row.keep.IsShown(low_value_row.keep))
         c.ns.active[1093] = None
+        c.ns.NextZoneBaselineGuide = None
         c.ns.profile.level = 30
         self.assertFalse(c.ns.ChainValue(1093).included)
         self.assertFalse(c.ns.LevelingValue(1093)[0])
@@ -153,6 +283,22 @@ class XPModelTests(unittest.TestCase):
         chain = c.ns.ChainValue(1093)
         self.assertFalse(chain.committed)
         self.assertEqual(chain.completedSteps, 1)
+        self.assertTrue(c.ns.KeepLowValueQuest(1093))
+        self.assertTrue(c.ns.ChainValue(1093).committed)
+
+    def test_abandon_action_selects_and_abandons_only_after_explicit_call(self):
+        c = self.client()
+        c.ns.active[1093] = 'Old quest'
+        c.lua.execute('''selectedQuest, abandonCalls = nil, 0
+          C_QuestLog = {
+            GetLogIndexForQuestID=function(id) return id == 1093 and 1 end,
+            SetSelectedQuest=function(id) selectedQuest=id end,
+            AbandonQuest=function() abandonCalls=abandonCalls+1 end,
+          }''')
+        self.assertEqual(c.lua.globals().abandonCalls, 0)
+        self.assertTrue(c.ns.AbandonLowValueQuest(1093))
+        self.assertEqual(c.lua.globals().selectedQuest, 1093)
+        self.assertEqual(c.lua.globals().abandonCalls, 1)
 
 
 if __name__ == '__main__':

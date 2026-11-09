@@ -11,7 +11,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     guideGlance = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
-    unitNumbers = false, approachMaps = true, xpModel = false, partyMode = "ask"}
+    unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask"}
 
 function ns.Option(key)
     local handled, value = ns.FirstHook("optionGet", key)
@@ -94,6 +94,7 @@ local sections = {
         "Optional stops for bags, repairs, food and drink."},
     {"data", "Quest data and saved progress", {
         {"xpModel", "Use quest XP to choose useful quests", "Estimate whether a quest still provides useful experience. This model stays optional until Forever reward data is verified."},
+        {"debugReasons", "Guide reason codes (advanced)", "Include internal policy reason codes in guide tooltips."},
         {"recordQuestData", "Record quest offers and progress", "Save up to 300 local observations for guide research. Exports are manual."},
         {"learnObjectives", "Learn objective areas as you play", "Record your own location when an objective counter advances. These observations stay local unless party sharing is enabled."},
         {"useLearnedQuests", "Use observed quest prerequisites", "Use confirmed unlock patterns for your faction and client build."},

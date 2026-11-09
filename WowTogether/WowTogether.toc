@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.109
-## X-ReleaseName: AUTOMATED BUILDS AND RELEASES
+## Version: 0.8.110
+## X-ReleaseName: CLEARER ROUTE GUIDANCE
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua

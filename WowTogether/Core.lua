@@ -549,6 +549,11 @@ end)
 
 ns.On("PLAYER_LOGIN", function()
     ns.ReadProfile(); ns.InitializeAuctionMarket()
+    if ns.db and ns.db.config and ns.db.config.soloMode == true
+        and ns.db.config.partyMode == "never" and ns.db.config.soloModePartyNotice ~= true then
+        ns.db.config.soloModePartyNotice = true
+        ns.Print("Your saved Solo mode keeps party features off. Set Settings > Party mode to Ask me if you want party prompts.")
+    end
     ns.RestoreSavedGuide(); ns.RefreshDungeonArtwork(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync()
 end)
 ns.On("QUEST_LOG_UPDATE", function()

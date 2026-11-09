@@ -88,6 +88,7 @@ class ResizeTests(unittest.TestCase):
         c=browser();c.ns.SetGuideLevel('21-30');c.ns.ShowGuideQuestList(future(c));c.drain()
         f=c.ns.guideQuestList
         f.plan=c.lua.table_from([{'id':910,'kind':'q','title':'Future one','mapID':502,'x':.3,'y':.4} for _ in range(40)],recursive=True)
+        f.guide.mode='travel'  # This fixture measures row virtualization, not zone policy filtering.
         c.ns.RenderGuideQuestList();old=len(f.rows)
         f.grip.OnMouseDown(f.grip,'LeftButton');f.SetSize(f,800,900);f.OnSizeChanged()
         self.assertEqual(len(f.rows),old)

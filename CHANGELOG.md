@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.8.110
+
+**CLEARER ROUTE GUIDANCE**
+
+**For players**
+- Large XP-model route updates now run in short steps and show “Updating route…” while they finish.
+- Travel tips combine consecutive walks, point to the quest location, and hide internal reason codes unless advanced diagnostics are enabled.
+- Zone guides use the Classic reward table by default, list low-value work separately, and offer Keep, Abandon or Follow choices.
+
+**Please check**
+1. Rescan a large zone guide with the XP model enabled; confirm the route updates without a long freeze.
+2. Inspect a travel step with several walk legs and confirm it names the quest destination and gives one combined walking time.
+3. In a finishing zone, review a low-value quest in your log and verify Keep/Abandon are explicit; when useful work ends, Follow opens the next zone.
+
 ## 0.8.109
 
 **AUTOMATED BUILDS AND RELEASES**

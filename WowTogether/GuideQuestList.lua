@@ -74,24 +74,40 @@ function ns.RenderGuideQuestList()
     for _, row in ipairs(frame.rows) do row:Hide() end
     local plan, quests, query = {}, {}, ns.NewQuestQuery()
     local policyGuide = ns.routeSelection and ns.routeSelection.key == frame.guide.key and ns.routeSelection or frame.guide
+    query.guide = policyGuide
+    if ns.PrepareGuidePolicy then ns.PrepareGuidePolicy(policyGuide, query) end
+    local efficientZone = frame.guide.mode == "zone" and ns.GuideEfficiencyMode(frame.guide) == "efficient"
+        and not ns.GuideDifficultyOverride(policyGuide)
     for _, stop in ipairs(frame.plan or {}) do
-        if ns.ClassQuestEnabled(stop.id) then plan[#plan + 1], quests[stop.id] = stop, true end
+        if ns.ClassQuestEnabled(stop.id) and (not efficientZone or ns.LevelingValue(stop.id, query) ~= false) then
+            plan[#plan + 1], quests[stop.id] = stop, true
+        end
     end
     frame.visiblePlan = plan
     frame.reasonRoute = {stops = plan}
     local also = {}
-    if frame.guide.mode == "zone" and ns.GuideEfficiencyMode(frame.guide) == "efficient" then
+    if frame.guide.mode == "zone" and ns.GuideEfficiencyMode(frame.guide) == "efficient"
+        and not ns.GuideDifficultyOverride(policyGuide) then
         for _, record in ipairs(frame.guide.records or {}) do
             if not quests[record.id] and ns.ClassQuestEnabled(record.id) then
+                local _, valueReason = ns.LevelingValue(record.id, query)
                 local chain = ns.ChainValue and ns.ChainValue(record.id, query)
-                local zoneExit = chain and ns.GuideZoneFinishing and ns.GuideZoneFinishing(frame.guide) and not chain.committed
+                local zoneExit = chain and ns.GuideZoneFinishing and ns.GuideZoneFinishing(frame.guide, nil, nil, query) and not chain.committed
+                local lowValueReason = type(valueReason) == "string" and string.find(valueReason, "^in%-log%-low%-value:") ~= nil
+                local inLogLowValue = zoneExit and ns.active[record.id] ~= nil and (lowValueReason or chain.inLogLowValue == true)
                 if chain and (not chain.included or zoneExit) then
                     local quest = ns.CatalogueQuest(record.id)
                     also[#also + 1] = {id = record.id, kind = "a", mapID = quest and quest.mapID or frame.guide.mapID,
                         x = quest and quest.starts and quest.starts[1] and quest.starts[1].x,
                         y = quest and quest.starts and quest.starts[1] and quest.starts[1].y,
-                        title = ns.QuestTitle(record.id), label = zoneExit and ("Finish current work first. " .. chain.reason) or chain.reason,
-                        reasonCode = zoneExit and "zone-finishing" or "chain-value", optional = true}
+                        title = ns.QuestTitle(record.id),
+                        reasonCode = inLogLowValue and "in-log-low-value" or zoneExit and "zone-finishing" or "chain-value",
+                        inLogLowValue = inLogLowValue and #plan == 0 or false,
+                        label = inLogLowValue and ((ns.QuestTitle(record.id) or record.title) .. " is worth ~"
+                            .. tostring(math.floor((chain.xp or 0) + 0.5)) .. " XP for a ~"
+                            .. tostring(math.floor((chain.minutes or 0) + 0.5)) .. " min trip.")
+                            or zoneExit and ("Finish current work first. " .. chain.reason) or chain.reason,
+                        optional = true}
                 end
             end
         end
@@ -136,6 +152,14 @@ function ns.RenderGuideQuestList()
             row.title = ns.UILabel(row, "GameFontNormal", 12); row.title:SetPoint("TOPLEFT", 30, -7); row.title:SetSize(470, 16); row.title:SetWordWrap(false)
             row.state = ns.UILabel(row, nil, 10, ns.UIColors.muted); row.state:SetPoint("TOPRIGHT", -6, -9)
             row.state:SetSize(150, 14); row.state:SetJustifyH("RIGHT"); row.state:SetWordWrap(false)
+            row.abandon = ns.UIButton(row, "Abandon", 62, function()
+                if row.stop and row.stop.inLogLowValue then ns.AbandonLowValueQuest(row.stop.id) end
+            end)
+            row.abandon:SetHeight(17); row.abandon:SetPoint("BOTTOMRIGHT", -72, 3); row.abandon:Hide()
+            row.keep = ns.UIButton(row, "Keep", 58, function()
+                if row.stop and row.stop.inLogLowValue then ns.KeepLowValueQuest(row.stop.id) end
+            end)
+            row.keep:SetHeight(17); row.keep:SetPoint("BOTTOMRIGHT", -6, 3); row.keep:Hide()
             row:EnableMouse(true)
             row:SetScript("OnEnter", function(self)
                 if not GameTooltip or not self.stop then return end
@@ -147,7 +171,8 @@ function ns.RenderGuideQuestList()
                 end
                 local presentation = ns.GuideStepPresentation(self.stop, nil, frame.guide, frame.reasonRoute)
                 GameTooltip:AddLine(presentation.title, 1, 0.82, 0.3, true)
-                if self.stop.reasonCode == "chain-value" or self.stop.reasonCode == "zone-finishing" then
+                if self.stop.reasonCode == "chain-value" or self.stop.reasonCode == "zone-finishing"
+                    or self.stop.reasonCode == "in-log-low-value" then
                     GameTooltip:AddLine(self.stop.label, 1, 1, 1, true)
                 end
                 for _, line in ipairs(ns.GuidePresentationTooltipLines(presentation, true)) do GameTooltip:AddLine(line, 1, 1, 1, true) end
@@ -163,6 +188,7 @@ function ns.RenderGuideQuestList()
         local quest = ns.CatalogueQuest(stop.id)
         if row.sectionHeader then
             row:ClearAllPoints(); row:SetPoint("TOPLEFT", 0, -(index - 1) * ROW_HEIGHT)
+            row.abandon:Hide(); row.keep:Hide()
             row.icon:Hide(); row.number:Hide(); row.title:SetText(stop.title); row.title:SetTextColor(unpack(ns.UIColors.gold))
             row.state:SetText(frame.showAlsoInZone and "Hide" or "Show")
             row.state:SetTextColor(unpack(ns.UIColors.muted)); row.stop, row.step = stop, index; row:Show()
@@ -177,6 +203,7 @@ function ns.RenderGuideQuestList()
         row.icon:SetTexture(presentation.icon); row.icon:SetAlpha(presentation.status == "Optional, on the way" and 0.6 or 1)
         row.number:SetText(stop.guideStep or index)
         row.title:SetText(stop.title); row.title:SetTextColor(unpack(current and ns.UIColors.text or ns.UIColors.muted))
+        row.title:SetWidth(stop.inLogLowValue and 310 or 470)
         local shortStatus = presentation.status
         local level = quest and (quest.minLevel or quest.level)
         if shortStatus == "Done" then shortStatus = "✓"
@@ -188,6 +215,8 @@ function ns.RenderGuideQuestList()
             or current and ns.UIColors.text or ns.UIColors.muted
         row.state:SetTextColor(unpack(stateColor))
         row.stop, row.step = stop, stop.guideStep or index; row:Show()
+        row.abandon:SetShown(stop.inLogLowValue == true)
+        row.keep:SetShown(stop.inLogLowValue == true)
         end
     end
     layout(frame); frame.rendering = nil
