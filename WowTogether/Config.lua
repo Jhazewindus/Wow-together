@@ -9,6 +9,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
+    guideGlance = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
     unitNumbers = false, approachMaps = true, xpModel = false, partyMode = "ask"}
 
@@ -52,6 +53,7 @@ local sections = {
     {"navigation", "Arrow and display", {
         {"routeArrow", "Show the guide window", "Show the current step, direction and guide controls."},
         {"guideOpaque", "Solid guide background", "Use a solid background for easier reading; turn off for a translucent panel."},
+        {"guideGlance", "Glance mode", "Show one short line for the current step; click the step counter to switch."},
         {"guidePeek", "Preview the next guide step", "Show one muted next-step preview below the current instruction."},
         {"standaloneArrow", "Show a separate direction arrow", "Show direction, distance and travel time in a small separate panel."},
         {"minimapRoute", "Draw the route on the minimap", "Show the current travel line and next stops on the minimap, clipped to its edge."},

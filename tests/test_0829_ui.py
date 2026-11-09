@@ -12,7 +12,7 @@ class GuideWindowTests(unittest.TestCase):
         c.lua.globals().resizeNS = c.ns
         c.lua.execute('resizeNS.GenerateFixedGuide=function() error("resize replanned guide") end')
         frame.SetSize(frame, 540, 260); frame.OnSizeChanged(frame)
-        self.assertEqual(frame.title.width, 308)  # Reserve the efficiency toggle plus Scan/Pause/Solid/Stop/Exit.
+        self.assertEqual(frame.title.width, 432)  # Reserve the pause, hub and hide icons.
         self.assertEqual(frame.status.width, 444)
         self.assertEqual(frame.status.height, 18)  # The structured instruction stays a single line at every saved frame size.
         self.assertEqual(frame.context.height, 14)
@@ -39,7 +39,7 @@ class GuideWindowTests(unittest.TestCase):
         self.assertEqual(c.ns.db.arrowSize.height, 230)  # Text growth does not overwrite the chosen size.
         self.assertEqual(c.ns.navigation.point[4], 31)
 
-    def test_exit_stops_guide_and_new_start_reopens_window(self):
+    def test_hide_keeps_guide_running_and_new_start_reopens_window(self):
         c, _ = scanning_client(); frame = c.ns.navigation
         guide, route = c.ns.routeSelection, c.ns.selectedRoute
         frame.close.OnClick(frame.close)
@@ -47,9 +47,9 @@ class GuideWindowTests(unittest.TestCase):
         self.assertTrue(c.ns.Option('routeArrow'))
         c.ns.Refresh(True); c.ns.UpdateNavigation()
         self.assertFalse(frame.IsShown(frame))
-        self.assertIsNone(c.ns.routeSelection)
-        self.assertIsNone(c.ns.selectedRoute)
-        c.ns.ActivateRoute(guide, route); c.ns.UpdateNavigation()
+        self.assertEqual(c.ns.routeSelection.key, guide.key)
+        self.assertIsNotNone(c.ns.selectedRoute)
+        c.ns.OpenGuideWindow(); c.ns.UpdateNavigation()
         self.assertTrue(frame.IsShown(frame))
         self.assertEqual(c.ns.routeSelection.key, guide.key)
 
@@ -84,7 +84,7 @@ class GuideWindowTests(unittest.TestCase):
         frame.close.OnClick(frame.close)
         self.assertEqual(frame.width, 450)
         self.assertFalse(frame.IsShown(frame))
-        self.assertIsNone(c.ns.routeSelection)
+        self.assertIsNotNone(c.ns.routeSelection)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,66 @@
 local addonName, ns = ...
 
+local STEP_SYMBOLS = {
+    accept = {texture = "Interface\\GossipFrame\\AvailableQuestIcon", glyph = "!"},
+    turnin = {texture = "Interface\\GossipFrame\\ActiveQuestIcon", glyph = "?"},
+    turninIncomplete = {texture = "Interface\\GossipFrame\\IncompleteQuestIcon", glyph = "?"},
+    kill = {texture = "Interface\\CURSOR\\Attack", glyph = "⚔"},
+    collect = {texture = "Interface\\CURSOR\\Pickup", glyph = "✋"},
+    talk = {texture = "Interface\\CURSOR\\Speak", glyph = "…"},
+    travel = {texture = "Interface\\CURSOR\\Point", glyph = "➤"},
+    party = {texture = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1", glyph = "⇄"},
+}
+ns.STEP_SYMBOLS = STEP_SYMBOLS
+
+local function probeStepSymbols()
+    local total, available = 0, 0
+    for key, symbol in pairs(STEP_SYMBOLS) do
+        total = total + 1
+        local ok = false
+        if type(GetFileIDFromPath) == "function" then
+            local success, fileID = pcall(GetFileIDFromPath, symbol.texture)
+            ok = success and type(fileID) == "number" and fileID > 0
+        end
+        if not ok and CreateFrame then
+            local probe = CreateFrame("Frame")
+            local texture = probe:CreateTexture(nil, "ARTWORK")
+            if texture and type(texture.SetTexture) == "function" and type(texture.GetTexture) == "function" then
+                local success = pcall(texture.SetTexture, texture, symbol.texture)
+                local valid, found = false, nil
+                if success then valid, found = pcall(texture.GetTexture, texture) end
+                ok = valid and (found == symbol.texture or type(found) == "number")
+            end
+            if probe.Hide then probe:Hide() end
+        end
+        symbol.available = ok
+        if ok then available = available + 1 end
+    end
+    local fallback = {}
+    for key, symbol in pairs(STEP_SYMBOLS) do if not symbol.available then fallback[#fallback + 1] = key end end
+    table.sort(fallback)
+    ns.stepIconStatus = "Step icons: " .. available .. "/" .. total .. " textures"
+        .. (#fallback > 0 and (", " .. table.concat(fallback, ", ") .. " using glyph") or "")
+end
+probeStepSymbols()
+
+function ns.StepSymbolFor(kind)
+    local symbol = STEP_SYMBOLS[kind] or STEP_SYMBOLS.travel
+    return symbol.glyph, symbol.available and symbol.texture or nil
+end
+
+function ns.StepSymbolKind(stop, facts)
+    if stop.kind == "a" then return "accept" end
+    if stop.kind == "t" then return facts and facts.finished and "turninIncomplete" or "turnin" end
+    if stop.kind == "party" or stop.memberKey then return "party" end
+    if stop.kind == "trainer" then return "talk" end
+    if stop.kind == "travel" or stop.kind == "f" or stop.kind == "corpse" then return "travel" end
+    local action = facts and facts.action or stop.action
+    if action == "kill" then return "kill" end
+    if action == "talk" or action == "escort" then return "talk" end
+    if action == "collect" or action == "interact" or stop.itemID then return "collect" end
+    return "collect"
+end
+
 -- Instructions use structured quest facts and matching public progress.
 -- They never turn a planning anchor or an unknown objective into a location.
 local function text(value) return ns.SafeTitle(value) end
