@@ -139,7 +139,12 @@ class GoldObservationTests(unittest.TestCase):
                           peer.drops[42].source), (2, 4, "party observation"))
         self.assertEqual(private.db.observations["70009"].mobs[123].looted, 1)
         self.assertFalse(observations.ReceiveM("1|M|D|deadbeef|123|42|1|2|3|2")[0])
-        self.assertEqual(client.ns.ReceivePartyPlanMessage(other, "Bob-Test Realm")[0], True)
+        dispatched = client.lua.eval('''function(ns, message, sender)
+            local handled, accepted = ns.FirstHook("syncReceive", message, sender)
+            return handled == true and accepted == true
+        end''')
+        next_packet = "1|M|D|deadbeef|124|42|4|2|3|1"
+        self.assertTrue(dispatched(client.ns, next_packet, "Bob-Test Realm"))
 
     def test_research_export_includes_provenance_and_sample_size(self):
         client, observations, _ = observation_client()
