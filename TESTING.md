@@ -1,6 +1,27 @@
 # Wow Together — friend test script
 
-For **0.8.106** — **FAST PARTY SYNC HOTFIX**, live World of Warcraft: Forever.
+For **0.8.107** — **GOLD MODULE API FOUNDATION**, live World of Warcraft: Forever.
+
+## Gold module API foundation — 0.8.107
+
+1. In host tests, confirm a separate addon namespace can access
+   `_G.WowTogetherModuleAPI`, read version `1`, and register a Hub tab.
+2. Register a module setting with an unset store value and `default = false`;
+   confirm `Option` returns `false`, then set and read it back.
+3. Confirm an enabled `WowTogether_Gold` LoadOnDemand addon is loaded after
+   `PLAYER_LOGIN`. With the package absent or disabled, the core must continue
+   loading normally. This release does not include Gold gameplay files.
+4. Run `python3 tools/boundary_check.py`. Its regression cases must reject
+   private access through aliases, split-line member access and direct globals,
+   while accepting the public API binding.
+5. When a Gold package is supplied later, ensure its `.toc` meets the optional
+   package metadata contract and each source binds the versioned public API.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,902 tests and 385 subtests** in 547.12 seconds. The focused module
+API tests pass **12 tests**. All 96 addon Lua files compile under Lua 5.1.
+The checker regression tests cover alias, multiline and direct-global escapes;
+the Gold folder is intentionally absent from this API-only release.
 
 ## Fast party sync hotfix — 0.8.106
 

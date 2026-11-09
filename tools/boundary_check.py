@@ -14,26 +14,40 @@ ALLOWED = {
 }
 ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
 DYNAMIC = re.compile(r'\bns\s*\[')
+ALIAS = re.compile(r'\b(?:local\s+)?([A-Za-z_]\w*)\s*=\s*ns\b')
 GOLD_MEMBER = re.compile(r'\bns\s*\.\s*Gold\s*\.\s*([A-Za-z_]\w*)')
 SYMBOL_MEMBER = re.compile(r'\bns\s*\.\s*STEP_SYMBOLS\s*\.\s*([A-Za-z_]\w*)')
+API_BINDING = re.compile(r'^\s*local\s+ns\s*=\s*_G\.WowTogetherModuleAPI\s*$')
+GLOBAL_ESCAPE = re.compile(r'\b(?:_G|_ENV|getglobal|getfenv|setfenv|rawget|rawset|WowTogetherDB|WowTogetherCharDB|WowTogetherSharedNamespace)\b')
 
 
 def violations(source):
     problems = []
-    for number, line in enumerate(source.splitlines(), 1):
-        code = line.split('--', 1)[0]
-        for match in ACCESS.finditer(code):
-            name = match.group(1) or match.group(3)
-            if name not in ALLOWED:
-                problems.append(f'{number}: ns.{name} is outside the module API')
-        if len(DYNAMIC.findall(code)) > sum(1 for match in ACCESS.finditer(code) if match.group(3)):
-            problems.append(f'{number}: dynamic namespace lookup is outside the module API')
-        for match in GOLD_MEMBER.finditer(code):
-            if match.group(1) not in {'Price', 'Suggestions', 'SessionCard'}:
-                problems.append(f'{number}: ns.Gold.{match.group(1)} is not an exported result')
-        for match in SYMBOL_MEMBER.finditer(code):
-            if match.group(1) != 'farm':
-                problems.append(f'{number}: only ns.STEP_SYMBOLS.farm is public')
+    # Preserve line numbers while allowing access expressions to span lines.
+    lines = [line.split('--', 1)[0] for line in source.splitlines()]
+    code = '\n'.join(lines)
+    line_number = lambda offset: code.count('\n', 0, offset) + 1
+    for match in ACCESS.finditer(code):
+        name = match.group(1) or match.group(3)
+        if name not in ALLOWED:
+            problems.append(f'{line_number(match.start())}: ns.{name} is outside the module API')
+    for match in ALIAS.finditer(code):
+        problems.append(f'{line_number(match.start())}: aliasing the core namespace is outside the module API')
+    for number, line in enumerate(lines, 1):
+        if API_BINDING.fullmatch(line):
+            continue
+        if GLOBAL_ESCAPE.search(line):
+            problems.append(f'{number}: direct global access is outside the module API')
+    literal_lookups = {match.start() for match in ACCESS.finditer(code) if match.group(3)}
+    for match in DYNAMIC.finditer(code):
+        if match.start() not in literal_lookups:
+            problems.append(f'{line_number(match.start())}: dynamic namespace lookup is outside the module API')
+    for match in GOLD_MEMBER.finditer(code):
+        if match.group(1) not in {'Price', 'Suggestions', 'SessionCard'}:
+            problems.append(f'{line_number(match.start())}: ns.Gold.{match.group(1)} is not an exported result')
+    for match in SYMBOL_MEMBER.finditer(code):
+        if match.group(1) != 'farm':
+            problems.append(f'{line_number(match.start())}: only ns.STEP_SYMBOLS.farm is public')
     return problems
 
 

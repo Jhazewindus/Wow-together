@@ -8,8 +8,8 @@ local function metadata(field)
     local okay, value = pcall(reader, addonName, field)
     if okay and type(value) == "string" and value ~= "" then return value end
 end
-ns.VERSION = metadata("Version") or "0.8.106"
-ns.RELEASE_NAME = metadata("X-ReleaseName") or "FAST PARTY SYNC HOTFIX"
+ns.VERSION = metadata("Version") or "0.8.107"
+ns.RELEASE_NAME = metadata("X-ReleaseName") or "GOLD MODULE API FOUNDATION"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

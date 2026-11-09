@@ -2,9 +2,15 @@
 
 A **WoW Forever companion** for the **live World of Warcraft: Forever game**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.106 — FAST PARTY SYNC HOTFIX** targets
+progress. Version **0.8.107 — GOLD MODULE API FOUNDATION** targets
 interface **16001**, uses Lua **5.1**, and reads capabilities rather than
 choosing a Classic implementation from `WOW_PROJECT_ID`.
+
+**0.8.107 exposes a versioned, limited API for optional add-ons.** It loads the
+enabled `WowTogether_Gold` LoadOnDemand package after login when installed and
+provides registration points for its Hub tab, settings, slash command, probe,
+walking loops, route stops and research events. This release contains no Gold
+gameplay implementation.
 
 **0.8.106 prioritizes party sync and route invitations**, avoids routing work
 for members whose progress has not arrived, and asks before temporarily

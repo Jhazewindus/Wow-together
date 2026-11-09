@@ -22,7 +22,8 @@ function ns.Option(key)
     local item = options[key]
     if item then
         local value = item.group.get(key)
-        return value == nil and item.default or value
+        if value == nil then return item.default end
+        return value
     end
     return oldOption(key)
 end
@@ -331,7 +332,9 @@ local function applyStops()
 end
 function ns.PushGuideStop(stop)
     assert(type(stop) == "table" and validName(stop.module) and modules[stop.module]
-        and stop.kind == "farm" and ns.ValidTravelPoint(stop), "Invalid module farm stop")
+        and stop.kind == "farm" and ns.ValidTravelPoint(stop)
+        and type(stop.label) == "string" and stop.label ~= ""
+        and type(stop.reason) == "string" and stop.reason ~= "", "Invalid module farm stop")
     local copy = {}
     for key, value in pairs(stop) do copy[key] = value end
     copy.id = copy.id or 0
@@ -364,6 +367,39 @@ end
 function ns.StopSymbol(stop)
     if stop and stop.kind == "farm" and stop.moduleStop then return "G" end
     return stopSymbol(stop)
+end
+
+local destinationDecision = ns.GuideDestinationDecision
+function ns.GuideDestinationDecision(stop, guide, route)
+    if stop and stop.kind == "farm" and stop.moduleStop then
+        return {code = "module-farm", why = stop.reason, specificBenefit = true, confidence = "module-provided"}
+    end
+    return destinationDecision(stop, guide, route)
+end
+
+-- Give module-provided farm work the same structured player-facing fields as
+-- native steps. The module supplies its actionable instruction and reason;
+-- the core does not invent Gold-specific farming advice.
+local presentGuideStep = ns.GuideStepPresentation
+function ns.GuideStepPresentation(stop, facts, guide, route, state)
+    if stop and stop.kind == "farm" and stop.moduleStop then
+        local why = string.gsub(string.gsub(stop.reason, "%s+$", ""), "[%.!]+$", "")
+        local distance = state and ns.Public(state.distance) and type(state.distance) == "number"
+            and ns.FormatDistance(state.distance) or nil
+        local seconds = state and (state.walkSeconds or state.flight and (state.flight.remaining or state.flight.elapsed))
+        local timing = ns.Public(seconds) and type(seconds) == "number" and seconds > 0
+            and (seconds < 60 and ("~" .. math.floor(seconds) .. " s")
+                or ("~" .. math.floor(seconds / 60) .. " min " .. string.format("%02d", math.floor(seconds % 60)) .. " s"))
+            or nil
+        local location = ns.StopLocationText(stop)
+        return {kind = "farm", icon = ns.STEP_SYMBOLS.farm, title = stop.title or stop.label,
+            stepLine = "Optional module task", what = stop.label, why = why,
+            status = "Optional, on the way", statusColor = "text",
+            time = distance and timing and (distance .. ", " .. timing) or distance or timing,
+            location = location, details = {}, decision = ns.GuideDestinationDecision(stop, guide, route),
+            stop = stop, goal = stop, facts = facts or {stop = stop}}
+    end
+    return presentGuideStep(stop, facts, guide, route, state)
 end
 
 local function encode(value, depth)
@@ -417,3 +453,37 @@ function ns.ExportQuestResearch(...)
     local hasEvents = string.match(prefix, "%[%s*$") == nil
     return prefix .. (hasEvents and "," or "") .. table.concat(events, ",") .. string.sub(result, start, finish)
 end
+
+-- A separately loaded optional addon has a different private namespace. Give
+-- it a deliberately limited public table instead of exposing core `ns`.
+local publicAPI = {
+    version = ns.GoldAPIVersion,
+    STEP_SYMBOLS = {farm = ns.STEP_SYMBOLS.farm},
+}
+for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance", "PlayerPoint",
+    "TrailLoop", "RouteCostModel", "PushGuideStop", "ClearModuleStops", "RegisterSyncKind",
+    "CatalogueQuest", "ReadPublic", "Public", "GuideInteger", "SafeTitle",
+    "Option", "SetOption", "Print", "On", "ResearchExportHook"}) do
+    publicAPI[name] = ns[name]
+end
+setmetatable(publicAPI, {__index = function(_, name)
+    if name == "catalogue" then return ns.catalogue end
+end})
+_G.WowTogetherModuleAPI = publicAPI
+
+-- Gold is packaged as a separate LoadOnDemand addon. Load it only when it is
+-- installed and enabled; its TOC dependency guarantees the core is ready.
+ns.On("PLAYER_LOGIN", function()
+    local isLoaded = C_AddOns and C_AddOns.IsAddOnLoaded or IsAddOnLoaded
+    if type(isLoaded) == "function" then
+        local ok, loaded = pcall(isLoaded, "WowTogether_Gold")
+        if ok and loaded == true then return end
+    end
+    local load = C_AddOns and C_AddOns.LoadAddOn or LoadAddOn
+    if type(load) == "function" then
+        local ok, loaded, reason = pcall(load, "WowTogether_Gold")
+        ns.optionalGoldStatus = ok and loaded == true and "loaded" or tostring(reason or "unavailable")
+    else
+        ns.optionalGoldStatus = "loader unavailable"
+    end
+end)

@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.8.107
+
+**GOLD MODULE API FOUNDATION**
+
+- Export a versioned `_G.WowTogetherModuleAPI` for the separate optional addon
+  without exposing the core addon's private namespace. Load the enabled
+  `WowTogether_Gold` LoadOnDemand package after login when it is present.
+- Keep registration for Hub tabs, settings groups, slash commands, probes,
+  sync kinds, farm stops, walking loops and research export in the API layer;
+  this release adds no Gold gameplay.
+- Preserve `false` as a module setting's default and expose late-loaded
+  catalogue data dynamically through the public API.
+- Strengthen the boundary checker against namespace aliases, split-line
+  lookups and direct global access. Require optional-package files to bind the
+  public API, and test it from a separate addon namespace.
+- Validation: full host suite and Lua 5.1 compilation results are recorded in
+  `TESTING.md`. The optional Gold package is not part of this release.
+
 ## 0.8.106
 
 **FAST PARTY SYNC HOTFIX**

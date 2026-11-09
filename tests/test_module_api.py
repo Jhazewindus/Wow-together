@@ -37,6 +37,41 @@ class ModuleAPITests(unittest.TestCase):
         self.assertIsNotNone(self.ns.catalogue)
         self.assertIsNotNone(self.ns.RouteCostModel().weights)
 
+    def test_optional_addon_uses_public_api_from_its_own_namespace(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.assertEqual(api.version, 1)
+        self.assertIsNotNone(api.RegisterModule)
+        self.ns.catalogue = None
+        self.assertIsNone(api.catalogue)
+        self.ns.catalogue = self.lua.table_from({'count': 1})
+        self.assertEqual(api.catalogue.count, 1)
+        self.lua.execute('''
+            local addonName, namespace = "WowTogether_Gold", {}
+            local ns = _G.WowTogetherModuleAPI
+            assert(ns and ns.version == 1 and ns.RegisterModule)
+            ns.RegisterModule("Gold", {tab={title="Gold", render=function() end}})
+        ''')
+        self.assertIsNotNone(self.ns.ui.viewChoice.options['module:gold'])
+
+    def test_false_module_setting_default_survives_nil_store_value(self):
+        self.lua.execute('''
+            local ns = ...
+            ns.RegisterModule("Gold", {settingsGroup={title="Gold", entries={
+                {key="gold.enabled", label="Enabled", default=false}},
+                get=function() return nil end, set=function() end}})
+        ''', self.ns)
+        self.assertIs(self.ns.Option('gold.enabled'), False)
+
+    def test_enabled_load_on_demand_addon_is_loaded_after_login(self):
+        self.lua.execute('''
+            loadedModule = nil
+            IsAddOnLoaded = function() return false end
+            LoadAddOn = function(name) loadedModule=name; return true end
+        ''')
+        self.ns.handlers.PLAYER_LOGIN()
+        self.assertEqual(self.lua.globals().loadedModule, 'WowTogether_Gold')
+        self.assertEqual(self.ns.optionalGoldStatus, 'loaded')
+
     def test_registration_adds_tab_settings_slash_and_probe(self):
         self.lua.execute('''
             local ns = ...
@@ -94,13 +129,18 @@ class ModuleAPITests(unittest.TestCase):
         self.ns.selectedRoute = self.lua.table_from({'stops': [
             {'id': 1, 'kind': 'q', 'mapID': 1, 'x': .4, 'y': .5, 'label': 'Quest'}]}, recursive=True)
         stop = self.lua.table_from({'module': 'Gold', 'kind': 'farm', 'mapID': 1,
-                                    'x': .2, 'y': .3, 'label': 'Farm here'}, recursive=True)
+                                    'x': .2, 'y': .3, 'label': 'Farm Silverleaf',
+                                    'reason': 'Gather herbs for your crafting goal.'}, recursive=True)
         self.ns.PushGuideStop(stop)
         self.assertEqual(self.ns.selectedRoute.stops[1].kind, 'farm')
         self.assertEqual(self.ns.StopIcon(self.ns.selectedRoute.stops[1]), self.ns.STEP_SYMBOLS.farm)
         self.assertEqual(self.ns.StopSymbol(self.ns.selectedRoute.stops[1]), 'G')
         presentation = self.ns.GuideStepPresentation(self.ns.selectedRoute.stops[1])
         self.assertEqual(presentation.icon, self.ns.STEP_SYMBOLS.farm)
+        self.assertEqual(presentation.what, 'Farm Silverleaf')
+        self.assertEqual(presentation.why, 'Gather herbs for your crafting goal')
+        self.assertEqual(presentation.status, 'Optional, on the way')
+        self.assertEqual(presentation.decision.code, 'module-farm')
         self.ns.UpdateSelectedRoute()
         self.assertEqual(len(self.ns.selectedRoute.stops), 2)
         self.ns.ClearModuleStops('Gold')
@@ -139,6 +179,13 @@ class PackagingBoundaryTests(unittest.TestCase):
         self.assertTrue(checker.violations('ns["char"]'))
         self.assertTrue(checker.violations('ns[key]'))
         self.assertTrue(checker.violations('ns.Gold.Secret()'))
+        self.assertTrue(checker.violations('local core = ns; core.db = {}'))
+        self.assertTrue(checker.violations('ns\n  .db = {}'))
+        self.assertTrue(checker.violations('local root = _G; root.WowTogetherDB = {}'))
+        self.assertTrue(checker.violations('_G.WowTogetherDB = {}'))
+        self.assertTrue(checker.violations('getglobal("WowTogetherDB")'))
+        self.assertEqual(checker.violations(
+            'local addonName, namespace = ...\nlocal ns = _G.WowTogetherModuleAPI'), [])
 
     def test_gold_package_is_optional_and_validated_when_present(self):
         builder = load_tool('build_release')
@@ -150,7 +197,9 @@ class PackagingBoundaryTests(unittest.TestCase):
             (gold / 'WowTogether_Gold.toc').write_text(
                 '## Interface: 16001\n## LoadOnDemand: 1\n'
                 '## Dependencies: WowTogether\n## SavedVariables: WowTogetherGoldDB\nGold.lua\n')
-            (gold / 'Gold.lua').write_text('local addonName, namespace = ...\n')
+            (gold / 'Gold.lua').write_text(
+                'local addonName, namespace = ...\n'
+                'local ns = _G.WowTogetherModuleAPI\n')
             self.assertEqual(builder.optional_gold_sources(root), ['Gold.lua'])
             (gold / 'WowTogether_Gold.toc').write_text('Gold.lua\n')
             with self.assertRaises(ValueError):
@@ -168,7 +217,9 @@ class PackagingBoundaryTests(unittest.TestCase):
             (gold / 'WowTogether_Gold.toc').write_text(
                 '## Interface: 16001\n## LoadOnDemand: 1\n'
                 '## Dependencies: WowTogether\n## SavedVariables: WowTogetherGoldDB\nGold.lua\n')
-            (gold / 'Gold.lua').write_text('local addonName, namespace = ...\n')
+            (gold / 'Gold.lua').write_text(
+                'local addonName, namespace = ...\n'
+                'local ns = _G.WowTogetherModuleAPI\n')
             with patch.object(builder, 'ROOT', root):
                 with patch('sys.argv', ['build_release.py', '--output', str(root / 'output')]):
                     with contextlib.redirect_stdout(io.StringIO()):

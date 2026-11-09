@@ -32,8 +32,10 @@ def optional_gold_sources(root):
         if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name) or not (folder / name).is_file():
             raise ValueError('Invalid Gold package source: ' + name)
         source = (folder / name).read_text()
-        if not source.startswith('local addonName, namespace = ...\n'):
-            raise ValueError('Missing Gold shared namespace declaration: ' + name)
+        shared_api = ('local addonName, namespace = ...\n'
+                      'local ns = _G.WowTogetherModuleAPI\n')
+        if not source.startswith(shared_api):
+            raise ValueError('Missing Gold public API binding: ' + name)
     return sources
 
 
