@@ -230,6 +230,127 @@ class MarketTests(unittest.TestCase):
 
 
 class AuctionScanTests(unittest.TestCase):
+    def test_farm_candidate_scan_uses_paced_public_queries_and_returns_quote_rows(self):
+        c = scanner()
+        c.lua.execute('farmQuotes={}; function onFarmQuote(row) farmQuotes[#farmQuotes+1]=row end')
+        item_ids = c.lua.table_from([100, 101])
+        accepted, reason = c.lua.globals().WowTogetherModuleAPI.StartFarmCandidateScan(
+            item_ids, c.lua.globals().onFarmQuote)
+        self.assertTrue(accepted)
+        self.assertIsNone(reason)
+        advance(c)
+        self.assertEqual(c.lua.globals().queries[1].id, 100)
+        c.lua.globals().commodityRows[100] = c.lua.table_from([
+            {'unitPrice': 5, 'quantity': 2}, {'unitPrice': 20, 'quantity': 3}], recursive=True)
+        c.ns.handlers.COMMODITY_SEARCH_RESULTS_UPDATED(100)
+        self.assertEqual(len(c.lua.globals().farmQuotes), 1)
+        first = c.lua.globals().farmQuotes[1]
+        self.assertEqual((first.itemID, first.minBuyout, first.median, first.count, first.time, first.complete),
+                         (100, 5, 20, 5, 100000, True))
+        advance(c)
+        self.assertEqual(c.lua.globals().queries[2].id, 101)
+        self.assertGreaterEqual(c.lua.globals().queries[2].at-c.lua.globals().queries[1].at, 1)
+        commodity(c, 101, 40, 7, False)
+        advance(c)
+        commodity(c, 101, 40, 7, False)
+        advance(c)
+        commodity(c, 101, 40, 7, False)
+        self.assertEqual(len(c.lua.globals().farmQuotes), 2)
+        second = c.lua.globals().farmQuotes[2]
+        self.assertEqual((second.itemID, second.minBuyout, second.median, second.count, second.complete),
+                         (101, 40, 40, 7, False))
+        self.assertIsNone(c.ns.AuctionScanState())
+
+    def test_farm_candidate_scan_rejects_invalid_or_overlapping_requests(self):
+        c = scanner()
+        api = c.lua.globals().WowTogetherModuleAPI
+        quote = c.lua.eval('function() end')
+        accepted, reason = api.StartFarmCandidateScan(c.lua.table_from([100, 100]), quote)
+        self.assertFalse(accepted); self.assertIn('unique', reason.lower())
+        accepted, reason = api.StartFarmCandidateScan(c.lua.table_from([100, 0]), quote)
+        self.assertFalse(accepted); self.assertIn('item', reason.lower())
+        accepted, reason = api.StartFarmCandidateScan(c.lua.table_from([100]), None)
+        self.assertFalse(accepted); self.assertIn('callback', reason.lower())
+        accepted, _ = api.StartFarmCandidateScan(c.lua.table_from([100]), quote)
+        self.assertTrue(accepted)
+        accepted, reason = api.StartFarmCandidateScan(c.lua.table_from([101]), quote)
+        self.assertFalse(accepted); self.assertIn('running', reason.lower())
+        c.ns.CancelAuctionScan()
+
+    def test_farm_scan_timeout_does_not_report_a_stale_cached_quote(self):
+        c = scanner()
+        c.ns.StoreAuctionQuote(100, c.lua.table_from([[2, 50]], recursive=True), True)
+        c.lua.execute('farmQuotes={}; function onFarmQuote(row) farmQuotes[#farmQuotes+1]=row end')
+        accepted, _ = c.lua.globals().WowTogetherModuleAPI.StartFarmCandidateScan(
+            c.lua.table_from([100]), c.lua.globals().onFarmQuote)
+        self.assertTrue(accepted)
+        advance(c, 25)
+        self.assertEqual(len(c.lua.globals().farmQuotes), 1)
+        row = c.lua.globals().farmQuotes[1]
+        self.assertEqual(row.itemID, 100)
+        self.assertIsNone(row.minBuyout)
+        self.assertIsNone(row.median)
+        self.assertEqual(row.count, 0)
+        self.assertIsNone(row.time)
+        self.assertFalse(row.complete)
+
+    def test_farm_scan_page_timeout_discards_earlier_partial_quote(self):
+        c = scanner()
+        c.lua.execute('farmQuotes={}; function onFarmQuote(row) farmQuotes[#farmQuotes+1]=row end')
+        accepted, _ = c.lua.globals().WowTogetherModuleAPI.StartFarmCandidateScan(
+            c.lua.table_from([100]), c.lua.globals().onFarmQuote)
+        self.assertTrue(accepted)
+        advance(c)
+        commodity(c, 100, 10, 6, False)
+        self.assertEqual(c.ns.AuctionScanState().waiting.quote.quantity, 6)
+        advance(c)  # Request page two, then let its bounded wait expire.
+        advance(c, 20)
+        self.assertEqual(len(c.lua.globals().farmQuotes), 1)
+        row = c.lua.globals().farmQuotes[1]
+        self.assertEqual((row.itemID, row.count, row.complete), (100, 0, False))
+        self.assertIsNone(row.minBuyout)
+        self.assertIsNone(row.median)
+        self.assertIsNone(row.time)
+
+    def test_farm_scan_cancel_delivers_empty_rows_for_current_and_queued_items_once(self):
+        c = scanner()
+        c.lua.execute('farmQuotes={}; function onFarmQuote(row) farmQuotes[#farmQuotes+1]=row end')
+        accepted, _ = c.lua.globals().WowTogetherModuleAPI.StartFarmCandidateScan(
+            c.lua.table_from([100, 101]), c.lua.globals().onFarmQuote)
+        self.assertTrue(accepted)
+        advance(c)
+        self.assertEqual(c.lua.globals().queries[1].id, 100)
+        c.ns.CancelAuctionScan("Stopped for test.")
+        rows = list(c.lua.globals().farmQuotes.values())
+        self.assertEqual([row.itemID for row in rows], [100, 101])
+        for row in rows:
+            self.assertEqual((row.minBuyout, row.median, row.count, row.time, row.complete),
+                             (None, None, 0, None, False))
+        advance(c, 30)
+        self.assertEqual(len(c.lua.globals().farmQuotes), 2)
+
+    def test_cancel_inside_quote_callback_does_not_duplicate_or_overlap(self):
+        c = scanner()
+        c.lua.execute('''
+          local ns=...; farmQuotes={}; reentrantAccepted=nil
+          function onFarmQuote(row)
+            farmQuotes[#farmQuotes+1]=row
+            if row.itemID==100 then
+              ns.CancelAuctionScan("Stopped in callback.")
+              reentrantAccepted, reentrantReason=ns.StartFarmCandidateScan({102}, function() end)
+            end
+          end
+        ''', c.ns)
+        accepted, _ = c.lua.globals().WowTogetherModuleAPI.StartFarmCandidateScan(
+            c.lua.table_from([100, 101]), c.lua.globals().onFarmQuote)
+        self.assertTrue(accepted)
+        advance(c)
+        commodity(c, 100, 10, 4, True)
+        rows = list(c.lua.globals().farmQuotes.values())
+        self.assertEqual([row.itemID for row in rows], [100, 101])
+        self.assertFalse(c.lua.globals().reentrantAccepted)
+        self.assertIsNone(c.ns.AuctionScanState())
+
     def test_priced_recipe_is_preferred_to_an_unknown_price_heuristic(self):
         c = scanner()
         commodity(c,101,10000)

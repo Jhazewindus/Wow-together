@@ -67,10 +67,83 @@ class ModuleAPITests(unittest.TestCase):
                     'PushGuideStop', 'ClearModuleStops', 'RegisterSyncKind',
                     'CatalogueQuest', 'ReadPublic', 'Public', 'GuideInteger',
                     'SafeTitle', 'Option', 'SetOption', 'Print', 'On',
-                    'ResearchExportHook'}
+                    'ResearchExportHook', 'StartFarmCandidateScan', 'PublishGoldFunction'}
         self.assertEqual({key for key, _ in api.items()}, expected)
         self.assertEqual(api.version, 1)
         self.assertEqual(self.ns.GoldAPIVersion, 1)
+
+    def test_gold_functions_publish_only_named_hooks_with_safe_native_fallbacks(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        publish = api.PublishGoldFunction
+        self.assertEqual(publish('Unknown', self.lua.eval('function() end'))[0], False)
+        self.assertEqual(publish('Price', None)[0], False)
+        self.assertTrue(publish('Price', self.lua.eval('function(id, quantity) return 777, true end'))[0])
+        self.assertEqual(self.ns.AuctionUnitPrice(999, 3), (777, True))
+        # A later publisher replaces this name without replacing core functions.
+        self.ns.StoreAuctionQuote(999, self.lua.table_from([[12, 3]], recursive=True), True)
+        self.assertTrue(publish('Price', self.lua.eval('function() error("price unavailable") end'))[0])
+        self.assertEqual(self.ns.AuctionUnitPrice(999, 1), (12, True))
+        self.assertTrue(publish('Price', self.lua.eval('function() return 0, true end'))[0])
+        self.assertEqual(self.ns.AuctionUnitPrice(999, 1), (12, True))
+        self.assertEqual(self.ns.GoldAPIVersion, 1)
+
+    def test_gold_suggestions_are_core_recommendation_cards_not_party_progress(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        before, _ = self.ns.RecommendedItems()
+        self.assertFalse(any(item.kind == 'gold' for item in before.values()))
+        self.lua.execute('''
+            goldActionCount = 0
+            goldSuggestion = function()
+                return {{key="ore", title="Gather copper", detail="A nearby vein can supply your smelting plan.",
+                    priority=450, action=function() goldActionCount=goldActionCount+1 end}}
+            end
+        ''')
+        self.assertTrue(api.PublishGoldFunction('Suggestions', self.lua.globals().goldSuggestion)[0])
+        items, _ = self.ns.RecommendedItems()
+        cards = [item for item in items.values() if item.kind == 'gold']
+        self.assertEqual(len(cards), 1)
+        self.assertEqual(cards[0].title, 'Gather copper')
+        self.assertEqual(cards[0].detail, 'A nearby vein can supply your smelting plan.')
+        self.assertEqual(cards[0].action, 'Follow')
+        cards[0].start()
+        self.assertEqual(self.lua.globals().goldActionCount, 1)
+        self.assertTrue(api.PublishGoldFunction('Suggestions', self.lua.eval('''function()
+            return {{key="ore", title="Smelt copper", detail="Use the gathered ore.", priority=400,
+                action=function() end}}
+        end'''))[0])
+        refreshed, _ = self.ns.RecommendedItems()
+        self.assertEqual([item.title for item in refreshed.values() if item.kind == 'gold'], ['Smelt copper'])
+
+    def test_gold_session_card_receives_copied_summary_and_core_renders_the_action(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.BeginGuideSession(self.lua.table_from({'key': 'test:guide', 'title': 'Test guide'}))
+        before = self.ns.GuideSessionSummary().title
+        self.lua.execute('''
+            goldSessionActionCount, goldSessionInputTitle = 0, nil
+            goldSession = function(summary)
+                goldSessionInputTitle = summary.title
+                summary.title = "mutated copy"
+                return {title="Gold session", detail="You gained 8 silver.",
+                    action=function() goldSessionActionCount=goldSessionActionCount+1 end}
+            end
+        ''')
+        self.assertTrue(api.PublishGoldFunction('SessionCard', self.lua.globals().goldSession)[0])
+        self.ns.RenderRecommended(self.ns.NewQuestQuery())
+        card = self.ns.ui.home.goldSession
+        self.assertTrue(card.IsShown(card))
+        self.assertEqual(card.data.title, 'Gold session')
+        self.assertEqual(self.lua.globals().goldSessionInputTitle, before)
+        self.assertEqual(self.ns.GuideSessionSummary().title, before)
+        card.data.start()
+        self.assertEqual(self.lua.globals().goldSessionActionCount, 1)
+
+    def test_invalid_gold_callback_results_and_exceptions_leave_core_behavior_intact(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.assertTrue(api.PublishGoldFunction('Suggestions', self.lua.eval('function() error("no cards") end'))[0])
+        self.assertTrue(api.PublishGoldFunction('SessionCard', self.lua.eval('function() return {title="no action"} end'))[0])
+        self.ns.RenderRecommended(self.ns.NewQuestQuery())
+        self.assertFalse(self.ns.ui.home.goldSession.IsShown(self.ns.ui.home.goldSession))
+        self.assertEqual(len(self.ns.Suggestions()), 0)
 
     def test_optional_addon_uses_public_api_from_its_own_namespace(self):
         api = self.lua.globals().WowTogetherModuleAPI

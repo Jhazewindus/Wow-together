@@ -55,6 +55,29 @@ local function updateCard(card, item)
     card:Show()
 end
 
+local function sessionSummaryCopy()
+    local source = ns.GuideSessionSummary and ns.GuideSessionSummary()
+    if type(source) ~= "table" or not ns.Public(source.title) or type(source.title) ~= "string"
+        or #source.title > 120 or not ns.GuideInteger(source.quests, 4096)
+        or not ns.GuideInteger(source.xp, 10000000000)
+        or not ns.Public(source.seconds) or type(source.seconds) ~= "number"
+        or source.seconds ~= source.seconds or source.seconds < 0 or source.seconds > 100000000 then return end
+    return {title = source.title, quests = source.quests, xp = source.xp, seconds = source.seconds,
+        xpKnown = source.xpKnown == true, xpPartial = source.xpPartial == true,
+        timePartial = source.timePartial == true,
+        startLevel = ns.GuideInteger(source.startLevel, 60) and source.startLevel or nil,
+        endLevel = ns.GuideInteger(source.endLevel, 60) and source.endLevel or nil}
+end
+
+local function renderGoldSessionCard(home)
+    local summary = sessionSummaryCopy()
+    if not summary then home.goldSession:Hide(); return end
+    local handled, spec = ns.FirstHook("goldSessionCard", summary)
+    if not handled or type(spec) ~= "table" then home.goldSession:Hide(); return end
+    updateCard(home.goldSession, {kind = "gold", category = "GOLD SESSION",
+        title = spec.title, detail = spec.detail, action = "Open", start = spec.action})
+end
+
 local function createHome()
     local home = CreateFrame("Frame", nil, ns.ui.content)
     home:SetPoint("TOPLEFT", 0, 0)
@@ -79,6 +102,8 @@ local function createHome()
     home.resume.title:SetPoint("TOPLEFT", 14, -23); home.resume.title:SetHeight(18)
     home.resume.detail = ns.UILabel(home.resume, nil, 10, ns.UIColors.muted)
     home.resume.detail:SetPoint("TOPLEFT", 14, -46); home.resume.detail:SetHeight(28); home.resume.detail:SetWordWrap(true)
+    home.goldSession = makeCard(home, false)
+    home.goldSession:Hide()
     home.leveling = makeCard(home, true)
     home.professionTitle = heading(home, "Your professions", 16, ns.UIColors.text)
     home.browseProfessions = ns.UIButton(home, "Browse all professions", 180, function() ns.SetFilter("professions") end)
@@ -114,6 +139,10 @@ function ns.LayoutRecommended()
     if home.resume:IsShown() then
         home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 82)
         home.resume.title:SetWidth(width - 28); home.resume.detail:SetWidth(width - 28); top = top + 94
+    end
+    if home.goldSession:IsShown() then
+        home.goldSession:ClearAllPoints(); home.goldSession:SetPoint("TOPLEFT", 0, -top)
+        layoutCard(home.goldSession, width, 112); top = top + 124
     end
     home.leveling:ClearAllPoints(); home.leveling:SetPoint("TOPLEFT", 0, -top)
     layoutCard(home.leveling, width, 164); top = top + 176
@@ -165,6 +194,7 @@ function ns.RenderRecommended(query)
     updateCard(home.leveling, featured or {title = "Your next zone", category = "LEVELING",
         detail = states.leveling or "Browse all leveling guides to find your next zone.", action = "Browse guides",
         start = function() ns.SetFilter("guides") end})
+    renderGoldSessionCard(home)
     home.professionEmpty:SetShown(home.professionCount == 0)
     home.professionEmpty.text:SetText(states.professions or "Browse professions to find a crafting guide.")
     home.moreTitle:SetShown(home.extraCount > 0)

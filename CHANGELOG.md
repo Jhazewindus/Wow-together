@@ -7,6 +7,18 @@
   Gold API version, and remove travel-summary string substitutions.
 
 
+## 0.8.108
+
+**GOLD FARM QUOTE HOOKS**
+
+For players:
+- The optional Gold module can request paced auction quotes for its farming suggestions.
+- Gold suggestions and session cards use core-owned recommendation cards.
+
+Please check:
+- With Gold enabled, request a farm scan while the auction house is open.
+- With Gold absent or a callback failing, core recommendations and prices still work.
+
 ## 0.8.107
 
 **GOLD MODULE API FOUNDATION**
