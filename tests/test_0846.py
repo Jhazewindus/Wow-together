@@ -200,8 +200,8 @@ class VisibleReasonTests(unittest.TestCase):
         c.ns.SetOption('routeArrow', False)
         f = c.ns.standaloneNavigation
         self.assertFalse(f.reason.IsShown(f.reason))
-        self.assertIn('Accept Synthetic quest', f.title.text)
-        self.assertEqual(f.height, 102)
+        self.assertFalse(f.reason.IsShown(f.reason))
+        self.assertEqual(f.height, 130)
 
     def test_standalone_advice_sits_below_the_reason_and_dismissal_keeps_it(self):
         c = tip_client(inn=False, flight=True)

@@ -173,6 +173,8 @@ local function refreshHubRail()
     for key, control in pairs(ns.ui.hubButtons) do
         local selected = key == ns.ui.hubTab or key == ns.ui.hubModule
         ns.UIButtonTone(control, selected)
+        if control.selectedBar then control.selectedBar:SetShown(selected) end
+        control:SetBackdropColor(unpack(selected and {0.19, 0.16, 0.11, 1} or {0.12, 0.115, 0.105, 0}))
     end
     for key, control in pairs(ns.ui.browseButtons or {}) do
         ns.UIButtonTone(control, key == ns.ui.browseFilter)
@@ -201,7 +203,8 @@ function ns.RefreshHubModuleTabs()
             end)
             ns.ui.hubModuleButtons[entry.key] = control
         end
-        control:SetPoint("TOPLEFT", 8, -200 - (index - 1) * 32)
+        control:SetPoint("TOPLEFT", 8, -150 - (index - 1) * 40)
+        control:SetHeight(36)
         control.caption:SetText(entry.title)
         control:Show()
     end
@@ -210,6 +213,12 @@ end
 
 function ns.SetHubTab(tab)
     if not ns.ui then return end
+    if not ns.Option("uiNext") then
+        if tab == "Play" then ns.SetFilter("recommended"); return end
+        if tab == "Browse" then ns.SetFilter("guides"); return end
+        if tab == "Group" then ns.SetFilter("all"); return end
+        if tab == "Settings" then ns.ToggleSettings(); return end
+    end
     local moduleFilter = tab == "Module" and (ns.ui.hubModule or ns.filter) or nil
     if tab ~= "Module" then ns.ui.hubModule = nil end
     ns.ui.hubTab = tab
@@ -267,9 +276,41 @@ function ns.UpdateHubFooter()
         end
     end
     local age, ageDays = ns.HubQuestDataAge()
-    local status = ns.hubStatusText and (ns.hubStatusText .. " · ") or ""
-    ns.ui.status:SetText(status .. "sync: " .. sync .. " · quest data: " .. age .. " · " .. tostring(ns.VERSION or "unknown"))
+    local version = tostring(ns.VERSION or "unknown")
+    local release, pr, sha = string.match(version, "^(%d+%.%d+%.%d+)%-beta%.(%d+)%.([%da-fA-F]+)$")
+    if release then version = release .. "-beta." .. pr .. "+" .. string.sub(sha, 1, 7) end
+    ns.ui.status:SetText("sync: " .. sync .. " · quest data: " .. age .. " · " .. version)
     ns.ui.status:SetTextColor(unpack(ageDays and ageDays > 21 and {0.95, 0.42, 0.38, 1} or colors.muted))
+end
+
+function ns.UpdateHubMode()
+    if not ns.ui then return end
+    local enabled = ns.Option("uiNext") == true
+    ns.ui.hubRail:SetShown(enabled)
+    ns.ui.viewChoice:SetShown(not enabled)
+    ns.ui.browseRow:SetShown(enabled and ns.ui.hubTab == "Browse")
+    ns.ui.hubBrowseSearch:SetShown(enabled and ns.ui.hubTab == "Browse")
+    ns.ui.groupPage:SetShown(enabled and ns.ui.hubTab == "Group")
+    ns.ui.settingsPage:SetShown(false)
+    ns.ui.scroll:SetShown(not enabled or ns.ui.hubTab == "Play" or ns.ui.hubTab == "Browse" or ns.ui.hubTab == "Module")
+    ns.ui.scroll:ClearAllPoints()
+    ns.ui.scroll:SetPoint("TOPLEFT", enabled and 150 or 26, -112)
+    ns.ui.scroll:SetPoint("BOTTOMRIGHT", -18, 64)
+    ns.ui.reportProblem:SetShown(enabled)
+    for _, metric in ipairs(ns.ui.metrics) do metric:SetShown(not enabled) end
+    ns.ui.party:SetShown(not enabled)
+    ns.ui.hint:SetShown(not enabled)
+    ns.ui.trackerButton:SetShown(not enabled and ns.PartyFeaturesEnabled())
+    ns.ui.syncButton:SetShown(not enabled and ns.PartyFeaturesEnabled())
+    ns.ui.subtitle:SetShown(false)
+    if enabled then
+        ns.ui.hubTab = ns.ui.hubTab == "Settings" and "Play" or ns.ui.hubTab
+        refreshHubRail()
+    else
+        ns.ui.hubTab = "Play"
+        ns.ui.viewChoice:SetChoice(ns.filter or "recommended")
+    end
+    ns.Layout()
 end
 
 function ns.RenderHubGroup()
@@ -277,19 +318,37 @@ function ns.RenderHubGroup()
     if not page then return end
     local enabled = ns.PartyFeaturesEnabled()
     local names = enabled and ns.partyNames or {}
-    local synced, pending, rows = 0, 0, {"You" .. (ns.profile and ns.profile.level and (" · level " .. ns.profile.level) or "")}
+    local groupZone = ns.routeSelection and (ns.routeSelection.zone or ns.routeSelection.title)
+    page.title:SetText(groupZone and ("Party plan · " .. groupZone) or "Party plan")
+    local synced, pending, members = 0, 0, {{name = "You", profile = ns.profile, localPlayer = true}}
     for _, name in ipairs(names or {}) do
         local member = ns.members[name]
         local profile = member and member.profile
         if member and member.active and not member.syncPending then synced = synced + 1 else pending = pending + 1 end
-        rows[#rows + 1] = ns.MemberLabel(name) .. (profile and profile.level and (" · level " .. profile.level) or " · level pending")
-            .. (profile and profile.zone and (" · " .. profile.zone) or "")
-            .. (member and member.syncPending and " · syncing" or "")
+        members[#members + 1] = {name = ns.MemberLabel(name), profile = profile, member = member}
     end
     page.summary:SetText(not enabled and "Party mode is off. Change it in Settings to compare plans with friends."
         or #names == 0 and "You are ready to make a plan when your party joins."
         or (synced .. " synced · " .. pending .. " waiting for progress"))
-    page.members:SetText(table.concat(rows, "\n"))
+    for index, row in ipairs(page.memberRows) do
+        local member = members[index]
+        row:SetShown(member ~= nil)
+        if member then
+            local profile, peer = member.profile, member.member
+            row.name:SetText(member.name .. (member.localPlayer and " (you)" or ""))
+            row.level:SetText(profile and profile.level and tostring(profile.level) or "—")
+            row.zone:SetText(profile and profile.zone or "Waiting for zone")
+            local sameMap = profile and ns.profile and profile.mapID == ns.profile.mapID
+            row.eta:SetText((member.localPlayer or sameMap) and "here" or "—")
+            local progressReady = member.localPlayer or peer and peer.active and not peer.syncPending and profile ~= nil
+            row.next:SetText(progressReady and "Next step unavailable" or "Waiting for progress sync")
+            row.status:SetText(member.localPlayer and "you" or progressReady and "synced" or "waiting")
+        end
+    end
+    local missing = enabled and ns.PartyPlanMissingLine and ns.PartyPlanMissingLine()
+    page.missing:SetText(missing or (#names == 0 and "Join a party to compare quest progress." or "Quest gap comparison is unavailable."))
+    page.ready:SetText("Turn-in readiness is shown when the party quest log is available.")
+    page.lastChange:SetText(ns.partyRouteStatus or "No party route change recorded.")
     page.sync:SetEnabled(enabled and #names > 0)
     page.tracker:SetShown(enabled)
     ns.UpdateHubFooter()
@@ -322,7 +381,7 @@ function ns.SetFilter(filter, keepHubTab)
     end
     for _, control in ipairs(ns.ui.guideControls or {}) do control:Hide() end
     ns.ui.scroll:ClearAllPoints()
-    ns.ui.scroll:SetPoint("TOPLEFT", 150, filter == "library" and -120 or -112)
+    ns.ui.scroll:SetPoint("TOPLEFT", ns.Option("uiNext") and 150 or 26, filter == "library" and -120 or -112)
     ns.ui.scroll:SetPoint("BOTTOMRIGHT", -18, 64)
     refreshHubRail()
     ns.Refresh()
@@ -355,18 +414,8 @@ function ns.CreateUI()
     accent:SetPoint("TOPLEFT", 1, -1)
     accent:SetPoint("TOPRIGHT", -1, -1)
     accent:SetHeight(2)
-    local icon = window:CreateTexture(nil, "ARTWORK")
-    local menuIcon = type(ns.StepIconTexture) == "function" and ns.StepIconTexture("menu") or nil
-    icon:SetTexture(type(menuIcon) == "string" and menuIcon or "Interface\\Icons\\INV_Misc_Map_01")
-    icon:SetSize(28, 28)
-    icon:SetPoint("TOPLEFT", 151, -18)
-    icon:SetVertexColor(unpack(colors.gold))
-    icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
-    ns.ui.titleIcon = icon
-    local eyebrow = label(window, "GameFontNormalSmall", nil, colors.gold)
-    eyebrow:Hide()
     local title = label(window, "GameFontNormalLarge", 20, colors.text)
-    title:SetPoint("TOPLEFT", 188, -16)
+    title:SetPoint("TOPLEFT", 18, -16)
     title:SetText("Wow Together")
     local subtitle = label(window, nil, nil, colors.muted)
     ns.ui.subtitle = subtitle
@@ -406,20 +455,31 @@ function ns.CreateUI()
     ns.ui.viewDescription:SetText("Choose a guide or explore your party's progress.")
     ns.ui.viewDescription:Hide()
     ns.ui.status = label(window, nil, nil, colors.muted)
-    local config = button(window, "Settings", 86, function() ns.ToggleSettings() end)
-    config:SetPoint("TOPRIGHT", -48, -10); config:SetHeight(24); config:Hide()
-    ns.ui.status:SetPoint("BOTTOMLEFT", 150, 18)
-    ns.ui.status:SetWidth(590)
+    local config = button(window, "⚙", 30, function() ns.ToggleSettings() end)
+    config:SetPoint("TOPRIGHT", -44, -10); config:SetSize(28, 24)
+    ns.ui.settingsButton = config
+    ns.ui.status:SetPoint("BOTTOMLEFT", 162, 18)
+    ns.ui.status:SetWidth(520)
     ns.ui.status:SetJustifyH("LEFT")
+    ns.ui.reportProblem = button(window, "Report a problem", 128, function() if ns.Diagnostics then ns.Diagnostics() end end)
+    ns.ui.reportProblem:SetPoint("BOTTOMRIGHT", -18, 12); ns.ui.reportProblem:SetHeight(28)
+    ns.ui.reportProblem:Hide()
 
-    ns.ui.hubRail = CreateFrame("Frame", nil, window)
-    ns.ui.hubRail:SetPoint("TOPLEFT", 10, -64); ns.ui.hubRail:SetSize(126, 420)
-    for index, entry in ipairs({{"Play", "Play"}, {"Group", "Group"}, {"Browse", "Browse"}, {"Settings", "Settings"}}) do
+    ns.ui.hubRail = CreateFrame("Frame", nil, window, "BackdropTemplate")
+    panel(ns.ui.hubRail, {0.075, 0.07, 0.064, 1}, colors.border)
+    ns.ui.hubRail:SetPoint("TOPLEFT", 1, -58); ns.ui.hubRail:SetPoint("BOTTOMLEFT", 1, 60); ns.ui.hubRail:SetWidth(150)
+    for index, entry in ipairs({{"Play", "Play"}, {"Group", "Group"}, {"Browse", "Browse"}}) do
         local key, caption = entry[1], entry[2]
-        local control = button(ns.ui.hubRail, caption, 112, function() ns.SetHubTab(key) end)
-        control:SetPoint("TOPLEFT", 8, -(index - 1) * 34)
+        local control = button(ns.ui.hubRail, caption, 132, function() ns.SetHubTab(key) end)
+        control:SetPoint("TOPLEFT", 9, -10 - (index - 1) * 44); control:SetHeight(40)
+        control:SetBackdropColor(0.12, 0.115, 0.105, 0)
+        control.selectedBar = control:CreateTexture(nil, "OVERLAY")
+        control.selectedBar:SetColorTexture(unpack(colors.gold)); control.selectedBar:SetWidth(3)
+        control.selectedBar:SetPoint("TOPLEFT", 0, -1); control.selectedBar:SetPoint("BOTTOMLEFT", 0, 1)
+        control.selectedBar:Hide()
         ns.ui.hubButtons[key] = control
     end
+    ns.ui.hubRail:Hide()
     ns.ui.browseRow = CreateFrame("Frame", nil, window)
     ns.ui.browseRow:SetPoint("TOPLEFT", 150, -57); ns.ui.browseRow:SetPoint("TOPRIGHT", -18, -57); ns.ui.browseRow:SetHeight(30)
     local browseEntries = {{"guides", "Leveling"}, {"classquests", "Class"}, {"dungeons", "Dungeons"},
@@ -456,13 +516,50 @@ function ns.CreateUI()
     ns.ui.groupPage.title = label(ns.ui.groupPage, "GameFontNormalLarge", 18, colors.text)
     ns.ui.groupPage.title:SetPoint("TOPLEFT", 0, 0); ns.ui.groupPage.title:SetText("Group")
     ns.ui.groupPage.summary = label(ns.ui.groupPage, nil, 12, colors.muted)
-    ns.ui.groupPage.summary:SetPoint("TOPLEFT", 0, -32); ns.ui.groupPage.summary:SetSize(620, 42); ns.ui.groupPage.summary:SetWordWrap(true)
-    ns.ui.groupPage.members = label(ns.ui.groupPage, nil, 12, colors.text)
-    ns.ui.groupPage.members:SetPoint("TOPLEFT", 0, -82); ns.ui.groupPage.members:SetSize(620, 230); ns.ui.groupPage.members:SetWordWrap(true)
-    ns.ui.groupPage.sync = button(ns.ui.groupPage, "Sync party", 120, function() if ns.SyncNow then ns.SyncNow(true) end end, true)
-    ns.ui.groupPage.sync:SetPoint("BOTTOMLEFT", 0, 0)
-    ns.ui.groupPage.tracker = button(ns.ui.groupPage, "Open tracker", 130, function() if ns.ToggleTracker then ns.ToggleTracker() end end)
-    ns.ui.groupPage.tracker:SetPoint("LEFT", ns.ui.groupPage.sync, "RIGHT", 8, 0)
+    ns.ui.groupPage.summary:SetPoint("TOPLEFT", 0, -30); ns.ui.groupPage.summary:SetSize(650, 20); ns.ui.groupPage.summary:SetWordWrap(false)
+    ns.ui.groupPage.sync = button(ns.ui.groupPage, "Sync party", 112, function() if ns.SyncNow then ns.SyncNow(true) end end, true)
+    ns.ui.groupPage.sync:SetPoint("TOPRIGHT", -138, -2); ns.ui.groupPage.sync:SetHeight(28)
+    ns.ui.groupPage.tracker = button(ns.ui.groupPage, "Open tracker", 120, function() if ns.ToggleTracker then ns.ToggleTracker() end end)
+    ns.ui.groupPage.tracker:SetPoint("LEFT", ns.ui.groupPage.sync, "RIGHT", 8, 0); ns.ui.groupPage.tracker:SetHeight(28)
+    ns.ui.groupPage.table = CreateFrame("Frame", nil, ns.ui.groupPage, "BackdropTemplate")
+    panel(ns.ui.groupPage.table, colors.panel, colors.border)
+    ns.ui.groupPage.table:SetPoint("TOPLEFT", 0, -62); ns.ui.groupPage.table:SetPoint("TOPRIGHT", 0, -62); ns.ui.groupPage.table:SetHeight(190)
+    local columns = {{"MEMBER", 0, 118}, {"LEVEL", 118, 46}, {"ZONE", 164, 102}, {"ETA", 266, 56}, {"NEXT STEP", 322, 204}, {"", 526, 60}}
+    for _, column in ipairs(columns) do
+        local heading = label(ns.ui.groupPage.table, nil, 10, colors.muted)
+        heading:SetPoint("TOPLEFT", column[2] + 10, -8); heading:SetWidth(column[3] - 14); heading:SetText(column[1])
+    end
+    ns.ui.groupPage.memberRows = {}
+    for index = 1, 6 do
+        local row = CreateFrame("Frame", nil, ns.ui.groupPage.table)
+        row:SetPoint("TOPLEFT", 0, -30 - (index - 1) * 25); row:SetPoint("TOPRIGHT", 0, -30 - (index - 1) * 25); row:SetHeight(25)
+        -- Native labels stay individually clipped to the same columns at every Hub width.
+        row.name = label(row, nil, 12, colors.text); row.name:SetPoint("LEFT", 10, 0); row.name:SetWidth(108)
+        row.level = label(row, nil, 12, colors.text); row.level:SetPoint("LEFT", 128, 0); row.level:SetWidth(36)
+        row.zone = label(row, nil, 12, colors.text); row.zone:SetPoint("LEFT", 174, 0); row.zone:SetWidth(90)
+        row.eta = label(row, nil, 12, colors.muted); row.eta:SetPoint("LEFT", 276, 0); row.eta:SetWidth(42)
+        row.next = label(row, nil, 12, colors.text); row.next:SetPoint("LEFT", 332, 0); row.next:SetWidth(188)
+        row.status = label(row, nil, 10, colors.muted); row.status:SetPoint("LEFT", 536, 0); row.status:SetWidth(48)
+        ns.ui.groupPage.memberRows[index] = row
+    end
+    ns.ui.groupPage.missingPanel = CreateFrame("Frame", nil, ns.ui.groupPage, "BackdropTemplate")
+    panel(ns.ui.groupPage.missingPanel, colors.panel, colors.border)
+    ns.ui.groupPage.missingPanel:SetPoint("TOPLEFT", 0, -264); ns.ui.groupPage.missingPanel:SetSize(340, 132)
+    ns.ui.groupPage.missingTitle = label(ns.ui.groupPage.missingPanel, nil, 10, colors.muted)
+    ns.ui.groupPage.missingTitle:SetPoint("TOPLEFT", 12, -10); ns.ui.groupPage.missingTitle:SetText("MISSING VS PLAN")
+    ns.ui.groupPage.missing = label(ns.ui.groupPage.missingPanel, nil, 12, colors.text)
+    ns.ui.groupPage.missing:SetPoint("TOPLEFT", 12, -30); ns.ui.groupPage.missing:SetSize(314, 88); ns.ui.groupPage.missing:SetWordWrap(true)
+    ns.ui.groupPage.turnInPanel = CreateFrame("Frame", nil, ns.ui.groupPage, "BackdropTemplate")
+    panel(ns.ui.groupPage.turnInPanel, colors.panel, colors.border)
+    ns.ui.groupPage.turnInPanel:SetPoint("TOPLEFT", 352, -264); ns.ui.groupPage.turnInPanel:SetSize(340, 132)
+    ns.ui.groupPage.readyTitle = label(ns.ui.groupPage.turnInPanel, nil, 10, colors.muted)
+    ns.ui.groupPage.readyTitle:SetPoint("TOPLEFT", 12, -10); ns.ui.groupPage.readyTitle:SetText("READY TO TURN IN")
+    ns.ui.groupPage.ready = label(ns.ui.groupPage.turnInPanel, nil, 12, colors.text)
+    ns.ui.groupPage.ready:SetPoint("TOPLEFT", 12, -30); ns.ui.groupPage.ready:SetSize(314, 30); ns.ui.groupPage.ready:SetWordWrap(true)
+    ns.ui.groupPage.lastChangeTitle = label(ns.ui.groupPage.turnInPanel, nil, 10, colors.muted)
+    ns.ui.groupPage.lastChangeTitle:SetPoint("TOPLEFT", 12, -70); ns.ui.groupPage.lastChangeTitle:SetText("LAST CHANGE")
+    ns.ui.groupPage.lastChange = label(ns.ui.groupPage.turnInPanel, nil, 11, colors.muted)
+    ns.ui.groupPage.lastChange:SetPoint("TOPLEFT", 12, -88); ns.ui.groupPage.lastChange:SetSize(314, 36); ns.ui.groupPage.lastChange:SetWordWrap(true)
     ns.ui.groupPage:Hide()
 
     ns.ui.settingsPage = CreateFrame("Frame", nil, window)
@@ -486,6 +583,14 @@ function ns.CreateUI()
     content:SetSize(786, 250)
     scroll:SetScrollChild(content)
     ns.ui.content = content
+    scroll:SetScript("OnSizeChanged", function(self)
+        local viewport = ns.ReadPublic(self.GetWidth, self)
+        if type(viewport) == "number" and viewport > 0 then
+            ns.ui.contentWidth = math.max(1, viewport - 22)
+            ns.ui.content:SetWidth(ns.ui.contentWidth)
+            ns.LayoutBrowserCards()
+        end
+    end)
     local search = searchBox(window, "Search quests or zones")
     ns.ui.librarySearch = search
     search:SetSize(430, 26)
@@ -580,6 +685,7 @@ function ns.CreateUI()
         end,
         onFinish = function() ns.FinishWindowResize() end})
     resizeReady = true
+    ns.UpdateHubMode()
     ns.Layout()
     window:Hide()
     ns.RunHooks("uiCreated", ns.ui)
@@ -592,6 +698,7 @@ function ns.FinishWindowResize()
     if type(width) == "number" and type(height) == "number" then
         ns.db.windowSize = {width = width, height = height}
     end
+    ns.UpdateHubMode()
     ns.Layout(); ns.Render()
 end
 
@@ -662,15 +769,18 @@ end
 
 local function layoutStatus()
     local width = ns.window:GetWidth() or 860
-    local left = 150
+    local enabled = ns.Option("uiNext") == true
+    local left = enabled and 162 or 26
     ns.ui.status:ClearAllPoints(); ns.ui.status:SetPoint("BOTTOMLEFT", left, 19)
-    ns.ui.status:SetWidth(width - left - 28); ns.ui.status:SetWordWrap(false)
+    ns.ui.status:SetWidth(math.max(200, width - left - (enabled and 170 or 28))); ns.ui.status:SetWordWrap(false)
 end
 
 function ns.Layout()
     if not ns.ui or not ns.ui.metrics then return end
     local width = ns.window:GetWidth() or 860
-    ns.ui.contentWidth = width - 74
+    local scrollWidth = ns.ReadPublic(ns.ui.scroll.GetWidth, ns.ui.scroll)
+    if type(scrollWidth) ~= "number" or scrollWidth <= 0 then scrollWidth = width - (ns.Option("uiNext") and 168 or 52) end
+    ns.ui.contentWidth = math.max(1, scrollWidth - 22)
     local metricWidth = (width - 80) / 3
     for index, metric in ipairs(ns.ui.metrics) do
         metric:SetSize(metricWidth, 20)
@@ -695,7 +805,7 @@ function ns.Layout()
     end
     ns.ui.viewDescription:SetWidth(width - 292)
     ns.ui.viewDescription:SetWordWrap(false)
-    if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetWidth(math.max(120, width - 640)) end
+    if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetWidth(math.max(120, ns.ui.contentWidth - 404)) end
     ns.LayoutBrowserCards()
 end
 
@@ -892,7 +1002,8 @@ function ns.Render(queryContext, routeUpdated)
     if ns.ui.partyMode ~= partyEnabled then
         ns.ui.partyMode = partyEnabled
         ns.ui.viewChoice:SetVisibleEntries(function(key) return partyEnabled or not ns.IsPartyView(key) end)
-        ns.ui.trackerButton:SetShown(partyEnabled); ns.ui.syncButton:SetShown(partyEnabled)
+        local legacyControls = not ns.Option("uiNext")
+        ns.ui.trackerButton:SetShown(partyEnabled and legacyControls); ns.ui.syncButton:SetShown(partyEnabled and legacyControls)
         layoutStatus()
         ns.ui.subtitle:SetText(partyEnabled and "Choose a questline, compare your party, and find the next stop."
             or "Follow your leveling guide and find the next stop.")

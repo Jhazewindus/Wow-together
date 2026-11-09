@@ -176,7 +176,23 @@ function ns.UpdateSessionResumeBar()
     local home = ns.ui and ns.ui.home
     if not home then return end
     local guide, saved, summary = ns.routeSelection, ns.PausedSessionCheckpoint(), ns.GuideSessionSummary()
-    local running = guide and ns.selectedRoute
+    local running = guide and ns.selectedRoute and ns.selectedRoute.complete ~= true
+    if ns.Option("uiNext") then
+        local displayGuide = running and guide or saved and saved.guide
+        local active = displayGuide ~= nil
+        home.resume:SetShown(active)
+        home.resume.category:Hide()
+        home.resume.title:SetText(active and displayGuide.title or "")
+        local detail, step, total
+        if active and ns.HubActiveGuideProgress then detail, step, total = ns.HubActiveGuideProgress(displayGuide, running and ns.selectedRoute) end
+        if saved and saved.checkpoint and saved.checkpoint.step then
+            step = saved.checkpoint.step
+            if total and total > 0 then detail = "step " .. step .. " of " .. total end
+        end
+        home.resume.detail:SetText(detail or "")
+        home.resume.fraction = step and total and total > 0 and math.max(0, math.min(1, (step - 1) / total)) or 0
+        return
+    end
     home.resume:SetShown(running ~= nil or saved ~= nil or summary ~= nil)
     home.resume.category:SetText(saved and "PAUSED GUIDE" or running and "CONTINUE YOUR GUIDE" or "LAST SESSION")
     home.resume.title:SetText(running and guide.title or saved and saved.guide.title or summary and summary.title or "")
