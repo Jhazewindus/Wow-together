@@ -70,6 +70,34 @@ class ModuleAPITests(unittest.TestCase):
         with self.assertRaises(Exception):
             self.ns.RegisterModule('gold', self.lua.table())
 
+    def test_separate_addon_namespace_uses_limited_handoff(self):
+        private = self.lua.table()
+        self.lua.execute('''
+            local addonName, private = ...
+            assert(addonName == "WowTogether_Gold")
+            local ns = _G.WowTogetherGoldAPI
+            assert(private ~= ns and ns.GoldAPIVersion == 1)
+            assert(ns.db == nil and ns.char == nil and ns.SyncNow == nil)
+            ns.RegisterModule("Gold", {
+                tab={title="Gold", render=function(page) assert(page) end},
+                probe=function(output) output("Gold loaded") end})
+            ns.Gold.Price = function(itemID) return itemID * 10 end
+        ''', 'WowTogether_Gold', private)
+        self.assertIsNot(private, self.ns)
+        self.assertIsNotNone(self.ns.ui.viewChoice.options['module:gold'])
+        self.assertEqual(self.ns.Gold.Price(42), 420)
+        with self.assertRaises(Exception):
+            self.lua.execute('_G.WowTogetherGoldAPI.db = {}')
+        with self.assertRaises(Exception):
+            self.lua.execute('_G.WowTogetherGoldAPI.Gold.Secret = function() end')
+
+    def test_false_module_setting_default_is_preserved(self):
+        self.lua.execute('''local ns=...; ns.RegisterModule("Gold", {
+            settingsGroup={title="Gold", entries={
+                {key="gold.enabled", label="Enable", default=false}},
+                get=function() return nil end, set=function() end}})''', self.ns)
+        self.assertIs(self.ns.Option('gold.enabled'), False)
+
     def test_trail_loop_uses_optimal_closed_walk_and_rejects_nonwalk(self):
         self.lua.execute('''
             local ns = ...
@@ -139,6 +167,11 @@ class PackagingBoundaryTests(unittest.TestCase):
         self.assertTrue(checker.violations('ns["char"]'))
         self.assertTrue(checker.violations('ns[key]'))
         self.assertTrue(checker.violations('ns.Gold.Secret()'))
+        self.assertTrue(checker.violations('local core = ns; core.db = {}'))
+        self.assertTrue(checker.violations('local core = ns; local next = core; next.char = {}'))
+        self.assertTrue(checker.violations('ns\n  .db = {}'))
+        self.assertTrue(checker.violations('_G.WowTogetherSharedNamespace.db = {}'))
+        self.assertEqual(checker.violations('print("ns.db") -- ns.char'), [])
 
     def test_gold_package_is_optional_and_validated_when_present(self):
         builder = load_tool('build_release')
@@ -150,8 +183,14 @@ class PackagingBoundaryTests(unittest.TestCase):
             (gold / 'WowTogether_Gold.toc').write_text(
                 '## Interface: 16001\n## LoadOnDemand: 1\n'
                 '## Dependencies: WowTogether\n## SavedVariables: WowTogetherGoldDB\nGold.lua\n')
-            (gold / 'Gold.lua').write_text('local addonName, namespace = ...\n')
+            (gold / 'Gold.lua').write_text(
+                'local addonName, private = ...\nlocal ns = _G.WowTogetherGoldAPI\n')
             self.assertEqual(builder.optional_gold_sources(root), ['Gold.lua'])
+            (gold / 'Gold.lua').write_text(
+                'local addonName, namespace = ...\n'
+                'local ns = _G.WowTogetherSharedNamespace or namespace\n')
+            with self.assertRaises(ValueError):
+                builder.optional_gold_sources(root)
             (gold / 'WowTogether_Gold.toc').write_text('Gold.lua\n')
             with self.assertRaises(ValueError):
                 builder.optional_gold_sources(root)
@@ -168,7 +207,8 @@ class PackagingBoundaryTests(unittest.TestCase):
             (gold / 'WowTogether_Gold.toc').write_text(
                 '## Interface: 16001\n## LoadOnDemand: 1\n'
                 '## Dependencies: WowTogether\n## SavedVariables: WowTogetherGoldDB\nGold.lua\n')
-            (gold / 'Gold.lua').write_text('local addonName, namespace = ...\n')
+            (gold / 'Gold.lua').write_text(
+                'local addonName, private = ...\nlocal ns = _G.WowTogetherGoldAPI\n')
             with patch.object(builder, 'ROOT', root):
                 with patch('sys.argv', ['build_release.py', '--output', str(root / 'output')]):
                     with contextlib.redirect_stdout(io.StringIO()):
