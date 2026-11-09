@@ -101,3 +101,4 @@ GroupFinderNative.lua
 Recommended.lua
 RecommendedUI.lua
 SessionCheckpoints.lua
+ModuleAPI.lua

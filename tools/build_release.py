@@ -11,6 +11,32 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def optional_gold_sources(root):
+    """Return the optional Gold package's TOC sources, if it is present."""
+    folder = root / 'WowTogether_Gold'
+    if not folder.exists():
+        return None
+    toc = folder / 'WowTogether_Gold.toc'
+    if not toc.is_file():
+        raise ValueError('Missing Gold package TOC')
+    metadata = toc.read_text()
+    required = ('## Interface: 16001', '## LoadOnDemand: 1',
+                '## Dependencies: WowTogether', '## SavedVariables: WowTogetherGoldDB')
+    if any(line not in metadata.splitlines() for line in required):
+        raise ValueError('Invalid Gold package metadata')
+    sources = [line.strip() for line in metadata.splitlines()
+               if line.strip() and not line.startswith('#')]
+    if not sources:
+        raise ValueError('Gold package has no Lua sources')
+    for name in sources:
+        if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name) or not (folder / name).is_file():
+            raise ValueError('Invalid Gold package source: ' + name)
+        source = (folder / name).read_text()
+        if not source.startswith('local addonName, namespace = ...\n'):
+            raise ValueError('Missing Gold shared namespace declaration: ' + name)
+    return sources
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('/workspace/artifacts'))
@@ -38,6 +64,9 @@ def main():
         'WowTogether_ProfessionData': ['ProfessionData.lua'],
         'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
     }
+    gold_sources = optional_gold_sources(ROOT)
+    if gold_sources is not None:
+        data_packages['WowTogether_Gold'] = gold_sources
     catalogue_lua = (ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua').read_text()
     catalogue_offset = catalogue_lua.find('ns.catalogue =')
     catalogue_header = catalogue_lua[catalogue_offset:catalogue_offset + 400]
@@ -71,6 +100,8 @@ def main():
         if hashlib.sha256((media / name).read_bytes()).hexdigest() != texture['sha256']:
             raise ValueError('Guide texture checksum mismatch: ' + name)
         media_names.append(name)
+    gold_install = ('If present, copy WowTogether_Gold beside the core and data folders; it is optional.\n'
+                    if gold_sources is not None else '')
     instructions = f'''Wow Together {release_label} — World of Warcraft: Forever (live)
 
 Copy the complete WowTogether folder to:
@@ -78,6 +109,7 @@ the live World of Warcraft client’s Interface\\AddOns\\WowTogether\\ directory
 
 Update EVERY party member to {version}, copying the WowTogether folder and
 all three matching WowTogether_*Data folders side by side into AddOns.
+{gold_install}
 Do not put the data folders inside WowTogether. Keep all three enabled in the
 addon list; they load only when their data is first needed. Then fully restart the client;
 the release includes taint mitigation (a /reload is insufficient
