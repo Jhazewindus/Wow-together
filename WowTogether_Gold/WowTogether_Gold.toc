@@ -9,3 +9,4 @@
 ## SavedVariables: WowTogetherGoldDB
 Gold.lua
 GoldPrices.lua
+GoldObservations.lua
