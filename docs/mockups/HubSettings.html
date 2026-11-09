@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>HubSettings — Wow Together mockup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{color:#d9b45b}a:hover{color:#f0d17e}
+</style>
+<style>body{background:#111;padding:24px}</style></head><body>
+
+<div style="width: 1100px; height: 620px; box-sizing: border-box; font-family: Inter, system-ui, sans-serif; color: #e8e2d3; background: #1f1c17; border: 1px solid #4a4133; border-radius: 6px; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #272319; border-bottom: 1px solid #3b3429">
+    <div style="flex: 1; font-size: 15px; font-weight: 600">Wow Together</div>
+    <button type="button" aria-label="Close" style="width: 30px; height: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">×</button>
+  </div>
+  <div style="display: flex; flex: 1; min-height: 0">
+    <nav aria-label="Sections" style="width: 150px; background: #231f19; border-right: 1px solid #3b3429; padding: 12px 10px; display: flex; flex-direction: column; gap: 4px">
+      <a href="#" style="display: block; padding: 10px 12px; border-radius: 4px; color: #e8e2d3; font-size: 14px; text-decoration: none">Play</a>
+      <a href="#" style="display: block; padding: 10px 12px; border-radius: 4px; color: #e8e2d3; font-size: 14px; text-decoration: none">Group</a>
+      <a href="#" style="display: block; padding: 10px 12px; border-radius: 4px; color: #e8e2d3; font-size: 14px; text-decoration: none">Browse</a>
+      <a href="#" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 4px; background: #3a3225; color: #f0d17e; font-weight: 600; font-size: 14px; text-decoration: none">Settings</a>
+    </nav>
+    <main style="flex: 1; padding: 18px 24px; display: flex; flex-direction: column; gap: 12px; overflow: hidden">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span style="font-size: 12px; color: #b8ae9c">Preset</span>
+        <div style="display: flex; border: 1px solid #4a4133; border-radius: 4px; overflow: hidden">
+          <button type="button" style="height: 28px; padding: 0 12px; border: 0; background: #1f1c17; color: #e8e2d3; font-size: 12px">Simple</button>
+          <button type="button" aria-pressed="true" style="height: 28px; padding: 0 12px; border: 0; background: #3a3225; color: #f0d17e; font-size: 12px; font-weight: 600">Standard</button>
+          <button type="button" style="height: 28px; padding: 0 12px; border: 0; background: #1f1c17; color: #e8e2d3; font-size: 12px">Everything</button>
+        </div>
+        <label for="settings-search" style="flex: 1; display: flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border: 1px solid #4a4133; background: #1a1713; border-radius: 4px; color: #b8ae9c; font-size: 12px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8ae9c" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="settings-search" type="search" placeholder="Search settings" style="flex: 1; background: transparent; border: 0; color: #e8e2d3; font-size: 12px; font-family: inherit">
+        </label>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-content: start">
+        <section style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 11px; color: #b8ae9c; letter-spacing: 0.04em; padding-bottom: 6px">GUIDE WINDOW</div>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Show the guide window</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px"> Glance mode</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px"> Solid background</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Next-step preview</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Route on the minimap</label>
+        </section>
+        <section style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 11px; color: #b8ae9c; letter-spacing: 0.04em; padding-bottom: 6px">AUTOMATION</div>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Accept guide quests</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Turn in (no reward choice)</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Share quests with party</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Track plan quests</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px"> Select suggested flights</label>
+        </section>
+        <section style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 11px; color: #b8ae9c; letter-spacing: 0.04em; padding-bottom: 6px">PARTY</div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><span style="flex: 1">Party mode</span><span style="display: flex; border: 1px solid #4a4133; border-radius: 4px; overflow: hidden; font-size: 11px"><button type="button" aria-pressed="true" style="height: 24px; padding: 0 10px; border: 0; background: #3a3225; color: #f0d17e; font-weight: 600">Ask</button><button type="button" style="height: 24px; padding: 0 10px; border: 0; background: #1f1c17; color: #e8e2d3">Always</button><button type="button" style="height: 24px; padding: 0 10px; border: 0; background: #1f1c17; color: #e8e2d3">Never</button></span></div>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Share observations (roads, objectives)</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Show positions on the map</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Wait prompts on group objectives</label>
+        </section>
+        <section style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 11px; color: #b8ae9c; letter-spacing: 0.04em; padding-bottom: 6px">ROUTING</div>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Mapped travel routes</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Learn roads as you walk</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px"> Hearthstone &amp; teleports</label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px"> XP model (beta)</label>
+        </section>
+      </div>
+      <div style="display: flex; gap: 14px; font-size: 12px; color: #b8ae9c">
+        <a href="#" style="text-decoration: none">Map markers (6)</a>
+        <a href="#" style="text-decoration: none">Advanced (18)</a>
+        <span style="flex: 1"></span>
+        <span>Hover any setting for what it does</span>
+      </div>
+    </main>
+  </div>
+  <footer style="display: flex; align-items: center; gap: 16px; padding: 8px 14px; background: #231f19; border-top: 1px solid #3b3429; font-size: 12px; color: #b8ae9c">
+    <span><span style="color: #7fc27a">●</span> party: 3 synced</span>
+    <span>quest data: 2 days old</span>
+    <span style="flex: 1">0.8.110</span>
+    <a href="#" style="text-decoration: none">Report a problem</a>
+  </footer>
+</div>
+</body></html>
