@@ -128,12 +128,6 @@ local function createHome()
     end, true)
     home.resume.continueControl:SetPoint("RIGHT", -12, 0)
     home.resume.continueControl:Show()
-    home.resume.glanceControl = ns.UIButton(home.resume, "Glance", 72, function()
-        ns.SetOption("guideGlance", true)
-        ns.OpenGuideWindow()
-    end)
-    home.resume.glanceControl:SetPoint("RIGHT", home.resume.continueControl, "LEFT", -8, 0)
-    home.resume.glanceControl:Hide()
     home.resume.orderControl = ns.UIButton(home.resume, "Change order…", 116, function()
         if ns.routeSelection then ns.ShowGuideQuestList(ns.routeSelection) end
     end)
@@ -182,21 +176,40 @@ end
 local nextGlyph = {leveling = "!", classquests = "!", dungeon = "D", dungeons = "D",
     professions = "⚒", travel = "→", gold = "◉"}
 
+local function activeGuideHeading(guide)
+    local area = guide and (guide.zone or guide.zoneName)
+    if type(area) ~= "string" or area == "" then area = ns.profile and ns.profile.zone end
+    local faction = ns.profile and ns.profile.faction
+    if type(area) == "string" and area ~= "" and type(faction) == "string" and faction ~= "" then
+        return faction .. " / " .. area .. (guide and guide.title and guide.title ~= area and (" · " .. guide.title) or "")
+    end
+    return guide and guide.title or "Current guide"
+end
+
 local function activeGuideDetail(guide, route)
     local fields, step = {}, route and (route.pendingStop or route.stops and route.stops[1])
-    local number = step and tonumber(step.guideStep)
-    local total = tonumber(guide and (guide.enabledCount or guide.classQuestStepCount))
-        or guide and type(guide.records) == "table" and #guide.records
+    local number = step and tonumber(step.guideStep) or tonumber(route and route.currentStep)
+    local total = tonumber(route and route.totalSteps)
+    if not total or total <= 0 then total = tonumber(guide and guide.totalSteps) end
+    if not total or total <= 0 then total = tonumber(guide and guide.enabledCount) end
+    if not total or total <= 0 then total = tonumber(guide and guide.classQuestStepCount) end
+    if (not total or total <= 0) and guide and type(guide.records) == "table" then total = #guide.records end
+    if not number and total and total > 0 and route and tonumber(route.remainingSteps) then
+        number = math.max(1, math.min(total, total - route.remainingSteps + 1))
+    end
     if number and total and total > 0 then fields[#fields + 1] = "step " .. number .. " of " .. total end
+    if #fields == 0 and total and total > 0 then fields[#fields + 1] = total .. " quest" .. (total == 1 and "" or "s") .. " in this guide" end
     local exit = tonumber(guide and (guide.mainLevelHigh or guide.rangeHigh or guide.maxLevel))
     local level = tonumber(ns.profile and ns.profile.level)
     if exit then
         if level then fields[#fields + 1] = math.max(0, exit - level) .. " levels left" end
         fields[#fields + 1] = "exit at " .. exit
     end
+    if #fields == 0 then fields[1] = "Open the guide window to see the current step." end
     return table.concat(fields, " · "), number, total
 end
 ns.HubActiveGuideProgress = activeGuideDetail
+ns.HubActiveGuideHeading = activeGuideHeading
 
 local function layoutNext(home)
     local width, top = ns.ui.contentWidth, 8
@@ -211,8 +224,7 @@ local function layoutNext(home)
         home.resume.fill:SetWidth(math.max(1, (width - 28) * (home.resume.fraction or 0)))
         home.resume.fill:SetShown((home.resume.fraction or 0) > 0)
         home.resume.continueControl:ClearAllPoints(); home.resume.continueControl:SetPoint("BOTTOMLEFT", 12, 7); home.resume.continueControl:SetSize(94, 28)
-        home.resume.glanceControl:ClearAllPoints(); home.resume.glanceControl:SetPoint("LEFT", home.resume.continueControl, "RIGHT", 8, 0); home.resume.glanceControl:SetSize(72, 28)
-        home.resume.orderControl:ClearAllPoints(); home.resume.orderControl:SetPoint("LEFT", home.resume.glanceControl, "RIGHT", 8, 0); home.resume.orderControl:SetSize(122, 28)
+        home.resume.orderControl:ClearAllPoints(); home.resume.orderControl:SetPoint("LEFT", home.resume.continueControl, "RIGHT", 8, 0); home.resume.orderControl:SetSize(122, 28)
         home.resume.stopControl:ClearAllPoints(); home.resume.stopControl:SetPoint("LEFT", home.resume.orderControl, "RIGHT", 8, 0); home.resume.stopControl:SetSize(126, 28)
         top = top + 116
     end
@@ -237,7 +249,6 @@ local function renderNext(home, query)
     ns.UpdateSessionResumeBar()
     local running = ns.routeSelection ~= nil and ns.selectedRoute ~= nil and ns.selectedRoute.complete ~= true
     home.resume.continueControl:SetShown(home.resume:IsShown())
-    home.resume.glanceControl:SetShown(home.resume:IsShown() and ns.routeSelection ~= nil)
     home.resume.orderControl:SetShown(running)
     home.resume.stopControl:SetShown(running)
     for _, item in ipairs(items) do
@@ -286,8 +297,7 @@ function ns.LayoutRecommended()
         home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 82)
         home.resume.title:SetWidth(width - 470); home.resume.detail:SetWidth(width - 470)
         home.resume.continueControl:ClearAllPoints(); home.resume.continueControl:SetPoint("RIGHT", -12, 0); home.resume.continueControl:SetSize(88, 28)
-        home.resume.glanceControl:ClearAllPoints(); home.resume.glanceControl:SetPoint("RIGHT", home.resume.continueControl, "LEFT", -8, 0); home.resume.glanceControl:SetSize(72, 28)
-        home.resume.orderControl:ClearAllPoints(); home.resume.orderControl:SetPoint("RIGHT", home.resume.glanceControl, "LEFT", -8, 0); home.resume.orderControl:SetSize(116, 28)
+        home.resume.orderControl:ClearAllPoints(); home.resume.orderControl:SetPoint("RIGHT", home.resume.continueControl, "LEFT", -8, 0); home.resume.orderControl:SetSize(116, 28)
         home.resume.stopControl:ClearAllPoints(); home.resume.stopControl:SetPoint("RIGHT", home.resume.orderControl, "LEFT", -8, 0); home.resume.stopControl:SetSize(120, 28)
         top = top + 94
     end
@@ -357,7 +367,6 @@ function ns.RenderRecommended(query)
     local running = ns.routeSelection ~= nil and ns.selectedRoute ~= nil
     if running then home.resume.stopControl:Show(); home.resume.orderControl:Show()
     else home.resume.stopControl:Hide(); home.resume.orderControl:Hide() end
-    home.resume.glanceControl:SetShown(home.resume:IsShown() and running)
     ns.ui.metrics[2].caption:SetText("RECOMMENDATIONS"); ns.ui.metrics[2].value:SetText(tostring(#items))
     home:Show(); ns.LayoutRecommended()
 end

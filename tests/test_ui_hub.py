@@ -86,6 +86,8 @@ class HubTests(unittest.TestCase):
         client.lua.execute('''
             local ns = ...
             ns.profile.level = 22
+            ns.profile.zone = "The Barrens"
+            ns.profile.faction = "Horde"
             ns.routeSelection = {key="test", title="Test guide", enabledCount=8, rangeHigh=25}
             ns.selectedRoute = {stops={{id=1, guideStep=2}}}
             ns.RecommendedItems = function()
@@ -99,8 +101,9 @@ class HubTests(unittest.TestCase):
         self.assertTrue(home.resume.continueControl.IsShown(home.resume.continueControl))
         self.assertTrue(home.resume.orderControl.IsShown(home.resume.orderControl))
         self.assertTrue(home.resume.stopControl.IsShown(home.resume.stopControl))
-        self.assertTrue(home.resume.glanceControl.IsShown(home.resume.glanceControl))
+        self.assertIsNone(getattr(home.resume, "glanceControl", None))
         self.assertEqual(home.resume.detail.text, "step 2 of 8 · 3 levels left · exit at 25")
+        self.assertEqual(home.resume.title.text, "Horde / The Barrens · Test guide")
         self.assertAlmostEqual(home.resume.fraction, 0.125)
         self.assertEqual(home.nextCount, 1)
         self.assertEqual(home.nextRows[1].action.caption.text, "Follow")
@@ -114,6 +117,14 @@ class HubTests(unittest.TestCase):
         ns.SetHubTab("Browse")
         widths = [ui.browseButtons[key].width for key in ("guides", "classquests", "dungeons", "professions", "library")]
         self.assertGreaterEqual(widths[3], 96)
+        client.lua.execute('''local frame=...; local original=frame.SetPoint; frame.points={}
+            frame.SetPoint=function(self, ...) self.points[#self.points+1]={...}; original(self, ...) end''', ui.scroll)
+        ui.hubButtons.Play.OnClick()
+        found_play_top = client.lua.eval('''function(points)
+            for _, point in ipairs(points) do if point[1] == "TOPLEFT" and point[3] == -82 then return true end end
+            return false
+        end''')(ui.scroll.points)
+        self.assertTrue(found_play_top)
         if ui.visibleCards >= 2:
             first, second = ui.cards[1], ui.cards[2]
             self.assertLess(first.width, ns.ui.contentWidth)

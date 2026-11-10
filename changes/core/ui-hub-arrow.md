@@ -2,12 +2,12 @@
 
 For players:
 - Try the revised Play, Group and Browse Hub behind the optional beta setting.
-- Open Glance from the active Play card; restore the HUD with one arrow toggle after hiding it with X.
+- Switch the guide card to Glance from its step counter; restore a hidden HUD with one arrow toggle.
 - Browse guides and activities in a two-column layout with readable filters and a clear following state.
 
 Please check:
 - Confirm the arrow’s walking, wrong-way, arrived, transport and hidden states in game.
-- Check the one-click HUD restore and Glance actions, then compare Browse card fit at minimum and wide window sizes.
+- Check the HUD restore and step-counter Glance actions, then compare Browse fit at minimum and wide window sizes.
 - Compare the HUD card, Glance, arrow, and each Hub tab with the adjacent 1100×620 mockups before approval.
 
 Developer notes:

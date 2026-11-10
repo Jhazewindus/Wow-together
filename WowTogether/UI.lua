@@ -1,11 +1,11 @@
 local addonName, ns = ...
 
 local colors = {
-    background = {0.065, 0.071, 0.075, 0.98},
-    panel = {0.095, 0.102, 0.106, 0.98},
+    background = {0.122, 0.110, 0.090, 0.98},
+    panel = {0.153, 0.137, 0.098, 0.98},
     border = {0.27, 0.25, 0.21, 1},
     gold = {0.88, 0.73, 0.46, 1},
-    muted = {0.65, 0.67, 0.66, 1},
+    muted = {0.72, 0.68, 0.61, 1},
     text = {0.91, 0.90, 0.86, 1},
     success = {0.48, 0.76, 0.66, 1},
 }
@@ -295,7 +295,7 @@ function ns.UpdateHubMode()
     ns.ui.settingsPage:SetShown(false)
     ns.ui.scroll:SetShown(not enabled or ns.ui.hubTab == "Play" or ns.ui.hubTab == "Browse" or ns.ui.hubTab == "Module")
     ns.ui.scroll:ClearAllPoints()
-    ns.ui.scroll:SetPoint("TOPLEFT", enabled and 150 or 26, -112)
+    ns.ui.scroll:SetPoint("TOPLEFT", enabled and 150 or 26, enabled and ns.ui.hubTab == "Play" and -82 or -112)
     ns.ui.scroll:SetPoint("BOTTOMRIGHT", -18, 64)
     ns.ui.reportProblem:SetShown(enabled)
     for _, metric in ipairs(ns.ui.metrics) do metric:SetShown(not enabled) end
@@ -382,7 +382,8 @@ function ns.SetFilter(filter, keepHubTab)
     end
     for _, control in ipairs(ns.ui.guideControls or {}) do control:Hide() end
     ns.ui.scroll:ClearAllPoints()
-    ns.ui.scroll:SetPoint("TOPLEFT", ns.Option("uiNext") and 150 or 26, filter == "library" and -120 or -112)
+    local top = filter == "library" and -120 or ns.Option("uiNext") and ns.ui.hubTab == "Play" and -82 or -112
+    ns.ui.scroll:SetPoint("TOPLEFT", ns.Option("uiNext") and 150 or 26, top)
     ns.ui.scroll:SetPoint("BOTTOMRIGHT", -18, 64)
     refreshHubRail()
     ns.Refresh()

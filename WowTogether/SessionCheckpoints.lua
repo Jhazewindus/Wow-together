@@ -182,7 +182,7 @@ function ns.UpdateSessionResumeBar()
         local active = displayGuide ~= nil
         home.resume:SetShown(active)
         home.resume.category:Hide()
-        home.resume.title:SetText(active and displayGuide.title or "")
+        home.resume.title:SetText(active and ns.HubActiveGuideHeading and ns.HubActiveGuideHeading(displayGuide) or active and displayGuide.title or "")
         local detail, step, total
         if active and ns.HubActiveGuideProgress then detail, step, total = ns.HubActiveGuideProgress(displayGuide, running and ns.selectedRoute) end
         if saved and saved.checkpoint and saved.checkpoint.step then
