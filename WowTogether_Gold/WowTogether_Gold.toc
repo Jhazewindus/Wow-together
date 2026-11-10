@@ -1,0 +1,10 @@
+## Interface: 16001
+## Title: Wow Together Gold
+## Notes: Optional farming observations and price guidance for Wow Together.
+## Author: Wow Together contributors
+## Version: 0.1.0
+## X-WowTogether-Min: 0.8.107
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+## SavedVariables: WowTogetherGoldDB
+Gold.lua
