@@ -41,6 +41,8 @@ ns.eventFailures = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
 ns.frame = CreateFrame("Frame")
+local deathSoundState = {played = 0, lastAt = nil, handled = false}
+local DEATH_SOUND_PATH = "Interface\\AddOns\\WowTogether\\Media\\Sounds\\death.ogg"
 
 function ns.Public(value)
     return not issecretvalue or not issecretvalue(value)
@@ -313,6 +315,7 @@ local diagnosticsProbes = {
             {"C_Map.GetUserWaypoint", function() return C_Map and C_Map.GetUserWaypoint end},
             {"C_Map.ClearUserWaypoint", function() return C_Map and C_Map.ClearUserWaypoint end},
             {"UiMapPoint.CreateFromCoordinates", function() return UiMapPoint and UiMapPoint.CreateFromCoordinates end},
+            {"PlaySoundFile", function() return PlaySoundFile end},
             {"issecretvalue", function() return issecretvalue end},
             {"loadstring (Lua checks)", function() return loadstring end},
             {"setfenv (Lua checks)", function() return setfenv end},
@@ -343,6 +346,8 @@ function ns.Diagnostics()
     for _, probe in ipairs(diagnosticsProbes) do
         output(probe[1] .. ": " .. (type(probe[2]()) == "function" and "present" or "missing"))
     end
+    output("Death sound: " .. (ns.Option("deathSound") and "on" or "off")
+        .. " (played " .. deathSoundState.played .. " time" .. (deathSoundState.played == 1 and "" or "s") .. " this session)")
     output("MapCanvasDataProviderMixin: " .. (type(MapCanvasDataProviderMixin) == "table" and "present" or "missing"))
     output("Presence is not proof of working behavior. No waypoint or protected action was called.")
     local unavailable = {}
@@ -546,6 +551,24 @@ ns.On("PLAYER_LOGIN", function()
         ns.Print("Your saved Solo mode keeps party features off. Set Settings > Party mode to Ask me if you want party prompts.")
     end
     ns.RestoreSavedGuide(); ns.RefreshDungeonArtwork(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync()
+end)
+local function resetDeathSoundState()
+    deathSoundState.handled = false
+end
+ns.On("PLAYER_ALIVE", resetDeathSoundState)
+ns.On("PLAYER_UNGHOST", resetDeathSoundState)
+ns.On("PLAYER_DEAD", function()
+    if type(UnitIsFeignDeath) == "function" and ns.ReadPublic(UnitIsFeignDeath, "player") == true then return end
+    if deathSoundState.handled then return end
+    deathSoundState.handled = true
+    if not ns.Option("deathSound") then return end
+    local now = ns.ReadPublic(GetTime)
+    if type(now) ~= "number" or now ~= now then now = deathSoundState.lastAt or 0 end
+    if deathSoundState.lastAt and now >= deathSoundState.lastAt and now - deathSoundState.lastAt < 5 then return end
+    deathSoundState.lastAt = now
+    if type(PlaySoundFile) ~= "function" then return end
+    local okay, played = pcall(PlaySoundFile, DEATH_SOUND_PATH, "Master")
+    if okay and ns.Public(played) and played == true then deathSoundState.played = deathSoundState.played + 1 end
 end)
 ns.On("QUEST_LOG_UPDATE", function()
     ns.ScheduleSync()

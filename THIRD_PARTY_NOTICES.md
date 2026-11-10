@@ -1,5 +1,10 @@
 # Third-party notices
 
+`WowTogether/Media/Sounds/death.ogg` was supplied by the user. The user
+confirmed permission for public repository distribution on 2026-11-09. No
+separate author attribution or license text was supplied; no broader license
+is claimed for this clip.
+
 Profession recipe, rank and trainer facts are attributed in [PROFESSIONS.md](PROFESSIONS.md)
 and `ProfessionData.json` (source URLs and checksums). The guide algorithms and
 step wording are original; no source guide sequence, website code, prose or

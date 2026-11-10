@@ -104,7 +104,7 @@ class SettingsTests(unittest.TestCase):
         labels = [settings.section.entries[i][2] for i in range(1, len(settings.section.entries) + 1)]
         self.assertEqual(labels, ["Leveling", "Dungeons", "Quest log and dialogs", "Arrow and display",
                                   "Travel and tips", "Quest markers", "Party and group finder",
-                                  "Bags and supplies", "Quest data and saved progress"])
+            "Bags and supplies", "Quest data and saved progress", "Fun"])
         self.assertIsNone(settings.pages.professions)  # Profession crafting targets are handled by the guide.
         self.assertTrue(c.lua.globals().rawequal(settings.resetSkips.GetParent(settings.resetSkips), settings.pages.data))
         self.assertGreater(settings.pages.data.contentHeight, settings.pages.data.optionsHeight)

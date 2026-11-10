@@ -167,6 +167,9 @@ def main():
         if hashlib.sha256((media / name).read_bytes()).hexdigest() != texture['sha256']:
             raise ValueError('Guide texture checksum mismatch: ' + name)
         media_names.append(name)
+    sound = addon / 'Media' / 'Sounds' / 'death.ogg'
+    if not sound.is_file() or sound.read_bytes()[:4] != b'OggS':
+        raise ValueError('Missing or invalid death sound asset')
     icons_media = addon / 'Media' / 'Icons'
     icon_manifest = json.loads((icons_media / 'manifest.json').read_text())
     if icon_manifest.get('schema') != 1 or icon_manifest.get('size') != 64 \
@@ -928,6 +931,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
                 archive.write(ROOT / folder / name, folder + '/' + name)
         for name in media_names:
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
+        archive.write(sound, 'WowTogether/Media/Sounds/death.ogg')
         for name in icon_media_names:
             archive.write(icons_media / name, 'WowTogether/Media/Icons/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):

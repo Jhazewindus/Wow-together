@@ -11,7 +11,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     guideGlance = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
-    unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask"}
+    unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask", deathSound = true}
 
 function ns.Option(key)
     local handled, value = ns.FirstHook("optionGet", key)
@@ -99,7 +99,10 @@ local sections = {
         {"learnObjectives", "Learn objective areas as you play", "Record your own location when an objective counter advances. These observations stay local unless party sharing is enabled."},
         {"useLearnedQuests", "Use observed quest prerequisites", "Use confirmed unlock patterns for your faction and client build."},
         {"exportCharacterNames", "Name characters in guide findings", "Include character names in guide findings. Quest research exports never include them."}},
-        "Manage local quest research and saved guide skips."}
+        "Manage local quest research and saved guide skips."},
+    {"fun", "Fun", {
+        {"deathSound", "Play a sound when you die", "Play a short sound locally when your character dies."}},
+        "Optional local sound effects."}
 }
 
 function ns.InitializeConfig()
