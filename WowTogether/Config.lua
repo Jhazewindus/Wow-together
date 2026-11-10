@@ -7,9 +7,9 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
+    standaloneArrow = true, standaloneArrowScale = 1, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
-    guideGlance = false,
+    guideGlance = false, uiNext = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
     unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask"}
 
@@ -51,11 +51,13 @@ local sections = {
         {"autoTurnIn", "Auto-turn in quests with no reward choice", "Turn in when the dialog opens if there is no reward to choose."}},
         "Choose how the addon uses the quest log and handles NPC dialogs."},
     {"navigation", "Arrow and display", {
+        {"uiNext", "Use the new Hub beta", "Try the Play, Group and Browse layout. Turn it off to return to the current Hub."},
         {"routeArrow", "Show the guide window", "Show the current step, direction and guide controls."},
         {"guideOpaque", "Solid guide background", "Use a solid background for easier reading; turn off for a translucent panel."},
         {"guideGlance", "Glance mode", "Show one short line for the current step; click the step counter to switch."},
         {"guidePeek", "Preview the next guide step", "Show one muted next-step preview below the current instruction."},
-        {"standaloneArrow", "Show a separate direction arrow", "Show direction, distance and travel time in a small separate panel."},
+        {"standaloneArrow", "Show the floating direction arrow", "Show a large, separately movable arrow above the guide card."},
+        {"standaloneArrowScale", "Direction arrow size", "Set the floating arrow size from 75% to 150%.", {{0.75, "75%"}, {1, "100%"}, {1.25, "125%"}, {1.5, "150%"}}},
         {"minimapRoute", "Draw the route on the minimap", "Show the current travel line and next stops on the minimap, clipped to its edge."},
         {"distanceUnits", "Distance units", "Choose the unit shown below the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show map route details", "Show a short route explanation below the world map."},
@@ -128,6 +130,10 @@ function ns.InitializeConfig()
     ns.db.config.circuitRadius = math.max(0.08, math.min(0.24, ns.db.config.circuitRadius))
     ns.db.config.circuitLimit = math.max(2, math.min(6, math.floor(ns.db.config.circuitLimit)))
     ns.db.config.routeAhead = math.max(0, math.min(2, math.floor(ns.db.config.routeAhead)))
+    if ns.db.config.standaloneArrowScale ~= 0.75 and ns.db.config.standaloneArrowScale ~= 1
+        and ns.db.config.standaloneArrowScale ~= 1.25 and ns.db.config.standaloneArrowScale ~= 1.5 then
+        ns.db.config.standaloneArrowScale = 1
+    end
     if ns.db.config.distanceUnits ~= "yards" and ns.db.config.distanceUnits ~= "metres" then ns.db.config.distanceUnits = "yards" end
     if ns.db.config.npcMarker ~= "star" and ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "star" end
     if ns.db.config.supplyTarget ~= 10 and ns.db.config.supplyTarget ~= 20 and ns.db.config.supplyTarget ~= 40 then ns.db.config.supplyTarget = 20 end
@@ -156,6 +162,7 @@ function ns.SetOption(key, value)
         if ns.RenderSettings then ns.RenderSettings() end
         return
     end
+    if key == "uiNext" and ns.UpdateHubMode then ns.UpdateHubMode() end
     if key == "soloMode" and changed then
         ns.db.config.partyMode = value and "never" or "always"
         ns.partyModeTemporary = nil

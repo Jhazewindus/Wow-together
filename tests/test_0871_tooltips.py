@@ -37,6 +37,7 @@ class GuideTooltipTests(unittest.TestCase):
         c.lua.execute('''local ns = ...
           ns.GuideStepPresentation = function() return {title='Quest',what='Accept Quest',why='Collect Quest before entering Hall',
             status='Required',location='Ironforge • 33.0, 48.0',details={'Collect Quest before entering Hall','Ironforge • 33.0, 48.0'}} end''', c.ns)
+        frame.presentation = None
 
         frame.OnEnter(frame)
         text = "\n".join(game_tooltip.lines.values())

@@ -106,11 +106,11 @@ class FlightDiscoveryTests(unittest.TestCase):
         self.assertIn('future trips', arrow.tip.text.text)
         # The optional advice lives in the shared chip strip below the HUD.
         self.assertFalse(arrow.reason.IsShown(arrow.reason))
-        self.assertEqual(arrow.height, 102)
+        self.assertEqual(arrow.height, 130)
         arrow.tip.close.OnClick()
         self.assertFalse(arrow.tip.IsShown(arrow.tip))
         self.assertFalse(c.ns.GuideQuestSkipped(900))
-        self.assertEqual(arrow.height, 102)
+        self.assertEqual(arrow.height, 130)
 
     def test_one_banner_and_automatic_removal_after_confirmed_unlock(self):
         c = tip_client(inn=False, flight=True)
