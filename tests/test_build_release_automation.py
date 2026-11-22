@@ -100,8 +100,14 @@ class BuildAutomationTests(unittest.TestCase):
                 root = Path(tmp)
                 archive = root / name
                 build(archive)
+                (root / 'release-notes.md').write_text(
+                    'For players:\n- Routes update in short steps.\n\n'
+                    'Please check:\n- Rescan a zone guide.\n\n'
+                    'Developer notes:\n- Memoize policy work.\n')
                 outputs = builder.split_archive(archive, limit=archive.stat().st_size - 1)
                 self.assertEqual(len(outputs), 2)
                 options = {'branch': 'core/test', 'pr': '42', 'title': 'Test'} if kind == 'beta' else {}
                 _, files, _, _ = prepare(root, kind, **options)
-                self.assertEqual({name for name, _ in files}, {p.name for p in outputs})
+                expected = {p.name for p in outputs}
+                if kind == 'release': expected.add('release-notes.md')
+                self.assertEqual({name for name, _ in files}, expected)
