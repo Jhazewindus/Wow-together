@@ -53,14 +53,14 @@ class GuideWindowTests(unittest.TestCase):
         self.assertTrue(frame.IsShown(frame))
         self.assertEqual(c.ns.routeSelection.key, guide.key)
 
-    def test_standalone_arrow_keeps_wide_instruction_layout_after_resize(self):
+    def test_step_icon_stays_on_card_when_standalone_arrow_is_enabled(self):
         c = navigator(); frame = c.ns.navigation
         c.ns.SetOption('standaloneArrow', True)
         frame.SetSize(frame, 500, 200); frame.OnSizeChanged(frame)
-        self.assertFalse(frame.icon.IsShown(frame.icon))
-        self.assertEqual(frame.status.width, 472)
-        self.assertEqual(frame.distance.width, 472)
-        self.assertEqual(frame.status.point[2], 14)
+        self.assertTrue(frame.icon.IsShown(frame.icon))  # Step icon stays on the card; direction is a separate frame.
+        self.assertEqual(frame.status.width, 404)
+        self.assertEqual(frame.distance.width, 404)
+        self.assertEqual(frame.status.point[2], 82)
         c.ns.SetOption('standaloneArrow', False)
         self.assertEqual(frame.status.width, 404)
 

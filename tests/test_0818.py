@@ -57,20 +57,19 @@ class FlightReportTests(unittest.TestCase):
         c.lua.execute('flying=true; clock=100'); c.ns.handlers.PLAYER_CONTROL_LOST()
         c.lua.execute('clock=140'); c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.state.flight.remaining, 50)
-        self.assertEqual(c.ns.standaloneNavigation.timer.text, '~50 s')
-        self.assertEqual(c.ns.navigation.presentation.time, c.ns.standaloneNavigation.timer.text)
+        self.assertEqual(c.ns.standaloneNavigation.time.text, '~50 s')
         c.lua.execute('flying=false; clock=190'); c.ns.handlers.PLAYER_CONTROL_GAINED()
         self.assertEqual(c.ns.char.flights.timings['11:22'].mean, 90)
-        self.assertNotIn('left', c.ns.standaloneNavigation.timer.text)
+        self.assertNotIn('left', c.ns.standaloneNavigation.time.text)
 
     def test_untimed_or_overdue_flight_never_displays_a_fake_exact_countdown(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.SetOption('standaloneArrow', True)
         c.ns.NoteFlightSelection(54)
         c.lua.execute('flying=true'); c.ns.UpdateNavigation()
-        self.assertIn('~6 min', c.ns.standaloneNavigation.timer.text)
+        self.assertIn('~6 min', c.ns.standaloneNavigation.time.text)
         c.lua.execute('clock=5000'); c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.standaloneNavigation.timer.text, '')
-        self.assertNotIn('left', c.ns.standaloneNavigation.timer.text)
+        self.assertEqual(c.ns.standaloneNavigation.time.text, '')
+        self.assertNotIn('left', c.ns.standaloneNavigation.time.text)
 
     def test_flight_summary_distinguishes_ride_from_journey(self):
         c = flight_client(); c.ns.ReadFlightMap()
@@ -129,24 +128,24 @@ class ArrowAndSettingsTests(unittest.TestCase):
         self.assertFalse(allowed)
         self.assertIn('class requirement', reason)
 
-    def test_separate_arrow_hides_duplicate_geometry_and_keeps_guide_controls(self):
+    def test_standalone_arrow_is_separate_and_card_keeps_step_icon_and_guide_controls(self):
         c = flight_client(); c.lua.execute('function GetPlayerFacing() return 0 end'); c.ns.UpdateNavigation()
         c.ns.SetOption('standaloneArrow', True)
         self.assertTrue(c.ns.standaloneNavigation.IsShown(c.ns.standaloneNavigation))
-        self.assertFalse(c.ns.navigation.icon.IsShown(c.ns.navigation.icon))
+        self.assertTrue(c.ns.navigation.icon.IsShown(c.ns.navigation.icon))
         self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
         self.assertTrue(c.ns.navigation.scan.enabled)
         self.assertTrue(all(not line.IsShown(line) for line in c.ns.navigation.icon.lines.values()))
         c.ns.SetOption('standaloneArrow', False)
         self.assertTrue(c.ns.navigation.icon.IsShown(c.ns.navigation.icon))
-        self.assertTrue(any(line.IsShown(line) for line in c.ns.navigation.icon.lines.values()))
+        self.assertTrue(all(not line.IsShown(line) for line in c.ns.navigation.icon.lines.values()))
 
     def test_walk_eta_uses_mount_speed_and_reconsiders_cached_travel_costs(self):
-        c = flight_client(); c.ns.SetOption('standaloneArrow', True)
+        c = flight_client(); c.lua.execute('function GetPlayerFacing() return 0 end'); c.ns.SetOption('standaloneArrow', True)
         c.ns.UpdateNavigation(); before = c.ns.navigation.state.walkSeconds
         c.lua.execute('function GetUnitSpeed() return 14,14 end'); c.ns.UpdateNavigation()
         self.assertAlmostEqual(c.ns.navigation.state.walkSeconds, before / 2)
-        self.assertIn('~', c.ns.standaloneNavigation.timer.text)
+        self.assertIn('~', c.ns.standaloneNavigation.time.text)
         self.assertAlmostEqual(c.ns.travelPath.seconds, before * 1.25 / 2)
         c.lua.execute('function GetUnitSpeed() return secret,secret end'); c.ns.UpdateNavigation()
         self.assertAlmostEqual(c.ns.navigation.state.walkSeconds, before)

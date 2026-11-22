@@ -20,8 +20,19 @@ class HudTitleTests(unittest.TestCase):
         self.assertTrue(c.ns.window.IsShown(c.ns.window))
         self.assertEqual(c.ns.filter, 'recommended')
 
+    def test_arrow_command_restores_a_hidden_hud_without_first_turning_it_off(self):
+        c = navigator(); frame = c.ns.navigation
+        frame.close.OnClick()
+        self.assertTrue(c.ns.guideWindowHidden)
+        self.assertTrue(c.ns.Option('routeArrow'))
+        c.ns.ToggleNavigation()
+        self.assertFalse(c.ns.guideWindowHidden)
+        self.assertTrue(c.ns.Option('routeArrow'))
+        self.assertTrue(frame.IsShown(frame))
+
     def test_step_counter_toggles_one_line_glance_and_back(self):
         c = navigator(); frame = c.ns.navigation
+        self.assertGreaterEqual(frame.stepButton.height, 22)
         frame.stepButton.OnMouseUp(frame.stepButton, 'LeftButton')
         self.assertTrue(c.ns.Option('guideGlance'))
         self.assertTrue(frame.glance)

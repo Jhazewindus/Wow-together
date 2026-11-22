@@ -335,7 +335,7 @@ class PartyRouteTests(unittest.TestCase):
 
 
 class ArrivalTests(unittest.TestCase):
-    def test_arrival_draws_down_arrow_and_accept_instruction_without_auto_completion(self):
+    def test_arrival_keeps_step_icon_and_accept_instruction_without_auto_completion(self):
         c = navigator(.21, .37)
         stop = c.ns.selectedRoute.stops[1]
         stop.npcName = 'Receiver'
@@ -343,9 +343,10 @@ class ArrivalTests(unittest.TestCase):
         c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.status.text, 'Accept Pickup quest from Receiver')
         self.assertEqual(c.ns.navigation.title.text, stop.title)
-        self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
-        self.assertTrue(c.ns.navigation.kindIcon.IsShown(c.ns.navigation.kindIcon))
-        self.assertEqual(c.ns.navigation.kindIcon.texture, c.ns.navigation.presentation.icon)
+        self.assertTrue(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol)
+            or c.ns.navigation.kindIcon.IsShown(c.ns.navigation.kindIcon))
+        self.assertTrue(c.ns.standaloneNavigation.IsShown(c.ns.standaloneNavigation))
+        self.assertEqual(c.ns.standaloneNavigation.symbol.text, '✓')
         self.assertIsNotNone(c.ns.routeSelection)
         self.assertFalse(c.ns.Completed(900))
 

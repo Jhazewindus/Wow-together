@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>HubBrowse — Wow Together mockup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{color:#d9b45b}a:hover{color:#f0d17e}
+</style>
+<style>body{background:#111;padding:24px}</style></head><body>
+
+<div style="width: 1100px; height: 620px; box-sizing: border-box; font-family: Inter, system-ui, sans-serif; color: #e8e2d3; background: #1f1c17; border: 1px solid #4a4133; border-radius: 6px; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #272319; border-bottom: 1px solid #3b3429">
+    <div style="flex: 1; font-size: 15px; font-weight: 600">Wow Together</div>
+    <button type="button" aria-label="Settings" style="width: 30px; height: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">⚙</button>
+    <button type="button" aria-label="Close" style="width: 30px; height: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">×</button>
+  </div>
+  <div style="display: flex; flex: 1; min-height: 0">
+    <nav aria-label="Sections" style="width: 150px; background: #231f19; border-right: 1px solid #3b3429; padding: 12px 10px; display: flex; flex-direction: column; gap: 4px">
+      <a href="#" style="display: block; padding: 10px 12px; border-radius: 4px; color: #e8e2d3; font-size: 14px; text-decoration: none">Play</a>
+      <a href="#" style="display: block; padding: 10px 12px; border-radius: 4px; color: #e8e2d3; font-size: 14px; text-decoration: none">Group</a>
+      <a href="#" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 4px; background: #3a3225; color: #f0d17e; font-weight: 600; font-size: 14px; text-decoration: none">Browse</a>
+      <a href="#" style="display: block; padding: 10px 12px; border-radius: 4px; color: #e8e2d3; font-size: 14px; text-decoration: none">Settings</a>
+    </nav>
+    <main style="flex: 1; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+      <div style="display: flex; align-items: center; gap: 8px">
+        <button type="button" aria-pressed="true" style="height: 30px; padding: 0 14px; border: 1px solid #d9b45b; background: #3a3225; color: #f0d17e; border-radius: 15px; font-size: 12px; font-weight: 600">Leveling</button>
+        <button type="button" style="height: 30px; padding: 0 14px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 15px; font-size: 12px">Class</button>
+        <button type="button" style="height: 30px; padding: 0 14px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 15px; font-size: 12px">Dungeons</button>
+        <button type="button" style="height: 30px; padding: 0 14px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 15px; font-size: 12px">Professions</button>
+        <button type="button" style="height: 30px; padding: 0 14px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 15px; font-size: 12px">Quests</button>
+        <label for="browse-search" style="flex: 1; display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; margin-left: 8px; border: 1px solid #4a4133; background: #1a1713; border-radius: 4px; color: #b8ae9c; font-size: 12px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8ae9c" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="browse-search" type="search" placeholder="Search guides, zones, quests" style="flex: 1; background: transparent; border: 0; color: #e8e2d3; font-size: 12px; font-family: inherit">
+        </label>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px">
+        <div style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: baseline; gap: 8px"><div style="flex: 1; font-size: 15px; font-weight: 600">The Barrens</div><div style="font-size: 12px; color: #b8ae9c">Lv 21–29</div></div>
+          <div style="font-size: 12px; color: #b8ae9c">38 quests · 12 completed · 9 in your log · following now</div>
+          <div style="height: 5px; background: #1f1c17; border-radius: 3px; overflow: hidden"><div style="width: 32%; height: 100%; background: #d9b45b"></div></div>
+          <div style="display: flex; gap: 8px; align-items: center"><button type="button" style="height: 30px; padding: 0 16px; border: 1px solid #d9b45b; background: #d9b45b; color: #1f1c17; border-radius: 4px; font-size: 12px; font-weight: 600">Following</button><button type="button" aria-label="More" style="height: 30px; width: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">…</button></div>
+        </div>
+        <div style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: baseline; gap: 8px"><div style="flex: 1; font-size: 15px; font-weight: 600">Stonetalon Mountains</div><div style="font-size: 12px; color: #b8ae9c">Lv 21–30</div></div>
+          <div style="font-size: 12px; color: #b8ae9c">24 quests · 2 completed · next for you at 28</div>
+          <div style="height: 5px; background: #1f1c17; border-radius: 3px; overflow: hidden"><div style="width: 8%; height: 100%; background: #d9b45b"></div></div>
+          <div style="display: flex; gap: 8px; align-items: center"><button type="button" style="height: 30px; padding: 0 16px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 12px; font-weight: 600">Follow</button><button type="button" aria-label="More" style="height: 30px; width: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">…</button></div>
+        </div>
+        <div style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: baseline; gap: 8px"><div style="flex: 1; font-size: 15px; font-weight: 600">Hillsbrad Foothills</div><div style="font-size: 12px; color: #b8ae9c">Lv 26–33</div></div>
+          <div style="font-size: 12px; color: #b8ae9c">31 quests · 0 completed · 4 min by flight</div>
+          <div style="height: 5px; background: #1f1c17; border-radius: 3px; overflow: hidden"><div style="width: 0%; height: 100%; background: #d9b45b"></div></div>
+          <div style="display: flex; gap: 8px; align-items: center"><button type="button" style="height: 30px; padding: 0 16px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 12px; font-weight: 600">Follow</button><button type="button" aria-label="More" style="height: 30px; width: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">…</button></div>
+        </div>
+        <div style="background: #272319; border: 1px solid #3b3429; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; opacity: 0.7">
+          <div style="display: flex; align-items: baseline; gap: 8px"><div style="flex: 1; font-size: 15px; font-weight: 600">Thousand Needles</div><div style="font-size: 12px; color: #b8ae9c">Lv 25–35</div></div>
+          <div style="font-size: 12px; color: #b8ae9c">29 quests · later (level 30+ for most)</div>
+          <div style="height: 5px; background: #1f1c17; border-radius: 3px; overflow: hidden"><div style="width: 0%; height: 100%; background: #d9b45b"></div></div>
+          <div style="display: flex; gap: 8px; align-items: center"><button type="button" style="height: 30px; padding: 0 16px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 12px; font-weight: 600">Follow</button><button type="button" aria-label="More" style="height: 30px; width: 30px; border: 1px solid #4a4133; background: #1f1c17; color: #e8e2d3; border-radius: 4px; font-size: 14px">…</button></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer style="display: flex; align-items: center; gap: 16px; padding: 8px 14px; background: #231f19; border-top: 1px solid #3b3429; font-size: 12px; color: #b8ae9c">
+    <span><span style="color: #7fc27a">●</span> party: 3 synced</span>
+    <span>quest data: 2 days old</span>
+    <span style="flex: 1">0.8.110</span>
+    <a href="#" style="text-decoration: none">Report a problem</a>
+  </footer>
+</div>
+</body></html>

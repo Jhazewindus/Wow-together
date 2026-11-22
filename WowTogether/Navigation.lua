@@ -240,17 +240,19 @@ function ns.NavigationState()
     return state
 end
 
-function ns.DrawNavigationArrow(angle, icon)
+function ns.DrawNavigationArrow(angle, icon, color)
     icon = icon or ns.navigation.icon
     local cosine, sine = math.cos(angle), math.sin(angle)
     local shape = {{0, 21}, {-12, -6}, {0, 0}, {12, -6}, {0, 21}}
+    local scale = finite(icon:GetWidth()) and math.max(1, icon:GetWidth() / 48) or 1
+    color = color or {1, 0.82, 0.30, 1}
     for index = 1, #shape - 1 do
         local line = icon.lines[index]
         if not line then line = icon:CreateLine(nil, "OVERLAY"); icon.lines[index] = line end
         local a, b = shape[index], shape[index + 1]
-        line:SetThickness(3); line:SetColorTexture(1, 0.82, 0.30, 1)
-        line:SetStartPoint("CENTER", icon, a[1] * cosine - a[2] * sine, a[1] * sine + a[2] * cosine)
-        line:SetEndPoint("CENTER", icon, b[1] * cosine - b[2] * sine, b[1] * sine + b[2] * cosine)
+        line:SetThickness(3 * scale); line:SetColorTexture(unpack(color))
+        line:SetStartPoint("CENTER", icon, (a[1] * cosine - a[2] * sine) * scale, (a[1] * sine + a[2] * cosine) * scale)
+        line:SetEndPoint("CENTER", icon, (b[1] * cosine - b[2] * sine) * scale, (b[1] * sine + b[2] * cosine) * scale)
         line:Show()
     end
 end
@@ -360,8 +362,8 @@ function ns.UpdateNavigation()
         frame.kindIcon:SetVertexColor(1, 1, 1, 1)
         frame.symbol:SetTextColor(1, 1, 1, 1)
         frame.context:Show(); frame.distance:Show()
-        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", frame.separateArrow and 14 or 82, -52)
-        frame.status:SetSize(frame:GetWidth() - (frame.separateArrow and 28 or 96), 18)
+        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", 82, -52)
+        frame.status:SetSize(frame:GetWidth() - 96, 18)
         frame.context:SetShown(presentation.why ~= nil and presentation.why ~= "")
         frame.distance:Show()
         frame.status:Show()
@@ -380,18 +382,16 @@ function ns.UpdateNavigation()
     else frame.peek:SetText(""); frame.peek:Hide() end
     updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
-    local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
-    frame.icon:SetShown(not separate)
-    if frame.separateArrow ~= separate then
-        frame.separateArrow = separate
-        ns.LayoutNavigation()
-    end
+    frame.icon:SetShown(true)
     if not glance then
-        local iconOnly = state.arrived or state.flight or presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport"
-        frame.kindIcon:SetTexture(presentation.icon)
-        frame.kindIcon:SetShown(state.angle == nil and iconOnly and not state.busy)
-        frame.symbol:SetText("..."); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
-        frame.symbol:SetShown(state.busy and state.angle == nil or state.angle == nil and not iconOnly and not state.busy)
+        local kind = symbolKindForPresentation(state.stop, presentation)
+        local glyph, texture = ns.StepSymbolFor(kind)
+        frame.kindIcon:SetTexture(texture or presentation.icon)
+        frame.kindIcon:SetVertexColor(unpack(ns.UIColors.text))
+        frame.kindIcon:SetShown(texture ~= nil and not state.busy)
+        frame.symbol:SetText(texture and "" or glanceFallback[kind] or glyph or "•")
+        frame.symbol:SetTextColor(unpack(ns.UIColors.text))
+        frame.symbol:SetShown(texture == nil and not state.busy)
     end
     local training = ns.IsClassTrainingStep(state.stop)
     local service = ns.IsInventoryServiceStep(state.stop)
@@ -459,11 +459,7 @@ function ns.UpdateNavigation()
     ns.UIHelp(frame.pause, paused and "Resume your saved guide using current progress." or "Save your guide, pause it and see your session summary.")
     ns.UIHelp(frame.close, paused and "Close this window. Your paused guide stays saved." or "Exit guide. Stop and close this window.")
     if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
-    if not separate and not glance then
-        if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
-        elseif state.arrived then frame.symbol:Hide()
-        elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
-    end
+    if state.busy and not glance then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon)) end
 end
 
 function ns.SaveNavigationPosition()
@@ -488,7 +484,7 @@ function ns.LayoutNavigation(layoutFrame)
     local baseHeight = glance and 150 or (frame.normalHeight or 168)
     local wantedHeight = baseHeight + chipHeight
     if math.abs((frame:GetHeight() or 0) - wantedHeight) > 0.5 then frame:SetHeight(wantedHeight) end
-    local left = frame.separateArrow and 14 or 82
+    local left = 82
     local offset = (width - 360) / 2
     frame.title:SetWidth(width - 108); frame.step:SetWidth(width - 28)
     frame.stepButton:SetWidth(width - 28)
@@ -631,7 +627,8 @@ function ns.CreateNavigation()
     ns.UIHelp(frame.close, "Hide the guide window.")
     frame.step = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.step:SetPoint("TOPLEFT", 14, -30); frame.step:SetSize(332, 14)
     frame.stepButton = CreateFrame("Button", nil, frame)
-    frame.stepButton:SetSize(332, 14); frame.stepButton:SetPoint("TOPLEFT", 14, -30)
+    -- Keep the Glance toggle easy to hit even when the step label is short.
+    frame.stepButton:SetSize(332, 22); frame.stepButton:SetPoint("TOPLEFT", 14, -26)
     frame.stepButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
     frame.stepButton:SetScript("OnMouseUp", function(_, button)
         if button == "RightButton" then
@@ -765,6 +762,16 @@ function ns.CreateNavigation()
 end
 
 function ns.ToggleNavigation()
+    -- Closing the card with X only hides its frame for this session. If the
+    -- saved setting is still on, the first toggle should restore that frame
+    -- instead of turning the setting off and leaving the player with no HUD.
+    if ns.Option("routeArrow") and ns.guideWindowHidden then
+        ns.guideWindowHidden = nil
+        if not ns.navigation then ns.CreateNavigation() end
+        ns.UpdateNavigation()
+        if ns.navigation then ns.navigation:Raise() end
+        return
+    end
     local enabled = not ns.Option("routeArrow")
     if enabled then ns.guideWindowHidden = nil end
     ns.SetOption("routeArrow", enabled)
