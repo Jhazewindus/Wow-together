@@ -288,6 +288,8 @@ class PackagingBoundaryTests(unittest.TestCase):
         self.assertTrue(checker.violations('ns[key]'))
         self.assertTrue(checker.violations('ns.Gold.Secret()'))
         self.assertTrue(checker.violations('local core = ns; core.db = {}'))
+        self.assertEqual(checker.violations('local value = ns.ReadPublic(GetTime)'), [])
+        self.assertEqual(checker.violations('local scanner = ns.StartFarmCandidateScan'), [])
         self.assertTrue(checker.violations('ns\n  .db = {}'))
         self.assertTrue(checker.violations('local root = _G; root.WowTogetherDB = {}'))
         self.assertTrue(checker.violations('_G.WowTogetherDB = {}'))

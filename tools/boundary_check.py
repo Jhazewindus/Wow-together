@@ -6,15 +6,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED = {
-    'GoldAPIVersion', 'RegisterModule', 'FindTravelPath', 'TravelPointDistance',
+    'version', 'GoldAPIVersion', 'RegisterModule', 'FindTravelPath', 'TravelPointDistance',
     'PlayerPoint', 'TrailLoop', 'RouteCostModel', 'PushGuideStop',
     'ClearModuleStops', 'RegisterSyncKind', 'CatalogueQuest', 'catalogue',
     'ReadPublic', 'Public', 'GuideInteger', 'SafeTitle', 'Option', 'SetOption',
+    'StartFarmCandidateScan',
     'Print', 'On', 'ResearchExportHook', 'Gold', 'STEP_SYMBOLS',
 }
 ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
 DYNAMIC = re.compile(r'\bns\s*\[')
-ALIAS = re.compile(r'\b(?:local\s+)?([A-Za-z_]\w*)\s*=\s*ns\b')
+ALIAS = re.compile(r'\b(?:local\s+)?([A-Za-z_]\w*)\s*=\s*ns(?=\s*(?:[;,)]|$|\n))')
 GOLD_MEMBER = re.compile(r'\bns\s*\.\s*Gold\s*\.\s*([A-Za-z_]\w*)')
 SYMBOL_MEMBER = re.compile(r'\bns\s*\.\s*STEP_SYMBOLS\s*\.\s*([A-Za-z_]\w*)')
 API_BINDING = re.compile(r'^\s*local\s+ns\s*=\s*_G\.WowTogetherModuleAPI\s*$')
