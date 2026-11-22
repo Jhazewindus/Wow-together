@@ -67,7 +67,8 @@ class ModuleAPITests(unittest.TestCase):
                     'PushGuideStop', 'ClearModuleStops', 'RegisterSyncKind',
                     'CatalogueQuest', 'ReadPublic', 'Public', 'GuideInteger',
                     'SafeTitle', 'Option', 'SetOption', 'Print', 'On',
-                    'ResearchExportHook', 'StartFarmCandidateScan', 'PublishGoldFunction'}
+                    'ResearchExportHook', 'StartFarmCandidateScan', 'QueueModuleSync',
+                    'PublishGoldFunction'}
         self.assertEqual({key for key, _ in api.items()}, expected)
         self.assertEqual(api.version, 1)
         self.assertEqual(self.ns.GoldAPIVersion, 1)
@@ -267,6 +268,19 @@ class ModuleAPITests(unittest.TestCase):
         self.assertIsNone(self.lua.globals().received)
         self.ns.Receive('WowTogetherV1', '1|M|payload', 'PARTY', 'Bob-Test Realm')
         self.assertEqual(self.lua.globals().received.message, '1|M|payload')
+
+    def test_module_sync_queues_only_registered_bounded_background_packets(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.assertFalse(api.QueueModuleSync('M', 'D|sample'))
+        self.ns.RegisterSyncKind('M', self.lua.eval('function() return true end'))
+        self.assertFalse(api.QueueModuleSync('Q', 'D|sample'))
+        self.assertFalse(api.QueueModuleSync('M', ''))
+        self.assertFalse(api.QueueModuleSync('M', 'D|bad\npacket'))
+        self.assertFalse(api.QueueModuleSync('M', 'x' * 252))
+        self.assertFalse(api.QueueModuleSync('M', 'D|sample', 'control'))
+        self.assertTrue(api.QueueModuleSync('M', 'D|sample'))
+        sent = self.client.drain()
+        self.assertIn(('WowTogetherV1', '1|M|D|sample', 'PARTY'), sent)
 
     def test_research_hook_appends_json_events(self):
         self.ns.char.questResearch.events[1] = self.lua.table_from(

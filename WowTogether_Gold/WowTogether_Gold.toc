@@ -8,3 +8,5 @@
 ## Dependencies: WowTogether
 ## SavedVariables: WowTogetherGoldDB
 Gold.lua
+GoldPrices.lua
+GoldObservations.lua
