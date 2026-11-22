@@ -239,9 +239,8 @@ def message_for(kind, version, name, section, archives, branch='', pr='', title=
             text += '\n\nPlease check:\n' + notes['check']
     else:
         text = '**Wow Together ' + version + ' — ' + name + '** — World of Warcraft: Forever (live)'
-        text += '\n\n' + notes['players'] + '\n\n' + install + '\n\nPlease check:\n' + notes['check']
-        if notes['developer']:
-            text += '\n\n||Developer notes:\n' + notes['developer'].replace('||', '') + '||'
+        text += '\n\n' + install
+        text += '\n\nThe attached `release-notes.md` contains the full changelog and testing checklist.'
     if len(text) > 2000:
         raise ValueError('Discord message exceeds 2,000 characters; shorten this release\'s notes.')
     return text
@@ -259,7 +258,13 @@ def prepare(dist, kind, **options):
     elif any(not re.fullmatch(r'WowTogether-beta-[A-Za-z0-9_.-]+-[0-9a-f]{7,40}(?:-data)?\.zip', path.name) for path in archives):
         raise ValueError('Beta ZIPs must have a beta label and commit SHA.')
     message = message_for(kind, version, name, section, archives, **options)
-    files = [(path.name, path.read_bytes()) for path in archives]
+    attachments = list(archives)
+    if kind == 'release':
+        notes = dist / 'release-notes.md'
+        if not notes.is_file():
+            raise ValueError('Release requires its full release-notes.md attachment.')
+        attachments.append(notes)
+    files = [(path.name, path.read_bytes()) for path in attachments]
     boundary = 'WowTogetherCI-' + uuid.uuid4().hex
     payload = {'content': message, 'allowed_mentions': {'parse': []},
                'attachments': [{'id': index, 'filename': name} for index, (name, _) in enumerate(files)]}

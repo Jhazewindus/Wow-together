@@ -62,25 +62,31 @@ class CIReleaseTests(unittest.TestCase):
         self.root = Path(self.directory.name)
         self.archive = self.root / 'WowTogether-1.2.3.zip'
         build(self.archive)
+        (self.root / 'release-notes.md').write_text(SECTION)
 
     def test_release_upload_contains_only_zip_and_confirmed_receipt(self):
         message, files, boundary, body = prepare(self.root, 'release')
         parsed = BytesParser(policy=policy.default).parsebytes(
             ('Content-Type: multipart/form-data; boundary=' + boundary + '\r\n\r\n').encode() + body)
         parts = list(parsed.iter_parts())
-        self.assertEqual(len(parts), 2)
+        self.assertEqual(len(parts), 3)
         payload = json.loads(parts[0].get_payload(decode=True))
         self.assertEqual(payload['allowed_mentions'], {'parse': []})
         self.assertEqual(parts[1].get_filename(), self.archive.name)
         self.assertEqual(parts[1].get_payload(decode=True), self.archive.read_bytes())
+        self.assertEqual(parts[2].get_filename(), 'release-notes.md')
+        self.assertEqual(parts[2].get_payload(decode=True), SECTION.encode())
         self.assertTrue(message.startswith('**Wow Together 1.2.3 — CLEAR GUIDANCE**'))
         self.assertIn('World of Warcraft: Forever (live)', message)
-        self.assertIn('||Developer notes:\n- Memoize policy work.||', message)
-        self.assertEqual(message.count('Rescan a zone guide.'), 1)
+        self.assertIn('full changelog and testing checklist', message)
+        self.assertNotIn('Developer notes', message)
+        self.assertLessEqual(len(message), 2000)
+        self.assertNotIn('Rescan a zone guide.', message)
         self.assertNotIn('Older', message)
-        transport = Transport([self.archive.name])
+        transport = Transport([self.archive.name, 'release-notes.md'])
         receipt = post(self.root, 'release', HOOK, transport)
         self.assertEqual(receipt['message_id'], '456')
+        self.assertEqual(receipt['attachments'], [self.archive.name, 'release-notes.md'])
         self.assertEqual(len(transport.requests), 1)
         self.assertTrue(transport.requests[0].full_url.endswith('?wait=true'))
         stored = (self.root / 'discord-receipt.json').read_text()
@@ -108,9 +114,9 @@ class CIReleaseTests(unittest.TestCase):
         data = self.root / 'WowTogether-data-1.2.3.zip'
         build(data, roots=ROOTS[1:])
         message, files, _, _ = prepare(self.root, 'release')
-        self.assertEqual(len(files), 2)
+        self.assertEqual(len(files), 3)
         self.assertIn('Install both ZIPs', message)
-        transport = Transport([self.archive.name, data.name])
+        transport = Transport([self.archive.name, data.name, 'release-notes.md'])
         post(self.root, 'release', HOOK, transport)
         self.assertEqual(len(transport.requests), 1)
 
@@ -125,7 +131,7 @@ class CIReleaseTests(unittest.TestCase):
             self.assertFalse((self.root / 'discord-receipt.json').exists())
 
     def test_confirmed_upload_with_receipt_write_failure_warns_against_repost(self):
-        transport = Transport([self.archive.name])
+        transport = Transport([self.archive.name, 'release-notes.md'])
         with patch.object(Path, 'write_text', side_effect=OSError('synthetic-token')):
             with self.assertRaisesRegex(PublicationError, 'confirmed message 456.*Do not repost'):
                 post(self.root, 'release', HOOK, transport)
@@ -164,8 +170,9 @@ class CIReleaseTests(unittest.TestCase):
     def test_version_and_message_size_guards(self):
         self.assertRaises(ValueError, section_for, '## 2.0.0\n', '1.2.3')
         self.assertRaises(ValueError, blocks, 'For players:\n- One\n- Two\n- Three\n- Four\nPlease check:\n- Test')
-        with self.assertRaisesRegex(ValueError, '2,000'):
-            message_for('release', '1.2.3', 'TEST', SECTION + '- ' + 'x' * 2100, [self.archive])
+        message = message_for('release', '1.2.3', 'TEST',
+            SECTION + '- ' + 'developer details ' * 250, [self.archive])
+        self.assertLessEqual(len(message), 2000)
         self.archive.rename(self.root / 'wrong.zip')
         with self.assertRaisesRegex(ValueError, 'names'):
             prepare(self.root, 'release')
