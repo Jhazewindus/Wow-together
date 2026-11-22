@@ -10,7 +10,7 @@ ALLOWED = {
     'PlayerPoint', 'TrailLoop', 'RouteCostModel', 'PushGuideStop',
     'ClearModuleStops', 'RegisterSyncKind', 'CatalogueQuest', 'catalogue',
     'ReadPublic', 'Public', 'GuideInteger', 'SafeTitle', 'Option', 'SetOption',
-    'StartFarmCandidateScan',
+    'StartFarmCandidateScan', 'QueueModuleSync',
     'Print', 'On', 'ResearchExportHook', 'Gold', 'STEP_SYMBOLS',
 }
 ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
