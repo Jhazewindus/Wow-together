@@ -15,6 +15,7 @@ local MAX_SEEN, MAX_PEERS = 4000, 40
 local seenDeaths, seenLooted, seenItems, recentDeaths = {}, {}, {}, {}
 local knownGUIDs, seenOrder, seenNext = {}, {}, 1
 local lastKill, pendingGather, currentRun = {}, nil, nil
+local shareRetryPending, queueDrop = false, nil
 local function trackGUID(guid)
     if knownGUIDs[guid] then return end
     local old = seenOrder[seenNext]
@@ -257,6 +258,8 @@ function observations.RecordLoot(guid, id, count, source)
     local node = recordNode(guid, id, count)
     local drop, credited
     if not node then drop, credited = recordDrop(guid, id, count, source or "local observation") end
+    local npc = not node and npcID(guid)
+    if credited and npc and id and queueDrop then queueDrop(npc, id) end
     if node or credited then valueRunItem(id, count) end
     return node or drop or false
 end
@@ -312,6 +315,46 @@ function observations.DropPacket(npc, item)
     local packet = table.concat({"1", "M", "D", db.observerID, npc, item,
         record.looted, drop.n, drop.total, record.revision or 0}, "|")
     return #packet <= 255 and packet or nil
+end
+
+queueDrop = function(npc, item)
+    if ns.Option("gold.shareObservations") ~= true then return true end
+    if type(ns.QueueModuleSync) ~= "function" then return false end
+    local packet = observations.DropPacket(npc, item)
+    local payload = packet and string.match(packet, "^1|M|(.+)$")
+    return payload and ns.QueueModuleSync("M", payload, "background") == true or false
+end
+
+local function queueSavedDrops()
+    if ns.Option("gold.shareObservations") ~= true or ns.ReadPublic(IsInGroup) ~= true then return true end
+    local npcs = {}
+    for npc in pairs(state.mobs) do npcs[#npcs + 1] = npc end
+    table.sort(npcs)
+    for _, npc in ipairs(npcs) do
+        local items = {}
+        for item in pairs(state.mobs[npc].drops) do items[#items + 1] = item end
+        table.sort(items)
+        for _, item in ipairs(items) do
+            if not queueDrop(npc, item) then return false end
+        end
+    end
+    return true
+end
+
+local function scheduleSavedDrops()
+    if shareRetryPending then return end
+    shareRetryPending = true
+    C_Timer.After(0, function()
+        shareRetryPending = false
+        if not queueSavedDrops() and type(ns.QueueModuleSync) == "function"
+            and ns.ReadPublic(IsInGroup) == true then
+            shareRetryPending = true
+            C_Timer.After(2, function()
+                shareRetryPending = false
+                scheduleSavedDrops()
+            end)
+        end
+    end)
 end
 function observations.ReceiveM(message)
     if ns.Option("gold.shareObservations") ~= true or type(message) ~= "string" or #message > 255 then
@@ -404,8 +447,9 @@ function observations.Probe(output)
     local nodes, runs = 0, 0
     for _, map in pairs(state.nodes) do nodes = nodes + #map end
     for _, group in pairs(state.runs) do runs = runs + #group end
+    local sharing = type(ns.QueueModuleSync) == "function" and "available" or "unavailable"
     output("Gold observations: " .. mobCount .. " NPCs, " .. nodes .. " nodes, " .. runs
-        .. " dungeon runs; M receive ready; outgoing background lane unavailable.")
+        .. " dungeon runs; M sharing " .. sharing .. ".")
 end
 
 ns.On("COMBAT_LOG_EVENT_UNFILTERED", observations.CombatLog)
@@ -414,6 +458,8 @@ ns.On("CHAT_MSG_LOOT", observations.PartyLoot)
 ns.On("UNIT_SPELLCAST_SUCCEEDED", observations.RecordGatherCast)
 ns.On("PLAYER_ENTERING_WORLD", observations.CheckInstance)
 ns.On("ZONE_CHANGED_NEW_AREA", observations.CheckInstance)
+ns.On("GROUP_ROSTER_UPDATE", scheduleSavedDrops)
+ns.On("PLAYER_ENTERING_WORLD", scheduleSavedDrops)
 ns.RegisterSyncKind("M", observations.ReceiveM)
 ns.ResearchExportHook(observations.ExportEvents)
 observations.CheckInstance()

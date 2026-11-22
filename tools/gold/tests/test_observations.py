@@ -130,6 +130,8 @@ class GoldObservationTests(unittest.TestCase):
         observations.RecordLoot(GUID, 42, 2, "local observation")
         packet = observations.DropPacket(123, 42)
         self.assertTrue(packet.startswith("1|M|D|"))
+        sent = client.drain()
+        self.assertIn(("WowTogetherV1", packet, "PARTY"), sent)
         self.assertFalse(observations.ReceiveM(packet)[0])
         other = "1|M|D|deadbeef|123|42|4|2|3|1"
         self.assertTrue(observations.ReceiveM(other))
@@ -145,6 +147,34 @@ class GoldObservationTests(unittest.TestCase):
         end''')
         next_packet = "1|M|D|deadbeef|124|42|4|2|3|1"
         self.assertTrue(dispatched(client.ns, next_packet, "Bob-Test Realm"))
+
+    def test_saved_drops_queue_after_joining_a_party(self):
+        client, observations, _ = observation_client()
+        client.lua.globals().grouped = False
+        observations.RecordLoot(GUID, 42, 2, "local observation")
+        self.assertEqual(client.drain(), [])
+        client.lua.globals().timers = client.lua.table()
+        client.lua.execute('''
+            queuedGold = {}
+            local api = WowTogetherModuleAPI
+            local queue = api.QueueModuleSync
+            api.QueueModuleSync = function(kind, payload, priority)
+                queuedGold[#queuedGold + 1] = payload
+                return queue(kind, payload, priority)
+            end
+        ''')
+        client.lua.globals().grouped = True
+        client.ns.handlers.GROUP_ROSTER_UPDATE()
+        while len(client.lua.globals().timers) and len(client.lua.globals().queuedGold) == 0:
+            callback = client.lua.globals().timers[1]
+            client.lua.eval('table.remove')(client.lua.globals().timers, 1)
+            callback()
+        self.assertEqual(client.lua.globals().queuedGold[1][:2], 'D|')
+
+    def test_observation_recording_tolerates_older_core_without_outgoing_api(self):
+        client, observations, _ = observation_client()
+        client.lua.globals().WowTogetherModuleAPI.QueueModuleSync = None
+        self.assertTrue(observations.RecordLoot(GUID, 42, 2, "local observation"))
 
     def test_research_export_includes_provenance_and_sample_size(self):
         client, observations, _ = observation_client()
