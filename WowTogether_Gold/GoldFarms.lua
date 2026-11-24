@@ -168,7 +168,7 @@ local function setSessionCard()
         or "No priced loot observed yet"
     local data = {label = clipped(label, 100), estimatedCopperPerHour = session.estimate,
         actualCopperPerHour = actual, startTime = session.startTime,
-        estimatedBasis = clipped(session.estimateBasis, 180), actualBasis = clipped(actualBasis, 180)}
+        estimatedBasis = clipped(session.estimateBasis, 100), actualBasis = clipped(actualBasis, 100)}
     local okay = ns.SetFarmSession("Gold", data)
     if okay and ns.RequestFarmSessionRefresh then ns.RequestFarmSessionRefresh("Gold") end
 end
@@ -298,7 +298,8 @@ local function makeGathering(row, zone)
     if row.profession == "Mining" or row.profession == "Herbalism" then sourceKind = "gather-node" end
     if row.profession == "Skinning" then sourceKind = "skinning" end
     local expected, basis, hasData = 0, {}, false
-    for _, item in ipairs(row.loot or {}) do
+    local loot = type(zone.loot) == "table" and #zone.loot > 0 and zone.loot or row.loot or {}
+    for _, item in ipairs(loot) do
         local unitPrice, source = itemPrice(item.itemID)
         local yield, chance, yieldBasis = gatheringYield(item, zone.mapID, row.profession, sourceKind)
         if unitPrice and yield and chance then
@@ -317,7 +318,10 @@ local function makeGathering(row, zone)
         candidatesPerHour = learned.harvestsPerHour
         rateBasis = string.format("%g harvests/hour from %d observed intervals", candidatesPerHour, learned.harvestSample)
     end
-    local points = zone.points or row.points or {}
+    -- Third-party seed coordinates can help identify known zones, but a
+    -- gathering loop is offered only after this character has observed enough
+    -- real node/catch positions in play.
+    local points = {}
     local zoneName = zone.name or ("Map " .. zone.mapID)
     local nodeKey = string.gsub(row.node, "[^%w:_%-]", "_")
     return {kind = "gathering", id = "gather:" .. row.professionID .. ":" .. zone.mapID .. ":" .. nodeKey,
