@@ -624,12 +624,12 @@ function ns.ReanchorNavigation(reason)
 end
 
 -- Called on every update of the window: if the game cannot place it, fasten
--- it again. At most once every two seconds, never in combat, and it gives up
--- after ten tries in a session so a cause this does not cure cannot loop.
+-- it again. At most once every two seconds, never in combat. Reopening the
+-- card clears the throttle and retries immediately.
 local lastRepair
 function ns.HealNavigation()
     local frame = ns.navigation
-    if not frame or not frame:IsShown() or ns.RouteInCombat() or (ns.hudRepairs or 0) >= 10 then return false end
+    if not frame or not frame:IsShown() or ns.RouteInCombat() then return false end
     if ns.NavigationPlaced() then return false end
     local time = ns.ReadPublic(GetTime)
     if type(time) == "number" and lastRepair and time - lastRepair < 2 then return false end
@@ -864,6 +864,10 @@ function ns.CreateNavigation()
         updateTooltip(self, true)
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+    frame:SetScript("OnShow", function()
+        lastRepair = nil
+        if ns.HealNavigation then ns.HealNavigation() end
+    end)
     frame.elapsed = 0
     -- No event reports continuous facing/position changes. Poll at 10 Hz only
     -- while this owned, unprotected frame is visible with a selected route.

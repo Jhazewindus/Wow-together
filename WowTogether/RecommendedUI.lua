@@ -316,6 +316,7 @@ local function layoutPath(home, width, top)
     return top + height + 12
 end
 
+local layoutCard
 local function layoutNext(home)
     local width, top = ns.ui.contentWidth, 8
     home:SetWidth(width); home.title:Hide()
@@ -332,6 +333,10 @@ local function layoutNext(home)
         home.resume.orderControl:ClearAllPoints(); home.resume.orderControl:SetPoint("LEFT", home.resume.continueControl, "RIGHT", 8, 0); home.resume.orderControl:SetSize(122, 28)
         home.resume.stopControl:ClearAllPoints(); home.resume.stopControl:SetPoint("LEFT", home.resume.orderControl, "RIGHT", 8, 0); home.resume.stopControl:SetSize(126, 28)
         top = top + 116
+    end
+    if home.goldSession:IsShown() then
+        home.goldSession:ClearAllPoints(); home.goldSession:SetPoint("TOPLEFT", 0, -top)
+        layoutCard(home.goldSession, width, 112); top = top + 124
     end
     top = layoutPath(home, width, top)
     home.nextHeading:ClearAllPoints(); home.nextHeading:SetPoint("TOPLEFT", 0, -top); home.nextHeading:SetWidth(width)
@@ -351,6 +356,7 @@ local function renderNext(home, query)
     for _, card in ipairs(home.cards) do card:Hide() end
     for _, card in ipairs(home.extraCards) do card:Hide() end
     home.leveling:Hide(); home.goldSession:Hide(); home.professionEmpty:Hide()
+    renderGoldSessionCard(home)
     home.professionTitle:Hide(); home.browseLeveling:Hide(); home.browseProfessions:Hide(); home.moreTitle:Hide()
     ns.UpdateSessionResumeBar()
     local running = ns.routeSelection ~= nil and ns.selectedRoute ~= nil and ns.selectedRoute.complete ~= true
@@ -384,7 +390,7 @@ local function renderNext(home, query)
     home:Show(); layoutNext(home)
 end
 
-local function layoutCard(card, width, height)
+layoutCard = function(card, width, height)
     card:SetSize(width, height)
     card.category:SetWidth(width - 145)
     card.title:SetWidth(width - (card.icon and 88 or 32))
@@ -411,11 +417,11 @@ function ns.LayoutRecommended()
         home.resume.stopControl:ClearAllPoints(); home.resume.stopControl:SetPoint("RIGHT", home.resume.orderControl, "LEFT", -8, 0); home.resume.stopControl:SetSize(120, 28)
         top = top + 94
     end
+    -- The path comes first: it is the overview the zone card below belongs to.
     if home.goldSession:IsShown() then
         home.goldSession:ClearAllPoints(); home.goldSession:SetPoint("TOPLEFT", 0, -top)
         layoutCard(home.goldSession, width, 112); top = top + 124
     end
-    -- The path comes first: it is the overview the zone card below belongs to.
     top = layoutPath(home, width, top)
     home.leveling:ClearAllPoints(); home.leveling:SetPoint("TOPLEFT", 0, -top)
     layoutCard(home.leveling, width, 164); top = top + 176

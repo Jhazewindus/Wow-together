@@ -129,9 +129,56 @@ class GatheringPlanTests(unittest.TestCase):
             text = ns.GatheringText(ns.GatheringPlan(profession, skill, 150))
             self.assertTrue(all(ord(char) < 256 or char in '–•…' for char in text), profession)
 
+    def test_gameobject_loot_and_local_message_record_a_real_node_yield(self):
+        c = client()
+        ns, lua = c.ns, c.lua
+        lua.execute('''
+            local ns=...
+            ns.RegisterModule("Gold", {})
+            ns.profile={mapID=501}
+            ns.ReadProfile=function() end
+            ns.PlayerPoint=function() return {x=.4,y=.6} end
+            ns.gatheringData[186]={id=186,name="Mining",skill=65,maximum=75}
+            function GetTime() return 100 end
+            function GetLootSourceInfo() return "0xF11000000000ABCD", 1 end
+            function GetNumLootItems() return 1 end
+            function GetLootSlotLink() return "|Hitem:2770:0:0:0:0:0:0|h[Copper Ore]|h" end
+            function GetLootSlotInfo() return "Copper Ore", "icon", 3 end
+            LOOT_ITEM_SELF="You receive loot: %s"
+            gathered={}
+            WowTogetherModuleAPI.RegisterGatheringObserver("Gold", function(event) gathered[#gathered+1]=event end)
+        ''', ns)
+        ns.handlers.LOOT_OPENED()
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:2770:0:0:0:0:0:0|h[Copper Ore]|h x3')
+        event = lua.globals().gathered[1]
+        self.assertEqual((event.profession, event.itemID, event.quantity), ('Mining', 2770, 3))
+        self.assertEqual((event.mapID, event.x, event.y, event.source), (501, .4, .6, 'gather-node'))
+
 
 class FishingTests(unittest.TestCase):
     """Fishing levels by catches, so the advice is where every cast is one."""
+
+    def test_a_confirmed_fishing_loot_message_reports_its_cast_position_to_gold(self):
+        c = client()
+        ns, lua = c.ns, c.lua
+        lua.execute('''
+            local ns=...
+            ns.RegisterModule("Gold", {})
+            ns.profile={mapID=501}
+            ns.ReadProfile=function() end
+            ns.PlayerPoint=function() return {x=.25,y=.75} end
+            ns.gatheringData[356]={id=356,name="Fishing",skill=75,maximum=75}
+            function GetTime() return 100 end
+            LOOT_ITEM_SELF="You receive loot: %s"
+            gathered={}
+            WowTogetherModuleAPI.RegisterGatheringObserver("Gold", function(event) gathered[#gathered+1]=event end)
+        ''', ns)
+        ns.handlers.UNIT_SPELLCAST_SENT('player', 'Fishing', None, 7620)
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:6291:0:0:0:0:0:0|h[Raw Brilliant Smallfish]|h.')
+        event = lua.globals().gathered[1]
+        self.assertEqual(event.profession, 'Fishing')
+        self.assertEqual((event.mapID, event.x, event.y), (501, .25, .75))
+        self.assertEqual((event.itemID, event.quantity, event.source), (6291, 1, 'fishing-catch'))
 
     def test_waters_are_ranked_by_the_skill_for_a_sure_catch_and_lures_extend_them(self):
         ns = client(level=24, faction='Horde', zone='Hillsbrad Foothills').ns

@@ -15,7 +15,7 @@ ns.hooks = {
     slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {}, routeCleared = {},
     routeAfterUpdate = {}, routeWillActivate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
     stepPresentation = {}, researchExport = {}, goldPrice = {}, goldSuggestions = {},
-    goldSessionCard = {}, goldFunctionPublished = {},
+    goldSessionCard = {}, goldFunctionPublished = {}, gatheringObserved = {},
     hubTabs = {}, hubTabRegistered = {},
 }
 function ns.HookResults(name, ...)

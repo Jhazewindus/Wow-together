@@ -140,6 +140,49 @@ local WATERS = {
     {205, 300, {"Azshara", "Felwood", "Feralas", "The Hinterlands", "Moonglade", "Tanaris", "Un'Goro Crater", "Western Plaguelands"}},
     {330, 425, {"Burning Steppes", "Deadwind Pass", "Eastern Plaguelands", "Silithus", "Winterspring"}},
 }
+
+-- Item relations used by Gold's zone-level search. Ore inputs are the same
+-- item IDs used by ProfessionPlanner.lua's smelting recipes. Herb IDs are
+-- matched to the WoW Forever Herbalism item records (for example, RaidDex's
+-- current 1.60.1 item pages); no node amounts or chances are inferred here.
+local ORE_ITEMS = {
+    ["Copper Vein"] = 2770, ["Tin Vein"] = 2771, ["Silver Vein"] = 2775,
+    ["Iron Deposit"] = 2772, ["Gold Vein"] = 2776, ["Mithril Deposit"] = 3858,
+    ["Truesilver Deposit"] = 7911, ["Small Thorium Vein"] = 10620,
+    ["Rich Thorium Vein"] = 10620, ["Heavy Thorium Vein"] = 10620,
+}
+local HERB_ITEMS = {
+    ["Peacebloom"] = 2447, ["Silverleaf"] = 765, ["Earthroot"] = 2449,
+    ["Mageroyal"] = 785, ["Briarthorn"] = 2450, ["Stranglekelp"] = 3820,
+    ["Bruiseweed"] = 2453, ["Wild Steelbloom"] = 3355, ["Grave Moss"] = 3369,
+    ["Kingsblood"] = 3356, ["Liferoot"] = 3357, ["Fadeleaf"] = 3818,
+    ["Goldthorn"] = 3821, ["Khadgar's Whisker"] = 3358, ["Wintersbite"] = 3819,
+    ["Firebloom"] = 4625, ["Purple Lotus"] = 8831, ["Arthas' Tears"] = 8836,
+    ["Sungrass"] = 8838, ["Blindweed"] = 8839, ["Ghost Mushroom"] = 8845,
+    ["Gromsblood"] = 8846, ["Golden Sansam"] = 13464, ["Dreamfoil"] = 13463,
+    ["Mountain Silversage"] = 13465, ["Plaguebloom"] = 13466,
+    ["Icecap"] = 13467, ["Black Lotus"] = 13468,
+}
+-- Forever-identified fish/catch item IDs. Locations below are included only
+-- where the Forever fishing guide names that fish and area. Rarer catch pools
+-- whose values are not documented are deliberately omitted.
+local FISH_CATCHES = {
+    [1] = {{6291, "Raw Brilliant Smallfish"}, {6303, "Raw Slitherskin Mackerel"}},
+    [3] = {{251524, "Whimsyfin"}},
+    [4] = {{6362, "Raw Rockscale Cod"}, {4603, "Raw Spotted Yellowtail"},
+        {6358, "Oily Blackmouth"}, {6359, "Firefin Snapper"}},
+    [5] = {{13758, "Raw Redgill"}, {13760, "Raw Sunscale Salmon"},
+        {13756, "Raw Summer Bass"},
+        {13755, "Raw Winter Squid"}, {13422, "Stonescale Eel"}, {13888, "Darkclaw Lobster"}},
+    [6] = {{13889, "Raw Whitescale Salmon"}, {13890, "Raw Plated Armorfish"}},
+}
+local FISH_SOURCES = {
+    [1] = "WoW Forever Fishing guide, starting-zone catches; https://foreverwow.com/professions/fishing/",
+    [3] = "WoW Forever Fishing guide: Whimsyfin in Redridge Mountains; https://foreverwow.com/professions/fishing/",
+    [4] = "WoW Forever Fishing guide: Savage Coast and Dustwallow catches; https://foreverwow.com/professions/fishing/",
+    [5] = "WoW Forever Fishing guide: listed fish and main catch areas; https://www.icy-veins.com/wow-forever/fishing",
+    [6] = "WoW Forever Fishing guide: Whitescale Salmon and Plated Armorfish areas; https://www.icy-veins.com/wow-forever/fishing",
+}
 -- Lures, weakest first: name, bonus, Fishing skill needed to use it.
 local LURES = {{"Shiny Bauble", 25, 1}, {"Nightcrawlers", 50, 50}, {"Bright Baubles", 75, 100}, {"Aquadynamic Fish Attractor", 100, 100}}
 local NOTES = {
@@ -209,6 +252,76 @@ local function rankZones(zones, level, faction, here)
     local names = {}
     for index = 1, math.min(4, #ranked) do names[index] = ranked[index].zone end
     return names
+end
+
+-- Internal cursor source for the public module API. Rows are one node (or
+-- fishing water tier) in one zone; map IDs are resolved against the client's
+-- public map names by ModuleAPI.lua, and no spawn coordinates are provided.
+local farmFacts = {}
+local function addFarmFact(professionID, profession, node, required, zone, loot, nodeSource, skillSource, yieldSource)
+    local zoneFacts = ZONES[zone]
+    if not zoneFacts then return end
+    farmFacts[#farmFacts + 1] = {professionID = professionID, profession = profession,
+        node = node, requiredSkill = required, zone = zone,
+        zoneMinLevel = zoneFacts[1], zoneMaxLevel = zoneFacts[2], zoneFaction = zoneFacts[3],
+        loot = loot or {}, sources = {profession = "Gathering.lua profession IDs and learned-skill read",
+            node = nodeSource, skill = skillSource,
+            zone = "Gathering.lua zone/node lists; base-game zone coverage, not Forever spawn verification",
+            mapID = "C_Map.GetMapInfo zone-name match through core KnownZoneMaps",
+            yield = yieldSource}}
+end
+
+for _, professionID in ipairs({MINING, HERBALISM}) do
+    local nodes = NODES[professionID] or {}
+    for _, node in ipairs(nodes) do
+        local name, required, zones = node[1], node[2], node[3]
+        local itemID = professionID == MINING and ORE_ITEMS[name] or HERB_ITEMS[name]
+        local loot = itemID and {{itemID = itemID,
+            source = professionID == MINING
+                and "ProfessionPlanner.lua smeltingRecipes ore input; Forever ore yield not independently recorded"
+                or "WoW Forever herb item record; item ID " .. itemID .. " (Forever Icy Veins Herbalism and Wowhead item data)"}} or {}
+        for _, zone in ipairs(zones) do
+            addFarmFact(professionID, NAMES[professionID], name, required, zone, loot,
+                "Gathering.lua NODES", "Gathering.lua node skill requirement", loot[1] and loot[1].source or "No sourced item ID; omitted")
+        end
+    end
+end
+
+-- Skinning has no fixed node names or single yield item. Report a zone-level
+-- beast band using the same formula as the profession advice, without loot.
+for zone, zoneFacts in pairs(ZONES) do
+    local low, high = zoneFacts[1], zoneFacts[2]
+    addFarmFact(SKINNING, NAMES[SKINNING], "Beasts level " .. low .. "–" .. high,
+        ns.SkinningSkillForLevel(low), zone, {}, "Gathering.lua zone level band",
+        "Gathering.lua SkinningSkillForLevel", "Skinning yield depends on the beast; no fixed item ID supplied")
+end
+
+for tierIndex, tier in ipairs(WATERS) do
+    local loot, fishes = {}, FISH_CATCHES[tierIndex] or {}
+    for _, fish in ipairs(fishes) do
+        loot[#loot + 1] = {itemID = fish[1], source = FISH_SOURCES[tierIndex]}
+    end
+    local yieldSource = FISH_SOURCES[tierIndex]
+        or "No Forever-verified catch species for this water tier; fish IDs omitted"
+    for _, zone in ipairs(tier[3]) do
+        addFarmFact(FISHING, NAMES[FISHING], "Water tier " .. tierIndex, tier[1], zone,
+            loot, "Gathering.lua WATERS", "Gathering.lua minimum cast skill", yieldSource)
+    end
+end
+
+function ns.GatheringFarmFactCount() return #farmFacts end
+function ns.GatheringFarmFact(index)
+    if not ns.GuideInteger(index, #farmFacts) or index < 1 then return nil end
+    local fact, learned = farmFacts[index], ns.gatheringData[farmFacts[index].professionID]
+    if not learned or not ns.GuideInteger(learned.skill, 1000) or learned.skill < fact.requiredSkill then return nil end
+    local profile = ns.profile or {}
+    if not ns.GuideInteger(profile.level, 255) or profile.level < 1 then return nil end
+    if fact.zoneFaction and fact.zoneFaction ~= profile.faction then return nil end
+    if not zoneFits(fact.zone, profile.level, profile.faction) then return nil end
+    return {professionID = fact.professionID, profession = fact.profession, node = fact.node,
+        requiredSkill = fact.requiredSkill, ownSkill = learned.skill, zone = fact.zone,
+        zoneMinLevel = fact.zoneMinLevel, zoneMaxLevel = fact.zoneMaxLevel,
+        zoneFaction = fact.zoneFaction, loot = fact.loot, sources = fact.sources}
 end
 
 -- Fishing's last two ranks are a book and a quest, not lessons.
@@ -557,6 +670,100 @@ local function onZone()
 end
 if ns.On then ns.On("ZONE_CHANGED_NEW_AREA", onZone) end
 ns.GatheringZoneArrived = onZone
+
+-- Emit a real gather observation only after a local loot message confirms the
+-- item. Mining/herbalism require a GameObject loot source; Fishing requires a
+-- just-sent Fishing cast and a fish item. This captures measured map positions
+-- without copying old spawn priors or making any player action.
+local observedItemProfession, pendingNodeLoot = {}, {}
+for _, fact in ipairs(farmFacts) do
+    for _, item in ipairs(fact.loot) do observedItemProfession[item.itemID] = fact.professionID end
+end
+local fishingSpells = {[7620] = true, [7731] = true, [7732] = true, [18248] = true, [33095] = true}
+local fishingCast
+
+local function observationPosition()
+    if ns.ReadProfile then ns.ReadProfile() end
+    local profile = ns.profile or {}
+    if not ns.GuideInteger(profile.mapID, 1000000) or profile.mapID < 1 then return nil end
+    local point = ns.PlayerPoint and ns.PlayerPoint(profile.mapID)
+    if not point or not ns.Public(point.x) or not ns.Public(point.y)
+        or type(point.x) ~= "number" or type(point.y) ~= "number"
+        or point.x < 0 or point.x > 1 or point.y < 0 or point.y > 1 then return nil end
+    return {mapID = profile.mapID, x = point.x, y = point.y}
+end
+
+local function emitObservation(professionID, itemID, quantity, location, source)
+    if not location or type(ns.RunHooks) ~= "function" then return end
+    ns.RunHooks("gatheringObserved", {professionID = professionID, profession = NAMES[professionID],
+        mapID = location.mapID, x = location.x, y = location.y, itemID = itemID,
+        quantity = quantity, source = source, observedAt = ns.ReadPublic(GetTime)})
+end
+
+local function gameObjectLootSource()
+    if type(GetLootSourceInfo) ~= "function" then return false end
+    local guid = ns.ReadPublic(GetLootSourceInfo, 1)
+    return type(guid) == "string" and string.upper(string.sub(guid, 1, 6)) == "0XF110"
+end
+
+if ns.On then
+    ns.On("UNIT_SPELLCAST_SENT", function(unit, _, _, spellID)
+        if unit ~= "player" or not fishingSpells[spellID] then return end
+        local location = observationPosition()
+        if location then fishingCast = {location = location, expires = (ns.ReadPublic(GetTime) or 0) + 90} end
+    end)
+    ns.On("LOOT_OPENED", function()
+        if not gameObjectLootSource() then return end
+        local location = observationPosition()
+        local count = type(GetNumLootItems) == "function" and ns.ReadPublic(GetNumLootItems) or 0
+        if not location or not ns.GuideInteger(count, 40) then return end
+        local now = ns.ReadPublic(GetTime) or 0
+        for slot = 1, count do
+            local link = type(GetLootSlotLink) == "function" and ns.ReadPublic(GetLootSlotLink, slot)
+            local itemID = type(link) == "string" and tonumber(string.match(link, "|Hitem:(%d+):"))
+            local professionID = itemID and observedItemProfession[itemID]
+            if professionID == MINING or professionID == HERBALISM then
+                local quantity
+                if type(GetLootSlotInfo) == "function" then local _, _, found = ns.ReadPublic(GetLootSlotInfo, slot); quantity = found end
+                pendingNodeLoot[itemID] = {professionID = professionID, itemID = itemID,
+                    quantity = ns.GuideInteger(quantity, 10000) and math.max(1, quantity) or 1,
+                    location = location, expires = now + 20}
+            end
+        end
+    end)
+    ns.On("CHAT_MSG_LOOT", function(message)
+        if type(message) ~= "string" then return end
+        local templates = {}
+        if type(LOOT_ITEM_SELF) == "string" and ns.Public(LOOT_ITEM_SELF) then templates[#templates + 1] = LOOT_ITEM_SELF end
+        if type(LOOT_ITEM_SELF_MULTIPLE) == "string" and ns.Public(LOOT_ITEM_SELF_MULTIPLE) then
+            templates[#templates + 1] = LOOT_ITEM_SELF_MULTIPLE
+        end
+        local own = false
+        for _, template in ipairs(templates) do
+            if type(template) == "string" then
+                local prefix = string.match(template, "^(.-)%%s")
+                if prefix and prefix ~= "" and string.sub(message, 1, #prefix) == prefix then own = true; break end
+            end
+        end
+        if not own then return end
+        local itemID = tonumber(string.match(message, "|Hitem:(%d+):"))
+        if not itemID then return end
+        local quantity = tonumber(string.match(message, "|h%s*[xX](%d+)")
+            or string.match(message, "%]%s*x(%d+)"))
+        local pending = pendingNodeLoot[itemID]
+        local now = ns.ReadPublic(GetTime) or 0
+        if pending and pending.expires >= now then
+            pendingNodeLoot[itemID] = nil
+            emitObservation(pending.professionID, itemID, quantity or pending.quantity, pending.location, "gather-node")
+            return
+        end
+        local professionID = observedItemProfession[itemID]
+        if professionID == FISHING and fishingCast and fishingCast.expires >= now then
+            local cast = fishingCast; fishingCast = nil
+            emitObservation(FISHING, itemID, quantity or 1, cast.location, "fishing-catch")
+        end
+    end)
+end
 
 function ns.GatheringDiagnostics(output)
     local parts = {}

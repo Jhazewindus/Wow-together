@@ -70,7 +70,8 @@ class ModuleAPITests(unittest.TestCase):
                     'ResearchExportHook', 'StartFarmCandidateScan', 'QueueModuleSync',
                     'PublishGoldFunction',
                     'AuctionQuote', 'FarmPriorSearch', 'StartModuleLoop', 'StopModuleLoop',
-                    'SetFarmSession', 'RequestFarmSessionRefresh'}
+                    'SetFarmSession', 'RequestFarmSessionRefresh', 'GatheringFarmSearch',
+                    'RegisterGatheringObserver'}
         self.assertEqual({key for key, _ in api.items()}, expected)
         self.assertEqual(api.version, 2)
         self.assertEqual(self.ns.GoldAPIVersion, 2)
@@ -129,6 +130,72 @@ class ModuleAPITests(unittest.TestCase):
         result.loot[1].chance = 99
         self.assertEqual(self.ns.farmPriorData.records[1].loot[1].chance, 12.5)
 
+    def test_gathering_search_returns_only_valid_source_backed_zone_facts_to_external_namespace(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.lua.execute('''
+            local ns=...
+            ns.profile={level=12,faction="Alliance",mapID=501,zone="Test Coast"}
+            ns.GatheringFarmFactCount=function() return 1 end
+            ns.GatheringFarmFact=function(index)
+                if index~=1 then return nil end
+                return {professionID=186,profession="Mining",node="Copper Vein",requiredSkill=1,ownSkill=40,
+                    zone="Test Coast",zoneMinLevel=1,zoneMaxLevel=10,loot={{itemID=2770,source="test item source"}},
+                    sources={profession="test profession",node="test node",skill="test skill",zone="test zone",
+                        mapID="test map",yield="test yield"}}
+            end
+            ns.KnownZoneMaps=function() return {[501]=true} end
+            ns.MapName=function(mapID) return mapID == 501 and "Test Coast" or ("Map " .. mapID) end
+            clockTick=0
+            function debugprofilestop() clockTick=clockTick+.1; return clockTick end
+            gatheringDone=nil
+        ''', self.ns)
+        self.lua.execute('local addonName, addonNamespace = "WowTogether_Gold", {}; externalAPI = _G.WowTogetherModuleAPI')
+        external = self.lua.globals().externalAPI
+        self.assertFalse(external.GatheringFarmSearch(self.lua.table_from({'profession': 'Gold', 'limit': 5}),
+            self.lua.eval('function() end'))[0])
+        self.assertFalse(external.GatheringFarmSearch(self.lua.table_from({'profession': 'Mining', 'limit': 51}),
+            self.lua.eval('function() end'))[0])
+        self.assertTrue(external.GatheringFarmSearch(self.lua.table_from({'profession': 'Mining', 'limit': 5}),
+            self.lua.eval('function(rows) gatheringResult=rows end')))
+        self.client.drain()
+        rows = self.lua.globals().gatheringResult
+        self.assertEqual(len(rows), 1)
+        row = rows[1]
+        self.assertEqual(row.node, 'Copper Vein')
+        self.assertEqual(row.ownSkill, 40)
+        self.assertEqual(row.zones[1].mapID, 501)
+        self.assertEqual(row.loot[1].itemID, 2770)
+        self.assertEqual(row.sources['yield'], 'test yield')
+
+    def test_gathering_observer_gets_validated_copied_events_and_can_unsubscribe(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.RegisterModule('Gold', self.lua.table())
+        self.lua.execute('''
+            externalAPI=_G.WowTogetherModuleAPI
+            observed=nil
+            unsubscribe=nil
+            function onGathered(event)
+                observed=event
+                event.x=0
+            end
+        ''')
+        accepted, unsubscribe = self.lua.globals().externalAPI.RegisterGatheringObserver('Gold', self.lua.globals().onGathered)
+        self.assertTrue(accepted)
+        self.lua.execute('''
+            local ns=...
+            gatheringEvent={professionID=186,profession="Mining",mapID=501,x=.4,y=.6,itemID=2770,
+                quantity=2,source="gather-node",observedAt=4}
+            ns.RunHooks("gatheringObserved", gatheringEvent)
+        ''', self.ns)
+        self.assertEqual(self.lua.globals().observed.profession, 'Mining')
+        self.assertEqual(self.lua.globals().observed.quantity, 2)
+        self.assertEqual(self.lua.globals().gatheringEvent.x, .4)
+        self.assertTrue(unsubscribe())
+        self.lua.globals().observed = None
+        self.ns.RunHooks('gatheringObserved', self.lua.table_from({'professionID': 186, 'profession': 'Mining',
+            'mapID': 501, 'x': .4, 'y': .6, 'itemID': 2770, 'quantity': 1, 'source': 'gather-node'}))
+        self.assertIsNone(self.lua.globals().observed)
+
     def test_module_loop_starts_closes_walk_route_and_reports_stop(self):
         api = self.lua.globals().WowTogetherModuleAPI
         self.ns.RegisterModule('Gold', self.lua.table())
@@ -151,6 +218,38 @@ class ModuleAPITests(unittest.TestCase):
         self.assertTrue(api.StopModuleLoop('Gold'))
         self.assertEqual(self.lua.globals().loopStoppedReason, 'stopped by module')
         self.assertFalse(api.StopModuleLoop('Gold', 'unexpected')[0])
+
+    def test_module_loop_stops_survive_a_full_refresh(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.RegisterModule('Gold', self.lua.table())
+        self.lua.execute('''
+            local ns=...
+            ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.RouteInCombat=function() return false end
+            ns.DrawRoute=function() end; ns.AttachRouteProvider=function() end
+            ns.OpenGuideWindow=function() end
+            originalCreateFrame=CreateFrame
+            function CreateFrame(...)
+                moduleLoopFrame=originalCreateFrame(...)
+                return moduleLoopFrame
+            end
+            perfEvents={}
+            ns.PerfBegin=function(name) perfEvents[#perfEvents+1]="begin:"..name; return name end
+            ns.PerfEnd=function(name, started) perfEvents[#perfEvents+1]="end:"..started end
+        ''', self.ns)
+        spec = self.lua.table_from({'title': 'Three-stop loop', 'points': [
+            {'mapID': 501, 'x': .2, 'y': .2, 'label': 'First', 'reason': 'First reason.'},
+            {'mapID': 501, 'x': .5, 'y': .2, 'label': 'Second', 'reason': 'Second reason.'},
+            {'mapID': 501, 'x': .4, 'y': .6, 'label': 'Third', 'reason': 'Third reason.'}],
+            'onStop': self.lua.eval('function() end')}, recursive=True)
+        self.assertTrue(api.StartModuleLoop('Gold', spec))
+        self.lua.execute('moduleLoopFrame.OnUpdate(moduleLoopFrame, .01)')
+        self.assertEqual(list(self.lua.globals().perfEvents.values()), ['begin:moduleLoop', 'end:moduleLoop'])
+        before = len(self.ns.selectedRoute.stops)
+        self.assertEqual(before, 4)
+        self.ns.Refresh(True)
+        self.assertEqual(len(self.ns.selectedRoute.stops), 4)
+        self.assertEqual(self.ns.selectedRoute.stops[1].label, 'First')
 
     def test_module_loop_requires_confirmation_before_replacing_active_guide(self):
         api = self.lua.globals().WowTogetherModuleAPI
@@ -181,6 +280,42 @@ class ModuleAPITests(unittest.TestCase):
         self.assertEqual(self.ns.routeSelection.mode, 'module')
         api.StopModuleLoop('Gold')
 
+    def test_module_loop_reports_player_refusal_and_acceptance_during_combat(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.RegisterModule('Gold', self.lua.table())
+        self.lua.execute('''
+            local ns=...
+            ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            inCombat=false
+            ns.RouteInCombat=function() return inCombat end
+            ns.DrawRoute=function() end; ns.AttachRouteProvider=function() end
+            ns.OpenGuideWindow=function() end
+            popupRequest=nil
+            StaticPopup_Show=function(key, title, _, data)
+                popupRequest=data
+                return {key=key,title=title,data=data}
+            end
+            StaticPopupDialogs={}
+            loopStopReasons={}
+            function loopStopped(reason) loopStopReasons[#loopStopReasons+1]=reason end
+        ''', self.ns)
+        self.ns.routeSelection = self.lua.table_from({'key': 'existing:guide'})
+        self.ns.selectedRoute = self.lua.table_from({'stops': []})
+        spec = self.lua.table_from({'title': 'Ore loop', 'points': [
+            {'mapID': 501, 'x': .3, 'y': .4, 'label': 'Mine ore', 'reason': 'Follow the vein.'},
+            {'mapID': 501, 'x': .6, 'y': .4, 'label': 'Mine more ore', 'reason': 'Continue around.'}],
+            'onStop': self.lua.globals().loopStopped}, recursive=True)
+        self.assertTrue(api.StartModuleLoop('Gold', spec))
+        dialog = self.lua.globals().StaticPopupDialogs.WOWTOGETHER_MODULE_LOOP_CONFIRM
+        dialog.OnCancel(None, self.lua.globals().popupRequest)
+        self.assertEqual(self.lua.globals().loopStopReasons[1], 'player declined guide replacement')
+        self.assertTrue(api.StartModuleLoop('Gold', spec))
+        request = self.lua.globals().popupRequest
+        self.lua.globals().inCombat = True
+        dialog.OnAccept(None, request)
+        self.assertEqual(self.lua.globals().loopStopReasons[2], 'guide replacement accepted during combat')
+        self.assertEqual(self.ns.routeSelection.key, 'existing:guide')
+
     def test_farm_session_data_is_validated_displayed_and_refresh_is_rate_limited(self):
         api = self.lua.globals().WowTogetherModuleAPI
         self.ns.RegisterModule('Gold', self.lua.table())
@@ -196,8 +331,10 @@ class ModuleAPITests(unittest.TestCase):
         card = self.ns.ModuleFarmSessionForCard()
         self.assertIn('Estimated 10.0 gold/hour', card.detail)
         self.assertIn('Actual 8.0 gold/hour', card.detail)
+        self.ns.SetOption('uiNext', True)
         self.ns.RenderRecommended(self.ns.NewQuestQuery())
         self.assertTrue(self.ns.ui.home.goldSession.IsShown(self.ns.ui.home.goldSession))
+        self.assertEqual(self.ns.ui.home.goldSession.point[1], 'TOPLEFT')
         self.assertIn('Actual 8.0 gold/hour', self.ns.ui.home.goldSession.detail.GetText(self.ns.ui.home.goldSession.detail))
         self.assertTrue(api.RequestFarmSessionRefresh('Gold'))
         self.assertFalse(api.RequestFarmSessionRefresh('Gold')[0])

@@ -1,17 +1,18 @@
 # GOLD MODULE API V2
 
 For players:
-- Let Gold read saved auction quotes and show farm session estimates beside measured gold per hour.
-- Start a farm loop from a module and confirm before it replaces an active guide.
-- Search current-game farm priors when that data is available.
+- Let Gold search gathering zones for Mining, Herbalism, Skinning and Fishing, and show its session card on Play.
+- Keep farm loop stops after refresh, lead the guide arrow around the loop, and report when a requested loop cannot start.
+- Record confirmed gathering and fishing yields with the player's real map position; no node coordinates or NPC farm priors are included.
 
 Please check:
-- Use a separate addon namespace to read a quote, search priors, start and stop a loop, and refresh the session card.
-- Confirm a running guide stays active until the player accepts replacing it.
-- In game, start a loop and follow its arrow back around to the first point.
+- In a separate addon namespace, search gathering facts and subscribe to gathered item observations.
+- Refresh while a module farm loop is active; confirm its stops and guide arrow remain visible.
+- Verify the session card appears on Play and confirms both estimated and measured rates.
 
 Developer notes:
 - Bump `GoldAPIVersion` to 2 and expose only validated wrappers on `WowTogetherModuleAPI`.
-- A loop supplies an `onStop(reason)` callback so its owning module hears why the route ended.
-- Farm-prior search is clock-budgeted at approximately 2 ms per slice. The current packaged core has no validated current-game farm-prior dataset, so the API returns an immediate unavailable reason; the existing legacy prior extracts are reference-only and are not routable.
-- Needs play-test. Host tests do not verify actual client map/arrow behavior.
+- Module loops retain their stops through refresh and time their OnUpdate callback. The owner receives a stop reason after declining guide replacement or accepting during combat.
+- `GatheringFarmSearch` returns only learnable nodes/water tiers that meet current skill, faction and zone-level filters, with zone map IDs and provenance. The observer reports local loot-confirmed item quantities and positions; coordinates are learned from play.
+- Farm-prior search is clock-budgeted at approximately 2 ms per slice. No validated current-game NPC spawn/loot prior dataset is packaged, so the API returns an immediate unavailable reason. Legacy extracts are reference-only and are not routable.
+- Host tests passed; all changed in-game flows still need play-test. No client verification is claimed.
