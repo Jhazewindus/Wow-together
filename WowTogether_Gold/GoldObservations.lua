@@ -260,7 +260,16 @@ function observations.RecordLoot(guid, id, count, source)
     if not node then drop, credited = recordDrop(guid, id, count, source or "local observation") end
     local npc = not node and npcID(guid)
     if credited and npc and id and queueDrop then queueDrop(npc, id) end
-    if node or credited then valueRunItem(id, count) end
+    if node or credited then
+        valueRunItem(id, count)
+        -- Node yields are counted from the public core gathering observer to
+        -- avoid counting the same local loot twice. Mob loot has no such core
+        -- event and is counted here after local corpse attribution succeeds.
+        if credited then
+            local farms = namespace.GoldFarms
+            if farms and type(farms.RecordLoot) == "function" then farms.RecordLoot(id, count, npc) end
+        end
+    end
     return node or drop or false
 end
 function observations.LootOpened()

@@ -10,3 +10,4 @@
 Gold.lua
 GoldPrices.lua
 GoldObservations.lua
+GoldFarms.lua
