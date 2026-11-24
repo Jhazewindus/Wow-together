@@ -272,7 +272,7 @@ local function makeMob(record)
     local kills, paceBasis = mobPace(record.npcID)
     local copperPerHour = expectedPerKill * kills
     local name = safeText(record.name, 100) and record.name or ("NPC " .. record.npcID)
-    local candidate = {kind = "mob", id = "mob:" .. record.npcID, name = name,
+    local candidate = {kind = "mob", id = "mob:" .. record.npcID .. ":" .. record.mapID, name = name,
         zone = record.zoneName or record.zone or "Unknown zone", mapID = record.mapID,
         npcID = record.npcID, estimate = copperPerHour, expectedPerKill = expectedPerKill,
         basis = "Legacy, unconfirmed; " .. paceBasis .. "; " .. lootBasis .. "; data: " .. cleanSource(record, "loot"),
@@ -281,17 +281,15 @@ local function makeMob(record)
     return candidate
 end
 local function gatheringYield(item, mapID, profession, sourceKind)
-    local yield = quantityValue(item)
-    local chance = chanceValue(item)
-    if not yield or not chance then
-        local learned = sourceKind and db.gathering[profession .. ":" .. mapID .. ":" .. sourceKind]
-        local sample = learned and learned.items and learned.items[item.itemID]
-        if sample and sample.count and sample.count >= 3 then
-            return sample.total / sample.count, 1, "your " .. sample.count .. " observed yields"
-        end
-        return nil
+    local seededYield = quantityValue(item)
+    local seededChance = chanceValue(item)
+    local learned = sourceKind and db.gathering[profession .. ":" .. mapID .. ":" .. sourceKind]
+    local sample = learned and learned.items and learned.items[item.itemID]
+    if sample and sample.count and sample.count >= 3 and finite(sample.total) and sample.total > 0 then
+        return sample.total / sample.count, seededChance or 1, "your " .. sample.count .. " observed yields"
     end
-    return yield, chance, "seeded " .. tostring(item.source or "yield source")
+    if not seededYield or not seededChance then return nil end
+    return seededYield, seededChance, "seeded " .. tostring(item.source or "yield source")
 end
 local function makeGathering(row, zone)
     local sourceKind = zone.sourceKind or zone.waterKind or row.sourceKind or row.waterKind

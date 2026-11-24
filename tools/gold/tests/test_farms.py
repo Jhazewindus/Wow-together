@@ -69,6 +69,31 @@ def farm_client():
 
 
 class GoldFarmTests(unittest.TestCase):
+    def test_bundled_legacy_priors_flow_through_gold_to_three_real_hub_suggestions(self):
+        client = Client(quests=(), default_guide=True)
+        client.lua.execute('''
+            UnitLevel=function() return 20 end
+            ticks=0; function debugprofilestop() ticks=ticks+.1; return ticks end
+            C_Item={GetItemInfo=function(id) return "Item "..id,nil,0,nil,nil,nil,nil,nil,nil,nil,10 end}
+        ''')
+        private = load_gold(client)
+        load_component(client, private, "GoldPrices.lua")
+        load_component(client, private, "GoldObservations.lua")
+        load_component(client, private, "GoldFarms.lua")
+        timers, slices = client.lua.globals().timers, 0
+        while len(timers) and slices < 1000:
+            callback = timers[1]
+            client.lua.execute('table.remove(timers, 1)')
+            callback(); slices += 1
+        self.assertLess(slices, 1000)
+        self.assertEqual(client.ns.farmPriorData.count, 6118)
+        result = client.ns.FirstHook("goldSuggestions")
+        handled, cards = result[0], result[1]
+        self.assertTrue(handled)
+        self.assertEqual(len(cards), 3)
+        self.assertTrue(any("legacy, unconfirmed" in cards[i].detail.lower() for i in range(1, 4)))
+        self.assertTrue(any("vendor" in cards[i].detail.lower() for i in range(1, 4)))
+
     def test_both_searches_feed_three_ranked_hub_cards_with_explicit_estimate_basis(self):
         client, private = farm_client()
         ns = client.ns
@@ -137,6 +162,15 @@ class GoldFarmTests(unittest.TestCase):
         open_water = private.db.gathering["Fishing:503:open-water"]
         self.assertEqual(open_water["items"][6291].total, 1)
         self.assertTrue(private.GoldFarms.Probe)
+
+    def test_three_local_gather_yields_replace_the_unconfirmed_seed_average(self):
+        client, private = farm_client()
+        private.db.gathering["Mining:502:gather-node"] = client.lua.table_from({
+            "points": [], "items": {2770: {"total": 9, "count": 3}}}, recursive=True)
+        private.GoldFarms.RefreshSearches()
+        cards = client.ns.FirstHook("goldSuggestions")[1]
+        copper = next(cards[i] for i in range(1, len(cards) + 1) if "Copper Vein" in cards[i].title)
+        self.assertIn("your 3 observed yields", copper.detail)
 
 
 if __name__ == "__main__":
