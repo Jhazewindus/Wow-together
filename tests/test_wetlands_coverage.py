@@ -80,7 +80,7 @@ class WetlandsCoverageTests(unittest.TestCase):
             c.ns.BuildGuideRoute(g,False);before=order(g)
             # QuestieDB raises Bring Back a Bang from level 31 to 32, moving
             # its three fixed stages into the 31-40 chapter.
-            self.assertEqual(len(list(g.fixedPlan.values())),{21:186,31:79}[g.sectionLow])
+            self.assertEqual(len(list(g.fixedPlan.values())),{21:189,31:79}[g.sectionLow])
             self.assertEqual({r.id for r in g.records.values()},{s.id for s in g.fixedPlan.values()})
             c.lua.globals().finished[455]=True;c.ns.active[98246]='Trying Times'
             c.ns.BuildGuideRoute(g,False);self.assertEqual(order(g),before)

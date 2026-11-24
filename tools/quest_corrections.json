@@ -21234,5 +21234,347 @@
       }
     },
     "source": "Wowhead Forever quest=7507 detail capture SHA-256 386186d3142e88757d873134411183617720275ad283e63f3079ee27f71f5268; reviewed published quest page and current QuestieDB Forever revision 0f7d8adc92b28ac6594f4ad8745257f4d9784edf show no prior quest. This is a predecessor to 7508."
+  },
+  {
+    "questID": 95111,
+    "title": "An Underrated Talent",
+    "previousTitle": "A Moon-Kissed Blade",
+    "source": "https://www.wowhead.com/forever/quest=95111 Series table lists A Moon-Kissed Blade immediately before An Underrated Talent (captured 2026-11-24; SHA-256 e40e4652ebc0ce2f86f021faa6b656d844174fada579771d72fe182cf1a10010).",
+    "prerequisiteCorrection": {
+      "previousQuest": 95036
+    }
+  },
+  {
+    "questID": 96135,
+    "title": "Heed My Call",
+    "previousTitle": "Storm, Earth, and Fire",
+    "source": "https://www.wowhead.com/forever/quest=96135 Series table lists Storm, Earth, and Fire immediately before Heed My Call (captured 2026-11-24; SHA-256 b1994dccd5e425f85fc139c23d60bb5c6747d1600fb9ca14b8cc9325baad98f7).",
+    "prerequisiteCorrection": {
+      "previousQuest": 79358
+    }
+  },
+  {
+    "questID": 95126,
+    "title": "The Moonsilver Blade",
+    "previousTitle": "Ott's Masterwork",
+    "source": "https://www.wowhead.com/forever/quest=95126 Series table lists Ott's Masterwork immediately before The Moonsilver Blade (captured 2026-11-24; SHA-256 00ee5160cec73bbc5dc3918d1cd562ad90a1d92d36d51373273d471a6dfb4d38).",
+    "prerequisiteCorrection": {
+      "previousQuest": 95125
+    }
+  },
+  {
+    "questID": 98731,
+    "title": "Blessings of the Great Cat Spirit",
+    "previousTitle": "The Great Cat Spirit",
+    "source": "https://www.wowhead.com/forever/quest=98731 Series table lists The Great Cat Spirit immediately before Blessings of the Great Cat Spirit (captured 2026-11-24; SHA-256 0b9c48587a86b6b3397a08e5d4edd31c9e206570d51f3a9ababc6ded7558683d).",
+    "prerequisiteCorrection": {
+      "previousQuest": 98396
+    }
+  },
+  {
+    "questID": 98738,
+    "title": "Blessings of the Great Windborne Cat Spirit",
+    "previousTitle": "The Great Windborne Cat Spirit",
+    "source": "https://www.wowhead.com/forever/quest=98738 Series table lists The Great Windborne Cat Spirit immediately before Blessings of the Great Windborne Cat Spirit (captured 2026-11-24; SHA-256 4d965fe41b85a502890d7fbd3b207db2fefc7682123de1bbf151cff8a808fa28).",
+    "prerequisiteCorrection": {
+      "previousQuest": 98404
+    }
+  },
+  {
+    "questID": 79358,
+    "title": "Storm, Earth, and Fire",
+    "previousTitle": "Elemental Aid",
+    "source": "https://www.wowhead.com/forever/quest=79358 Series table lists Elemental Aid immediately before Storm, Earth, and Fire (captured 2026-11-24; SHA-256 ca0bd7f67b60009b5e60bf4938aa4daa2d0697b3d92c465c3b50578f03ebe449).",
+    "prerequisiteCorrection": {
+      "previousQuest": 96264
+    }
+  },
+  {
+    "questID": 79361,
+    "title": "Storm, Earth, and Fire",
+    "previousTitle": "Eyes on the Sky",
+    "source": "https://www.wowhead.com/forever/quest=79361 Series table lists Eyes on the Sky immediately before Storm, Earth, and Fire (captured 2026-11-24; SHA-256 36d23dfea21c36140832c90910a8815c61e02eec6cc0d3067cedbd13a3104787).",
+    "prerequisiteCorrection": {
+      "previousQuest": 79364
+    }
+  },
+  {
+    "questID": 79364,
+    "title": "Eyes on the Sky",
+    "previousTitle": "Elemental Aid",
+    "source": "https://www.wowhead.com/forever/quest=79364 Series table lists Elemental Aid immediately before Eyes on the Sky (captured 2026-11-24; SHA-256 6773c553fa3e08a61946b9fb4ce76259f19c45ee75bf34f4b54d4f235d3927f5).",
+    "prerequisiteCorrection": {
+      "previousQuest": 79360
+    }
+  },
+  {
+    "questID": 79366,
+    "title": "Heed My Call",
+    "previousTitle": "Storm, Earth, and Fire",
+    "source": "https://www.wowhead.com/forever/quest=79366 Series table lists Storm, Earth, and Fire immediately before Heed My Call (captured 2026-11-24; SHA-256 1c43288912aae1149dd02ff18c6403e3ef0c4f01a560dc843546243cfd54969b).",
+    "prerequisiteCorrection": {
+      "previousQuest": 79361
+    }
+  },
+  {
+    "questID": 96264,
+    "title": "Elemental Aid",
+    "previousTitle": "Call of Air",
+    "source": "https://www.wowhead.com/forever/quest=96264 Series table lists Call of Air immediately before Elemental Aid (captured 2026-11-24; SHA-256 1d5d99f74c74437cd00341b7ac8aff3221e9d8c0c6aa0612b63d373bacda2cdf).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94789
+    }
+  },
+  {
+    "questID": 96782,
+    "title": "Covert Extraction",
+    "previousTitle": "What's the Big Idea?",
+    "source": "https://www.wowhead.com/forever/quest=96782 Series table lists What's the Big Idea? immediately before Covert Extraction (captured 2026-11-24; SHA-256 345c421cc9fc843de55d670097ddd309e53d143af245b064af5c9c83e5dd2549).",
+    "prerequisiteCorrection": {
+      "previousQuest": 96781
+    }
+  },
+  {
+    "questID": 88758,
+    "title": "Sentiments of the Lost",
+    "previousTitle": "Accessories of the Lost",
+    "source": "https://www.wowhead.com/forever/quest=88758 Series table lists Accessories of the Lost immediately before Sentiments of the Lost (captured 2026-11-24; SHA-256 2c4060c23d5ccbf57dff10cd3d90f38486e5396c789348d8be36c63f84f185de).",
+    "prerequisiteCorrection": {
+      "previousQuest": 88757
+    }
+  },
+  {
+    "questID": 94974,
+    "title": "Key Ingredients",
+    "previousTitle": "Krol'dok Moulding",
+    "source": "https://www.wowhead.com/forever/quest=94974 Series table lists Krol'dok Moulding immediately before Key Ingredients (captured 2026-11-24; SHA-256 1006e29d347c87ac7ba67ba4427a38f2e8133383459bbed30700f321c346b976).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94973
+    }
+  },
+  {
+    "questID": 78089,
+    "title": "Advice From Stormwind",
+    "previousTitle": "A Strange Artifact",
+    "source": "https://www.wowhead.com/forever/quest=78089 Series table lists A Strange Artifact immediately before Advice From Stormwind (captured 2026-11-24; SHA-256 62cbeaaa7cda6ac3fe47504587abfd04ebcdeceae6a2717480135898e26237c0).",
+    "prerequisiteCorrection": {
+      "previousQuest": 78088
+    }
+  },
+  {
+    "questID": 98396,
+    "title": "The Great Cat Spirit",
+    "previousTitle": "The Great Cat Spirit",
+    "source": "https://www.wowhead.com/forever/quest=98396 Series table lists The Great Cat Spirit immediately before The Great Cat Spirit (captured 2026-11-24; SHA-256 f61fc11cc17bf9687a8b636d84ef6da911acc2355f0b3b761fccf8a9f6ad9f10).",
+    "prerequisiteCorrection": {
+      "previousQuest": 98394
+    }
+  },
+  {
+    "questID": 78090,
+    "title": "A Second Opinion",
+    "previousTitle": "Advice From Stormwind",
+    "source": "https://www.wowhead.com/forever/quest=78090 Series table lists Advice From Stormwind immediately before A Second Opinion (captured 2026-11-24; SHA-256 6b145d61c3ef4b2c00ad3300c8637b6abc940e3f03b4ea272a489fa031cc5ffa).",
+    "prerequisiteCorrection": {
+      "previousQuest": 78089
+    }
+  },
+  {
+    "questID": 78092,
+    "title": "It Must Be Destroyed",
+    "previousTitle": "Earning Your Salt",
+    "source": "https://www.wowhead.com/forever/quest=78092 Series table lists Earning Your Salt immediately before It Must Be Destroyed (captured 2026-11-24; SHA-256 f585a61a160be0f3c19f80813291f3663a41b15e41bff0b87f4b113431f7baf0).",
+    "prerequisiteCorrection": {
+      "previousQuest": 78091
+    }
+  },
+  {
+    "questID": 96204,
+    "title": "The Windshaper's Wrath",
+    "previousTitle": "Lumina Windsinger",
+    "source": "https://www.wowhead.com/forever/quest=96204 Series table lists Lumina Windsinger immediately before The Windshaper's Wrath (captured 2026-11-24; SHA-256 54ce3853f5eb24165c5e0b080de9cf2db139746fb7ec565ba9801182e70ae957).",
+    "prerequisiteCorrection": {
+      "previousQuest": 91862
+    }
+  },
+  {
+    "questID": 78093,
+    "title": "Return to Delgren",
+    "previousTitle": "It Must Be Destroyed",
+    "source": "https://www.wowhead.com/forever/quest=78093 Series table lists It Must Be Destroyed immediately before Return to Delgren (captured 2026-11-24; SHA-256 4438139feb307bc516efde774d215882ec094a5604dfa66d302fa829ef44cea8).",
+    "prerequisiteCorrection": {
+      "previousQuest": 78092
+    }
+  },
+  {
+    "questID": 93465,
+    "title": "Notes on Draenethyst",
+    "previousTitle": "The Visiting Mage",
+    "source": "https://www.wowhead.com/forever/quest=93465 Series table lists The Visiting Mage immediately before Notes on Draenethyst (captured 2026-11-24; SHA-256 aad1b7a7e8250749f88b6627bad98347fca10476876c0c77ef6b3626fa915333).",
+    "prerequisiteCorrection": {
+      "previousQuest": 93464
+    }
+  },
+  {
+    "questID": 95125,
+    "title": "Ott's Masterwork",
+    "previousTitle": "An Underrated Talent",
+    "source": "https://www.wowhead.com/forever/quest=95125 Series table lists An Underrated Talent immediately before Ott's Masterwork (captured 2026-11-24; SHA-256 41dfe7f519791ec265778480552126dadbc1e8956fe7291669418ba6a31a8c73).",
+    "prerequisiteCorrection": {
+      "previousQuest": 95111
+    }
+  },
+  {
+    "questID": 95034,
+    "title": "The Debt",
+    "previousTitle": "The Windshaper's Wrath",
+    "source": "https://www.wowhead.com/forever/quest=95034 Series table lists The Windshaper's Wrath immediately before The Debt (captured 2026-11-24; SHA-256 6737e9d6d5af051f1eeb1a9e8dcde2fd58d5b5003b3bf33c37de78636bc3fdc2).",
+    "prerequisiteCorrection": {
+      "previousQuest": 96204
+    }
+  },
+  {
+    "questID": 94998,
+    "title": "Curios of Curiosity",
+    "previousTitle": "Lingering Essence",
+    "source": "https://www.wowhead.com/forever/quest=94998 Series table lists Lingering Essence immediately before Curios of Curiosity (captured 2026-11-24; SHA-256 f154f5cd72d1fae83898bc3feec4d6e24872dc1fd525975c76520a58955d7241).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94997
+    }
+  },
+  {
+    "questID": 94981,
+    "title": "Key Ingredients",
+    "previousTitle": "Krol'dok Moulding",
+    "source": "https://www.wowhead.com/forever/quest=94981 Series table lists Krol'dok Moulding immediately before Key Ingredients (captured 2026-11-24; SHA-256 0cf0f62243f1f345379c09fda6f4c1190999019e55e9accb4d820b14ad503d25).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94980
+    }
+  },
+  {
+    "questID": 94501,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94501 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 07d641e0d69807a3a88a8ae959cbac1e88c8a349501cdd833d77c8ac4b5a5c3c).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94500
+    }
+  },
+  {
+    "questID": 94497,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94497 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 cb7dec45ce15b44dc7526d55e6559ec5d785141a5d95e3d256c4178a822de8c3).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94495
+    }
+  },
+  {
+    "questID": 94499,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94499 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 405ed049b31503f9ae894d52427a3389c32a2b29a6d24d514859a2316ec4a319).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94497
+    }
+  },
+  {
+    "questID": 94500,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94500 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 2b88e13bfcf85cdea85aaf3cfd8b2ac53f3a35d765ca3f81fd43e1ac9d1ad590).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94499
+    }
+  },
+  {
+    "questID": 94502,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94502 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 eb475ab3b95161fc568a58023a9dda095303efdeee3e90865dd5bbccb11813f4).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94501
+    }
+  },
+  {
+    "questID": 94503,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94503 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 6d589f431ee782d9878a87122f398b7cb07035a17e9adee34e8d64c28773a9a6).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94502
+    }
+  },
+  {
+    "questID": 91859,
+    "title": "A Curious Pair",
+    "previousTitle": "Diplomatic Incident",
+    "source": "https://www.wowhead.com/forever/quest=91859 Series table lists Diplomatic Incident immediately before A Curious Pair (captured 2026-11-24; SHA-256 492ffe12895f96dffe0b30bee633864c7ec6667802b577710af24f9c4c4ce202).",
+    "prerequisiteCorrection": {
+      "previousQuest": 91858
+    }
+  },
+  {
+    "questID": 88757,
+    "title": "Accessories of the Lost",
+    "previousTitle": "Hearts of the Lost",
+    "source": "https://www.wowhead.com/forever/quest=88757 Series table lists Hearts of the Lost immediately before Accessories of the Lost (captured 2026-11-24; SHA-256 44ed26ca04c913f5d51fa16c60d4858c1132e2b4072756c8e6c5e1beded5f6ef).",
+    "prerequisiteCorrection": {
+      "previousQuest": 87318
+    }
+  },
+  {
+    "questID": 94505,
+    "title": "Call of Water",
+    "previousTitle": "Call of Water",
+    "source": "https://www.wowhead.com/forever/quest=94505 Series table lists Call of Water immediately before Call of Water (captured 2026-11-24; SHA-256 b76bb455998c149d4829989ca1ce425ac168818f58efe360581d42235648b707).",
+    "prerequisiteCorrection": {
+      "previousQuest": 94503
+    }
+  },
+  {
+    "questID": 91862,
+    "title": "Lumina Windsinger",
+    "previousTitle": "Into Fenris Keep",
+    "source": "https://www.wowhead.com/forever/quest=91862 Series table lists Into Fenris Keep immediately before Lumina Windsinger (captured 2026-11-24; SHA-256 c03d38427a62fe17a57fee314b394477eb6a0d5676525cc50041582732d2e282).",
+    "prerequisiteCorrection": {
+      "previousQuest": 91861
+    }
+  },
+  {
+    "questID": 91861,
+    "title": "Into Fenris Keep",
+    "previousTitle": "A Grim Fate",
+    "source": "https://www.wowhead.com/forever/quest=91861 Series table lists A Grim Fate immediately before Into Fenris Keep (captured 2026-11-24; SHA-256 d0ba6c0e3c0af16d7d97f9e3ede2dcc4680b026d1487c75ac64ef0871508d0aa).",
+    "prerequisiteCorrection": {
+      "previousQuest": 91860
+    }
+  },
+  {
+    "questID": 91860,
+    "title": "A Grim Fate",
+    "previousTitle": "A Curious Pair",
+    "source": "https://www.wowhead.com/forever/quest=91860 Series table lists A Curious Pair immediately before A Grim Fate (captured 2026-11-24; SHA-256 47a4fcbce697acddbb5832751f1465a4546fd9622866f019bcc53cfe6cfdd2e8).",
+    "prerequisiteCorrection": {
+      "previousQuest": 91859
+    }
+  },
+  {
+    "questID": 95036,
+    "title": "A Moon-Kissed Blade",
+    "previousTitle": "The Debt",
+    "source": "https://www.wowhead.com/forever/quest=95036 Series table lists The Debt immediately before A Moon-Kissed Blade (captured 2026-11-24; SHA-256 b11f8a7a00746fa8e6fd6d27f9e3c42e92be65fef803928bd5930996f6b5a49d).",
+    "prerequisiteCorrection": {
+      "previousQuest": 95034
+    }
+  },
+  {
+    "questID": 79235,
+    "title": "On the Lam",
+    "previousTitle": "Highway Robbery",
+    "source": "https://www.wowhead.com/forever/quest=79235 Series table lists Highway Robbery immediately before On the Lam (captured 2026-11-24; SHA-256 6953cb0d2f55c01f080c705bacf6df70bc0c42cc5356a68a8e113552ce40e1c9).",
+    "prerequisiteCorrection": {
+      "previousQuest": 79229
+    }
   }
 ]
