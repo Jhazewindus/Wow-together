@@ -1,4 +1,4 @@
-# OPTIONAL GOLD TAB, PRICES, AND OBSERVATIONS
+# OPTIONAL GOLD TAB AND PRICES AND OBSERVATIONS
 
 For players:
 - Add the optional Gold tab and `/wt gold` command when Gold is installed.
