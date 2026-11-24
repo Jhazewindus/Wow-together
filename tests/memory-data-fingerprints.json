@@ -20,7 +20,7 @@
     },
     "dungeonJournalData": {
       "file": "DungeonJournalData.lua",
-      "sha256": "3a49daf25c937fcaedcf91dbdd0c960078576e0cbb376e7dc159dd90de889058"
+      "sha256": "637a88d21e21f9299bafefe5ac72b1c7d4f150ee143218237fb2be18ada99836"
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",

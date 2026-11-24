@@ -35,7 +35,8 @@ class DungeonViewerTests(unittest.TestCase):
     def test_snapshot_has_attributed_facts_and_no_external_assets(self):
         c=self.client(); data=c.ns.dungeonJournalData
         self.assertEqual(28,len(list(data.dungeons.keys())))
-        self.assertEqual(23,data.counts.dungeonsWithBosses)
+        self.assertEqual(28,data.counts.dungeonsWithBosses)
+        self.assertEqual(6,data.counts.partialDungeons)
         self.assertTrue(data.dungeons['city-of-dalaran'].partial)
         self.assertGreater(data.counts.lootEntries,1000)
         for key,entry in data.dungeons.items():
@@ -120,14 +121,19 @@ class DungeonViewerTests(unittest.TestCase):
         self.assertEqual('Cached item',f.lootRows[1].item.name);self.assertEqual(1234,f.lootRows[1].icon.texture)
         c.lua.execute('C_Item.GetItemInfo=function(id) return secret,secret,secret,nil,secret,nil,nil,nil,nil,secret end')
         c.ns.handlers.ITEM_DATA_LOAD_RESULT(item,True);self.assertNotEqual('Cached item',f.lootRows[1].item.name)
-    def test_unknown_new_dungeon_stays_browsable_with_honest_empty_state(self):
+    def test_new_dungeon_shows_captured_loot_and_honest_partial_state(self):
         c=self.client();c.ns.ShowDungeonViewer('blackmaw-hold');f=c.ns.dungeonViewer
-        self.assertTrue(f.IsShown(f));self.assertEqual(0,len(f.data.bosses));self.assertEqual(0,len(f.data.maps));self.assertTrue(f.empty.IsShown(f.empty));self.assertTrue(f.lootEmpty.IsShown(f.lootEmpty))
+        self.assertTrue(f.IsShown(f));self.assertEqual(11,len(f.data.bosses));self.assertEqual(0,len(f.data.maps))
+        self.assertTrue(f.data.partial);self.assertTrue(f.empty.IsShown(f.empty));self.assertFalse(f.lootEmpty.IsShown(f.lootEmpty))
+        self.assertTrue(f.data.bosses[1].loot[1].icon.startswith('Interface\\Icons\\'))
     def test_new_dungeon_can_use_native_encounters_without_inventing_loot(self):
         c=self.client(True)
         c.lua.execute("EJ_GetInstanceByIndex=function(i) if i==1 then return 200,'Blackmaw Hold',nil,nil,1 end end; EJ_GetInstanceInfo=function() return 'Blackmaw Hold',nil,nil,nil,nil,nil,400 end; EJ_GetEncounterInfoByIndex=function(i) if i==1 then return 'Native beta boss',nil,123 end end")
         c.ns.RefreshDungeonArtwork();c.ns.ShowDungeonViewer('blackmaw-hold');f=c.ns.dungeonViewer
-        self.assertEqual('Native beta boss',f.data.bosses[1].name);self.assertTrue(f.data.bosses[1].native);self.assertEqual(0,len(f.data.bosses[1].loot))
+        native=next(boss for boss in f.data.bosses.values() if boss.native)
+        behemoth=next(boss for boss in f.data.bosses.values() if boss.id==247207)
+        self.assertEqual('Native beta boss',native.name);self.assertEqual(123,native.id);self.assertEqual(0,len(native.loot))
+        self.assertEqual('Blackmaw Behemoth',behemoth.name);self.assertEqual(3,len(behemoth.loot))
     def test_map_size_position_and_background_are_shared_and_persisted(self):
         c=self.client();c.ns.ShowDungeonViewer('ragefire-chasm',True);f=c.ns.dungeonViewer
         f.SetSize(f,460,340);f.OnSizeChanged()

@@ -23,6 +23,9 @@ dungeon artwork on native client assets; do not bundle third-party images.
 - `WowTogether/DungeonJournalData.json`
 - `DUNGEON_VIEWER.md`
 - `tests/memory-data-fingerprints.json`
+- `tests/test_0824.py`
+- `tests/test_0829.py`
+- `tests/test_0831.py`
 - `changes/core/dungeon-loot-guide-refresh.md`
 
 ## Checks

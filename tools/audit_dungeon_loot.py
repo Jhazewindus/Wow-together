@@ -250,8 +250,9 @@ def apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources, addi
         dungeon['partial'] = True
         coverage_entry = coverage[key]
         coverage_entry['bosses'] = len(dungeon['bosses'])
-        coverage_entry['foreverNPCTablesCaptured'] = coverage_entry.get('foreverNPCTablesCaptured', 0) + 1
-        coverage_entry['specificForeverNPCTablesCaptured'] = coverage_entry.get('specificForeverNPCTablesCaptured', 0) + 1
+        if prior_source is None:
+            coverage_entry['foreverNPCTablesCaptured'] = coverage_entry.get('foreverNPCTablesCaptured', 0) + 1
+            coverage_entry['specificForeverNPCTablesCaptured'] = coverage_entry.get('specificForeverNPCTablesCaptured', 0) + 1
         coverage_entry['unpublished'] = False
         coverage_entry['partial'] = True
         coverage_entry['missingForeverNPCs'] = [value for value in coverage_entry.get('missingForeverNPCs', []) if value != ident]

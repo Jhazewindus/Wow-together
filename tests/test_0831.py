@@ -44,7 +44,7 @@ class LootAuditTests(unittest.TestCase):
 
         manifest = json.loads((ROOT / 'WowTogether/DungeonJournalData.json').read_text())
         self.assertEqual(manifest['counts']['userConfirmedFacts'], 4)
-        self.assertEqual(manifest['counts']['partialDungeons'], 1)
+        self.assertEqual(manifest['counts']['partialDungeons'], 6)
         self.assertEqual(manifest['foreverDungeonAdditions']['city-of-dalaran']['specificBossesCaptured'], 8)
         self.assertEqual(manifest['foreverDungeonAdditions']['city-of-dalaran']['specificDropLinksCaptured'], 27)
         self.assertEqual(manifest['foreverDungeonAdditions']['reportedEncounterAdditions']['bossesCaptured'], 1)
@@ -61,17 +61,33 @@ class LootAuditTests(unittest.TestCase):
         data = {'city-of-dalaran': {'name': 'City of Dalaran', 'partial': True, 'bosses': [
             {'id': 246020, 'name': 'Shade of the Archmage', 'dropIDs': [273103], 'sharedDropIDs': []}]},
             'excavation-site-wetlands': {'name': 'Excavation Site: Wetlands', 'bosses': []}}
+        dungeon_sizes = {'the-drowned-city': 8, 'kroldok-stronghold': 6, 'alcaz-prison': 5,
+                         'blackmaw-hold': 11, 'shapers-terrace': 10}
+        for key in dungeon_sizes:
+            data[key] = {'name': key, 'bosses': []}
         coverage = {'city-of-dalaran': {'bosses': 1, 'foreverNPCTablesCaptured': 0, 'unpublished': False}}
         coverage['excavation-site-wetlands'] = {'bosses': 0, 'reportedBosses': 0,
             'foreverNPCTablesCaptured': 0, 'missingForeverNPCs': [260808], 'unpublished': False}
+        for key in dungeon_sizes:
+            coverage[key] = {'bosses': 0, 'reportedBosses': 0, 'foreverNPCTablesCaptured': 0,
+                             'specificForeverNPCTablesCaptured': 0, 'missingForeverNPCs': [],
+                             'unpublished': True}
         sources = {}
         for _ in range(2):
             provenance = apply_forever_dungeon_additions(data, coverage, items, sources)
         self.assertEqual(len(data['city-of-dalaran']['bosses']), 8)
         self.assertEqual(sum(len(row['dropIDs']) for row in data['city-of-dalaran']['bosses']), 27)
-        self.assertEqual(len(items), 28)
-        self.assertEqual(len(sources), 9)
-        self.assertEqual(len(additions['methodIndex']['guides']), 10)
+        self.assertEqual(len(items), 148)
+        self.assertEqual(len(sources), 49)
+        self.assertEqual(len(additions['methodIndex']['guides']), 22)
+        self.assertEqual(provenance['newDungeonBossAdditions']['bossesCaptured'], 40)
+        self.assertEqual(provenance['newDungeonBossAdditions']['specificDropLinksCaptured'], 126)
+        for key, expected_bosses in dungeon_sizes.items():
+            self.assertEqual(expected_bosses, len(data[key]['bosses']))
+            self.assertTrue(data[key]['partial'])
+            self.assertEqual(expected_bosses, coverage[key]['specificForeverNPCTablesCaptured'])
+            self.assertTrue(all(items[item_id]['icon'].startswith('Interface\\Icons\\')
+                                for boss in data[key]['bosses'] for item_id in boss['dropIDs']))
         self.assertEqual(provenance['methodCrossChecks']['excavation-site-wetlands']['listedBosses'], 4)
         self.assertEqual(provenance['methodCrossChecks']['excavation-site-wetlands']['listedItemLinks'], 11)
         self.assertEqual(provenance['methodCrossChecks']['city-of-dalaran']['listedBosses'], 8)
