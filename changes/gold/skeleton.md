@@ -10,4 +10,5 @@ Please check:
 - Check vendor, auction and optional TSM price sources, including missing-source behavior.
 - Record loot and gathering, inspect `/wt probe`, and confirm party sharing contains no names or chat text.
 
-Developer notes: Register the optional addon through the versioned public module API. Keep prices feature-probed and scoped by realm, faction and build. Keep observations build-scoped, capped, anonymous, and marked with provenance and sample size; exports remain review candidates only.
+Developer notes:
+Register the optional addon through the versioned public module API. Keep prices feature-probed and scoped by realm, faction and build. Keep observations build-scoped, capped, anonymous, and marked with provenance and sample size; exports remain review candidates only.
