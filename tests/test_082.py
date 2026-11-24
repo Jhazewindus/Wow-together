@@ -31,7 +31,8 @@ def report():
             table: {'coverage': 'ok', 'rows': 61, 'snapshot_sha256': 'a'*64}
             for table in ('ui_map', 'ui_map_assignment')}, 'transforms': [
                 {'map_id': 1, 'area_transform_supported': True, 'ui_map_id': 501,
-                 'area_id': 100, 'target_bounds': {'left': -2000, 'right': -7000,
+                 'area_id': 100, 'target_name': 'Test Zone',
+                 'target_bounds': {'left': -2000, 'right': -7000,
                                                'top': 2000, 'bottom': -2000}}]}}
 
 
