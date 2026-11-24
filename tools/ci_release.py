@@ -15,7 +15,8 @@ from pathlib import Path, PurePosixPath
 from post_discord_release import NoRedirects, PublicationError, webhook_endpoint
 
 MAX_ATTACHMENT = 25 * 1024 * 1024
-ROOTS = {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData'}
+ROOTS = {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData',
+         'WowTogether_DungeonData', 'WowTogether_GoldData'}
 ALLOWED_ROOTS = ROOTS | {'WowTogether_Gold'}
 VERSION_PATTERN = r'\d+\.\d+\.\d+(?:-beta\.\d+\.[0-9a-f]{7,40})?'
 
