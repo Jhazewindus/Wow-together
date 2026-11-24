@@ -4,3 +4,4 @@
 ## LoadOnDemand: 1
 ## Dependencies: WowTogether
 FarmPriorData.lua
+GatheringPriorData.lua

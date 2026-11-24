@@ -13,7 +13,8 @@ local dataAddons = {
     ["WowTogether_ProfessionData"] = {field = "professionGuideData", tableField = "professions"},
     ["WowTogether_DungeonData"] = {field = "dungeonJournalData", tableField = "dungeons",
         extraField = "dungeonMapData", extraTableField = "dungeons"},
-    ["WowTogether_GoldData"] = {field = "farmPriorData", tableField = "records"},
+    ["WowTogether_GoldData"] = {field = "farmPriorData", tableField = "records",
+        extraField = "gatheringFarmData", extraTableField = "records"},
 }
 
 local function dataReady(definition)

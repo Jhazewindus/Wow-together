@@ -34,6 +34,14 @@ that an NPC, object, loot row, or respawn timer exists in current Forever.
 Play observations must correct them. Respect the GPL-3.0 attribution and
 complete notice in `LEGACY_DATA_COPYRIGHT.md` and `LEGACY_DATA_LICENSE.txt`.
 
+The same package includes 698 zone-keyed Gathering loot priors for named legacy
+veins, deposits and herbs with literal gameobject loot rows. These
+carry sourced chance and minimum count for an estimate. CMaNGOS has no loot
+rows for its fishing-pool templates, so fish per cast remains unseeded here.
+GatherLite node locations are read from its public runtime API when installed;
+they are not redistributed. GatherMate2_Data is not redistributed because its
+project is All Rights Reserved.
+
 `tools/import_vanilla_loot.py` is a separate Wowhead drop-page parser used by
 the dungeon-loot audit. It has no output pipeline and does not produce these
 priors. QuestieDB contributes only pinned NPC/item ID membership flags to the

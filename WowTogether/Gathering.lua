@@ -317,7 +317,9 @@ end
 -- unconfirmed; Gold must use the player's own observations before routing.
 function ns.GatheringFarmPoints(profession, nodeName, mapID)
     local professionType = profession == "Mining" and "mining"
-        or profession == "Herbalism" and "herbalism" or nil
+        or profession == "Herbalism" and "herbalism"
+        or profession == "Fishing" and "fishing"
+        or profession == "Treasure" and "containers" or nil
     if not professionType or type(nodeName) ~= "string" or #nodeName < 1 or #nodeName > 100
         or string.find(nodeName, "[%z\1-\31\127]")
         or not ns.GuideInteger(mapID, 1000000) or mapID < 1 then return {} end
@@ -327,13 +329,18 @@ function ns.GatheringFarmPoints(profession, nodeName, mapID)
     if not addon or type(addon.GetNodesForMap) ~= "function" or type(addon.GetNodeObject) ~= "function" then return {} end
     local nodes = ns.ReadPublic(addon.GetNodesForMap, addon, professionType, mapID)
     if type(nodes) ~= "table" then return {} end
+    local began = type(debugprofilestop) == "function" and ns.ReadPublic(debugprofilestop)
+    if type(began) ~= "number" then return {} end
     local wanted = string.lower(string.gsub(nodeName, "[^%w]+", "_"))
+    local matchAny = profession == "Fishing" or profession == "Treasure"
     local result = {}
     for _, node in ipairs(nodes) do
+        local clock = ns.ReadPublic(debugprofilestop)
+        if type(clock) ~= "number" or clock - began >= 1 then break end
         if type(node) == "table" and ns.Public(node) and node.mapID == mapID
             and node.type == professionType and type(node.object) == "number" then
             local object = ns.ReadPublic(addon.GetNodeObject, addon, node.object)
-            if type(object) == "table" and ns.Public(object) and object.name == wanted
+            if type(object) == "table" and ns.Public(object) and (matchAny or object.name == wanted)
                 and type(node.posX) == "number" and type(node.posY) == "number"
                 and node.posX >= 0 and node.posX <= 1 and node.posY >= 0 and node.posY <= 1 then
                 result[#result + 1] = {mapID = mapID, x = node.posX, y = node.posY,
@@ -343,6 +350,17 @@ function ns.GatheringFarmPoints(profession, nodeName, mapID)
         end
     end
     return result
+end
+
+function ns.GatheringFarmYield(profession, nodeName, zoneName, mapID)
+    if type(profession) ~= "string" or type(nodeName) ~= "string"
+        or type(zoneName) ~= "string" or not ns.GuideInteger(mapID, 1000000) then return nil end
+    local data = ns.gatheringFarmData
+    if type(data) ~= "table" or type(data.records) ~= "table" then return nil end
+    local lookupNode = profession == "Fishing" and zoneName or nodeName
+    local row = data.records[profession .. "|" .. lookupNode .. "|" .. mapID]
+    if type(row) ~= "table" or type(row.loot) ~= "table" then return nil end
+    return row.loot, row.source
 end
 
 -- Fishing's last two ranks are a book and a quest, not lessons.

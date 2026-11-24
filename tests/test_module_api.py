@@ -133,6 +133,27 @@ class ModuleAPITests(unittest.TestCase):
         result.loot[1].chance = 99
         self.assertEqual(self.ns.farmPriorData.records[1].loot[1].chance, 12.5)
 
+    def test_load_on_demand_legacy_farm_package_returns_loot_with_source_and_minimum_count(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.lua.execute('''
+            clockTick=0
+            function debugprofilestop() clockTick=clockTick+.1; return clockTick end
+            loadedFarmRows=nil
+        ''')
+        accepted = api.FarmPriorSearch(self.lua.table_from({'minLevel': 1, 'maxLevel': 60, 'limit': 1}),
+            self.lua.eval('function(rows) loadedFarmRows=rows end'))
+        self.assertTrue(accepted)
+        while len(self.lua.globals().timers):
+            callback = self.lua.globals().timers[1]
+            self.lua.execute('table.remove(timers, 1)')
+            callback()
+        record = self.lua.globals().loadedFarmRows[1]
+        self.assertEqual(record.confidence, 'legacy, unconfirmed')
+        self.assertGreaterEqual(len(record.spawnPoints), 1)
+        self.assertLessEqual(len(record.spawnPoints), 24)
+        self.assertGreaterEqual(record.loot[1].quantity, 1)
+        self.assertIn('CMaNGOS', record.loot[1].source)
+
     def test_gathering_search_returns_only_valid_source_backed_zone_facts_to_external_namespace(self):
         api = self.lua.globals().WowTogetherModuleAPI
         self.lua.execute('''

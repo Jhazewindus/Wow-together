@@ -78,6 +78,60 @@ def build_records(geometry_path: Path, creatures=None, loot_rows=None):
     return records
 
 
+def build_gathering_records(geometry_path: Path):
+    transforms, _, _ = read_geometry(geometry_path)
+    objects = read_rows('gameobjects')
+    loot_rows = read_rows('gameobject_loot')
+    from collections import defaultdict
+    by_loot = defaultdict(list)
+    for row in loot_rows:
+        item, chance, count = row.get('itemId'), row.get('chanceOrQuestChance'), row.get('minCountOrReference')
+        if isinstance(item, int) and item > 0 and isinstance(count, int) and count > 0 \
+                and isinstance(chance, (int, float)) and 0 < chance <= 100:
+            by_loot[row.get('ownerLootId')].append({'itemID': item, 'chance': chance, 'quantity': count,
+                'source': 'Pinned CMaNGOS gameobject_loot_template; legacy, unconfirmed'})
+    node_names = {
+        'Copper Vein', 'Tin Vein', 'Silver Vein', 'Iron Deposit', 'Gold Vein', 'Mithril Deposit',
+        'Truesilver Deposit', 'Dark Iron Deposit', 'Small Thorium Vein', 'Rich Thorium Vein',
+        'Heavy Thorium Vein', 'Peacebloom', 'Silverleaf', 'Earthroot', 'Mageroyal', 'Briarthorn',
+        'Stranglekelp', 'Bruiseweed', 'Wild Steelbloom', 'Grave Moss', 'Kingsblood', 'Liferoot',
+        'Fadeleaf', 'Goldthorn', "Khadgar's Whisker", 'Wintersbite', 'Firebloom', 'Purple Lotus',
+        "Arthas' Tears", 'Sungrass', 'Blindweed', 'Ghost Mushroom', 'Gromsblood', 'Golden Sansam',
+        'Dreamfoil', 'Mountain Silversage', 'Plaguebloom', 'Icecap', 'Black Lotus',
+    }
+    results = {}
+    for obj in objects:
+        name = obj.get('name', '')
+        loot = by_loot.get(obj.get('lootId'), [])
+        if obj.get('type') != 3 or not loot:
+            continue
+        if name not in node_names and not any(word in name.lower() for word in ('school', 'pool', 'floating wreckage')):
+            continue
+        zones = set()
+        for spawn in obj.get('spawns') or []:
+            for transform in transforms.values():
+                if transform['continent'] != spawn.get('map'):
+                    continue
+                x = transform['sx'] * spawn['worldY'] + transform['ox']
+                y = transform['sy'] * spawn['worldX'] + transform['oy']
+                if 0 <= x <= 1 and 0 <= y <= 1:
+                    zones.add((transform['mapID'], transform['targetName']))
+        for map_id, zone in zones:
+            # Pool species are keyed by zone. Named ore/herb nodes stay keyed by
+            # their exact source template and map.
+            profession, node = ('Fishing', zone) if name not in node_names else (
+                'Mining' if 'Vein' in name or 'Deposit' in name else 'Herbalism', name)
+            key = profession + '|' + node + '|' + str(map_id)
+            current = results.setdefault(key, {'profession': profession, 'node': node,
+                'mapID': map_id, 'zoneName': zone, 'loot': [],
+                'source': LEGACY + '; gameobject template and loot rows'})
+            known = {item['itemID'] for item in current['loot']}
+            for item in loot:
+                if item['itemID'] not in known:
+                    current['loot'].append(item); known.add(item['itemID'])
+    return results
+
+
 def render(records):
     packer = Packer()
     body = 'ns.farmPriorData = {count = ' + str(len(records)) + '}\n'
@@ -91,9 +145,19 @@ def main():
     parser.add_argument('--geometry', type=Path, required=True)
     args = parser.parse_args()
     records = build_records(args.geometry)
+    gathering = build_gathering_records(args.geometry)
     DEST.mkdir(exist_ok=True)
     (DEST / 'FarmPriorData.lua').write_text(render(records), encoding='utf-8')
-    print(json.dumps({'records': len(records), 'loadOnDemand': True,
+    # Keep the two domains separate in the same LOD package. This file is
+    # generated through the same packed-data decoder but has zone-keyed rows.
+    gathering_packer = Packer()
+    gathering_body = 'ns.gatheringFarmData = {count = ' + str(len(gathering)) + '}\n'
+    gathering_body += gathering_packer.records('gold-gathering-priors',
+        'ns.gatheringFarmData.records', gathering, lazy_rows=True)
+    gathering_payload = gathering_packer.code(gathering_body,
+        'Legacy, unconfirmed gathering loot; see LEGACY_DATA_COPYRIGHT.md and LEGACY_DATA_LICENSE.txt.')
+    (DEST / 'GatheringPriorData.lua').write_text(gathering_payload, encoding='utf-8')
+    print(json.dumps({'records': len(records), 'gatheringZoneRecords': len(gathering), 'loadOnDemand': True,
         'confidence': 'legacy, unconfirmed', 'lootRowsWithUnsupportedReferenceIDsOmitted': True}))
 
 

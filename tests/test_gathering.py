@@ -51,16 +51,20 @@ class GatheringRuleTests(unittest.TestCase):
     def test_gatherlite_public_nodes_are_read_as_unconfirmed_zone_locations(self):
         c = client(); ns = c.ns
         c.lua.execute('''
+            clockTick=0; function debugprofilestop() clockTick=clockTick+.1; return clockTick end
             local nodeList={{mapID=501,type="mining",object=1731,posX=.25,posY=.75},
                 {mapID=501,type="mining",object=1732,posX=.4,posY=.6}}
+            local pools={{mapID=501,type="fishing",object=999,posX=.7,posY=.8}}
             LibStub=function(name)
                 if name~="AceAddon-3.0" then return nil end
                 return {GetAddon=function(_, addonName, silent)
                     if addonName~="GatherLite" or not silent then return nil end
                     return {GetNodesForMap=function(_,kind,mapID)
                         if kind=="mining" and mapID==501 then return nodeList end
+                        if kind=="fishing" and mapID==501 then return pools end
                         return {}
                     end, GetNodeObject=function(_,id)
+                        if id==999 then return {name="fish_pool_sagefish"} end
                         return id==1731 and {name="copper_vein"} or {name="tin_vein"}
                     end}
                 end}
@@ -70,6 +74,9 @@ class GatheringRuleTests(unittest.TestCase):
         self.assertEqual(len(points), 1)
         self.assertEqual((points[1].mapID, points[1].x, points[1].y), (501, .25, .75))
         self.assertIn('legacy, unconfirmed', points[1].source)
+        pools = ns.GatheringFarmPoints('Fishing', 'Water tier 3', 501)
+        self.assertEqual(len(pools), 1)
+        self.assertEqual((pools[1].x, pools[1].y), (.7, .8))
 
 
 class GatheringPlanTests(unittest.TestCase):
@@ -132,6 +139,15 @@ class GatheringPlanTests(unittest.TestCase):
             fact = ns.GatheringFarmFact(index)
             if fact and fact.node == 'Dark Iron Deposit' and fact.zone == 'Searing Gorge': dark_iron = fact
         self.assertEqual(dark_iron.loot[1].itemID, 11370)
+
+    def test_legacy_zone_loot_priors_supply_a_sourced_copper_vein_yield(self):
+        c = client(level=20, faction='Horde', zone='The Barrens'); ns = c.ns
+        self.assertTrue(ns.EnsureOptionalData('WowTogether_GoldData'))
+        loot, source = ns.GatheringFarmYield('Mining', 'Copper Vein', 'The Barrens', 1413)
+        copper = next(loot[index] for index in range(1, len(loot) + 1) if loot[index].itemID == 2770)
+        self.assertEqual((copper.chance, copper.quantity), (100, 1))
+        self.assertIn('legacy, unconfirmed', copper.source)
+        self.assertIn('CMaNGOS', source)
 
     def test_rank_advice_follows_skill_cap_and_character_level(self):
         ns = client().ns

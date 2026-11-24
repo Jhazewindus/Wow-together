@@ -663,6 +663,11 @@ local function prepareGatheringFact(fact)
             or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
             or not safeSource(item.source) then return nil end
         loot[index] = {itemID = item.itemID, source = item.source}
+        if item.chance ~= nil or item.quantity ~= nil then
+            if not finite(item.chance) or item.chance <= 0 or item.chance > 100
+                or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1 then return nil end
+            loot[index].chance, loot[index].quantity = item.chance, item.quantity
+        end
     end
     return {professionID = fact.professionID, profession = fact.profession, node = fact.node,
         requiredSkill = fact.requiredSkill, ownSkill = fact.ownSkill,
@@ -685,6 +690,7 @@ local function searchGatheringFarms(filter, onDone, ...)
             return false, "Unknown gathering-farm filter field."
         end
     end
+    if type(ns.EnsureOptionalData) == "function" then ns.EnsureOptionalData("WowTogether_GoldData") end
     if type(ns.GatheringFarmFactCount) ~= "function" or type(ns.GatheringFarmFact) ~= "function"
         or ns.GatheringFarmFactCount() < 1 then
         return false, "Gathering-farm data is unavailable."
@@ -760,7 +766,39 @@ local function searchGatheringFarms(filter, onDone, ...)
                                     end
                                 end
                             end
+                            zoneRecord.loot = {}
+                            for _, loot in ipairs(fact.loot) do zoneRecord.loot[#zoneRecord.loot + 1] = loot end
+                            if type(ns.GatheringFarmYield) == "function" then
+                                local seeded = ns.GatheringFarmYield(fact.profession, fact.node, fact.zone, mapID)
+                                if type(seeded) == "table" then
+                                    for _, item in ipairs(seeded) do
+                                        if type(item) ~= "table" or not ns.Public(item)
+                                            or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
+                                            or not finite(item.chance) or item.chance <= 0 or item.chance > 100
+                                            or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1
+                                            or not safeSource(item.source) then
+                                            item = nil
+                                        end
+                                        if item then
+                                        local present
+                                        for _, existing in ipairs(zoneRecord.loot) do
+                                            if existing.itemID == item.itemID then present = existing; break end
+                                        end
+                                        if present and not present.chance and item.chance then
+                                            for key, value in pairs(item) do present[key] = value end
+                                        elseif not present and #zoneRecord.loot < 100 then
+                                            zoneRecord.loot[#zoneRecord.loot + 1] = item
+                                        end
+                                        end
+                                    end
+                                end
+                            end
                             candidate.zones[#candidate.zones + 1] = zoneRecord
+                        end
+                        for _, loot in ipairs(zoneRecord.loot) do
+                            local foundItem = false
+                            for _, item in ipairs(candidate.loot) do if item.itemID == loot.itemID then foundItem = true; break end end
+                            if not foundItem and #candidate.loot < 100 then candidate.loot[#candidate.loot + 1] = loot end
                         end
                         for _, loot in ipairs(fact.loot) do
                             local foundItem = false
