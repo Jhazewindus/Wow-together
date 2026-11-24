@@ -114,6 +114,7 @@ function ns.ResetHud()
     if ns.UpdateNavigationBackground then ns.UpdateNavigationBackground() end
     if ns.UpdateNavigation then ns.UpdateNavigation() end
     if ns.LayoutNavigation then ns.LayoutNavigation() end
+    if ns.ShowGuideWindow then ns.ShowGuideWindow() end
     ns.Print("Guide window reset: full window, solid background, default place and size. /wt hud prints its state.")
 end
 

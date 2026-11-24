@@ -128,6 +128,7 @@ def main():
         'WowTogether_QuestData': ['QuestCatalogue.lua'],
         'WowTogether_ProfessionData': ['ProfessionData.lua'],
         'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
+        'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
     }
     gold_sources = optional_gold_sources(ROOT)
     if gold_sources is not None:
@@ -201,9 +202,9 @@ Copy the complete WowTogether folder to:
 the live World of Warcraft client’s Interface\\AddOns\\WowTogether\\ directory
 
 Update EVERY party member to {version}, copying the WowTogether folder and
-all three matching WowTogether_*Data folders side by side into AddOns.
+all four matching WowTogether_*Data folders side by side into AddOns.
 {gold_install}
-Do not put the data folders inside WowTogether. Keep all three enabled in the
+Do not put the data folders inside WowTogether. Keep all four enabled in the
 addon list; they load only when their data is first needed. Then fully restart the client;
 the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.

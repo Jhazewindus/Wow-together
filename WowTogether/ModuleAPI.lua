@@ -2,11 +2,14 @@ local addonName, ns = ...
 
 -- The optional modules load after the core. Keep their integration here so a
 -- module never needs the core's saved variables, route internals, or UI frames.
-ns.GoldAPIVersion = 1
+ns.GoldAPIVersion = 2
 ns.STEP_SYMBOLS = ns.STEP_SYMBOLS or {}
 
 local modules, names, order, options, syncKinds, exportHooks, stops = {}, {}, {}, {}, {}, {}, {}
 local goldFunctions = {}
+local moduleLoops, farmSessions = {}, {}
+local gatheringObservers = {}
+local activeFarmSession, loopFrame = nil, nil
 local goldHookNames = {Price = "goldPrice", Suggestions = "goldSuggestions", SessionCard = "goldSessionCard"}
 local reservedKinds = {H=true, Q=true, T=true, S=true, C=true, O=true, K=true,
     Y=true, R=true, Z=true, G=true, P=true, D=true, V=true, W=true}
@@ -64,11 +67,19 @@ local function copySessionSummary(summary)
         endLevel = ns.GuideInteger(summary.endLevel, 60) and summary.endLevel or nil}
 end
 
+local function moduleRecord(name)
+    if not validName(name) or not names[string.lower(name)] then return nil end
+    for _, registered in ipairs(order) do
+        if string.lower(registered) == string.lower(name) then return registered, modules[registered] end
+    end
+end
+
 function ns.PublishGoldFunction(name, callback)
     if not goldHookNames[name] then return false, "Unsupported Gold function name." end
     if type(callback) ~= "function" then return false, "Gold function must be callable." end
     goldFunctions[name] = callback
     ns.RunHooks("goldFunctionPublished", name)
+    if name == "Suggestions" and ns.ScheduleSync then ns.ScheduleSync() end
     return true, nil
 end
 
@@ -398,14 +409,14 @@ function ns.TrailLoop(points)
 end
 
 local function removeStops(route)
-    if not route or type(route.stops) ~= "table" then return end
+    if not route or route.moduleLoop or type(route.stops) ~= "table" then return end
     for index = #route.stops, 1, -1 do
         if route.stops[index].moduleStop then table.remove(route.stops, index) end
     end
 end
 local function applyStops()
     local route = ns.selectedRoute
-    if not route or type(route.stops) ~= "table" then return end
+    if not route or route.moduleLoop or type(route.stops) ~= "table" then return end
     removeStops(route)
     local before = {}
     for _, name in ipairs(order) do
@@ -437,7 +448,7 @@ function ns.ClearModuleStops(name)
     if ns.ScheduleRefresh then ns.ScheduleRefresh(true) end
 end
 ns.hooks.routeBeforeUpdate[#ns.hooks.routeBeforeUpdate + 1] = function()
-    removeStops(ns.selectedRoute)
+    if not (ns.selectedRoute and ns.selectedRoute.moduleLoop) then removeStops(ns.selectedRoute) end
 end
 ns.hooks.routeAfterUpdate[#ns.hooks.routeAfterUpdate + 1] = function()
     applyStops()
@@ -488,6 +499,629 @@ function ns.ResearchExportHook(fn)
     exportHooks[#exportHooks + 1] = fn
     return true
 end
+
+local function safeDenseArray(value, maximum)
+    if type(value) ~= "table" or not ns.Public(value) or #value > maximum then return false end
+    local count = 0
+    for key in pairs(value) do
+        if not ns.Public(key) or not ns.GuideInteger(key, maximum) or key < 1 or key > #value then return false end
+        count = count + 1
+    end
+    return count == #value
+end
+
+local function safeSource(value)
+    return ns.Public(value) and type(value) == "string" and #value > 0 and #value <= 240
+        and not string.find(value, "[%z\1-\8\11\12\14-\31\127]")
+end
+
+local function prepareFarmPrior(record, mapID)
+    if type(record) ~= "table" or not ns.Public(record)
+        or not ns.GuideInteger(record.npcID, 2147483647) or record.npcID < 1
+        or not safeCardText(record.name, 100)
+        or not ns.GuideInteger(record.minLevel, 255) or record.minLevel < 1
+        or not ns.GuideInteger(record.maxLevel, 255) or record.maxLevel < record.minLevel
+        or record.confidence ~= "legacy, unconfirmed"
+        or not ns.GuideInteger(record.mapID, 1000000) or record.mapID < 1
+        or mapID and record.mapID ~= mapID or not safeCardText(record.zoneName, 100)
+        or type(record.spawnPoints) ~= "table" or #record.spawnPoints > 24
+        or type(record.loot) ~= "table" or #record.loot > 200
+        or type(record.sources) ~= "table" then return nil end
+    local sources = record.sources
+    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot"}) do
+        if not safeSource(sources[key]) then return nil end
+    end
+    local copy = {npcID = record.npcID, name = record.name, minLevel = record.minLevel,
+        maxLevel = record.maxLevel, confidence = record.confidence, mapID = record.mapID, zoneName = record.zoneName,
+        spawnPoints = {}, loot = {}, sources = {}}
+    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot"}) do
+        copy.sources[key] = sources[key]
+    end
+    return copy
+end
+
+local function clockMilliseconds()
+    if type(debugprofilestop) ~= "function" then return nil end
+    local value = ns.ReadPublic(debugprofilestop)
+    return finite(value) and value or nil
+end
+
+local function queueNext(callback)
+    if type(ns.After) == "function" then
+        local okay = pcall(ns.After, "timer:ModuleAPI", 0, callback)
+        return okay
+    end
+    return false
+end
+
+local function searchFarmPriors(filter, onDone, ...)
+    if type(filter) ~= "table" or not ns.Public(filter)
+        or not ns.GuideInteger(filter.minLevel, 255) or filter.minLevel < 1
+        or not ns.GuideInteger(filter.maxLevel, 255) or filter.maxLevel < filter.minLevel
+        or filter.mapID ~= nil and (not ns.GuideInteger(filter.mapID, 1000000) or filter.mapID < 1)
+        or not ns.GuideInteger(filter.limit, 50) or filter.limit < 1
+        or type(onDone) ~= "function" or select("#", ...) > 0 then
+        return false, "Invalid farm-prior search arguments."
+    end
+    for key in pairs(filter) do
+        if key ~= "minLevel" and key ~= "maxLevel" and key ~= "mapID" and key ~= "limit" then
+            return false, "Unknown farm-prior filter field."
+        end
+    end
+    if type(ns.EnsureOptionalData) == "function" then ns.EnsureOptionalData("WowTogether_GoldData") end
+    local data = ns.farmPriorData
+    local recordCount = type(data) == "table" and (data.count or #data.records) or 0
+    if type(data) ~= "table" or type(data.records) ~= "table" or not ns.GuideInteger(recordCount, 1000000) or recordCount == 0 then
+        return false, "Current-game farm-prior data is unavailable."
+    end
+    if not clockMilliseconds() or not C_Timer or type(C_Timer.After) ~= "function" then
+        return false, "Farm-prior search needs a frame clock and timer."
+    end
+    local index, result, pending, done = 1, {}, nil, false
+    local function finish()
+        if done then return end
+        done = true
+        local okay = pcall(onDone, result)
+        if not okay then ns.moduleFarmPriorCallbackError = true end
+    end
+    local function step()
+        if done then return end
+        local began = clockMilliseconds()
+        if not began then finish(); return end
+        while pending or index <= recordCount do
+            if pending then
+                local record, copy = pending.source, pending.copy
+                local point = record.spawnPoints[pending.spawnIndex]
+                local item = not point and record.loot[pending.lootIndex]
+                if point then
+                    if type(point) ~= "table" or not ns.Public(point) or point.mapID ~= record.mapID
+                        or not ns.ValidTravelPoint(point) then pending.valid = false
+                    else
+                        copy.spawnPoints[pending.spawnIndex] = {mapID = point.mapID, x = point.x, y = point.y,
+                            source = safeSource(point.source) and point.source or copy.sources.spawnPoints}
+                    end
+                    pending.spawnIndex = pending.spawnIndex + 1
+                elseif item then
+                    if type(item) ~= "table" or not ns.Public(item)
+                        or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
+                        or not finite(item.chance) or item.chance <= 0 or item.chance > 100
+                        or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1 then pending.valid = false
+                    else
+                        copy.loot[pending.lootIndex] = {itemID = item.itemID, chance = item.chance, quantity = item.quantity,
+                            source = safeSource(item.source) and item.source or copy.sources.loot}
+                    end
+                    pending.lootIndex = pending.lootIndex + 1
+                else
+                    if pending.valid then
+                        result[#result + 1] = copy
+                        if #result >= filter.limit then finish(); return end
+                    end
+                    pending = nil
+                end
+            else
+                local record = data.records[index]
+                index = index + 1
+                if type(record) == "table" and ns.GuideInteger(record.minLevel, 255)
+                    and ns.GuideInteger(record.maxLevel, 255) and record.minLevel <= filter.maxLevel
+                    and record.maxLevel >= filter.minLevel and (not filter.mapID or record.mapID == filter.mapID) then
+                    local copy = prepareFarmPrior(record, filter.mapID)
+                    if copy then pending = {source = record, copy = copy,
+                        spawnIndex = 1, lootIndex = 1, valid = true} end
+                end
+            end
+            local current = clockMilliseconds()
+            if not current or current - began >= 2 then
+                if not queueNext(step) then finish() end
+                return
+            end
+        end
+        finish()
+    end
+    if not queueNext(step) then return false, "Farm-prior search timer is unavailable." end
+    return true
+end
+
+local function prepareGatheringFact(fact)
+    if type(fact) ~= "table" or not ns.Public(fact)
+        or not ns.GuideInteger(fact.professionID, 1000)
+        or not safeCardText(fact.profession, 40) or not safeCardText(fact.node, 100)
+        or not ns.GuideInteger(fact.requiredSkill, 1000)
+        or not ns.GuideInteger(fact.ownSkill, 1000) or fact.ownSkill < fact.requiredSkill
+        or not safeCardText(fact.zone, 100)
+        or not ns.GuideInteger(fact.zoneMinLevel, 255) or not ns.GuideInteger(fact.zoneMaxLevel, 255)
+        or fact.zoneMinLevel > fact.zoneMaxLevel
+        or fact.zoneFaction ~= nil and fact.zoneFaction ~= "Alliance" and fact.zoneFaction ~= "Horde"
+        or type(fact.loot) ~= "table" or #fact.loot > 100 or type(fact.sources) ~= "table" then return nil end
+    local sources = {}
+    for _, key in ipairs({"profession", "node", "skill", "zone", "mapID", "yield"}) do
+        if not safeSource(fact.sources[key]) then return nil end
+        sources[key] = fact.sources[key]
+    end
+    local loot = {}
+    for index, item in ipairs(fact.loot) do
+        if type(item) ~= "table" or not ns.Public(item)
+            or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
+            or not safeSource(item.source) then return nil end
+        loot[index] = {itemID = item.itemID, source = item.source}
+        if item.chance ~= nil or item.quantity ~= nil then
+            if not finite(item.chance) or item.chance <= 0 or item.chance > 100
+                or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1 then return nil end
+            loot[index].chance, loot[index].quantity = item.chance, item.quantity
+        end
+    end
+    return {professionID = fact.professionID, profession = fact.profession, node = fact.node,
+        requiredSkill = fact.requiredSkill, ownSkill = fact.ownSkill,
+        zone = fact.zone, zoneMinLevel = fact.zoneMinLevel, zoneMaxLevel = fact.zoneMaxLevel,
+        zoneFaction = fact.zoneFaction, loot = loot, sources = sources}
+end
+
+local function searchGatheringFarms(filter, onDone, ...)
+    if type(filter) ~= "table" or not ns.Public(filter)
+        or filter.profession ~= nil and (not ns.Public(filter.profession) or filter.profession ~= "Mining" and filter.profession ~= "Herbalism"
+            and filter.profession ~= "Skinning" and filter.profession ~= "Fishing"
+        )
+        or filter.mapID ~= nil and (not ns.GuideInteger(filter.mapID, 1000000) or filter.mapID < 1)
+        or not ns.GuideInteger(filter.limit, 50) or filter.limit < 1
+        or type(onDone) ~= "function" or select("#", ...) > 0 then
+        return false, "Invalid gathering-farm search arguments."
+    end
+    for key in pairs(filter) do
+        if key ~= "profession" and key ~= "mapID" and key ~= "limit" then
+            return false, "Unknown gathering-farm filter field."
+        end
+    end
+    if type(ns.EnsureOptionalData) == "function" then ns.EnsureOptionalData("WowTogether_GoldData") end
+    if type(ns.GatheringFarmFactCount) ~= "function" or type(ns.GatheringFarmFact) ~= "function"
+        or ns.GatheringFarmFactCount() < 1 then
+        return false, "Gathering-farm data is unavailable."
+    end
+    if not clockMilliseconds() or type(ns.After) ~= "function"
+        or type(ns.KnownZoneMaps) ~= "function" or type(ns.MapName) ~= "function" then
+        return false, "Gathering-farm search needs public map data, a frame clock, and a timer."
+    end
+    local knownMaps = ns.KnownZoneMaps()
+    if type(knownMaps) ~= "table" then return false, "Gathering-farm map data is unavailable." end
+    local mapByName = {}
+    local factCount = ns.GatheringFarmFactCount()
+    local mapKey = next(knownMaps)
+    local index, result, grouped, done, mapsReady = 1, {}, {}, false, false
+    local function finish()
+        if done then return end
+        done = true
+        local okay = pcall(onDone, result)
+        if not okay then ns.moduleGatheringFarmCallbackError = true end
+    end
+    local function step()
+        if done then return end
+        local began = clockMilliseconds()
+        if not began then finish(); return end
+        while not mapsReady do
+            if mapKey == nil then mapsReady = true; break end
+            local currentID = mapKey
+            mapKey = next(knownMaps, mapKey)
+            if ns.GuideInteger(currentID, 1000000) and currentID > 0 then
+                local zone = ns.MapName(currentID)
+                if safeCardText(zone, 100) and zone ~= ("Map " .. currentID) then mapByName[zone] = currentID end
+            end
+            local current = clockMilliseconds()
+            if not current or current - began >= 2 then
+                if not queueNext(step) then finish() end
+                return
+            end
+        end
+        while index <= factCount do
+            local fact = prepareGatheringFact(ns.GatheringFarmFact(index))
+            index = index + 1
+            if fact and (not filter.profession or fact.profession == filter.profession) then
+                local mapID = mapByName[fact.zone]
+                local profile = ns.profile or {}
+                if not mapID and profile.zone == fact.zone and ns.GuideInteger(profile.mapID, 1000000) then
+                    mapID = profile.mapID
+                end
+                if mapID and (not filter.mapID or mapID == filter.mapID)
+                    and (not fact.zoneFaction or profile.faction == fact.zoneFaction)
+                    and profile.level >= fact.zoneMinLevel - 5 and profile.level <= 255 then
+                    local key = fact.profession .. "\0" .. fact.node
+                    local candidate = grouped[key]
+                    if not candidate and #result < filter.limit then
+                        candidate = {profession = fact.profession, professionID = fact.professionID,
+                            node = fact.node, requiredSkill = fact.requiredSkill, ownSkill = fact.ownSkill,
+                            zones = {}, loot = {}, sources = fact.sources}
+                        grouped[key] = candidate; result[#result + 1] = candidate
+                    end
+                    if candidate then
+                        local zoneRecord
+                        for _, item in ipairs(candidate.zones) do if item.mapID == mapID then zoneRecord = item; break end end
+                        if not zoneRecord then
+                            zoneRecord = {mapID = mapID, name = fact.zone, points = {}}
+                            if type(ns.GatheringFarmPoints) == "function" then
+                                local externalPoints = ns.GatheringFarmPoints(fact.profession, fact.node, mapID)
+                                if type(externalPoints) == "table" then
+                                    for _, point in ipairs(externalPoints) do
+                                        if type(point) == "table" and ns.Public(point) and point.mapID == mapID
+                                            and ns.ValidTravelPoint(point) and safeSource(point.source) and #zoneRecord.points < 24 then
+                                            zoneRecord.points[#zoneRecord.points + 1] = {mapID = mapID,
+                                                x = point.x, y = point.y, source = point.source}
+                                        end
+                                    end
+                                end
+                            end
+                            zoneRecord.loot = {}
+                            for _, loot in ipairs(fact.loot) do zoneRecord.loot[#zoneRecord.loot + 1] = loot end
+                            if type(ns.GatheringFarmYield) == "function" then
+                                local seeded = ns.GatheringFarmYield(fact.profession, fact.node, fact.zone, mapID)
+                                if type(seeded) == "table" then
+                                    for _, item in ipairs(seeded) do
+                                        if type(item) ~= "table" or not ns.Public(item)
+                                            or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
+                                            or not finite(item.chance) or item.chance <= 0 or item.chance > 100
+                                            or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1
+                                            or not safeSource(item.source) then
+                                            item = nil
+                                        end
+                                        if item then
+                                        local present
+                                        for _, existing in ipairs(zoneRecord.loot) do
+                                            if existing.itemID == item.itemID then present = existing; break end
+                                        end
+                                        if present and not present.chance and item.chance then
+                                            for key, value in pairs(item) do present[key] = value end
+                                        elseif not present and #zoneRecord.loot < 100 then
+                                            zoneRecord.loot[#zoneRecord.loot + 1] = item
+                                        end
+                                        end
+                                    end
+                                end
+                            end
+                            candidate.zones[#candidate.zones + 1] = zoneRecord
+                        end
+                        for _, loot in ipairs(zoneRecord.loot) do
+                            local foundItem = false
+                            for _, item in ipairs(candidate.loot) do if item.itemID == loot.itemID then foundItem = true; break end end
+                            if not foundItem and #candidate.loot < 100 then candidate.loot[#candidate.loot + 1] = loot end
+                        end
+                        for _, loot in ipairs(fact.loot) do
+                            local foundItem = false
+                            for _, item in ipairs(candidate.loot) do if item.itemID == loot.itemID then foundItem = true; break end end
+                            if not foundItem then candidate.loot[#candidate.loot + 1] = loot end
+                        end
+                    end
+                end
+            end
+            local current = clockMilliseconds()
+            if not current or current - began >= 2 then
+                if not queueNext(step) then finish() end
+                return
+            end
+        end
+        finish()
+    end
+    if not queueNext(step) then return false, "Gathering-farm search timer is unavailable." end
+    return true
+end
+
+local function registerGatheringObserver(module, callback, ...)
+    if not ns.Public(module) then return false, "Invalid gathering observer arguments." end
+    local registered = moduleRecord(module)
+    if not registered or not ns.Public(callback) or type(callback) ~= "function" or select("#", ...) > 0 then
+        return false, "Invalid gathering observer arguments."
+    end
+    local list = gatheringObservers[registered] or {}
+    gatheringObservers[registered] = list
+    list[#list + 1] = callback
+    local active = true
+    return true, function()
+        if not active then return false end
+        active = false
+        for index = #list, 1, -1 do if list[index] == callback then table.remove(list, index) end end
+        return true
+    end
+end
+
+ns.hooks.gatheringObserved[#ns.hooks.gatheringObserved + 1] = function(event)
+    if type(event) ~= "table" or not ns.Public(event)
+        or not ns.GuideInteger(event.professionID, 1000)
+        or not ns.GuideInteger(event.mapID, 1000000) or event.mapID < 1
+        or not finite(event.x) or event.x < 0 or event.x > 1
+        or not finite(event.y) or event.y < 0 or event.y > 1
+        or not ns.GuideInteger(event.itemID, 2147483647) or event.itemID < 1
+        or not ns.GuideInteger(event.quantity, 10000) or event.quantity < 1
+        or not safeSource(event.source) then return end
+    local professions = {[186] = "Mining", [182] = "Herbalism", [393] = "Skinning", [356] = "Fishing"}
+    if event.profession ~= professions[event.professionID] then return end
+    for _, list in pairs(gatheringObservers) do
+        for _, callback in ipairs(list) do
+            local copy = {professionID = event.professionID, profession = event.profession,
+                mapID = event.mapID, x = event.x, y = event.y, itemID = event.itemID,
+                quantity = event.quantity, source = event.source, observedAt = finite(event.observedAt) and event.observedAt or nil}
+            pcall(callback, copy)
+        end
+    end
+end
+
+local function formatGoldRate(copper)
+    return string.format("%.1f gold/hour", copper / 10000)
+end
+
+local function activeFarmCard()
+    return activeFarmSession
+end
+
+local function setFarmSession(module, data, ...)
+    if select("#", ...) > 0 then return false, "Unexpected farm-session arguments." end
+    local registered = moduleRecord(module)
+    if not registered then return false, "Module is not registered." end
+    if data == nil then
+        farmSessions[registered] = nil
+        if activeFarmSession and activeFarmSession.module == registered then activeFarmSession = nil end
+        return true
+    end
+    if type(data) ~= "table" or not ns.Public(data)
+        or not safeCardText(data.label, 100)
+        or not finite(data.estimatedCopperPerHour) or data.estimatedCopperPerHour < 0 or data.estimatedCopperPerHour > 9000000000000
+        or not finite(data.actualCopperPerHour) or data.actualCopperPerHour < 0 or data.actualCopperPerHour > 9000000000000
+        or not finite(data.startTime) or data.startTime <= 0
+        or not safeCardText(data.estimatedBasis, 100) or not safeCardText(data.actualBasis, 100) then
+        return false, "Invalid farm-session data."
+    end
+    for key in pairs(data) do
+        if key ~= "label" and key ~= "estimatedCopperPerHour" and key ~= "actualCopperPerHour"
+            and key ~= "startTime" and key ~= "estimatedBasis" and key ~= "actualBasis" then
+            return false, "Unknown farm-session field."
+        end
+    end
+    local copy = {module = registered, label = data.label,
+        estimatedCopperPerHour = data.estimatedCopperPerHour,
+        actualCopperPerHour = data.actualCopperPerHour, startTime = data.startTime,
+        estimatedBasis = data.estimatedBasis, actualBasis = data.actualBasis}
+    farmSessions[registered], activeFarmSession = copy, copy
+    return true
+end
+
+local refreshTimes = {}
+local function requestFarmSessionRefresh(module, ...)
+    if select("#", ...) > 0 then return false, "Unexpected farm-session refresh arguments." end
+    local registered = moduleRecord(module)
+    if not registered then return false, "Module is not registered." end
+    if not activeFarmSession or activeFarmSession.module ~= registered then return false, "No farm session is active." end
+    if ns.RouteInCombat and ns.RouteInCombat() then return false, "Refresh after combat." end
+    local now = ns.ReadPublic(GetTime)
+    if not finite(now) then return false, "Frame clock is unavailable." end
+    if refreshTimes[registered] and now - refreshTimes[registered] < 1 then
+        return false, "Farm-session refresh is rate limited."
+    end
+    if type(ns.RedrawGoldSessionCard) ~= "function" then return false, "Gold session card is unavailable." end
+    if ns.RedrawGoldSessionCard() ~= true then return false, "Open the Hub before refreshing its session card." end
+    refreshTimes[registered] = now
+    return true
+end
+
+local function moduleLoopStops(state, index)
+    local loop = state and state.route
+    if not loop then return {} end
+    local stops, count = {}, #loop.loopStops
+    for offset = 0, count do
+        local at = ((index + offset - 1) % count) + 1
+        local point = loop.loopStops[at]
+        local copy = {}
+        for key, value in pairs(point) do copy[key] = value end
+        stops[#stops + 1] = copy
+    end
+    return stops
+end
+
+local function notifyLoopStopped(state, reason)
+    if not state or state.notified then return end
+    state.notified = true
+    if type(state.onStop) == "function" then pcall(state.onStop, reason) end
+end
+
+local function endModuleLoop(module, reason)
+    local registered = moduleRecord(module)
+    if not registered then return false, "Module is not registered." end
+    local state = moduleLoops[registered]
+    if not state then return false, "Module loop is not running." end
+    moduleLoops[registered] = nil
+    notifyLoopStopped(state, safeCardText(reason, 120) and reason or "stopped")
+    if loopFrame and not next(moduleLoops) then loopFrame:SetScript("OnUpdate", nil); loopFrame = nil end
+    if ns.routeSelection == state.guide then
+        ns.ClearRoute()
+        if ns.UpdateNavigation then ns.UpdateNavigation() end
+    end
+    return true
+end
+
+local function stopModuleLoop(module, ...)
+    if select("#", ...) > 0 then return false, "Unexpected module-loop stop arguments." end
+    return endModuleLoop(module, "stopped by module")
+end
+
+local function advanceModuleLoop(state)
+    if not state or moduleLoops[state.module] ~= state or ns.RouteInCombat and ns.RouteInCombat() then return false end
+    local stop = state.route.stops[1]
+    if not stop then return false end
+    local player = ns.PlayerPoint(stop.mapID)
+    local distance = player and ns.TravelPointDistance(player, stop)
+    if not finite(distance) or distance > 18 then return false end
+    state.index = state.index % #state.route.loopStops + 1
+    state.route.stops = moduleLoopStops(state, state.index)
+    ns.routeSignature = nil
+    if ns.DrawRoute then ns.DrawRoute() end
+    if ns.UpdateNavigation then ns.UpdateNavigation() end
+    return true
+end
+
+local function activateModuleLoop(request)
+    if not request or request.started then return false end
+    request.started = true
+    if moduleLoops[request.module] then endModuleLoop(request.module, "replaced by a new module loop") end
+    if ns.RouteInCombat and ns.RouteInCombat() then return false end
+    if ns.routeSelection and ns.StopGuide then ns.StopGuide(false) end
+    local stops = {}
+    for index, point in ipairs(request.loop.points) do
+        if index < #request.loop.points then
+            local source = request.points[point.index]
+            stops[#stops + 1] = {id = 0, kind = "farm", module = request.module,
+                moduleStop = true, mapID = point.mapID, x = point.x, y = point.y,
+                title = source.label, label = source.label, reason = source.reason}
+        end
+    end
+    if #stops == 0 then return false end
+    local guide = {key = "module:" .. string.lower(request.module) .. ":loop",
+        mode = "module", module = request.module, title = request.title,
+        focusKey = ns.self, personal = true, mapID = stops[1].mapID}
+    local route = {key = guide.key, title = request.title, mapID = stops[1].mapID,
+        stops = {}, loopStops = stops, complete = false, moduleLoop = true}
+    local state = {module = request.module, title = request.title, guide = guide,
+        route = route, loop = request.loop, index = 1, onStop = request.onStop}
+    route.stops = moduleLoopStops(state, state.index)
+    moduleLoops[request.module] = state
+    ns.routeSelection, ns.selectedRoute, ns.routeSignature, ns.routePaused = guide, route, nil, nil
+    ns.guideStopped, ns.guideWindowIdle = nil, nil
+    if ns.AttachRouteProvider then ns.AttachRouteProvider() end
+    if ns.DrawRoute then ns.DrawRoute() end
+    if not loopFrame then loopFrame = CreateFrame("Frame") end
+    loopFrame:SetScript("OnUpdate", function(self, elapsed)
+        local started = ns.PerfBegin and ns.PerfBegin("moduleLoop", true)
+        if finite(elapsed) and elapsed >= 0 then
+            self.elapsed = (self.elapsed or 0) + elapsed
+            if self.elapsed >= 0.2 then
+                self.elapsed = 0
+                local active = ns.routeSelection and moduleLoops[ns.routeSelection.module]
+                if active then advanceModuleLoop(active) end
+            end
+        end
+        if started then ns.PerfEnd("moduleLoop", started) end
+    end)
+    if ns.OpenGuideWindow then ns.OpenGuideWindow() end
+    if type(request.onStart) == "function" then pcall(request.onStart) end
+    return true
+end
+
+local function startModuleLoop(module, spec, ...)
+    local registered = moduleRecord(module)
+    if not registered or type(spec) ~= "table" or not ns.Public(spec)
+        or not safeCardText(spec.title, 100) or not safeDenseArray(spec.points, 24) or #spec.points == 0
+        or type(spec.onStop) ~= "function" or spec.onStart ~= nil and type(spec.onStart) ~= "function"
+        or select("#", ...) > 0 then
+        return false, "Invalid module loop arguments."
+    end
+    for key in pairs(spec) do
+        if key ~= "title" and key ~= "points" and key ~= "onStop" and key ~= "onStart" then return false, "Unknown module loop field." end
+    end
+    if ns.RouteInCombat and ns.RouteInCombat() then return false, "Start the loop after combat." end
+    local points = {}
+    for index, point in ipairs(spec.points) do
+        if type(point) ~= "table" or not ns.Public(point) or not ns.ValidTravelPoint(point)
+            or not safeCardText(point.label, 100) or not safeCardText(point.reason, 240) then
+            return false, "Each loop point needs a valid location, label, and reason."
+        end
+        for key in pairs(point) do
+            if key ~= "mapID" and key ~= "x" and key ~= "y" and key ~= "label" and key ~= "reason" then
+                return false, "Unknown module loop point field."
+            end
+        end
+        points[index] = {mapID = point.mapID, x = point.x, y = point.y,
+            label = point.label, reason = point.reason, index = index}
+    end
+    local walkPoints = {}
+    for index, point in ipairs(points) do walkPoints[index] = {mapID = point.mapID, x = point.x, y = point.y, index = index} end
+    local loop = ns.TrailLoop(walkPoints)
+    if not loop or #loop.points < 2 then return false, "No walking loop is available for these points." end
+    if #loop.points == 2 and #points > 1 then return false, "No walking loop is available for these points." end
+    local request = {module = registered, title = spec.title, points = points, loop = loop,
+        onStop = spec.onStop, onStart = spec.onStart}
+    if ns.routeSelection then
+        if not StaticPopup_Show or type(StaticPopup_Show) ~= "function" then
+            return false, "Guide replacement needs a confirmation dialog."
+        end
+        StaticPopupDialogs = StaticPopupDialogs or {}
+        StaticPopupDialogs.WOWTOGETHER_MODULE_LOOP_CONFIRM = {
+            text = "Starting %s will stop your current guide. Start the loop?",
+            button1 = YES, button2 = NO, timeout = 0, whileDead = 1, hideOnEscape = 1,
+            preferredIndex = 3,
+            OnAccept = function(_, data)
+                if ns.RouteInCombat and ns.RouteInCombat() then
+                    notifyLoopStopped(data, "guide replacement accepted during combat")
+                    return
+                end
+                if not activateModuleLoop(data) then
+                    notifyLoopStopped(data, "could not start after guide replacement was accepted")
+                end
+            end,
+            OnCancel = function(_, data)
+                notifyLoopStopped(data, "player declined guide replacement")
+            end,
+        }
+        local okay, shown = pcall(StaticPopup_Show, "WOWTOGETHER_MODULE_LOOP_CONFIRM", request.title, nil, request)
+        if not okay or not shown then return false, "Could not show the guide-replacement confirmation." end
+        return true, "Waiting for confirmation."
+    end
+    if not activateModuleLoop(request) then return false, "Could not start the module loop." end
+    return true
+end
+
+local function readAuctionQuote(itemID, ...)
+    if select("#", ...) > 0 then return nil end
+    if not ns.GuideInteger(itemID, 2147483647) or itemID < 1 or type(ns.AuctionQuote) ~= "function" then return nil end
+    local quote = ns.AuctionQuote(itemID)
+    local now = ns.ReadPublic(GetServerTime)
+    if type(quote) ~= "table" or quote.unavailable or not finite(quote.unitPrice)
+        or quote.unitPrice <= 0 or not ns.GuideInteger(quote.time, 9000000000)
+        or not ns.GuideInteger(now, 9000000000) or quote.time > now then return nil end
+    return quote.unitPrice, now - quote.time
+end
+
+ns.hooks.routeCleared = ns.hooks.routeCleared or {}
+ns.hooks.routeCleared[#ns.hooks.routeCleared + 1] = function(selection)
+    local state = selection and selection.mode == "module" and moduleLoops[selection.module]
+    if state then endModuleLoop(state.module, "guide route cleared") end
+end
+ns.hooks.routeWillActivate = ns.hooks.routeWillActivate or {}
+ns.hooks.routeWillActivate[#ns.hooks.routeWillActivate + 1] = function(nextGuide)
+    local current = ns.routeSelection
+    local state = current and current.mode == "module" and moduleLoops[current.module]
+    if state and nextGuide ~= state.guide then
+        moduleLoops[state.module] = nil
+        notifyLoopStopped(state, "replaced by another guide")
+        if loopFrame and not next(moduleLoops) then loopFrame:SetScript("OnUpdate", nil); loopFrame = nil end
+    end
+end
+
+ns.ModuleLoopRoute = function(module)
+    local state = moduleLoops[module]
+    return state and state.route or nil
+end
+
+ns.ModuleFarmSessionForCard = function()
+    local data = activeFarmCard()
+    if not data then return nil end
+    return {title = data.label,
+        detail = "Estimated " .. formatGoldRate(data.estimatedCopperPerHour)
+            .. " • Actual " .. formatGoldRate(data.actualCopperPerHour)
+            .. "\nEstimate: " .. data.estimatedBasis .. "\nActual: " .. data.actualBasis,
+        action = function() ns.SetFilter("module:" .. string.lower(data.module)) end}
+end
 ns.hooks.researchExport[#ns.hooks.researchExport + 1] = function()
     local events = {}
     for _, hook in ipairs(exportHooks) do
@@ -506,6 +1140,14 @@ end
 local publicAPI = {
     version = ns.GoldAPIVersion,
     STEP_SYMBOLS = {farm = ns.STEP_ICON_TEXTURES.farm},
+    AuctionQuote = readAuctionQuote,
+    FarmPriorSearch = searchFarmPriors,
+    GatheringFarmSearch = searchGatheringFarms,
+    RegisterGatheringObserver = registerGatheringObserver,
+    StartModuleLoop = startModuleLoop,
+    StopModuleLoop = stopModuleLoop,
+    SetFarmSession = setFarmSession,
+    RequestFarmSessionRefresh = requestFarmSessionRefresh,
 }
 for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance", "PlayerPoint",
     "TrailLoop", "RouteCostModel", "PushGuideStop", "ClearModuleStops", "RegisterSyncKind",

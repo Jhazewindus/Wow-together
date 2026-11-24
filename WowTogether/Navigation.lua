@@ -624,12 +624,12 @@ function ns.ReanchorNavigation(reason)
 end
 
 -- Called on every update of the window: if the game cannot place it, fasten
--- it again. At most once every two seconds, never in combat, and it gives up
--- after ten tries in a session so a cause this does not cure cannot loop.
+-- it again. At most once every two seconds, never in combat. Reopening the
+-- card clears the throttle and retries immediately.
 local lastRepair
 function ns.HealNavigation()
     local frame = ns.navigation
-    if not frame or not frame:IsShown() or ns.RouteInCombat() or (ns.hudRepairs or 0) >= 10 then return false end
+    if not frame or not frame:IsShown() or ns.RouteInCombat() then return false end
     if ns.NavigationPlaced() then return false end
     local time = ns.ReadPublic(GetTime)
     if type(time) == "number" and lastRepair and time - lastRepair < 2 then return false end
@@ -730,6 +730,7 @@ function ns.CreateNavigation()
     frame.close = ns.UIClose(frame, function()
         ns.guideWindowHidden = true; frame:Hide()
         if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
+        ns.Print("Guide window hidden. Use /wt show to reopen it; /wt glance also restores the window.")
     end)
     frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -12, -9)
     frame.close.caption:ClearAllPoints(); frame.close.caption:SetPoint("CENTER"); frame.close.caption:SetSize(16, 14)
@@ -864,6 +865,10 @@ function ns.CreateNavigation()
         updateTooltip(self, true)
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+    frame:SetScript("OnShow", function()
+        lastRepair = nil
+        if ns.HealNavigation then ns.HealNavigation() end
+    end)
     frame.elapsed = 0
     -- No event reports continuous facing/position changes. Poll at 10 Hz only
     -- while this owned, unprotected frame is visible with a selected route.
@@ -879,6 +884,23 @@ function ns.CreateNavigation()
     ns.CreateStandaloneArrow()
     frame:Hide()
     ns.UpdateNavigation()
+end
+
+-- Reopen the guide window without changing its size or anchors. This is safe
+-- to call from a combat-time slash command; layout remains governed by the
+-- existing combat guards.
+function ns.ShowGuideWindow()
+    local frame = ns.navigation
+    if not frame then return false end
+    ns.guideWindowHidden = false
+    if not ns.Option("routeArrow") then ns.SetOption("routeArrow", true) end
+    if not ns.routeSelection and not ns.routePlanning then
+        ns.guideStopped, ns.guideWindowIdle = true, true
+    end
+    frame:Show()
+    if ns.UpdateNavigation then ns.UpdateNavigation() end
+    if ns.LayoutNavigation then ns.LayoutNavigation() end
+    return true
 end
 
 function ns.ToggleNavigation()

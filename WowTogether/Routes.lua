@@ -1018,6 +1018,7 @@ function ns.AttachRouteProvider()
 end
 
 function ns.ActivateRoute(guide, route)
+    ns.RunHooks("routeWillActivate", guide)
     if ns.routeSelection and ns.routeSelection ~= guide then ns.routeSelection.continueOutsideLevels = nil end
     if ns.BeginGuideSession then ns.BeginGuideSession(guide) end
     ns.CancelGuideScan()
@@ -1065,6 +1066,14 @@ local function updateSelectedRoute(choices, query)
     if ns.guideScanning or ns.routePlanning then return end
     local selection = ns.routeSelection
     if not selection then return end
+    if selection.mode == "module" then
+        local route = ns.ModuleLoopRoute and ns.ModuleLoopRoute(selection.module)
+        if not route then ns.StopGuide(false); return end
+        ns.selectedRoute, ns.routePaused = route, nil
+        ns.DrawRoute()
+        if ns.UpdateNavigation then ns.UpdateNavigation() end
+        return
+    end
     if selection.mode == "profession" then ns.UpdateProfessionRoute(selection); return end
     if selection.mode == "travel" then ns.UpdateTravelGuide(selection); return end
     if selection.fixedRoute then ns.UpdateFixedGuideRoute(selection, query); return end
@@ -1203,6 +1212,7 @@ function ns.UpdateSelectedRoute(...)
 end
 
 function ns.ClearRoute(preserveCheckpoint)
+    local previousSelection = ns.routeSelection
     if ns.FinishGuideSession then ns.FinishGuideSession() end
     ns.CancelGuideScan()
     ns.ResetTravelPath()
@@ -1214,6 +1224,7 @@ function ns.ClearRoute(preserveCheckpoint)
     if ns.routeSelection then ns.routeSelection.continueOutsideLevels = nil end
     ns.selectedRoute, ns.routeSelection, ns.routeSignature, ns.routeWaypointPending, ns.routePaused = nil, nil, nil, nil, nil
     ns.navigationPreview, ns.guideStepHistory, ns.forceRouteReplan = nil, {}, nil
+    ns.RunHooks("routeCleared", previousSelection)
     -- Cancel the logical guide immediately, including in combat. Only map
     -- provider cleanup may need to wait for Blizzard's protected canvas.
     if inCombat() then ns.routeClearPending = true

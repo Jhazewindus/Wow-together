@@ -48,6 +48,36 @@ class GatheringRuleTests(unittest.TestCase):
         iron = next(entry for entry in plan.now.values() if entry.name == 'Iron Deposit')
         self.assertEqual(iron.color, 'yellow')                       # 125 / 150 / 190 / 225 in Forever.
 
+    def test_gatherlite_public_nodes_are_read_as_unconfirmed_zone_locations(self):
+        c = client(); ns = c.ns
+        c.lua.execute('''
+            clockTick=0; function debugprofilestop() clockTick=clockTick+.1; return clockTick end
+            local nodeList={{mapID=501,type="mining",object=1731,posX=.25,posY=.75},
+                {mapID=501,type="mining",object=1732,posX=.4,posY=.6}}
+            local pools={{mapID=501,type="fishing",object=999,posX=.7,posY=.8}}
+            LibStub=function(name)
+                if name~="AceAddon-3.0" then return nil end
+                return {GetAddon=function(_, addonName, silent)
+                    if addonName~="GatherLite" or not silent then return nil end
+                    return {GetNodesForMap=function(_,kind,mapID)
+                        if kind=="mining" and mapID==501 then return nodeList end
+                        if kind=="fishing" and mapID==501 then return pools end
+                        return {}
+                    end, GetNodeObject=function(_,id)
+                        if id==999 then return {name="fish_pool_sagefish"} end
+                        return id==1731 and {name="copper_vein"} or {name="tin_vein"}
+                    end}
+                end}
+            end
+        ''')
+        points = ns.GatheringFarmPoints('Mining', 'Copper Vein', 501)
+        self.assertEqual(len(points), 1)
+        self.assertEqual((points[1].mapID, points[1].x, points[1].y), (501, .25, .75))
+        self.assertIn('legacy, unconfirmed', points[1].source)
+        pools = ns.GatheringFarmPoints('Fishing', 'Water tier 3', 501)
+        self.assertEqual(len(pools), 1)
+        self.assertEqual((pools[1].x, pools[1].y), (.7, .8))
+
 
 class GatheringPlanTests(unittest.TestCase):
     def test_mining_at_87_points_at_tin_and_silver_and_names_iron_as_next(self):
@@ -101,6 +131,24 @@ class GatheringPlanTests(unittest.TestCase):
         self.assertEqual(sorted(names(start.now)), ['Peacebloom', 'Silverleaf'])
         self.assertEqual((start.nextUnlock.name, start.nextUnlock.skill), ('Earthroot', 15))
 
+    def test_dark_iron_deposit_uses_ore_item_11370(self):
+        c = client(level=55, zone='Searing Gorge'); ns = c.ns
+        ns.gatheringData[MINING] = c.lua.table_from({'id': MINING, 'name': 'Mining', 'skill': 300, 'maximum': 300})
+        dark_iron = None
+        for index in range(1, ns.GatheringFarmFactCount() + 1):
+            fact = ns.GatheringFarmFact(index)
+            if fact and fact.node == 'Dark Iron Deposit' and fact.zone == 'Searing Gorge': dark_iron = fact
+        self.assertEqual(dark_iron.loot[1].itemID, 11370)
+
+    def test_legacy_zone_loot_priors_supply_a_sourced_copper_vein_yield(self):
+        c = client(level=20, faction='Horde', zone='The Barrens'); ns = c.ns
+        self.assertTrue(ns.EnsureOptionalData('WowTogether_GoldData'))
+        loot, source = ns.GatheringFarmYield('Mining', 'Copper Vein', 'The Barrens', 1413)
+        copper = next(loot[index] for index in range(1, len(loot) + 1) if loot[index].itemID == 2770)
+        self.assertEqual((copper.chance, copper.quantity), (100, 1))
+        self.assertIn('legacy, unconfirmed', copper.source)
+        self.assertIn('CMaNGOS', source)
+
     def test_rank_advice_follows_skill_cap_and_character_level(self):
         ns = client().ns
         self.assertIn('Train Journeyman now', ns.GatheringPlan(MINING, 60, 75, 12).rank)
@@ -129,9 +177,117 @@ class GatheringPlanTests(unittest.TestCase):
             text = ns.GatheringText(ns.GatheringPlan(profession, skill, 150))
             self.assertTrue(all(ord(char) < 256 or char in '–•…' for char in text), profession)
 
+    def test_gameobject_loot_and_local_message_record_a_real_node_yield(self):
+        c = client()
+        ns, lua = c.ns, c.lua
+        lua.execute('''
+            local ns=...
+            ns.RegisterModule("Gold", {})
+            ns.profile={mapID=501}
+            ns.ReadProfile=function() end
+            ns.PlayerPoint=function() return {x=.4,y=.6} end
+            ns.gatheringData[186]={id=186,name="Mining",skill=65,maximum=75}
+            function GetTime() return 100 end
+            function GetLootSourceInfo() return "0xF11000000000ABCD", 1 end
+            function GetNumLootItems() return 1 end
+            function GetLootSlotLink() return "|Hitem:2770:0:0:0:0:0:0|h[Copper Ore]|h" end
+            function GetLootSlotInfo() return "Copper Ore", "icon", 3 end
+            LOOT_ITEM_SELF="You receive loot: %s"
+            gathered={}
+            WowTogetherModuleAPI.RegisterGatheringObserver("Gold", function(event) gathered[#gathered+1]=event end)
+        ''', ns)
+        ns.handlers.LOOT_OPENED()
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:2770:0:0:0:0:0:0|h[Copper Ore]|h x3')
+        event = lua.globals().gathered[1]
+        self.assertEqual((event.profession, event.itemID, event.quantity), ('Mining', 2770, 3))
+        self.assertEqual((event.mapID, event.x, event.y, event.source), (501, .4, .6, 'gather-node'))
+
+    def test_modern_gameobject_guids_and_skinning_yields_are_observed(self):
+        c = client(); ns, lua = c.ns, c.lua
+        lua.execute('''
+            local ns=...
+            ns.RegisterModule("Gold", {})
+            ns.profile={mapID=501}; ns.ReadProfile=function() end
+            ns.PlayerPoint=function() return {x=.2,y=.3} end
+            function GetTime() return 100 end
+            function GetLootSourceInfo() return "GameObject-0-1-2-3-4-5-6-7", 1 end
+            function GetNumLootItems() return 1 end
+            function GetLootSlotLink() return "|Hitem:2770:0|h[Copper Ore]|h" end
+            function GetLootSlotInfo() return "Copper Ore", "icon", 2 end
+            LOOT_ITEM_SELF="You receive loot: %s"
+            gathered={}
+            WowTogetherModuleAPI.RegisterGatheringObserver("Gold", function(event) gathered[#gathered+1]=event end)
+        ''', ns)
+        ns.handlers.LOOT_OPENED()
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:2770:0|h[Copper Ore]|h x2')
+        self.assertEqual(lua.globals().gathered[1].source, 'gather-node')
+        lua.execute('''
+            function GetLootSourceInfo() return "Creature-0-1-2-3-4-5-6-7", 1 end
+            function UnitGUID() return "Creature-0-1-2-3-4-5-6-7" end
+            gathered={}
+        ''')
+        ns.handlers.UNIT_SPELLCAST_SENT('player', 'target', None, 8613)
+        ns.handlers.LOOT_OPENED()
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:2318:0|h[Light Leather]|h x2')
+        event = lua.globals().gathered[1]
+        self.assertEqual((event.profession, event.itemID, event.quantity, event.source),
+            ('Skinning', 2318, 2, 'skinning-yield'))
+
 
 class FishingTests(unittest.TestCase):
     """Fishing levels by catches, so the advice is where every cast is one."""
+
+    def test_a_confirmed_fishing_loot_message_reports_its_cast_position_to_gold(self):
+        c = client()
+        ns, lua = c.ns, c.lua
+        lua.execute('''
+            local ns=...
+            ns.RegisterModule("Gold", {})
+            ns.profile={mapID=501}
+            ns.ReadProfile=function() end
+            ns.PlayerPoint=function() return {x=.25,y=.75} end
+            ns.gatheringData[356]={id=356,name="Fishing",skill=75,maximum=75}
+            function GetTime() return 100 end
+            LOOT_ITEM_SELF="You receive loot: %s"
+            gathered={}
+            WowTogetherModuleAPI.RegisterGatheringObserver("Gold", function(event) gathered[#gathered+1]=event end)
+        ''', ns)
+        ns.handlers.UNIT_SPELLCAST_SENT('player', 'Fishing', None, 7620)
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:6291:0:0:0:0:0:0|h[Raw Brilliant Smallfish]|h.')
+        event = lua.globals().gathered[1]
+        self.assertEqual(event.profession, 'Fishing')
+        self.assertEqual((event.mapID, event.x, event.y), (501, .25, .75))
+        self.assertEqual((event.itemID, event.quantity, event.source), (6291, 1, 'open-water-catch'))
+
+    def test_pool_loot_is_distinguished_from_open_water(self):
+        c = client(); ns, lua = c.ns, c.lua
+        lua.execute('''
+            local ns=...
+            ns.RegisterModule("Gold", {})
+            ns.profile={mapID=501}; ns.ReadProfile=function() end
+            ns.PlayerPoint=function() return {x=.25,y=.75} end
+            function GetTime() return 100 end
+            function GetLootSourceInfo() return "GameObject-0-1-2-3-4-5-6-7", 1 end
+            LOOT_ITEM_SELF="You receive loot: %s"; gathered={}
+            WowTogetherModuleAPI.RegisterGatheringObserver("Gold", function(event) gathered[#gathered+1]=event end)
+        ''', ns)
+        ns.handlers.UNIT_SPELLCAST_SENT('player', 'Fishing', None, 7620)
+        ns.handlers.LOOT_OPENED()
+        ns.handlers.CHAT_MSG_LOOT('You receive loot: |Hitem:6291:0|h[Raw Brilliant Smallfish]|h.')
+        self.assertEqual(lua.globals().gathered[1].source, 'fishing-pool')
+
+    def test_catches_are_keyed_by_zone_and_whimsyfin_is_not_assigned_to_hillsbrad(self):
+        c = client(level=20, faction='Alliance', zone='Redridge Mountains'); ns = c.ns
+        ns.gatheringData[356] = c.lua.table_from({'id': 356, 'name': 'Fishing', 'skill': 100, 'maximum': 150})
+        redridge = hillsbrad = None
+        for index in range(1, ns.GatheringFarmFactCount() + 1):
+            fact = ns.GatheringFarmFact(index)
+            if fact and fact.profession == 'Fishing':
+                if fact.zone == 'Redridge Mountains': redridge = fact
+                if fact.zone == 'Hillsbrad Foothills': hillsbrad = fact
+        self.assertEqual((redridge.loot[1].itemID, redridge.loot[1].source and 'Redridge' in redridge.loot[1].source),
+            (251524, True))
+        self.assertEqual(len(hillsbrad.loot), 0)
 
     def test_waters_are_ranked_by_the_skill_for_a_sure_catch_and_lures_extend_them(self):
         ns = client(level=24, faction='Horde', zone='Hillsbrad Foothills').ns

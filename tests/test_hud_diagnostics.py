@@ -43,7 +43,17 @@ class HudDiagnosticsTests(unittest.TestCase):
         self.assertTrue(ns.Option('guideOpaque'))
         self.assertEqual(nav.alpha, 1)
         self.assertEqual(nav.point[1], 'BOTTOM')
+        self.assertTrue(nav.IsShown(nav))
         self.assertIn('Guide window reset', list(c.lua.globals().printed.values())[-1])
+
+    def test_show_and_glance_reopen_a_closed_guide_window(self):
+        c = client(); ns = c.ns; nav = ns.navigation; slash = c.lua.globals().SlashCmdList['WOWTOGETHER']
+        nav.Hide(nav)
+        slash('show')
+        self.assertTrue(nav.IsShown(nav))
+        nav.Hide(nav)
+        slash('glance')
+        self.assertTrue(nav.IsShown(nav))
 
     def test_the_background_is_applied_even_when_an_attached_panel_is_missing(self):
         c = client(); ns = c.ns
@@ -149,7 +159,7 @@ class CombatLayoutTests(unittest.TestCase):
         self.assertIn('Guide window repairs (', text)
         self.assertIn('Control frame with the same anchor and size:', text)
 
-    def test_a_shown_window_without_a_position_fastens_itself_again_and_gives_up_eventually(self):
+    def test_a_shown_window_keeps_repairing_and_retries_immediately_when_reopened(self):
         c = self.window(); ns = c.ns; g = c.lua.globals()
         c.lua.execute('''
             local ns = ...
@@ -167,11 +177,14 @@ class CombatLayoutTests(unittest.TestCase):
         self.assertGreaterEqual(first, 1)                            # Fastened again at once.
         ns.HealNavigation()
         self.assertEqual(self.count(c, 'anchors'), first)            # Not again within two seconds.
-        for _ in range(30):                                          # A cause this does not cure: it stops trying.
+        for _ in range(30):
             c.lua.execute('clock = clock + 3')
             ns.HealNavigation()
-        self.assertEqual(ns.hudRepairs, 10)
+        self.assertGreater(ns.hudRepairs, 10)
         self.assertIn('still no position', list(ns.hudNotes.values())[-1])
+        repairs = ns.hudRepairs
+        ns.navigation.OnShow(ns.navigation)
+        self.assertEqual(ns.hudRepairs, repairs + 1)
 
     def test_a_height_change_that_loses_the_window_is_repaired_on_the_spot(self):
         c = self.window(); ns = c.ns; g = c.lua.globals()

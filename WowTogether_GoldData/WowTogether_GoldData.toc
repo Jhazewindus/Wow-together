@@ -1,0 +1,7 @@
+## Interface: 16001
+## Title: Wow Together Gold Data
+## Notes: Legacy unconfirmed farm reference data loaded on demand.
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+FarmPriorData.lua
+GatheringPriorData.lua

@@ -12,10 +12,10 @@ if ns.VERSION == "@project-version@" then ns.VERSION = "dev" end
 ns.RELEASE_NAME = metadata("X-ReleaseName") or ""
 ns.hooks = {
     optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},
-    slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {},
-    routeAfterUpdate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
+    slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {}, routeCleared = {},
+    routeAfterUpdate = {}, routeWillActivate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
     stepPresentation = {}, researchExport = {}, goldPrice = {}, goldSuggestions = {},
-    goldSessionCard = {}, goldFunctionPublished = {},
+    goldSessionCard = {}, goldFunctionPublished = {}, gatheringObserved = {},
     hubTabs = {}, hubTabRegistered = {},
 }
 function ns.HookResults(name, ...)
@@ -678,6 +678,8 @@ SlashCmdList.WOWTOGETHER = function(command)
     local handled, result = ns.FirstHook("slash", command)
     if handled then return result end
     if command == "probe" then ns.Diagnostics()
+    elseif command == "show" then
+        if not ns.ShowGuideWindow or not ns.ShowGuideWindow() then ns.Print("Guide window is not ready yet.") end
     elseif command == "sync" then ns.SyncNow(true)
     elseif command == "lua" then ns.ShowLuaConsole()
     elseif command == "minimap" then ns.ToggleMinimap()
@@ -697,6 +699,7 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "hud" or string.sub(command, 1, 4) == "hud " then ns.HudCommand(string.sub(command, 5))
     elseif command == "clean" then ns.QuestLogCleanup(true)
     elseif command == "glance" then
+        if ns.ShowGuideWindow then ns.ShowGuideWindow() end
         ns.SetOption("guideGlance", not ns.Option("guideGlance"))
         if ns.UpdateNavigation then ns.UpdateNavigation() end
         if ns.LayoutNavigation then ns.LayoutNavigation() end
