@@ -12,7 +12,7 @@
     "with_starters": 4424,
     "with_objectives": 2126,
     "with_turnins": 4600,
-    "with_prerequisites": 2582,
+    "with_prerequisites": 2620,
     "entities": {
       "object": 7044,
       "npc": 13418,
@@ -1785,7 +1785,7 @@
       "pickups": 70,
       "objectives": 43,
       "turnins": 69,
-      "complete_locations": 48,
+      "complete_locations": 49,
       "missing_quest_ids": [
         1277,
         1367,
@@ -1809,7 +1809,6 @@
         6568,
         8458,
         79229,
-        79235,
         79236,
         79242,
         92743,
