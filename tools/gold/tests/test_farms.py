@@ -92,6 +92,7 @@ class GoldFarmTests(unittest.TestCase):
         self.assertTrue(handled)
         self.assertEqual(len(cards), 3)
         self.assertTrue(any("legacy, unconfirmed" in cards[i].detail.lower() for i in range(1, 4)))
+        self.assertTrue(any("minimum count (lower bound)" in cards[i].detail.lower() for i in range(1, 4)))
         self.assertTrue(any("vendor" in cards[i].detail.lower() for i in range(1, 4)))
 
     def test_both_searches_feed_three_ranked_hub_cards_with_explicit_estimate_basis(self):

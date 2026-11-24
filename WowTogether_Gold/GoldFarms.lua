@@ -66,7 +66,13 @@ local function quantityValue(item)
     if finite(low) and low > 0 and finite(high) and high >= low then
         return (low + high) / 2, "midpoint of sourced yield range"
     end
-    if finite(item.quantity) and item.quantity > 0 then return item.quantity, "sourced item quantity" end
+    if finite(item.quantity) and item.quantity > 0 then
+        local source = type(item.source) == "string" and string.lower(item.source) or ""
+        if string.find(source, "legacy", 1, true) or string.find(source, "cmangos", 1, true) then
+            return item.quantity, "legacy minimum count (lower bound)"
+        end
+        return item.quantity, "sourced item quantity"
+    end
     return nil
 end
 local function chanceValue(item)
