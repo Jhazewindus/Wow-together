@@ -43,7 +43,17 @@ class HudDiagnosticsTests(unittest.TestCase):
         self.assertTrue(ns.Option('guideOpaque'))
         self.assertEqual(nav.alpha, 1)
         self.assertEqual(nav.point[1], 'BOTTOM')
+        self.assertTrue(nav.IsShown(nav))
         self.assertIn('Guide window reset', list(c.lua.globals().printed.values())[-1])
+
+    def test_show_and_glance_reopen_a_closed_guide_window(self):
+        c = client(); ns = c.ns; nav = ns.navigation; slash = c.lua.globals().SlashCmdList['WOWTOGETHER']
+        nav.Hide(nav)
+        slash('show')
+        self.assertTrue(nav.IsShown(nav))
+        nav.Hide(nav)
+        slash('glance')
+        self.assertTrue(nav.IsShown(nav))
 
     def test_the_background_is_applied_even_when_an_attached_panel_is_missing(self):
         c = client(); ns = c.ns

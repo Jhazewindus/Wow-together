@@ -148,6 +148,7 @@ local WATERS = {
 local ORE_ITEMS = {
     ["Copper Vein"] = 2770, ["Tin Vein"] = 2771, ["Silver Vein"] = 2775,
     ["Iron Deposit"] = 2772, ["Gold Vein"] = 2776, ["Mithril Deposit"] = 3858,
+    ["Dark Iron Deposit"] = 11370,
     ["Truesilver Deposit"] = 7911, ["Small Thorium Vein"] = 10620,
     ["Rich Thorium Vein"] = 10620, ["Heavy Thorium Vein"] = 10620,
 }
@@ -163,25 +164,14 @@ local HERB_ITEMS = {
     ["Mountain Silversage"] = 13465, ["Plaguebloom"] = 13466,
     ["Icecap"] = 13467, ["Black Lotus"] = 13468,
 }
--- Forever-identified fish/catch item IDs. Locations below are included only
--- where the Forever fishing guide names that fish and area. Rarer catch pools
--- whose values are not documented are deliberately omitted.
-local FISH_CATCHES = {
-    [1] = {{6291, "Raw Brilliant Smallfish"}, {6303, "Raw Slitherskin Mackerel"}},
-    [3] = {{251524, "Whimsyfin"}},
-    [4] = {{6362, "Raw Rockscale Cod"}, {4603, "Raw Spotted Yellowtail"},
-        {6358, "Oily Blackmouth"}, {6359, "Firefin Snapper"}},
-    [5] = {{13758, "Raw Redgill"}, {13760, "Raw Sunscale Salmon"},
-        {13756, "Raw Summer Bass"},
-        {13755, "Raw Winter Squid"}, {13422, "Stonescale Eel"}, {13888, "Darkclaw Lobster"}},
-    [6] = {{13889, "Raw Whitescale Salmon"}, {13890, "Raw Plated Armorfish"}},
+-- Zone-specific Forever catch facts only. The source confirms Whimsyfin in
+-- Redridge; it does not support assigning it to every zone in water tier 3.
+-- Other fish are omitted until a zone-specific source is available.
+local FISH_ZONE_CATCHES = {
+    ["Redridge Mountains"] = {{251524, "Whimsyfin"}},
 }
-local FISH_SOURCES = {
-    [1] = "WoW Forever Fishing guide, starting-zone catches; https://foreverwow.com/professions/fishing/",
-    [3] = "WoW Forever Fishing guide: Whimsyfin in Redridge Mountains; https://foreverwow.com/professions/fishing/",
-    [4] = "WoW Forever Fishing guide: Savage Coast and Dustwallow catches; https://foreverwow.com/professions/fishing/",
-    [5] = "WoW Forever Fishing guide: listed fish and main catch areas; https://www.icy-veins.com/wow-forever/fishing",
-    [6] = "WoW Forever Fishing guide: Whitescale Salmon and Plated Armorfish areas; https://www.icy-veins.com/wow-forever/fishing",
+local FISH_ZONE_SOURCES = {
+    ["Redridge Mountains"] = "WoW Forever Fishing guide: Whimsyfin in Redridge Mountains; https://foreverwow.com/professions/fishing/",
 }
 -- Lures, weakest first: name, bonus, Fishing skill needed to use it.
 local LURES = {{"Shiny Bauble", 25, 1}, {"Nightcrawlers", 50, 50}, {"Bright Baubles", 75, 100}, {"Aquadynamic Fish Attractor", 100, 100}}
@@ -297,15 +287,13 @@ for zone, zoneFacts in pairs(ZONES) do
 end
 
 for tierIndex, tier in ipairs(WATERS) do
-    local loot, fishes = {}, FISH_CATCHES[tierIndex] or {}
-    for _, fish in ipairs(fishes) do
-        loot[#loot + 1] = {itemID = fish[1], source = FISH_SOURCES[tierIndex]}
-    end
-    local yieldSource = FISH_SOURCES[tierIndex]
-        or "No Forever-verified catch species for this water tier; fish IDs omitted"
     for _, zone in ipairs(tier[3]) do
+        local loot, fishes = {}, FISH_ZONE_CATCHES[zone] or {}
+        local source = FISH_ZONE_SOURCES[zone]
+        for _, fish in ipairs(fishes) do loot[#loot + 1] = {itemID = fish[1], source = source} end
+        local yieldSource = source or "No zone-specific Forever catch list; fish IDs omitted"
         addFarmFact(FISHING, NAMES[FISHING], "Water tier " .. tierIndex, tier[1], zone,
-            loot, "Gathering.lua WATERS", "Gathering.lua minimum cast skill", yieldSource)
+            loot, "Gathering.lua WATERS zone assignment", "Gathering.lua minimum cast skill", yieldSource)
     end
 end
 
@@ -322,6 +310,39 @@ function ns.GatheringFarmFact(index)
         requiredSkill = fact.requiredSkill, ownSkill = learned.skill, zone = fact.zone,
         zoneMinLevel = fact.zoneMinLevel, zoneMaxLevel = fact.zoneMaxLevel,
         zoneFaction = fact.zoneFaction, loot = fact.loot, sources = fact.sources}
+end
+
+-- Optional read-only bridge to GatherLite's public instance methods. Its
+-- third-party coordinates are evidence for browsing a zone, marked
+-- unconfirmed; Gold must use the player's own observations before routing.
+function ns.GatheringFarmPoints(profession, nodeName, mapID)
+    local professionType = profession == "Mining" and "mining"
+        or profession == "Herbalism" and "herbalism" or nil
+    if not professionType or type(nodeName) ~= "string" or #nodeName < 1 or #nodeName > 100
+        or string.find(nodeName, "[%z\1-\31\127]")
+        or not ns.GuideInteger(mapID, 1000000) or mapID < 1 then return {} end
+    local libStub = type(LibStub) == "function" and ns.ReadPublic(LibStub, "AceAddon-3.0")
+    local addon = libStub and type(libStub.GetAddon) == "function"
+        and ns.ReadPublic(libStub.GetAddon, libStub, "GatherLite", true)
+    if not addon or type(addon.GetNodesForMap) ~= "function" or type(addon.GetNodeObject) ~= "function" then return {} end
+    local nodes = ns.ReadPublic(addon.GetNodesForMap, addon, professionType, mapID)
+    if type(nodes) ~= "table" then return {} end
+    local wanted = string.lower(string.gsub(nodeName, "[^%w]+", "_"))
+    local result = {}
+    for _, node in ipairs(nodes) do
+        if type(node) == "table" and ns.Public(node) and node.mapID == mapID
+            and node.type == professionType and type(node.object) == "number" then
+            local object = ns.ReadPublic(addon.GetNodeObject, addon, node.object)
+            if type(object) == "table" and ns.Public(object) and object.name == wanted
+                and type(node.posX) == "number" and type(node.posY) == "number"
+                and node.posX >= 0 and node.posX <= 1 and node.posY >= 0 and node.posY <= 1 then
+                result[#result + 1] = {mapID = mapID, x = node.posX, y = node.posY,
+                    source = "GatherLite runtime node; legacy, unconfirmed"}
+                if #result >= 24 then break end
+            end
+        end
+    end
+    return result
 end
 
 -- Fishing's last two ranks are a book and a quest, not lessons.
@@ -680,7 +701,7 @@ for _, fact in ipairs(farmFacts) do
     for _, item in ipairs(fact.loot) do observedItemProfession[item.itemID] = fact.professionID end
 end
 local fishingSpells = {[7620] = true, [7731] = true, [7732] = true, [18248] = true, [33095] = true}
-local fishingCast
+local fishingCast, skinningCast
 
 local function observationPosition()
     if ns.ReadProfile then ns.ReadProfile() end
@@ -700,20 +721,31 @@ local function emitObservation(professionID, itemID, quantity, location, source)
         quantity = quantity, source = source, observedAt = ns.ReadPublic(GetTime)})
 end
 
-local function gameObjectLootSource()
+local function lootSourceKind()
     if type(GetLootSourceInfo) ~= "function" then return false end
     local guid = ns.ReadPublic(GetLootSourceInfo, 1)
-    return type(guid) == "string" and string.upper(string.sub(guid, 1, 6)) == "0XF110"
+    if type(guid) ~= "string" then return nil end
+    local upper = string.upper(guid)
+    if string.sub(upper, 1, 6) == "0XF110" or string.sub(guid, 1, 11) == "GameObject-" then return "gameobject" end
+    if string.sub(upper, 1, 6) == "0XF130" or string.sub(guid, 1, 9) == "Creature-" then return "creature" end
+    return nil
 end
 
 if ns.On then
-    ns.On("UNIT_SPELLCAST_SENT", function(unit, _, _, spellID)
-        if unit ~= "player" or not fishingSpells[spellID] then return end
+    ns.On("UNIT_SPELLCAST_SENT", function(unit, _, target, spellID)
+        if unit ~= "player" then return end
         local location = observationPosition()
-        if location then fishingCast = {location = location, expires = (ns.ReadPublic(GetTime) or 0) + 90} end
+        local now = ns.ReadPublic(GetTime) or 0
+        if location and fishingSpells[spellID] then fishingCast = {location = location, expires = now + 90} end
+        if location and spellID == 8613 then
+            local targetGUID = type(UnitGUID) == "function" and ns.ReadPublic(UnitGUID, "target")
+            skinningCast = {location = location, expires = now + 30, targetGUID = targetGUID}
+        end
     end)
     ns.On("LOOT_OPENED", function()
-        if not gameObjectLootSource() then return end
+        local sourceKind = lootSourceKind()
+        if fishingCast and sourceKind == "gameobject" then fishingCast.source = "fishing-pool" end
+        if not sourceKind then return end
         local location = observationPosition()
         local count = type(GetNumLootItems) == "function" and ns.ReadPublic(GetNumLootItems) or 0
         if not location or not ns.GuideInteger(count, 40) then return end
@@ -722,7 +754,7 @@ if ns.On then
             local link = type(GetLootSlotLink) == "function" and ns.ReadPublic(GetLootSlotLink, slot)
             local itemID = type(link) == "string" and tonumber(string.match(link, "|Hitem:(%d+):"))
             local professionID = itemID and observedItemProfession[itemID]
-            if professionID == MINING or professionID == HERBALISM then
+            if (professionID == MINING or professionID == HERBALISM) and sourceKind == "gameobject" then
                 local quantity
                 if type(GetLootSlotInfo) == "function" then local _, _, found = ns.ReadPublic(GetLootSlotInfo, slot); quantity = found end
                 pendingNodeLoot[itemID] = {professionID = professionID, itemID = itemID,
@@ -758,9 +790,12 @@ if ns.On then
             return
         end
         local professionID = observedItemProfession[itemID]
-        if professionID == FISHING and fishingCast and fishingCast.expires >= now then
+        if fishingCast and fishingCast.expires >= now then
             local cast = fishingCast; fishingCast = nil
-            emitObservation(FISHING, itemID, quantity or 1, cast.location, "fishing-catch")
+            emitObservation(FISHING, itemID, quantity or 1, cast.location, cast.source or "open-water-catch")
+        elseif skinningCast and skinningCast.expires >= now and lootSourceKind() == "creature" then
+            local cast = skinningCast; skinningCast = nil
+            emitObservation(SKINNING, itemID, quantity or 1, cast.location, "skinning-yield")
         end
     end)
 end

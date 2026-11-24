@@ -97,15 +97,17 @@ class ModuleAPITests(unittest.TestCase):
         external = self.lua.globals().moduleAPI
         self.assertEqual(external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
-        self.assertIn('unavailable', external.FarmPriorSearch(self.lua.table_from({
+        self.assertIn('frame clock', external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[1])
+        self.assertEqual(self.ns.farmPriorData.count, 6118)
         self.assertEqual(external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 0, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
         self.ns.farmPriorData = self.lua.table_from({'records': [{
             'npcID': 77, 'name': 'Test wolf', 'minLevel': 11, 'maxLevel': 12,
+            'confidence': 'legacy, unconfirmed',
             'mapID': 501, 'zoneName': 'Test Coast',
             'spawnPoints': [{'mapID': 501, 'x': .4, 'y': .5, 'source': 'test spawn'}],
-            'loot': [{'itemID': 88, 'chance': 12.5, 'source': 'test loot'}],
+            'loot': [{'itemID': 88, 'chance': 12.5, 'quantity': 2, 'source': 'test loot'}],
             'sources': {'npcID': 'test NPC ID', 'name': 'test name', 'level': 'test levels',
                 'mapID': 'test map', 'zoneName': 'test zone', 'spawnPoints': 'test spawn',
                 'loot': 'test loot'}}]}, recursive=True)
@@ -127,6 +129,7 @@ class ModuleAPITests(unittest.TestCase):
         self.assertEqual(result.npcID, 77)
         self.assertEqual(result.loot[1].itemID, 88)
         self.assertEqual(result.loot[1].source, 'test loot')
+        self.assertEqual(result.loot[1].quantity, 2)
         result.loot[1].chance = 99
         self.assertEqual(self.ns.farmPriorData.records[1].loot[1].chance, 12.5)
 
@@ -207,12 +210,15 @@ class ModuleAPITests(unittest.TestCase):
             ns.AttachRouteProvider=function() end
             ns.OpenGuideWindow=function() end
             loopStoppedReason=nil
+            loopStarted=0
         ''', self.ns)
         spec = self.lua.table_from({'title': 'Wolf loop', 'points': [
             {'mapID': 501, 'x': .3, 'y': .4, 'label': 'Hunt wolves', 'reason': 'Collect hides.'},
             {'mapID': 501, 'x': .6, 'y': .4, 'label': 'Hunt more wolves', 'reason': 'Stay near the den.'}],
-            'onStop': self.lua.eval('function(reason) loopStoppedReason=reason end')}, recursive=True)
+            'onStop': self.lua.eval('function(reason) loopStoppedReason=reason end'),
+            'onStart': self.lua.eval('function() loopStarted=loopStarted+1 end')}, recursive=True)
         self.assertTrue(api.StartModuleLoop('Gold', spec))
+        self.assertEqual(self.lua.globals().loopStarted, 1)
         self.assertEqual(self.ns.routeSelection.mode, 'module')
         self.assertEqual(self.ns.selectedRoute.stops[1].kind, 'farm')
         self.assertTrue(api.StopModuleLoop('Gold'))
@@ -266,18 +272,22 @@ class ModuleAPITests(unittest.TestCase):
                 return {key=key,title=title}
             end
             StaticPopupDialogs={}
+            loopStarted=0
         ''', self.ns)
         self.ns.routeSelection = self.lua.table_from({'key': 'existing:guide'})
         self.ns.selectedRoute = self.lua.table_from({'stops': []})
         spec = self.lua.table_from({'title': 'Ore loop', 'points': [
             {'mapID': 501, 'x': .3, 'y': .4, 'label': 'Mine ore', 'reason': 'Follow the vein.'},
             {'mapID': 501, 'x': .6, 'y': .4, 'label': 'Mine more ore', 'reason': 'Continue around.'}],
-            'onStop': self.lua.eval('function() end')}, recursive=True)
+            'onStop': self.lua.eval('function() end'),
+            'onStart': self.lua.eval('function() loopStarted=loopStarted+1 end')}, recursive=True)
         self.assertTrue(api.StartModuleLoop('Gold', spec))
+        self.assertEqual(self.lua.globals().loopStarted, 0)  # Deferred until the player accepts.
         self.assertEqual(self.ns.routeSelection.key, 'existing:guide')
         self.lua.globals().StaticPopupDialogs.WOWTOGETHER_MODULE_LOOP_CONFIRM.OnAccept(
             None, self.lua.globals().popupRequest)
         self.assertEqual(self.ns.routeSelection.mode, 'module')
+        self.assertEqual(self.lua.globals().loopStarted, 1)
         api.StopModuleLoop('Gold')
 
     def test_module_loop_reports_player_refusal_and_acceptance_during_combat(self):
@@ -297,6 +307,7 @@ class ModuleAPITests(unittest.TestCase):
             end
             StaticPopupDialogs={}
             loopStopReasons={}
+            loopStarted=0
             function loopStopped(reason) loopStopReasons[#loopStopReasons+1]=reason end
         ''', self.ns)
         self.ns.routeSelection = self.lua.table_from({'key': 'existing:guide'})
@@ -304,8 +315,10 @@ class ModuleAPITests(unittest.TestCase):
         spec = self.lua.table_from({'title': 'Ore loop', 'points': [
             {'mapID': 501, 'x': .3, 'y': .4, 'label': 'Mine ore', 'reason': 'Follow the vein.'},
             {'mapID': 501, 'x': .6, 'y': .4, 'label': 'Mine more ore', 'reason': 'Continue around.'}],
-            'onStop': self.lua.globals().loopStopped}, recursive=True)
+            'onStop': self.lua.globals().loopStopped,
+            'onStart': self.lua.eval('function() loopStarted=loopStarted+1 end')}, recursive=True)
         self.assertTrue(api.StartModuleLoop('Gold', spec))
+        self.assertEqual(self.lua.globals().loopStarted, 0)  # Refusal path never starts the session clock.
         dialog = self.lua.globals().StaticPopupDialogs.WOWTOGETHER_MODULE_LOOP_CONFIRM
         dialog.OnCancel(None, self.lua.globals().popupRequest)
         self.assertEqual(self.lua.globals().loopStopReasons[1], 'player declined guide replacement')
@@ -314,6 +327,7 @@ class ModuleAPITests(unittest.TestCase):
         self.lua.globals().inCombat = True
         dialog.OnAccept(None, request)
         self.assertEqual(self.lua.globals().loopStopReasons[2], 'guide replacement accepted during combat')
+        self.assertEqual(self.lua.globals().loopStarted, 0)
         self.assertEqual(self.ns.routeSelection.key, 'existing:guide')
 
     def test_farm_session_data_is_validated_displayed_and_refresh_is_rate_limited(self):
@@ -327,10 +341,14 @@ class ModuleAPITests(unittest.TestCase):
         ''', self.ns)
         self.assertFalse(api.SetFarmSession('Gold', self.lua.table_from({'label': 'Farm'}))[0])
         self.assertTrue(api.SetFarmSession('Gold', self.lua.table_from({'label': 'Wolf den',
-            'estimatedCopperPerHour': 100000, 'actualCopperPerHour': 80000, 'startTime': 100})))
+            'estimatedCopperPerHour': 100000, 'actualCopperPerHour': 80000, 'startTime': 100,
+            'estimatedBasis': 'legacy loot chance at 90 kills/hour',
+            'actualBasis': 'observed drops over 20 minutes'})))
         card = self.ns.ModuleFarmSessionForCard()
         self.assertIn('Estimated 10.0 gold/hour', card.detail)
         self.assertIn('Actual 8.0 gold/hour', card.detail)
+        self.assertIn('Estimate: legacy loot chance', card.detail)
+        self.assertIn('Actual: observed drops', card.detail)
         self.ns.SetOption('uiNext', True)
         self.ns.RenderRecommended(self.ns.NewQuestQuery())
         self.assertTrue(self.ns.ui.home.goldSession.IsShown(self.ns.ui.home.goldSession))

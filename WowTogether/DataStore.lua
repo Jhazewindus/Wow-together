@@ -13,6 +13,7 @@ local dataAddons = {
     ["WowTogether_ProfessionData"] = {field = "professionGuideData", tableField = "professions"},
     ["WowTogether_DungeonData"] = {field = "dungeonJournalData", tableField = "dungeons",
         extraField = "dungeonMapData", extraTableField = "dungeons"},
+    ["WowTogether_GoldData"] = {field = "farmPriorData", tableField = "records"},
 }
 
 local function dataReady(definition)
@@ -200,7 +201,7 @@ function ns.PackedDataStats()
 end
 
 function ns.OptionalDataDiagnostics(output)
-    for _, addon in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}) do
+    for _, addon in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData", "WowTogether_GoldData"}) do
         output("Optional data " .. addon .. ": " .. (ns.optionalDataState[addon] or "not loaded"))
     end
 end
@@ -214,7 +215,7 @@ function ns.MemoryDiagnostics(output)
     ns.OptionalDataDiagnostics(output)
     if type(update) == "function" and type(get) == "function" then
         ns.ReadPublic(update)
-        local names = {addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}
+        local names = {addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData", "WowTogether_GoldData"}
         local total, main, optional = 0, nil, {}
         for index, name in ipairs(names) do
             local used = ns.ReadPublic(get, name)
@@ -225,7 +226,7 @@ function ns.MemoryDiagnostics(output)
         end
         if main then
             local details = {}
-            for _, name in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}) do
+            for _, name in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData", "WowTogether_GoldData"}) do
                 if optional[name] and optional[name] > 0 then
                     details[#details + 1] = name:gsub("WowTogether_", "") .. " " .. string.format("%.1f MiB", optional[name] / 1024)
                 end

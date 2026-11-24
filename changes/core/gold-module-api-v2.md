@@ -1,18 +1,18 @@
 # GOLD MODULE API V2
 
 For players:
-- Let Gold search gathering zones for Mining, Herbalism, Skinning and Fishing, and show its session card on Play.
-- Keep farm loop stops after refresh, lead the guide arrow around the loop, and report when a requested loop cannot start.
-- Record confirmed gathering and fishing yields with the player's real map position; no node coordinates or NPC farm priors are included.
+- Let Gold search nearby gathering areas and legacy creature farm priors, with estimates and measured session details.
+- Restore the guide window with `/wt show`, `/wt glance`, or `/wt hud reset` after closing it.
+- Record observed ore, herb, skinning and fishing yields with position and source.
 
 Please check:
-- In a separate addon namespace, search gathering facts and subscribe to gathered item observations.
-- Refresh while a module farm loop is active; confirm its stops and guide arrow remain visible.
-- Verify the session card appears on Play and confirms both estimated and measured rates.
+- In a separate addon namespace, search gathering facts and legacy creature priors and subscribe to gather observations.
+- Close the guide window, then reopen it with each listed command; verify it is never resized or re-anchored during combat.
+- In game, verify observer events, external GatherLite locations, prices, route guidance, and a plausible 20-minute actual rate.
 
 Developer notes:
 - Bump `GoldAPIVersion` to 2 and expose only validated wrappers on `WowTogetherModuleAPI`.
 - Module loops retain their stops through refresh and time their OnUpdate callback. The owner receives a stop reason after declining guide replacement or accepting during combat.
-- `GatheringFarmSearch` returns only learnable nodes/water tiers that meet current skill, faction and zone-level filters, with zone map IDs and provenance. The observer reports local loot-confirmed item quantities and positions; coordinates are learned from play.
-- Farm-prior search is clock-budgeted at approximately 2 ms per slice. No validated current-game NPC spawn/loot prior dataset is packaged, so the API returns an immediate unavailable reason. Legacy extracts are reference-only and are not routable.
-- Host tests passed; all changed in-game flows still need play-test. No client verification is claimed.
+- `FarmPriorSearch` lazily loads 6,118 creature/map records generated from the pinned CMaNGOS ClassicDB snapshot and QuestieDB Forever map bounds, including literal loot chance and minimum count. It omits negative loot-reference rows; each result says `legacy, unconfirmed`. `tools/import_vanilla_loot.py` remains a separate Wowhead drop-page parser used by the dungeon audit and does not generate these priors. The package includes the full GPL and CMaNGOS copyright notices.
+- GatherMate2_Data (All Rights Reserved) and GatherLite's generated node/fish tables (no separate data license found) are not redistributed. The core can read mining/herbalism nodes through GatherLite's public instance methods when installed. Fishing pool and treasure seed locations remain open.
+- The API loop-start callback fires only after activation; farm-session estimates and actuals carry separate basis text. Host tests and release-package validation passed. Everything changed still needs a WoW client play-test; no in-game verification is claimed.

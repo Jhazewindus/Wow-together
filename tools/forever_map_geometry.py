@@ -44,7 +44,8 @@ def geometry_facts(document):
         if not (100 < abs(right-left) < 100000 and 100 < abs(bottom-top) < 100000):
             raise ValueError('Degenerate map rectangle')
         # Blizzard's left/right bounds use world Y; top/bottom use world X.
-        transforms[map_id] = {'continent': row['map_id'], 'sx': 1/(right-left),
+        transforms[map_id] = {'mapID': map_id, 'targetName': row['target_name'],
+            'continent': row['map_id'], 'sx': 1/(right-left),
             'ox': -left/(right-left), 'sy': 1/(bottom-top), 'oy': -top/(bottom-top),
             'geometryBuild': TARGET_BUILD, 'locationSource':
                 'Older-world fallback; published Forever ' + TARGET_BUILD + ' map bounds'}

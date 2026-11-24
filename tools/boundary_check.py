@@ -12,6 +12,9 @@ ALLOWED = {
     'ReadPublic', 'Public', 'GuideInteger', 'SafeTitle', 'Option', 'SetOption',
     'StartFarmCandidateScan', 'QueueModuleSync',
     'Print', 'On', 'ResearchExportHook', 'Gold', 'STEP_SYMBOLS',
+    'PublishGoldFunction', 'AuctionQuote', 'FarmPriorSearch', 'GatheringFarmSearch',
+    'RegisterGatheringObserver', 'StartModuleLoop', 'StopModuleLoop',
+    'SetFarmSession', 'RequestFarmSessionRefresh',
 }
 ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
 DYNAMIC = re.compile(r'\bns\s*\[')

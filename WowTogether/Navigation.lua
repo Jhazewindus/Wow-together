@@ -730,6 +730,7 @@ function ns.CreateNavigation()
     frame.close = ns.UIClose(frame, function()
         ns.guideWindowHidden = true; frame:Hide()
         if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
+        ns.Print("Guide window hidden. Use /wt show to reopen it; /wt glance also restores the window.")
     end)
     frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -12, -9)
     frame.close.caption:ClearAllPoints(); frame.close.caption:SetPoint("CENTER"); frame.close.caption:SetSize(16, 14)
@@ -883,6 +884,23 @@ function ns.CreateNavigation()
     ns.CreateStandaloneArrow()
     frame:Hide()
     ns.UpdateNavigation()
+end
+
+-- Reopen the guide window without changing its size or anchors. This is safe
+-- to call from a combat-time slash command; layout remains governed by the
+-- existing combat guards.
+function ns.ShowGuideWindow()
+    local frame = ns.navigation
+    if not frame then return false end
+    ns.guideWindowHidden = false
+    if not ns.Option("routeArrow") then ns.SetOption("routeArrow", true) end
+    if not ns.routeSelection and not ns.routePlanning then
+        ns.guideStopped, ns.guideWindowIdle = true, true
+    end
+    frame:Show()
+    if ns.UpdateNavigation then ns.UpdateNavigation() end
+    if ns.LayoutNavigation then ns.LayoutNavigation() end
+    return true
 end
 
 function ns.ToggleNavigation()
