@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "captured": "2026-11-05",
-  "purpose": "Specific Forever boss/item facts from public NPC pages. Current Method.gg pages independently cross-check the documented dungeon roster and listed loot IDs. No code, prose, artwork, map images, page layout, or site data exports are bundled.",
+  "captured": "2026-11-24",
+  "purpose": "Specific Forever boss/item facts from individually captured public NPC pages. Current Wowhead Forever guide tables cross-check encounter and item links; current Method.gg pages document four of the five dungeon guides. Shaper’s Terrace uses its Wowhead guide because no dedicated Method page is published. Loot icons reference native client assets. No code, prose, artwork, maps, page layout, or site data exports are bundled.",
   "methodCrossChecks": {
     "city-of-dalaran": {
       "url": "https://www.method.gg/wow-forever/dungeons/city-of-dalaran",
@@ -30,6 +30,30 @@
       "bytes": 260245,
       "listedBosses": 6,
       "listedItemLinks": 18
+    },
+    "the-drowned-city": {
+      "url": "https://www.method.gg/wow-forever/dungeons/the-drowned-city",
+      "sha256": "553a61c134b84d0c2bb763bfe396489f15d57db8295ab6fd4612ee451204818b",
+      "bytes": 303797,
+      "listedItemLinks": 22
+    },
+    "kroldok-stronghold": {
+      "url": "https://www.method.gg/wow-forever/dungeons/kroldok-stronghold",
+      "sha256": "fc7567045914b7929773c095dfb590eed19b962ad7cc05502ed6f88588174280",
+      "bytes": 299044,
+      "listedItemLinks": 25
+    },
+    "alcaz-prison": {
+      "url": "https://www.method.gg/wow-forever/dungeons/alcaz-prison",
+      "sha256": "bab4850ac3106adb546166ea70d849d7fbc137b9f65d7894e1005c524e84e367",
+      "bytes": 295627,
+      "listedItemLinks": 19
+    },
+    "blackmaw-hold": {
+      "url": "https://www.method.gg/wow-forever/dungeons/blackmaw-hold",
+      "sha256": "ccf0eedab302e889f152b61eb550f1719852c28aed9e28c639c8ff9e67d06ee6",
+      "bytes": 300792,
+      "listedItemLinks": 1
     }
   },
   "cityOfDalaran": {
@@ -482,29 +506,1463 @@
       "level": 25,
       "status": "new",
       "icon": "Interface\\Icons\\inv_misc_herb_07"
+    },
+    "274598": {
+      "id": 274598,
+      "name": "Bloodslash Axe",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 0,
+      "slot": 13,
+      "level": 39,
+      "requiredLevel": 34,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_axe_13"
+    },
+    "274599": {
+      "id": 274599,
+      "name": "Oathbound Bracers",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 9,
+      "level": 39,
+      "requiredLevel": 34,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_bracer_12"
+    },
+    "274600": {
+      "id": 274600,
+      "name": "Berserker Shackles",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 9,
+      "level": 39,
+      "requiredLevel": 34,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_bracer_15"
+    },
+    "274601": {
+      "id": 274601,
+      "name": "Harpoon of Command",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 6,
+      "slot": 17,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_spear_04"
+    },
+    "274602": {
+      "id": 274602,
+      "name": "Brinebelly Leggings",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 7,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_leather_11"
+    },
+    "274613": {
+      "id": 274613,
+      "name": "Priestess Cloak",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -6,
+      "slot": 16,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_cape_15"
+    },
+    "274603": {
+      "id": 274603,
+      "name": "Dreadfrost Saber",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 7,
+      "slot": 21,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_shortblade_79"
+    },
+    "274604": {
+      "id": 274604,
+      "name": "Frosty Blunderbuss",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 3,
+      "slot": 15,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_rifle_03"
+    },
+    "274605": {
+      "id": 274605,
+      "name": "Briny Sash",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 6,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_07"
+    },
+    "274606": {
+      "id": 274606,
+      "name": "Bloodspine Staff",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 10,
+      "slot": 17,
+      "level": 41,
+      "requiredLevel": 36,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_wand_06"
+    },
+    "274607": {
+      "id": 274607,
+      "name": "Viscera Spaulders",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 3,
+      "level": 41,
+      "requiredLevel": 36,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shoulder_16"
+    },
+    "274614": {
+      "id": 274614,
+      "name": "Knucklebone Ring",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 41,
+      "requiredLevel": 36,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_bone_05"
+    },
+    "274608": {
+      "id": 274608,
+      "name": "Maw of Min'loth",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 6,
+      "slot": 14,
+      "level": 42,
+      "requiredLevel": 37,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_waepon_bow_zulgrub_d_01"
+    },
+    "274609": {
+      "id": 274609,
+      "name": "Serpentbane Crown",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 1,
+      "level": 42,
+      "requiredLevel": 37,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_19"
+    },
+    "274610": {
+      "id": 274610,
+      "name": "Ritual-Binder's Gloves",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 10,
+      "level": 42,
+      "requiredLevel": 37,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_15"
+    },
+    "274611": {
+      "id": 274611,
+      "name": "Robe of the Drowned",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 5,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_cloth_10"
+    },
+    "274612": {
+      "id": 274612,
+      "name": "Waterlogged Burial Shroud",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -6,
+      "slot": 16,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_cape_15"
+    },
+    "274615": {
+      "id": 274615,
+      "name": "Heart of the Primeval",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_elemental_primal_water"
+    },
+    "286658": {
+      "id": 286658,
+      "name": "Umbral Scaled Belt",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 6,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_30"
+    },
+    "286662": {
+      "id": 286662,
+      "name": "Deep-Dweller's Grips",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 10,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_17"
+    },
+    "286646": {
+      "id": 286646,
+      "name": "Gill's Gills",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_food_111_icefinfillet"
+    },
+    "286649": {
+      "id": 286649,
+      "name": "Tidebound Dagger",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 15,
+      "slot": 21,
+      "level": 40,
+      "requiredLevel": 35,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_shortblade_20"
+    },
+    "275004": {
+      "id": 275004,
+      "name": "Chain of the Corruptor",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -3,
+      "slot": 2,
+      "level": 46,
+      "requiredLevel": 41,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_necklace_19"
+    },
+    "275005": {
+      "id": 275005,
+      "name": "Krol'dok Warplate Chest",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 5,
+      "level": 46,
+      "requiredLevel": 41,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_plate01"
+    },
+    "275006": {
+      "id": 275006,
+      "name": "Krol'dok Warplate Helmet",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 1,
+      "level": 46,
+      "requiredLevel": 41,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_20"
+    },
+    "274995": {
+      "id": 274995,
+      "name": "Slavecrusher Scepter",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 4,
+      "slot": 13,
+      "level": 44,
+      "requiredLevel": 39,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_mace_12"
+    },
+    "274996": {
+      "id": 274996,
+      "name": "Resistance Breaker Spaulder",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 3,
+      "level": 44,
+      "requiredLevel": 39,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shoulder_07"
+    },
+    "274997": {
+      "id": 274997,
+      "name": "Chain of Binding",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 6,
+      "level": 44,
+      "requiredLevel": 39,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_25"
+    },
+    "271721": {
+      "id": 271721,
+      "name": "Krol'dok Ogre Key",
+      "quality": 1,
+      "classID": 13,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_hammer_16"
+    },
+    "275007": {
+      "id": 275007,
+      "name": "Mugg's Jabber",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 13,
+      "slot": 13,
+      "level": 47,
+      "requiredLevel": 42,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_hand_02"
+    },
+    "275008": {
+      "id": 275008,
+      "name": "Mugg's Crosser",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 13,
+      "slot": 13,
+      "level": 47,
+      "requiredLevel": 42,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_hand_02"
+    },
+    "275009": {
+      "id": 275009,
+      "name": "Emblem of Slamming",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 47,
+      "requiredLevel": 42,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_coin_10"
+    },
+    "275010": {
+      "id": 275010,
+      "name": "Strongly Scented Hood",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 1,
+      "level": 47,
+      "requiredLevel": 42,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_62"
+    },
+    "274998": {
+      "id": 274998,
+      "name": "Shadowlight Athame",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 15,
+      "slot": 21,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_shortblade_20"
+    },
+    "274999": {
+      "id": 274999,
+      "name": "Shadecaster's Leggings",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 7,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_10"
+    },
+    "275000": {
+      "id": 275000,
+      "name": "Zarmok's Plated Signet",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_ring_17"
+    },
+    "275001": {
+      "id": 275001,
+      "name": "Bloodied Gutslicer",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 8,
+      "slot": 17,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_sword_13"
+    },
+    "275002": {
+      "id": 275002,
+      "name": "War Handler's Gaze",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 1,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_117"
+    },
+    "275003": {
+      "id": 275003,
+      "name": "Worgbinder's Treads",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 8,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_boots_plate_04"
+    },
+    "286428": {
+      "id": 286428,
+      "name": "Band of Bossman",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_ring_33"
+    },
+    "286429": {
+      "id": 286429,
+      "name": "Big-Belly Belt",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 6,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_05"
+    },
+    "286430": {
+      "id": 286430,
+      "name": "Toofbreaker",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 4,
+      "slot": 13,
+      "level": 45,
+      "requiredLevel": 40,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_mace_13"
+    },
+    "263992": {
+      "id": 263992,
+      "name": "Overseer's Keyring",
+      "quality": 1,
+      "classID": 15,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_key_03"
+    },
+    "276732": {
+      "id": 276732,
+      "name": "Alcaz Willcrusher",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 5,
+      "slot": 17,
+      "level": 52,
+      "requiredLevel": 47,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_mace_04"
+    },
+    "276733": {
+      "id": 276733,
+      "name": "Grips of Control",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 10,
+      "level": 52,
+      "requiredLevel": 47,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_26"
+    },
+    "276734": {
+      "id": 276734,
+      "name": "Wrex's Pinky Ring",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 52,
+      "requiredLevel": 47,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_ring_64"
+    },
+    "276744": {
+      "id": 276744,
+      "name": "Zarla's Snack Pouch",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 55,
+      "requiredLevel": 50,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_bag_06"
+    },
+    "276745": {
+      "id": 276745,
+      "name": "Beastbond Robe",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 5,
+      "level": 55,
+      "requiredLevel": 50,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_cloth_20"
+    },
+    "276746": {
+      "id": 276746,
+      "name": "Defias Enforcer's Legguards",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 7,
+      "level": 55,
+      "requiredLevel": 50,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_06"
+    },
+    "276890": {
+      "id": 276890,
+      "name": "Zarla's Journal",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_10_specialization_professionbook_jewelcrafting_color1"
+    },
+    "273883": {
+      "id": 273883,
+      "name": "Ca'zass's Head",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_nagafemale"
+    },
+    "276735": {
+      "id": 276735,
+      "name": "Tidesong Wand",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 19,
+      "slot": 15,
+      "level": 52,
+      "requiredLevel": 47,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_wand_01"
+    },
+    "276736": {
+      "id": 276736,
+      "name": "Seascale Bracers",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 9,
+      "level": 52,
+      "requiredLevel": 47,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_bracer_07"
+    },
+    "276737": {
+      "id": 276737,
+      "name": "Cloak of the Tidemistress",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -6,
+      "slot": 16,
+      "level": 52,
+      "requiredLevel": 47,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_cape_05"
+    },
+    "274029": {
+      "id": 274029,
+      "name": "Ornate Shackle Key",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_key_15"
+    },
+    "276741": {
+      "id": 276741,
+      "name": "Defias Enforcer's Shoulderpads",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 3,
+      "level": 53,
+      "requiredLevel": 48,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shoulder_08"
+    },
+    "276742": {
+      "id": 276742,
+      "name": "Girdle of Extracted Answers",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 6,
+      "level": 53,
+      "requiredLevel": 48,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_12"
+    },
+    "276743": {
+      "id": 276743,
+      "name": "Fingerbreaker Stamp",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 53,
+      "requiredLevel": 48,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_armorkit_02"
+    },
+    "276738": {
+      "id": 276738,
+      "name": "Katerina's Shanker",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 15,
+      "slot": 13,
+      "level": 54,
+      "requiredLevel": 49,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_shortblade_19"
+    },
+    "276739": {
+      "id": 276739,
+      "name": "Cutthroat Chestguard",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 5,
+      "level": 54,
+      "requiredLevel": 49,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_plate12"
+    },
+    "276740": {
+      "id": 276740,
+      "name": "Sentimental Locket",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -3,
+      "slot": 2,
+      "level": 54,
+      "requiredLevel": 49,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_necklace_13"
+    },
+    "249697": {
+      "id": 249697,
+      "name": "Claws of the Great Bear",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_monsterclaw_03"
+    },
+    "280062": {
+      "id": 280062,
+      "name": "Cloak of the Fleshborer",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -6,
+      "slot": 16,
+      "level": 60,
+      "requiredLevel": 55,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_cape_11"
+    },
+    "280063": {
+      "id": 280063,
+      "name": "Bloodfur Bulwark",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 6,
+      "slot": 14,
+      "level": 60,
+      "requiredLevel": 55,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shield_13"
+    },
+    "280064": {
+      "id": 280064,
+      "name": "Withering Grips",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 10,
+      "level": 60,
+      "requiredLevel": 55,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_04"
+    },
+    "249696": {
+      "id": 249696,
+      "name": "Tusks of the Unbroken",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_wailingbone"
+    },
+    "280059": {
+      "id": 280059,
+      "name": "Tuskblade Halberd",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 6,
+      "slot": 17,
+      "level": 60,
+      "requiredLevel": 55,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_spear_08"
+    },
+    "280060": {
+      "id": 280060,
+      "name": "Lucky Shovelnose Tuft",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 60,
+      "requiredLevel": 55,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\ability_hunter_pet_boar"
+    },
+    "280061": {
+      "id": 280061,
+      "name": "Spike Crested Bracers",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 9,
+      "level": 60,
+      "requiredLevel": 55,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_bracer_08"
+    },
+    "280056": {
+      "id": 280056,
+      "name": "Flameslash Crescent",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 1,
+      "slot": 17,
+      "level": 59,
+      "requiredLevel": 54,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_halberd_10"
+    },
+    "280057": {
+      "id": 280057,
+      "name": "Robes of Dark Summons",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 5,
+      "level": 59,
+      "requiredLevel": 54,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_cloth_25"
+    },
+    "280058": {
+      "id": 280058,
+      "name": "Impish Chain Hood",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 1,
+      "level": 59,
+      "requiredLevel": 54,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_17"
+    },
+    "280065": {
+      "id": 280065,
+      "name": "Behemoth Bones",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_bone_01"
+    },
+    "280066": {
+      "id": 280066,
+      "name": "Trousers of the Ebon Giant",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 7,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_06"
+    },
+    "280067": {
+      "id": 280067,
+      "name": "Blackmaw Chain Belt",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 6,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_12"
+    },
+    "276893": {
+      "id": 276893,
+      "name": "Blackmaw Ritual Totem",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\spell_nature_agitatingtotem"
+    },
+    "280068": {
+      "id": 280068,
+      "name": "Bloody Claws of Attack",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 13,
+      "slot": 13,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_monsterclaw_01"
+    },
+    "280069": {
+      "id": 280069,
+      "name": "Shamanic Wristguards",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 9,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_bracer_08"
+    },
+    "280070": {
+      "id": 280070,
+      "name": "Veilpiercer Girdle",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 6,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_26"
+    },
+    "280071": {
+      "id": 280071,
+      "name": "Flamebreak Talisman",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_qirajicrystal_02"
+    },
+    "280072": {
+      "id": 280072,
+      "name": "Cowl of Dark Ambition",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 1,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_52"
+    },
+    "280073": {
+      "id": 280073,
+      "name": "Burnished Pridescales",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 5,
+      "level": 61,
+      "requiredLevel": 56,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_plate07"
+    },
+    "249692": {
+      "id": 249692,
+      "name": "Head of Varrox Bleakhoof",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\spell_shadow_zdemonformgreen"
+    },
+    "280074": {
+      "id": 280074,
+      "name": "Scalding Flamehoof",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 62,
+      "requiredLevel": 57,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_foot_centaur"
+    },
+    "280075": {
+      "id": 280075,
+      "name": "Bleak Eye Shoulderplates",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 3,
+      "level": 62,
+      "requiredLevel": 57,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shoulder_18"
+    },
+    "280076": {
+      "id": 280076,
+      "name": "Horns of Varrox",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 1,
+      "level": 62,
+      "requiredLevel": 57,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_55"
+    },
+    "280081": {
+      "id": 280081,
+      "name": "Sad-Sack Sandals",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 8,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_boots_02"
+    },
+    "280082": {
+      "id": 280082,
+      "name": "Staff of Sorrow",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 10,
+      "slot": 17,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_staff_29"
+    },
+    "280085": {
+      "id": 280085,
+      "name": "Tunnelweb Pincer",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 15,
+      "slot": 13,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_sword_13"
+    },
+    "280086": {
+      "id": 280086,
+      "name": "Octofinger Gauntlets",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 10,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_21"
+    },
+    "280079": {
+      "id": 280079,
+      "name": "Lunarlight Robe",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 5,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_leather_03"
+    },
+    "280080": {
+      "id": 280080,
+      "name": "Claymore of Two Moons",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 8,
+      "slot": 17,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_sword_44"
+    },
+    "280077": {
+      "id": 280077,
+      "name": "Fist of Revelation",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 13,
+      "slot": 13,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_13"
+    },
+    "280078": {
+      "id": 280078,
+      "name": "Apprentice's Protective Treads",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 8,
+      "level": 57,
+      "requiredLevel": 52,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_boots_08"
+    },
+    "280009": {
+      "id": 280009,
+      "name": "Titanosaur Scale Pendant",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -3,
+      "slot": 2,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_necklace_22"
+    },
+    "280010": {
+      "id": 280010,
+      "name": "Gargantuan Wristguards",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 9,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_bracer_14"
+    },
+    "280011": {
+      "id": 280011,
+      "name": "Deeproar Cord",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 6,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_belt_24"
+    },
+    "273116": {
+      "id": 273116,
+      "name": "Blueprint: Arcane Forge",
+      "quality": 2,
+      "classID": 9,
+      "subclass": 8,
+      "slot": 0,
+      "level": 60,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_garrison_blueprints3"
+    },
+    "273128": {
+      "id": 273128,
+      "name": "Maker's Spark",
+      "quality": 2,
+      "classID": 15,
+      "subclass": 1,
+      "slot": 0,
+      "level": 60,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_enchant_essencecosmicgreater"
+    },
+    "280023": {
+      "id": 280023,
+      "name": "Nanaya's Control Spire",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 10,
+      "slot": 17,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_talisman_17"
+    },
+    "280024": {
+      "id": 280024,
+      "name": "Legplates of Reinforced Crystal",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 7,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_plate_01"
+    },
+    "280025": {
+      "id": 280025,
+      "name": "Leggings of Curation",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 7,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_cloth_18"
+    },
+    "280012": {
+      "id": 280012,
+      "name": "Talon of Tor'Rel",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 7,
+      "slot": 13,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_sword_35"
+    },
+    "280013": {
+      "id": 280013,
+      "name": "Frostfang Mail Vest",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 5,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_chain_07"
+    },
+    "280014": {
+      "id": 280014,
+      "name": "Raptorscale Bulwark",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 6,
+      "slot": 14,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shield_21"
+    },
+    "280018": {
+      "id": 280018,
+      "name": "Hammer of Thundering Hooves",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 5,
+      "slot": 17,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_mace_02"
+    },
+    "280019": {
+      "id": 280019,
+      "name": "Dinofrill Casque",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 1,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_helmet_56"
+    },
+    "280020": {
+      "id": 280020,
+      "name": "Deep Jungle Rifle",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 3,
+      "slot": 15,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_rifle_04"
+    },
+    "280015": {
+      "id": 280015,
+      "name": "Venomvessel Ring",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_ring_41"
+    },
+    "280016": {
+      "id": 280016,
+      "name": "Spiderchitin Wrap",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 5,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_plate07"
+    },
+    "280017": {
+      "id": 280017,
+      "name": "Octoclaw Chain Boots",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 8,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_boots_fabric_01"
+    },
+    "280028": {
+      "id": 280028,
+      "name": "Heartflame Gauntlets",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 10,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_30"
+    },
+    "280029": {
+      "id": 280029,
+      "name": "Cinderedge Crescent",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 0,
+      "slot": 13,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_axe_09"
+    },
+    "280031": {
+      "id": 280031,
+      "name": "Sparklance Wand",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 19,
+      "slot": 15,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_wand_04"
+    },
+    "280032": {
+      "id": 280032,
+      "name": "Bolt's Charged Eyeball",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -4,
+      "slot": 12,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_eye_01"
+    },
+    "280021": {
+      "id": 280021,
+      "name": "Tooth of the Matriarch",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 15,
+      "slot": 13,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\spell_shadow_vampiricaura"
+    },
+    "280022": {
+      "id": 280022,
+      "name": "Scaleguard Scimitar",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 7,
+      "slot": 13,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_sword_33"
+    },
+    "280045": {
+      "id": 280045,
+      "name": "Regal Direhorn Drape",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -6,
+      "slot": 16,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_cape_18"
+    },
+    "280026": {
+      "id": 280026,
+      "name": "Albinofur Grips",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 10,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_26"
+    },
+    "280027": {
+      "id": 280027,
+      "name": "Crownroar Chestplate",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 4,
+      "slot": 5,
+      "level": 63,
+      "requiredLevel": 58,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_plate09"
     }
   },
-  "newForeverDungeonsNotInMethodGuideIndex": [
-    "the-drowned-city",
-    "kroldok-stronghold",
-    "alcaz-prison",
-    "blackmaw-hold",
-    "shapers-terrace"
-  ],
   "methodIndex": {
     "url": "https://www.method.gg/wow-forever/dungeons",
-    "sha256": "21e4d3f0a69872bc19ae39e74bcb30f3befd4593eebe5493527127b2b3b18929",
-    "bytes": 238227,
+    "sha256": "6b1434ae9d4278ce73d32cd2fa186111b4ae2bd212d96965b294bc2a544be904",
+    "bytes": 251889,
     "guides": [
+      "alcaz-prison",
       "blackfathom-deeps",
+      "blackmaw-hold",
       "city-of-dalaran",
       "excavation-site-wetlands",
+      "gnomeregan",
       "hall-of-thanes",
+      "kroldok-stronghold",
       "ragefire-chasm",
+      "razorfen-downs",
+      "razorfen-kraul",
       "ruins-of-lordaeron",
+      "scarlet-monastery-armory",
+      "scarlet-monastery-cathedral",
+      "scarlet-monastery-graveyard",
+      "scarlet-monastery-library",
       "shadowfang-keep",
       "the-deadmines",
+      "the-drowned-city",
       "the-stockade",
+      "uldaman",
       "wailing-caverns"
     ]
   },
@@ -529,5 +1987,643 @@
       },
       "reported": true
     }
+  ],
+  "wowheadGuideCrossChecks": {
+    "the-drowned-city": {
+      "url": "https://www.wowhead.com/forever/guide/the-drowned-city-dungeon-overview-location-rewards",
+      "sha256": "cbdca465024570627980c9dd06e7b8b55a5060d7e6567ced8b12cc7d2ef9c402",
+      "bytes": 159063
+    },
+    "kroldok-stronghold": {
+      "url": "https://www.wowhead.com/forever/guide/kroldok-stronghold-dungeon-overview-location-rewards",
+      "sha256": "519a12f9c04097d28765e012e81ec1ab9e31740f3ae3c8845fda52cb9bc169e3",
+      "bytes": 134588
+    },
+    "alcaz-prison": {
+      "url": "https://www.wowhead.com/forever/guide/alcaz-prison-dungeon-overview-location-rewards",
+      "sha256": "8eb2244b588e0c40485435f4dd436c56459696fe877ec7804638543179b88217",
+      "bytes": 136962
+    },
+    "blackmaw-hold": {
+      "url": "https://www.wowhead.com/forever/guide/blackmaw-hold-dungeon-overview-location-rewards",
+      "sha256": "ab3a50e1a2e407875421efa05ae2dfd90741d4d1357299f88a871c503b5ad4f1",
+      "bytes": 157038
+    },
+    "shapers-terrace": {
+      "url": "https://www.wowhead.com/forever/guide/the-shapers-terrace-dungeon-overview-location-rewards",
+      "sha256": "3321af393bdc42943e367329e601051c462e9212482650fdf7f0d8c79d427289",
+      "bytes": 144258
+    }
+  },
+  "newDungeonBosses": [
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 258905,
+      "name": "Zul'Alai",
+      "dropIDs": [
+        274598,
+        274599,
+        274600
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=258905",
+        "sha256": "e900ecbc87085690b181a0bb685f49a7dbc021c9227e57f1d2a4857b2e064959",
+        "bytes": 66095
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 258924,
+      "name": "Var'Taka",
+      "dropIDs": [
+        274601,
+        274602,
+        274613
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=258924",
+        "sha256": "930a3e56de96118c29b06079a0d0392dab11f291c8f81624367a52f9bebcb812",
+        "bytes": 61618
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 260042,
+      "name": "Captain Dreadrise",
+      "dropIDs": [
+        274603,
+        274604,
+        274605
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=260042",
+        "sha256": "21b16f2213447988c20a1b74b6ebada81bfbbb3b0012eaf94bb2bfc90a448217",
+        "bytes": 63021
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 260202,
+      "name": "Deathless Marrow",
+      "dropIDs": [
+        274606,
+        274607,
+        274614
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=260202",
+        "sha256": "711c4898efe86678cad6e2126db8d84507ed42f0d9f272e7500e1d6e88a8c378",
+        "bytes": 61041
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 260243,
+      "name": "Min'loth the Serpent",
+      "dropIDs": [
+        274608,
+        274609,
+        274610
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=260243",
+        "sha256": "c7af08e57eaed6f1517e0b4f3871ffe200b31849af74d76212878010dd8e2932",
+        "bytes": 63398
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 263886,
+      "name": "Primeval Elemental",
+      "dropIDs": [
+        274611,
+        274612,
+        274615
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=263886",
+        "sha256": "06b11b76dc9811e60b516d14a5f712e108d0ba3d6e754c1729a44a4479bcc03b",
+        "bytes": 62937
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 264172,
+      "name": "Umbra",
+      "dropIDs": [
+        286658,
+        286662
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=264172",
+        "sha256": "e74adbb085eefd124d72d15bcd73c83f8daeb70f5fad6d981a2f628b519d4109",
+        "bytes": 60092
+      }
+    },
+    {
+      "dungeonKey": "the-drowned-city",
+      "id": 264177,
+      "name": "Gill",
+      "dropIDs": [
+        286646,
+        286649
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=264177",
+        "sha256": "26964094fa3d9051e5031e9857747f8d00168f36b1b1484cccce08518c9bdc80",
+        "bytes": 59659
+      }
+    },
+    {
+      "dungeonKey": "kroldok-stronghold",
+      "id": 258964,
+      "name": "Nar'gurk",
+      "dropIDs": [
+        275004,
+        275005,
+        275006
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=258964",
+        "sha256": "64804326a0c4f5bddfdefa9eb52ac5541d95cd7fe64965af422ef9e76933a5ce",
+        "bytes": 131744
+      }
+    },
+    {
+      "dungeonKey": "kroldok-stronghold",
+      "id": 258966,
+      "name": "Slavecrusher Grox",
+      "dropIDs": [
+        274995,
+        274996,
+        274997
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=258966",
+        "sha256": "9609d357130fb47bee07065b0d34a6fc46ddb3d78356ac449db7fc77ca674b89",
+        "bytes": 64693
+      }
+    },
+    {
+      "dungeonKey": "kroldok-stronghold",
+      "id": 258968,
+      "name": "Overlord Mugg",
+      "dropIDs": [
+        271721,
+        275007,
+        275008,
+        275009,
+        275010
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=258968",
+        "sha256": "ada22d2b490aa3216bea41e1bad0ff60ba4b5980037deb711e8851bc7b2f396e",
+        "bytes": 69267
+      }
+    },
+    {
+      "dungeonKey": "kroldok-stronghold",
+      "id": 258972,
+      "name": "Twilight Commander Zarmok",
+      "dropIDs": [
+        274998,
+        274999,
+        275000
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=258972",
+        "sha256": "d43a6efc0d2e929672cf93f2ef1ab47663ba6c9e60a1137e08d2fa171aed465b",
+        "bytes": 64189
+      }
+    },
+    {
+      "dungeonKey": "kroldok-stronghold",
+      "id": 259281,
+      "name": "War Handler Ashka",
+      "dropIDs": [
+        275001,
+        275002,
+        275003
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=259281",
+        "sha256": "655d4858a0deb23c172c8ae402ec3ecaf8acaea25fbe79b23da05a82c90a7a3f",
+        "bytes": 64568
+      }
+    },
+    {
+      "dungeonKey": "kroldok-stronghold",
+      "id": 264773,
+      "name": "Bossman Toof",
+      "dropIDs": [
+        286428,
+        286429,
+        286430
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=264773",
+        "sha256": "c100f783598aa7670f14ec601edbb3adb6de90d1288ef68161e80230a307eee9",
+        "bytes": 62211
+      }
+    },
+    {
+      "dungeonKey": "alcaz-prison",
+      "id": 255391,
+      "name": "Overseer Wrex",
+      "dropIDs": [
+        263992,
+        276732,
+        276733,
+        276734
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=255391",
+        "sha256": "e2ff39db778bcd52a2288b142f30e6475d505ef5d7a6d0a20668a43c8c2c466c",
+        "bytes": 69208
+      }
+    },
+    {
+      "dungeonKey": "alcaz-prison",
+      "id": 255702,
+      "name": "Blazeroar",
+      "dropIDs": [
+        276744,
+        276745,
+        276746,
+        276890
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=255702",
+        "sha256": "bf4acb166e66d78a7af151f2007c94b4f7582a6d33b28ccf4073f5f65de1e553",
+        "bytes": 62516
+      }
+    },
+    {
+      "dungeonKey": "alcaz-prison",
+      "id": 255997,
+      "name": "Tidemistress Ca'zass",
+      "dropIDs": [
+        273883,
+        276735,
+        276736,
+        276737
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=255997",
+        "sha256": "06505ca02ba66d6a1497792d4ff71874d1c90c33da2fc49fbbf8e3fc04a29389",
+        "bytes": 61013
+      }
+    },
+    {
+      "dungeonKey": "alcaz-prison",
+      "id": 256236,
+      "name": "The Questioner",
+      "dropIDs": [
+        274029,
+        276741,
+        276742,
+        276743
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=256236",
+        "sha256": "966979eaeae094509183fcc68053836e783465bb7227f8570d04a963c2a2e05a",
+        "bytes": 62273
+      }
+    },
+    {
+      "dungeonKey": "alcaz-prison",
+      "id": 257016,
+      "name": "Katerina the Cleaner",
+      "dropIDs": [
+        276738,
+        276739,
+        276740
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=257016",
+        "sha256": "ecd8833e9e9f5a0a828aff002916bca2418510e8a278208a23cf472d6777805a",
+        "bytes": 68430
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247195,
+      "name": "Withermaw",
+      "dropIDs": [
+        249697,
+        280062,
+        280063,
+        280064
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247195",
+        "sha256": "79cb84a8d39b717ed69abbb66ac521652325e1b598671e18b25dee64e5ea6a23",
+        "bytes": 61005
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247198,
+      "name": "Bonesnout the Unbroken",
+      "dropIDs": [
+        249696,
+        280059,
+        280060,
+        280061
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247198",
+        "sha256": "feb6ec63b07c42dcb4714fb62946099b4f5f832153b231bef41984d61ed60022",
+        "bytes": 61736
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247206,
+      "name": "Impaan the Imprisoner",
+      "dropIDs": [
+        280056,
+        280057,
+        280058
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247206",
+        "sha256": "693c607bab4a3840ce8f16f48db83a3b3f7f1993d0a18a9a2362f42c1cccc986",
+        "bytes": 67884
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247207,
+      "name": "Blackmaw Behemoth",
+      "dropIDs": [
+        280065,
+        280066,
+        280067
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247207",
+        "sha256": "ff3657de4e97e5ffd98dd02adb47d069eeffce2615e3a27cb33ee03319c17b0a",
+        "bytes": 58462
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247209,
+      "name": "Elder Shaman Bloodmane",
+      "dropIDs": [
+        276893,
+        280068,
+        280069,
+        280070
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247209",
+        "sha256": "fd45d59084b719958e3db6d9393e1c595f190b48f7339cb5327d40d4b9259e84",
+        "bytes": 62357
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247231,
+      "name": "Unbound Spirit",
+      "dropIDs": [
+        280071,
+        280072,
+        280073
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247231",
+        "sha256": "f853b4ab7323be5bce9feba2585bc41240fa6d2a3f75067f126f6ecb927f788b",
+        "bytes": 58204
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247234,
+      "name": "Varrox Bleakhoof",
+      "dropIDs": [
+        249692,
+        280074,
+        280075,
+        280076
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247234",
+        "sha256": "f34b4b85489f0409201ac59f794cbc048e1fb16b4e08c2c187d2778dd219c5cf",
+        "bytes": 69023
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 247412,
+      "name": "Mopes",
+      "dropIDs": [
+        280081,
+        280082
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=247412",
+        "sha256": "cb8ed0ad265387a683b7ce428934d7e77705f6ebdcbc3ea9c8de3afd749dc3d8",
+        "bytes": 54394
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 250034,
+      "name": "Tunnelweb Matriarch",
+      "dropIDs": [
+        280085,
+        280086
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=250034",
+        "sha256": "d758324a776745796aff3d3da4c2681da66ed920fecaf0713a18a2d63dbf583e",
+        "bytes": 62036
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 269104,
+      "name": "Moontouched Wanderer",
+      "dropIDs": [
+        280079,
+        280080
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=269104",
+        "sha256": "cd937b32a895a88ec13ff1fd6f49ab7f3c8b7b3689694007901edc205e5a3b7a",
+        "bytes": 58570
+      }
+    },
+    {
+      "dungeonKey": "blackmaw-hold",
+      "id": 269111,
+      "name": "Gortek the Apprentice",
+      "dropIDs": [
+        280077,
+        280078
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=269111",
+        "sha256": "7c27bef6c93dde28976c1e992f99c01eb147eaa3a731af070e140396850f3261",
+        "bytes": 56196
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 253201,
+      "name": "Titanosaur",
+      "dropIDs": [
+        280009,
+        280010,
+        280011
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=253201",
+        "sha256": "e13f9671dc5c68ca04d9e84908faee3275ec91a6c66e1eb53bfb4df5d503ff8a",
+        "bytes": 69207
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 261809,
+      "name": "Nanaya",
+      "dropIDs": [
+        273116,
+        273128,
+        280023,
+        280024,
+        280025
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=261809",
+        "sha256": "cad133c0a8628aa538f38ad094e648fea31d0226f709e4e6aa8aba7560040047",
+        "bytes": 78701
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 261811,
+      "name": "Tor'Rel",
+      "dropIDs": [
+        280012,
+        280013,
+        280014
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=261811",
+        "sha256": "d76889ad97be5c3471b90de8b96a7a4f32a246d474ced8aa1b6b0855b60593f0",
+        "bytes": 60830
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 261812,
+      "name": "Thunderhoof",
+      "dropIDs": [
+        280018,
+        280019,
+        280020
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=261812",
+        "sha256": "2ed6cd1d837af77c31bf81d597187b539013616bb72f6c3624ef8817affc0974",
+        "bytes": 63011
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 261813,
+      "name": "Venomridge",
+      "dropIDs": [
+        280015,
+        280016,
+        280017
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=261813",
+        "sha256": "c9c9d682085509577b72685f5e23386b8612106ccd4d20d7a0ce015d22dd2ccd",
+        "bytes": 62924
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 261974,
+      "name": "Cinder",
+      "dropIDs": [
+        280028,
+        280029
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=261974",
+        "sha256": "72566a435a5b689d835ba5f41b1bdd760aa5167eca1cd8bf06f4c44adf8cdada",
+        "bytes": 62580
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 262081,
+      "name": "Bolt",
+      "dropIDs": [
+        280031,
+        280032
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=262081",
+        "sha256": "5e6845f17383bded59b5e2b39b922d59b59a2b411af5314f986901ecc7950d17",
+        "bytes": 62412
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 262127,
+      "name": "Direhorn Matriarch",
+      "dropIDs": [
+        280021,
+        280022,
+        280045
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=262127",
+        "sha256": "a44078e5c718ba6f39621f82d51851b2efa438728189c1ce8d1a6b3ce5c79a9b",
+        "bytes": 73311
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 262297,
+      "name": "Snowtalon",
+      "dropIDs": [
+        280026,
+        280027
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=262297",
+        "sha256": "4a81c189d6d91b233abfbbee769598867a63e5a4ea87f00abc2bcc989bcedf45",
+        "bytes": 61484
+      }
+    },
+    {
+      "dungeonKey": "shapers-terrace",
+      "id": 272561,
+      "name": "Vitrix",
+      "dropIDs": [
+        280026,
+        280027,
+        280028,
+        280029,
+        280031,
+        280032
+      ],
+      "source": {
+        "url": "https://www.wowhead.com/forever/npc=272561",
+        "sha256": "303f277a467054f74445f8509f39a511d98b796dc5901b7ec98447315cfbef23",
+        "bytes": 66416
+      }
+    }
+  ],
+  "newForeverDungeonsWithoutDedicatedMethodGuide": [
+    "shapers-terrace"
   ]
 }

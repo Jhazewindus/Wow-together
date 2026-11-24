@@ -201,6 +201,65 @@ def apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources, addi
     coverage_row['unpublished'] = False
     coverage_row['partial'] = True
 
+    new_boss_rows = additions.get('newDungeonBosses', [])
+    if not isinstance(new_boss_rows, list):
+        raise ValueError('Forever new dungeon boss additions must be a list')
+    new_boss_sources = {}
+    new_boss_drop_links = 0
+    for source_boss in new_boss_rows:
+        key, ident, name = (source_boss.get('dungeonKey'), source_boss.get('id'),
+                            source_boss.get('name'))
+        drop_ids, source = source_boss.get('dropIDs'), source_boss.get('source')
+        if (key not in data or key not in coverage or key == dungeon_key
+                or type(ident) is not int or ident < 1):
+            raise ValueError('Invalid Forever new dungeon encounter identity')
+        if not isinstance(name, str) or not name or not isinstance(drop_ids, list) or not drop_ids:
+            raise ValueError('Forever new dungeon encounter needs a name and item links')
+        if (not isinstance(source, dict) or not source.get('url')
+                or not re.fullmatch(r'[0-9a-f]{64}', source.get('sha256', ''))
+                or type(source.get('bytes')) is not int or source['bytes'] < 1):
+            raise ValueError('Forever new dungeon encounter has no source receipt')
+        source_key = str(ident)
+        if source_key in new_boss_sources:
+            raise ValueError('Duplicate Forever new dungeon encounter source')
+        prior_source = npc_sources.get(source_key)
+        if prior_source is not None and prior_source.get('url') != source.get('url'):
+            raise ValueError('Forever new dungeon encounter source conflicts with captured page')
+        npc_sources[source_key] = source
+        new_boss_sources[source_key] = source
+        dungeon = data[key]
+        encounter = next((row for row in dungeon.setdefault('bosses', [])
+                          if row.get('id') == ident), None)
+        if encounter is None:
+            encounter = {'id': ident, 'name': name, 'dropIDs': [], 'sharedDropIDs': []}
+            dungeon['bosses'].append(encounter)
+        elif encounter.get('name') != name:
+            raise ValueError('Forever new dungeon encounter name conflicts with existing data')
+        for item_id in drop_ids:
+            item = item_metadata.get(str(item_id))
+            if type(item_id) is not int or item is None:
+                raise ValueError('Forever new dungeon encounter references uncaptured item metadata')
+            existing = item_rows.get(item_id)
+            if existing is not None and existing != item:
+                raise ValueError('Forever new dungeon item metadata conflicts with existing data: ' + str(item_id))
+            item_rows[item_id] = item
+            if item_id not in encounter.setdefault('dropIDs', []):
+                encounter['dropIDs'].append(item_id)
+        encounter['dropIDs'].sort(key=lambda item_id: (
+            -item_rows[item_id].get('quality', 0), item_rows[item_id]['name'], item_id))
+        dungeon['partial'] = True
+        coverage_entry = coverage[key]
+        coverage_entry['bosses'] = len(dungeon['bosses'])
+        coverage_entry['foreverNPCTablesCaptured'] = coverage_entry.get('foreverNPCTablesCaptured', 0) + 1
+        coverage_entry['specificForeverNPCTablesCaptured'] = coverage_entry.get('specificForeverNPCTablesCaptured', 0) + 1
+        coverage_entry['unpublished'] = False
+        coverage_entry['partial'] = True
+        coverage_entry['missingForeverNPCs'] = [value for value in coverage_entry.get('missingForeverNPCs', []) if value != ident]
+        new_boss_drop_links += len(drop_ids)
+    for key in {row['dungeonKey'] for row in new_boss_rows}:
+        data[key]['bosses'].sort(key=lambda boss: (boss.get('level', 0), boss['name'], boss['id']))
+        coverage[key]['reportedBosses'] = sum(bool(boss.get('reported')) for boss in data[key]['bosses'])
+
     reported_rows = additions.get('reportedEncounterAdditions', [])
     if not isinstance(reported_rows, list):
         raise ValueError('Forever reported encounter additions must be a list')
@@ -264,7 +323,13 @@ def apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources, addi
         'purpose': additions.get('purpose'),
         'methodIndex': additions.get('methodIndex', {}),
         'methodCrossChecks': additions.get('methodCrossChecks', {}),
-        'newForeverDungeonsNotInMethodGuideIndex': additions.get('newForeverDungeonsNotInMethodGuideIndex', []),
+        'wowheadGuideCrossChecks': additions.get('wowheadGuideCrossChecks', {}),
+        'newForeverDungeonsWithoutDedicatedMethodGuide': additions.get('newForeverDungeonsWithoutDedicatedMethodGuide', []),
+        'newDungeonBossAdditions': {
+            'bossesCaptured': len(new_boss_sources),
+            'specificDropLinksCaptured': new_boss_drop_links,
+            'bossSources': new_boss_sources,
+        },
         'city-of-dalaran': {
             'specificBossesCaptured': len(source_ids),
             'specificDropLinksCaptured': sum(len(row['dropIDs']) for row in bosses),
@@ -517,7 +582,8 @@ def audit(args):
     user_confirmed_source = apply_user_confirmed_fact_corrections(data, coverage, item_rows)
     forever_dungeon_sources = apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources)
     total_rows += (forever_dungeon_sources['city-of-dalaran']['specificDropLinksCaptured'] +
-        forever_dungeon_sources['reportedEncounterAdditions']['specificDropLinksCaptured'])
+        forever_dungeon_sources['reportedEncounterAdditions']['specificDropLinksCaptured'] +
+        forever_dungeon_sources['newDungeonBossAdditions']['specificDropLinksCaptured'])
     counts = {'dungeons': len(data), 'dungeonsWithBosses': sum(bool(value['bosses']) for value in data.values()),
         'bosses': sum(len(value['bosses']) for value in data.values()), 'items': len(item_rows),
         'lootEntries': sum(len(boss['dropIDs']) for value in data.values() for boss in value['bosses']),
@@ -551,8 +617,8 @@ def audit(args):
         'limitations': ['All captured Vanilla NPC/container drop rows are mapped; this is source coverage, not measured Forever drop rates.',
             'Vanilla identities are used for classic dungeons. Season-only samples and raid duplicates are excluded.',
             'Captured Forever metadata and explicit new/specific relationships supplement the Vanilla baseline.',
-            'Community reports for three new dungeons are reported beta evidence, not Blizzard-certified exhaustive loot.',
-            'Unpublished new dungeons and missing beta NPC tables remain unknown. No encounter/map/loot relationship is guessed.',
+            'Community reports for beta encounters are reported evidence, not Blizzard-certified exhaustive loot.',
+            'Five newer dungeons have captured encounter loot but remain partial; missing NPC tables, trash, maps, and entrances remain unknown. No relationship is guessed.',
             'Shared/world drops are separate from encounter loot. Containers are not NPC drops.',
             'Loot tables do not include vendor stock, quest rewards, skinning or gathering resources.',
             'No source scripts, guide prose or external artwork are included.',
