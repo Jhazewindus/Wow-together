@@ -152,7 +152,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
                 floor = math.min(floor, ns.CatalogueQuest(task.id).level or 0)
             end
             work = work + 1
-            if cooperative and work % 200 == 0 then coroutine.yield(); metrics, learned = {}, {} end
+            if cooperative and ns.PlanShouldYield(work, 200) then coroutine.yield(); metrics, learned = {}, {} end
         end
         if #available == 0 then break end
         local best, score
@@ -166,7 +166,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
                 -- hub. This depends on published geography, not player position.
                 for _, child in ipairs(tasks) do
                     work = work + 1
-                    if cooperative and work % 200 == 0 then coroutine.yield(); metrics, learned = {}, {} end
+                    if cooperative and ns.PlanShouldYield(work, 200) then coroutine.yield(); metrics, learned = {}, {} end
                     local pickup = child.stages[child.next]
                     if pickup and pickup.kind == "a" and not unlocked(child.id) and unlocked(child.id, stop.id)
                         and not pickup.unknownLocation and distance(stop, pickup, metrics) <= 150 then

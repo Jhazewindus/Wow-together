@@ -87,7 +87,7 @@ local function discover()
             index = index + 1
             if index > 128 then finish(); return end
         end
-        if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, batch)
+        if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:DungeonArtwork", 0, batch)
         else finish() end
     end
     batch()

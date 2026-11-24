@@ -11,7 +11,7 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield, options)
     local work = 0
     local function tick()
         work = work + 1
-        if cooperative and work % 100 == 0 then coroutine.yield(); if onYield then onYield() end end
+        if cooperative and ns.PlanShouldYield(work, 100) then coroutine.yield(); if onYield then onYield() end end
     end
     policy.tick = tick
     local maps = {}

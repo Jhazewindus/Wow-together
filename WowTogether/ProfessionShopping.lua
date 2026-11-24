@@ -45,11 +45,11 @@ function ns.RefreshProfessionShopping()
             context.notice = "Skill " .. result.start .. " to " .. target .. " • approximate quantities; skill-ups vary."
                 .. (result.incomplete and "\nPartial estimate: some recipe or bag data is missing." or "\nIncludes intermediates you will craft. Buy for the next batch first.")
             ns.RenderShoppingList()
-        elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run)
+        elseif C_Timer and type(C_Timer.After) == "function" then ns.After("timer:ProfessionShopping", 0, run)
         else pending = nil; context.loading = nil; context.signature = nil
             context.notice = "Material estimate unavailable."; ns.RenderShoppingList() end
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run) else run() end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:ProfessionShopping", 0, run) else run() end
 end
 
 function ns.ShowProfessionShopping(id, target, scope)

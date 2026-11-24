@@ -357,7 +357,7 @@ class AuctionScanTests(unittest.TestCase):
         advance(c)
         self.assertEqual(c.ns.selectedRoute.recipe.id,2)
         plan = c.ns.PlanProfessionPreview(171,75,False)
-        self.assertEqual({s.recipe.id for s in plan.steps.values()},{2})
+        self.assertEqual({s.recipe.id for s in plan.steps.values()},{1, 2})
 
     def test_native_cast_time_breaks_equal_cost_ties_toward_faster_recipe(self):
         c = scanner()

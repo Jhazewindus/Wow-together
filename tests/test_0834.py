@@ -132,7 +132,7 @@ class SectionScopeTests(unittest.TestCase):
         self.assertFalse(g.levelReady); self.assertTrue(g.upcoming)
         self.assertEqual(ids(g), {920, 921})
         c.ns.RequestStartRoute(g)
-        self.assertEqual(c.ns.earlyGuidePrompt.advice.recommendedLevel, 22)
+        self.assertEqual(c.ns.earlyGuidePrompt.advice.recommendedLevel, 23)
         c.ns.earlyGuidePrompt.anyway.OnClick(); run_plan(c)
         self.assertEqual(len(c.ns.selectedRoute.stops), 0)
         self.assertFalse(c.ns.selectedRoute.complete)

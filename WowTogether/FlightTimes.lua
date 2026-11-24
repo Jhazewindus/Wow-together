@@ -125,10 +125,10 @@ function ns.FinishFlightTiming(selection, started, ended)
         if recorded then
             ns.travelRevision, ns.flightPlanCache = (ns.travelRevision or 0) + 1, nil
             ns.ResetTravelPath(); ns.RefreshTravelDirections()
-        elseif again and attempt < 20 then C_Timer.After(0.1, function() check(attempt + 1) end) end
+        elseif again and attempt < 20 then ns.After("timer:FlightTimes", 0.1, function() check(attempt + 1) end) end
     end
     -- Use the original landing time even when GPS becomes public a moment later.
-    C_Timer.After(0.1, function() check(1) end)
+    ns.After("timer:FlightTimes", 0.1, function() check(1) end)
 end
 
 function ns.FlightTimingDiagnostics(output)

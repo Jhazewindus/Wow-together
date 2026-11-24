@@ -90,10 +90,17 @@ function ns.CreateStandaloneArrow()
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.elapsed = 0
-    frame:SetScript("OnUpdate", function(self, elapsed)
+    -- The work is a named function so the recorder (Perf.lua) can time it
+    -- without creating anything on each frame.
+    local function onUpdate(self, elapsed)
         if ns.navigation:IsShown() or not finite(elapsed) or elapsed < 0 then return end
         self.elapsed = self.elapsed + elapsed
         if self.elapsed >= 0.1 then self.elapsed = 0; ns.UpdateNavigation() end
+    end
+    frame:SetScript("OnUpdate", function(self, elapsed)
+        local started = ns.PerfBegin and ns.PerfBegin("arrow", true)
+        onUpdate(self, elapsed)
+        if started then ns.PerfEnd("arrow", started) end
     end)
     frame:Hide()
 end

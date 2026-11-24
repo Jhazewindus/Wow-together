@@ -234,7 +234,7 @@ end
 local function schedulePump(delay)
     local generation = transportGeneration
     if not ns.ReadPublic or not ns.ReadPublic(GetTime) then logicalClock = logicalClock + (delay or 0) end
-    C_Timer.After(delay, function() if generation == transportGeneration then pump() end end)
+    ns.After("timer:Sync", delay, function() if generation == transportGeneration then pump() end end)
 end
 
 pump = function()
@@ -374,7 +374,7 @@ local function send(kind, ids, sharedRevision)
         for i = (part - 1) * 18 + 1, math.min(part * 18, #sorted) do chunk[#chunk + 1] = tostring(sorted[i]) end
         enqueue("1|" .. kind .. "|" .. transferRevision .. "|" .. part .. "|" .. total .. "|" .. table.concat(chunk, ","))
     end
-    if not pumping then pumping = true; C_Timer.After(0, pump) end
+    if not pumping then pumping = true; ns.After("timer:Sync", 0, pump) end
     return transferRevision
 end
 
@@ -401,7 +401,7 @@ function ns.SendActiveSnapshot(force)
             enqueue("1|T|" .. activeRevision .. "|" .. id .. "|" .. ns.localTitles[id])
         end
     end
-    if not pumping and #queue > 0 then pumping = true; C_Timer.After(0, pump) end
+    if not pumping and #queue > 0 then pumping = true; ns.After("timer:Sync", 0, pump) end
 end
 
 function ns.SendCompletion(force, forceFallback)
@@ -513,7 +513,7 @@ function ns.ScheduleSync(localReady)
     if not ns.syncReady or not inParty() then return end
     if not ns.db or pending or not C_Timer or type(C_Timer.After) ~= "function" then return end
     pending = true
-    C_Timer.After(2, function() pending = false; ns.SyncNow(false) end)
+    ns.After("timer:Sync", 2, function() pending = false; ns.SyncNow(false) end)
 end
 
 local function replySnapshot(forceLegacy)
@@ -546,9 +546,9 @@ local function repairPeer(sender)
             ns.syncStats.repairs = ns.syncStats.repairs + 1
             trace("Requested missing active snapshot from " .. ns.MemberLabel(sender))
         end
-        C_Timer.After(12, request)
+        ns.After("timer:Sync", 12, request)
     end
-    C_Timer.After(4, request)
+    ns.After("timer:Sync", 4, request)
 end
 
 function ns.Receive(prefix, message, channel, sender)
@@ -602,7 +602,7 @@ function ns.Receive(prefix, message, channel, sender)
             if ns.SendPartyPlanDigest then ns.SendPartyPlanDigest(true) end
             if member.catalogueMismatch and ns.SendCompletion then ns.SendCompletion(true) end
         elseif ns.SendCompletion then
-            C_Timer.After(3, function()
+            ns.After("timer:Sync", 3, function()
                 if ns.members[sender] == member and not member.stateHashFromPeer then
                     if member.planSupport == nil then member.planSupport = false end
                     if ns.SendCompletion then ns.SendCompletion(true) end
@@ -654,7 +654,7 @@ function ns.Receive(prefix, message, channel, sender)
         member.offered, member.offerRevision = nil, nil
         repairs[sender] = nil
         replySnapshot()
-        C_Timer.After(3, function()
+        ns.After("timer:Sync", 3, function()
             if ns.members[sender] == member and not member.stateHashFromPeer then
                 if member.planSupport == nil then member.planSupport = false end
                 ns.SendCompletion(true)
@@ -964,6 +964,14 @@ function ns.SyncDiagnostics(output)
     output("Guide scan: " .. (ns.guideScanning and "calculating" or "idle"))
     if ns.guideScanError then output("Guide scan error: " .. safe(ns.guideScanError)) end
     output("Profession guides: " .. ns.professionStatus .. " Personal recipe/material data is not sent to peers.")
+    if ns.ProfessionPathDiagnostics then ns.ProfessionPathDiagnostics(output) end
+    if ns.GatheringDiagnostics then ns.GatheringDiagnostics(output) end
+    if ns.TravelButtonDiagnostics then ns.TravelButtonDiagnostics(output) end
+    if ns.QuestShareDiagnostics then ns.QuestShareDiagnostics(output) end
+    if ns.HudDiagnostics then ns.HudDiagnostics(output) end
+    if ns.LevelingPathDiagnostics then ns.LevelingPathDiagnostics(output) end
+    if ns.QuestCleanupDiagnostics then ns.QuestCleanupDiagnostics(output) end
+    if ns.PerfReport then ns.PerfReport(output) end
     output("Craft batch tracking: spell-success event " .. (ns.professionCraftEventReady and "registered" or "unavailable")
         .. "; matching public craft casts observed: " .. ns.professionCraftsObserved .. ". Retest event delivery on this beta build.")
     local quotes, trainers = 0, 0

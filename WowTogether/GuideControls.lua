@@ -18,6 +18,29 @@ function ns.GuideQuestSkipped(id)
     return state and state.quests[id] == true or false
 end
 
+-- Has the player skipped this quest, or any step of it? Either way they
+-- have said they are not doing it, which the leveling path respects.
+function ns.GuideQuestHasSkips(id)
+    local state = saved()
+    if not state then return false end
+    if state.quests[id] == true then return true end
+    local steps = state.steps[id]
+    return type(steps) == "table" and next(steps) ~= nil
+end
+
+-- A number that changes whenever a skip is added or cleared.
+function ns.GuideSkipSignature()
+    local state = saved()
+    if not state then return 0 end
+    local count = 0
+    for _ in pairs(state.quests) do count = count + 1 end
+    for _, steps in pairs(state.steps) do
+        count = count + 1000
+        for _ in pairs(steps) do count = count + 1 end
+    end
+    return count
+end
+
 function ns.GuideStepKey(stop)
     if stop.fixedStepKey then return stop.fixedStepKey end
     local kind = stop.stepKind or stop.kind
@@ -240,9 +263,9 @@ function ns.ScanGuideProgress(guide, refresh)
         elseif coroutine.status(worker) == "dead" then
             ns.guideScanning, ns.guideScanError = nil, nil
             ns.Refresh(true); ns.UpdateNavigation()
-        else C_Timer.After(type(detail) == "number" and detail or 0.01, advance) end
+        else ns.After("timer:GuideControls", type(detail) == "number" and detail or 0.01, advance) end
     end
-    C_Timer.After(0.01, advance)
+    ns.After("timer:GuideControls", 0.01, advance)
 end
 
 function ns.InitializeGuideStepHistory(guide, route)

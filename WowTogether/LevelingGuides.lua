@@ -84,7 +84,7 @@ function ns.QueueGuideSearch(value)
     ns.guideSearchGeneration = (ns.guideSearchGeneration or 0) + 1
     local generation = ns.guideSearchGeneration
     if C_Timer and type(C_Timer.After) == "function" then
-        C_Timer.After(0.4, function()
+        ns.After("timer:LevelingGuides", 0.4, function()
             if generation == ns.guideSearchGeneration and ns.filter == "guides" then ns.ApplyGuideSearch() end
         end)
     end
@@ -458,7 +458,66 @@ local function coreRange(entry)
     return levels[1 + trim], levels[#levels - trim]
 end
 
+-- The quests a zone holds for this character, for the leveling path: every
+-- zone entry with its quests that count for leveling there, sorted by level.
+-- Static for a catalogue and character; completion is checked by the caller.
+function ns.LevelingZoneInventory(pause)
+    ns.ResolveCatalogueMaps(); rebuildIndex()
+    local zones = {}
+    for _, entry in pairs(entries or {}) do
+        if entry.mode == "zone" then
+            local quests = {}
+            for _, id in ipairs(entry.ids) do
+                local quest = ns.CatalogueQuest(id)
+                if quest and browseEnabled(id) and (quest.level or 0) > 0 and localWork(quest, entry.mapID)
+                    and ns.Public(quest.xp) and type(quest.xp) == "number" and quest.xp > 0 then
+                    quests[#quests + 1] = {id = id, level = quest.level, xp = quest.xp}
+                end
+                -- `pause` is the caller's own pacing: it decides by the clock when to hand the frame back.
+                if pause then pause() end
+            end
+            if #quests > 0 then
+                table.sort(quests, function(a, b) if a.level ~= b.level then return a.level < b.level end return a.id < b.id end)
+                zones[#zones + 1] = {key = entry.key, zone = entry.zone, title = entry.title, mapID = entry.mapID, quests = quests}
+            end
+        end
+    end
+    table.sort(zones, function(a, b) return a.key < b.key end)
+    return zones
+end
+
+-- A zone entry as the guide object the zone-exit logic expects.
+function ns.LevelingZoneGuide(key, low, high)
+    ns.ResolveCatalogueMaps(); rebuildIndex()
+    for _, entry in pairs(entries or {}) do
+        if entry.key == key and entry.mode == "zone" then
+            return {key = entry.key, title = entry.title, zone = entry.zone, mode = "zone", mapID = entry.mapID,
+                rangeLow = low, rangeHigh = high, records = entryRecords(entry)}
+        end
+    end
+end
+
+-- Finding the next zone reads every zone's quests. The answer only depends
+-- on the catalogue and the guide asked about, so it is worked out once: with
+-- the XP model on this used to run twice on every refresh (about 50 ms).
+local nextZoneMemo, nextZoneMemoFor = {}, nil
+local nextZoneBaseline
 function ns.NextZoneBaselineGuide(currentGuide, afterCurrentBand)
+    local profile = ns.profile or {}
+    local scope = tostring(ns.catalogue) .. "|" .. tostring(ns.catalogueLocationRevision or 0) .. "|" .. tostring(profile.faction)
+        .. "|" .. tostring(profile.classID) .. "|" .. tostring(ns.Option("classQuests"))
+    if nextZoneMemoFor ~= scope then nextZoneMemo, nextZoneMemoFor = {}, scope end
+    local key = (currentGuide and (tostring(currentGuide.key) .. ":" .. tostring(currentGuide.rangeLow) .. ":" .. tostring(currentGuide.rangeHigh))
+        or ("level:" .. tostring(profile.level))) .. ":" .. tostring(afterCurrentBand == true)
+    local cached = nextZoneMemo[key]
+    if cached == nil then
+        cached = nextZoneBaseline(currentGuide, afterCurrentBand) or false
+        nextZoneMemo[key] = cached
+    end
+    return cached or nil
+end
+
+function nextZoneBaseline(currentGuide, afterCurrentBand)
     ns.ResolveCatalogueMaps(); rebuildIndex()
     local nextEntry, nextLow, nextHigh
     local currentLow = currentGuide and (afterCurrentBand and currentGuide.rangeHigh or currentGuide.rangeLow)

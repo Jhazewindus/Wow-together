@@ -71,7 +71,7 @@ class HudTitleTests(unittest.TestCase):
         self.assertEqual(frame.icon.point[2], 14)
         self.assertEqual(frame.status.point[2], 42)
         self.assertEqual(frame.symbol.text, '!')
-        self.assertEqual(frame.height, 150)
+        self.assertEqual(frame.height, 168)
         for line in frame.icon.lines.values():
             self.assertFalse(line.IsShown(line))
         self.assertTrue(frame.glanceRows[1].frame.IsShown(frame.glanceRows[1].frame))

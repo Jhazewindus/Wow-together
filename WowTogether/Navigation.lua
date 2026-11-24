@@ -294,6 +294,12 @@ function ns.UpdateNavigation()
     if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
     ns.UpdateStandaloneArrow(state)
     ns.UpdateQuestItemButton(state)
+    -- The travel button and the path strip are additions to this window. An
+    -- error in either must never stop the window itself from updating, so
+    -- each runs guarded and what went wrong is kept for /wt hud.
+    if ns.HealNavigation then ns.GuardHud("placement", ns.HealNavigation) end
+    if ns.UpdateTravelButton then ns.GuardHud("travel button", ns.UpdateTravelButton, state) end
+    if ns.UpdateLevelingPathStrip then ns.GuardHud("path strip", ns.UpdateLevelingPathStrip, state) end
     ns.UpdateAreaObjectives(state)
     ns.UpdateGuideTip(state)
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
@@ -317,7 +323,7 @@ function ns.UpdateNavigation()
         or presentation.statusColor == "gold" and ns.UIColors.gold
         or presentation.statusColor == "muted" and ns.UIColors.muted or ns.UIColors.text
     frame.distance:SetTextColor(unpack(statusColor))
-    local glance = ns.Option("guideGlance") == true
+    local glance = ns.GlanceActive()
     frame.glance = glance
     if glance then
         local key = symbolKindForPresentation(state.stop, presentation)
@@ -476,14 +482,30 @@ function ns.LayoutNavigation(layoutFrame)
     if not frame or not frame.layoutReady then return end
     local width = frame:GetWidth()
     if not finite(width) then return end
-    local glance = ns.Option("guideGlance") == true
+    local glance = ns.GlanceActive()
     local chipHeight = ns.SuggestionChipStripHeight and ns.SuggestionChipStripHeight() or 0
     if layoutFrame == frame and not glance then
         frame.normalHeight = math.max(168, math.min(480, (frame:GetHeight() or 168) - chipHeight))
     end
-    local baseHeight = glance and 150 or (frame.normalHeight or 168)
+    -- Glance keeps the window's own height. It used to shrink it to 150, and
+    -- in play the window lost its place on screen every time its height
+    -- changed (out of combat too: one valid anchor, a valid size, and the
+    -- game reporting no position). Not changing the height on a switch
+    -- removes that trigger; the eighteen pixels are not worth a window that
+    -- disappears.
+    local baseHeight = frame.normalHeight or 168
     local wantedHeight = baseHeight + chipHeight
-    if math.abs((frame:GetHeight() or 0) - wantedHeight) > 0.5 then frame:SetHeight(wantedHeight) end
+    if math.abs((frame:GetHeight() or 0) - wantedHeight) > 0.5 then
+        -- Never in combat (see ns.GlanceActive): the height waits for the fight to end.
+        if ns.RouteInCombat() then frame.heightPending = true
+        else
+            frame.heightPending = nil
+            frame:SetHeight(wantedHeight)
+            -- A height change is exactly when the window has been seen to
+            -- lose its place: check at once and fasten it again if so.
+            if not ns.NavigationPlaced() then ns.ReanchorNavigation("no position after a height change; put back") end
+        end
+    end
     local left = 82
     local offset = (width - 360) / 2
     frame.title:SetWidth(width - 108); frame.step:SetWidth(width - 28)
@@ -525,6 +547,14 @@ function ns.LayoutNavigation(layoutFrame)
     frame.scan:ClearAllPoints(); frame.scan:SetPoint("BOTTOMRIGHT", -38, buttonBottom)
     frame.tip.point = {"TOPLEFT", frame.work}
     frame.questItem:SetWidth(width); frame.questItem.caption:SetWidth(width - 50)
+    if frame.pathStrip then
+        frame.pathStrip:SetWidth(width)
+        frame.pathStrip.text:SetWidth(math.max(60, width - 28 - ((frame.pathStrip.cleanCount or 0) > 0 and 100 or 0)))
+    end
+    -- The travel button is secure: its size, like its place, only changes outside combat.
+    if frame.travelButton and not ns.RouteInCombat() then
+        frame.travelButton:SetWidth(width); frame.travelButton.caption:SetWidth(width - 50)
+    end
     ns.LayoutAreaObjectives(width)
     if ns.UpdateSuggestionChipAnchor then ns.UpdateSuggestionChipAnchor() end
 end
@@ -536,10 +566,87 @@ function ns.SaveNavigationSize()
     if finite(width) and finite(height) then
         local chipHeight = ns.SuggestionChipStripHeight and ns.SuggestionChipStripHeight() or 0
         local baseHeight = height - chipHeight
-        if ns.Option("guideGlance") ~= true then frame.normalHeight = math.max(168, math.min(480, baseHeight)) end
+        if not ns.GlanceActive() then frame.normalHeight = math.max(168, math.min(480, baseHeight)) end
         ns.db.arrowSize = {width = math.max(360, math.min(720, width)), height = frame.normalHeight or 168}
     end
     ns.SaveNavigationPosition()
+end
+
+-- Glance as it is applied to the window, which is not always the setting.
+--
+-- The window carries secure buttons (the quest item, the Hearthstone or
+-- teleport). The game does not allow such a window to be resized or laid out
+-- again during combat: doing it anyway leaves the window with no position,
+-- so nothing of it is drawn (seen in play: every part "shown", none with
+-- coordinates, after switching to Glance mid-fight). So a change of mode, and
+-- any change of the window's height, is applied outside combat only; in a
+-- fight the window keeps the shape it had and catches up when the fight ends.
+local appliedGlance
+function ns.GlanceActive()
+    local wanted = ns.Option("guideGlance") == true
+    if appliedGlance == nil or (appliedGlance ~= wanted and not ns.RouteInCombat()) then appliedGlance = wanted end
+    return appliedGlance
+end
+function ns.GlancePending() return appliedGlance ~= nil and appliedGlance ~= (ns.Option("guideGlance") == true) end
+
+-- Is the window somewhere the game can draw it? Returns false only when the
+-- game says it has no position (not when the position is merely withheld).
+function ns.NavigationPlaced()
+    local frame = ns.navigation
+    if not frame then return true end
+    local okay, left = pcall(frame.GetLeft, frame)
+    if not okay then return true end
+    if left == nil then return false end
+    return true
+end
+
+-- Puts the window back at its saved place (or the default one). Outside combat only.
+function ns.ReanchorNavigation(reason)
+    local frame = ns.navigation
+    if not frame or ns.RouteInCombat() then return false end
+    local saved = ns.db and ns.db.arrowPosition
+    -- Size and anchor are both stated again, as a reset does: that is what
+    -- has been seen to give the window a position back.
+    local width, height = frame:GetWidth(), frame:GetHeight()
+    if finite(width) and finite(height) and width > 0 and height > 0 then frame:SetSize(width, height) end
+    frame:ClearAllPoints()
+    if type(saved) == "table" and type(saved.point) == "string" and type(saved.relative) == "string"
+        and finite(saved.x) and finite(saved.y) then
+        frame:SetPoint(saved.point, UIParent, saved.relative, saved.x, saved.y)
+    else
+        frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160)
+    end
+    ns.hudNotes = ns.hudNotes or {}
+    ns.hudRepairs = (ns.hudRepairs or 0) + 1
+    ns.hudNotes[#ns.hudNotes + 1] = reason .. (ns.NavigationPlaced() and " (worked)" or " (still no position)")
+    while #ns.hudNotes > 5 do table.remove(ns.hudNotes, 1) end
+    return true
+end
+
+-- Called on every update of the window: if the game cannot place it, fasten
+-- it again. At most once every two seconds, never in combat, and it gives up
+-- after ten tries in a session so a cause this does not cure cannot loop.
+local lastRepair
+function ns.HealNavigation()
+    local frame = ns.navigation
+    if not frame or not frame:IsShown() or ns.RouteInCombat() or (ns.hudRepairs or 0) >= 10 then return false end
+    if ns.NavigationPlaced() then return false end
+    local time = ns.ReadPublic(GetTime)
+    if type(time) == "number" and lastRepair and time - lastRepair < 2 then return false end
+    lastRepair = type(time) == "number" and time or lastRepair
+    ns.ReanchorNavigation("no position while shown; put back")
+    if ns.LayoutNavigation then ns.LayoutNavigation() end
+    return true
+end
+
+-- Runs one of the window's add-on parts so that its failure cannot take the window down with it.
+function ns.GuardHud(name, part, ...)
+    local okay, message = pcall(part, ...)
+    if not okay then
+        ns.hudErrors = ns.hudErrors or {}
+        ns.hudErrors[name] = message
+    end
+    return okay
 end
 
 function ns.UpdateNavigationBackground()
@@ -548,8 +655,17 @@ function ns.UpdateNavigationBackground()
     local opaque = ns.Option("guideOpaque")
     local color, alpha = ns.UIColors.background, opaque and 1 or 0.18
     -- Fade only the fill, never the text, arrow or child controls.
-    for _, panel in ipairs({frame, frame.work, frame.questItem}) do
-        panel:SetBackdropColor(color[1], color[2], color[3], alpha)
+    -- Each panel on its own: one that is missing must not stop the others (a
+    -- list built with a gap in it ends at the gap).
+    for _, key in ipairs({"work", "questItem", "travelButton", "pathStrip"}) do
+        local panel = frame[key]
+        if panel and panel.SetBackdropColor then panel:SetBackdropColor(color[1], color[2], color[3], alpha) end
+    end
+    frame:SetBackdropColor(color[1], color[2], color[3], alpha)
+    -- The path strip is a line of the window, not a box: never a border, and no fill in Glance.
+    if frame.pathStrip then
+        frame.pathStrip:SetBackdropBorderColor(0, 0, 0, 0)
+        if ns.GlanceActive() then frame.pathStrip:SetBackdropColor(0, 0, 0, 0) end
     end
     frame.solid = opaque
 end
@@ -725,6 +841,8 @@ function ns.CreateNavigation()
         if button == "LeftButton" and self.value and self.value.kind == "service" then ns.AcceptInventoryServiceTip(self.value) end
     end
     ns.CreateQuestItemButton(frame)
+    if ns.CreateTravelButton then ns.GuardHud("travel button (create)", ns.CreateTravelButton, frame) end
+    if ns.CreateLevelingPathStrip then ns.GuardHud("path strip (create)", ns.CreateLevelingPathStrip, frame) end
     ns.CreateAreaObjectives(frame)
     ns.EnableWindowResize(frame, {minWidth = 360, minHeight = 168, maxWidth = 720, maxHeight = 480,
         layout = ns.LayoutNavigation, onFinish = ns.SaveNavigationSize})
@@ -754,7 +872,9 @@ function ns.CreateNavigation()
         self.elapsed = self.elapsed + elapsed
         if self.elapsed < 0.1 then return end
         self.elapsed = 0
+        local started = ns.PerfBegin and ns.PerfBegin("card", true)
         ns.UpdateNavigation()
+        if started then ns.PerfEnd("card", started) end
     end)
     ns.CreateStandaloneArrow()
     frame:Hide()
@@ -799,3 +919,18 @@ function ns.NavigationDiagnostics(output)
     output("Travel network: " .. (ns.Option("travelNetwork") and (ns.travelNetworkStatus or "Ready; select a route.") or "off"))
     output("Route lines draw on the world map; the minimap button opens the addon.")
 end
+
+-- When a fight ends: apply a mode or height change that had to wait, and if
+-- the window has no position (an earlier blocked change), put it back.
+ns.On("PLAYER_REGEN_ENABLED", function()
+    local frame = ns.navigation
+    if not frame then return end
+    local pending = ns.GlancePending() or frame.heightPending
+    if not ns.NavigationPlaced() then ns.ReanchorNavigation("no position after combat; put back") end
+    if pending then
+        ns.GlanceActive()
+        if ns.UpdateNavigation then ns.UpdateNavigation() end
+        ns.LayoutNavigation()
+        if ns.UpdateNavigationBackground then ns.UpdateNavigationBackground() end
+    end
+end)

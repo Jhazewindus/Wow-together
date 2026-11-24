@@ -211,6 +211,97 @@ end
 ns.HubActiveGuideProgress = activeGuideDetail
 ns.HubActiveGuideHeading = activeGuideHeading
 
+-- The leveling path on the main page, in both layouts: the next zones with
+-- the levels they should take the character through, and the button that
+-- chains them. It sits above the suggestions it gives context to.
+local PATH_ROWS = 4
+local function createPath(home)
+    local c = ns.UIColors
+    local panel = CreateFrame("Frame", nil, home, "BackdropTemplate")
+    ns.UIPanel(panel)
+    panel.heading = ns.UILabel(panel, nil, 10, c.gold)
+    panel.heading:SetPoint("TOPLEFT", 16, -12); panel.heading:SetText("YOUR LEVELING PATH")
+    panel.pace = ns.UILabel(panel, nil, 11, c.muted)
+    panel.pace:SetPoint("TOPRIGHT", -218, -11); panel.pace:SetJustifyH("RIGHT"); panel.pace:SetWordWrap(false)
+    panel.all = ns.UIButton(panel, "Whole path", 92, function() ns.ShowLevelingPath() end)
+    panel.all:SetHeight(22); panel.all:SetPoint("TOPRIGHT", -12, -6)
+    -- Follow the path: zone guides chain, each handing over to the next.
+    panel.follow = ns.UIButton(panel, "Follow path", 100, function()
+        if ns.LevelingPathFollowing() then ns.StopLevelingPathMode() else ns.FollowLevelingPath() end
+    end, true)
+    panel.follow:SetHeight(22); panel.follow:SetPoint("RIGHT", panel.all, "LEFT", -6, 0)
+    ns.UIHelp(panel.follow, "Chain the zone guides: when a zone is done for your level, the next zone's guide starts by itself. Stop path ends the path and its zone guide together.")
+    panel.rows = {}
+    for index = 1, PATH_ROWS do
+        local row = CreateFrame("Button", nil, panel)
+        row:SetHeight(22); row:SetPoint("TOPLEFT", 8, -34 - (index - 1) * 22)
+        row.zone = ns.UILabel(row, nil, 13, c.text)
+        row.zone:SetPoint("LEFT", 8, 0); row.zone:SetWordWrap(false); row.zone:SetJustifyH("LEFT")
+        row.levels = ns.UILabel(row, nil, 12, c.gold)
+        row.levels:SetWordWrap(false); row.levels:SetJustifyH("LEFT")
+        row.quests = ns.UILabel(row, nil, 11, c.muted)
+        row.quests:SetPoint("RIGHT", -8, 0); row.quests:SetWordWrap(false); row.quests:SetJustifyH("RIGHT")
+        row:SetScript("OnClick", function(self)
+            local data = self.data
+            if not data then return end
+            if data.following then if ns.OpenGuideWindow then ns.OpenGuideWindow() end; return end
+            local guide = ns.LevelingPathGuide(data.step)
+            if guide then ns.RequestStartRoute(guide) else ns.ShowLevelingPath() end
+        end)
+        row:SetScript("OnEnter", function(self) self.zone:SetTextColor(unpack(c.gold)) end)
+        row:SetScript("OnLeave", function(self) self.zone:SetTextColor(unpack(c.text)) end)
+        panel.rows[index] = row
+    end
+    panel.note = ns.UILabel(panel, nil, 10, c.muted)
+    panel.note:SetWordWrap(false); panel.note:SetJustifyH("LEFT")
+    panel:Hide()
+    return panel
+end
+
+local function renderPath(home)
+    home.path = home.path or createPath(home)
+    local panel = home.path
+    local rows, result = nil, nil
+    if ns.LevelingPathRows then rows, result = ns.LevelingPathRows(PATH_ROWS) end
+    if not rows or #rows == 0 then panel:Hide(); panel.count = 0; return end
+    panel.count = #rows
+    for index, row in ipairs(panel.rows) do
+        local data = rows[index]
+        row.data = data
+        row:SetShown(data ~= nil)
+        if data then
+            row.zone:SetText(index .. ".  " .. data.zone)
+            row.levels:SetText("level " .. data.levels)
+            row.quests:SetText(data.quests .. (data.quests == 1 and " quest" or " quests") .. (data.following and "  •  following" or ""))
+        end
+    end
+    panel.pace:SetText(ns.LevelingPaceText and ns.LevelingPaceText() or "")
+    local following = ns.LevelingPathFollowing and ns.LevelingPathFollowing()
+    panel.heading:SetText(following and "YOUR LEVELING PATH  •  FOLLOWING" or "YOUR LEVELING PATH")
+    panel.follow.caption:SetText(following and "Stop path" or "Follow path")
+    ns.UIButtonTone(panel.follow, not following)
+    panel.note:SetText(following and "Zone guides are chained: when a zone is done for your level, the next one starts by itself. Stopping ends both."
+        or result.learned and ("Kills counted at x" .. string.format("%.2f", result.factor) .. " of quest rewards, from your own play.")
+        or ("Assumes kills add about " .. math.floor((result.factor - 1) * 100 + 0.5) .. "% to quest rewards until measured from your play."))
+    panel:Show()
+end
+
+local function layoutPath(home, width, top)
+    local panel = home.path
+    if not panel or not panel:IsShown() then return top end
+    local height = 34 + (panel.count or 0) * 22 + 26
+    panel:ClearAllPoints(); panel:SetPoint("TOPLEFT", 0, -top); panel:SetSize(width, height)
+    panel.pace:SetWidth(math.max(40, width - 470))
+    for _, row in ipairs(panel.rows) do
+        row:SetWidth(width - 16)
+        row.zone:SetWidth(math.max(120, (width - 16) * 0.42))
+        row.levels:ClearAllPoints(); row.levels:SetPoint("LEFT", math.max(140, (width - 16) * 0.44), 0); row.levels:SetWidth(150)
+        row.quests:SetWidth(170)
+    end
+    panel.note:ClearAllPoints(); panel.note:SetPoint("BOTTOMLEFT", 16, 9); panel.note:SetWidth(width - 32)
+    return top + height + 12
+end
+
 local function layoutNext(home)
     local width, top = ns.ui.contentWidth, 8
     home:SetWidth(width); home.title:Hide()
@@ -228,6 +319,7 @@ local function layoutNext(home)
         home.resume.stopControl:ClearAllPoints(); home.resume.stopControl:SetPoint("LEFT", home.resume.orderControl, "RIGHT", 8, 0); home.resume.stopControl:SetSize(126, 28)
         top = top + 116
     end
+    top = layoutPath(home, width, top)
     home.nextHeading:ClearAllPoints(); home.nextHeading:SetPoint("TOPLEFT", 0, -top); home.nextHeading:SetWidth(width)
     top = top + 28
     for index = 1, home.nextCount or 0 do
@@ -251,9 +343,13 @@ local function renderNext(home, query)
     home.resume.continueControl:SetShown(home.resume:IsShown())
     home.resume.orderControl:SetShown(running)
     home.resume.stopControl:SetShown(running)
+    renderPath(home)
     for _, item in ipairs(items) do
         if home.nextCount >= 5 then break end
-        if type(item) == "table" and type(item.title) == "string" and item.title ~= ""
+        -- The path has its own block above; its row would only repeat it.
+        local pathRow = type(item) == "table" and type(item.key) == "string" and string.sub(item.key, 1, 5) == "path:"
+            and home.path and home.path:IsShown()
+        if not pathRow and type(item) == "table" and type(item.title) == "string" and item.title ~= ""
             and (type(item.start) == "function" or type(item.inspect) == "function") then
             home.nextCount = home.nextCount + 1
             local index = home.nextCount
@@ -305,6 +401,8 @@ function ns.LayoutRecommended()
         home.goldSession:ClearAllPoints(); home.goldSession:SetPoint("TOPLEFT", 0, -top)
         layoutCard(home.goldSession, width, 112); top = top + 124
     end
+    -- The path comes first: it is the overview the zone card below belongs to.
+    top = layoutPath(home, width, top)
     home.leveling:ClearAllPoints(); home.leveling:SetPoint("TOPLEFT", 0, -top)
     layoutCard(home.leveling, width, 164); top = top + 176
     home.professionTitle:ClearAllPoints(); home.professionTitle:SetPoint("TOPLEFT", 0, -top - 4)
@@ -343,7 +441,9 @@ function ns.RenderRecommended(query)
     for _, card in ipairs(home.extraCards) do card:Hide() end
     local featured, shown = nil, 0
     for _, item in ipairs(items) do
-        if shown < 5 then
+        -- The path has its own block under the recommended zone.
+        if type(item.key) == "string" and string.sub(item.key, 1, 5) == "path:" then
+        elseif shown < 5 then
             shown = shown + 1
             if item.kind == "leveling" and not featured then featured = item
             else
@@ -360,6 +460,7 @@ function ns.RenderRecommended(query)
         detail = states.leveling or "Browse all leveling guides to find your next zone.", action = "Browse guides",
         start = function() ns.SetFilter("guides") end})
     renderGoldSessionCard(home)
+    renderPath(home)
     home.professionEmpty:SetShown(home.professionCount == 0)
     home.professionEmpty.text:SetText(states.professions or "Browse professions to find a crafting guide.")
     home.moreTitle:SetShown(home.extraCount > 0)

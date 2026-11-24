@@ -194,7 +194,15 @@ function ns.UpdateSessionResumeBar()
         return
     end
     home.resume:SetShown(running ~= nil or saved ~= nil or summary ~= nil)
-    home.resume.category:SetText(saved and "PAUSED GUIDE" or running and "CONTINUE YOUR GUIDE" or "LAST SESSION")
+    -- While the path is followed, the running zone guide is the path's
+    -- current zone, not a second thing beside it.
+    local onPath = running and ns.LevelingPathFollowing and ns.LevelingPathFollowing()
+        and ns.routeSelection and ns.routeSelection.mode == "zone"
+    home.resume.category:SetText(saved and "PAUSED GUIDE" or onPath and "YOUR PATH: CURRENT ZONE"
+        or running and "CONTINUE YOUR GUIDE" or "LAST SESSION")
+    if home.resume.stopControl and home.resume.stopControl.caption then
+        home.resume.stopControl.caption:SetText(onPath and "Stop path" or "Stop this guide")
+    end
     home.resume.title:SetText(running and guide.title or saved and saved.guide.title or summary and summary.title or "")
     home.resume.detail:SetText(ns.GuideSessionSummaryText())
 end

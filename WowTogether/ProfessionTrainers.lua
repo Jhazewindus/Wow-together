@@ -111,5 +111,5 @@ ns.On("SPELL_DATA_LOAD_RESULT", function(id, success)
         spellRefreshQueued = false
         if trainerOpen then ns.ReadProfessionTrainer() end
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.2, refresh) else refresh() end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:ProfessionTrainers", 0.2, refresh) else refresh() end
 end)

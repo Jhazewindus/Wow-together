@@ -143,7 +143,7 @@ function ns.QueueServiceInventory()
         if ns.navigation then ns.UpdateNavigation() end
         if hadPending and ns.DrawRoute then ns.DrawRoute(nil, true) end
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.2, update) else update() end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:InventoryServices", 0.2, update) else update() end
 end
 
 local function stockAt(slot)

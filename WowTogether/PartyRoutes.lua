@@ -224,7 +224,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
             guideKey = guideKey, rangeLow = rangeLow, rangeHigh = rangeHigh, fixedRoute = fixedRoute, catchup = catchup}
         transfers[sender] = bucket
         if C_Timer and type(C_Timer.After) == "function" then
-            C_Timer.After(300, function() if transfers[sender] == bucket then transfers[sender] = nil end end)
+            ns.After("timer:PartyRoutes", 300, function() if transfers[sender] == bucket then transfers[sender] = nil end end)
         end
     end
     if bucket.total ~= total or bucket.mode ~= mode or bucket.mapID ~= mapID or bucket.target ~= target
@@ -271,7 +271,7 @@ function ns.QueuePartyRouteFollow()
         ns.profile and ns.profile.level or 0}, ":")
     if ns.partyFollowContext == context then return end
     ns.partyFollowContext, ns.partyFollowQueued = context, true
-    C_Timer.After(0.2, function()
+    ns.After("timer:PartyRoutes", 0.2, function()
         ns.partyFollowQueued = nil
         if ns.waitingPartyRoute == invite then ns.FollowPartyRoute(invite) end
     end)

@@ -170,7 +170,7 @@ end
 function ns.ScheduleFlightDiscovery()
     if not ns.db or discoveryPending or not C_Timer or type(C_Timer.After) ~= "function" then return end
     discoveryPending = true
-    C_Timer.After(0.2, function() discoveryPending = false; ns.ReadKnownFlightPaths() end)
+    ns.After("timer:Travel", 0.2, function() discoveryPending = false; ns.ReadKnownFlightPaths() end)
 end
 
 local function taxiMapID()
@@ -268,7 +268,7 @@ function ns.NoteFlightSelection(slot)
             ns.recentFlightMap = nil
             if C_Timer and type(C_Timer.After) == "function" then
                 local selection = ns.pendingFlight
-                C_Timer.After(0.1, function()
+                ns.After("timer:Travel", 0.1, function()
                     if ns.pendingFlight == selection and not ns.flightStarted then ns.ObserveFlightDeparture() end
                 end)
             end
@@ -297,7 +297,7 @@ function ns.ReadFlightMap(attempt)
         ns.travelStatus = "Flight map read unavailable: " .. failure .. "; choose flights manually."
         if flightMapOpen and attempt < 3 and C_Timer and type(C_Timer.After) == "function" then
             local generation = flightMapGeneration
-            C_Timer.After(0.2, function()
+            ns.After("timer:Travel", 0.2, function()
                 if flightMapOpen and generation == flightMapGeneration then ns.ReadFlightMap(attempt + 1) end
             end)
         end
@@ -640,7 +640,7 @@ local function observeControl(starting)
         if starting and flying == true then ns.FlightState(); ns.RefreshTravelDirections(); return end
         if not starting and flying == false then ns.FinishFlight(); return end
         if attempt < 20 and (selection or began) and C_Timer and type(C_Timer.After) == "function" then
-            C_Timer.After(0.1, function() check(attempt + 1) end)
+            ns.After("timer:Travel", 0.1, function() check(attempt + 1) end)
         end
     end
     check(0)

@@ -272,7 +272,9 @@ function ns.InitializeTravelTrails()
     if ns.trailFrame then return end
     local frame = CreateFrame("Frame")
     ns.trailFrame = frame
-    frame:SetScript("OnUpdate", function(_, dt)
+    -- The work is a named function so the recorder (Perf.lua) can time it
+    -- without creating anything on each frame.
+    local function onUpdate(_, dt)
         elapsed = elapsed + (finite(dt) and dt or 0)
         if elapsed < SAMPLE then return end
         elapsed = 0
@@ -284,6 +286,11 @@ function ns.InitializeTravelTrails()
             okay, err = pcall(ns.PumpTrailSharing)
             if not okay then status = "Share error: " .. tostring(err) end
         end
+    end
+    frame:SetScript("OnUpdate", function(_, dt)
+        local started = ns.PerfBegin and ns.PerfBegin("trails", true)
+        onUpdate(_, dt)
+        if started then ns.PerfEnd("trails", started) end
     end)
 end
 

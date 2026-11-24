@@ -1,5 +1,21 @@
 local addonName, ns = ...
 
+-- When a route is planned in the background, how much of each frame it may
+-- take. The planner used to hand the frame back every so many items; an item
+-- costs several times more in the game than in a test host, and far more on
+-- a character with a full quest log, so a count that meant 2 ms there meant
+-- a hundred in play (a profile showed 70% of the game's time for 43 seconds
+-- while a zone was planned). With a clock available the planner now stops
+-- when this much time is used; without one it counts as before.
+local PLAN_BUDGET_MS = 5
+function ns.PlanShouldYield(work, every)
+    local started = ns.planSliceStart
+    if not started then return work % every == 0 end
+    if work % 4 ~= 0 then return false end
+    local now = ns.ReadPublic(debugprofilestop)
+    return type(now) ~= "number" or now < started or now - started >= PLAN_BUDGET_MS
+end
+
 local BEAM_WIDTH, QUESTS_PER_TRIP, MAX_STOPS = 24, 6, 20
 local costModels = setmetatable({}, {__mode = "k"})
 -- Exact trip ordering is attempted while the progress-vector state space
@@ -129,6 +145,7 @@ local function availableTasks(guide, query)
                     or active or ns.QuestProgressReady(ns.self, record.id) == true)
                     or not guide.classLineGuide and (levelAllowed ~= false
                         or activeForParty(record.id, true, guide.personal)
+                            and not (ns.QuestTooHard and ns.QuestTooHard(record.id, (ns.PartyLevelFloor(query))))
                         or guide.collectionRequired and guide.collectionRequired[record.id]
                         or guide.collectionGoals and guide.collectionGoals[record.id]
                         or guide.catchupRequired and guide.catchupRequired[record.id]))
@@ -286,7 +303,7 @@ local function tripMatrix(tasks, mapID, position, cooperative, metrics)
             local d = distance(mapID, points[a], points[b], metrics)
             matrix[a][b], matrix[b][a] = d, d
             work = work + 1
-            if cooperative and work % 150 == 0 then coroutine.yield(); resetMetrics(metrics) end
+            if cooperative and ns.PlanShouldYield(work, 150) then coroutine.yield(); resetMetrics(metrics) end
         end
     end
     return points, index, matrix
@@ -329,7 +346,7 @@ local function exactOrder(tasks, points, index, matrix, cooperative, metrics)
                     end
                 end
                 work = work + 1
-                if cooperative and work % 150 == 0 then coroutine.yield(); resetMetrics(metrics) end
+                if cooperative and ns.PlanShouldYield(work, 150) then coroutine.yield(); resetMetrics(metrics) end
             end
         end
         local i = 1
@@ -377,7 +394,7 @@ local function beamOrder(tasks, points, index, matrix, cooperative, metrics)
                         signatures[key] = {next = nextState, stops = ordered, last = to, cost = cost}
                     end
                     work = work + 1
-                    if cooperative and work % 150 == 0 then coroutine.yield(); resetMetrics(metrics) end
+                    if cooperative and ns.PlanShouldYield(work, 150) then coroutine.yield(); resetMetrics(metrics) end
                 end
             end
         end
@@ -415,7 +432,7 @@ local function completePreview(tasks, position, cooperative, metrics)
                 if not cost or d < cost or d == cost and stop.id < tasks[best].id then best, cost = index, d end
             end
             work = work + 1
-            if cooperative and work % 200 == 0 then coroutine.yield(); resetMetrics(metrics) end
+            if cooperative and ns.PlanShouldYield(work, 200) then coroutine.yield(); resetMetrics(metrics) end
         end
         if not best then break end
         previous = tasks[best].stages[nextStage[best]]
@@ -481,7 +498,7 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative, query)
     end
     if #stops == 0 and #tasks == 0 and guide.mode == "zone" and query.zoneFinishing
         and complete < enabled and not guide.pendingReason and ns.NextZoneBaselineGuide then
-        local nextGuide = ns.NextZoneBaselineGuide(guide, true)
+        local nextGuide = ns.NextLevelingGuide and ns.NextLevelingGuide(guide) or ns.NextZoneBaselineGuide(guide, true)
         if nextGuide then
             local low, high = nextGuide.rangeLow or "?", nextGuide.rangeHigh or "?"
             local label = (guide.zone or guide.title or "This zone") .. " finished — next: "
@@ -561,25 +578,29 @@ function ns.PlanLevelingGuide(guide, invite, refreshOnly)
         local timed = ns.Public(start) and type(start) == "number" and start == start
             and start >= 0 and start < math.huge
         local okay, result
+        -- The planner hands the frame back by the clock (ns.PlanShouldYield),
+        -- counted from here.
+        ns.planSliceStart = timed and start or nil
         for _ = 1, 16 do
             okay, result = coroutine.resume(job)
-            if generation ~= ns.planningGeneration then return end
+            if generation ~= ns.planningGeneration then ns.planSliceStart = nil; return end
             if not okay or coroutine.status(job) == "dead" or not timed then break end
             local now = ns.ReadPublic(debugprofilestop)
             if not ns.Public(now) or type(now) ~= "number" or now ~= now or now >= math.huge
                 or now < start or now - start >= 3 then break end
         end
+        ns.planSliceStart = nil
         if not okay then
             ns.routePlanning = nil
             ns.routePlanningError = "Route generation failed; copy Diagnostics for investigation."
             if ns.Public(result) and type(result) == "string" then ns.routePlanningErrorDetail = string.sub(result, 1, 400) end
             ns.Refresh(); ns.guideAction = ns.routePlanningError; return
         end
-        if coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
+        if coroutine.status(job) ~= "dead" then ns.After("plan", 0.01, advance); return end
         if fingerprint(guide) ~= before and restarts < 2 then
             restarts = restarts + 1; before = fingerprint(guide)
             job = coroutine.create(function() return ns.BuildGuideRoute(guide, true, true) end)
-            C_Timer.After(0.01, advance); return
+            ns.After("plan", 0.01, advance); return
         end
         ns.routePlanning, ns.routePlanningError, ns.routePlanningErrorDetail = nil, nil, nil
         if guide.fixedRoute then result = ns.BuildFixedGuideRoute(guide, true) end
@@ -602,6 +623,6 @@ function ns.PlanLevelingGuide(guide, invite, refreshOnly)
         ns.routePlanningError = "Route scheduler unavailable on this build; copy Diagnostics."
         ns.Refresh(); ns.guideAction = ns.routePlanningError; return false
     end
-    C_Timer.After(0.01, advance)
+    ns.After("plan", 0.01, advance)
     return true
 end

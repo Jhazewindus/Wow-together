@@ -108,6 +108,7 @@ class LevelBandTests(unittest.TestCase):
 
     def test_band_is_close_at_high_levels_and_uses_lowest_synced_level(self):
         c = leveling_client(); c.ns.profile.level = 60
+        c.ns.SetOption('questLevelsAbove', 'any')
         self.assertEqual(c.ns.PreferredQuestLevels(), (57, 63))
         for level, expected in ((56, False), (57, True), (60, True), (63, True), (64, False)):
             c.ns.catalogue.quests[901].level = level

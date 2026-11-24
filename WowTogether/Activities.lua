@@ -247,7 +247,7 @@ function ns.ScheduleActivitySuggestions()
     local context = table.concat(parts, "|")
     if context == lastContext then return end
     pending = true
-    C_Timer.After(1, function()
+    ns.After("timer:Activities", 1, function()
         pending = false
         if ns.RouteInCombat() or ns.routePlanning or ns.guideScanning or ns.HasSuggestionChipKind("activity") then return end
         lastContext = context

@@ -501,7 +501,7 @@ function ns.QueueLibrarySearch(value)
     ns.librarySearchGeneration = (ns.librarySearchGeneration or 0) + 1
     local generation = ns.librarySearchGeneration
     if C_Timer and type(C_Timer.After) == "function" then
-        C_Timer.After(0.4, function()
+        ns.After("timer:Catalogue", 0.4, function()
             if generation == ns.librarySearchGeneration and ns.filter == "library" then ns.ApplyLibrarySearch() end
         end)
     end
