@@ -279,6 +279,20 @@ function ns.RegisterSyncKind(letter, handler)
     syncKinds[letter] = handler
     return true
 end
+
+-- Module packets use the same validated party transport as core traffic.
+-- Keep module payloads behind a registered kind and in the background lane
+-- unless the caller explicitly asks for normal-priority delivery.
+function ns.QueueModuleSync(letter, payload, priority)
+    if type(letter) ~= "string" or not string.match(letter, "^[A-Z]$")
+        or not syncKinds[letter] or type(payload) ~= "string" or payload == ""
+        or string.find(payload, "[\r\n%z]") then return false end
+    priority = priority or "background"
+    if priority ~= "background" and priority ~= "now" then return false end
+    local message = "1|" .. letter .. "|" .. payload
+    if #message > 255 or type(ns.QueueMessage) ~= "function" then return false end
+    return ns.QueueMessage(message, priority) == true
+end
 ns.hooks.syncReceive[#ns.hooks.syncReceive + 1] = function(message, sender)
     local letter = type(message) == "string" and string.match(message, "^1|([A-Z])|")
     local handler = letter and syncKinds[letter]
@@ -495,6 +509,7 @@ local publicAPI = {
 }
 for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance", "PlayerPoint",
     "TrailLoop", "RouteCostModel", "PushGuideStop", "ClearModuleStops", "RegisterSyncKind",
+    "QueueModuleSync",
     "CatalogueQuest", "ReadPublic", "Public", "GuideInteger", "SafeTitle",
     "Option", "SetOption", "Print", "On", "ResearchExportHook",
     "StartFarmCandidateScan", "PublishGoldFunction"}) do

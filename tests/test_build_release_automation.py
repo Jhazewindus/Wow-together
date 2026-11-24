@@ -42,8 +42,11 @@ class BuildAutomationTests(unittest.TestCase):
             archive = next(Path(tmp).glob('*.zip'))
             self.assertEqual(archive.name, 'WowTogether-beta-core-test-abcdef123456.zip')
             with zipfile.ZipFile(archive) as z:
-                self.assertEqual({p.split('/')[0] for p in z.namelist()},
-                    {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData'})
+                roots = {p.split('/')[0] for p in z.namelist()}
+                expected = {'WowTogether', 'WowTogether_QuestData',
+                    'WowTogether_ProfessionData', 'WowTogether_DungeonData'}
+                if (ROOT / 'WowTogether_Gold').exists(): expected.add('WowTogether_Gold')
+                self.assertEqual(roots, expected)
                 self.assertTrue(all('/' in p and not p.startswith('/') and '..' not in p.split('/') for p in z.namelist()))
                 self.assertIn('## Version: 0.0.0-dev', z.read('WowTogether/WowTogether.toc').decode())
                 icons = {p for p in z.namelist() if p.startswith('WowTogether/Media/Icons/')}
