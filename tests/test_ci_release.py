@@ -29,7 +29,8 @@ Please check:
 Developer notes:
 - Memoize policy work.
 '''
-ROOTS = ['WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData', 'WowTogether_DungeonData']
+ROOTS = ['WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData',
+         'WowTogether_DungeonData', 'WowTogether_GoldData']
 
 
 def build(path, roots=ROOTS, section=SECTION):

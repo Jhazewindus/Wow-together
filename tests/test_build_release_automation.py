@@ -35,7 +35,7 @@ class BuildAutomationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             builder.archive_name('1.2.3', '...', 'abcdef1')
 
-    def test_real_archive_has_only_the_four_addon_roots(self):
+    def test_real_archive_has_only_known_addon_roots(self):
         with tempfile.TemporaryDirectory() as tmp:
             with patch('sys.argv', ['build_release.py', '--output', tmp, '--label', 'core/test', '--sha', 'abcdef123456']):
                 with contextlib.redirect_stdout(io.StringIO()): builder.main()
