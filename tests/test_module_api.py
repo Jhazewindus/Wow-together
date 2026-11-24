@@ -56,7 +56,7 @@ class ModuleAPITests(unittest.TestCase):
                      'RouteCostModel', 'CatalogueQuest', 'ReadPublic', 'Public',
                      'GuideInteger', 'SafeTitle', 'Option', 'SetOption', 'Print', 'On'):
             self.assertEqual(self.lua.eval('type')(self.ns[name]), 'function', name)
-        self.assertEqual(self.ns.GoldAPIVersion, 1)
+        self.assertEqual(self.ns.GoldAPIVersion, 2)
         self.assertIsNotNone(self.ns.catalogue)
         self.assertIsNotNone(self.ns.RouteCostModel().weights)
 
@@ -68,10 +68,139 @@ class ModuleAPITests(unittest.TestCase):
                     'CatalogueQuest', 'ReadPublic', 'Public', 'GuideInteger',
                     'SafeTitle', 'Option', 'SetOption', 'Print', 'On',
                     'ResearchExportHook', 'StartFarmCandidateScan', 'QueueModuleSync',
-                    'PublishGoldFunction'}
+                    'PublishGoldFunction',
+                    'AuctionQuote', 'FarmPriorSearch', 'StartModuleLoop', 'StopModuleLoop',
+                    'SetFarmSession', 'RequestFarmSessionRefresh'}
         self.assertEqual({key for key, _ in api.items()}, expected)
-        self.assertEqual(api.version, 1)
-        self.assertEqual(self.ns.GoldAPIVersion, 1)
+        self.assertEqual(api.version, 2)
+        self.assertEqual(self.ns.GoldAPIVersion, 2)
+
+    def test_module_auction_quote_is_read_only_and_does_not_call_gold_price_hook(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.lua.execute('serverClock=100000; function GetServerTime() return serverClock end')
+        self.ns.StoreAuctionQuote(420, self.lua.table_from([[25, 2]], recursive=True), True)
+        self.assertTrue(api.PublishGoldFunction('Price', self.lua.eval('function() error("must not run") end'))[0])
+        price, age = api.AuctionQuote(420)
+        self.assertEqual(price, 25)
+        self.assertEqual(age, 0)
+        self.assertIsNone(api.AuctionQuote(421))
+        self.assertIsNone(api.AuctionQuote(-1))
+
+    def test_farm_prior_search_validates_and_uses_clock_budget_from_module_namespace(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.lua.execute('''
+            local addonName, addonNamespace = "WowTogether_Gold", {}
+            moduleAPI = _G.WowTogetherModuleAPI
+            priorDone = nil
+        ''')
+        external = self.lua.globals().moduleAPI
+        self.assertEqual(external.FarmPriorSearch(self.lua.table_from({
+            'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
+        self.assertIn('unavailable', external.FarmPriorSearch(self.lua.table_from({
+            'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[1])
+        self.assertEqual(external.FarmPriorSearch(self.lua.table_from({
+            'minLevel': 0, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
+        self.ns.farmPriorData = self.lua.table_from({'records': [{
+            'npcID': 77, 'name': 'Test wolf', 'minLevel': 11, 'maxLevel': 12,
+            'mapID': 501, 'zoneName': 'Test Coast',
+            'spawnPoints': [{'mapID': 501, 'x': .4, 'y': .5, 'source': 'test spawn'}],
+            'loot': [{'itemID': 88, 'chance': 12.5, 'source': 'test loot'}],
+            'sources': {'npcID': 'test NPC ID', 'name': 'test name', 'level': 'test levels',
+                'mapID': 'test map', 'zoneName': 'test zone', 'spawnPoints': 'test spawn',
+                'loot': 'test loot'}}]}, recursive=True)
+        self.lua.execute('''
+            clockTick=0
+            function debugprofilestop() clockTick=clockTick+.1; return clockTick end
+            priorDone=function(rows) priorResult=rows end
+        ''')
+        accepted = external.FarmPriorSearch(self.lua.table_from({
+            'minLevel': 10, 'maxLevel': 15, 'mapID': 501, 'limit': 5}),
+            self.lua.globals().priorDone)
+        self.assertTrue(accepted)
+        timers = self.lua.globals().timers
+        while len(timers):
+            callback = timers[1]
+            self.lua.execute('table.remove(timers, 1)')
+            callback()
+        result = self.lua.globals().priorResult[1]
+        self.assertEqual(result.npcID, 77)
+        self.assertEqual(result.loot[1].itemID, 88)
+        self.assertEqual(result.loot[1].source, 'test loot')
+        result.loot[1].chance = 99
+        self.assertEqual(self.ns.farmPriorData.records[1].loot[1].chance, 12.5)
+
+    def test_module_loop_starts_closes_walk_route_and_reports_stop(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.RegisterModule('Gold', self.lua.table())
+        self.lua.execute('''
+            local ns=...
+            ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.RouteInCombat=function() return false end
+            ns.DrawRoute=function() end
+            ns.AttachRouteProvider=function() end
+            ns.OpenGuideWindow=function() end
+            loopStoppedReason=nil
+        ''', self.ns)
+        spec = self.lua.table_from({'title': 'Wolf loop', 'points': [
+            {'mapID': 501, 'x': .3, 'y': .4, 'label': 'Hunt wolves', 'reason': 'Collect hides.'},
+            {'mapID': 501, 'x': .6, 'y': .4, 'label': 'Hunt more wolves', 'reason': 'Stay near the den.'}],
+            'onStop': self.lua.eval('function(reason) loopStoppedReason=reason end')}, recursive=True)
+        self.assertTrue(api.StartModuleLoop('Gold', spec))
+        self.assertEqual(self.ns.routeSelection.mode, 'module')
+        self.assertEqual(self.ns.selectedRoute.stops[1].kind, 'farm')
+        self.assertTrue(api.StopModuleLoop('Gold'))
+        self.assertEqual(self.lua.globals().loopStoppedReason, 'stopped by module')
+        self.assertFalse(api.StopModuleLoop('Gold', 'unexpected')[0])
+
+    def test_module_loop_requires_confirmation_before_replacing_active_guide(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.RegisterModule('Gold', self.lua.table())
+        self.lua.execute('''
+            local ns=...
+            ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.RouteInCombat=function() return false end
+            ns.DrawRoute=function() end; ns.AttachRouteProvider=function() end
+            ns.OpenGuideWindow=function() end
+            popupRequest=nil
+            StaticPopup_Show=function(key, title, _, data)
+                popupRequest=data
+                return {key=key,title=title}
+            end
+            StaticPopupDialogs={}
+        ''', self.ns)
+        self.ns.routeSelection = self.lua.table_from({'key': 'existing:guide'})
+        self.ns.selectedRoute = self.lua.table_from({'stops': []})
+        spec = self.lua.table_from({'title': 'Ore loop', 'points': [
+            {'mapID': 501, 'x': .3, 'y': .4, 'label': 'Mine ore', 'reason': 'Follow the vein.'},
+            {'mapID': 501, 'x': .6, 'y': .4, 'label': 'Mine more ore', 'reason': 'Continue around.'}],
+            'onStop': self.lua.eval('function() end')}, recursive=True)
+        self.assertTrue(api.StartModuleLoop('Gold', spec))
+        self.assertEqual(self.ns.routeSelection.key, 'existing:guide')
+        self.lua.globals().StaticPopupDialogs.WOWTOGETHER_MODULE_LOOP_CONFIRM.OnAccept(
+            None, self.lua.globals().popupRequest)
+        self.assertEqual(self.ns.routeSelection.mode, 'module')
+        api.StopModuleLoop('Gold')
+
+    def test_farm_session_data_is_validated_displayed_and_refresh_is_rate_limited(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.ns.RegisterModule('Gold', self.lua.table())
+        self.lua.execute('''
+            local ns=...
+            function GetTime() return 10 end
+            ns.RouteInCombat=function() return false end
+            redrawCount=0; ns.RedrawGoldSessionCard=function() redrawCount=redrawCount+1 end
+        ''', self.ns)
+        self.assertFalse(api.SetFarmSession('Gold', self.lua.table_from({'label': 'Farm'}))[0])
+        self.assertTrue(api.SetFarmSession('Gold', self.lua.table_from({'label': 'Wolf den',
+            'estimatedCopperPerHour': 100000, 'actualCopperPerHour': 80000, 'startTime': 100})))
+        card = self.ns.ModuleFarmSessionForCard()
+        self.assertIn('Estimated 10.0 gold/hour', card.detail)
+        self.assertIn('Actual 8.0 gold/hour', card.detail)
+        self.ns.RenderRecommended(self.ns.NewQuestQuery())
+        self.assertTrue(self.ns.ui.home.goldSession.IsShown(self.ns.ui.home.goldSession))
+        self.assertIn('Actual 8.0 gold/hour', self.ns.ui.home.goldSession.detail.GetText(self.ns.ui.home.goldSession.detail))
+        self.assertTrue(api.RequestFarmSessionRefresh('Gold'))
+        self.assertFalse(api.RequestFarmSessionRefresh('Gold')[0])
 
     def test_gold_functions_publish_only_named_hooks_with_safe_native_fallbacks(self):
         api = self.lua.globals().WowTogetherModuleAPI
@@ -86,7 +215,7 @@ class ModuleAPITests(unittest.TestCase):
         self.assertEqual(self.ns.AuctionUnitPrice(999, 1), (12, True))
         self.assertTrue(publish('Price', self.lua.eval('function() return 0, true end'))[0])
         self.assertEqual(self.ns.AuctionUnitPrice(999, 1), (12, True))
-        self.assertEqual(self.ns.GoldAPIVersion, 1)
+        self.assertEqual(self.ns.GoldAPIVersion, 2)
 
     def test_gold_suggestions_are_core_recommendation_cards_not_party_progress(self):
         api = self.lua.globals().WowTogetherModuleAPI
@@ -148,7 +277,7 @@ class ModuleAPITests(unittest.TestCase):
 
     def test_optional_addon_uses_public_api_from_its_own_namespace(self):
         api = self.lua.globals().WowTogetherModuleAPI
-        self.assertEqual(api.version, 1)
+        self.assertEqual(api.version, 2)
         self.assertIsNotNone(api.RegisterModule)
         self.ns.catalogue = None
         self.assertIsNone(api.catalogue)
@@ -157,7 +286,7 @@ class ModuleAPITests(unittest.TestCase):
         self.lua.execute('''
             local addonName, namespace = "WowTogether_Gold", {}
             local ns = _G.WowTogetherModuleAPI
-            assert(ns and ns.version == 1 and ns.RegisterModule)
+            assert(ns and ns.version == 2 and ns.RegisterModule)
             ns.RegisterModule("Gold", {tab={title="Gold", render=function() end}})
         ''')
         self.assertIsNotNone(self.ns.ui.viewChoice.options['module:gold'])

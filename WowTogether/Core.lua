@@ -12,8 +12,8 @@ if ns.VERSION == "@project-version@" then ns.VERSION = "dev" end
 ns.RELEASE_NAME = metadata("X-ReleaseName") or ""
 ns.hooks = {
     optionGet = {}, optionSet = {}, uiCreated = {}, settingsCreated = {}, render = {},
-    slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {},
-    routeAfterUpdate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
+    slash = {}, diagnostics = {}, syncReceive = {}, routeBeforeUpdate = {}, routeCleared = {},
+    routeAfterUpdate = {}, routeWillActivate = {}, stopIcon = {}, stopSymbol = {}, destinationDecision = {},
     stepPresentation = {}, researchExport = {}, goldPrice = {}, goldSuggestions = {},
     goldSessionCard = {}, goldFunctionPublished = {},
     hubTabs = {}, hubTabRegistered = {},

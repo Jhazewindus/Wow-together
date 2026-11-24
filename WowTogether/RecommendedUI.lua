@@ -81,12 +81,26 @@ local function sessionSummaryCopy()
 end
 
 local function renderGoldSessionCard(home)
+    local farm = ns.ModuleFarmSessionForCard and ns.ModuleFarmSessionForCard()
+    if farm then
+        updateCard(home.goldSession, {kind = "gold", category = "GOLD SESSION",
+            title = farm.title, detail = farm.detail, action = "Open", start = farm.action})
+        return
+    end
     local summary = sessionSummaryCopy()
     if not summary then home.goldSession:Hide(); return end
     local handled, spec = ns.FirstHook("goldSessionCard", summary)
     if not handled or type(spec) ~= "table" then home.goldSession:Hide(); return end
     updateCard(home.goldSession, {kind = "gold", category = "GOLD SESSION",
         title = spec.title, detail = spec.detail, action = "Open", start = spec.action})
+end
+
+function ns.RedrawGoldSessionCard()
+    if ns.RouteInCombat and ns.RouteInCombat() then return false end
+    local home = ns.ui and ns.ui.home
+    if not home or not home.goldSession then return false end
+    renderGoldSessionCard(home)
+    return true
 end
 
 local function createHome()
