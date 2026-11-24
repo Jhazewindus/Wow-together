@@ -169,7 +169,7 @@ function ns.SchedulePartyCatchup()
         or not ns.profile or ns.profile.level <= 0 or ns.profile.mapID <= 0
         or not C_Timer or type(C_Timer.After) ~= "function" then return end
     pending = true
-    C_Timer.After(1.5, function()
+    ns.After("timer:PartyCatchup", 1.5, function()
         pending = false
         if not ns.RouteInCombat() and not ns.routePlanning then ns.ShowPartyCatchup(nil, false) end
     end)

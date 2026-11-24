@@ -8,6 +8,7 @@ MOCK = r'''
 secret = {}
 issecretvalue = function(v) return rawequal(v, secret) end
 logs, timers, sent, delays = {}, {}, {}, {}
+timerLabel, timerMetadata = nil, {}
 SlashCmdList = {}
 UIParent = {}
 Minimap = {}
@@ -100,7 +101,7 @@ end
 grouped, raid = true, false
 function IsInGroup() return grouped end
 function IsInRaid() return raid end
-C_Timer = {After=function(delay, fn) timers[#timers+1] = fn; delays[#delays+1] = delay end}
+C_Timer = {After=function(delay, fn) timers[#timers+1] = fn; delays[#delays+1] = delay; timerMetadata[fn] = {delay=delay, label=timerLabel} end}
 -- Deliberately arbitrary enum codes ensure the addon never hardcodes success=0.
 Enum = {RegisterAddonMessagePrefixResult={Success=7, DuplicatePrefix=8, InvalidPrefix=9},
         SendAddonMessageResult={Success=7, AddonMessageThrottle=8, InvalidChatType=9}}
@@ -125,7 +126,7 @@ C_QuestLog = {
 '''
 
 class Client:
-    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, saved_character=None, before_load=None, party_mode='always'):
+    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, saved_character=None, before_load=None, party_mode='always', fresh_install=False):
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         g = self.lua.globals()
@@ -158,6 +159,16 @@ class Client:
             if line.endswith('.lua'):
                 self.lua.execute('assert(loadstring(...))(select(2, ...))',
                                  (ROOT / 'WowTogether' / line).read_text(), 'WowTogether', self.ns)
+        self.lua.execute(r'''
+        local ns = ...
+        local after = ns.After
+        ns.After = function(label, delay, callback)
+            timerLabel = label
+            local result = after(label, delay, callback)
+            timerLabel = nil
+            return result
+        end
+        ''', self.ns)
         # 0.8.90 stores multiple subscribers per event. Keep the older host
         # fixtures' convenient `handlers.EVENT(...)` syntax while preserving
         # the production event list consumed by the frame dispatcher.
@@ -187,6 +198,9 @@ class Client:
         config = dict(saved_variables.get('config') or {})
         if 'partyMode' not in config and 'soloMode' not in config:
             config['partyMode'] = party_mode
+        if not fresh_install:
+            config.setdefault('levelingPath', False)
+            config.setdefault('xpModelOffAgain', True)
         saved_variables['config'] = config
         g.WowTogetherDB = self.lua.table_from(saved_variables, recursive=True)
         if saved_character is not None:
@@ -264,6 +278,16 @@ class Client:
         while len(g.timers):
             fn = g.timers[1]
             self.lua.eval('table.remove')(g.timers, 1)
+            # Simulate the timer's elapsed time; the coalescing scheduler uses
+            # GetTime to decide whether another event arrived during its quiet window.
+            metadata = g.timerMetadata[fn]
+            if metadata is not None and metadata.label == 'timer:Core:refresh':
+                delay = metadata.delay or 0
+                if isinstance(g.clock, (int, float)):
+                    g.clock = g.clock + delay
+                if isinstance(g.sessionClock, (int, float)):
+                    g.sessionClock = g.sessionClock + delay
+            g.timerMetadata[fn] = None
             fn()
             count += 1
             assert count < 1000, 'timer loop'

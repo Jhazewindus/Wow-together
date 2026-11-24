@@ -83,6 +83,7 @@ class FullDungeonCollectionTests(unittest.TestCase):
 
     def test_unmapped_far_dungeon_can_prompt_without_replacing_active_guide(self):
         c = solo(); group = collection(c)
+        c.ns.SetOption('questLevelsAbove', '3')
         for q in c.ns.catalogue.quests.values(): q.starts, q.objectives, q.ends = None, None, None
         c.ns.catalogue.quests[902] = c.lua.table_from(quest('Current work', level=15), recursive=True)
         c.lua.execute("entries={{questID=902,title='Current work',isHeader=false}}")

@@ -171,7 +171,7 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield, options)
     local work, tried, accepted = 0, 0, 0
     local function tick()
         work = work + 1
-        if cooperative and work % 200 == 0 then coroutine.yield(); if onYield then onYield() end end
+        if cooperative and ns.PlanShouldYield(work, 200) then coroutine.yield(); if onYield then onYield() end end
     end
     local baseline = model.evaluate(plan, tick)
     local current, changes = baseline, {}

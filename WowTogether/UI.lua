@@ -716,7 +716,7 @@ end
 function ns.QueueWindowRender()
     if ns.ui.resizeRenderQueued or not C_Timer or type(C_Timer.After) ~= "function" then return end
     ns.ui.resizeRenderQueued = true
-    C_Timer.After(0.15, function()
+    ns.After("timer:UI", 0.15, function()
         ns.ui.resizeRenderQueued = nil
         if ns.ui.resizing then ns.ui.resizeDirty = true else ns.Render() end
     end)
@@ -726,7 +726,7 @@ function ns.QueueBackgroundRender()
     if not ns.ui or ns.ui.backgroundRenderQueued then return end
     if not C_Timer or type(C_Timer.After) ~= "function" then ns.Render(nil, true); return end
     ns.ui.backgroundRenderQueued = true
-    C_Timer.After(0.1, function()
+    ns.After("timer:UI", 0.1, function()
         ns.ui.backgroundRenderQueued = nil
         if not ns.window or not ns.window:IsShown() then return end
         if ns.ui.resizing then ns.ui.resizeDirty = true
@@ -999,6 +999,8 @@ end
 
 local function followActivity(activity)
     if activity.dungeon then return ns.ShowDungeonQuests(activity.dungeon, true) end
+    -- Gathering professions have their own viewer: there is no recipe to plan.
+    if activity.gathering and ns.ShowGatheringViewer then return ns.ShowGatheringViewer(activity.gathering) end
     local professionID = activity.profession or activity.professionID
     if not professionID then
         for id in pairs(ns.professionData or {}) do
@@ -1411,7 +1413,7 @@ function ns.ShowDiagnostics(report, caption, onRefresh)
             if not C_Timer or type(C_Timer.After) ~= "function" then return end
             local generation = ns.diagnosticsGeneration
             -- Native EditBox copying runs first. Do not intercept or replace it.
-            C_Timer.After(0.1, function()
+            ns.After("timer:UI", 0.1, function()
                 if generation == ns.diagnosticsGeneration then window:Hide(); edit:ClearFocus() end
             end)
         end)

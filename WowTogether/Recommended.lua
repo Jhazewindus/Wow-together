@@ -59,7 +59,18 @@ ns.RegisterRecommendationProvider("leveling", function(query)
     end
     local level, _, name = ns.PartyLevelFloor(query)
     if level and level >= 60 then return {}, "Level cap reached. Explore dungeons or continue your professions." end
-    for _, guide in ipairs(ns.LevelingGuideChoices(true, query, "party")) do
+    -- The leveling path decides which zone comes first when it has been
+    -- worked out; otherwise the list's own order stands.
+    local choices = ns.LevelingGuideChoices(true, query, "party")
+    local planned = ns.LevelingPath and ns.LevelingPath()
+    local first = planned and planned.steps[1] and planned.steps[1].mapID
+    if first then
+        local ordered = {}
+        for _, guide in ipairs(choices) do if (guide.homeMapID or guide.mapID) == first then ordered[#ordered + 1] = guide end end
+        for _, guide in ipairs(choices) do if (guide.homeMapID or guide.mapID) ~= first then ordered[#ordered + 1] = guide end end
+        choices = ordered
+    end
+    for _, guide in ipairs(choices) do
         if guide.hasPoint and ns.GuideLevelSuitable(guide, query, true) then
             local active, remaining, completed = 0, 0, 0
             for _, record in ipairs(guide.records) do
@@ -91,6 +102,8 @@ ns.RegisterRecommendationProvider("leveling", function(query)
     end
     return {}, "No suitable unfinished zone guide is ready. Browse all leveling guides to explore your next zone."
 end)
+
+if ns.LevelingPathRecommendation then ns.RegisterRecommendationProvider("path", ns.LevelingPathRecommendation) end
 
 ns.RegisterRecommendationProvider("professions", function()
     local result = {}

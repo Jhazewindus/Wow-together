@@ -185,6 +185,7 @@ class GroupQuestGuideTests(unittest.TestCase):
                 with self.subTest(kind=kind, fixed=fixed):
                     c = guide_client(2)
                     c.ns.db.config.fixedZoneGuides = fixed
+                    c.ns.SetOption('soloEliteQuests', True)
                     for q in c.ns.catalogue.quests.values(): q.questType = kind
                     g = zone(c)
                     route = c.ns.BuildGuideRoute(g, False)
@@ -208,6 +209,7 @@ class GroupQuestGuideTests(unittest.TestCase):
 
     def test_quest_list_labels_difficulty_separately_from_availability_and_level(self):
         c = guide_client(2)
+        c.ns.SetOption('soloEliteQuests', True)
         c.ns.catalogue.quests[900].questType = 'Elite'
         c.ns.ShowGuideQuestList(zone(c)); c.drain()
         row = next(r for r in c.ns.guideQuestList.rows.values() if r.stop.id == 900 and r.stop.kind == 'a')
@@ -220,6 +222,7 @@ class GroupQuestGuideTests(unittest.TestCase):
 
     def test_skip_is_only_explicit_and_scan_preserves_skip_without_completion_credit(self):
         c = guide_client(2)
+        c.ns.SetOption('soloEliteQuests', True)
         for q in c.ns.catalogue.quests.values(): q.questType = 'Elite'
         g = zone(c); c.ns.ActivateRoute(g); before = order(g)
         self.assertFalse(c.ns.GuideQuestSkipped(900))

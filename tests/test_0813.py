@@ -95,7 +95,7 @@ class GuideCompletionTests(unittest.TestCase):
         self.assertIn('steps are unavailable', c.ns.routePaused)
 
     def test_elite_work_remains_available_solo_and_in_party_without_reordering(self):
-        c = guide_client(2); g = start(c); before = order(g)
+        c = guide_client(2); c.ns.SetOption('soloEliteQuests', True); g = start(c); before = order(g)
         for q in c.ns.catalogue.quests.values(): q.questType = 'Elite'
         c.ns.Refresh()
         self.assertIsNone(c.ns.selectedRoute.complete)

@@ -10,6 +10,9 @@ function ns.KeepLowValueQuest(id)
     return true
 end
 
+-- Has the player chosen to keep this quest although it pays little?
+function ns.LowValueQuestKept(id) return keptLowValue[id] == true end
+
 function ns.AbandonLowValueQuest(id)
     if not ns.GuideInteger(id) or id <= 0 or not ns.active[id] then return false end
     local combat = type(InCombatLockdown) == "function" and InCombatLockdown()
@@ -376,11 +379,79 @@ function ns.UsefulQuestReason(id, key, level, query)
     return chain and chain.reason or legacyUsefulQuestReason(id, key, level or ns.PartyLevelFloor(query), query)
 end
 
+-- How far along a quest in the player's own log is: the average of its
+-- objectives, each counted as have/need (1 when finished). Nil when the
+-- client has reported no countable objective.
+function ns.QuestProgressFraction(id)
+    local progress = ns.active and ns.active[id] and ns.ProgressForMember(ns.self, id)
+    if not progress or type(progress.objectives) ~= "table" or #progress.objectives == 0 then return nil end
+    local total = 0
+    for _, objective in ipairs(progress.objectives) do
+        if ns.ObjectiveFinished(objective) then total = total + 1
+        elseif ns.GuideInteger(objective.have) and ns.GuideInteger(objective.need) and objective.need > 0 then
+            total = total + math.max(0, math.min(1, objective.have / objective.need))
+        end
+    end
+    return total / #progress.objectives
+end
+
+-- A quest the player has nearly finished is finished before the zone is
+-- left, whatever its experience is worth now: the work is already done. The
+-- share that counts as "nearly" is the player's setting (85% by default).
+function ns.QuestNearlyDone(id)
+    local wanted = ns.Option and ns.Option("finishNearlyDone")
+    if wanted == false or wanted == "off" then return false end
+    local fraction = ns.QuestProgressFraction(id)
+    if not fraction or fraction >= 1 then return false end
+    return fraction >= (tonumber(wanted) or 85) / 100, fraction
+end
+
+-- Is this quest too far above the character to be sent to now?
+--
+-- A quest more than a few levels up means monsters the character cannot
+-- fight, wherever the quest came from. Being in the log, or being "required
+-- for" a later quest, does not change that: the guide used to send a level
+-- 33 character to a level 36 quest in an elite area on both grounds. Such a
+-- quest waits, and comes back by itself when the character has the levels.
+-- Work already done is still handed in: a quest whose objectives are
+-- complete, or nearly so, is not held back. How many levels above is the
+-- player's setting (two by default, the same line the leveling path draws).
+function ns.QuestTooHard(id, level)
+    local quest = ns.CatalogueQuest(id)
+    if not quest or not ns.GuideInteger(quest.level) or not ns.GuideInteger(level) then return false end
+    local setting = ns.Option and ns.Option("questLevelsAbove")
+    if setting == "any" then return false end
+    local above = tonumber(setting) or 2
+    if quest.level <= level + above then return false end
+    local fraction = ns.QuestProgressFraction(id)
+    if fraction and fraction >= 1 then return false end
+    if ns.QuestNearlyDone(id) then return false end
+    return true, "Level " .. quest.level .. " quest: too hard at level " .. level .. ". It comes back when you are level "
+        .. (quest.level - above) .. "."
+end
+
 local function levelingValue(id, query)
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end
     local level, key = ns.PartyLevelFloor(query)
     if not level then return nil end
+    do
+        local hard, why = ns.QuestTooHard(id, level)
+        if hard then return false, why end
+    end
+    if ns.active and ns.active[id] ~= nil then
+        local nearly, fraction = ns.QuestNearlyDone(id)
+        if nearly then
+            return true, "You are " .. math.floor(fraction * 100 + 0.5) .. "% through this one: finish it before leaving the zone."
+        end
+    end
+    -- Alone, an elite or raid quest is not a step the player can take: it is
+    -- set aside, not put in front of them to skip one by one. In a group, or
+    -- with the setting on, it is planned like any other quest.
+    if ns.IsGroupQuest(id) and ns.Option("soloEliteQuests") ~= true
+        and ns.ReadPublic(IsInGroup) ~= true and #(ns.partyNames or {}) == 0 then
+        return false, "Elite quest: set aside while you play alone. Group up, or allow elite quests under Guide in settings."
+    end
     local activeGuide = ns.routeSelection
     if ns.GuideEfficiencyMode(activeGuide) == "complete" and activeGuide
         and (activeGuide.mode == "zone" or activeGuide.mode == "bundle") then
@@ -486,6 +557,10 @@ end
 function ns.LevelingWorkAllowed(id, key, query)
     if not ns.ClassQuestEnabled(id) then return false end
     if ns.LevelingValue(id, query) ~= false then return true end
+    -- A quest that is too hard is not kept just because it can be "handed
+    -- in": a quest with nothing to do but travel to its end counts as ready
+    -- the moment it is accepted, and its end may be the dangerous part.
+    if ns.QuestTooHard(id, (ns.PartyLevelFloor(query))) then return false end
     local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
     return active and active[id] ~= nil and (ns.QuestProgressReady(key, id) == true
         or key == ns.self and ns.readyToTurnIn[id] == true) or false

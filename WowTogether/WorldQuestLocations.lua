@@ -13,7 +13,7 @@ local function project(world, mapID, context, swapped)
     local key = mapID .. ":" .. world.continent .. ":" .. world.worldX .. ":" .. world.worldY .. ":" .. (swapped and "yx" or "xy")
     if context.projections[key] ~= nil then return context.projections[key] or nil end
     context.work = (context.work or 0) + 1
-    if context.cooperative and context.work % 80 == 0 then coroutine.yield() end
+    if context.cooperative and ns.PlanShouldYield(context.work, 80) then coroutine.yield() end
     local map, vector = ns.ReadPublic(C_Map.GetMapPosFromWorldPos, world.continent,
         CreateVector2D(swapped and world.worldY or world.worldX, swapped and world.worldX or world.worldY), mapID)
     local result

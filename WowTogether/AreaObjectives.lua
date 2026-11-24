@@ -139,8 +139,33 @@ function ns.UpdateAreaObjectives(state)
     local anchor = panel:IsShown() and panel or ns.navigation
     local item = ns.navigation.questItem
     if item then
-        item:ClearAllPoints(); item:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)
+        -- A secure button: re-anchored only when its place changed, and never in combat.
+        if item.anchoredTo ~= anchor and not ns.RouteInCombat() then
+            item:ClearAllPoints(); item:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)
+            item.anchoredTo = anchor
+        end
         if item:IsShown() then anchor = item end
+    end
+    -- The Hearthstone or teleport button sits in the same stack. It is a
+    -- secure button, so it is only re-anchored outside combat.
+    local travel = ns.navigation.travelButton
+    if travel and not travel.SetPoint then travel = nil end
+    if travel then
+        if not ns.RouteInCombat() and travel.anchoredTo ~= anchor then
+            travel:ClearAllPoints(); travel:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)
+            travel.anchoredTo = anchor
+        end
+        if travel:IsShown() then anchor = travel end
+    end
+    -- The leveling-path strip: where this zone takes you and where next.
+    local strip = ns.navigation.pathStrip
+    if strip then
+        -- Re-anchored only when what is above it changed: this runs on every update.
+        if strip.anchoredTo ~= anchor then
+            strip:ClearAllPoints(); strip:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)
+            strip.anchoredTo = anchor
+        end
+        if strip:IsShown() then anchor = strip end
     end
     if panel.tipAnchor ~= anchor then
         ns.navigation.tip:ClearAllPoints(); ns.navigation.tip:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)

@@ -195,7 +195,7 @@ class ProfessionWindowTests(unittest.TestCase):
     def test_learned_cards_first_click_preview_then_reuse_mini_window(self):
         c = crafting()
         c.ns.SetFilter('professions')
-        self.assertEqual(c.ns.ui.visibleCards, 6)
+        self.assertEqual(c.ns.ui.visibleCards, 12)
         tile = c.ns.ui.cards[1]
         self.assertEqual(tile.activity.profession, 171)
         self.assertEqual(tile.category.text, 'YOUR PROFESSION')
@@ -205,7 +205,7 @@ class ProfessionWindowTests(unittest.TestCase):
         tile.OnClick(); c.drain()
         viewer = c.ns.professionViewer
         self.assertTrue(viewer.IsShown(viewer))
-        self.assertIn('CRAFTING PATH', viewer.body.text)
+        self.assertIn('SKILLING PATH', viewer.body.text)
         self.assertIsNone(c.ns.routeSelection)
         viewer.start.OnClick()
         self.assertEqual(c.ns.routeSelection.mode, 'profession')

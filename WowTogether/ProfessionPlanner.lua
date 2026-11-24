@@ -2,7 +2,7 @@ local addonName, ns = ...
 
 -- Personal crafting plans: only skill, inventory and public recipe facts enter
 -- this planner. No craft, train, buy or auction-search action is executed here.
-local order = {171, 164, 333, 202, 165, 197}
+local order = {171, 164, 333, 202, 165, 197, 129, 185} -- The six crafting professions, then First Aid and Cooking.
 local indexed, excluded = {}, {}
 local stockCache, nameCache, cachedRevision = {}, {}, nil
 local workstations = {[164] = "Use an anvil and bring a Blacksmith Hammer.",
@@ -12,12 +12,45 @@ local lastCraftGUID
 ns.professionCraftsObserved = 0
 
 function ns.ProfessionFacts(id)
+    -- The packed data addon holds the six crafting professions; secondary
+    -- ones bundled with the core (ProfessionSecondary.lua) fill in the rest.
     return ns.professionGuideData and ns.professionGuideData.professions[id]
+        or ns.professionExtraData and ns.professionExtraData[id] or nil
+end
+
+-- Smelting belongs to Mining, but its bars are reagents of Blacksmithing,
+-- Engineering and others. A character who also has Mining can make them, so
+-- the planner may price a bar as its ore. Spell and item IDs, quantities and
+-- the Mining skill each needs are Forever's (wowforever.be Mining tables,
+-- read 22 November 2026). They never give skill in the crafting profession.
+local MINING = 186
+local smelting
+local function smeltingRecipes()
+    if smelting then return smelting end
+    smelting = {}
+    for _, row in ipairs({
+        {2657, "Smelt Copper", 1, 2840, 1, {{2770, 1}}},
+        {3304, "Smelt Tin", 65, 3576, 1, {{2771, 1}}},
+        {2659, "Smelt Bronze", 65, 2841, 2, {{2840, 1}, {3576, 1}}},
+        {2658, "Smelt Silver", 75, 2842, 1, {{2775, 1}}},
+        {3307, "Smelt Iron", 125, 3575, 1, {{2772, 1}}},
+        {3308, "Smelt Gold", 155, 3577, 1, {{2776, 1}}},
+        {3569, "Smelt Steel", 165, 3859, 1, {{3575, 1}, {3857, 1}}},
+        {10097, "Smelt Mithril", 175, 3860, 1, {{3858, 1}}},
+        {10098, "Smelt Truesilver", 230, 6037, 1, {{7911, 1}}},
+        {16153, "Smelt Thorium", 250, 12359, 1, {{10620, 1}}},
+    }) do
+        smelting[#smelting + 1] = {id = row[1], name = row[2], learn = 0, yellow = 0, green = 0, grey = 0,
+            source = "smelting", external = {profession = MINING, skill = row[3]},
+            outputID = row[4], outputQuantity = row[5], materials = row[6]}
+    end
+    return smelting
 end
 
 local function index(id)
     local data = ns.ProfessionFacts(id)
     if not data then return end
+    if ns.ApplyProfessionHotfixes then ns.ApplyProfessionHotfixes(id) end
     if not indexed[id] or indexed[id].data ~= data then
         local byID, producers = {}, {}
         for _, recipe in ipairs(data.recipes) do
@@ -27,7 +60,14 @@ local function index(id)
                 table.insert(producers[recipe.outputID], recipe)
             end
         end
-        indexed[id] = {data = data, byID = byID, producers = producers}
+        -- Bars can also come from the character's own smelting (see `allowed`).
+        for _, recipe in ipairs(smeltingRecipes()) do
+            producers[recipe.outputID] = producers[recipe.outputID] or {}
+            table.insert(producers[recipe.outputID], recipe)
+        end
+        local byName = {}
+        for _, recipe in ipairs(data.recipes) do byName[recipe.name] = recipe end
+        indexed[id] = {data = data, byID = byID, byName = byName, producers = producers}
     end
     return indexed[id]
 end
@@ -43,10 +83,19 @@ end
 
 function ns.ReadProfessionSkills()
     if type(GetProfessions) ~= "function" or type(GetProfessionInfo) ~= "function" then return false end
-    local okay, a, b = pcall(GetProfessions)
+    -- Two primary slots first; any further returns are the secondary
+    -- professions (their order differs between clients, so each is
+    -- identified by its skill line, not by its position).
+    local slots = {pcall(GetProfessions)}
+    local okay, a, b = slots[1], slots[2], slots[3]
     if not okay or not ns.Public(a) or not ns.Public(b) then return false end
-    local seen = {}
-    for _, slot in pairs({a, b}) do
+    local seen, gathered = {}, {}
+    local wanted = {a, b}
+    for index = 4, 8 do
+        local slot = slots[index]
+        if ns.Public(slot) and ns.GuideInteger(slot) and slot > 0 then wanted[#wanted + 1] = slot end
+    end
+    for _, slot in pairs(wanted) do
         if ns.GuideInteger(slot) and slot > 0 then
             -- The shared public reader returns five values; this API's skill
             -- line ID is its seventh return. Guard the fields we actually use.
@@ -58,7 +107,9 @@ function ns.ReadProfessionSkills()
                     info.name, info.skill, info.maximum = ns.SafeTitle(name), skill, maximum
                     ns.professionData[id], seen[id] = info, true
                     ns.SaveProfessionState(id)
-                end -- Gathering professions are valid primaries, without a crafting card.
+                elseif ns.RecordGatheringSkill and ns.RecordGatheringSkill(id, ns.SafeTitle(name), skill, maximum) then
+                    gathered[id] = true -- Mining, Herbalism and Skinning have their own advice (Gathering.lua).
+                end
             else return false end -- An unreadable entry must not erase a learned profession.
         elseif slot ~= nil then return false end
     end
@@ -68,6 +119,7 @@ function ns.ReadProfessionSkills()
             if ns.professionSaved then ns.professionSaved.skills[id] = nil end
         end
     end
+    if ns.FinishGatheringRead then ns.FinishGatheringRead(gathered) end
     ns.professionSkillsConfirmed = true
     return true
 end
@@ -92,9 +144,22 @@ function ns.InitializeProfessionState()
     ns.ReadProfessionSkills()
 end
 
+-- What the client says about a recipe. Matched by spell ID, and failing
+-- that by name: a reference recipe whose spell ID is unknown (negative) or
+-- wrong is still recognised once the client lists it.
+local nameIndex = {}
 local function liveRecipe(id, recipe)
     local info = ns.professionData[id]
-    return info and info.known and info.known[recipe.id]
+    local known = info and info.known
+    if not known then return nil end
+    if known[recipe.id] then return known[recipe.id] end
+    local cache = nameIndex[id]
+    if not cache or cache.known ~= known or cache.revision ~= ns.professionRevision then
+        cache = {known = known, revision = ns.professionRevision, names = {}}
+        for _, live in pairs(known) do if live.name then cache.names[live.name] = live end end
+        nameIndex[id] = cache
+    end
+    return cache.names[recipe.name]
 end
 local function nativeProfessionOpen(id)
     local info = ns.professionData[id]
@@ -104,16 +169,25 @@ local function nativeProfessionOpen(id)
     end
     return type(open) == "table" and ns.Public(open.professionID) and open.professionID == id
 end
-local function allowed(id, recipe, skill)
+-- `widen` also admits recipes a vendor sells: the skilling path uses it for
+-- stretches no trainer recipe covers, or throughout when the player asks.
+local function allowed(id, recipe, skill, widen)
+    if recipe.external then
+        -- Made with another profession the character has: usable at any
+        -- skill in this one, as long as that profession's skill is enough.
+        local other = ns.gatheringData and ns.gatheringData[recipe.external.profession]
+        return other ~= nil and (other.skill or 0) >= recipe.external.skill
+    end
     local live = liveRecipe(id, recipe)
     if recipe.faction and (not ns.profile or recipe.faction ~= ns.profile.faction) and not (live and live.learned) then return false end
     if not ns.GuideInteger(recipe.learn, 1000) or recipe.learn > skill then return false end
-    if not (live and live.learned) and recipe.source ~= "start" and recipe.source ~= "trainer" then return false end
+    if not (live and live.learned) and recipe.source ~= "start" and recipe.source ~= "trainer"
+        and not (widen and recipe.source == "vendor") then return false end
     return #recipe.materials > 0
 end
 
-function ns.ProfessionSkillChance(id, recipe, skill, current)
-    if not allowed(id, recipe, skill) then return 0 end
+function ns.ProfessionSkillChance(id, recipe, skill, current, widen)
+    if not allowed(id, recipe, skill, widen) then return 0 end
     local live = liveRecipe(id, recipe)
     if current and live and live.learned and ns.professionData[id].recipeSkill == skill then
         if live.canSkillUp == false or ns.professionData[id].live and live.canSkillUp == nil then return 0 end
@@ -319,18 +393,18 @@ function ns.ProfessionMaterialForecast(id, plan, cooperative)
         incomplete = incomplete, start = plan.start, target = plan.target, missing = plan.missing}
 end
 
-local function candidates(id, skill, current)
+local function candidates(id, skill, current, widen)
     local result, data = {}, index(id)
     if not data then return result end
     for _, recipe in ipairs(data.data.recipes) do
         if (not current or not excluded[id] or excluded[id].skill ~= skill or not excluded[id][recipe.id])
             and (not current or not string.match(recipe.name, "^Runed .* Rod$") or not recipe.outputID or owned(recipe.outputID) == 0)
             and (current or not string.match(recipe.name, "^Runed .* Rod$") or skill == recipe.learn)
-            and ns.ProfessionSkillChance(id, recipe, skill, current) > 0 then result[#result + 1] = recipe end
+            and ns.ProfessionSkillChance(id, recipe, skill, current, widen) > 0 then result[#result + 1] = recipe end
     end
     -- A learned beta recipe missing from the snapshot can still be recommended.
     for _, live in pairs(ns.professionData[id] and ns.professionData[id].known or {}) do
-        if live.learned and live.canSkillUp == true and not data.byID[live.id] then
+        if live.learned and live.canSkillUp == true and not data.byID[live.id] and not data.byName[live.name] then
             local materials, _, incomplete = ns.RecipeMaterials(live.id, 1)
             if not incomplete and #materials > 0 then
                 local mats = {}; for _, m in ipairs(materials) do mats[#mats + 1] = {m.itemID, m.need} end
@@ -353,22 +427,35 @@ local function craftSeconds(recipe)
     return ns.GuideInteger(duration, 600000) and duration > 0 and duration / 1000 or 4
 end
 ns.ProfessionCraftSeconds = craftSeconds
+-- What a vendor pays for one craft's output, in the score's silver units,
+-- when the player counts it (the same preference the skilling path uses).
+local function resaleSilver(recipe, options)
+    if not options or not options.recoup or not recipe.outputID or not ns.ProfessionSellValue then return 0 end
+    local value = ns.ProfessionSellValue(recipe.outputID)
+    return value and value * (recipe.outputQuantity or 1) / 100 or 0
+end
+
 local function score(id, recipe, skill, current, useStock)
     local chance = ns.ProfessionSkillChance(id, recipe, skill, current)
+    -- The step being crafted follows the same preferences as the path, so
+    -- the two do not disagree about which recipe is cheapest.
+    local options = ns.ProfessionPathOptions and ns.ProfessionPathOptions()
+    if options and options.perk and chance > 0 and chance < 1 then chance = math.min(1, chance * 1.10) end
     if not current then
         local total, quantity, complete = 0, 0, true
         for _, mat in ipairs(recipe.materials) do
             local unit = price(mat[1]); quantity = quantity + mat[2]
             if unit then total = total + unit * mat[2] else complete = false end
         end
-        return ((complete and total / 100 or quantity * 10) + craftSeconds(recipe)) / chance, complete
+        local materials = complete and math.max(0, total / 100 - resaleSilver(recipe, options)) or quantity * 10
+        return (materials + craftSeconds(recipe)) / chance, complete
     end
     local list, cost, prep = ns.ProfessionMaterials(id, recipe, 1, skill, useStock)
     local live = liveRecipe(id, recipe)
     local gain = live and live.skillUps and math.max(1, live.skillUps) or 1
     -- Copper when prices are known; a resource heuristic otherwise. Missing
     -- prices are displayed as unknown, never advertised as zero cost.
-    local value = cost and cost / 100 or resources(list) * 10
+    local value = cost and math.max(0, cost / 100 - resaleSilver(recipe, options)) or resources(list) * 10
     local preparationTime = 0
     for _, step in ipairs(prep) do preparationTime = preparationTime + step.crafts * craftSeconds(step.recipe) end
     return (value + craftSeconds(recipe) + preparationTime + (live and live.learned and 0 or 8 / 5)) / (chance * gain), cost ~= nil
@@ -445,8 +532,21 @@ function ns.ProfessionTrainer(id, maximum, recipeID)
     local point = ns.PlayerPoint(profile.mapID or 0)
     local trainers = {}; for _, trainer in ipairs(facts.trainers) do trainers[#trainers + 1] = trainer end
     for _, trainer in ipairs(ns.ObservedProfessionTrainers and ns.ObservedProfessionTrainers(id, maximum, recipeID) or {}) do trainers[#trainers + 1] = trainer end
+    -- Some professions unlock a rank from an NPC who teaches nothing else
+    -- (a book vendor, a quest giver), or who teaches only the last recipes.
+    local learn
+    if recipeID then
+        local data = index(id)
+        learn = data and data.byID[recipeID] and data.byID[recipeID].learn
+    end
+    local function teaches(trainer)
+        if not recipeID then return not trainer.rankOnly or trainer.rankOnly == maximum end
+        if trainer.rankOnly and not trainer.recipesFrom then return false end
+        if trainer.recipesFrom then return learn ~= nil and learn >= trainer.recipesFrom end
+        return true
+    end
     for _, trainer in ipairs(trainers) do
-        if (trainer.faction == "Both" or trainer.faction == profile.faction)
+        if (trainer.faction == "Both" or trainer.faction == profile.faction) and teaches(trainer)
             and (trainer.maximum >= maximum or recipeID and trainer.recipes and trainer.recipes[recipeID]) then
             local distance = point and ns.TravelPointDistance(point, trainer)
             local value = distance or (trainer.mapID == profile.mapID and 10000 or 100000)
@@ -498,9 +598,10 @@ end
 -- whatever affordable portion is already in bags. Native reagents take priority.
 local function craftable(id, recipe, limit)
     local live = liveRecipe(id, recipe)
-    if not live or not live.learned then return 0 end
+    -- Smelting is not in this profession's recipe window: count it from bags.
+    if not recipe.external and (not live or not live.learned) then return 0 end
     local list, ignored
-    if nativeProfessionOpen(id) then
+    if nativeProfessionOpen(id) and not recipe.external then
         local incomplete
         list, ignored, incomplete = ns.RecipeMaterials(recipe.id, 1)
         if incomplete or #list == 0 then return end
@@ -646,7 +747,7 @@ function ns.BuildProfessionGuideRoute(guide)
             route.activeMaterials = workList
             if workIncomplete and not (available and available > 0) then
                 current = stop(id, "read", "Check the materials for " .. recipe.name .. " in your profession window", "Refresh when the recipe's material data is ready.")
-            elseif not live or not live.learned then
+            elseif (not live or not live.learned) and not nextRecipe.external then
                 if info.recipeRefreshPending or not info.live then
                     current = stop(id, "read", "Open your " .. facts.name .. " window",
                         "Refresh learned recipes before training " .. nextRecipe.name .. ".")
@@ -678,8 +779,10 @@ function ns.BuildProfessionGuideRoute(guide)
                 if available and available > 0 then
                     amount = available
                     route.activeMaterials = ns.ProfessionMaterials(id, nextRecipe, amount, info.skill, true)
-                    current = stop(id, "craft", "Craft " .. amount .. " × " .. nextRecipe.name,
-                        (preparing and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Use the materials in your bags."))
+                    current = stop(id, "craft", nextRecipe.external and (nextRecipe.name .. ": " .. amount .. " at a forge")
+                            or ("Craft " .. amount .. " × " .. nextRecipe.name),
+                        (nextRecipe.external and ("Smelting is under Mining in your spellbook. It prepares bars for " .. recipe.name .. ".")
+                            or preparing and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Use the materials in your bags."))
                         .. " Check your skill after crafting; stop at skill " .. workTarget .. ".")
                     current.craftQuantity = amount
                 elseif missing then current = stop(id, "buy", "Gather or buy materials for " .. recipe.name,
@@ -768,9 +871,19 @@ end
 
 -- Future estimates use dynamic programming over skill states, independent of
 -- another site's suggested sequence. Yield every eight states during previews.
+-- What the skilling path (ProfessionPath.lua) needs from this file.
+ns.professionPathEnv = {
+    candidates = function(id, skill, widen) return candidates(id, skill, false, widen) end,
+    craftable = function(id, recipe, skill) return allowed(id, recipe, skill, false) end,
+    price = price, seconds = craftSeconds, index = index, live = liveRecipe,
+}
+
 function ns.PlanProfessionPreview(id, target, cooperative)
     local info, facts = ns.professionData[id], ns.ProfessionFacts(id)
     local start = info and info.skill or 1
+    -- The cost-aware planner decides the path; what follows is the earlier
+    -- per-point estimate, kept for a build that ships without it.
+    if ns.ProfessionPathPlan then return ns.ProfessionPathPlan(id, start, target, cooperative) end
     local distance, choice, prices = {[target] = 0}, {}, {[target] = true}
     for skill = target - 1, start, -1 do
         for _, recipe in ipairs(candidates(id, skill, false)) do
@@ -809,6 +922,11 @@ function ns.ProfessionPlanningChoices()
             detail = info and "Next craft, materials & rank training" or "Learn the profession and plan your materials",
             icon = facts.icon, click = function() ns.ShowProfessionViewer(key) end}
     end
+    -- Gathering professions follow the crafting ones, learned first.
+    for _, choice in ipairs(ns.GatheringChoices and ns.GatheringChoices() or {}) do
+        choice.profession = choice.gathering -- Same card layout as a crafting profession.
+        choices[#choices + 1] = choice
+    end
     return choices
 end
 
@@ -833,7 +951,7 @@ function ns.QueueProfessionUpdate(readRecipes)
         ns.RenderProfessionGuide()
         if ns.filter == "recommended" and ns.window and ns.window:IsShown() then ns.QueueBackgroundRender() end
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.25, update) else update() end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:ProfessionPlanner", 0.25, update) else update() end
 end
 ns.On("PLAYER_REGEN_ENABLED", function()
     if ns.professionUpdateDeferred then ns.professionUpdateDeferred = nil; ns.QueueProfessionUpdate(true) end

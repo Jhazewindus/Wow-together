@@ -608,7 +608,7 @@ function ns.InitializeDungeonViewer()
             pending = nil; ns.RefreshDungeonViewer(); ns.RefreshDungeonMapQuests()
             if list and list:IsShown() then ns.ReadProfile(); ns.ReadQuests(); ns.RefreshDungeonQuestList() end
         end
-        if C_Timer and type(C_Timer.After) == "function" then pending = true; C_Timer.After(.2, refresh) else refresh() end
+        if C_Timer and type(C_Timer.After) == "function" then pending = true; ns.After("timer:DungeonViewer", .2, refresh) else refresh() end
     end
     listen("QUEST_LOG_UPDATE", updateQuests)
     listen("QUEST_TURNED_IN", updateQuests)

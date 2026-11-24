@@ -51,6 +51,7 @@ class ProgressionTests(unittest.TestCase):
 
     def test_elites_are_labeled_and_solo_discovery_keeps_them(self):
         c = solo()
+        c.ns.SetOption('soloEliteQuests', True)
         catalogue(c, {900: nearby(questType='Elite')})
         self.assertTrue(c.ns.LevelingQuestEnabled(900))
         self.assertEqual(c.ns.QuestDifficultyLabel(900), 'Group / elite')

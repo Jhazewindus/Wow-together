@@ -249,7 +249,7 @@ function ns.ShowGuideQuestList(guide)
         local okay, plan = true, existing
         if job then okay, plan = coroutine.resume(job) end
         if not okay then frame.summary:SetText("Couldn't load the quest list. Start route is still available."); return end
-        if job and coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
+        if job and coroutine.status(job) ~= "dead" then ns.After("timer:GuideQuestList", 0.01, advance); return end
         frame.plan = {}
         for _, stop in ipairs(plan) do
             if not ns.IsLevelingExcludedQuest(stop.id) then frame.plan[#frame.plan + 1] = stop end
@@ -265,6 +265,6 @@ function ns.ShowGuideQuestList(guide)
         ns.RenderGuideQuestList()
     end
     if existing then advance()
-    elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.01, advance)
+    elseif C_Timer and type(C_Timer.After) == "function" then ns.After("timer:GuideQuestList", 0.01, advance)
     else frame.summary:SetText("Quest list unavailable.") end
 end

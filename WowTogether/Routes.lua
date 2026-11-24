@@ -784,7 +784,7 @@ function ns.AttachFlightMapHighlightProvider(attempt)
         end
     end
     if attempt < 3 and ns.flightMapOpen and C_Timer and type(C_Timer.After) == "function" then
-        C_Timer.After(0.2, function() ns.AttachFlightMapHighlightProvider(attempt + 1) end)
+        ns.After("timer:Routes", 0.2, function() ns.AttachFlightMapHighlightProvider(attempt + 1) end)
     end
     return false
 end
@@ -1006,7 +1006,7 @@ function ns.AttachRouteProvider()
         if not C_Timer or type(C_Timer.After) ~= "function" then ns.DrawRoute(self, true); return end
         if self.redrawQueued then return end
         self.redrawQueued = true
-        C_Timer.After(0, function() self.redrawQueued = nil; ns.DrawRoute(self, true) end)
+        ns.After("timer:Routes", 0, function() self.redrawQueued = nil; ns.DrawRoute(self, true) end)
     end
     provider.OnCanvasSizeChanged = afterLayout
     provider.OnCanvasScaleChanged = afterLayout
@@ -1224,6 +1224,8 @@ function ns.ClearRoute(preserveCheckpoint)
 end
 
 function ns.StopGuide(closeWindow, preserveCheckpoint)
+    -- A zone guide that is part of the followed path ends the path with it.
+    if ns.LevelingPathGuideStopped then ns.LevelingPathGuideStopped(preserveCheckpoint) end
     ns.ClearInventoryService()
     ns.ClearRoute(preserveCheckpoint)
     ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil
@@ -1251,4 +1253,5 @@ function ns.FlushRouteUpdates()
     end
 end
 
-ns.On("QUEST_POI_UPDATE", function() if ns.db then ns.ReadRouteLocations(); ns.ScheduleSync(); ns.Refresh() end end)
+-- Scheduled, not immediate: this event comes with every bit of quest progress (see ns.ScheduleRefresh).
+ns.On("QUEST_POI_UPDATE", function() if ns.db then ns.ReadRouteLocations(); ns.ScheduleSync(); ns.ScheduleRefresh() end end)

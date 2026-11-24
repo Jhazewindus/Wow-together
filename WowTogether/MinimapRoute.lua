@@ -142,12 +142,19 @@ function ns.CreateMinimapRoute()
     if type(overlay.CreateLine) ~= "function" then overlay = nil; ns.minimapRouteStatus = "Line drawing unavailable."; return end
     local level = ns.ReadPublic(Minimap.GetFrameLevel, Minimap)
     if type(level) == "number" then overlay:SetFrameLevel(level + 3) end
-    overlay:SetScript("OnUpdate", function(_, dt)
+    -- The work is a named function so the recorder (Perf.lua) can time it
+    -- without creating anything on each frame.
+    local function onUpdate(_, dt)
         elapsed = elapsed + (finite(dt) and dt or 0)
         if elapsed < REFRESH then return end
         elapsed = 0
         local okay, err = pcall(draw)
         if not okay then hideAll(); ns.minimapRouteStatus = "Minimap line error: " .. tostring(err) end
+    end
+    overlay:SetScript("OnUpdate", function(_, dt)
+        local started = ns.PerfBegin and ns.PerfBegin("minimapline", true)
+        onUpdate(_, dt)
+        if started then ns.PerfEnd("minimapline", started) end
     end)
     ns.minimapRoute = overlay
 end

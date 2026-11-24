@@ -55,6 +55,8 @@ function ns.Print(message)
 end
 
 function ns.Refresh(background)
+    local perf = ns.PerfBegin and ns.PerfBegin("refresh")
+    local part = ns.PerfBegin and ns.PerfBegin("refresh:route")
     ns.objectiveDisplayRevision = (ns.objectiveDisplayRevision or 0) + 1
     local query = ns.NewQuestQuery and ns.NewQuestQuery()
     -- Guide progress belongs to the guide, not to dashboard rendering. Keep it
@@ -62,19 +64,29 @@ function ns.Refresh(background)
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(nil, query) end
     if ns.UpdateGuideQuestFocus then ns.UpdateGuideQuestFocus() end
     if ns.UpdateGuideQuestItem then ns.UpdateGuideQuestItem() end
+    if part then ns.PerfEnd("refresh:route", part); part = ns.PerfBegin("refresh:window") end
     if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
-    elseif ns.Render and (not background or ns.window and ns.window:IsShown()) then
+    -- A refresh caused by the game (an event) draws the main window only
+    -- while it is open: drawing it closed cost about 60 ms each time in
+    -- play, at every quest giver. Opening the window refreshes it anyway.
+    -- A refresh asked for by the interface itself still draws.
+    elseif ns.Render and (ns.window and ns.window:IsShown() or not background and not ns.handlingGameEvent) then
         if background and ns.QueueBackgroundRender then ns.QueueBackgroundRender()
         else ns.Render(query, true) end
     end
+    if part then ns.PerfEnd("refresh:window", part); part = ns.PerfBegin("refresh:tracker") end
     if ns.RenderTracker then ns.RenderTracker() end
     if ns.RenderGuideQuestList then ns.RenderGuideQuestList() end
+    if part then ns.PerfEnd("refresh:tracker", part); part = ns.PerfBegin("refresh:card") end
     if ns.UpdateNavigation then ns.UpdateNavigation() end
+    if part then ns.PerfEnd("refresh:card", part); part = ns.PerfBegin("refresh:rest") end
     if ns.ScheduleActivitySuggestions then ns.ScheduleActivitySuggestions() end
     if ns.QueuePartyRouteFollow then ns.QueuePartyRouteFollow() end
     if ns.SchedulePartyCatchup then ns.SchedulePartyCatchup() end
     if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
     if ns.CaptureSessionCheckpoint then ns.CaptureSessionCheckpoint() end
+    if part then ns.PerfEnd("refresh:rest", part) end
+    if perf then ns.PerfEnd("refresh", perf) end
 end
 
 -- Event storms often request the same route, tracker and dashboard refresh in
@@ -82,8 +94,47 @@ end
 -- actions on the synchronous Refresh path.
 ns.refreshStats = {requested = 0, coalesced = 0, completed = 0}
 local refreshPending, refreshQueued, refreshBackground = false, false, true
+-- Refreshes asked for by the game's own events are gathered.
+--
+-- One kill with loot raises several events over about a second (the quest
+-- log, the objective, the bag, the map markers) and each used to refresh at
+-- once: three to five passes of some tens of milliseconds each, a visible
+-- hitch on every kill. They now become one pass, a moment after the last of
+-- them (and no later than three quarters of a second after the first).
+-- The same goes for every "background" refresh, the kind asked for when the
+-- game's state changed and not because the player did something: several
+-- of those come from timers the events start, not from the events
+-- themselves. A refresh the interface asks for itself still happens
+-- immediately.
+local QUIET, LATEST = 0.2, 0.75
+local eventPending, eventFirst, eventLast, eventBackground = false, nil, nil, true
+
+local function eventRefresh()
+    local time = ns.ReadPublic(GetTime)
+    if type(time) == "number" and eventLast and eventFirst and time - eventLast < QUIET and time - eventFirst < LATEST then
+        ns.After("timer:Core:refresh", QUIET, eventRefresh)       -- More arrived meanwhile: wait for them to settle.
+        return
+    end
+    local background = eventBackground
+    eventPending, eventFirst, eventLast, eventBackground = false, nil, nil, true
+    ns.refreshStats.completed = ns.refreshStats.completed + 1
+    ns.Refresh(background)
+end
+
 function ns.ScheduleRefresh(background)
     ns.refreshStats.requested = ns.refreshStats.requested + 1
+    if (ns.handlingGameEvent or background == true) and C_Timer and type(C_Timer.After) == "function" then
+        local time = ns.ReadPublic(GetTime)
+        eventBackground = eventBackground and background == true
+        eventLast = type(time) == "number" and time or nil
+        if eventPending then
+            ns.refreshStats.coalesced = ns.refreshStats.coalesced + 1
+            return
+        end
+        eventPending, eventFirst = true, eventLast
+        ns.After("timer:Core:refresh", QUIET, eventRefresh)
+        return
+    end
     if refreshPending then
         ns.refreshStats.coalesced = ns.refreshStats.coalesced + 1
         refreshQueued = true
@@ -100,7 +151,7 @@ function ns.ScheduleRefresh(background)
         ns.refreshStats.completed = ns.refreshStats.completed + 1
         ns.Refresh(useBackground)
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.04, finishBurst)
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:Core", 0.04, finishBurst)
     else finishBurst() end
 end
 
@@ -127,10 +178,10 @@ function ns.ScheduleGuideProgress()
         if not ready and attempts < 3 and not progressPending then
             progressPending = true
             ns.guideProgressStats.retries = ns.guideProgressStats.retries + 1
-            C_Timer.After(0.25 * attempts, update)
+            ns.After("timer:Core", 0.25 * attempts, update)
         end
     end
-    C_Timer.After(0.1, update)
+    ns.After("timer:Core", 0.1, update)
 end
 
 -- Every module may subscribe to the same event; handlers run in
@@ -169,7 +220,12 @@ end
 ns.frame:SetScript("OnEvent", function(_, event, ...)
     local list = ns.handlers[event]
     if not list then return end
+    -- Every event is timed under its own name (Perf.lua).
+    local started = ns.PerfBegin and ns.PerfBegin(event, true)
+    ns.handlingGameEvent = true
     for index = 1, #list do list[index](...) end
+    ns.handlingGameEvent = nil
+    if started then ns.PerfEnd(event, started) end
 end)
 
 local diagnosticsProbes = {
@@ -332,7 +388,8 @@ local diagnosticsProbes = {
         }
 
 function ns.Diagnostics()
-    local lines = {"Wow Together " .. ns.VERSION .. " — beta capability and sync report", ""}
+    local lines = {"Wow Together " .. ns.VERSION .. (ns.testBuild and (" [test build " .. ns.testBuild .. "]") or "")
+        .. " — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -536,7 +593,11 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeInventoryServices()
     ns.InitializeSessionCheckpoints()
     ns.Refresh()
-    ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
+    ns.Print("Loaded" .. (ns.testBuild and (" (test build " .. ns.testBuild .. ")") or "")
+        .. ". /wt opens the quest view; /wt path shows your leveling path; /wt probe opens diagnostics.")
+    if ns.Option("xpModel") then
+        ns.Print("The experimental XP model is switched ON in settings. It can leave a guide with no steps; switch it off under Guide unless you are trying it.")
+    end
 end)
 
 ns.On("PLAYER_LOGOUT", function()
@@ -592,6 +653,7 @@ ns.On("QUEST_TURNED_IN", function(id, xpReward)
     ns.RememberQuestCompletion(id)
     ns.NoteQuestTurnedIn(id)
     if ns.RecordQuestXPSample then ns.RecordQuestXPSample(id, xpReward) end
+    if ns.RecordQuestRewardXP then ns.RecordQuestRewardXP(xpReward) end
     ns.RecordQuestResearch("turn-in", {questID = id, xpReward = xpReward})
     ns.InvalidateNPCOffers()
     ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()
@@ -631,6 +693,22 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "research" then ns.ShowQuestResearch()
     elseif command == "findings" then ns.ShowGuideFindings()
     elseif command == "questlines" then ns.ShowQuestLineReport()
+    elseif command == "perf" or string.sub(command, 1, 5) == "perf " then ns.PerfCommand(string.sub(command, 6))
+    elseif command == "hud" or string.sub(command, 1, 4) == "hud " then ns.HudCommand(string.sub(command, 5))
+    elseif command == "clean" then ns.QuestLogCleanup(true)
+    elseif command == "glance" then
+        ns.SetOption("guideGlance", not ns.Option("guideGlance"))
+        if ns.UpdateNavigation then ns.UpdateNavigation() end
+        if ns.LayoutNavigation then ns.LayoutNavigation() end
+        if ns.GlancePending and ns.GlancePending() then
+            ns.Print("Guide window: switches to " .. (ns.Option("guideGlance") and "Glance" or "full") .. " when this fight ends. The game does not allow it during combat.")
+        else
+            ns.Print(ns.Option("guideGlance") and "Guide window: Glance. /wt glance switches back (so does clicking the step line under the title)."
+                or "Guide window: full. /wt glance switches to Glance.")
+        end
+    elseif command == "gather" then ns.GatheringCommand()
+    elseif command == "path" or string.sub(command, 1, 5) == "path " then ns.LevelingPathCommand(string.sub(command, 6))
+    elseif command == "share" or string.sub(command, 1, 6) == "share " then ns.ShareQuestsCommand(string.sub(command, 7))
     elseif command == "roads" or string.sub(command, 1, 6) == "roads " then ns.TravelTrailCommand(string.sub(command, 7))
     else ns.ToggleWindow() end
 end

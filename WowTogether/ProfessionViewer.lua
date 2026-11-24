@@ -121,14 +121,63 @@ local function setBody(frame, text)
     if ns.Public(height) and type(height) == "number" then frame.child:SetHeight(math.max(120, height + 12)) end
 end
 
+local MODE_TEXT = {gold = "Cheapest gold", balanced = "Balanced gold and crafting time", speed = "Fastest crafting"}
+
+local function minutes(seconds)
+    if seconds < 90 then return math.max(1, math.floor(seconds + 0.5)) .. " s" end
+    if seconds < 5400 then return math.floor(seconds / 60 + 0.5) .. " min" end
+    return string.format("%.1f h", seconds / 3600)
+end
+
+-- The skilling path as the player reads it: every stretch of skill with the
+-- recipe, how many crafts to expect (and a safe count when luck is involved),
+-- what it costs, and what has to be learned first.
 local function previewText(id, plan)
     local facts = ns.ProfessionFacts(id)
-    local lines = {"CRAFTING PATH", "Balanced materials and crafting time • approximate batches", ""}
+    local money = ns.MoneyText or function(copper) return tostring(copper) .. "c" end
+    local lines = {"SKILLING PATH", (MODE_TEXT[plan.mode] or MODE_TEXT.balanced)
+        .. (plan.recoup and " • vendor value of crafts counted" or "")
+        .. (plan.perk and " • Working Overtime perk" or ""), ""}
     if plan.start >= plan.target then lines[#lines + 1] = "Goal reached. Choose a higher skill goal when ready." end
     for _, step in ipairs(plan.steps) do
-        lines[#lines + 1] = "|cffffd17a" .. step.start .. "–" .. step.finish .. "|r  " .. step.recipe.name .. "  •  ~" .. math.ceil(step.crafts) .. " crafts"
+        local crafts = math.ceil(step.crafts - 1e-9)
+        local count = "~" .. crafts .. (crafts == 1 and " craft" or " crafts")
+        if step.safe and step.safe > crafts then count = count .. " (" .. step.safe .. " to be safe)" end
+        local cost = step.gold and money(step.gold) or (step.priced == false and "price unknown" or nil)
+        lines[#lines + 1] = "|cffffd17a" .. step.start .. "–" .. step.finish .. "|r  " .. step.recipe.name
+            .. "  •  " .. count .. (cost and ("  •  " .. cost) or "")
+        if step.acquire == "trainer" then
+            lines[#lines + 1] = "    |cffadb4beLearn from a trainer" .. (step.fee and (" • " .. money(step.fee)) or "") .. "|r"
+        elseif step.acquire then
+            lines[#lines + 1] = "    |cffe0a060Needs a recipe " .. (step.acquire == "vendor" and "sold by a vendor" or "you have to find")
+                .. (step.source and (": " .. step.source) or "") .. "|r"
+        end
+        local parts = {}
+        for _, entry in pairs(step.prepared or {}) do
+            if entry.name and entry.amount >= 0.5 then parts[#parts + 1] = "~" .. math.ceil(entry.amount - 1e-9) .. " " .. entry.name end
+        end
+        table.sort(parts)
+        if #parts > 0 then lines[#lines + 1] = "    |cffadb4beMake first: " .. table.concat(parts, ", ") .. "|r" end
     end
-    if plan.missing > 0 then lines[#lines + 1] = "\nContinue with your trainer's available recipes. Open your profession window to check new options." end
+    if plan.missing > 0 then
+        lines[#lines + 1] = "\nNo known recipe covers the last " .. plan.missing .. " points. Open your profession window at a trainer to check new options."
+    end
+    if #plan.steps > 0 then
+        local total = "\nTOTAL  "
+        if plan.gold then
+            total = total .. money(plan.gold) .. " in materials" .. ((plan.fees or 0) > 0 and (" + " .. money(plan.fees) .. " in training") or "")
+        else
+            total = total .. "Some prices are not known yet" .. ((plan.fees or 0) > 0 and (" • " .. money(plan.fees) .. " in training") or "")
+        end
+        lines[#lines + 1] = total .. " • about " .. minutes(plan.seconds or 0) .. " of crafting"
+        if not plan.gold then lines[#lines + 1] = "Scan the auction house from the Materials window to price this path." end
+        if plan.widened then
+            lines[#lines + 1] = "Part of this path uses recipes sold by vendors, because no trainer recipe covers that stretch."
+        end
+        if facts.partialAbove and plan.target > facts.partialAbove then
+            lines[#lines + 1] = "Above skill " .. facts.partialAbove .. " only a few recipes are known to the guide; ones you learn are added from your recipe window."
+        end
+    end
     lines[#lines + 1] = "\nRANK TRAINING"
     for _, rank in ipairs(facts.ranks) do
         if rank.maximum <= plan.target and rank.maximum > plan.start then
@@ -137,9 +186,10 @@ local function previewText(id, plan)
                 .. (trainer and ("\n    " .. trainer.name .. " • " .. trainer.hub) or "")
         end
     end
-    lines[#lines + 1] = "\nSkill gains vary. The next step adapts to your actual recipes, materials and skill."
+    lines[#lines + 1] = "\nCraft counts are expectations: yellow and green recipes do not give a point every time. The next step adapts to your actual recipes, materials and skill."
     return table.concat(lines, "\n")
 end
+ns.ProfessionPathText = previewText
 
 function ns.RefreshProfessionViewer(force)
     local frame = ns.professionViewer
@@ -179,10 +229,10 @@ function ns.RefreshProfessionViewer(force)
         end
         if coroutine.status(worker) == "dead" then
             cancelPreview(); frame.plan = result; setBody(frame, previewText(id, result))
-        elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run)
+        elseif C_Timer and type(C_Timer.After) == "function" then ns.After("timer:ProfessionViewer", 0, run)
         else cancelPreview(); setBody(frame, "Open your profession window to view your next craft.") end
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run) else run() end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:ProfessionViewer", 0, run) else run() end
 end
 
 function ns.ShowProfessionViewer(id)

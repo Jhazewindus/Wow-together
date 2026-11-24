@@ -227,7 +227,7 @@ local function optimizeSteps(plan, distance, cooperative, onYield, guard)
                             end
                         end
                         work = work + 1
-                        if cooperative and work % 200 == 0 then coroutine.yield(); if onYield then onYield() end end
+                        if cooperative and ns.PlanShouldYield(work, 200) then coroutine.yield(); if onYield then onYield() end end
                     end
                 end
             end
@@ -261,7 +261,7 @@ function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, option
         -- These are cheap region/edge/replay operations. Graph expansion and
         -- the step search retain their own finer yields; do not schedule a
         -- timer for every tiny table scan in the additional guard.
-        if cooperative and work % 1000 == 0 then coroutine.yield(); if onYield then onYield() end end
+        if cooperative and ns.PlanShouldYield(work, 1000) then coroutine.yield(); if onYield then onYield() end end
     end
     local model = ns.NewGuideFlowModel(plan, distance)
     local current = model.evaluate(plan, tick)
@@ -376,7 +376,7 @@ function ns.ImproveFixedGeometry(plan, geometry, cost, cooperative, onYield, opt
     end
     local function tick()
         work = work + 1
-        if cooperative and work % 1000 == 0 then coroutine.yield(); if onYield then onYield() end end
+        if cooperative and ns.PlanShouldYield(work, 1000) then coroutine.yield(); if onYield then onYield() end end
     end
     local function preserves(before, after)
         if not after.valid or after.distance > before.distance + .001 or after.questXP < before.questXP then return false end

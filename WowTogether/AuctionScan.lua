@@ -20,7 +20,7 @@ end
 local function schedule(job)
     if scan ~= job or job.tickQueued then return end
     job.tickQueued = true
-    C_Timer.After(1, function()
+    ns.After("timer:AuctionScan", 1, function()
         job.tickQueued = nil
         if scan == job then pump(job) end
     end)
@@ -100,7 +100,7 @@ function ns.AuctionScanResult(id, kind, full, priced)
 end
 
 local function watch(job, waiting, ticket)
-    C_Timer.After(1, function()
+    ns.After("timer:AuctionScan", 1, function()
         if scan ~= job or job.waiting ~= waiting or waiting.ticket ~= ticket then return end
         if not ns.AuctionHouseVisible() then ns.CancelAuctionScan("Scan stopped: auction house closed."); return end
         if contextChanged(job) then ns.CancelAuctionScan("Guide changed. Start a new scan."); return end
@@ -237,9 +237,9 @@ function ns.StartAuctionGuideScan()
             job.items = result
             if #result == 0 then ns.CancelAuctionScan("No materials to scan for this goal."); return end
             schedule(job)
-        else C_Timer.After(0, prepare) end
+        else ns.After("timer:AuctionScan", 0, prepare) end
     end
-    C_Timer.After(0, prepare)
+    ns.After("timer:AuctionScan", 0, prepare)
 end
 
 ns.On("PLAYER_REGEN_ENABLED", function()

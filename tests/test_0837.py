@@ -48,7 +48,7 @@ class CraftBatchTests(unittest.TestCase):
         c.lua.execute('WowTogetherDB.config.professionBatch=20')
         c.ns.InitializeConfig()
         self.assertIsNone(c.ns.Option('professionBatch'))
-        self.assertIsNone(c.ns.settings.pages.professions)
+        self.assertIsNotNone(c.ns.settings.pages.professions)
         self.assertIsNone(c.ns.settings.dropdowns.professionBatch)
         c.ns.StartProfessionGuide(171, 75)
         self.assertEqual(c.ns.selectedRoute.crafts, 5)

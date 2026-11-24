@@ -116,7 +116,7 @@ function ns.ZoneXPRemaining(guide, profile, query)
         local reward = ns.QuestXP(id, profile and profile.level)
         if reward then total = total + reward else unknown = unknown + 1 end
         work = work + 1
-        if query and query.cooperative and work % 100 == 0 then coroutine.yield() end
+        if query and query.cooperative and ns.PlanShouldYield(work, 100) then coroutine.yield() end
     end
     for _, record in ipairs(guide.records or {}) do add(record.id) end
     for id in pairs(ns.active or {}) do
@@ -138,7 +138,12 @@ local function zoneProjection(guide, profile, query)
         if xp < threshold then break end
         xp, level = xp - threshold, level + 1
     end
-    local nextGuide = ns.NextZoneBaselineGuide and ns.NextZoneBaselineGuide(guide, true)
+    -- Where to go after this zone: the leveling path's next zone when it has
+    -- been worked out (asking for it starts that in the background), else the
+    -- lowest zone above this one's band.
+    if ns.LevelingPath and guide.mode == "zone" then ns.LevelingPath() end
+    local nextGuide = ns.LevelingPathNextGuide and ns.LevelingPathNextGuide(guide)
+        or ns.NextZoneBaselineGuide and ns.NextZoneBaselineGuide(guide, true)
     if nextGuide and (nextGuide.rangeLow or 255) > level then nextGuide = nil end
     local threshold = ns.xpCurve and ns.xpCurve[level] or ns.xpBaseline and ns.xpBaseline[level]
     return {remaining = remaining, unknown = unknown, level = level, xp = xp, curveIncomplete = curveIncomplete,

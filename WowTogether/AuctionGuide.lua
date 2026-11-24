@@ -208,10 +208,10 @@ local function startForecast(id, target, signature)
             panel.notice:SetText("Skill " .. result.start .. " to " .. target .. " • buy one recipe at a time.\n"
                 .. (result.estimatedCost and ("Est. materials: " .. ns.MoneyText(result.estimatedCost)) or "Scan for material prices")
                 .. (result.incomplete and " • partial guide" or ""))
-        elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run)
+        elseif C_Timer and type(C_Timer.After) == "function" then ns.After("timer:AuctionGuide", 0, run)
         else forecast = nil; panel.notice:SetText("Material estimate unavailable.") end
     end
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run) else run() end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:AuctionGuide", 0, run) else run() end
 end
 
 function ns.RefreshAuctionGuideSearch()
@@ -248,7 +248,7 @@ ns.On("AUCTION_HOUSE_SHOW", function()
     ns.auctionHouseOpen = true
     if panel then panel.dismissed = nil end
     ns.RefreshAuctionGuideSearch()
-    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, ns.RefreshAuctionGuideSearch) end
+    if C_Timer and type(C_Timer.After) == "function" then ns.After("timer:AuctionGuide", 0, ns.RefreshAuctionGuideSearch) end
 end)
 ns.On("AUCTION_HOUSE_CLOSED", function()
     ns.auctionHouseOpen = false; forecast = nil

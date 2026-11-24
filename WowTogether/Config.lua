@@ -11,7 +11,10 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     guideGlance = false, uiNext = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
-    unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask", deathSound = true}
+    unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask", deathSound = true,
+    -- Skilling path (ProfessionPath.lua).
+    professionPathMode = "balanced", professionVendorResale = true, professionVendorRecipes = false, professionPerk = false,
+    gatheringTips = true, travelButton = true, autoShareQuests = "ask", levelingPathStrip = true, finishNearlyDone = "85", questCleanup = "ask", levelingPath = true, soloEliteQuests = false, questLevelsAbove = "2"}
 
 function ns.Option(key)
     local handled, value = ns.FirstHook("optionGet", key)
@@ -68,6 +71,7 @@ local sections = {
         {"learnRoads", "Learn roads as you walk", "Record the ground you walk so routes follow real paths around hills, rivers and walls in every zone."},
         {"shareObservations", "Share observations with your party", "Share walked ground and observed quest locations with party members."},
         {"useHearthstone", "Use Hearthstone and teleports", "Route through your Hearthstone or class teleports when that is quicker than walking or flying."},
+        {"travelButton", "Clickable Hearthstone and teleports", "Show a button on the guide window when the next step is your Hearthstone or a teleport. It is used only when you click it."},
         {"suggestFlights", "Suggest faster flight paths", "Suggest a flight you have unlocked when it should save time."},
         {"nearbyFlights", "Suggest nearby flight masters", "Point out a friendly unlearned flight master near you or your route."},
         {"autoFly", "Select suggested flights automatically", "Select the route's flight when its flight-master map is open, outside combat."},
@@ -83,6 +87,7 @@ local sections = {
         {"npcMarker", "Enemy marker style", "Choose the marker beside quest enemies.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull"}, {"quest", "Quest !"}}}},
         "Choose which quest targets are marked in the world."},
     {"party", "Party and group finder", {
+        {"autoShareQuests", "Share quests with my party", "Offer your shareable quests to the party. Asking first shows one question per zone or dungeon; the other choices share without asking. Works with anyone, addon or not; never in raids.", {{"ask", "Ask me for each zone or dungeon"}, {"area", "This zone or dungeon, without asking"}, {"all", "Every quest, without asking"}, {"off", "Off"}}},
         {"partyMode", "Party mode", "Ask when you join a party, always enable party guides, or never use party features.", {{"ask", "Ask me"}, {"always", "Always"}, {"never", "Never"}}},
         {"groupFinderRoles", "Add filters to Looking For Group", "Filter Blizzard's player list by role and class."},
         {"trackerAuto", "Show party progress when grouped", "Show in a party; hide when solo or in a raid. You can close it for this session."},
@@ -94,8 +99,21 @@ local sections = {
         {"restockSupplies", "Suggest food and drink", "Suggest basic food or mana drink when your supply is low. Buying stays manual."},
         {"supplyTarget", "Food and drink amount", "How many of each to carry after a restock.", {{10, "10 each"}, {20, "20 each"}, {40, "40 each"}}}},
         "Optional stops for bags, repairs, food and drink."},
+    {"professions", "Professions", {
+        {"professionPathMode", "Skilling path prefers", "Cheapest spends the least gold even when it means more crafts. Fastest picks fewer, quicker crafts. Balanced counts one second of crafting as one silver.", {{"gold", "Cheapest"}, {"balanced", "Balanced"}, {"speed", "Fastest"}}},
+        {"professionVendorResale", "Count what vendors pay for crafts", "Subtract the vendor price of what you craft from each step's cost. Turn it off if you keep or give away what you make."},
+        {"professionVendorRecipes", "Use recipes sold by vendors", "Let the path use recipes you would first have to buy from a vendor. Stretches that no trainer recipe covers use them either way, and say so."},
+        {"professionPerk", "I have the Working Overtime perk", "The Legacy perk gives a 10% better chance of a skill point. Tick it so craft counts and costs allow for it."},
+        {"gatheringTips", "Gathering tips when entering a zone", "One chat line, once per zone, when veins, herbs or beasts there still give your Mining, Herbalism or Skinning skill."},
+    }, "How crafting paths are chosen. Nothing is bought, trained or crafted for you."},
     {"data", "Quest data and saved progress", {
-        {"xpModel", "Use quest XP to choose useful quests", "Estimate whether a quest still provides useful experience. This model stays optional until Forever reward data is verified."},
+        {"finishNearlyDone", "Finish quests you have nearly done", "Before a zone is left, quests in your log that are this far along are finished and turned in, even when their experience is low for your level. Finished quests are always turned in first.", {{"85", "From 85% done"}, {"70", "From 70% done"}, {"off", "Off"}}},
+        {"questCleanup", "Clean quests no longer worth doing from my log", "After a level-up, quests in your log that pay almost nothing at your level, lead to nothing worthwhile and are not finished or nearly finished can be abandoned. Abandoning cannot be undone.", {{"ask", "Ask me, with the list"}, {"auto", "Abandon them without asking"}, {"off", "Off"}}},
+        {"levelingPathStrip", "Show the leveling path under the guide window", "One line under the guide window, also in Glance: the level this zone takes you to, the zone after it and your XP per hour. Click it for the whole path."},
+        {"questLevelsAbove", "Quests above my level", "Quests further above your level than this wait until you have the levels, even when they are already in your log or lead to a later quest. Finished and nearly finished quests are not held back.", {{"2", "Up to 2 levels above"}, {"3", "Up to 3 levels above"}, {"any", "Any level"}}},
+        {"soloEliteQuests", "Include elite quests when I play alone", "Elite and raid quests are set aside while you are not in a group, so the guide does not send you to them. Tick this to have them planned anyway."},
+        {"levelingPath", "Leveling path", "Work out which zones to quest in next and the level each should leave you at. Shown on the main window and under the guide window; Follow path chains the zone guides."},
+        {"xpModel", "Experimental: let quest XP decide which quests to skip", "Lets the guide drop quests it judges not worth their experience. Its judgement is not reliable yet: it can leave a guide with no steps. Off unless you want to try it."},
         {"debugReasons", "Guide reason codes (advanced)", "Include internal policy reason codes in guide tooltips."},
         {"recordQuestData", "Record quest offers and progress", "Save up to 300 local observations for guide research. Exports are manual."},
         {"learnObjectives", "Learn objective areas as you play", "Record your own location when an objective counter advances. These observations stay local unless party sharing is enabled."},
@@ -114,6 +132,22 @@ function ns.InitializeConfig()
     end
     if ns.db.config.shareObservations == nil then ns.db.config.shareObservations = ns.db.config.shareRoads ~= false end
     -- Adopt the requested star default once; later explicit choices survive.
+    -- The XP model is off by default again. A test build switched it on for
+    -- everyone after measuring only its speed; in play it then filed quests
+    -- worth doing as "low value" and left the guide with no steps (a quest
+    -- in the log worth ~15,800 XP for a ~28 minute trip was skipped). Installs
+    -- that were moved to "on" are moved back, once. The leveling path does
+    -- not need it and has its own setting.
+    -- Quest sharing asks first. An install that carries the earlier "share
+    -- without asking" default moves to asking, once.
+    if not ns.db.config.shareAskDefault then
+        if ns.db.config.autoShareQuests == "area" then ns.db.config.autoShareQuests = "ask" end
+        ns.db.config.shareAskDefault = true
+    end
+    if not ns.db.config.xpModelOffAgain then
+        ns.db.config.xpModel = false
+        ns.db.config.xpModelOffAgain = true
+    end
     if not ns.db.config.starMarkerDefault then
         if ns.db.config.npcMarker == "cross" then ns.db.config.npcMarker = "star" end
         ns.db.config.starMarkerDefault = true
@@ -148,6 +182,8 @@ function ns.SetOption(key, value)
     if defaults[key] == nil or type(value) ~= type(defaults[key]) then return end
     local changed = ns.Option(key) ~= value
     if key == "recordQuestData" and ns.Option(key) ~= value then ns.ResearchCaptureBoundary() end
+    local pathOption = key == "professionPathMode" or key == "professionVendorResale"
+        or key == "professionVendorRecipes" or key == "professionPerk"
     ns.db.config[key] = value
     ns.InitializeConfig()
     if key == "unitNumbers" then
@@ -165,6 +201,8 @@ function ns.SetOption(key, value)
         if ns.RenderSettings then ns.RenderSettings() end
         return
     end
+    -- A changed preference changes the path: recalculate what is on screen.
+    if pathOption and ns.ProfessionPathOptionsChanged then ns.ProfessionPathOptionsChanged() end
     if key == "uiNext" and ns.UpdateHubMode then ns.UpdateHubMode() end
     if key == "soloMode" and changed then
         ns.db.config.partyMode = value and "never" or "always"
