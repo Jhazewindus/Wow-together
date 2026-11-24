@@ -20,12 +20,12 @@
     },
     "dungeonJournalData": {
       "file": "DungeonJournalData.lua",
-      "sha256": "18555b883d543e14baf183ca0dd069757b2664e6cfb913e000de033e04ca54de"
+      "sha256": "637a88d21e21f9299bafefe5ac72b1c7d4f150ee143218237fb2be18ada99836"
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",
       "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior. Version 0.8.95 restores Wowhead Forever series predecessor 92434 for Heart of Disruption (96984). Version 0.8.100 refreshes reviewed dungeon prerequisite links; quest entity layout, XP data, journal and map fingerprints remain unchanged."
+  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior. Version 0.8.95 restores Wowhead Forever series predecessor 92434 for Heart of Disruption (96984). Version 0.8.100 refreshes reviewed dungeon prerequisite links; quest entity layout, XP data, journal and map fingerprints remain unchanged. Version 0.8.112 adds partial Forever boss loot coverage for five newer dungeons with native item icons and source receipts."
 }

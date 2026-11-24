@@ -1,22 +1,22 @@
 {
   "schema": 2,
-  "captured": "2026-11-05",
+  "captured": "2026-11-24",
   "counts": {
     "vanillaNPCTables": 933,
-    "dungeonsWithBosses": 23,
+    "dungeonsWithBosses": 28,
     "sharedBossDrops": 16228,
     "trashSources": 532,
-    "lootEntries": 1245,
-    "partialDungeons": 1,
+    "lootEntries": 1371,
+    "partialDungeons": 6,
     "mapReferences": 19,
     "vanillaContainerTables": 95,
     "containerDrops": 6087,
     "dungeons": 28,
-    "items": 5584,
+    "items": 5704,
     "portraits": 171,
-    "sourceDropRowsAudited": 415698,
+    "sourceDropRowsAudited": 415824,
     "seasonOnlyRowsExcluded": 13127,
-    "bosses": 272,
+    "bosses": 312,
     "containers": 103,
     "trashDrops": 313233,
     "userConfirmedFacts": 4
@@ -91,13 +91,15 @@
       "zoneNPCs": 0,
       "vanillaNPCs": 0,
       "vanillaNPCTablesCaptured": 0,
-      "foreverNPCTablesCaptured": 0,
+      "foreverNPCTablesCaptured": 10,
       "reportedBosses": 0,
-      "bosses": 0,
+      "bosses": 10,
       "trashSources": 0,
       "containers": 0,
       "missingForeverNPCs": [],
-      "unpublished": true
+      "unpublished": false,
+      "specificForeverNPCTablesCaptured": 10,
+      "partial": true
     },
     "ragefire-chasm": {
       "zoneNPCs": 13,
@@ -137,13 +139,15 @@
       "zoneNPCs": 0,
       "vanillaNPCs": 0,
       "vanillaNPCTablesCaptured": 0,
-      "foreverNPCTablesCaptured": 0,
+      "foreverNPCTablesCaptured": 8,
       "reportedBosses": 0,
-      "bosses": 0,
+      "bosses": 8,
       "trashSources": 0,
       "containers": 0,
       "missingForeverNPCs": [],
-      "unpublished": true
+      "unpublished": false,
+      "specificForeverNPCTablesCaptured": 8,
+      "partial": true
     },
     "uldaman": {
       "zoneNPCs": 44,
@@ -164,13 +168,15 @@
       "zoneNPCs": 0,
       "vanillaNPCs": 0,
       "vanillaNPCTablesCaptured": 0,
-      "foreverNPCTablesCaptured": 0,
+      "foreverNPCTablesCaptured": 11,
       "reportedBosses": 0,
-      "bosses": 0,
+      "bosses": 11,
       "trashSources": 0,
       "containers": 0,
       "missingForeverNPCs": [],
-      "unpublished": true
+      "unpublished": false,
+      "specificForeverNPCTablesCaptured": 11,
+      "partial": true
     },
     "ruins-of-lordaeron": {
       "zoneNPCs": 30,
@@ -303,25 +309,29 @@
       "zoneNPCs": 0,
       "vanillaNPCs": 0,
       "vanillaNPCTablesCaptured": 0,
-      "foreverNPCTablesCaptured": 0,
+      "foreverNPCTablesCaptured": 6,
       "reportedBosses": 0,
-      "bosses": 0,
+      "bosses": 6,
       "trashSources": 0,
       "containers": 0,
       "missingForeverNPCs": [],
-      "unpublished": true
+      "unpublished": false,
+      "specificForeverNPCTablesCaptured": 6,
+      "partial": true
     },
     "alcaz-prison": {
       "zoneNPCs": 0,
       "vanillaNPCs": 0,
       "vanillaNPCTablesCaptured": 0,
-      "foreverNPCTablesCaptured": 0,
+      "foreverNPCTablesCaptured": 5,
       "reportedBosses": 0,
-      "bosses": 0,
+      "bosses": 5,
       "trashSources": 0,
       "containers": 0,
       "missingForeverNPCs": [],
-      "unpublished": true
+      "unpublished": false,
+      "specificForeverNPCTablesCaptured": 5,
+      "partial": true
     },
     "blackrock-spire": {
       "zoneNPCs": 102,
@@ -5070,6 +5080,206 @@
       "url": "https://www.wowhead.com/forever/npc=260808",
       "sha256": "2f2b684680eb818ae3f447d801185e2c0b776ca3209e9f9815496c2078193195",
       "bytes": 95131
+    },
+    "258905": {
+      "url": "https://www.wowhead.com/forever/npc=258905",
+      "sha256": "e900ecbc87085690b181a0bb685f49a7dbc021c9227e57f1d2a4857b2e064959",
+      "bytes": 66095
+    },
+    "258924": {
+      "url": "https://www.wowhead.com/forever/npc=258924",
+      "sha256": "930a3e56de96118c29b06079a0d0392dab11f291c8f81624367a52f9bebcb812",
+      "bytes": 61618
+    },
+    "260042": {
+      "url": "https://www.wowhead.com/forever/npc=260042",
+      "sha256": "21b16f2213447988c20a1b74b6ebada81bfbbb3b0012eaf94bb2bfc90a448217",
+      "bytes": 63021
+    },
+    "260202": {
+      "url": "https://www.wowhead.com/forever/npc=260202",
+      "sha256": "711c4898efe86678cad6e2126db8d84507ed42f0d9f272e7500e1d6e88a8c378",
+      "bytes": 61041
+    },
+    "260243": {
+      "url": "https://www.wowhead.com/forever/npc=260243",
+      "sha256": "c7af08e57eaed6f1517e0b4f3871ffe200b31849af74d76212878010dd8e2932",
+      "bytes": 63398
+    },
+    "263886": {
+      "url": "https://www.wowhead.com/forever/npc=263886",
+      "sha256": "06b11b76dc9811e60b516d14a5f712e108d0ba3d6e754c1729a44a4479bcc03b",
+      "bytes": 62937
+    },
+    "264172": {
+      "url": "https://www.wowhead.com/forever/npc=264172",
+      "sha256": "e74adbb085eefd124d72d15bcd73c83f8daeb70f5fad6d981a2f628b519d4109",
+      "bytes": 60092
+    },
+    "264177": {
+      "url": "https://www.wowhead.com/forever/npc=264177",
+      "sha256": "26964094fa3d9051e5031e9857747f8d00168f36b1b1484cccce08518c9bdc80",
+      "bytes": 59659
+    },
+    "258964": {
+      "url": "https://www.wowhead.com/forever/npc=258964",
+      "sha256": "64804326a0c4f5bddfdefa9eb52ac5541d95cd7fe64965af422ef9e76933a5ce",
+      "bytes": 131744
+    },
+    "258966": {
+      "url": "https://www.wowhead.com/forever/npc=258966",
+      "sha256": "9609d357130fb47bee07065b0d34a6fc46ddb3d78356ac449db7fc77ca674b89",
+      "bytes": 64693
+    },
+    "258968": {
+      "url": "https://www.wowhead.com/forever/npc=258968",
+      "sha256": "ada22d2b490aa3216bea41e1bad0ff60ba4b5980037deb711e8851bc7b2f396e",
+      "bytes": 69267
+    },
+    "258972": {
+      "url": "https://www.wowhead.com/forever/npc=258972",
+      "sha256": "d43a6efc0d2e929672cf93f2ef1ab47663ba6c9e60a1137e08d2fa171aed465b",
+      "bytes": 64189
+    },
+    "259281": {
+      "url": "https://www.wowhead.com/forever/npc=259281",
+      "sha256": "655d4858a0deb23c172c8ae402ec3ecaf8acaea25fbe79b23da05a82c90a7a3f",
+      "bytes": 64568
+    },
+    "264773": {
+      "url": "https://www.wowhead.com/forever/npc=264773",
+      "sha256": "c100f783598aa7670f14ec601edbb3adb6de90d1288ef68161e80230a307eee9",
+      "bytes": 62211
+    },
+    "255391": {
+      "url": "https://www.wowhead.com/forever/npc=255391",
+      "sha256": "e2ff39db778bcd52a2288b142f30e6475d505ef5d7a6d0a20668a43c8c2c466c",
+      "bytes": 69208
+    },
+    "255702": {
+      "url": "https://www.wowhead.com/forever/npc=255702",
+      "sha256": "bf4acb166e66d78a7af151f2007c94b4f7582a6d33b28ccf4073f5f65de1e553",
+      "bytes": 62516
+    },
+    "255997": {
+      "url": "https://www.wowhead.com/forever/npc=255997",
+      "sha256": "06505ca02ba66d6a1497792d4ff71874d1c90c33da2fc49fbbf8e3fc04a29389",
+      "bytes": 61013
+    },
+    "256236": {
+      "url": "https://www.wowhead.com/forever/npc=256236",
+      "sha256": "966979eaeae094509183fcc68053836e783465bb7227f8570d04a963c2a2e05a",
+      "bytes": 62273
+    },
+    "257016": {
+      "url": "https://www.wowhead.com/forever/npc=257016",
+      "sha256": "ecd8833e9e9f5a0a828aff002916bca2418510e8a278208a23cf472d6777805a",
+      "bytes": 68430
+    },
+    "247195": {
+      "url": "https://www.wowhead.com/forever/npc=247195",
+      "sha256": "79cb84a8d39b717ed69abbb66ac521652325e1b598671e18b25dee64e5ea6a23",
+      "bytes": 61005
+    },
+    "247198": {
+      "url": "https://www.wowhead.com/forever/npc=247198",
+      "sha256": "feb6ec63b07c42dcb4714fb62946099b4f5f832153b231bef41984d61ed60022",
+      "bytes": 61736
+    },
+    "247206": {
+      "url": "https://www.wowhead.com/forever/npc=247206",
+      "sha256": "693c607bab4a3840ce8f16f48db83a3b3f7f1993d0a18a9a2362f42c1cccc986",
+      "bytes": 67884
+    },
+    "247207": {
+      "url": "https://www.wowhead.com/forever/npc=247207",
+      "sha256": "ff3657de4e97e5ffd98dd02adb47d069eeffce2615e3a27cb33ee03319c17b0a",
+      "bytes": 58462
+    },
+    "247209": {
+      "url": "https://www.wowhead.com/forever/npc=247209",
+      "sha256": "fd45d59084b719958e3db6d9393e1c595f190b48f7339cb5327d40d4b9259e84",
+      "bytes": 62357
+    },
+    "247231": {
+      "url": "https://www.wowhead.com/forever/npc=247231",
+      "sha256": "f853b4ab7323be5bce9feba2585bc41240fa6d2a3f75067f126f6ecb927f788b",
+      "bytes": 58204
+    },
+    "247234": {
+      "url": "https://www.wowhead.com/forever/npc=247234",
+      "sha256": "f34b4b85489f0409201ac59f794cbc048e1fb16b4e08c2c187d2778dd219c5cf",
+      "bytes": 69023
+    },
+    "247412": {
+      "url": "https://www.wowhead.com/forever/npc=247412",
+      "sha256": "cb8ed0ad265387a683b7ce428934d7e77705f6ebdcbc3ea9c8de3afd749dc3d8",
+      "bytes": 54394
+    },
+    "250034": {
+      "url": "https://www.wowhead.com/forever/npc=250034",
+      "sha256": "d758324a776745796aff3d3da4c2681da66ed920fecaf0713a18a2d63dbf583e",
+      "bytes": 62036
+    },
+    "269104": {
+      "url": "https://www.wowhead.com/forever/npc=269104",
+      "sha256": "cd937b32a895a88ec13ff1fd6f49ab7f3c8b7b3689694007901edc205e5a3b7a",
+      "bytes": 58570
+    },
+    "269111": {
+      "url": "https://www.wowhead.com/forever/npc=269111",
+      "sha256": "7c27bef6c93dde28976c1e992f99c01eb147eaa3a731af070e140396850f3261",
+      "bytes": 56196
+    },
+    "253201": {
+      "url": "https://www.wowhead.com/forever/npc=253201",
+      "sha256": "e13f9671dc5c68ca04d9e84908faee3275ec91a6c66e1eb53bfb4df5d503ff8a",
+      "bytes": 69207
+    },
+    "261809": {
+      "url": "https://www.wowhead.com/forever/npc=261809",
+      "sha256": "cad133c0a8628aa538f38ad094e648fea31d0226f709e4e6aa8aba7560040047",
+      "bytes": 78701
+    },
+    "261811": {
+      "url": "https://www.wowhead.com/forever/npc=261811",
+      "sha256": "d76889ad97be5c3471b90de8b96a7a4f32a246d474ced8aa1b6b0855b60593f0",
+      "bytes": 60830
+    },
+    "261812": {
+      "url": "https://www.wowhead.com/forever/npc=261812",
+      "sha256": "2ed6cd1d837af77c31bf81d597187b539013616bb72f6c3624ef8817affc0974",
+      "bytes": 63011
+    },
+    "261813": {
+      "url": "https://www.wowhead.com/forever/npc=261813",
+      "sha256": "c9c9d682085509577b72685f5e23386b8612106ccd4d20d7a0ce015d22dd2ccd",
+      "bytes": 62924
+    },
+    "261974": {
+      "url": "https://www.wowhead.com/forever/npc=261974",
+      "sha256": "72566a435a5b689d835ba5f41b1bdd760aa5167eca1cd8bf06f4c44adf8cdada",
+      "bytes": 62580
+    },
+    "262081": {
+      "url": "https://www.wowhead.com/forever/npc=262081",
+      "sha256": "5e6845f17383bded59b5e2b39b922d59b59a2b411af5314f986901ecc7950d17",
+      "bytes": 62412
+    },
+    "262127": {
+      "url": "https://www.wowhead.com/forever/npc=262127",
+      "sha256": "a44078e5c718ba6f39621f82d51851b2efa438728189c1ce8d1a6b3ce5c79a9b",
+      "bytes": 73311
+    },
+    "262297": {
+      "url": "https://www.wowhead.com/forever/npc=262297",
+      "sha256": "4a81c189d6d91b233abfbbee769598867a63e5a4ea87f00abc2bcc989bcedf45",
+      "bytes": 61484
+    },
+    "272561": {
+      "url": "https://www.wowhead.com/forever/npc=272561",
+      "sha256": "303f277a467054f74445f8509f39a511d98b796dc5901b7ec98447315cfbef23",
+      "bytes": 66416
     }
   },
   "vanillaNPCSources": {
@@ -10257,11 +10467,11 @@
     "Vanilla identities are used for classic dungeons. Season-only samples and raid duplicates are excluded.",
     "Captured Forever metadata and explicit new/specific relationships supplement the Vanilla baseline.",
     "Community reports for three new dungeons are reported beta evidence, not Blizzard-certified exhaustive loot.",
-    "Unpublished new dungeons and missing beta NPC tables remain unknown. No encounter/map/loot relationship is guessed.",
     "Shared/world drops are separate from encounter loot. Containers are not NPC drops.",
     "Loot tables do not include vendor stock, quest rewards, skinning or gathering resources.",
     "No source scripts, guide prose or external artwork are included.",
-    "Four individual NPC/item relationships are owner-confirmed from the identified user-supplied reference archive; no source code, prose, artwork or bulk tables are included."
+    "Four individual NPC/item relationships are owner-confirmed from the identified user-supplied reference archive; no source code, prose, artwork or bulk tables are included.",
+    "Five newer dungeons have captured encounter loot but remain partial; missing NPC tables, trash, maps, and entrances remain unknown. No relationship is guessed."
   ],
   "userConfirmedFacts": {
     "archive": "ForeverDungeonJournal1.6.3.zip",
@@ -10313,22 +10523,34 @@
     ]
   },
   "foreverDungeonAdditions": {
-    "captured": "2026-11-05",
-    "purpose": "Specific Forever boss/item facts from public NPC pages. Current Method.gg pages independently cross-check the documented dungeon roster and listed loot IDs. No code, prose, artwork, map images, page layout, or site data exports are bundled.",
+    "captured": "2026-11-24",
+    "purpose": "Specific Forever boss/item facts from individually captured public NPC pages. Current Wowhead Forever guide tables cross-check encounter and item links; current Method.gg pages document four of the five dungeon guides. Shaper\u2019s Terrace uses its Wowhead guide because no dedicated Method page is published. Loot icons reference native client assets. No code, prose, artwork, maps, page layout, or site data exports are bundled.",
     "methodIndex": {
       "url": "https://www.method.gg/wow-forever/dungeons",
-      "sha256": "21e4d3f0a69872bc19ae39e74bcb30f3befd4593eebe5493527127b2b3b18929",
-      "bytes": 238227,
+      "sha256": "6b1434ae9d4278ce73d32cd2fa186111b4ae2bd212d96965b294bc2a544be904",
+      "bytes": 251889,
       "guides": [
+        "alcaz-prison",
         "blackfathom-deeps",
+        "blackmaw-hold",
         "city-of-dalaran",
         "excavation-site-wetlands",
+        "gnomeregan",
         "hall-of-thanes",
+        "kroldok-stronghold",
         "ragefire-chasm",
+        "razorfen-downs",
+        "razorfen-kraul",
         "ruins-of-lordaeron",
+        "scarlet-monastery-armory",
+        "scarlet-monastery-cathedral",
+        "scarlet-monastery-graveyard",
+        "scarlet-monastery-library",
         "shadowfang-keep",
         "the-deadmines",
+        "the-drowned-city",
         "the-stockade",
+        "uldaman",
         "wailing-caverns"
       ]
     },
@@ -10360,15 +10582,268 @@
         "bytes": 260245,
         "listedBosses": 6,
         "listedItemLinks": 18
+      },
+      "the-drowned-city": {
+        "url": "https://www.method.gg/wow-forever/dungeons/the-drowned-city",
+        "sha256": "553a61c134b84d0c2bb763bfe396489f15d57db8295ab6fd4612ee451204818b",
+        "bytes": 303797,
+        "listedItemLinks": 22
+      },
+      "kroldok-stronghold": {
+        "url": "https://www.method.gg/wow-forever/dungeons/kroldok-stronghold",
+        "sha256": "fc7567045914b7929773c095dfb590eed19b962ad7cc05502ed6f88588174280",
+        "bytes": 299044,
+        "listedItemLinks": 25
+      },
+      "alcaz-prison": {
+        "url": "https://www.method.gg/wow-forever/dungeons/alcaz-prison",
+        "sha256": "bab4850ac3106adb546166ea70d849d7fbc137b9f65d7894e1005c524e84e367",
+        "bytes": 295627,
+        "listedItemLinks": 19
+      },
+      "blackmaw-hold": {
+        "url": "https://www.method.gg/wow-forever/dungeons/blackmaw-hold",
+        "sha256": "ccf0eedab302e889f152b61eb550f1719852c28aed9e28c639c8ff9e67d06ee6",
+        "bytes": 300792,
+        "listedItemLinks": 1
       }
     },
-    "newForeverDungeonsNotInMethodGuideIndex": [
-      "the-drowned-city",
-      "kroldok-stronghold",
-      "alcaz-prison",
-      "blackmaw-hold",
+    "wowheadGuideCrossChecks": {
+      "the-drowned-city": {
+        "url": "https://www.wowhead.com/forever/guide/the-drowned-city-dungeon-overview-location-rewards",
+        "sha256": "cbdca465024570627980c9dd06e7b8b55a5060d7e6567ced8b12cc7d2ef9c402",
+        "bytes": 159063
+      },
+      "kroldok-stronghold": {
+        "url": "https://www.wowhead.com/forever/guide/kroldok-stronghold-dungeon-overview-location-rewards",
+        "sha256": "519a12f9c04097d28765e012e81ec1ab9e31740f3ae3c8845fda52cb9bc169e3",
+        "bytes": 134588
+      },
+      "alcaz-prison": {
+        "url": "https://www.wowhead.com/forever/guide/alcaz-prison-dungeon-overview-location-rewards",
+        "sha256": "8eb2244b588e0c40485435f4dd436c56459696fe877ec7804638543179b88217",
+        "bytes": 136962
+      },
+      "blackmaw-hold": {
+        "url": "https://www.wowhead.com/forever/guide/blackmaw-hold-dungeon-overview-location-rewards",
+        "sha256": "ab3a50e1a2e407875421efa05ae2dfd90741d4d1357299f88a871c503b5ad4f1",
+        "bytes": 157038
+      },
+      "shapers-terrace": {
+        "url": "https://www.wowhead.com/forever/guide/the-shapers-terrace-dungeon-overview-location-rewards",
+        "sha256": "3321af393bdc42943e367329e601051c462e9212482650fdf7f0d8c79d427289",
+        "bytes": 144258
+      }
+    },
+    "newForeverDungeonsWithoutDedicatedMethodGuide": [
       "shapers-terrace"
     ],
+    "newDungeonBossAdditions": {
+      "bossesCaptured": 40,
+      "specificDropLinksCaptured": 126,
+      "bossSources": {
+        "258905": {
+          "url": "https://www.wowhead.com/forever/npc=258905",
+          "sha256": "e900ecbc87085690b181a0bb685f49a7dbc021c9227e57f1d2a4857b2e064959",
+          "bytes": 66095
+        },
+        "258924": {
+          "url": "https://www.wowhead.com/forever/npc=258924",
+          "sha256": "930a3e56de96118c29b06079a0d0392dab11f291c8f81624367a52f9bebcb812",
+          "bytes": 61618
+        },
+        "260042": {
+          "url": "https://www.wowhead.com/forever/npc=260042",
+          "sha256": "21b16f2213447988c20a1b74b6ebada81bfbbb3b0012eaf94bb2bfc90a448217",
+          "bytes": 63021
+        },
+        "260202": {
+          "url": "https://www.wowhead.com/forever/npc=260202",
+          "sha256": "711c4898efe86678cad6e2126db8d84507ed42f0d9f272e7500e1d6e88a8c378",
+          "bytes": 61041
+        },
+        "260243": {
+          "url": "https://www.wowhead.com/forever/npc=260243",
+          "sha256": "c7af08e57eaed6f1517e0b4f3871ffe200b31849af74d76212878010dd8e2932",
+          "bytes": 63398
+        },
+        "263886": {
+          "url": "https://www.wowhead.com/forever/npc=263886",
+          "sha256": "06b11b76dc9811e60b516d14a5f712e108d0ba3d6e754c1729a44a4479bcc03b",
+          "bytes": 62937
+        },
+        "264172": {
+          "url": "https://www.wowhead.com/forever/npc=264172",
+          "sha256": "e74adbb085eefd124d72d15bcd73c83f8daeb70f5fad6d981a2f628b519d4109",
+          "bytes": 60092
+        },
+        "264177": {
+          "url": "https://www.wowhead.com/forever/npc=264177",
+          "sha256": "26964094fa3d9051e5031e9857747f8d00168f36b1b1484cccce08518c9bdc80",
+          "bytes": 59659
+        },
+        "258964": {
+          "url": "https://www.wowhead.com/forever/npc=258964",
+          "sha256": "64804326a0c4f5bddfdefa9eb52ac5541d95cd7fe64965af422ef9e76933a5ce",
+          "bytes": 131744
+        },
+        "258966": {
+          "url": "https://www.wowhead.com/forever/npc=258966",
+          "sha256": "9609d357130fb47bee07065b0d34a6fc46ddb3d78356ac449db7fc77ca674b89",
+          "bytes": 64693
+        },
+        "258968": {
+          "url": "https://www.wowhead.com/forever/npc=258968",
+          "sha256": "ada22d2b490aa3216bea41e1bad0ff60ba4b5980037deb711e8851bc7b2f396e",
+          "bytes": 69267
+        },
+        "258972": {
+          "url": "https://www.wowhead.com/forever/npc=258972",
+          "sha256": "d43a6efc0d2e929672cf93f2ef1ab47663ba6c9e60a1137e08d2fa171aed465b",
+          "bytes": 64189
+        },
+        "259281": {
+          "url": "https://www.wowhead.com/forever/npc=259281",
+          "sha256": "655d4858a0deb23c172c8ae402ec3ecaf8acaea25fbe79b23da05a82c90a7a3f",
+          "bytes": 64568
+        },
+        "264773": {
+          "url": "https://www.wowhead.com/forever/npc=264773",
+          "sha256": "c100f783598aa7670f14ec601edbb3adb6de90d1288ef68161e80230a307eee9",
+          "bytes": 62211
+        },
+        "255391": {
+          "url": "https://www.wowhead.com/forever/npc=255391",
+          "sha256": "e2ff39db778bcd52a2288b142f30e6475d505ef5d7a6d0a20668a43c8c2c466c",
+          "bytes": 69208
+        },
+        "255702": {
+          "url": "https://www.wowhead.com/forever/npc=255702",
+          "sha256": "bf4acb166e66d78a7af151f2007c94b4f7582a6d33b28ccf4073f5f65de1e553",
+          "bytes": 62516
+        },
+        "255997": {
+          "url": "https://www.wowhead.com/forever/npc=255997",
+          "sha256": "06505ca02ba66d6a1497792d4ff71874d1c90c33da2fc49fbbf8e3fc04a29389",
+          "bytes": 61013
+        },
+        "256236": {
+          "url": "https://www.wowhead.com/forever/npc=256236",
+          "sha256": "966979eaeae094509183fcc68053836e783465bb7227f8570d04a963c2a2e05a",
+          "bytes": 62273
+        },
+        "257016": {
+          "url": "https://www.wowhead.com/forever/npc=257016",
+          "sha256": "ecd8833e9e9f5a0a828aff002916bca2418510e8a278208a23cf472d6777805a",
+          "bytes": 68430
+        },
+        "247195": {
+          "url": "https://www.wowhead.com/forever/npc=247195",
+          "sha256": "79cb84a8d39b717ed69abbb66ac521652325e1b598671e18b25dee64e5ea6a23",
+          "bytes": 61005
+        },
+        "247198": {
+          "url": "https://www.wowhead.com/forever/npc=247198",
+          "sha256": "feb6ec63b07c42dcb4714fb62946099b4f5f832153b231bef41984d61ed60022",
+          "bytes": 61736
+        },
+        "247206": {
+          "url": "https://www.wowhead.com/forever/npc=247206",
+          "sha256": "693c607bab4a3840ce8f16f48db83a3b3f7f1993d0a18a9a2362f42c1cccc986",
+          "bytes": 67884
+        },
+        "247207": {
+          "url": "https://www.wowhead.com/forever/npc=247207",
+          "sha256": "ff3657de4e97e5ffd98dd02adb47d069eeffce2615e3a27cb33ee03319c17b0a",
+          "bytes": 58462
+        },
+        "247209": {
+          "url": "https://www.wowhead.com/forever/npc=247209",
+          "sha256": "fd45d59084b719958e3db6d9393e1c595f190b48f7339cb5327d40d4b9259e84",
+          "bytes": 62357
+        },
+        "247231": {
+          "url": "https://www.wowhead.com/forever/npc=247231",
+          "sha256": "f853b4ab7323be5bce9feba2585bc41240fa6d2a3f75067f126f6ecb927f788b",
+          "bytes": 58204
+        },
+        "247234": {
+          "url": "https://www.wowhead.com/forever/npc=247234",
+          "sha256": "f34b4b85489f0409201ac59f794cbc048e1fb16b4e08c2c187d2778dd219c5cf",
+          "bytes": 69023
+        },
+        "247412": {
+          "url": "https://www.wowhead.com/forever/npc=247412",
+          "sha256": "cb8ed0ad265387a683b7ce428934d7e77705f6ebdcbc3ea9c8de3afd749dc3d8",
+          "bytes": 54394
+        },
+        "250034": {
+          "url": "https://www.wowhead.com/forever/npc=250034",
+          "sha256": "d758324a776745796aff3d3da4c2681da66ed920fecaf0713a18a2d63dbf583e",
+          "bytes": 62036
+        },
+        "269104": {
+          "url": "https://www.wowhead.com/forever/npc=269104",
+          "sha256": "cd937b32a895a88ec13ff1fd6f49ab7f3c8b7b3689694007901edc205e5a3b7a",
+          "bytes": 58570
+        },
+        "269111": {
+          "url": "https://www.wowhead.com/forever/npc=269111",
+          "sha256": "7c27bef6c93dde28976c1e992f99c01eb147eaa3a731af070e140396850f3261",
+          "bytes": 56196
+        },
+        "253201": {
+          "url": "https://www.wowhead.com/forever/npc=253201",
+          "sha256": "e13f9671dc5c68ca04d9e84908faee3275ec91a6c66e1eb53bfb4df5d503ff8a",
+          "bytes": 69207
+        },
+        "261809": {
+          "url": "https://www.wowhead.com/forever/npc=261809",
+          "sha256": "cad133c0a8628aa538f38ad094e648fea31d0226f709e4e6aa8aba7560040047",
+          "bytes": 78701
+        },
+        "261811": {
+          "url": "https://www.wowhead.com/forever/npc=261811",
+          "sha256": "d76889ad97be5c3471b90de8b96a7a4f32a246d474ced8aa1b6b0855b60593f0",
+          "bytes": 60830
+        },
+        "261812": {
+          "url": "https://www.wowhead.com/forever/npc=261812",
+          "sha256": "2ed6cd1d837af77c31bf81d597187b539013616bb72f6c3624ef8817affc0974",
+          "bytes": 63011
+        },
+        "261813": {
+          "url": "https://www.wowhead.com/forever/npc=261813",
+          "sha256": "c9c9d682085509577b72685f5e23386b8612106ccd4d20d7a0ce015d22dd2ccd",
+          "bytes": 62924
+        },
+        "261974": {
+          "url": "https://www.wowhead.com/forever/npc=261974",
+          "sha256": "72566a435a5b689d835ba5f41b1bdd760aa5167eca1cd8bf06f4c44adf8cdada",
+          "bytes": 62580
+        },
+        "262081": {
+          "url": "https://www.wowhead.com/forever/npc=262081",
+          "sha256": "5e6845f17383bded59b5e2b39b922d59b59a2b411af5314f986901ecc7950d17",
+          "bytes": 62412
+        },
+        "262127": {
+          "url": "https://www.wowhead.com/forever/npc=262127",
+          "sha256": "a44078e5c718ba6f39621f82d51851b2efa438728189c1ce8d1a6b3ce5c79a9b",
+          "bytes": 73311
+        },
+        "262297": {
+          "url": "https://www.wowhead.com/forever/npc=262297",
+          "sha256": "4a81c189d6d91b233abfbbee769598867a63e5a4ea87f00abc2bcc989bcedf45",
+          "bytes": 61484
+        },
+        "272561": {
+          "url": "https://www.wowhead.com/forever/npc=272561",
+          "sha256": "303f277a467054f74445f8509f39a511d98b796dc5901b7ec98447315cfbef23",
+          "bytes": 66416
+        }
+      }
+    },
     "city-of-dalaran": {
       "specificBossesCaptured": 8,
       "specificDropLinksCaptured": 27,
