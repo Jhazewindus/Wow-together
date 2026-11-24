@@ -25,8 +25,12 @@ local function command(text)
         local prices = namespace.GoldPrices
         if prices and prices.Command then return prices.Command(rest) end
         ns.Print("Gold prices are unavailable.")
+    elseif action == "stop" then
+        local farms = namespace.GoldFarms
+        if farms and farms.Stop then farms.Stop("stopped by player")
+        else ns.Print("Gold session unavailable.") end
     else
-        ns.Print("Gold tab is available in the Wow Together window. /wt gold prices shows price sources.")
+        ns.Print("Gold farms are in the Wow Together Play page. Use /wt gold prices for sources or /wt gold stop to end a session.")
     end
 end
 
@@ -37,12 +41,14 @@ local function probe(output)
     if prices and prices.Probe then prices.Probe(output) end
     local observations = namespace.GoldObservations
     if observations and observations.Probe then observations.Probe(output) end
+    local farms = namespace.GoldFarms
+    if farms and farms.Probe then farms.Probe(output) end
 end
 
 ns.RegisterModule("Gold", {
     tab = {title = "Gold", render = function(page)
-        -- The tab is intentionally empty until suggestions have measured data.
-        page:SetHeight(250)
+        local farms = namespace.GoldFarms
+        if farms and farms.Render then farms.Render(page) else page:SetHeight(250) end
     end},
     settingsGroup = {title = "Gold", description = "Choose what Gold may record and share.",
         entries = {
