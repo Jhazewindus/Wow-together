@@ -34,6 +34,7 @@ def build_records(geometry_path: Path, creatures=None, loot_rows=None):
     transforms, _, _ = read_geometry(geometry_path)
     creatures = read_rows('creatures') if creatures is None else creatures
     loot_rows = read_rows('creature_loot') if loot_rows is None else loot_rows
+    skinning_rows = read_rows('creature_skinning_loot')
     by_loot = defaultdict(list)
     for row in loot_rows:
         item = row.get('itemId')
@@ -44,12 +45,24 @@ def build_records(geometry_path: Path, creatures=None, loot_rows=None):
                 and isinstance(chance, (int, float)) and 0 < chance <= 100:
             by_loot[row.get('ownerLootId')].append({'itemID': item, 'chance': chance, 'quantity': count,
                 'source': LEGACY + '; creature_loot_template chance'})
+    by_skinning = defaultdict(list)
+    for row in skinning_rows:
+        item = row.get('itemId')
+        chance = row.get('chanceOrQuestChance')
+        count = row.get('minCountOrReference')
+        if isinstance(item, int) and item > 0 and isinstance(count, int) and count > 0 \
+                and isinstance(chance, (int, float)) and 0 < chance <= 100:
+            by_skinning[row.get('ownerLootId')].append({'itemID': item, 'chance': chance,
+                'quantity': count, 'source': LEGACY + '; skinning_loot_template chance; legacy, unconfirmed'})
 
     records = []
     for creature in creatures:
         loot = by_loot.get(creature.get('lootId'), [])
         if not loot:
-            continue
+            # Skinning-only candidates remain part of the creature's normal
+            # farm and appear only when the character has Skinning.
+            if not by_skinning.get(creature.get('skinLootId')):
+                continue
         grouped = defaultdict(set)
         for spawn in creature.get('spawns') or []:
             for transform in transforms.values():
@@ -59,29 +72,42 @@ def build_records(geometry_path: Path, creatures=None, loot_rows=None):
                 y = transform['sy'] * spawn['worldX'] + transform['oy']
                 if 0 <= x <= 1 and 0 <= y <= 1:
                     grouped[(transform['mapID'], transform['targetName'])].add((round(x, 6), round(y, 6)))
-        for (map_id, zone), points in sorted(grouped.items()):
-            if not points:
-                continue
+        # A legacy creature can have coordinates on both sides of a zone
+        # border. Keep the zone with the most converted points as the single
+        # routable candidate; ties use the smaller map ID for stable output.
+        populated = [(map_id, zone, points) for (map_id, zone), points in grouped.items() if points]
+        if not populated:
+            continue
+        map_id, zone, points = min(populated, key=lambda row: (-len(row[2]), row[0], row[1]))
+        if points:
+            skinning_loot = by_skinning.get(creature.get('skinLootId'), [])
             records.append({'npcID': creature['id'], 'name': creature['name'],
                 'confidence': 'legacy, unconfirmed',
                 'minLevel': max(1, creature['minLevel']), 'maxLevel': max(1, creature['maxLevel']),
                 'mapID': map_id, 'zoneName': zone,
                 'spawnPoints': [{'mapID': map_id, 'x': x, 'y': y, 'source': GEOMETRY + '; converted legacy world coordinate'}
                     for x, y in sorted(points)[:24]],
-                'loot': loot[:200],
+                'loot': loot[:200], 'skinnable': bool(creature.get('skinLootId')),
+                'skinningLoot': skinning_loot[:200],
                 'sources': {'npcID': LEGACY + '; creature_template entry', 'name': LEGACY + '; creature_template name',
                     'level': LEGACY + '; creature_template minlevel/maxlevel', 'mapID': GEOMETRY + '; ui_map_id',
                     'zoneName': GEOMETRY + '; target_name',
                     'spawnPoints': 'CMaNGOS pinned legacy world positions converted by QuestieDB Forever map bounds; unconfirmed',
-                    'loot': LEGACY + '; creature_loot_template rows'}})
+                    'loot': LEGACY + '; creature_loot_template rows',
+                    'skinnable': LEGACY + '; creature_template SkinningLootId',
+                    'skinningLoot': LEGACY + '; skinning_loot_template rows'}})
     records.sort(key=lambda row: (row['npcID'], row['mapID']))
     return records
 
 
 def build_gathering_records(geometry_path: Path):
-    transforms, _, _ = read_geometry(geometry_path)
+    transforms, area_to_map, _ = read_geometry(geometry_path)
     objects = read_rows('gameobjects')
     loot_rows = read_rows('gameobject_loot')
+    fishing_rows = read_rows('fishing_loot')
+    reference_rows = read_rows('reference_loot')
+    items = read_rows('items')
+    item_names = {row.get('id'): row.get('name', '') for row in items}
     from collections import defaultdict
     by_loot = defaultdict(list)
     for row in loot_rows:
@@ -129,6 +155,48 @@ def build_gathering_records(geometry_path: Path):
             for item in loot:
                 if item['itemID'] not in known:
                     current['loot'].append(item); known.add(item['itemID'])
+
+    # ClassicDB's fishing table is keyed by legacy area ID. Map only areas
+    # represented in the pinned Forever map-bound report; never infer a zone
+    # from a fishing skill tier or a pool name.
+    refs = defaultdict(list)
+    for row in reference_rows:
+        refs[row.get('ownerLootId')].append(row)
+    fish_by_area = defaultdict(list)
+    fish_tokens = ('fish', 'eel', 'snapper', 'trout', 'salmon', 'bass', 'catfish',
+        'grouper', 'lobster', 'crushfish', 'armorfish', 'mightfish', 'redgill',
+        'yellowtail', 'mackerel', 'frenzy')
+    for row in fishing_rows:
+        item, chance, count = row.get('itemId'), row.get('chanceOrQuestChance'), row.get('minCountOrReference')
+        if not isinstance(chance, (int, float)) or chance <= 0 or chance > 100: continue
+        if isinstance(item, int) and item > 0 and isinstance(count, int) and count > 0 \
+                and any(token in item_names.get(item, '').lower() for token in fish_tokens):
+            fish_by_area[row.get('ownerLootId')].append({'itemID': item, 'chance': chance,
+                'quantity': count, 'source': LEGACY + '; fishing_loot_template area entry and chance; legacy, unconfirmed'})
+        elif isinstance(count, int) and count < 0:
+            # A negative count links a reference group. Expand only literal
+            # child item rows; nested references and nonpositive chances stay out.
+            for child in refs.get(abs(count), []):
+                child_id, child_chance, child_count = child.get('itemId'), child.get('chanceOrQuestChance'), child.get('minCountOrReference')
+                if isinstance(child_id, int) and child_id > 0 and isinstance(child_count, int) and child_count > 0 \
+                        and any(token in item_names.get(child_id, '').lower() for token in fish_tokens) \
+                        and isinstance(child_chance, (int, float)) and 0 < child_chance <= 100:
+                    fish_by_area[row.get('ownerLootId')].append({'itemID': child_id,
+                        'chance': chance * child_chance / 100, 'quantity': child_count,
+                        'source': LEGACY + '; fishing_loot_template area row and reference_loot_template child; legacy, unconfirmed'})
+    for area_id, fish in fish_by_area.items():
+        map_id = area_to_map.get(area_id)
+        transform = transforms.get(map_id)
+        if not transform: continue
+        zone = transform['targetName']
+        key = 'Fishing|' + zone + '|' + str(map_id)
+        current = results.setdefault(key, {'profession': 'Fishing', 'node': zone,
+            'mapID': map_id, 'zoneName': zone, 'loot': [],
+            'source': LEGACY + '; fishing_loot_template area ID; legacy, unconfirmed'})
+        known = {item['itemID'] for item in current['loot']}
+        for item in fish:
+            if item['itemID'] not in known:
+                current['loot'].append(item); known.add(item['itemID'])
     return results
 
 

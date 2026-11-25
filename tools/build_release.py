@@ -128,6 +128,7 @@ def main():
         'WowTogether_QuestData': ['QuestCatalogue.lua'],
         'WowTogether_ProfessionData': ['ProfessionData.lua'],
         'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
+        'WowTogether_GatheringPositionData': ['GatheringPositionData.lua'],
     }
     gold_sources = optional_gold_sources(ROOT)
     if gold_sources is not None:

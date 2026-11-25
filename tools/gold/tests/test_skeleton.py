@@ -35,7 +35,7 @@ class GoldSkeletonTests(unittest.TestCase):
         client.ns.SetFilter("module:gold")
         client.lua.globals().SlashCmdList.WOWTOGETHER("gold")
         logs = client.lua.globals().logs
-        self.assertIn("Gold farms are in the Wow Together Play page", logs[len(logs)])
+        self.assertIn("The farm tracker is unavailable", logs[len(logs)])
         client.ns.Diagnostics()
         report = client.ns.diagnosticsText.GetText(client.ns.diagnosticsText)
         self.assertIn("Gold module: ready", report)

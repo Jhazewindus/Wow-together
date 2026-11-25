@@ -78,6 +78,34 @@ class GatheringRuleTests(unittest.TestCase):
         self.assertEqual(len(pools), 1)
         self.assertEqual((pools[1].x, pools[1].y), (.7, .8))
 
+    def test_real_load_on_demand_positions_have_herbs_and_fishing_pools(self):
+        c = client(); ns = c.ns
+        self.assertTrue(ns.EnsureOptionalData('WowTogether_GatheringPositionData'))
+        herbs = ns.GatheringFarmPoints('Herbalism', 'Peacebloom', 1429)
+        self.assertEqual(len(herbs), 24)
+        self.assertEqual(herbs[1].mapID, 1429)
+        self.assertIn('GatherMate2_Data', herbs[1].source)
+        self.assertIn('legacy, unconfirmed', herbs[1].source)
+        pools = ns.GatheringFarmPoints('Fishing', 'Water tier 1', 1439)
+        self.assertEqual(len(pools), 24)
+        self.assertIn('GatherLite', pools[1].source)
+        self.assertIn('GPL-3.0-or-later', pools[1].source)
+
+    def test_fishing_yields_are_zone_specific_and_only_fish_are_seeded(self):
+        c = client(); ns = c.ns
+        self.assertTrue(ns.EnsureOptionalData('WowTogether_GoldData'))
+        rows, source = ns.GatheringFarmYield('Fishing', 'Water tier 3', 'Hillsbrad Foothills', 1424)
+        item_ids = {rows[i].itemID for i in range(1, len(rows) + 1)}
+        self.assertIn(6289, item_ids)  # Raw Longjaw Mud Snapper.
+        self.assertNotIn(929, item_ids)  # Healing potion in the legacy junk table.
+        self.assertIn('fishing_loot_template', source)
+        loch, _ = ns.GatheringFarmYield('Fishing', 'Water tier 1', 'Loch Modan', 1432)
+        loch_ids = {loch[i].itemID for i in range(1, len(loch) + 1)}
+        self.assertIn(6317, loch_ids)  # Raw Loch Frenzy is selected by the fish-name filter.
+        westfall, _ = ns.GatheringFarmYield('Fishing', 'Water tier 3', 'Westfall', 1436)
+        westfall_ids = {westfall[i].itemID for i in range(1, len(westfall) + 1)}
+        self.assertNotEqual(item_ids, westfall_ids)
+
 
 class GatheringPlanTests(unittest.TestCase):
     def test_mining_at_87_points_at_tin_and_silver_and_names_iron_as_next(self):
