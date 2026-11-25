@@ -1,4 +1,4 @@
-"""The shipped optional farm package keeps one legacy zone per creature."""
+"""The shipped farm index and its per-zone spawn packages load independently."""
 import unittest
 from test_addon import Client
 
@@ -27,6 +27,8 @@ class FarmPriorDataTests(unittest.TestCase):
         flesh_eater = data.records[1]
         self.assertEqual((flesh_eater.npcID, flesh_eater.name, flesh_eater.mapID, flesh_eater.zoneName),
                          (3, "Flesh Eater", 1431, "Duskwood"))
+        self.assertEqual(flesh_eater.spawnPointCount, 9)
+        self.assertIsNone(flesh_eater.spawnPoints)
         boar = next(data.records[index] for index in range(1, data.count + 1)
                     if data.records[index].npcID == 113)
         self.assertTrue(boar.skinnable)

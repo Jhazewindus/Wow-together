@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Gold Spawn Data - 1444
+## Notes: Legacy, unconfirmed spawn points for Feralas
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+FarmSpawnData.lua

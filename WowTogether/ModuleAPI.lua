@@ -552,13 +552,13 @@ local function prepareFarmPrior(record, mapID)
         or record.confidence ~= "legacy, unconfirmed"
         or not ns.GuideInteger(record.mapID, 1000000) or record.mapID < 1
         or mapID and record.mapID ~= mapID or not safeCardText(record.zoneName, 100)
-        or type(record.spawnPoints) ~= "table" or #record.spawnPoints > 24
+        or not ns.GuideInteger(record.spawnPointCount, 24)
         or type(record.loot) ~= "table" or #record.loot > 200
         or type(record.skinnable) ~= "boolean"
         or type(record.skinningLoot) ~= "table" or #record.skinningLoot > 200
         or type(record.sources) ~= "table" then return nil end
     local sources = record.sources
-    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot", "skinnable", "skinningLoot"}) do
+    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "loot", "skinnable", "skinningLoot"}) do
         if not safeSource(sources[key]) then return nil end
     end
     local skinning = ns.gatheringData and ns.gatheringData[393]
@@ -566,8 +566,8 @@ local function prepareFarmPrior(record, mapID)
         and skinning.skill > 0
     local copy = {npcID = record.npcID, name = record.name, minLevel = record.minLevel,
         maxLevel = record.maxLevel, confidence = record.confidence, mapID = record.mapID, zoneName = record.zoneName,
-        spawnPoints = {}, loot = {}, skinnable = record.skinnable, sources = {}}
-    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot", "skinnable", "skinningLoot"}) do
+        spawnPointCount = record.spawnPointCount, loot = {}, skinnable = record.skinnable, sources = {}}
+    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "loot", "skinnable", "skinningLoot"}) do
         copy.sources[key] = sources[key]
     end
     return copy, useSkinning and #record.skinningLoot or 0
@@ -624,21 +624,12 @@ local function searchFarmPriors(filter, onDone, ...)
         while pending or index <= recordCount do
             if pending then
                 local record, copy = pending.source, pending.copy
-                local point = record.spawnPoints[pending.spawnIndex]
                 local baseLootCount = #record.loot
-                local item = not point and (pending.lootIndex <= baseLootCount
+                local item = pending.lootIndex <= baseLootCount
                     and record.loot[pending.lootIndex]
                     or pending.lootIndex <= baseLootCount + pending.skinningCount
-                        and record.skinningLoot[pending.lootIndex - baseLootCount])
-                if point then
-                    if type(point) ~= "table" or not ns.Public(point) or point.mapID ~= record.mapID
-                        or not ns.ValidTravelPoint(point) then pending.valid = false
-                    else
-                        copy.spawnPoints[pending.spawnIndex] = {mapID = point.mapID, x = point.x, y = point.y,
-                            source = safeSource(point.source) and point.source or copy.sources.spawnPoints}
-                    end
-                    pending.spawnIndex = pending.spawnIndex + 1
-                elseif item then
+                        and record.skinningLoot[pending.lootIndex - baseLootCount]
+                if item then
                     if type(item) ~= "table" or not ns.Public(item)
                         or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
                         or not finite(item.chance) or item.chance <= 0 or item.chance > 100
@@ -664,7 +655,7 @@ local function searchFarmPriors(filter, onDone, ...)
                     and record.maxLevel >= filter.minLevel and (not filter.mapID or record.mapID == filter.mapID) then
                     local copy, skinningCount = prepareFarmPrior(record, filter.mapID)
                     if copy then pending = {source = record, copy = copy, skinningCount = skinningCount,
-                        spawnIndex = 1, lootIndex = 1, valid = true} end
+                        lootIndex = 1, valid = true} end
                 end
             end
             local current = clockMilliseconds()
@@ -676,6 +667,56 @@ local function searchFarmPriors(filter, onDone, ...)
         finish()
     end
     if not queueNext(step) then return false, "Farm-prior search timer is unavailable." end
+    return true
+end
+
+local function searchFarmPriorSpawnPoints(npcID, mapID, onDone, ...)
+    if not ns.GuideInteger(npcID, 2147483647) or npcID < 1
+        or not ns.GuideInteger(mapID, 1000000) or mapID < 1
+        or type(onDone) ~= "function" or select("#", ...) > 0 then
+        return false, "Invalid farm spawn-point search arguments."
+    end
+    local addon = "WowTogether_GoldSpawnData_" .. mapID
+    if type(ns.EnsureOptionalData) ~= "function" or ns.EnsureOptionalData(addon) ~= true then
+        return false, "Spawn points for this farm's zone are unavailable."
+    end
+    local zone = ns.farmSpawnDataByMap and ns.farmSpawnDataByMap[mapID]
+    local record = zone and type(zone.records) == "table" and zone.records[npcID]
+    if type(record) ~= "table" or not ns.Public(record) or record.npcID ~= npcID or record.mapID ~= mapID
+        or type(record.spawnPoints) ~= "table" or #record.spawnPoints > 24 then
+        return false, "Spawn points for this farm are unavailable."
+    end
+    if not clockMilliseconds() or not C_Timer or type(C_Timer.After) ~= "function" then
+        return false, "Farm spawn-point search needs a frame clock and timer."
+    end
+    local index, points, done = 1, {}, false
+    local function finish()
+        if done then return end
+        done = true
+        local okay = pcall(onDone, points)
+        if not okay then ns.moduleFarmPriorCallbackError = true end
+    end
+    local function step()
+        if done then return end
+        local began = clockMilliseconds()
+        if not began then finish(); return end
+        while index <= #record.spawnPoints do
+            local point = record.spawnPoints[index]
+            index = index + 1
+            if type(point) == "table" and ns.Public(point) and point.mapID == mapID
+                and ns.ValidTravelPoint(point) then
+                points[#points + 1] = {mapID = mapID, x = point.x, y = point.y,
+                    source = safeSource(point.source) and point.source or "Legacy, unconfirmed spawn coordinate"}
+            end
+            local current = clockMilliseconds()
+            if not current or current - began >= 2 then
+                if not queueNext(step) then finish() end
+                return
+            end
+        end
+        finish()
+    end
+    if not queueNext(step) then return false, "Farm spawn-point search timer is unavailable." end
     return true
 end
 
@@ -1192,6 +1233,7 @@ local publicAPI = {
     STEP_SYMBOLS = {farm = ns.STEP_ICON_TEXTURES.farm},
     AuctionQuote = readAuctionQuote,
     FarmPriorSearch = searchFarmPriors,
+    FarmPriorSpawnSearch = searchFarmPriorSpawnPoints,
     GatheringFarmSearch = searchGatheringFarms,
     RegisterGatheringObserver = registerGatheringObserver,
     StartModuleLoop = startModuleLoop,

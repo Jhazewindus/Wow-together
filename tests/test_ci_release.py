@@ -16,7 +16,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from ci_release import (PublicationError, archive_metadata, blocks, message_for,
+from ci_release import (PublicationError, ROOTS as REQUIRED_ROOTS, archive_metadata, blocks, message_for,
                         main, next_version, parse_fragment, plan_release, post,
                         prepare, section_for, validate_pr)
 
@@ -29,8 +29,7 @@ Please check:
 Developer notes:
 - Memoize policy work.
 '''
-ROOTS = ['WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData',
-         'WowTogether_GoldData', 'WowTogether_GatheringPositionData']
+ROOTS = sorted(REQUIRED_ROOTS)
 
 
 def build(path, roots=ROOTS, section=SECTION):

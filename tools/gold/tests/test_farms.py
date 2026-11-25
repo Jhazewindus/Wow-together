@@ -37,6 +37,11 @@ def farm_client():
                 sources={loot="legacy loot table",spawnPoints="legacy spawn table"}}})
             return true
         end
+        api.FarmPriorSpawnSearch = function(npcID, mapID, done)
+            assert(npcID == 22 and mapID == 501)
+            done({{mapID=501,x=.2,y=.2},{mapID=501,x=.4,y=.2},{mapID=501,x=.4,y=.4}})
+            return true
+        end
         api.GatheringFarmSearch = function(filter, done)
             assert(filter.limit == 50)
             gatheringCalls = (gatheringCalls or 0)+1
@@ -86,7 +91,7 @@ class GoldFarmTests(unittest.TestCase):
             client.lua.execute('table.remove(timers, 1)')
             callback(); slices += 1
         self.assertLess(slices, 1000)
-        self.assertEqual(client.ns.farmPriorData.count, 2864)
+        self.assertEqual(client.ns.farmPriorData.count, 2850)
         result = client.ns.FirstHook("goldSuggestions")
         handled, cards = result[0], result[1]
         self.assertTrue(handled)

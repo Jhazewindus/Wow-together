@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Gold Spawn Data - 1422
+## Notes: Legacy, unconfirmed spawn points for Western Plaguelands
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+FarmSpawnData.lua

@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Gold Spawn Data - 1421
+## Notes: Legacy, unconfirmed spawn points for Silverpine Forest
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+FarmSpawnData.lua
