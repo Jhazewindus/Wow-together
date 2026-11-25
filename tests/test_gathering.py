@@ -82,12 +82,12 @@ class GatheringRuleTests(unittest.TestCase):
         c = client(); ns = c.ns
         self.assertTrue(ns.EnsureOptionalData('WowTogether_GatheringPositionData'))
         herbs = ns.GatheringFarmPoints('Herbalism', 'Peacebloom', 1429)
-        self.assertEqual(len(herbs), 24)
+        self.assertEqual(len(herbs), 80)
         self.assertEqual(herbs[1].mapID, 1429)
         self.assertIn('GatherMate2_Data', herbs[1].source)
         self.assertIn('legacy, unconfirmed', herbs[1].source)
-        pools = ns.GatheringFarmPoints('Fishing', 'Water tier 1', 1439)
-        self.assertEqual(len(pools), 24)
+        pools = ns.GatheringFarmPoints('Fishing', 'Oily Blackmouth School', 1439)
+        self.assertEqual(len(pools), 31)
         self.assertIn('GatherLite', pools[1].source)
         self.assertIn('GPL-3.0-or-later', pools[1].source)
 
@@ -98,7 +98,7 @@ class GatheringRuleTests(unittest.TestCase):
         item_ids = {rows[i].itemID for i in range(1, len(rows) + 1)}
         self.assertIn(6289, item_ids)  # Raw Longjaw Mud Snapper.
         self.assertNotIn(929, item_ids)  # Healing potion in the legacy junk table.
-        self.assertIn('fishing_loot_template', source)
+        self.assertIn('fishing', source.lower())
         loch, _ = ns.GatheringFarmYield('Fishing', 'Water tier 1', 'Loch Modan', 1432)
         loch_ids = {loch[i].itemID for i in range(1, len(loch) + 1)}
         self.assertIn(6317, loch_ids)  # Raw Loch Frenzy is selected by the fish-name filter.

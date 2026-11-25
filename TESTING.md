@@ -1,5 +1,20 @@
 # Wow Together — friend test script
 
+## Gold sessions, prices and auction scan
+
+1. Farm for ten minutes, press **Stop**, reload, and confirm the session is
+   still present under Past sessions and appears as a farm suggestion.
+2. At the auction house, run **Scan everything**, check that the categories
+   finish and prices are reported, then close the house during a second scan
+   and confirm the prices collected so far remain saved.
+3. With TradeSkillMaster or Auctionator installed, confirm its price source is
+   shown. Check that fishing loot and a change from fishing to killing produce
+   the expected farm kinds.
+
+The host tests cover client-order saved-data restoration, scan paging and
+throttling, and loading two farm zones from the single spawn-data addon. These
+tests do not verify live auction-house API behavior or in-game rendering.
+
 For **0.8.107** — **GOLD MODULE API FOUNDATION**, live World of Warcraft: Forever.
 
 ## Gold module API foundation — 0.8.107

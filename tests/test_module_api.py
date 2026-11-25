@@ -60,7 +60,7 @@ class ModuleAPITests(unittest.TestCase):
         self.assertIsNotNone(self.ns.catalogue)
         self.assertIsNotNone(self.ns.RouteCostModel().weights)
 
-    def test_public_module_api_surface_and_version_are_unchanged(self):
+    def test_public_module_api_surface_and_version_match_the_gold_contract(self):
         api = self.lua.globals().WowTogetherModuleAPI
         expected = {'version', 'STEP_SYMBOLS', 'RegisterModule', 'FindTravelPath',
                     'TravelPointDistance', 'PlayerPoint', 'TrailLoop', 'RouteCostModel',
@@ -74,7 +74,10 @@ class ModuleAPITests(unittest.TestCase):
                     'RegisterGatheringObserver', 'UIPanel', 'UILabel', 'UIButton',
                     'UIButtonTone', 'UIClose', 'UIHelp', 'UIDivider', 'UIColors',
                     'AuctionHouseVisible', 'AuctionHouseAnchor', 'RouteInCombat', 'After',
-                    'OpenModulePage'}
+                    'OpenModulePage', 'StartFullPriceScan', 'StopFullPriceScan',
+                    'FullPriceScanRunning', 'FullPriceScanSupported', 'BrowsePriceCount',
+                    'ReadGoldSavedData', 'WriteGoldSavedData', 'GoldExternalPriceSources',
+                    'GoldExternalPrice', 'GoldSpellName', 'GoldIsFishingLoot', 'GoldLootSourceInfo', 'PlanLoop', 'PlayerSpot'}
         self.assertEqual({key for key, _ in api.items()}, expected)
         self.assertEqual(api.version, 2)
         self.assertEqual(self.ns.GoldAPIVersion, 2)

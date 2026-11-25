@@ -15,13 +15,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 PRIORS = Path(__file__).resolve().parent
 DEST = ROOT / 'WowTogether_GoldData'
-SPAWN_PREFIX = 'WowTogether_GoldSpawnData_'
+SPAWN_PACKAGE = ROOT / 'WowTogether_GoldSpawnData'
 sys.path.insert(0, str(ROOT / 'tools'))
 from forever_map_geometry import read_geometry
 from pack_data import Packer
 
 LEGACY = ('CMaNGOS ClassicDB ec4f596146be6467ea93c57397858e329e2db852; legacy, unconfirmed; '
           'https://github.com/cmangos/classic-db/blob/ec4f596146be6467ea93c57397858e329e2db852/Full_DB/ClassicDB_1_12_1_z2815.sql.gz')
+FISH_SOURCE = 'CMaNGOS ClassicDB; legacy, unconfirmed; fishing area/reference loot'
 GEOMETRY = ('QuestieDB Forever 1.60.1.69893 published map bounds, commit '
             'e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; '
             'https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/conversion.json')
@@ -167,24 +168,36 @@ def build_gathering_records(geometry_path: Path):
     fish_tokens = ('fish', 'eel', 'snapper', 'trout', 'salmon', 'bass', 'catfish',
         'grouper', 'lobster', 'crushfish', 'armorfish', 'mightfish', 'redgill',
         'yellowtail', 'mackerel', 'frenzy')
+    def is_fish(item_id):
+        return isinstance(item_id, int) and item_id > 0 and any(
+            token in item_names.get(item_id, '').lower() for token in fish_tokens)
+    def expand_reference(reference_id, parent_chance, path=()):
+        # Reference rows may point to further reference rows. Multiply each
+        # link's chance, and stop cycles rather than inventing a fallback rate.
+        if reference_id in path or len(path) >= 12:
+            return []
+        expanded = []
+        for child in refs.get(reference_id, []):
+            item_id = child.get('itemId')
+            chance = child.get('chanceOrQuestChance')
+            count = child.get('minCountOrReference')
+            if not isinstance(chance, (int, float)) or chance <= 0 or chance > 100:
+                continue
+            combined = parent_chance * chance / 100
+            if is_fish(item_id) and isinstance(count, int) and count > 0:
+                expanded.append({'itemID': item_id, 'chance': combined,
+                    'quantity': count, 'source': FISH_SOURCE})
+            elif isinstance(count, int) and count < 0:
+                expanded.extend(expand_reference(abs(count), combined, path + (reference_id,)))
+        return expanded
     for row in fishing_rows:
         item, chance, count = row.get('itemId'), row.get('chanceOrQuestChance'), row.get('minCountOrReference')
         if not isinstance(chance, (int, float)) or chance <= 0 or chance > 100: continue
-        if isinstance(item, int) and item > 0 and isinstance(count, int) and count > 0 \
-                and any(token in item_names.get(item, '').lower() for token in fish_tokens):
+        if is_fish(item) and isinstance(count, int) and count > 0:
             fish_by_area[row.get('ownerLootId')].append({'itemID': item, 'chance': chance,
-                'quantity': count, 'source': LEGACY + '; fishing_loot_template area entry and chance; legacy, unconfirmed'})
+                'quantity': count, 'source': FISH_SOURCE})
         elif isinstance(count, int) and count < 0:
-            # A negative count links a reference group. Expand only literal
-            # child item rows; nested references and nonpositive chances stay out.
-            for child in refs.get(abs(count), []):
-                child_id, child_chance, child_count = child.get('itemId'), child.get('chanceOrQuestChance'), child.get('minCountOrReference')
-                if isinstance(child_id, int) and child_id > 0 and isinstance(child_count, int) and child_count > 0 \
-                        and any(token in item_names.get(child_id, '').lower() for token in fish_tokens) \
-                        and isinstance(child_chance, (int, float)) and 0 < child_chance <= 100:
-                    fish_by_area[row.get('ownerLootId')].append({'itemID': child_id,
-                        'chance': chance * child_chance / 100, 'quantity': child_count,
-                        'source': LEGACY + '; fishing_loot_template area row and reference_loot_template child; legacy, unconfirmed'})
+            fish_by_area[row.get('ownerLootId')].extend(expand_reference(abs(count), chance))
     for area_id, fish in fish_by_area.items():
         map_id = area_to_map.get(area_id)
         transform = transforms.get(map_id)
@@ -193,7 +206,7 @@ def build_gathering_records(geometry_path: Path):
         key = 'Fishing|' + zone + '|' + str(map_id)
         current = results.setdefault(key, {'profession': 'Fishing', 'node': zone,
             'mapID': map_id, 'zoneName': zone, 'loot': [],
-            'source': LEGACY + '; fishing_loot_template area ID; legacy, unconfirmed'})
+            'source': FISH_SOURCE})
         known = {item['itemID'] for item in current['loot']}
         for item in fish:
             if item['itemID'] not in known:
@@ -216,10 +229,7 @@ def render(records):
     return packer.code(body, 'Legacy, unconfirmed farm index; spawn coordinates load by zone when starting a farm.')
 
 
-def render_spawn_package(map_id, zone_name, records):
-    package = SPAWN_PREFIX + str(map_id)
-    destination = ROOT / package
-    destination.mkdir(exist_ok=True)
+def render_spawn_zone(map_id, zone_name, records):
     packer = Packer()
     payloads = {}
     for row in records:
@@ -234,11 +244,9 @@ def render_spawn_package(map_id, zone_name, records):
     body += packer.records('gold-farm-spawns-' + str(map_id),
         'ns.farmSpawnDataByMap[' + str(map_id) + '].records', payloads, lazy_rows=True)
     source = packer.code(body, 'Legacy, unconfirmed spawn positions; see PRIOR_DATA.md and GPL-3.0.txt.')
-    (destination / 'FarmSpawnData.lua').write_text(source, encoding='utf-8')
-    (destination / (package + '.toc')).write_text(
-        '## Interface: 16001\n## Title: Wow Together Gold Spawn Data - ' + str(map_id)
-        + '\n## Notes: Legacy, unconfirmed spawn points for ' + zone_name
-        + '\n## LoadOnDemand: 1\n## Dependencies: WowTogether\nFarmSpawnData.lua\n', encoding='utf-8')
+    destination = SPAWN_PACKAGE / 'zones' / (str(map_id) + '.lua')
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(source, encoding='utf-8')
     return len(payloads)
 
 
@@ -253,13 +261,21 @@ def main():
     zone_rows = defaultdict(list)
     for row in records:
         zone_rows[(row['mapID'], row['zoneName'])].append(row)
-    for old in ROOT.glob(SPAWN_PREFIX + '*'):
+    for old in ROOT.glob('WowTogether_GoldSpawnData_*'):
         if old.is_dir():
             import shutil
             shutil.rmtree(old)
+    if SPAWN_PACKAGE.exists():
+        import shutil
+        shutil.rmtree(SPAWN_PACKAGE)
     spawn_counts = {}
     for (map_id, zone_name), rows in sorted(zone_rows.items()):
-        spawn_counts[str(map_id)] = render_spawn_package(map_id, zone_name, rows)
+        spawn_counts[str(map_id)] = render_spawn_zone(map_id, zone_name, rows)
+    toc = ['## Interface: 16001', '## Title: Wow Together Gold Spawn Data',
+        '## Notes: Legacy, unconfirmed spawn points for farm loops',
+        '## LoadOnDemand: 1', '## Dependencies: WowTogether']
+    toc.extend('zones\\' + map_id + '.lua' for map_id in sorted(spawn_counts, key=int))
+    (SPAWN_PACKAGE / 'WowTogether_GoldSpawnData.toc').write_text('\n'.join(toc) + '\n', encoding='utf-8')
     # Keep the two domains separate in the same LOD package. This file is
     # generated through the same packed-data decoder but has zone-keyed rows.
     gathering_packer = Packer()

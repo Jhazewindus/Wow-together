@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED = {
     'version', 'GoldAPIVersion', 'RegisterModule', 'FindTravelPath', 'TravelPointDistance',
-    'PlayerPoint', 'TrailLoop', 'RouteCostModel', 'PushGuideStop',
+    'PlayerPoint', 'PlayerSpot', 'PlanLoop', 'TrailLoop', 'RouteCostModel', 'PushGuideStop',
     'ClearModuleStops', 'RegisterSyncKind', 'CatalogueQuest', 'catalogue',
     'ReadPublic', 'Public', 'GuideInteger', 'SafeTitle', 'Option', 'SetOption',
     'StartFarmCandidateScan', 'QueueModuleSync',
@@ -18,6 +18,9 @@ ALLOWED = {
     'UIPanel', 'UILabel', 'UIButton', 'UIButtonTone', 'UIClose', 'UIHelp',
     'UIDivider', 'UIColors', 'AuctionHouseVisible', 'AuctionHouseAnchor',
     'RouteInCombat', 'After', 'OpenModulePage',
+    'ReadGoldSavedData', 'WriteGoldSavedData', 'GoldExternalPriceSources', 'GoldExternalPrice',
+    'GoldSpellName', 'GoldIsFishingLoot', 'GoldLootSourceInfo',
+    'StartFullPriceScan', 'StopFullPriceScan', 'FullPriceScanSupported',
 }
 ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
 DYNAMIC = re.compile(r'\bns\s*\[')

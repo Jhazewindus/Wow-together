@@ -1,6 +1,0 @@
-## Interface: 16001
-## Title: Wow Together Gold Spawn Data - 1433
-## Notes: Legacy, unconfirmed spawn points for Redridge Mountains
-## LoadOnDemand: 1
-## Dependencies: WowTogether
-FarmSpawnData.lua

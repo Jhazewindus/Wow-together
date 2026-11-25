@@ -72,10 +72,10 @@ end
 
 function ns.AuctionQuote(id)
     local quote = ns.marketQuotes[id]
-    if not quote then return end
     local timestamp = now()
-    if quote.time and timestamp and not validQuote(quote, timestamp) then return end
-    return quote
+    if quote and not (quote.time and timestamp and not validQuote(quote, timestamp)) then return quote end
+    -- No fresh order book for it: the last whole-house scan's lowest price, if there is one.
+    return ns.BrowseQuote and ns.BrowseQuote(id) or nil
 end
 
 function ns.AuctionQuoteRevision(id)

@@ -46,10 +46,10 @@ MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024
 def toc_sources(folder):
     """Validate every source declared by a package, including added data files."""
     toc = folder / (folder.name + '.toc')
-    names = [line.strip() for line in toc.read_text().splitlines()
+    names = [line.strip().replace('\\', '/') for line in toc.read_text().splitlines()
              if line.strip() and not line.lstrip().startswith('#')]
     for name in names:
-        if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name) or not (folder / name).is_file():
+        if not re.fullmatch(r'(?:[A-Za-z0-9_]+/)*[A-Za-z0-9_]+\.lua', name) or not (folder / name).is_file():
             raise ValueError('Missing or invalid TOC source: ' + folder.name + '/' + name)
     return names
 
@@ -130,10 +130,9 @@ def main():
         'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
         'WowTogether_GatheringPositionData': ['GatheringPositionData.lua'],
     }
-    for folder in sorted(ROOT.glob('WowTogether_GoldSpawnData_*')):
-        if not re.fullmatch(r'WowTogether_GoldSpawnData_[1-9][0-9]*', folder.name):
-            raise ValueError('Invalid per-zone farm spawn package name: ' + folder.name)
-        data_packages[folder.name] = toc_sources(folder)
+    spawn_folder = ROOT / 'WowTogether_GoldSpawnData'
+    if spawn_folder.exists():
+        data_packages[spawn_folder.name] = toc_sources(spawn_folder)
     gold_sources = optional_gold_sources(ROOT)
     if gold_sources is not None:
         data_packages['WowTogether_Gold'] = gold_sources
@@ -207,7 +206,7 @@ the live World of Warcraft client’s Interface\\AddOns\\WowTogether\\ directory
 
 Update EVERY party member to {version}, copying the WowTogether folder and
 all matching WowTogether_*Data folders side by side into AddOns. Include the
-WowTogether_GoldSpawnData_<mapID> folders for farm routes.
+WowTogether_GoldSpawnData for farm routes.
 {gold_install}
 Do not put the data folders inside WowTogether. Keep the required data addons enabled in the
 addon list; they load only when their data is first needed. Then fully restart the client;
@@ -916,6 +915,10 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         if note_lines and note_lines[0].startswith('# '):
             notes = '\n'.join(note_lines[1:]).strip()
         history = packaged_changelog.split('\n', 1)[1].lstrip()
+        same_version = re.search(r'^## ' + re.escape(version) + r'[ \t]*\n.*?(?=^## |\Z)', history, re.M | re.S)
+        if same_version:
+            history = history[:same_version.start()] + history[same_version.end():]
+            history = history.lstrip()
         packaged_changelog = ('# Wow Together changelog\n\n## ' + version + '\n\n**' + release_name
                               + '**\n\n' + notes + '\n\n' + history)
     args.output.mkdir(parents=True, exist_ok=True)

@@ -1,6 +1,0 @@
-## Interface: 16001
-## Title: Wow Together Gold Spawn Data - 1436
-## Notes: Legacy, unconfirmed spawn points for Westfall
-## LoadOnDemand: 1
-## Dependencies: WowTogether
-FarmSpawnData.lua

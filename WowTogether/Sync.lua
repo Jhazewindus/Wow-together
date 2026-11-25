@@ -968,6 +968,8 @@ function ns.SyncDiagnostics(output)
     if ns.GatheringDiagnostics then ns.GatheringDiagnostics(output) end
     if ns.TravelButtonDiagnostics then ns.TravelButtonDiagnostics(output) end
     if ns.QuestShareDiagnostics then ns.QuestShareDiagnostics(output) end
+    if ns.RouteEngineDiagnostics then ns.RouteEngineDiagnostics(output) end
+    if ns.FullPriceScanDiagnostics then ns.FullPriceScanDiagnostics(output) end
     if ns.InstanceAccessDiagnostics then ns.InstanceAccessDiagnostics(output) end
     if ns.HudDiagnostics then ns.HudDiagnostics(output) end
     if ns.LevelingPathDiagnostics then ns.LevelingPathDiagnostics(output) end

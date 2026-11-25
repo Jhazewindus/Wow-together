@@ -1,6 +1,0 @@
-## Interface: 16001
-## Title: Wow Together Gold Spawn Data - 1427
-## Notes: Legacy, unconfirmed spawn points for Searing Gorge
-## LoadOnDemand: 1
-## Dependencies: WowTogether
-FarmSpawnData.lua

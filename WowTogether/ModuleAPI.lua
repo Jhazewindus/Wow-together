@@ -539,8 +539,14 @@ local function safeDenseArray(value, maximum)
 end
 
 local function safeSource(value)
-    return ns.Public(value) and type(value) == "string" and #value > 0 and #value <= 240
+    return ns.Public(value) and type(value) == "string" and #value > 0 and #value <= 480
         and not string.find(value, "[%z\1-\8\11\12\14-\31\127]")
+end
+
+local function clippedSource(value)
+    if not ns.Public(value) or type(value) ~= "string" or #value == 0
+        or string.find(value, "[%z\1-\8\11\12\14-\31\127]") then return nil end
+    return string.sub(value, 1, 480)
 end
 
 local function prepareFarmPrior(record, mapID)
@@ -839,7 +845,7 @@ local function searchGatheringFarms(filter, onDone, ...)
                                 if type(externalPoints) == "table" then
                                     for _, point in ipairs(externalPoints) do
                                         if type(point) == "table" and ns.Public(point) and point.mapID == mapID
-                                            and ns.ValidTravelPoint(point) and safeSource(point.source) and #zoneRecord.points < 24 then
+                                            and ns.ValidTravelPoint(point) and safeSource(point.source) and #zoneRecord.points < 80 then
                                             zoneRecord.points[#zoneRecord.points + 1] = {mapID = mapID,
                                                 x = point.x, y = point.y, source = point.source}
                                         end
@@ -852,12 +858,15 @@ local function searchGatheringFarms(filter, onDone, ...)
                                 local seeded = ns.GatheringFarmYield(fact.profession, fact.node, fact.zone, mapID)
                                 if type(seeded) == "table" then
                                     for _, item in ipairs(seeded) do
+                                        local source = type(item) == "table" and ns.Public(item) and clippedSource(item.source) or nil
                                         if type(item) ~= "table" or not ns.Public(item)
                                             or not ns.GuideInteger(item.itemID, 2147483647) or item.itemID < 1
                                             or not finite(item.chance) or item.chance <= 0 or item.chance > 100
                                             or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1
-                                            or not safeSource(item.source) then
+                                            or not source then
                                             item = nil
+                                        else
+                                            item = {itemID = item.itemID, chance = item.chance, quantity = item.quantity, source = source}
                                         end
                                         if item then
                                         local present
@@ -1044,6 +1053,8 @@ local function advanceModuleLoop(state)
     local distance = player and ns.TravelPointDistance(player, stop)
     if not finite(distance) or distance > 18 then return false end
     state.index = state.index % #state.route.loopStops + 1
+    state.visited = (state.visited or 0) + 1
+    if type(state.onArrive) == "function" then pcall(state.onArrive, state.visited, #state.route.loopStops) end
     state.route.stops = moduleLoopStops(state, state.index)
     ns.routeSignature = nil
     if ns.DrawRoute then ns.DrawRoute() end
@@ -1073,7 +1084,7 @@ local function activateModuleLoop(request)
     local route = {key = guide.key, title = request.title, mapID = stops[1].mapID,
         stops = {}, loopStops = stops, complete = false, moduleLoop = true}
     local state = {module = request.module, title = request.title, guide = guide,
-        route = route, loop = request.loop, index = 1, onStop = request.onStop}
+        route = route, loop = request.loop, index = 1, onStop = request.onStop, onArrive = request.onArrive, visited = 0}
     route.stops = moduleLoopStops(state, state.index)
     moduleLoops[request.module] = state
     ns.routeSelection, ns.selectedRoute, ns.routeSignature, ns.routePaused = guide, route, nil, nil
@@ -1101,13 +1112,17 @@ end
 local function startModuleLoop(module, spec, ...)
     local registered = moduleRecord(module)
     if not registered or type(spec) ~= "table" or not ns.Public(spec)
-        or not safeCardText(spec.title, 100) or not safeDenseArray(spec.points, 24) or #spec.points == 0
+        or not safeCardText(spec.title, 100) or not safeDenseArray(spec.points, 80) or #spec.points == 0
         or type(spec.onStop) ~= "function" or spec.onStart ~= nil and type(spec.onStart) ~= "function"
+        or spec.onArrive ~= nil and type(spec.onArrive) ~= "function"
+        or spec.respawn ~= nil and (not finite(spec.respawn) or spec.respawn <= 0 or spec.respawn > 86400)
+        or spec.harvestSeconds ~= nil and (not finite(spec.harvestSeconds) or spec.harvestSeconds < 0 or spec.harvestSeconds > 3600)
         or select("#", ...) > 0 then
         return false, "Invalid module loop arguments."
     end
     for key in pairs(spec) do
-        if key ~= "title" and key ~= "points" and key ~= "onStop" and key ~= "onStart" then return false, "Unknown module loop field." end
+        if key ~= "title" and key ~= "points" and key ~= "onStop" and key ~= "onStart"
+            and key ~= "onArrive" and key ~= "respawn" and key ~= "harvestSeconds" then return false, "Unknown module loop field." end
     end
     if ns.RouteInCombat and ns.RouteInCombat() then return false, "Start the loop after combat." end
     local points = {}
@@ -1126,11 +1141,15 @@ local function startModuleLoop(module, spec, ...)
     end
     local walkPoints = {}
     for index, point in ipairs(points) do walkPoints[index] = {mapID = point.mapID, x = point.x, y = point.y, index = index} end
-    local loop = ns.TrailLoop(walkPoints)
+    -- The route engine chooses which of the points make the loop, orders
+    -- them for the least walking, and starts at the one nearest the player.
+    local loop = ns.PlanLoop(walkPoints, {respawn = spec.respawn, harvestSeconds = spec.harvestSeconds})
     if not loop or #loop.points < 2 then return false, "No walking loop is available for these points." end
     if #loop.points == 2 and #points > 1 then return false, "No walking loop is available for these points." end
+    ns.lastModuleLoopPlan = {stops = loop.stops, available = loop.available, seconds = loop.seconds, yards = loop.yards,
+        lapSeconds = loop.lapSeconds, respawn = loop.respawn, perHour = loop.perHour, short = loop.short}
     local request = {module = registered, title = spec.title, points = points, loop = loop,
-        onStop = spec.onStop, onStart = spec.onStart}
+        onArrive = spec.onArrive, onStop = spec.onStop, onStart = spec.onStart}
     if ns.routeSelection then
         if not StaticPopup_Show or type(StaticPopup_Show) ~= "function" then
             return false, "Guide replacement needs a confirmation dialog."
@@ -1228,6 +1247,65 @@ function ns.OpenModulePage(name)
     return true
 end
 
+-- Small client and optional-addon adapters used by Gold. Keeping these reads
+-- here lets the separately loaded module stay inside its versioned API.
+function ns.ReadGoldSavedData()
+    return type(WowTogetherGoldDB) == "table" and WowTogetherGoldDB or nil
+end
+
+function ns.WriteGoldSavedData(value)
+    if type(value) ~= "table" then return false end
+    WowTogetherGoldDB = value
+    return true
+end
+
+function ns.GoldExternalPriceSources()
+    local sources = {}
+    local tsm = TSM_API
+    if type(tsm) == "table" and type(tsm.GetCustomPriceValue) == "function" then
+        sources[#sources + 1] = "TradeSkillMaster"
+    end
+    local root = Auctionator
+    local api = type(root) == "table" and type(root.API) == "table" and root.API.v1 or nil
+    if type(api) == "table" and type(api.GetAuctionPriceByItemID) == "function" then
+        sources[#sources + 1] = "Auctionator"
+    end
+    return sources
+end
+
+function ns.GoldExternalPrice(source, priceType, itemID)
+    if not ns.GuideInteger(itemID, 2147483647) or itemID < 1 then return nil end
+    local okay, value
+    if source == "TradeSkillMaster" then
+        local api = TSM_API
+        if type(api) ~= "table" or type(api.GetCustomPriceValue) ~= "function" then return nil end
+        okay, value = pcall(api.GetCustomPriceValue, priceType, "i:" .. itemID)
+    elseif source == "Auctionator" then
+        local root = Auctionator
+        local api = type(root) == "table" and type(root.API) == "table" and root.API.v1 or nil
+        if type(api) ~= "table" or type(api.GetAuctionPriceByItemID) ~= "function" then return nil end
+        okay, value = pcall(api.GetAuctionPriceByItemID, "WowTogether", itemID)
+    end
+    if okay and ns.Public(value) and type(value) == "number" and value >= 1 then return value end
+end
+
+function ns.GoldSpellName(spellID)
+    local spell = C_Spell
+    if type(spell) == "table" and type(spell.GetSpellName) == "function" then
+        local name = ns.ReadPublic(spell.GetSpellName, spellID)
+        if type(name) == "string" then return name end
+    end
+    if type(GetSpellInfo) == "function" then return ns.ReadPublic(GetSpellInfo, spellID) end
+end
+
+function ns.GoldIsFishingLoot()
+    if type(IsFishingLoot) == "function" then return ns.ReadPublic(IsFishingLoot) end
+end
+
+function ns.GoldLootSourceInfo(index)
+    if type(GetLootSourceInfo) == "function" then return ns.ReadPublic(GetLootSourceInfo, index) end
+end
+
 local publicAPI = {
     version = ns.GoldAPIVersion,
     STEP_SYMBOLS = {farm = ns.STEP_ICON_TEXTURES.farm},
@@ -1250,7 +1328,10 @@ for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance"
     -- Drawing in the addon's own style, so a module's windows look like the
     -- core's. These only build and colour frames the module owns.
     "UIPanel", "UILabel", "UIButton", "UIButtonTone", "UIClose", "UIHelp", "UIDivider",
-    "AuctionHouseVisible", "AuctionHouseAnchor", "RouteInCombat", "After", "OpenModulePage"}) do
+    "AuctionHouseVisible", "AuctionHouseAnchor", "RouteInCombat", "After", "OpenModulePage",
+    "StartFullPriceScan", "StopFullPriceScan", "FullPriceScanRunning", "FullPriceScanSupported", "BrowsePriceCount",
+    "ReadGoldSavedData", "WriteGoldSavedData", "GoldExternalPriceSources", "GoldExternalPrice",
+    "GoldSpellName", "GoldIsFishingLoot", "GoldLootSourceInfo", "PlanLoop", "PlayerSpot"}) do
     publicAPI[name] = ns[name]
 end
 -- A copy: a module can read the palette, not change the core's.

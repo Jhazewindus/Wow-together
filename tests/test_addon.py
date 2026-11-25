@@ -148,7 +148,7 @@ class Client:
                 return False
             for line in toc_path.read_text().splitlines():
                 if line.endswith('.lua'):
-                    source = (package / line).read_text()
+                    source = (package / line.replace('\\', '/')).read_text()
                     self.lua.execute('assert(loadstring(...))(select(2, ...))', source, str(name), self.lua.table())
             self.data_addons_loaded.add(str(name))
             return True

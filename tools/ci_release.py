@@ -18,8 +18,8 @@ MAX_ATTACHMENT = 25 * 1024 * 1024
 REPO_ROOT = Path(__file__).resolve().parents[1]
 ROOTS = {'WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData',
          'WowTogether_GoldData', 'WowTogether_GatheringPositionData'}
-ROOTS.update(path.name for path in REPO_ROOT.glob('WowTogether_GoldSpawnData_[0-9]*')
-             if path.is_dir() and re.fullmatch(r'WowTogether_GoldSpawnData_[1-9][0-9]*', path.name))
+if (REPO_ROOT / 'WowTogether_GoldSpawnData').is_dir():
+    ROOTS.add('WowTogether_GoldSpawnData')
 ALLOWED_ROOTS = ROOTS | {'WowTogether_Gold'}
 VERSION_PATTERN = r'\d+\.\d+\.\d+(?:-beta\.\d+\.[0-9a-f]{7,40})?'
 

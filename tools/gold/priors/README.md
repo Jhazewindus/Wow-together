@@ -48,8 +48,8 @@ herb/ore coordinates from GatherMate2_Data and fishing-pool positions from
 GatherLite. The source revisions, checksums, licence and credits, and the
 owner's written redistribution permission for GatherMate2_Data are recorded
 in that package's `PRIOR_DATA.md`. GatherLite's public API is also read at
-runtime when installed. The position package is 669,435 bytes on disk; its
-packed table is decoded lazily by zone when accessed.
+runtime when installed. The generated position data file is 681,918 bytes;
+its packed table is decoded lazily by zone when accessed.
 
 `tools/import_vanilla_loot.py` is a separate Wowhead drop-page parser used by
 the dungeon-loot audit. It has no output pipeline and does not produce these

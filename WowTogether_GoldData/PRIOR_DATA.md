@@ -26,12 +26,19 @@ Forever. Players' observations should correct them.
 
 ## Gathering yields and fish
 
-- Ore, herb, and pool template facts and literal yields come from the same
-  pinned CMaNGOS snapshot. Fish are selected from
-  `fishing_loot_template` by source area, with direct reference rows expanded
-  from `reference_loot_template`; non-fish entries are omitted.
+- Ore, herb, and pool template facts and literal yields come from the pinned
+  CMaNGOS snapshot cited above. Fish are keyed by the matching legacy area ID
+  in `fishing_loot_template`; nested `reference_loot_template` links are
+  expanded recursively, multiplying each recorded chance. Non-fish entries
+  are omitted. Each item carries a short source note; this paragraph and the
+  citation above hold the full source once.
 - Yields retain source chance and minimum quantity. These values are legacy
-  priors, not measured Forever rates.
+  priors, not measured Forever rates. The available snapshot has incomplete
+  fishing coverage. In this snapshot, Stranglethorn Vale, Swamp of Sorrows,
+  Arathi Highlands, and Alterac Mountains each resolve to the same six fish
+  from one reference group, totaling 40.6%; they do not include all locally
+  caught species. The Gold page labels estimates below 70% as partial and
+  warns that their values are too low. No missing fish or rates are inferred.
 
 ## Size and loading
 
@@ -48,14 +55,15 @@ divide as follows:
 Rows below 0.5% are omitted at import time: 74,825 rows removed and 20,125
 retained. The current `FarmPriorData.lua` index is 1,364,250 bytes; it stores
 creature identity, name, levels, home map, spawn count, loot and skinning
-priors, but no coordinates. Coordinates are split across 38
-`WowTogether_GoldSpawnData_<mapID>` LoadOnDemand addons. Their Lua and TOC
-files total 1,494,006 bytes; the largest zone file is 126,702 bytes. Together
+priors, but no coordinates. Coordinates are split into per-zone Lua files in
+one `WowTogether_GoldSpawnData` LoadOnDemand addon. Its Lua and TOC files total
+1,494,006 bytes; the largest zone file is 126,702 bytes. Together
 with the 154,143-byte gathering index and package TOCs, the full Gold data
 set is 3,051,971 bytes (2.91 MiB) on disk. Compared with the unfiltered
 5,370,556-byte creature payload, the trimmed index plus all zone coordinates
 use 2,858,256 bytes, a 2,512,300-byte reduction. These are uncompressed
-source-file byte counts, not archive sizes.
+source-file byte counts, not archive sizes. The first requested zone loads the
+single package; later zone requests reuse it without another addon load.
 
 Loading `WowTogether_GoldData` added 2.18 MiB of Lua heap in the host Lua 5.1
 harness after collection; searching the full level range and retaining the

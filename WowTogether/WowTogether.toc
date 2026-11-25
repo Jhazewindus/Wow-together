@@ -100,6 +100,7 @@ ProfessionShopping.lua
 ProfessionViewer.lua
 AuctionMarket.lua
 AuctionScan.lua
+AuctionBrowseScan.lua
 AuctionQuantity.lua
 AuctionGuide.lua
 GroupFinderRoles.lua
@@ -107,4 +108,5 @@ GroupFinderNative.lua
 Recommended.lua
 RecommendedUI.lua
 SessionCheckpoints.lua
+RouteEngine.lua
 ModuleAPI.lua
