@@ -6,6 +6,7 @@ class DungeonFlowTests(unittest.TestCase):
     def test_active_interior_objectives_use_instance_area_ids(self):
         c = Client(quests=())
         ns = c.ns
+        c.lua.globals().ns = ns
         c.lua.execute(r'''
           ns.active[900], ns.active[901] = true, true
           ns.readyToTurnIn = {}
@@ -16,8 +17,8 @@ class DungeonFlowTests(unittest.TestCase):
           end
           ns.GuideDestinationDecision = function() return {specificBenefit=true} end
         ''')
-        definition = c.lua.table_from({"areaIDs": [501]})
-        group = c.lua.table_from({"name": "Test Dungeon", "definition": definition})
+        definition = c.lua.table_from({"areaIDs": [501]}, recursive=True)
+        group = c.lua.table_from({"name": "Test Dungeon", "definition": definition}, recursive=True)
         guide = c.lua.table_from({
             "key": "dungeon:test", "title": "Test dungeon quests", "dungeonKey": "test",
             "dungeon": group, "dungeonPhase": "run",

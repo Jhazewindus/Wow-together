@@ -4,6 +4,30 @@ local addonName, ns = ...
 -- unfinished prerequisites need their full accept/work/return sequence.
 local costs, costCount, costContext, lastPlan, lastReturns = {}, 0, nil, nil, nil
 
+-- Shared instance identity used by dungeon quest routes after the old
+-- journal adapter was retired. Keep it data-driven so the route state machine
+-- works with the compact instance definitions alone.
+function ns.DungeonEntryKey()
+    local inside, kind = ns.ReadPublic(IsInInstance)
+    if inside ~= true or kind ~= "party" or type(GetInstanceInfo) ~= "function" then return end
+    local ok, name, instanceType, _, _, _, _, _, instanceID = pcall(GetInstanceInfo)
+    if not ok or instanceType ~= "party" or type(name) ~= "string" then return end
+    local function normalized(value)
+        return string.lower(string.gsub(value, "[^%w]", ""))
+    end
+    local target = normalized(name)
+    for key, definition in pairs(ns.dungeonData and ns.dungeonData.dungeons or {}) do
+        if normalized(key) == target or normalized(definition.name or "") == target then
+            return key, ns.GuideInteger(instanceID) and instanceID or 0
+        end
+        for _, alias in ipairs(definition.aliases or {}) do
+            if normalized(alias) == target then
+                return key, ns.GuideInteger(instanceID) and instanceID or 0
+            end
+        end
+    end
+end
+
 local function complete(id) return ns.Completed(id) == true and not ns.active[id] end
 local function pointKey(p)
     return string.format("%d:%.5f:%.5f", p.mapID, p.x, p.y)
