@@ -255,7 +255,8 @@
         98423
       ],
       "locationHint": "Ironforge",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "shadowfang-keep": {
       "name": "Shadowfang Keep",
@@ -284,7 +285,8 @@
         1014,
         1098
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "scarlet-monastery": {
       "name": "Scarlet Monastery",
@@ -339,7 +341,8 @@
         1160,
         96800
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "zulfarrak": {
       "name": "Zul'Farrak",
@@ -378,7 +381,8 @@
         96770,
         96775
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "shapers-terrace": {
       "name": "Shaper's Terrace",
@@ -391,7 +395,8 @@
       "entrances": [],
       "questIDs": [],
       "locationHint": "Un'Goro Crater",
-      "questListCaptured": false
+      "questListCaptured": false,
+      "kind": "dungeon"
     },
     "ragefire-chasm": {
       "name": "Ragefire Chasm",
@@ -423,7 +428,8 @@
         5728,
         5761
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "the-stockade": {
       "name": "The Stockade",
@@ -455,7 +461,8 @@
         388,
         391
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "the-drowned-city": {
       "name": "The Drowned City",
@@ -477,7 +484,8 @@
         97130
       ],
       "locationHint": "Stranglethorn coast",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "uldaman": {
       "name": "Uldaman",
@@ -532,7 +540,8 @@
         2418,
         3375
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "blackmaw-hold": {
       "name": "Blackmaw Hold",
@@ -545,7 +554,8 @@
       "entrances": [],
       "questIDs": [],
       "locationHint": "Northern Azshara",
-      "questListCaptured": false
+      "questListCaptured": false,
+      "kind": "dungeon"
     },
     "ruins-of-lordaeron": {
       "name": "Ruins of Lordaeron",
@@ -583,7 +593,8 @@
         97292
       ],
       "locationHint": "Lordaeron",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "excavation-site-wetlands": {
       "name": "Excavation Site: Wetlands",
@@ -624,7 +635,8 @@
         98824
       ],
       "locationHint": "Wetlands",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "maraudon": {
       "name": "Maraudon",
@@ -679,7 +691,8 @@
         93404,
         96776
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "wailing-caverns": {
       "name": "Wailing Caverns",
@@ -717,7 +730,8 @@
         3366,
         6981
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "kroldok-stronghold": {
       "name": "Krol'dok Stronghold",
@@ -744,7 +758,8 @@
         96771
       ],
       "locationHint": "Riverglades",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "alcaz-prison": {
       "name": "Alcaz Prison",
@@ -762,7 +777,8 @@
         96772
       ],
       "locationHint": "Alcaz Island, Dustwallow Marsh",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "blackrock-spire": {
       "name": "Blackrock Spire",
@@ -836,7 +852,8 @@
         8989,
         8995
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "the-deadmines": {
       "name": "The Deadmines",
@@ -868,7 +885,8 @@
         2040,
         92753
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "city-of-dalaran": {
       "name": "City of Dalaran",
@@ -908,7 +926,8 @@
         96988
       ],
       "locationHint": "Dalaran",
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "razorfen-downs": {
       "name": "Razorfen Downs",
@@ -944,7 +963,8 @@
         96773,
         97196
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "blackrock-depths": {
       "name": "Blackrock Depths",
@@ -1014,7 +1034,8 @@
         9015,
         97197
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "blackfathom-deeps": {
       "name": "Blackfathom Deeps",
@@ -1053,7 +1074,8 @@
         78916,
         78917
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "scholomance": {
       "name": "Scholomance",
@@ -1091,7 +1113,8 @@
         8969,
         8992
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "gnomeregan": {
       "name": "Gnomeregan",
@@ -1144,7 +1167,8 @@
         4605,
         4606
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "the-temple-of-atalhakkar": {
       "name": "Sunken Temple",
@@ -1183,7 +1207,8 @@
         3528,
         8733
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "razorfen-kraul": {
       "name": "Razorfen Kraul",
@@ -1215,7 +1240,8 @@
         1144,
         1221
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "stratholme": {
       "name": "Stratholme",
@@ -1257,7 +1283,8 @@
         8968,
         8991
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
     },
     "dire-maul": {
       "name": "Dire Maul",
@@ -1321,7 +1348,65 @@
         8967,
         8990
       ],
-      "questListCaptured": true
+      "questListCaptured": true,
+      "kind": "dungeon"
+    },
+    "onyxias-lair": {
+      "kind": "raid",
+      "sortOrder": 1,
+      "era": "Classic",
+      "name": "Onyxia's Lair",
+      "aliases": [],
+      "areaIDs": [],
+      "locationHint": "Dustwallow Marsh",
+      "entrances": [],
+      "questIDs": [],
+      "questListCaptured": false,
+      "runLevelLow": 60,
+      "runLevelHigh": 60,
+      "wings": [],
+      "note": "40 players. Opens 9 December 2026."
+    },
+    "the-barrow-deeps": {
+      "kind": "raid",
+      "sortOrder": 2,
+      "era": "Forever",
+      "name": "The Barrow Deeps",
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "questListCaptured": false,
+      "runLevelLow": 60,
+      "runLevelHigh": 60,
+      "wings": [],
+      "note": "New in Forever. Opens 9 December 2026."
+    },
+    "hyjal-summit": {
+      "kind": "raid",
+      "sortOrder": 3,
+      "era": "Forever",
+      "name": "Hyjal Summit",
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "questListCaptured": false,
+      "runLevelLow": 60,
+      "runLevelHigh": 60,
+      "wings": [],
+      "note": "New in Forever. Opens 9 December 2026."
     }
+  },
+  "raid_definitions": {
+    "description": "Maintained Wow Together raid definitions, transcribed from the existing InstanceAccess.lua list and the owner's supplied raid brief; these facts are names, level bands, opening notes, and the existing Onyxia zone label only.",
+    "captured": "2026-11-25",
+    "license": "Wow Together repository license",
+    "limitations": [
+      "This is first-party project data, not a third-party addon extract.",
+      "No entrance coordinates are supplied. The imported CMaNGOS priors contain no outdoor entrance coordinate for Onyxia's Lair.",
+      "The Barrow Deeps and Hyjal Summit location hints remain unknown; do not infer them from the raid names.",
+      "Quest IDs and quest item drops are intentionally omitted in this data round."
+    ]
   }
 }

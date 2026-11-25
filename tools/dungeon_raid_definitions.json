@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "source": {
+    "description": "Maintained Wow Together raid definitions, transcribed from the existing InstanceAccess.lua list and the owner's supplied raid brief; these facts are names, level bands, opening notes, and the existing Onyxia zone label only.",
+    "captured": "2026-11-25",
+    "license": "Wow Together repository license",
+    "limitations": [
+      "This is first-party project data, not a third-party addon extract.",
+      "No entrance coordinates are supplied. The imported CMaNGOS priors contain no outdoor entrance coordinate for Onyxia's Lair.",
+      "The Barrow Deeps and Hyjal Summit location hints remain unknown; do not infer them from the raid names.",
+      "Quest IDs and quest item drops are intentionally omitted in this data round."
+    ]
+  },
+  "records": {
+    "onyxias-lair": {
+      "kind": "raid",
+      "sortOrder": 1,
+      "era": "Classic",
+      "name": "Onyxia's Lair",
+      "aliases": [],
+      "areaIDs": [],
+      "locationHint": "Dustwallow Marsh",
+      "entrances": [],
+      "questIDs": [],
+      "questListCaptured": false,
+      "runLevelLow": 60,
+      "runLevelHigh": 60,
+      "wings": [],
+      "note": "40 players. Opens 9 December 2026."
+    },
+    "the-barrow-deeps": {
+      "kind": "raid",
+      "sortOrder": 2,
+      "era": "Forever",
+      "name": "The Barrow Deeps",
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "questListCaptured": false,
+      "runLevelLow": 60,
+      "runLevelHigh": 60,
+      "wings": [],
+      "note": "New in Forever. Opens 9 December 2026."
+    },
+    "hyjal-summit": {
+      "kind": "raid",
+      "sortOrder": 3,
+      "era": "Forever",
+      "name": "Hyjal Summit",
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "questListCaptured": false,
+      "runLevelLow": 60,
+      "runLevelHigh": 60,
+      "wings": [],
+      "note": "New in Forever. Opens 9 December 2026."
+    }
+  }
+}

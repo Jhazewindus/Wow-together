@@ -259,14 +259,17 @@ class DungeonDataTests(unittest.TestCase):
         data = json.loads((ROOT / 'WowTogether/DungeonData.json').read_text())
         count = 0
         for key, source in data['dungeons'].items():
+            if source.get('kind', 'dungeon') != 'dungeon':
+                continue
             ids = list(gs[key].ids.values())
             self.assertEqual(len(ids), len(set(ids)))
             self.assertTrue(set(source['questIDs']).issubset(ids))
             self.assertTrue(all(c.ns.CatalogueQuest(id) is not None for id in source['questIDs']))
             count += len(source['questIDs'])
         self.assertEqual(count, 380)
-        self.assertNotIn(2971, {i for d in data['dungeons'].values() for i in d['questIDs']})
-        self.assertNotIn(6201, {i for d in data['dungeons'].values() for i in d['questIDs']})
+        dungeon_rows = [d for d in data['dungeons'].values() if d.get('kind', 'dungeon') == 'dungeon']
+        self.assertNotIn(2971, {i for d in dungeon_rows for i in d['questIDs']})
+        self.assertNotIn(6201, {i for d in dungeon_rows for i in d['questIDs']})
         self.assertEqual(c.ns.catalogue.count, 5337)
         # Explicit zone identity folds this formerly separate dungeon card in.
         self.assertIn(92401, list(gs['ruins-of-lordaeron'].ids.values()))

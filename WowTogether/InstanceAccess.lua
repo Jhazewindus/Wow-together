@@ -21,13 +21,20 @@ local addonName, ns = ...
 -- overview of 20 October 2026 as reported by wowforever.ninja,
 -- conquestcapped.com and wow4ever.quest. Only facts were taken.
 
--- Raids. The addon's dungeon data has none; these are enough to list them.
-ns.instanceRaids = {
-    {key = "onyxias-lair", name = "Onyxia's Lair", level = 60, where = "Dustwallow Marsh",
-        note = "40 players. Opens 9 December 2026."},
-    {key = "the-barrow-deeps", name = "The Barrow Deeps", level = 60, note = "New in Forever. Opens 9 December 2026."},
-    {key = "hyjal-summit", name = "Hyjal Summit", level = 60, note = "New in Forever. Opens 9 December 2026."},
-}
+-- The Instances switch reads raid definitions from the same data as dungeons.
+-- Entrance coordinates are intentionally absent until recorded in game.
+ns.instanceRaids = {}
+for key, info in pairs(ns.dungeonData and ns.dungeonData.dungeons or {}) do
+    if type(info) == "table" and info.kind == "raid" then
+        ns.instanceRaids[#ns.instanceRaids + 1] = {key = key, kind = "raid", name = info.name,
+            level = info.runLevelLow, where = info.locationHint, note = info.note,
+            sortOrder = info.sortOrder or 1000, ids = info.questIDs or {}, definition = info}
+    end
+end
+table.sort(ns.instanceRaids, function(a, b)
+    if a.sortOrder ~= b.sortOrder then return a.sortOrder < b.sortOrder end
+    return a.key < b.key
+end)
 
 -- instance key -> what it needs. `everyone`: every member needs it (an
 -- attunement) as opposed to one carrier for the group (a key).
@@ -258,7 +265,9 @@ end
 
 function ns.InstanceAccessDiagnostics(output)
     local parts = {}
-    for _, key in ipairs({"onyxias-lair", "blackrock-spire", "scholomance", "blackrock-depths", "stratholme", "dire-maul"}) do
+    local keys = {"blackrock-spire", "scholomance", "blackrock-depths", "stratholme", "dire-maul"}
+    for _, raid in ipairs(ns.instanceRaids) do keys[#keys + 1] = raid.key end
+    for _, key in ipairs(keys) do
         for _, status in ipairs(ns.InstanceAccess(key)) do
             parts[#parts + 1] = status.title .. " " .. (status.state == "have" and "have" or status.total and (status.done .. "/" .. status.total) or status.state)
         end

@@ -14,23 +14,28 @@ function ns.DungeonGroups()
         local membership, names, areas = {}, {}, {}
         ns.dungeonUnassigned = 0
         for key, info in pairs(definitions) do
-            dungeons[key] = {key = key, name = info.name, ids = {}, minLevel = 255,
-                level = info.runLevelLow, maxLevel = info.runLevelHigh, definition = info}
-            names[dungeonName(info.name)] = key
-            for _, name in ipairs(info.aliases) do names[dungeonName(name)] = key end
-            for _, area in ipairs(info.areaIDs) do areas[area] = key end
-            for _, id in ipairs(info.questIDs) do
-                membership[id] = membership[id] or {}; membership[id][key] = true
+            if info.kind ~= "raid" then
+                dungeons[key] = {key = key, name = info.name, ids = {}, minLevel = 255,
+                    level = info.runLevelLow, maxLevel = info.runLevelHigh, definition = info}
+                names[dungeonName(info.name)] = key
+                for _, name in ipairs(info.aliases or {}) do names[dungeonName(name)] = key end
+                for _, area in ipairs(info.areaIDs or {}) do areas[area] = key end
+                for _, id in ipairs(info.questIDs or {}) do
+                    membership[id] = membership[id] or {}; membership[id][key] = true
+                end
             end
         end
         for id, quest in pairs(ns.catalogue.quests) do
             local assigned = membership[id] or {}
             if ns.IsDungeonQuest(id) then
                 local slug = quest.categoryPath and string.match(quest.categoryPath, "^dungeons/(.+)$")
-                local key = slug or areas[quest.areaID] or names[dungeonName(ns.CatalogueZone(quest))]
-                if not key and not ns.dungeonData then key = string.lower(ns.CatalogueZone(quest)) end
-                if key then assigned[key] = true end
-                if not next(assigned) then ns.dungeonUnassigned = ns.dungeonUnassigned + 1 end
+                local raidQuest = slug and definitions[slug] and definitions[slug].kind == "raid"
+                if not raidQuest then
+                    local key = slug or areas[quest.areaID] or names[dungeonName(ns.CatalogueZone(quest))]
+                    if not key and not ns.dungeonData then key = string.lower(ns.CatalogueZone(quest)) end
+                    if key then assigned[key] = true end
+                    if not next(assigned) then ns.dungeonUnassigned = ns.dungeonUnassigned + 1 end
+                end
             end
             for key in pairs(assigned) do
                 local group = dungeons[key]

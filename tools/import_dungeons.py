@@ -17,6 +17,7 @@ from import_guide_services import POIS_SHA256
 
 ROOT = Path(__file__).resolve().parents[1]
 OVERVIEW = 'https://www.wowhead.com/forever/guide/dungeons-overview-locations-details'
+RAID_DEFINITIONS = ROOT / 'tools' / 'dungeon_raid_definitions.json'
 # Method's current guide quest tables include additional explicit membership
 # rows omitted from the corresponding Wowhead category pages. Store only quest
 # IDs, source URLs and capture hashes; quest details remain sourced elsewhere.
@@ -199,6 +200,7 @@ def combine(overview, pois, quest_cache, captured):
                                'quests': len(method_ids),
                                'supplementalQuestIDs': sorted(method_ids - category_ids)}
     for key, record in records.items():
+        record['kind'] = 'dungeon'
         # Runtime can match extra quests by explicit area/name facts. Keep the
         # source-list status alongside those memberships so an unknown category
         # is never presented as a confirmed empty list.
@@ -206,22 +208,35 @@ def combine(overview, pois, quest_cache, captured):
     if any(key not in sources for key, r in records.items() if r['entrances']):
         raise ValueError('Missing captured quest lists for mapped dungeons')
     date.fromisoformat(captured)
+    raid_data = json.loads(RAID_DEFINITIONS.read_text(encoding='utf-8'))
+    if raid_data.get('schema') != 1 or not isinstance(raid_data.get('records'), dict):
+        raise ValueError('Invalid source-pinned raid definition data.')
+    for key, raid in raid_data['records'].items():
+        if key in records or raid.get('kind') != 'raid' or raid.get('questIDs') != []:
+            raise ValueError('Invalid or duplicate raid definition: ' + key)
+        records[key] = raid
     metadata = {'schema': 1, 'captured': captured, 'overview': {'url': OVERVIEW, 'sha256': digest(overview)},
         'entrance_source': {'url': 'https://github.com/tr0tsky0/Mapzeroth/blob/' + COMMIT + '/Data/Forever/Pois.lua',
                             'commit': COMMIT, 'sha256': POIS_SHA256, 'license': 'MIT'},
+        'raid_definitions': raid_data['source'],
         'quest_categories': sources,
         'method_quest_guides': {'captured': '2026-11-06', 'pages': method_sources},
         'classic_complexes': 19, 'forever_dungeons': 9,
-        'published_entrance_areas': points, 'unmapped_entrances': sorted(k for k, r in records.items() if not r['entrances']),
+        'published_entrance_areas': points,
+        'unmapped_entrances': sorted(k for k, r in records.items()
+                                     if r.get('kind') == 'dungeon' and not r['entrances']),
         'level_conflicts': {'city-of-dalaran': {'chart': [28, 33], 'paragraph': [20, 35]},
                             'kroldok-stronghold': {'chart': [40, 45], 'paragraph': [40, 55]}},
-        'unknown_quest_categories': sorted(set(records) - set(sources)),
+        'unknown_quest_categories': sorted(set(key for key, row in records.items()
+                                               if row.get('kind') == 'dungeon') - set(sources)),
         'limitations': ['Dungeon level ranges are recommendations, not minimum entry or quest pickup requirements',
             'Overview chart/table takes precedence over its conflicting paragraphs; retest beta levels',
             'Published points mark entrance areas, not collision-safe cave paths or exact portals',
-            str(len([key for key in records if records[key]['era'] == 'Forever' and not records[key]['entrances']])) +
+            str(len([key for key in records if records[key].get('kind') == 'dungeon'
+                     and records[key]['era'] == 'Forever' and not records[key]['entrances']])) +
                 ' newer Forever dungeon entrances remain unspecified; ' +
-                str(len(set(records) - set(sources))) + ' category URLs still resolve to the generic quest list, so their memberships remain unknown'],
+                str(len(set(key for key, row in records.items() if row.get('kind') == 'dungeon') - set(sources)))
+                + ' category URLs still resolve to the generic quest list, so their memberships remain unknown'],
         'dungeons': records}
     return records, metadata
 
@@ -235,12 +250,12 @@ def main():
     args = parser.parse_args()
     records, metadata = combine(args.overview, args.pois, args.quest_cache, args.captured)
     (ROOT / 'WowTogether/DungeonData.lua').write_text('local addonName, ns = ...\n\n'
-        '-- Factual dungeon ranges from Wowhead Forever; quest memberships from Wowhead and Method;\n'
-        '-- geographic facts from the attributed MIT Forever snapshot.\n'
+        '-- Dungeon facts from Wowhead Forever, quest memberships from Wowhead and Method;\n'
+        '-- geographic facts from the attributed MIT Forever snapshot. Raid metadata is first-party.\n'
         '-- See DUNGEONS.md / DungeonData.json. No source guide prose, artwork or addon engine/UI is included.\n'
         'ns.dungeonData = ' + encode({'schema': 1, 'dungeons': records}) + '\n')
     (ROOT / 'WowTogether/DungeonData.json').write_text(json.dumps(metadata, indent=2, ensure_ascii=False) + '\n')
-    print(f'Generated {len(records)} dungeon entries; {sum(len(r["questIDs"]) for r in records.values())} quest memberships; 23 entrance areas.')
+    print(f'Generated {len(records)} instance entries; {sum(len(r["questIDs"]) for r in records.values())} dungeon quest memberships; 23 published dungeon entrance areas; raid entrances remain observation-only.')
 
 
 if __name__ == '__main__':

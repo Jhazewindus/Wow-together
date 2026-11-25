@@ -21,6 +21,18 @@ def first(c, key):
 
 
 class ProgressTests(unittest.TestCase):
+    def test_raid_switch_is_built_from_typed_instance_data_without_guessed_entrances(self):
+        c = character()
+        raids = {row.key: row for row in c.ns.instanceRaids.values()}
+        expected = {'onyxias-lair', 'the-barrow-deeps', 'hyjal-summit'}
+        self.assertEqual(set(raids), expected)
+        for key, row in raids.items():
+            self.assertEqual(row.kind, 'raid')
+            self.assertEqual(c.ns.dungeonData.dungeons[key].kind, 'raid')
+            self.assertEqual(len(c.ns.dungeonData.dungeons[key].entrances), 0)
+        dungeon_keys = {row.key for row in c.ns.DungeonGroups().values()}
+        self.assertFalse(expected & dungeon_keys)
+
     def test_a_chain_reports_the_step_and_what_comes_next(self):
         c = character(completed=(4903, 4941, 4974), quests=(6566,))
         status = first(c, 'onyxias-lair')
