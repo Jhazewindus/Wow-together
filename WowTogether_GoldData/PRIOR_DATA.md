@@ -54,7 +54,8 @@ files total 1,494,006 bytes; the largest zone file is 126,702 bytes. Together
 with the 154,143-byte gathering index and package TOCs, the full Gold data
 set is 3,051,971 bytes (2.91 MiB) on disk. Compared with the unfiltered
 5,370,556-byte creature payload, the trimmed index plus all zone coordinates
-use 2,858,256 bytes, a 2,512,300-byte reduction.
+use 2,858,256 bytes, a 2,512,300-byte reduction. These are uncompressed
+source-file byte counts, not archive sizes.
 
 Loading `WowTogether_GoldData` added 2.18 MiB of Lua heap in the host Lua 5.1
 harness after collection; searching the full level range and retaining the
