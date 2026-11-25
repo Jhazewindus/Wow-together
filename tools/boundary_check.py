@@ -15,6 +15,9 @@ ALLOWED = {
     'PublishGoldFunction', 'AuctionQuote', 'FarmPriorSearch', 'GatheringFarmSearch',
     'RegisterGatheringObserver', 'StartModuleLoop', 'StopModuleLoop',
     'SetFarmSession', 'RequestFarmSessionRefresh',
+    'UIPanel', 'UILabel', 'UIButton', 'UIButtonTone', 'UIClose', 'UIHelp',
+    'UIDivider', 'UIColors', 'AuctionHouseVisible', 'AuctionHouseAnchor',
+    'RouteInCombat', 'After', 'OpenModulePage',
 }
 ACCESS = re.compile(r'\bns\s*(?:\.\s*([A-Za-z_]\w*)|\[\s*(["\'])([A-Za-z_]\w*)\2\s*\])')
 DYNAMIC = re.compile(r'\bns\s*\[')

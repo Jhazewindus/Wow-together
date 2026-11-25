@@ -59,6 +59,8 @@ HudDiagnostics.lua
 TravelButton.lua
 QuestShare.lua
 QuestCleanup.lua
+InstanceAccess.lua
+InstancePage.lua
 AreaObjectives.lua
 Navigation.lua
 GuideTips.lua

@@ -182,6 +182,7 @@ local function refreshHubRail()
     end
     if ns.ui.hubBrowseSearch then ns.ui.hubBrowseSearch:SetShown(ns.ui.hubTab == "Browse") end
     if ns.ui.browseRow then ns.ui.browseRow:SetShown(ns.ui.hubTab == "Browse") end
+    ns.UpdateInstanceSwitch()
     if ns.ui.hubButtons and ns.ui.hubButtons.Settings then ns.ui.hubButtons.Settings:SetShown(ns.Option("uiNext") == true) end
 end
 
@@ -199,13 +200,14 @@ function ns.RefreshHubModuleTabs()
     for index, entry in ipairs(entries) do
         local control = ns.ui.hubModuleButtons[entry.key]
         if not control then
-            control = button(ns.ui.hubRail, entry.title, 112, function()
+            control = button(ns.ui.hubRail, entry.title, 132, function()
                 ns.SetFilter(entry.key)
             end)
             ns.ui.hubModuleButtons[entry.key] = control
         end
-        control:SetPoint("TOPLEFT", 8, -150 - (index - 1) * 40)
-        control:SetHeight(36)
+        -- Directly under Play, Group and Browse, the same size and spacing.
+        control:SetPoint("TOPLEFT", 9, -10 - (3 + index - 1) * 44)
+        control:SetHeight(40)
         control.caption:SetText(entry.title)
         control:Show()
     end
@@ -450,14 +452,18 @@ function ns.CreateUI()
     ns.ui.party:SetJustifyV("TOP")
     ns.ui.party:Hide()
     local filters = {{"recommended", "Recommended"}, {"guides", "Leveling"}, {"classquests", "Class quests"},
-        {"professions", "Professions"}, {"dungeons", "Dungeons"}, {"review", "Quest log"}, {"library", "All quests"}}
+        {"professions", "Professions"}, {"dungeons", "Instances"}, {"review", "Quest log"}, {"library", "All quests"}}
     ns.ui.viewChoice = ns.UIDropdown(window, filters, 200, ns.SetFilter)
     ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter); ns.ui.viewChoice:Hide()
     ns.ui.viewDescription = label(window, nil, 11, colors.muted)
     ns.ui.viewDescription:SetText("Choose a guide or explore your party's progress.")
     ns.ui.viewDescription:Hide()
     ns.ui.status = label(window, nil, nil, colors.muted)
-    local config = button(window, "⚙", 30, function() ns.ToggleSettings() end)
+    -- A picture, not the gear character: the game's fonts do not have it, and it drew as an empty box.
+    local config = button(window, "", 30, function() ns.ToggleSettings() end)
+    config.icon = config:CreateTexture(nil, "OVERLAY")
+    config.icon:SetTexture("Interface\\Buttons\\UI-OptionsButton")
+    config.icon:SetSize(16, 16); config.icon:SetPoint("CENTER", 0, 0)
     config:SetPoint("TOPRIGHT", -44, -10); config:SetSize(28, 24)
     ns.ui.settingsButton = config
     ns.ui.status:SetPoint("BOTTOMLEFT", 162, 18)
@@ -491,7 +497,7 @@ function ns.CreateUI()
     ns.ui.hubRail:Hide()
     ns.ui.browseRow = CreateFrame("Frame", nil, window)
     ns.ui.browseRow:SetPoint("TOPLEFT", 150, -57); ns.ui.browseRow:SetPoint("TOPRIGHT", -18, -57); ns.ui.browseRow:SetHeight(30)
-    local browseEntries = {{"guides", "Leveling", 84}, {"classquests", "Class", 68}, {"dungeons", "Dungeons", 86},
+    local browseEntries = {{"guides", "Leveling", 84}, {"classquests", "Class", 68}, {"dungeons", "Instances", 86},
         {"professions", "Professions", 100}, {"library", "Quests", 68}}
     local browseOffset = 0
     for _, entry in ipairs(browseEntries) do
@@ -502,6 +508,17 @@ function ns.CreateUI()
         ns.ui.browseButtons[key] = control
         browseOffset = browseOffset + width + 6
     end
+    -- Instances come in two kinds; a switch beside the tabs picks one.
+    ns.ui.instanceSwitch = {}
+    for index, entry in ipairs({{"dungeons", "Dungeons", 82}, {"raids", "Raids", 62}}) do
+        local kind = entry[1]
+        local control = button(ns.ui.browseRow, entry[2], entry[3], function() ns.SetInstanceKind(kind) end)
+        control:SetPoint("LEFT", browseOffset + 14 + (index == 2 and 86 or 0), 0)
+        control:SetWidth(entry[3]); control:SetHeight(24)
+        control:Hide()
+        ns.ui.instanceSwitch[kind] = control
+    end
+    ns.ui.instanceSwitchRight = browseOffset + 14 + 86 + 62
     ns.ui.hubBrowseSearch = searchBox(window, "Search guides, zones or quests")
     ns.ui.hubBrowseSearch:SetSize(220, 26); ns.ui.hubBrowseSearch:SetPoint("TOPLEFT", 604, -57); ns.ui.hubBrowseSearch:SetPoint("TOPRIGHT", -18, -57)
     ns.ui.hubBrowseSearch:SetScript("OnTextChanged", function(self)
@@ -890,7 +907,7 @@ local function makeCard()
     card.mapButton:SetPoint("BOTTOMRIGHT", -14, 10)
     card:RegisterForClicks("LeftButtonUp")
     card:SetScript("OnClick", function()
-        if card.activity and card.activity.dungeon then ns.ShowDungeonViewer(card.activity.dungeon) else activate() end
+        if card.activity and card.activity.dungeon then ns.ShowInstancePage(card.activity.dungeon) else activate() end
     end)
     return card
 end
@@ -997,7 +1014,24 @@ local function dungeonMatchesHubSearch(query, group, activity)
     return false
 end
 
+-- The Dungeons and Raids switch, only on the Instances view; the search box makes room for it.
+function ns.UpdateInstanceSwitch()
+    if not ns.ui or not ns.ui.instanceSwitch then return end
+    local instances = ns.ui.hubTab == "Browse" and ns.filter == "dungeons"
+    for kind, control in pairs(ns.ui.instanceSwitch) do
+        control:SetShown(instances)
+        ns.UIButtonTone(control, ns.InstanceKind and ns.InstanceKind() == kind)
+    end
+    if ns.ui.hubBrowseSearch and ns.ui.instanceSwitchRight and ns.ui.searchShifted ~= instances then
+        ns.ui.searchShifted = instances
+        ns.ui.hubBrowseSearch:ClearAllPoints()
+        ns.ui.hubBrowseSearch:SetPoint("TOPLEFT", instances and (150 + ns.ui.instanceSwitchRight + 12) or 604, -57)
+        ns.ui.hubBrowseSearch:SetPoint("TOPRIGHT", -18, -57)
+    end
+end
+
 local function followActivity(activity)
+    if type(activity.follow) == "function" then return activity.follow() end
     if activity.dungeon then return ns.ShowDungeonQuests(activity.dungeon, true) end
     -- Gathering professions have their own viewer: there is no recipe to plan.
     if activity.gathering and ns.ShowGatheringViewer then return ns.ShowGatheringViewer(activity.gathering) end
@@ -1055,7 +1089,9 @@ function ns.Render(queryContext, routeUpdated)
         or ns.filter == "guides"
         and "Select a guide to preview its quests."
         or ns.filter == "classquests" and "Start one guide for your class quests. It follows known prerequisites and later steps."
-        or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
+        or ns.filter == "dungeons" and (ns.InstanceKind and ns.InstanceKind() == "raids"
+            and "Raids, and what each needs before you can enter."
+            or "Choose a dungeon for its quests, chains and what you need to get in.")
         or ns.filter == "professions" and "Choose a profession to plan crafting, materials and training."
         or "Choose a quest to see its route or requirements.")
     if not routeUpdated and ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
@@ -1135,15 +1171,38 @@ function ns.Render(queryContext, routeUpdated)
         for _, suggestion in ipairs(ns.Suggestions()) do
             display[#display + 1] = {row = suggestion.row, suggestion = suggestion}
         end
+    elseif ns.filter == "dungeons" and ns.InstanceKind and ns.InstanceKind() == "raids" then
+        ns.UpdateInstanceSwitch()
+        for _, raid in ipairs(ns.instanceRaids or {}) do
+            local key = raid.key
+            local lines = ns.InstanceAccessLines(key)
+            local hasNext = false
+            for _, status in ipairs(ns.InstanceAccess(key)) do if status.nextID then hasNext = true end end
+            local activity = {title = raid.name, category = "RAID", count = "Lv " .. raid.level,
+                detail = (lines[1] or "") .. "\n" .. (raid.where and (raid.where .. ". ") or "") .. (raid.note or ""),
+                help = raid.name .. "\n" .. (raid.note or "") .. ns.InstanceAccessHelp(key),
+                followLabel = hasNext and "Next step" or false,
+                follow = function() ns.OpenInstanceAccess(key) end,
+                click = function() ns.ShowInstancePage(raid) end}
+            if matchesHubSearch(ns.hubBrowseSearch, activity.title, activity.detail, activity.category) then
+                display[#display + 1] = {activity = activity}
+            end
+        end
     elseif ns.filter == "dungeons" then
+        ns.UpdateInstanceSwitch()
         for _, group in ipairs(ns.DungeonGroups()) do
             local dungeon = group
             local readiness = ns.DungeonCollectionReadiness(group)
             local summary = readiness.count == 0 and (#group.ids == 0 and "No quests listed"
                 or readiness.unknown > 0 and "View quest list" or "No matching quests") or (readiness.count .. " quest"
                 .. (readiness.count == 1 and "" or "s") .. (readiness.unknown == 0 and (" • Collect from Lv " .. readiness.pickupLevel) or ""))
+            -- What it takes to get in, and steps of other chains done in here.
+            local access = ns.InstanceAccessLines and ns.InstanceAccessLines(group.key) or {}
             local activity = {title = group.name, category = "DUNGEON", dungeon = group,
-                detail = summary .. "\nMap, bosses & loot", click = function() ns.ShowDungeonViewer(dungeon) end}
+                detail = summary .. (access[1] and ("\n" .. access[1]) or "") .. (access[2] and ("\n" .. access[2]) or ""),
+                help = group.name .. "\n" .. summary .. "\nOpens its quests, chains and what you need to get in."
+                    .. (#access > 0 and ns.InstanceAccessHelp(group.key) or ""),
+                click = function() ns.ShowInstancePage(dungeon) end}
             if dungeonMatchesHubSearch(ns.hubBrowseSearch, group, activity) then
                 display[#display + 1] = {activity = activity}
             end
@@ -1220,9 +1279,12 @@ function ns.Render(queryContext, routeUpdated)
             card.title:SetText(activity.title); card.count:SetText(activity.count or activity.dungeon and activity.dungeon.definition
                 and ("Lv " .. activity.dungeon.definition.runLevelLow .. "–" .. activity.dungeon.definition.runLevelHigh) or "")
             card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
-            ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
+            ns.UIHelp(card, activity.help or (activity.title .. "\n" .. activity.detail))
             card.mapButton.caption:SetText(activity.action or "")
             card.detailsButton:SetScript("OnClick", function() followActivity(activity) end)
+            -- A card can name its own button, or have none when there is nothing to start.
+            if activity.followLabel then card.detailsButton.caption:SetText(activity.followLabel) end
+            card.detailsButton:SetShown(activity.followLabel ~= false)
             if activity.dungeon or activity.profession then
                 local enter, leave = card:GetScript("OnEnter"), card:GetScript("OnLeave")
                 card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)); if enter then enter(self) end end)
@@ -1349,7 +1411,7 @@ function ns.Render(queryContext, routeUpdated)
     end
     ns.ui.visibleCards = visible
     if ns.filter == "dungeons" or ns.filter == "professions" then
-        ns.ui.metrics[2].caption:SetText(ns.filter == "dungeons" and "DUNGEON GUIDES" or "PERSONAL GUIDES")
+        ns.ui.metrics[2].caption:SetText(ns.filter == "dungeons" and "INSTANCES" or "PERSONAL GUIDES")
         ns.ui.metrics[2].value:SetText(tostring(visible))
     end
     ns.ui.empty:SetShown(visible == 0)

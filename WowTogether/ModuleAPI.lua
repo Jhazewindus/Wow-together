@@ -325,17 +325,23 @@ function ns.TrailLoop(points)
     if count == 0 then return {points = {}, legs = {}, seconds = 0} end
     for _, point in ipairs(points) do if not ns.ValidTravelPoint(point) then return nil end end
     if count == 1 then return {points = {points[1], points[1]}, legs = {}, seconds = 0} end
-    local paths, costs = {}, {}
+    -- Legs are costed by straight-line distance at running speed.
+    --
+    -- This used to search for a walking path between every pair of points:
+    -- 552 searches for 24 points, all in one go. Starting a farm froze the
+    -- game for minutes (18 seconds in the host, which is roughly ten times
+    -- faster than the client). An addon cannot see terrain anyway; the order
+    -- of a loop through one creature's spawn points is decided well enough by
+    -- distance, and a module that wants the real path for a leg can still
+    -- ask for it, one leg at a time.
+    local RUN_YARDS_PER_SECOND = 7
+    local costs, scaleCache = {}, {}
     for i = 1, count do
-        paths[i], costs[i] = {}, {}
+        costs[i] = {}
         for j = 1, count do
             if i ~= j then
-                local path = ns.FindTravelPath(points[i], points[j], false)
-                local valid = path and finite(path.seconds) and path.seconds >= 0
-                for _, leg in ipairs(path and path.legs or {}) do
-                    if leg.method ~= "walk" then valid = false; break end
-                end
-                if valid then paths[i][j], costs[i][j] = path, path.seconds end
+                local distance = ns.TravelPointDistance(points[i], points[j], scaleCache)
+                if finite(distance) and distance >= 0 then costs[i][j] = distance / RUN_YARDS_PER_SECOND end
             end
         end
     end
@@ -394,15 +400,37 @@ function ns.TrailLoop(points)
             used[nextIndex] = true; sequence[#sequence + 1] = nextIndex
         end
     end
+    -- Nearest-neighbour order crosses itself; uncross it. Each pass looks at
+    -- every pair of legs and reverses the stretch between them when that is
+    -- shorter. A few passes settle two dozen points.
+    if count > 10 then
+        for _ = 1, 8 do
+            local improved = false
+            for i = 2, count - 1 do
+                for j = i + 1, count do
+                    local a, b = sequence[i - 1], sequence[i]
+                    local c, d = sequence[j], sequence[j + 1] or sequence[1]
+                    local now = (costs[a][b] or math.huge) + (costs[c][d] or math.huge)
+                    local swapped = (costs[a][c] or math.huge) + (costs[b][d] or math.huge)
+                    if swapped + 0.001 < now then
+                        local low, high = i, j
+                        while low < high do sequence[low], sequence[high] = sequence[high], sequence[low]; low, high = low + 1, high - 1 end
+                        improved = true
+                    end
+                end
+            end
+            if not improved then break end
+        end
+    end
     sequence[#sequence + 1] = 1
     local loop = {points = {}, legs = {}, seconds = 0}
     for index, pointIndex in ipairs(sequence) do
         loop.points[index] = points[pointIndex]
         if index > 1 then
-            local path = paths[sequence[index - 1]][pointIndex]
-            if not path then return nil end
-            loop.legs[#loop.legs + 1] = path
-            loop.seconds = loop.seconds + path.seconds
+            local seconds = costs[sequence[index - 1]][pointIndex]
+            if not seconds then return nil end
+            loop.legs[#loop.legs + 1] = {seconds = seconds, estimated = true, legs = {}}
+            loop.seconds = loop.seconds + seconds
         end
     end
     return loop
@@ -1137,6 +1165,17 @@ end
 
 -- A separately loaded optional addon has a different private namespace. Give
 -- it a deliberately limited public table instead of exposing core `ns`.
+-- Opens the main window on a module's own page: what a module's buttons use
+-- to say "see the rest here", so nothing needs a typed command.
+function ns.OpenModulePage(name)
+    local entry = type(name) == "string" and ns.Public(name) and modules[name]
+    if not entry or not entry.tab or not ns.window or type(ns.SetFilter) ~= "function" then return false end
+    if ns.RouteInCombat and ns.RouteInCombat() and not ns.window:IsShown() then return false end
+    if not ns.window:IsShown() then ns.window:Show() end
+    ns.SetFilter("module:" .. string.lower(name))
+    return true
+end
+
 local publicAPI = {
     version = ns.GoldAPIVersion,
     STEP_SYMBOLS = {farm = ns.STEP_ICON_TEXTURES.farm},
@@ -1154,8 +1193,17 @@ for _, name in ipairs({"RegisterModule", "FindTravelPath", "TravelPointDistance"
     "QueueModuleSync",
     "CatalogueQuest", "ReadPublic", "Public", "GuideInteger", "SafeTitle",
     "Option", "SetOption", "Print", "On", "ResearchExportHook",
-    "StartFarmCandidateScan", "PublishGoldFunction"}) do
+    "StartFarmCandidateScan", "PublishGoldFunction",
+    -- Drawing in the addon's own style, so a module's windows look like the
+    -- core's. These only build and colour frames the module owns.
+    "UIPanel", "UILabel", "UIButton", "UIButtonTone", "UIClose", "UIHelp", "UIDivider",
+    "AuctionHouseVisible", "AuctionHouseAnchor", "RouteInCombat", "After", "OpenModulePage"}) do
     publicAPI[name] = ns[name]
+end
+-- A copy: a module can read the palette, not change the core's.
+publicAPI.UIColors = {}
+for key, color in pairs(ns.UIColors or {}) do
+    publicAPI.UIColors[key] = {color[1], color[2], color[3], color[4]}
 end
 setmetatable(publicAPI, {__index = function(_, name)
     if name == "catalogue" then return ns.catalogue end

@@ -5,6 +5,12 @@ local function shown(frame) return frame and ns.ReadPublic(frame.IsShown, frame)
 function ns.AuctionHouseVisible()
     return ns.auctionHouseOpen and (shown(AuctionHouseFrame) or shown(AuctionFrame)) or false
 end
+-- A module may dock its own control to the visible auction window without
+-- reaching into the core namespace or changing the native window's anchors.
+function ns.AuctionHouseAnchor()
+    local frame = AuctionHouseFrame or AuctionFrame
+    return type(frame) == "table" and type(frame.GetObjectType) == "function" and frame or nil
+end
 local function status(text)
     ns.auctionGuideStatus, ns.auctionScanStatus = text, nil
     if ns.shoppingWindow then ns.shoppingWindow.status:SetText(text) end
