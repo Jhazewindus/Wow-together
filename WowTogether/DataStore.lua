@@ -83,12 +83,7 @@ ns.catalogue = proxy("catalogue", "WowTogether_QuestData", {
     detailSource = "https://www.wowhead.com/forever/quests",
 }, {quests = true})
 ns.professionGuideData = proxy("professionGuideData", "WowTogether_ProfessionData", nil, {professions = true})
-<<<<<<< HEAD
-=======
-ns.dungeonJournalData = proxy("dungeonJournalData", "WowTogether_DungeonData", nil, {dungeons = true, items = true})
-ns.dungeonMapData = proxy("dungeonMapData", "WowTogether_DungeonData", nil, {dungeons = true})
 ns.gatheringPositionData = proxy("gatheringPositionData", "WowTogether_GatheringPositionData", nil, {records = true})
->>>>>>> bb5ed16 (Add source-pinned farm and gathering priors)
 
 -- Bundled, literal-only data. Keep each nested field packed until it is used.
 -- A decoded field becomes an ordinary, stable table: map resolution and other
