@@ -44,7 +44,7 @@ class BuildAutomationTests(unittest.TestCase):
             with zipfile.ZipFile(archive) as z:
                 roots = {p.split('/')[0] for p in z.namelist()}
                 expected = {'WowTogether', 'WowTogether_QuestData',
-                    'WowTogether_ProfessionData', 'WowTogether_DungeonData',
+                    'WowTogether_ProfessionData',
                     'WowTogether_GoldData'}
                 if (ROOT / 'WowTogether_Gold').exists(): expected.add('WowTogether_Gold')
                 self.assertEqual(roots, expected)

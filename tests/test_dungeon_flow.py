@@ -1,53 +1,38 @@
-"""Dungeon run routing follows active interior objectives and journal order."""
+"""Dungeon quest routes use the compact instance definitions, not the retired journal pack."""
 import unittest
-
 from test_addon import Client
 
-
 class DungeonFlowTests(unittest.TestCase):
-    def test_active_interior_objectives_follow_encounter_order(self):
+    def test_active_interior_objectives_use_instance_area_ids(self):
         c = Client(quests=())
         ns = c.ns
         c.lua.globals().ns = ns
-        ns.profile.classID = 8
         c.lua.execute(r'''
           ns.active[900], ns.active[901] = true, true
           ns.readyToTurnIn = {}
           ns.QuestProgressReady = function() return false end
           ns.FilterGuideStages = function(stages) return stages end
-          ns.DungeonViewerData = function()
-            return {maps={{mapID=501}}, bosses={
-              {id=101, name='First Boss', encounterOrder=1,
-                loot={{id=555, name='Test Staff', classID=2, subclass=7}}},
-              {id=102, name='Second Boss', encounterOrder=2},
-            }}
-          end
           ns.RouteStages = function(record)
-            if record.id == 900 then return {{id=900, mapID=501, x=.8, y=.8,
-              kind='q', entityID=102, targetName='Second Boss', title=record.title}} end
-            return {{id=901, mapID=501, x=.2, y=.2,
-              kind='q', entityID=101, targetName='First Boss', title=record.title}}
+            return {{id=record.id, mapID=501, x=.2, y=.2, kind='q', targetName='A target'}}
           end
           ns.GuideDestinationDecision = function() return {specificBenefit=true} end
         ''')
+        definition = c.lua.table_from({"areaIDs": [501]}, recursive=True)
+        group = c.lua.table_from({"name": "Test Dungeon", "definition": definition}, recursive=True)
         guide = c.lua.table_from({
             "key": "dungeon:test", "title": "Test dungeon quests", "dungeonKey": "test",
-            "dungeon": c.lua.table_from({"name": "Test Dungeon"}), "dungeonPhase": "run",
+            "dungeon": group, "dungeonPhase": "run",
             "records": c.lua.table_from([
-                c.lua.table_from({"id": 900, "title": "Second Boss Quest"}),
-                c.lua.table_from({"id": 901, "title": "First Boss Quest"}),
+                c.lua.table_from({"id": 900, "title": "Later Quest"}),
+                c.lua.table_from({"id": 901, "title": "Earlier Quest"}),
             ]), "collectionGoals": c.lua.table_from({900: True, 901: True}),
         })
         route = ns.BuildDungeonRoute(guide, False, False)
         stops = [route.stops[i] for i in range(1, len(route.stops) + 1)]
-        self.assertEqual([stop.id for stop in stops], [901, 900])
-        self.assertEqual([stop.dungeonEncounterOrder for stop in stops], [1, 2])
-        self.assertIn("Kill First Boss", stops[0].label)
-        self.assertIn("First Boss Quest", stops[0].label)
-        self.assertEqual(ns.GuideStepAction(stops[0]), "Kill First Boss — also completes First Boss Quest")
-        self.assertEqual(stops[0].dungeonLootWatch[1].name, "Test Staff")
-        self.assertEqual(stops[0].dungeonLootWatch[1].members, "You")
-
+        self.assertEqual([stop.id for stop in stops], [900, 901])
+        self.assertTrue(all(stop.mapID == 501 for stop in stops))
+        self.assertIsNone(stops[0].dungeonEncounterOrder)
+        self.assertIsNone(stops[0].dungeonLootWatch)
 
 if __name__ == "__main__":
     unittest.main()

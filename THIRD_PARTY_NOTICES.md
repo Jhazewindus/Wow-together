@@ -79,9 +79,7 @@ unambiguous spawns; no source server/event logic is copied or evaluated.
 Factual client encounter positions, map/floor IDs and rectangles come from
 `eXPeRi91/ClientDB-Diff` revision
 `ac1d02cba59374c5d599f78ede0cd3984f4312a1`. CSV URLs/checksums, transformations
-and unresolved positions are documented in DungeonMapData.json and
-DUNGEON_VIEWER.md. The CSV metadata is factual game data, not copied code/art.
-These older Classic references still require Forever beta verification.
+and unresolved positions were documented in the retired map data manifest. The CSV metadata is factual game data, not copied code/art. These records are no longer shipped since 0.8.117; the source notes remain for historical attribution.
 
 Changes: select numeric IDs, short entity/quest names, explicit relations,
 quantities, spawn coordinates and the player XP-per-level baseline (estimate only); retain only identity-matched unchanged quest
@@ -97,10 +95,9 @@ the addon engine. Version 0.8.7 also uses these facts for optional service tips;
 GuideServiceData.json records the scope. Neutral settlement ownership is not
 used as proof of a flight master's faction.
 
-## Earlier published Forever facts (through 0.8.75)
+## Earlier published Forever facts (historical; dungeon viewer data retired in 0.8.117)
 
-Factual IDs, short names, counts, relationships, map bounds, explicit patrol paths and coordinates
-were selected from Questie/QuestieDB revision
+Factual IDs, short names, counts, relationships, map bounds, explicit patrol paths and coordinates were selected from Questie/QuestieDB revision
 `e0a6eaa86f181ac99262e34126bcd2ed1a1712d6`:
 https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6
 
@@ -116,19 +113,20 @@ Narrow coordinate observations from public Wowhead Forever comments retain
 quest/comment IDs for attribution in the coverage report. Comment prose and
 artwork are excluded; observations are labeled as needing beta verification.
 
-## Dungeon viewer facts (0.8.24)
+## Retired dungeon viewer facts (included through 0.8.116)
 
 DungeonJournalData records factual NPC/item IDs, names, levels and loot relationships
 from captured Wowhead Forever zone/NPC pages; the provenance manifest contains each
 URL and SHA-256. Website scripts, editorial prose and image files are not bundled.
 Map/portrait/icon filenames reference Blizzard client assets checked against the
 public wowdev filename list. Blizzard retains its artwork rights; this project's
-MIT license does not license Blizzard textures or preview images. See
-DUNGEON_VIEWER.md for source versions, scope and beta limitations.
+MIT license does not license Blizzard textures or preview images. This viewer
+and its optional data package were removed in 0.8.117; the archived source tree
+contains the old source manifests and audit scripts.
 
 The 0.8.31 loot audit also extracts factual item/NPC/container relationships
 from the public Vanilla tables at `https://classicdb.ch/`. Individual URLs and
-SHA-256s are in `DungeonJournalData.json`. All 933 listed Vanilla NPC tables and
+SHA-256s were in the retired `DungeonJournalData.json`. All 933 listed Vanilla NPC tables and
 95 treasure-container tables were captured. Only literal game facts are kept;
 no website JavaScript, guide prose, screenshots or source addon code is bundled.
 Explicit community boss/drop reports on three Wowhead Forever zone pages retain
@@ -139,8 +137,8 @@ Version 0.8.68 also contains four individually owner-confirmed NPC/item facts
 from the user-supplied `ForeverDungeonJournal1.6.3.zip` reference (SHA-256
 `7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02`). The
 archive had no license notice. The repository retains the archive identity and
-the exact selected IDs in `tools/dungeon_fact_corrections.json` and
-`DungeonJournalData.json`; it does not bundle the archive. No source code,
+the exact selected IDs in `tools/dungeon_fact_corrections.json` and the retired
+`DungeonJournalData.json`; it did not bundle the archive. No source code,
 interface layout, images, prose or bulk tables were incorporated. These are
 selected factual relationships, not a claim that the full reference database
 is licensed or that every City of Dalaran encounter is known.
@@ -155,7 +153,7 @@ missing quest locations remain explicitly incomplete.
 
 Version 0.8.75 adds selected public factual NPC/item relationships from
 Wowhead Forever NPC pages and cross-checks four newer dungeon guides on
-Method.gg. Capture URLs and SHA-256 hashes are recorded in
-`WowTogether/DungeonJournalData.json`. Only numeric identities, names, item
-attributes and encounter-to-item relationships are included. The release does
-not contain either site's code, prose, artwork, page layout or map images.
+Method.gg. Capture URLs and SHA-256 hashes were recorded in the retired dungeon
+manifest. Only numeric identities, names, item attributes and encounter-to-item
+relationships were selected. Current releases do not contain these viewer
+datasets or either site's code, prose, artwork, page layout or map images.

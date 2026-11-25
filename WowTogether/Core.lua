@@ -426,10 +426,7 @@ function ns.Diagnostics()
     ns.GuideTipDiagnostics(output)
     ns.ClassTrainingDiagnostics(output)
     ns.InventoryServiceDiagnostics(output)
-    ns.DungeonArtworkDiagnostics(output)
-    ns.DungeonViewerDiagnostics(output)
     ns.GroupFinderRoleDiagnostics(output)
-    ns.ApproachMapDiagnostics(output)
     output("Unit numbers: " .. ns.unitNumbersStatus)
     local low, high = ns.PreferredQuestLevels()
     if low then
@@ -551,7 +548,6 @@ end
 
 ns.On("ADDON_LOADED", function(name)
     if name ~= addonName then
-        if name == "Blizzard_EncounterJournal" and ns.db then ns.RefreshDungeonArtwork() end
         return
     end
     if type(WowTogetherDB) ~= "table" then WowTogetherDB = {} end
@@ -587,8 +583,6 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeGuidePersistence()
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
     ns.InitializeAuctionMarket()
-    ns.InitializeDungeonViewer()
-    ns.InitializeApproachMaps()
     ns.InitializeGroupFinderRoles()
     ns.InitializeInventoryServices()
     ns.InitializeSessionCheckpoints()
@@ -611,7 +605,7 @@ ns.On("PLAYER_LOGIN", function()
         ns.db.config.soloModePartyNotice = true
         ns.Print("Your saved Solo mode keeps party features off. Set Settings > Party mode to Ask me if you want party prompts.")
     end
-    ns.RestoreSavedGuide(); ns.RefreshDungeonArtwork(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync()
+    ns.RestoreSavedGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync()
 end)
 local function resetDeathSoundState()
     deathSoundState.handled = false

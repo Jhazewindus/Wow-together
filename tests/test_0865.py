@@ -1,22 +1,13 @@
-"""Classic reference projection and Forever finder structure adapters.
+"""Forever finder structure adapters.
 
 Host Lua 5.1 checks validate transforms and UI ownership, not beta alignment.
 """
 import unittest
 
 from test_addon import Client
-from test_dungeon_player import tick
-from test_0864 import ENTRY, FINDER
+from test_0864 import FINDER
 
 
-REFERENCE = ENTRY + '''
-worldX=-329.80895;worldY=268.155;worldInstance=389;worldReads=0
-function UnitPosition()worldReads=worldReads+1;return worldX,worldY,3,worldInstance end
-function GetPlayerFacing()return 1.2 end
-C_Map={GetBestMapForUnit=function()return 1454 end,
- GetPlayerMapPosition=function()error('reference used native UI coordinates')end,
- GetMapPosFromWorldPos=function()error('reference borrowed native geometry')end}
-'''
 CLASSIC = FINDER + '''
 LFGListFrame=nil
 LFGParentFrame=CreateFrame('Frame',nil,UIParent);LFGParentFrame:Show()
@@ -31,102 +22,6 @@ finderPlayers[1][1].assignedRole='NONE';finderPlayers[1][1].lfgRoles={tank=true,
 finderPlayers[1][2].assignedRole='NONE';finderPlayers[1][2].lfgRoles={tank=false,healer=true,dps=false}
 finderPlayers[2][1].assignedRole='NONE';finderPlayers[2][1].lfgRoles={tank=false,healer=true,dps=true}
 '''
-
-
-def reference_map():
-    c = Client(use_catalogue=True, before_load=REFERENCE)
-    c.ns.ShowDungeonViewer('ragefire-chasm', True)
-    return c, c.ns.dungeonViewer
-
-
-class ReferencePlayerTests(unittest.TestCase):
-    def test_ragefire_reference_uses_published_world_bounds_without_native_map(self):
-        c, f = reference_map()
-        b = f.data.maps[1].worldBounds
-        self.assertEqual(b.instanceMapID, 389)
-        self.assertEqual(b.sourceID, 136)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        self.assertIsNone(f.nativePlayer)
-        self.assertIn('reference-world', c.ns.dungeonPlayerStatus)
-        self.assertAlmostEqual((f.playerMarker.point[4] - f.playerGeometry.x) / f.playerGeometry.width, .25)
-        self.assertAlmostEqual((-f.playerMarker.point[5] - f.playerGeometry.y) / f.playerGeometry.height, .75)
-
-    def test_reference_movement_and_resize_preserve_image_alignment(self):
-        c, f = reference_map()
-        for width, height in ((500, 420), (980, 600)):
-            f.SetSize(f, width, height); f.OnSizeChanged(); tick(f)
-            self.assertAlmostEqual((f.playerMarker.point[4] - f.playerGeometry.x) / f.playerGeometry.width, .25)
-        c.lua.globals().worldY = -138.2202
-        tick(f)
-        self.assertAlmostEqual((f.playerMarker.point[4] - f.playerGeometry.x) / f.playerGeometry.width, .8)
-
-    def test_wrong_instance_outdoor_and_private_world_values_never_keep_marker(self):
-        c, f = reference_map()
-        for change in ('worldInstance=0', 'worldInstance=389;worldX=secret',
-                       'worldX=1000001', 'worldX=100', 'worldX=-329.80895;worldY=secret',
-                       'worldY=268.155;function IsInInstance()return false end'):
-            with self.subTest(change=change):
-                c.lua.execute(change); tick(f)
-                self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-
-    def test_unsupported_world_api_leaves_reference_image_and_loot_available(self):
-        c, f = reference_map()
-        for change in ('UnitPosition=nil', 'UnitPosition=function()error("private")end',
-                       'UnitPosition=function()return nil end'):
-            c.lua.execute(change); tick(f)
-            self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-            self.assertTrue(f.tiles[1].IsShown(f.tiles[1]))
-        self.assertTrue(len(f.data.bosses))
-
-    def test_probe_reports_public_instance_coordinates_and_hides_secret_values(self):
-        c, f = reference_map()
-        lines = []
-        c.ns.DungeonPlayerDiagnostics(lines.append, f)
-        self.assertIn('instance 389', lines[0])
-        self.assertIn('DungeonMap 136', lines[0])
-        c.lua.globals().worldX = c.lua.globals().secret
-        lines = []
-        c.ns.DungeonPlayerDiagnostics(lines.append, f)
-        self.assertIn('unavailable/restricted', lines[0])
-
-    def test_hidden_reference_map_does_not_poll_and_combat_keeps_public_marker(self):
-        c, f = reference_map()
-        c.lua.globals().combat = True; tick(f)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        f.Hide(f); f.OnHide(); reads = c.lua.globals().worldReads
-        tick(f)
-        self.assertEqual(c.lua.globals().worldReads, reads)
-
-    def test_ambiguous_floors_hide_marker_even_when_manually_browsing_one(self):
-        c, f = reference_map()
-        c.lua.execute('local f=...;f.data.maps[2]=f.data.maps[1]', f)
-        tick(f)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        self.assertIn('Overlapping', c.ns.dungeonPlayerStatus)
-        self.assertFalse(c.ns.LocateDungeonPlayer(f))
-
-    def test_missing_rectangle_is_not_inferred_from_reference_map_or_bosses(self):
-        c, f = reference_map()
-        f.data.maps[1].worldBounds = None
-        c.ns.RenderDungeonViewer(); tick(f)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        self.assertIsNone(f.playerGeometry)
-
-    def test_locate_switches_only_to_unique_reference_floor(self):
-        c, f = reference_map()
-        c.lua.execute('''local f=...;local m=f.data.maps[1];local b=m.worldBounds
-          f.data.maps[2]={reference=true,name='Other floor',width=m.width,height=m.height,
-            tileWidth=m.tileWidth,tileHeight=m.tileHeight,tiles=m.tiles,bosses={},quests={},
-            worldBounds={left=1000,right=2000,bottom=1000,top=2000,instanceMapID=389}}
-        ''', f)
-        f.floor, f.followPlayer = 2, False
-        c.ns.RenderDungeonViewer(); tick(f)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        self.assertEqual(f.floor, 2)
-        self.assertTrue(c.ns.LocateDungeonPlayer(f))
-        c.ns.RenderDungeonViewer(); tick(f)
-        self.assertEqual(f.floor, 1)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
 
 
 class ForeverFinderTests(unittest.TestCase):

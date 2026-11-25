@@ -184,9 +184,8 @@ class HubTests(unittest.TestCase):
             local ns=...
             ns.DungeonGroups=function() return {{name="Test dungeon", ids={}, definition={runLevelLow=10,runLevelHigh=15}}} end
             ns.DungeonCollectionReadiness=function() return {count=0, unknown=0, pickupLevel=10} end
-            dungeonFollowed, dungeonViewed = false, false
+            dungeonFollowed = false
             ns.ShowDungeonQuests=function(group, direct) dungeonFollowed=(group.name=="Test dungeon" and direct==true) end
-            ns.ShowDungeonViewer=function() dungeonViewed=true end
         ''', ns)
         ns.SetHubTab("Browse")
         ns.SetFilter("dungeons", True)
@@ -197,7 +196,6 @@ class HubTests(unittest.TestCase):
             self.assertFalse(control.IsShown(control))
         card.detailsButton.OnClick()
         self.assertTrue(client.lua.globals().dungeonFollowed)
-        self.assertFalse(client.lua.globals().dungeonViewed)
 
     def test_browse_search_hits_each_category(self):
         # Each category is searched by user-visible guide/quest/profession data.

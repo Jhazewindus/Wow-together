@@ -95,9 +95,8 @@ class FullDungeonCollectionTests(unittest.TestCase):
         self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
         self.assertEqual(c.ns.routeSelection.key, current_key)
         c.ns.activityPrompt.accept.OnClick()
-        self.assertTrue(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
-        self.assertIn('Early pickup', '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values()))
-        self.assertIn('Last pickup', '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values()))
+        self.assertTrue(c.ns.instancePage.IsShown(c.ns.instancePage))
+        self.assertIsNone(c.ns.dungeonWindow)
         self.assertEqual(c.ns.routeSelection.key, current_key)
 
     def test_unsynced_party_does_not_block_personal_collection_start_or_completion(self):

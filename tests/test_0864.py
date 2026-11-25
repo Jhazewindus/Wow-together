@@ -1,4 +1,4 @@
-"""Secret-client native UI isolation and public dungeon/finder adapters.
+"""Secret-client quest tracking and public finder adapters.
 
 Host Lua 5.1 checks cannot verify actual Forever API delivery or remove taint.
 """
@@ -6,26 +6,8 @@ import unittest
 
 from test_addon import Client
 import test_0819
-from test_0824 import NATIVE
-from test_dungeon_player import TRACK, tick
 
 
-ENTRY = '''
-function IsInInstance() return true,'party' end
-function GetInstanceInfo()return 'Ragefire Chasm','party',1,nil,nil,nil,nil,389 end
-'''
-WORLD = '''
-C_Map.GetPlayerMapPosition=function()return nil end
-function CreateVector2D(x,y)return {x=x,y=y,GetXY=function(self)return self.x,self.y end}end
-worldX=120;worldY=-90;worldInstance=389;floorWorld=389;convertedMap=400;convertedX=.3
-function UnitPosition()return worldX,worldY,5,worldInstance end
-C_Map.GetWorldPosFromMapPos=function(id,vector) assert(id==400);return floorWorld,CreateVector2D(0,0)end
-conversions=0
-C_Map.GetMapPosFromWorldPos=function(world,vector,map)
- assert(world==389 and vector.x==120 and vector.y==-90 and map==400)
- conversions=conversions+1;return convertedMap,CreateVector2D(convertedX,.6)
-end
-'''
 FINDER = '''
 LFGListFrame=CreateFrame('Frame',nil,UIParent);LFGListFrame:Show()
 LFGListFrame.SearchPanel=CreateFrame('Frame',nil,LFGListFrame);LFGListFrame.SearchPanel:Show()
@@ -89,122 +71,6 @@ class SecretTrackerTests(unittest.TestCase):
         C_UnitAuras={GetAuraDataByIndex=auraReader}
         ''')
         c.lua.execute('assert(ShouldShowMawBuffs==auraReader);assert(ObjectiveTrackerFrame:GetScript("OnUpdate")==auraReader)')
-
-
-class DungeonRecoveryTests(unittest.TestCase):
-    def test_native_renderer_has_exact_letterboxed_geometry_and_only_the_player(self):
-        c = Client(use_catalogue=True, before_load=NATIVE)
-        c.lua.execute(TRACK + '''
-            C_Map.GetPlayerMapPosition=function()return secret end
-            oldCreate=CreateFrame;nativeCreates=0
-            function CreateFrame(kind,...)
-                local f=oldCreate(kind,...)
-                if kind=='UnitPositionFrame' then
-                    nativeCreates=nativeCreates+1
-                    function f:SetUiMapID(id)self.renderMap=id end
-                    function f:ClearUnits()self.units={}end
-                    function f:AddUnit(unit,asset,w,h,r,g,b,a,layer,facing)
-                        assert(unit=='player' and facing==true and w==26 and h==26)
-                        self.units[#self.units+1]=unit
-                    end
-                    function f:FinalizeUnits()self.finalized=true end
-                end
-                return f
-            end
-        ''')
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        self.assertTrue(f.nativePlayer.IsShown(f.nativePlayer))
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        for width, height in ((500,420),(620,400)):
-            f.SetSize(f,width,height); f.OnSizeChanged(); tick(f)
-            g, native = f.playerGeometry, f.nativePlayer
-            self.assertEqual(native.renderMap, 400)
-            self.assertEqual(native.width, g.width); self.assertEqual(native.height, g.height)
-            self.assertEqual(native.point[4], g.x); self.assertEqual(native.point[5], -g.y)
-            self.assertEqual(list(native.units.values()), ['player'])
-        self.assertEqual(c.lua.globals().nativeCreates, 1)
-        c.lua.globals().trackedMap = 1411; tick(f)
-        self.assertFalse(f.nativePlayer.IsShown(f.nativePlayer))
-
-    def test_unsupported_or_failed_native_renderer_falls_back_without_retry(self):
-        c = Client(use_catalogue=True, before_load=NATIVE)
-        c.lua.execute(TRACK + '''
-            oldCreate=CreateFrame;nativeCreates=0
-            function CreateFrame(kind,...)
-                if kind=='UnitPositionFrame' then nativeCreates=nativeCreates+1;error('unknown frame type')end
-                return oldCreate(kind,...)
-            end
-        ''')
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        c.ns.RenderDungeonViewer(); tick(f)
-        self.assertEqual(c.lua.globals().nativeCreates, 1)
-        c.lua.execute('px=secret'); tick(f)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        self.assertIsNone(f.nativePlayer)
-
-    def test_open_reference_map_upgrades_on_entry_without_prompt(self):
-        c = Client(use_catalogue=True)
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        self.assertTrue(f.data.maps[1].reference)
-        c.ns.db.config.dungeonMapPrompt = False
-        c.lua.execute(NATIVE + TRACK + ENTRY)
-        c.ns.handlers.PLAYER_ENTERING_WORLD()
-        self.assertEqual(f.playerGeometry.mapID, 400)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        self.assertEqual(f.floor, 1)
-
-    def test_world_position_fallback_uses_exact_native_map_and_geometry(self):
-        c = Client(use_catalogue=True, before_load=NATIVE)
-        c.lua.execute(TRACK + WORLD)
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        tick(f)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        self.assertAlmostEqual((f.playerMarker.point[4]-f.playerGeometry.x)/f.playerGeometry.width, .3)
-        self.assertIn('world-to-map', c.ns.dungeonPlayerStatus)
-        self.assertGreater(c.lua.globals().conversions, 0)
-
-    def test_world_conversion_rejects_private_wrong_world_and_other_floor(self):
-        c = Client(use_catalogue=True, before_load=NATIVE)
-        c.lua.execute(TRACK + WORLD)
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        for change in ('worldX=secret', 'worldX=120;floorWorld=0',
-                       'floorWorld=389;convertedMap=401', 'convertedMap=400;convertedX=1.2'):
-            c.lua.execute(change); tick(f)
-            self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        c.lua.execute('convertedX=.3'); tick(f)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-
-    def test_confirmed_single_native_floor_can_use_outdoor_best_map_id(self):
-        c = Client(use_catalogue=True, before_load=NATIVE)
-        c.lua.execute(TRACK + ENTRY + WORLD + 'trackedMap=1454;C_Map.GetMapGroupMembersInfo=function()end')
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        self.assertEqual(len(f.data.maps), 1)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        c.lua.execute('C_Map.GetBestMapForUnit=function()end'); tick(f)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-        c.lua.execute('function GetInstanceInfo()return "Another Dungeon","party" end'); tick(f)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-
-    def test_instance_confirmed_orphan_floor_is_discovered_without_journal(self):
-        c = Client(use_catalogue=True, before_load=NATIVE)
-        c.lua.execute(TRACK + ENTRY + '''
-            EJ_GetInstanceByIndex=nil;EJ_GetInstanceInfo=nil
-            C_Map.GetMapInfo=function(id)return {name='Ragefire Chasm',mapType=6}end
-            C_Map.GetMapGroupMembersInfo=function()end
-        ''')
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        self.assertEqual(f.data.maps[1].mapID, 400)
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-
-    def test_reference_map_does_not_attempt_world_conversion(self):
-        c = Client(use_catalogue=True)
-        c.lua.execute('C_Map={};' + TRACK + ENTRY + WORLD)
-        c.ns.ShowDungeonViewer('ragefire-chasm', True); f = c.ns.dungeonViewer
-        tick(f)
-        self.assertTrue(f.data.maps[1].reference)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        self.assertEqual(c.lua.globals().conversions, 0)
 
 
 class FinderRoleTests(unittest.TestCase):

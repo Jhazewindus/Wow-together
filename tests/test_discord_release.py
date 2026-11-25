@@ -24,7 +24,6 @@ def release(path, note='A change', version='1.2.3'):
         for folder, sources in {
             'WowTogether_QuestData': ['QuestCatalogue.lua'],
             'WowTogether_ProfessionData': ['ProfessionData.lua'],
-            'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
             'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
         }.items():
             toc = '## Interface: 16001\n## LoadOnDemand: 1\n## Dependencies: WowTogether\n' + ''.join(name+'\n' for name in sources)

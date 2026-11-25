@@ -51,8 +51,7 @@ class GeneratedIconTests(unittest.TestCase):
     def test_owned_lua_files_use_only_supported_latin_glyphs(self):
         allowed = set("·•–—…’")
         owned = (
-            "AuctionGuide.lua", "ProfessionShopping.lua", "DungeonMapQuests.lua",
-            "DungeonViewer.lua", "GroupFinderRoles.lua", "Progress.lua",
+            "AuctionGuide.lua", "ProfessionShopping.lua", "GroupFinderRoles.lua", "Progress.lua",
             "ProfessionPlanner.lua", "GuideXP.lua", "Routes.lua",
             "GuideQuestList.lua", "GuideText.lua", "ModuleAPI.lua",
         )

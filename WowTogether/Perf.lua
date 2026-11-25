@@ -55,7 +55,7 @@ local function ownMemory()
     if type(update) ~= "function" or type(get) ~= "function" then return nil end
     update()
     local total = 0
-    for _, name in ipairs({addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}) do
+    for _, name in ipairs({addonName, "WowTogether_QuestData", "WowTogether_ProfessionData"}) do
         local value = ns.ReadPublic(get, name)
         if type(value) == "number" then total = total + value end
     end

@@ -102,7 +102,7 @@ class SettingsTests(unittest.TestCase):
         c = solo()
         settings = c.ns.settings
         labels = [settings.section.entries[i][2] for i in range(1, len(settings.section.entries) + 1)]
-        self.assertEqual(labels, ["Leveling", "Dungeons", "Quest log and dialogs", "Arrow and display",
+        self.assertEqual(labels, ["Leveling", "Dungeon quests", "Quest log and dialogs", "Arrow and display",
                                   "Travel and tips", "Quest markers", "Party and group finder",
             "Bags and supplies", "Professions", "Quest data and saved progress", "Fun"])
         self.assertIsNotNone(settings.pages.professions)  # Profession planning has its own settings page.
