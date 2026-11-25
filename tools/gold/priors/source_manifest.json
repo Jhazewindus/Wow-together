@@ -11,6 +11,9 @@
       "gameobject_template names and type",
       "item_template names and starting quest IDs",
       "creature_loot_template and gameobject_loot_template numeric rows",
+      "fishing_loot_template numeric rows keyed by area ID",
+      "reference_loot_template numeric rows used to expand direct fishing references",
+      "creature_template skin loot IDs and skinning_loot_template numeric rows",
       "creature and gameobject spawn coordinates and respawn-time ranges"
     ]
   },

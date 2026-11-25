@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Gathering Position Data
+## Notes: Legacy, unconfirmed herb and ore locations; loaded on demand.
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+GatheringPositionData.lua

@@ -86,7 +86,7 @@ class GoldFarmTests(unittest.TestCase):
             client.lua.execute('table.remove(timers, 1)')
             callback(); slices += 1
         self.assertLess(slices, 1000)
-        self.assertEqual(client.ns.farmPriorData.count, 6118)
+        self.assertEqual(client.ns.farmPriorData.count, 2864)
         result = client.ns.FirstHook("goldSuggestions")
         handled, cards = result[0], result[1]
         self.assertTrue(handled)
@@ -109,9 +109,38 @@ class GoldFarmTests(unittest.TestCase):
         self.assertTrue(any("Tier 1 pool" in title and "Redridge" in title for title in titles))
         prior = next(cards[i] for i in range(1, 4) if "Legacy boar" in cards[i].title)
         self.assertIn("Legacy, unconfirmed", prior.detail)
-        self.assertIn("120 kills/hour assumed", prior.detail)
+        self.assertIn("30 kills/hour assumed", prior.detail)
         self.assertIn("25%", prior.detail)
         self.assertIn("core auction quote", prior.detail)
+
+    def test_skinning_items_appear_in_a_skinned_creatures_tooltip_breakdown(self):
+        client = Client(quests=(), default_guide=True)
+        client.lua.execute('''
+            UnitLevel=function() return 5 end
+            seconds=100; GetTime=function() return seconds end
+            C_Item={GetItemInfo=function(id) return "Item "..id,nil,1,nil,nil,nil,nil,nil,nil,nil,10 end}
+        ''')
+        client.ns.gatheringData[393] = client.lua.table_from({"skill": 1}, recursive=True)
+        private = load_gold(client)
+        load_component(client, private, "GoldPrices.lua")
+        load_component(client, private, "GoldObservations.lua")
+        client.lua.execute('''
+            local api = WowTogetherModuleAPI
+            api.FarmPriorSearch = function(filter, done)
+                done({{npcID=113,name="Stonetusk Boar",minLevel=1,maxLevel=2,mapID=1429,zoneName="Elwynn Forest",
+                    spawnPoints={{mapID=1429,x=.2,y=.2},{mapID=1429,x=.4,y=.2},{mapID=1429,x=.4,y=.4}},
+                    loot={{itemID=769,chance=75,quantity=1,source="creature loot"},
+                        {itemID=2318,chance=39,quantity=1,source="skinning loot"},
+                        {itemID=2934,chance=60,quantity=1,source="skinning loot"}}}})
+                return true
+            end
+        ''')
+        load_component(client, private, "GoldFarms.lua")
+        suggestions, _ = private.GoldFarms.Suggestions(50, "Killing")
+        boar = next(suggestions[index] for index in range(1, len(suggestions) + 1)
+                    if suggestions[index].name == "Stonetusk Boar")
+        tooltip_items = {boar.top[index].itemID for index in range(1, len(boar.top) + 1)}
+        self.assertTrue({2318, 2934}.issubset(tooltip_items))
 
     def test_start_uses_loop_and_only_starts_the_measured_clock_after_acceptance(self):
         client, private = farm_client()
@@ -140,7 +169,7 @@ class GoldFarmTests(unittest.TestCase):
         client.lua.globals().seconds = 2200
         private.GoldFarms.RecordLoot(42, 5, 22)
         session = client.lua.globals().currentSession
-        self.assertEqual(session.estimatedCopperPerHour, 3000)
+        self.assertEqual(session.estimatedCopperPerHour, 750)
         self.assertEqual(session.actualCopperPerHour, 1500)
         self.assertIn("5 locally looted/gathered items", session.actualBasis)
         self.assertIn("core auction quote", session.actualBasis)

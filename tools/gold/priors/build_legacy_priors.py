@@ -210,6 +210,7 @@ def build_outputs(facts: dict, questie_ids: dict[str, set[int]]) -> dict[str, di
             "maxLevel": row["MaxLevel"],
             "rank": row["Rank"],
             "lootId": row["LootId"],
+            "skinLootId": _get(row, "SkinningLootId", "SkinLootId", "skinloot"),
             "changed": ident in npc_changed,
             "spawns": sorted(spawn_rows, key=lambda s: (s["map"], s["worldX"], s["worldY"], s["respawnSecondsMin"] or 0)),
         }
@@ -255,6 +256,9 @@ def build_outputs(facts: dict, questie_ids: dict[str, set[int]]) -> dict[str, di
         "items.json": envelope("item_template", item_rows, "item"),
         "creature_loot.json": envelope("creature_loot_template", loot_rows(facts["creature_loot_template"])),
         "gameobject_loot.json": envelope("gameobject_loot_template", loot_rows(facts["gameobject_loot_template"])),
+        "fishing_loot.json": envelope("fishing_loot_template", loot_rows(facts.get("fishing_loot_template", []))),
+        "creature_skinning_loot.json": envelope("skinning_loot_template", loot_rows(facts.get("skinning_loot_template", []))),
+        "reference_loot.json": envelope("reference_loot_template", loot_rows(facts.get("reference_loot_template", []))),
     }
 
 

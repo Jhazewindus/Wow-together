@@ -23,9 +23,11 @@ negative reference entry and must not be treated as a literal item count.
 
 The JSON outputs are audit inputs. `build_farm_prior_package.py --geometry
 /path/to/conversion.json` produces the separate `WowTogether_GoldData` load-on-
-demand package: 6,118 NPC/map records with the NPC ID, name, level range, up to
-24 converted legacy positions, and supported literal loot rows with their
-recorded chance and minimum count. Reference
+demand package: one majority-spawn-zone record per NPC with the NPC ID, name,
+level range, up to 24 converted legacy positions, supported literal loot rows,
+and any skinning eligibility/yields from `SkinningLootId` and
+`skinning_loot_template`. Border creatures are assigned to the map containing
+the most converted points; ties use the smaller map ID. Reference
 loot links (`minCountOrReference < 0`) are omitted because they cannot safely
 be treated as item counts. Coordinates are transformed using the pinned
 Forever 1.60.1.69893 map bounds. The game resolves the map name from its own
@@ -34,13 +36,20 @@ that an NPC, object, loot row, or respawn timer exists in current Forever.
 Play observations must correct them. Respect the GPL-3.0 attribution and
 complete notice in `LEGACY_DATA_COPYRIGHT.md` and `LEGACY_DATA_LICENSE.txt`.
 
-The same package includes 698 zone-keyed Gathering loot priors for named legacy
-veins, deposits and herbs with literal gameobject loot rows. These
-carry sourced chance and minimum count for an estimate. CMaNGOS has no loot
-rows for its fishing-pool templates, so fish per cast remains unseeded here.
-GatherLite node locations are read from its public runtime API when installed;
-they are not redistributed. GatherMate2_Data is not redistributed because its
-project is All Rights Reserved.
+The package also includes zone-keyed gathering loot priors for named legacy
+veins, deposits, herbs, and fish catches. Fishing rows come from
+`fishing_loot_template` by area ID; direct references are expanded from
+`reference_loot_template`, and non-fish rows are omitted. Every yield includes
+its recorded chance and minimum quantity. These are legacy, unconfirmed
+reference values, not measured Forever rates.
+
+The separate `WowTogether_GatheringPositionData` load-on-demand package ships
+herb/ore coordinates from GatherMate2_Data and fishing-pool positions from
+GatherLite. The source revisions, checksums, licence and credits, and the
+owner's written redistribution permission for GatherMate2_Data are recorded
+in that package's `PRIOR_DATA.md`. GatherLite's public API is also read at
+runtime when installed. The position package is 669,435 bytes on disk; its
+packed table is decoded lazily by zone when accessed.
 
 `tools/import_vanilla_loot.py` is a separate Wowhead drop-page parser used by
 the dungeon-loot audit. It has no output pipeline and does not produce these

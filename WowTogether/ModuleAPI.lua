@@ -554,18 +554,23 @@ local function prepareFarmPrior(record, mapID)
         or mapID and record.mapID ~= mapID or not safeCardText(record.zoneName, 100)
         or type(record.spawnPoints) ~= "table" or #record.spawnPoints > 24
         or type(record.loot) ~= "table" or #record.loot > 200
+        or type(record.skinnable) ~= "boolean"
+        or type(record.skinningLoot) ~= "table" or #record.skinningLoot > 200
         or type(record.sources) ~= "table" then return nil end
     local sources = record.sources
-    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot"}) do
+    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot", "skinnable", "skinningLoot"}) do
         if not safeSource(sources[key]) then return nil end
     end
+    local skinning = ns.gatheringData and ns.gatheringData[393]
+    local useSkinning = record.skinnable and type(skinning) == "table" and ns.GuideInteger(skinning.skill, 1000)
+        and skinning.skill > 0
     local copy = {npcID = record.npcID, name = record.name, minLevel = record.minLevel,
         maxLevel = record.maxLevel, confidence = record.confidence, mapID = record.mapID, zoneName = record.zoneName,
-        spawnPoints = {}, loot = {}, sources = {}}
-    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot"}) do
+        spawnPoints = {}, loot = {}, skinnable = record.skinnable, sources = {}}
+    for _, key in ipairs({"npcID", "name", "level", "mapID", "zoneName", "spawnPoints", "loot", "skinnable", "skinningLoot"}) do
         copy.sources[key] = sources[key]
     end
-    return copy
+    return copy, useSkinning and #record.skinningLoot or 0
 end
 
 local function clockMilliseconds()
@@ -620,7 +625,11 @@ local function searchFarmPriors(filter, onDone, ...)
             if pending then
                 local record, copy = pending.source, pending.copy
                 local point = record.spawnPoints[pending.spawnIndex]
-                local item = not point and record.loot[pending.lootIndex]
+                local baseLootCount = #record.loot
+                local item = not point and (pending.lootIndex <= baseLootCount
+                    and record.loot[pending.lootIndex]
+                    or pending.lootIndex <= baseLootCount + pending.skinningCount
+                        and record.skinningLoot[pending.lootIndex - baseLootCount])
                 if point then
                     if type(point) ~= "table" or not ns.Public(point) or point.mapID ~= record.mapID
                         or not ns.ValidTravelPoint(point) then pending.valid = false
@@ -635,8 +644,9 @@ local function searchFarmPriors(filter, onDone, ...)
                         or not finite(item.chance) or item.chance <= 0 or item.chance > 100
                         or not ns.GuideInteger(item.quantity, 10000) or item.quantity < 1 then pending.valid = false
                     else
-                        copy.loot[pending.lootIndex] = {itemID = item.itemID, chance = item.chance, quantity = item.quantity,
-                            source = safeSource(item.source) and item.source or copy.sources.loot}
+                        local source = pending.lootIndex > baseLootCount and copy.sources.skinningLoot or copy.sources.loot
+                        copy.loot[#copy.loot + 1] = {itemID = item.itemID, chance = item.chance, quantity = item.quantity,
+                            source = safeSource(item.source) and item.source or source}
                     end
                     pending.lootIndex = pending.lootIndex + 1
                 else
@@ -652,8 +662,8 @@ local function searchFarmPriors(filter, onDone, ...)
                 if type(record) == "table" and ns.GuideInteger(record.minLevel, 255)
                     and ns.GuideInteger(record.maxLevel, 255) and record.minLevel <= filter.maxLevel
                     and record.maxLevel >= filter.minLevel and (not filter.mapID or record.mapID == filter.mapID) then
-                    local copy = prepareFarmPrior(record, filter.mapID)
-                    if copy then pending = {source = record, copy = copy,
+                    local copy, skinningCount = prepareFarmPrior(record, filter.mapID)
+                    if copy then pending = {source = record, copy = copy, skinningCount = skinningCount,
                         spawnIndex = 1, lootIndex = 1, valid = true} end
                 end
             end
@@ -719,6 +729,7 @@ local function searchGatheringFarms(filter, onDone, ...)
         end
     end
     if type(ns.EnsureOptionalData) == "function" then ns.EnsureOptionalData("WowTogether_GoldData") end
+    if type(ns.EnsureOptionalData) == "function" then ns.EnsureOptionalData("WowTogether_GatheringPositionData") end
     if type(ns.GatheringFarmFactCount) ~= "function" or type(ns.GatheringFarmFact) ~= "function"
         or ns.GatheringFarmFactCount() < 1 then
         return false, "Gathering-farm data is unavailable."

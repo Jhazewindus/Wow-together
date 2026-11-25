@@ -323,17 +323,28 @@ function ns.GatheringFarmPoints(profession, nodeName, mapID)
     if not professionType or type(nodeName) ~= "string" or #nodeName < 1 or #nodeName > 100
         or string.find(nodeName, "[%z\1-\31\127]")
         or not ns.GuideInteger(mapID, 1000000) or mapID < 1 then return {} end
+    local result = {}
+    local key = profession == "Fishing" and ("Fishing|" .. mapID)
+        or profession .. "|" .. nodeName .. "|" .. mapID
+    local seeded = ns.gatheringPositionData and ns.gatheringPositionData.records
+        and ns.gatheringPositionData.records[key]
+    for _, point in ipairs(type(seeded) == "table" and seeded.points or {}) do
+        if type(point) == "table" and point.mapID == mapID and ns.ValidTravelPoint(point)
+            and type(point.source) == "string" and #point.source <= 240 then
+            result[#result + 1] = {mapID = mapID, x = point.x, y = point.y, source = point.source}
+            if #result >= 24 then return result end
+        end
+    end
     local libStub = type(LibStub) == "function" and ns.ReadPublic(LibStub, "AceAddon-3.0")
     local addon = libStub and type(libStub.GetAddon) == "function"
         and ns.ReadPublic(libStub.GetAddon, libStub, "GatherLite", true)
-    if not addon or type(addon.GetNodesForMap) ~= "function" or type(addon.GetNodeObject) ~= "function" then return {} end
+    if not addon or type(addon.GetNodesForMap) ~= "function" or type(addon.GetNodeObject) ~= "function" then return result end
     local nodes = ns.ReadPublic(addon.GetNodesForMap, addon, professionType, mapID)
-    if type(nodes) ~= "table" then return {} end
+    if type(nodes) ~= "table" then return result end
     local began = type(debugprofilestop) == "function" and ns.ReadPublic(debugprofilestop)
     if type(began) ~= "number" then return {} end
     local wanted = string.lower(string.gsub(nodeName, "[^%w]+", "_"))
     local matchAny = profession == "Fishing" or profession == "Treasure"
-    local result = {}
     for _, node in ipairs(nodes) do
         local clock = ns.ReadPublic(debugprofilestop)
         if type(clock) ~= "number" or clock - began >= 1 then break end

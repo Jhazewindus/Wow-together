@@ -30,7 +30,11 @@ Developer notes:
 - Memoize policy work.
 '''
 ROOTS = ['WowTogether', 'WowTogether_QuestData', 'WowTogether_ProfessionData',
+<<<<<<< HEAD
          'WowTogether_GoldData']
+=======
+         'WowTogether_DungeonData', 'WowTogether_GoldData', 'WowTogether_GatheringPositionData']
+>>>>>>> bb5ed16 (Add source-pinned farm and gathering priors)
 
 
 def build(path, roots=ROOTS, section=SECTION):

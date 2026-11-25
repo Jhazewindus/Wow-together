@@ -102,7 +102,7 @@ class ModuleAPITests(unittest.TestCase):
             'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
         self.assertIn('frame clock', external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[1])
-        self.assertEqual(self.ns.farmPriorData.count, 6118)
+        self.assertEqual(self.ns.farmPriorData.count, 2864)
         self.assertEqual(external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 0, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
         self.ns.farmPriorData = self.lua.table_from({'records': [{
@@ -110,10 +110,11 @@ class ModuleAPITests(unittest.TestCase):
             'confidence': 'legacy, unconfirmed',
             'mapID': 501, 'zoneName': 'Test Coast',
             'spawnPoints': [{'mapID': 501, 'x': .4, 'y': .5, 'source': 'test spawn'}],
+            'skinnable': False, 'skinningLoot': [],
             'loot': [{'itemID': 88, 'chance': 12.5, 'quantity': 2, 'source': 'test loot'}],
             'sources': {'npcID': 'test NPC ID', 'name': 'test name', 'level': 'test levels',
                 'mapID': 'test map', 'zoneName': 'test zone', 'spawnPoints': 'test spawn',
-                'loot': 'test loot'}}]}, recursive=True)
+                'loot': 'test loot', 'skinnable': 'test skinnable', 'skinningLoot': 'test skinning loot'}}]}, recursive=True)
         self.lua.execute('''
             clockTick=0
             function debugprofilestop() clockTick=clockTick+.1; return clockTick end
