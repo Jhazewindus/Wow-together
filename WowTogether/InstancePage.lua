@@ -280,7 +280,10 @@ function ns.ShowInstancePage(instance)
         if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherInstancePage") end
     end
     local frame = ns.instancePage
-    local group = instance.ids and instance.definition ~= nil and instance or (instance.ids and instance) or nil
+    local group
+    if not (instance.definition and instance.definition.kind == "raid") then
+        group = instance.ids and instance.definition ~= nil and instance or (instance.ids and instance) or nil
+    end
     frame.instance = {key = instance.key, name = instance.name, ids = instance.ids or {}, group = group,
         subtitle = group and ns.DungeonOverviewSummary(group) ~= "" and ns.DungeonOverviewSummary(group)
             or ("Level " .. tostring(instance.level or "?") .. (instance.where and (" • " .. instance.where) or "") .. (instance.note and (". " .. instance.note) or ""))}

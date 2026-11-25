@@ -442,6 +442,7 @@ function ns.Diagnostics()
     if ns.GuideSessionSummaryText then output("Guide session: " .. ns.GuideSessionSummaryText()) end
     output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)
+    if ns.InstanceEntranceDiagnostics then ns.InstanceEntranceDiagnostics(output) end
     ns.MemoryDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
@@ -562,6 +563,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.ReadQuests()
     ns.InitializeSync()
     ns.MigrateCharacterStorage()
+    if ns.InitializeInstanceObservations then ns.InitializeInstanceObservations() end
     ns.InitializeQuestHistory()
     if ns.SyncStateInitialize then ns.SyncStateInitialize() end
     ns.InitializeGuideXP()

@@ -1,5 +1,14 @@
 # Combined dungeon data — updated for 0.8.100
 
+Raid definitions live beside dungeon definitions and carry `kind: raid`, so
+the Instances switch reads one data set. The current three raid entries have
+no entrance coordinates. Onyxia's Lair keeps its existing Dustwallow Marsh
+zone label, but the imported CMaNGOS creature/gameobject priors do not contain
+its outdoor entrance. The Barrow Deeps and Hyjal Summit have no zone hint or
+coordinates until players capture them in game. Entrance observations are
+personal, scoped by client build, and exported with `/wt research`; no quest
+IDs or quest item drops are added by this raid-definition update.
+
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
 Maraudon and Blackrock Spire are kept as families with their wing ranges. All

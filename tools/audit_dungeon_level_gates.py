@@ -12,7 +12,9 @@ from build_quest_dataset import ROOT, own_lua
 
 def scan():
     catalogue = own_lua(ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua', 'catalogue')['quests']
-    dungeons = own_lua(ROOT / 'WowTogether' / 'DungeonData.lua', 'dungeonData')['dungeons']
+    dungeons = {key: value for key, value in
+                own_lua(ROOT / 'WowTogether' / 'DungeonData.lua', 'dungeonData')['dungeons'].items()
+                if value.get('kind', 'dungeon') == 'dungeon'}
     memberships, unique, missing, unknown = 0, set(), [], set()
     edges = {}
     group_ids = {key: set(dungeon.get('questIDs') or []) for key, dungeon in dungeons.items()}

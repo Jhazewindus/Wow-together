@@ -108,3 +108,4 @@ Recommended.lua
 RecommendedUI.lua
 SessionCheckpoints.lua
 ModuleAPI.lua
+InstanceObservations.lua
