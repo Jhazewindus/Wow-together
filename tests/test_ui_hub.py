@@ -15,7 +15,8 @@ class HubTests(unittest.TestCase):
         self.assertFalse(legacy.ns.ui.hubRail.IsShown(legacy.ns.ui.hubRail))
         self.assertTrue(legacy.ns.ui.viewChoice.IsShown(legacy.ns.ui.viewChoice))
         self.assertIsNone(legacy.ns.ui.titleIcon)
-        self.assertEqual(legacy.ns.ui.settingsButton.caption.text, "⚙")
+        self.assertEqual(legacy.ns.ui.settingsButton.caption.text, "")
+        self.assertEqual(legacy.ns.ui.settingsButton.icon.texture, "Interface\\Buttons\\UI-OptionsButton")
 
     def test_hub_rail_uses_full_height_selected_rows_and_settings_tab(self):
         client = self.hub_client(quests=(), default_guide=True)

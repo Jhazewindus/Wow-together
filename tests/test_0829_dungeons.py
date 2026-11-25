@@ -159,8 +159,8 @@ class DungeonActionTests(unittest.TestCase):
         card = c.ns.ui.cards[1]
         self.assertFalse(card.mapButton.IsShown(card.mapButton))
         card.OnClick(card)
-        self.assertEqual(c.ns.dungeonViewer.startRoute.caption.text,'Start quest route')
-        c.ns.dungeonViewer.startRoute.OnClick()
+        self.assertEqual(c.ns.instancePage.collect.caption.text,'Start quest route')
+        c.ns.instancePage.collect.OnClick()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertIsNone(c.ns.dungeonWindow)
 

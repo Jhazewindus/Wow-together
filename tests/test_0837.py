@@ -67,7 +67,7 @@ class CraftBatchTests(unittest.TestCase):
         menu = c.ns.ui.viewChoice
         self.assertEqual(len(menu.entries), 7)
         expected = [('recommended', 'Recommended'), ('guides', 'Leveling'), ('classquests', 'Class quests'),
-                    ('professions', 'Professions'), ('dungeons', 'Dungeons'),
+                    ('professions', 'Professions'), ('dungeons', 'Instances'),
                     ('review', 'Quest log'), ('library', 'All quests')]
         for i, (key, title) in enumerate(expected, 1):
             self.assertEqual(menu.entries[i][1], key)
