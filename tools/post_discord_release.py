@@ -42,7 +42,6 @@ def prepare(archive):
         data_packages = {
             'WowTogether_QuestData': ['QuestCatalogue.lua'],
             'WowTogether_ProfessionData': ['ProfessionData.lua'],
-            'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
             'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
         }
         for folder, sources in data_packages.items():
@@ -60,7 +59,7 @@ def prepare(archive):
         raise ValueError('Changelog/test checklist do not match the release version.')
     heading = '**Wow Together ' + release_label + ' — World of Warcraft: Forever (live)**\n\n'
     notes = section.group(1).strip()
-    footer = ('\n\n**Install:** replace `WowTogether` and all four matching `WowTogether_*Data` sibling folders in '
+    footer = ('\n\n**Install:** replace `WowTogether` and all three matching `WowTogether_*Data` sibling folders in '
                'the live World of Warcraft client’s `Interface\\AddOns\\` folder on every party member’s client, then fully restart. '
                'Restart the client if the addon folder does not appear.\n\n'
                '**Testing:** use the attached leveling checklist and report template. '

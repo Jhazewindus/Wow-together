@@ -29,7 +29,6 @@ GuideXP.lua
 LevelingPath.lua
 RouteCost.lua
 Sync.lua
-DungeonArtwork.lua
 GuideThemes.lua
 UI.lua
 SuggestionChips.lua
@@ -90,7 +89,6 @@ PartyCatchup.lua
 Shopping.lua
 Activities.lua
 DungeonCollection.lua
-DungeonQuestList.lua
 Professions.lua
 ProfessionHotfixes.lua
 ProfessionSecondary.lua
@@ -104,12 +102,6 @@ AuctionMarket.lua
 AuctionScan.lua
 AuctionQuantity.lua
 AuctionGuide.lua
-DungeonJournal.lua
-DungeonMapQuests.lua
-DungeonViewer.lua
-DungeonPlayer.lua
-ApproachMapData.lua
-ApproachMaps.lua
 GroupFinderRoles.lua
 GroupFinderNative.lua
 Recommended.lua

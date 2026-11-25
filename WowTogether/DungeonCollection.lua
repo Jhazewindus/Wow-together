@@ -257,44 +257,9 @@ local function returnRoute(guide, includeOrigin, cooperative)
         -- Keep accepted dungeon objectives in the route while the player is
         -- inside. Only use interior-map stops; outdoor preparation work has
         -- already been collected before this phase begins.
-        local viewer = ns.DungeonViewerData and ns.DungeonViewerData(guide.dungeonKey)
-        local bossByID, bossByName, mapIDs = {}, {}, {}
-        local function keyName(value)
-            value = ns.SafeTitle(value)
-            return value and string.gsub(string.lower(value), "[^%w]", "")
-        end
-        for _, map in ipairs(viewer and viewer.maps or {}) do
-            if ns.GuideInteger(map.mapID) then mapIDs[map.mapID] = true end
-        end
-        for index, boss in ipairs(viewer and viewer.bosses or {}) do
-            local order = boss.encounterOrder or index
-            if ns.GuideInteger(boss.id) then bossByID[boss.id] = {name = boss.name, order = order, loot = boss.loot} end
-            local name = keyName(boss.name)
-            if name then bossByName[name] = {name = boss.name, order = order, loot = boss.loot} end
-        end
-        local classMembers = {}
-        for _, person in ipairs(ns.PartyProfiles and ns.PartyProfiles() or {}) do
-            local classID = person.profile and person.profile.classID
-            if ns.GuideInteger(classID, 255) and classID > 0 then
-                classMembers[#classMembers + 1] = {classID = classID, name = person.name or "You"}
-            end
-        end
-        local function lootWatch(boss)
-            if not boss or type(boss.loot) ~= "table" or not ns.DungeonLootClassAllowed then return end
-            local output = {}
-            for _, item in ipairs(boss.loot) do
-                if (item.classID == 2 or item.classID == 4) and ns.SafeTitle(item.name) then
-                    local members = {}
-                    for _, person in ipairs(classMembers) do
-                        if ns.DungeonLootClassAllowed(item, person.classID) then members[#members + 1] = person.name end
-                    end
-                    if #members > 0 then
-                        output[#output + 1] = {name = ns.SafeTitle(item.name), members = table.concat(members, ", ")}
-                        if #output >= 3 then break end
-                    end
-                end
-            end
-            return output
+        local mapIDs = {}
+        for _, mapID in ipairs(guide.dungeon and guide.dungeon.definition and guide.dungeon.definition.areaIDs or {}) do
+            if ns.GuideInteger(mapID) then mapIDs[mapID] = true end
         end
         for _, record in ipairs(guide.records or {}) do
             local id = record.id
@@ -302,14 +267,7 @@ local function returnRoute(guide, includeOrigin, cooperative)
                 and not complete(id) and not ns.GuideQuestSkipped(id) then
                 for _, stop in ipairs(ns.FilterGuideStages(ns.RouteStages(record, ns.self))) do
                     if stop.kind == "q" and mapIDs[stop.mapID] then
-                        local boss = bossByID[stop.entityID] or bossByName[keyName(stop.targetName or stop.label)]
                         local task = {}; for field, value in pairs(stop) do task[field] = value end
-                        if boss then
-                            task.dungeonEncounterOrder, task.dungeonBossName = boss.order, boss.name
-                            task.action, task.targetName = "kill", boss.name
-                            task.label = "Kill " .. boss.name .. " — also completes " .. record.title
-                            task.dungeonLootWatch = lootWatch(boss)
-                        end
                         task.title = record.title
                         tasks[#tasks + 1] = task
                     end
@@ -317,8 +275,6 @@ local function returnRoute(guide, includeOrigin, cooperative)
             end
         end
         table.sort(tasks, function(a, b)
-            local ao, bo = a.dungeonEncounterOrder or math.huge, b.dungeonEncounterOrder or math.huge
-            if ao ~= bo then return ao < bo end
             if a.mapID ~= b.mapID then return a.mapID < b.mapID end
             if a.id ~= b.id then return a.id < b.id end
             return taskKey(a) < taskKey(b)
@@ -340,8 +296,8 @@ local function returnRoute(guide, includeOrigin, cooperative)
     if guide.dungeonPhase == "return" then table.sort(tasks, function(a, b) return a.id < b.id end) end
     local start, stops, used = ns.PlayerPoint(ns.profile.mapID), {}, {}
     if guide.dungeonPhase == "run" then
-        -- The run order follows the journal encounter sequence, not the
-        -- outdoor travel optimizer. Never reshuffle bosses into a backtrack.
+        -- The compact instance definition supplies interior map IDs. Preserve
+        -- a stable map/quest order without loading the retired journal tables.
         for index, stop in ipairs(tasks) do stops[index], used[index] = stop, true end
     elseif lastReturns and lastReturns.key == guide.key and not cooperative and not ns.forceRouteReplan then
         for _, key in ipairs(lastReturns.steps) do
@@ -819,9 +775,7 @@ function ns.ShowDungeonQuests(group, startDirectly, pickupQuestID)
     ns.dungeonHistoryScope = {}
     for _, record in ipairs(guide.records) do ns.dungeonHistoryScope[record.id] = true end
     ns.ScheduleSync()
-    if not guide.hasPoint and not startDirectly then ns.ShowDungeonQuestList(group); return end
-    if ns.dungeonWindow then ns.dungeonWindow:Hide() end
-    if ns.dungeonViewer then ns.dungeonViewer:Hide() end
+    if not guide.hasPoint and not startDirectly then return ns.ShowInstancePage(group) end
     if guide.hasPoint then ns.RequestStartRoute(guide)
     else ns.ActivateRoute(guide); ns.Refresh() end
 end

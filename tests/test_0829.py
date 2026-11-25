@@ -77,7 +77,7 @@ class PackedDataTests(unittest.TestCase):
         self.assertEqual(set(ns.rows[2].keys()), {'name', 'data'})
         self.assertFalse(ns.rows[2].data[8][1])
 
-    def test_shipped_startup_leaves_entities_and_dungeons_packed(self):
+    def test_shipped_startup_leaves_quest_entities_packed(self):
         c = Client(use_catalogue=True, default_guide=True)
         stats = {row.name: row for row in c.ns.PackedDataStats().values()}
         self.assertEqual(c.ns.catalogue.count, 5337)
@@ -88,15 +88,6 @@ class PackedDataTests(unittest.TestCase):
         self.assertNotIn('dungeon-maps', stats)
         c.lua.eval('collectgarbage')('collect')
         self.assertLess(c.lua.eval('collectgarbage')('count') / 1024, 32)
-
-    def test_opening_one_dungeon_keeps_other_loot_and_maps_packed(self):
-        c = Client(use_catalogue=True)
-        c.ns.DungeonViewerData('wailing-caverns')
-        stats = {row.name: row for row in c.ns.PackedDataStats().values()}
-        for key in ('dungeon-journal', 'dungeon-maps'):
-            self.assertGreater(stats[key].decoded, 0)
-            self.assertLess(stats[key].decoded, stats[key].total)
-        self.assertEqual(c.ns.DungeonViewerData('blackfathom-deeps').name, 'Blackfathom Deeps')
 
     def test_memory_report_is_read_only_and_capability_guarded(self):
         c = Client(use_catalogue=True)
@@ -124,9 +115,7 @@ class PackedDataTests(unittest.TestCase):
             if field == 'xpBaseline':
                 source = ROOT / 'WowTogether/ExperienceData.lua'
             else:
-                package = ('WowTogether_QuestData' if name == 'QuestCatalogue.lua' else
-                           'WowTogether_DungeonData' if name in ('DungeonJournalData.lua', 'DungeonMapData.lua') else
-                           'WowTogether')
+                package = 'WowTogether_QuestData' if name == 'QuestCatalogue.lua' else 'WowTogether'
                 source = ROOT / package / name
             value = canonical(own_lua(source, field))
             # Capture metadata describes the export, not a quest-field change.

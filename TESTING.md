@@ -213,7 +213,7 @@ For **0.8.98** — **PLAY-LEARNED OBJECTIVES AND DUNGEON RUN FLOW**, live World 
 Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
 tests/` passes **1,860 tests** and **341 subtests** under Lua 5.1. These host
 checks cannot verify native Forever UI rendering, live dungeon map IDs, or the
-XP reward curve. Install all four addon folders and perform the checks above.
+XP reward curve. Install all three addon folders and perform the checks above.
 
 ## Structured guide-step presentation — 0.8.97
 
@@ -235,7 +235,7 @@ XP reward curve. Install all four addon folders and perform the checks above.
 Host verification: `/workspace/.wow-together-tests/bin/python -m pytest
 tests/` passes **1,840 tests** and **341 subtests**. The host suite loads the
 addon sources under Lua 5.1, but cannot verify native in-game rendering. Run
-these visual checks in the live client after installing all four addon folders.
+these visual checks in the live client after installing all three addon folders.
 
 The checked `guides/coverage` commits add audit-only research for Durotar,
 Hillsbrad Foothills and The Barrens; they contain no quest-data or runtime
@@ -649,25 +649,6 @@ time; verify navigation in the Forever client.
 Host checks validate the imported catalogue and route invariants. They cannot
 confirm live NPC availability, faction eligibility or route optimality.
 
-## Dungeon journal source update — 0.8.75
-
-1. Open City of Dalaran in the dungeon journal. Confirm the boss list includes
-   eight named encounters and the header still says **Partial data**.
-2. Inspect boss loot: Atrexis the Grave Knight should include Bonebinder's
-   Signet; Lyn the Ignored should include Tendonscraper Dagger; Shade of the
-   Archmage should include Blueprint: Arcane Salvager and its other listed
-   items. Search an item name and confirm the item icon/tooltip still loads.
-3. Check Excavation Site: Wetlands, Hall of Thanes and Ruins of Lordaeron.
-   Their current boss/item lists should remain unchanged. No Method-hosted map
-   image should appear in the addon.
-4. Missing journal facts for The Drowned City, Krol'dok Stronghold, Alcaz
-   Prison, Blackmaw Hold and Shaper's Terrace should remain unavailable rather
-   than being inferred from unrelated instances.
-
-The captured-source hashes and numeric boss/item links are in
-`WowTogether/DungeonJournalData.json`. Host checks cover fact merging and lazy
-item lookup; verify the viewer and item loading in the Forever beta client.
-
 ## Recommended card actions — regression
 
 1. On Recommended, click the leveling card body. It opens the guide's quest
@@ -737,8 +718,8 @@ not in-game FPS or loading-time guarantees.
 
 ## Refresh batching, optional data and guide coverage — 0.8.69
 
-1. Update all four sibling addon folders: `WowTogether`, `WowTogether_QuestData`,
-   `WowTogether_ProfessionData` and `WowTogether_DungeonData`. Fully restart WoW.
+1. Update all three sibling addon folders: `WowTogether`, `WowTogether_QuestData`,
+`WowTogether_ProfessionData`. Fully restart WoW.
    Do not nest the data folders inside `WowTogether` or disable them in the addon
    list; they stay unloaded until needed.
 2. Log in with a leveling guide and active quests. Change objectives/turn one in
@@ -752,7 +733,7 @@ not in-game FPS or loading-time guarantees.
    resumes tracking.
 4. Open Professions and then a dungeon journal. Each should populate its data on
    first use. If a folder is missing/disabled, the related view should show an
-   unavailable/empty state without a Lua error; reinstall all four folders.
+   unavailable/empty state without a Lua error; reinstall all three folders.
 5. Start a zone guide and check `/wt probe` for pickups, complete objective
    locations, turn-ins, verified prerequisites and fully located quests. These
    counts describe known records, not an assertion of 100% source coverage.
@@ -766,21 +747,11 @@ Host tests verify coalescing, adaptive intervals, optional-pack boundaries,
 coverage math and reason confidence. Exact memory savings, textures, map
 tracking, protected APIs and gameplay timing need this client check.
 
-## Dungeon records and Dalaran partial state — this update
-
-1. In the journal, verify the following boss loot: Lorgus Jett — Plans:
-   Protector's Silvered Chain Leggings; Fenrus the Devourer — Plans: Veteran's
-   Silvered Chain Helm; Azshir the Sleepless — Totemic Leather Helm.
-2. Open City of Dalaran. Shade of the Archmage should list Blueprint: Arcane
-   Salvager, and the dungeon header should say **Partial data**. This is one
-   confirmed encounter, not a complete boss list or map.
-3. Inspect the Dalaran quest guide. Starving Arcane should remain behind An
-   Alarming Request in its prerequisite chain.
 ## Install and capture context
 
-1. Replace the four sibling folders `WowTogether`, `WowTogether_QuestData`,
-   `WowTogether_ProfessionData` and `WowTogether_DungeonData` in
-   `the live World of Warcraft client’s `Interface\AddOns\` folder`. Do not nest
+1. Replace the three sibling folders `WowTogether`, `WowTogether_QuestData`,
+   `WowTogether_ProfessionData` in the live World of Warcraft client’s
+   `Interface\AddOns\` folder. Do not nest
    data folders inside the main addon. **Fully restart the client for this
    update**, rather than only `/reload`.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -791,29 +762,6 @@ tracking, protected APIs and gameplay timing need this client check.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
-
-## Live dungeon approach maps and unit numbers — this update
-
-1. Near the outdoor entrances, test Wailing Caverns, Deadmines, Blackfathom
-   Deeps, Gnomeregan, Scarlet Monastery, Uldaman and Razorfen Downs. In each
-   supported cave, an approach map should open with your marker and a gold
-   entrance marker. Move around and resize the window: the player marker should
-   stay aligned with the game-client map.
-2. Leave the supported approach area. Its automatic map should close. Return to
-   the area after disabling and re-enabling **Show dungeon approach maps**; it
-   should reopen. Use the dungeon journal's **Approach** button to open the
-   supported outdoor map manually.
-3. Walk through the marked entrance into that same dungeon. The approach map
-   should hand off to the existing static dungeon map. Interior live tracking
-   is not part of this feature; the static map and its boss/quest markers should
-   remain usable. If a map or coordinates fail, report the dungeon, zone,
-   character position and `/wt probe` output.
-4. In Settings → Arrow and display, enable **Always show health and resource numbers**.
-   Blizzard's unit bars should show numeric values. Disable it and verify the
-   previous display style returns. If you change Blizzard's own setting while
-   WoW Together's option is on, turning the addon option off should preserve
-   your newer game setting. Test toggling during combat; it should apply after
-   combat without a Lua error.
 
 ## Reviewed zone-guide updates — this update
 

@@ -4,7 +4,6 @@ import unittest
 from test_addon import Client
 from test_navigation import navigator
 from test_0811 import browser, future
-from test_0835 import dungeon_client
 from test_061 import world_quest
 from test_063 import guide_client, zone
 from test_061 import run_plan
@@ -76,14 +75,6 @@ class ResizeTests(unittest.TestCase):
         self.assertIn('No listings',f.rows[1].detail.text)
         c.ns.handlers.GLOBAL_MOUSE_UP('LeftButton')
 
-    def test_dungeon_compact_and_full_bounds_change_without_hiding_or_switching_guides(self):
-        c=dungeon_client();c.ns.ShowDungeonViewer('ragefire-chasm');f=c.ns.dungeonViewer
-        f.mode.OnClick();f.SetSize(f,450,340);f.OnSizeChanged()
-        self.assertEqual((f.width,f.height),(450,340));self.assertTrue(f.compact)
-        f.mode.OnClick();f.SetSize(f,500,400);f.OnSizeChanged()
-        self.assertEqual((f.width,f.height),(940,500));self.assertFalse(f.compact)
-        self.assertTrue(f.IsShown(f))
-
     def test_tall_quest_list_extends_visible_rows_only_after_gesture(self):
         c=browser();c.ns.SetGuideLevel('21-30');c.ns.ShowGuideQuestList(future(c));c.drain()
         f=c.ns.guideQuestList
@@ -95,23 +86,6 @@ class ResizeTests(unittest.TestCase):
         c.ns.handlers.GLOBAL_MOUSE_UP('LeftButton')
         self.assertGreater(len(f.rows),old)
         self.assertEqual(f.maximum,len(f.displayPlan)*44-f.scroll.height)
-
-    def test_short_map_quest_popup_hides_extra_rows_and_pages_to_every_quest(self):
-        c=Client(quests=())
-        c.ns.dungeonData=c.lua.table_from({'dungeons':{'ragefire-chasm':{'name':'Ragefire Chasm'}}},recursive=True)
-        c.ns.DungeonMapQuestVisible=c.lua.eval('function() return true end')
-        group=c.lua.table_from({'name':'Quest giver','quests':[{'id':900+i,'kind':'a'} for i in range(6)]},recursive=True)
-        c.ns.ShowDungeonMapQuests(group,'ragefire-chasm');f=c.ns.dungeonMapQuestWindow
-        f.grip.OnMouseDown(f.grip,'LeftButton');f.SetSize(f,380,196);f.OnSizeChanged()
-        c.ns.handlers.GLOBAL_MOUSE_UP('LeftButton')
-        self.assertEqual(f.rowsPerPage,1)
-        self.assertTrue(f.rows[1].IsShown(f.rows[1]))
-        self.assertTrue(all(not f.rows[i].IsShown(f.rows[i]) for i in (2,3,4)))
-        self.assertEqual(f.pageText.text,'1 / 6')
-        for i in range(2,7):
-            f.next.OnClick();self.assertEqual(f.pageText.text,f'{i} / 6')
-            self.assertEqual(f.rows[1].title.text,c.ns.QuestTitle(899+i))
-
 
 class SourceSupplementTests(unittest.TestCase):
     def test_missing_pickup_can_be_added_without_overwriting_existing_gates_or_handin(self):

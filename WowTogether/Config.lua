@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
 local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, classQuests = true,
-    dungeonPrompts = true, dungeonMapPrompt = true, zonePrompts = true, trackerOpacity = 0.08,
+    dungeonPrompts = true, zonePrompts = true, trackerOpacity = 0.08,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
@@ -11,7 +11,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     guideGlance = false, uiNext = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
-    unitNumbers = false, approachMaps = true, xpModel = false, debugReasons = false, partyMode = "ask", deathSound = true,
+    unitNumbers = false, xpModel = false, debugReasons = false, partyMode = "ask", deathSound = true,
     -- Skilling path (ProfessionPath.lua).
     professionPathMode = "balanced", professionVendorResale = true, professionVendorRecipes = false, professionPerk = false,
     gatheringTips = true, travelButton = true, autoShareQuests = "ask", levelingPathStrip = true, finishNearlyDone = "85", questCleanup = "ask", levelingPath = true, soloEliteQuests = false, questLevelsAbove = "2"}
@@ -42,11 +42,9 @@ local sections = {
         {"scanSkipped", "Recheck skipped quests on scan", "A successful scan clears skips for this guide so eligible quests can return."},
         {"circuitRadius", "Nearby quest detours", "Limit extra walking when adding a nearby pickup.", {{0.10, "Shortest"}, {0.16, "Small"}, {0.22, "Wider"}}}},
         "Set how zone guides choose quests and suggest your next area."},
-    {"dungeons", "Dungeons", {
-        {"dungeonPrompts", "Suggest dungeon quests", "Offer dungeon quests when you reach their pickup level. Earlier chain quests may still be needed."},
-        {"dungeonMapPrompt", "Ask to open the dungeon map", "Ask when you enter a dungeon; you can keep playing without opening it."},
-        {"approachMaps", "Show maps near dungeon entrances", "Open a live map in supported caves and tunnels outside a dungeon."}},
-        "Choose when dungeon quests and maps appear in your route."},
+    {"dungeons", "Dungeon quests", {
+        {"dungeonPrompts", "Suggest dungeon quests", "Offer dungeon quests when you reach their pickup level. Earlier chain quests may still be needed."}},
+        "Choose when dungeon quests appear in your route."},
     {"quests", "Quest log and dialogs", {
         {"highlightGuideQuest", "Highlight the current guide quest", "Select it in the game quest log and show Blizzard's map highlights when supported."},
         {"autoSelectQuests", "Open guide quests at NPCs", "Open a suitable guide quest or ready turn-in when you talk to its NPC."},
@@ -188,11 +186,6 @@ function ns.SetOption(key, value)
     ns.InitializeConfig()
     if key == "unitNumbers" then
         if ns.ApplyUnitNumbers then ns.ApplyUnitNumbers() end
-        if ns.RenderSettings then ns.RenderSettings() end
-        return
-    end
-    if key == "approachMaps" then
-        if ns.CheckApproachMap then ns.CheckApproachMap() end
         if ns.RenderSettings then ns.RenderSettings() end
         return
     end

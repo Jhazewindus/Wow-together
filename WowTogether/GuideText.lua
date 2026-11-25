@@ -590,9 +590,6 @@ function ns.GuideStepPresentation(stop, facts, guide, route, state)
         addDetail(goal.serviceInstructions)
         addDetail("Done resumes your guide")
     else
-        for _, watch in ipairs(goal.dungeonLootWatch or {}) do
-            addDetail("Watch for: " .. watch.name .. " (" .. watch.members .. ")")
-        end
         addDetail(ns.QuestGroupWarning(goal.id))
         local localName = ns.profile and ns.profile.name or ns.ReadPublic(UnitName, "player")
         local namedPlayer = type(goal.forPlayer) == "string" and text(goal.forPlayer)

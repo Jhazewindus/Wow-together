@@ -1,9 +1,8 @@
-"""Native Forever Browse filtering and the actual RFC missing-coordinate case."""
+"""Native Forever Browse filtering."""
 import unittest
 
 from test_addon import Client
-from test_0865 import CLASSIC, REFERENCE
-from test_dungeon_player import tick
+from test_0865 import CLASSIC
 
 
 NATIVE_FINDER = CLASSIC + '''
@@ -226,27 +225,3 @@ class NativeFinderTests(unittest.TestCase):
         bar.roles.options.HEALER.OnClick()
         c.ns.RefreshGroupFinderRoles()
         self.assertEqual(self.ids(c),[1,2,3,4])
-
-
-class MissingDungeonPositionTests(unittest.TestCase):
-    def test_reported_rfc_nil_xy_instance_389_is_static_not_fake_live_position(self):
-        c=Client(use_catalogue=True,before_load=REFERENCE)
-        c.lua.execute('UnitPosition=function()return nil,nil,nil,389 end;C_Map.GetBestMapForUnit=function()end')
-        c.ns.ShowDungeonViewer('ragefire-chasm',True);f=c.ns.dungeonViewer;tick(f)
-        self.assertFalse(f.playerMarker.IsShown(f.playerMarker))
-        self.assertEqual(f.refresh.caption.text,'Static map')
-        self.assertTrue(f.tiles[1].IsShown(f.tiles[1]))
-        self.assertFalse(c.ns.LocateDungeonPlayer(f))
-        self.assertIsNone(f.nativePlayer)
-
-    def test_real_coordinates_restore_locate_without_reopening_map(self):
-        c=Client(use_catalogue=True,before_load=REFERENCE)
-        c.lua.execute('originalPosition=UnitPosition;UnitPosition=function()return nil,nil,nil,389 end')
-        c.ns.ShowDungeonViewer('ragefire-chasm',True);f=c.ns.dungeonViewer;tick(f)
-        self.assertEqual(f.refresh.caption.text,'Static map')
-        c.lua.execute('UnitPosition=originalPosition');tick(f)
-        self.assertEqual(f.refresh.caption.text,'Locate me')
-        self.assertTrue(f.playerMarker.IsShown(f.playerMarker))
-
-
-if __name__=='__main__':unittest.main()

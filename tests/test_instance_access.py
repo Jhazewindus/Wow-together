@@ -221,13 +221,13 @@ class InstancePageTests(unittest.TestCase):
 
     def test_a_card_opens_this_page_and_not_the_map_and_loot_viewer(self):
         c = character(); ns = c.ns
-        c.lua.execute('local ns = ...; viewer, page = 0, 0; ns.ShowDungeonViewer = function() viewer = viewer + 1 end; '
+        c.lua.execute('local ns = ...; page = 0; '
                       'local show = ns.ShowInstancePage; ns.ShowInstancePage = function(...) page = page + 1; return show(...) end', ns)
         if not ns.window.IsShown(ns.window):
             ns.ToggleWindow()
         ns.SetHubTab('Browse'); ns.ui.browseFilter = 'dungeons'; ns.SetFilter('dungeons', True); c.drain(); ns.Refresh(); c.drain()
         card = next(card for card in ns.ui.cards.values() if card.IsShown(card) and card.title.text == 'Scholomance')
         card.OnClick(card)
-        self.assertEqual((c.lua.globals().page, c.lua.globals().viewer), (1, 0))
+        self.assertEqual(c.lua.globals().page, 1)
         self.assertEqual(ns.instancePage.title.text, 'Scholomance')
         self.assertNotIn('loot', card.reason.text.lower())

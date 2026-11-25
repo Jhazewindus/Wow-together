@@ -11,8 +11,6 @@ ns.optionalDataState = ns.optionalDataState or {}
 local dataAddons = {
     ["WowTogether_QuestData"] = {field = "catalogue", tableField = "quests"},
     ["WowTogether_ProfessionData"] = {field = "professionGuideData", tableField = "professions"},
-    ["WowTogether_DungeonData"] = {field = "dungeonJournalData", tableField = "dungeons",
-        extraField = "dungeonMapData", extraTableField = "dungeons"},
     ["WowTogether_GoldData"] = {field = "farmPriorData", tableField = "records",
         extraField = "gatheringFarmData", extraTableField = "records"},
 }
@@ -84,8 +82,6 @@ ns.catalogue = proxy("catalogue", "WowTogether_QuestData", {
     detailSource = "https://www.wowhead.com/forever/quests",
 }, {quests = true})
 ns.professionGuideData = proxy("professionGuideData", "WowTogether_ProfessionData", nil, {professions = true})
-ns.dungeonJournalData = proxy("dungeonJournalData", "WowTogether_DungeonData", nil, {dungeons = true, items = true})
-ns.dungeonMapData = proxy("dungeonMapData", "WowTogether_DungeonData", nil, {dungeons = true})
 
 -- Bundled, literal-only data. Keep each nested field packed until it is used.
 -- A decoded field becomes an ordinary, stable table: map resolution and other
@@ -202,7 +198,7 @@ function ns.PackedDataStats()
 end
 
 function ns.OptionalDataDiagnostics(output)
-    for _, addon in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData", "WowTogether_GoldData"}) do
+    for _, addon in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData"}) do
         output("Optional data " .. addon .. ": " .. (ns.optionalDataState[addon] or "not loaded"))
     end
 end
@@ -216,7 +212,7 @@ function ns.MemoryDiagnostics(output)
     ns.OptionalDataDiagnostics(output)
     if type(update) == "function" and type(get) == "function" then
         ns.ReadPublic(update)
-        local names = {addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData", "WowTogether_GoldData"}
+        local names = {addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData"}
         local total, main, optional = 0, nil, {}
         for index, name in ipairs(names) do
             local used = ns.ReadPublic(get, name)
@@ -227,7 +223,7 @@ function ns.MemoryDiagnostics(output)
         end
         if main then
             local details = {}
-            for _, name in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData", "WowTogether_GoldData"}) do
+            for _, name in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData"}) do
                 if optional[name] and optional[name] > 0 then
                     details[#details + 1] = name:gsub("WowTogether_", "") .. " " .. string.format("%.1f MiB", optional[name] / 1024)
                 end

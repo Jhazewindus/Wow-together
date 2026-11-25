@@ -127,7 +127,6 @@ def main():
     data_packages = {
         'WowTogether_QuestData': ['QuestCatalogue.lua'],
         'WowTogether_ProfessionData': ['ProfessionData.lua'],
-        'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
         'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
     }
     gold_sources = optional_gold_sources(ROOT)
@@ -202,9 +201,9 @@ Copy the complete WowTogether folder to:
 the live World of Warcraft client’s Interface\\AddOns\\WowTogether\\ directory
 
 Update EVERY party member to {version}, copying the WowTogether folder and
-all four matching WowTogether_*Data folders side by side into AddOns.
+all three matching WowTogether_*Data folders side by side into AddOns.
 {gold_install}
-Do not put the data folders inside WowTogether. Keep all four enabled in the
+Do not put the data folders inside WowTogether. Keep all three enabled in the
 addon list; they load only when their data is first needed. Then fully restart the client;
 the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
@@ -249,9 +248,9 @@ their locations are known. Repeatable quests remain excluded from automatic
 collection; uncaptured quest locations remain unknown. See CHANGELOG.md,
 QUEST_DATA.md and TESTING.md.
 
-Quest, profession, and dungeon reference payloads now load on demand from their
-matching data folders. Keep all four folders installed so each guide browser can
-load its data when first opened.
+Quest and profession reference payloads load on demand from their matching data
+folders. Dungeon access and quest routes use the compact instance definitions
+and quest catalogue in the main addon.
 
 0.8.77 EXACT TRIP ORDERING improves live route stop order within a bounded
 search budget, keeps the beam fallback, and caches one distance matrix per trip.
@@ -266,12 +265,10 @@ and prerequisite links. Unknown quantities, locations and pickup rules remain
 explicitly incomplete. Quest 95534 still has conflicting faction evidence and
 needs live-client confirmation. See CHANGELOG.md, QUEST_DATA.md and TESTING.md.
 
-0.8.78 LIVE DUNGEON DATA REFRESH records 341 current dungeon quest memberships
-and adds one reported Wetlands encounter with independently sourced item facts.
-All nine newer instances appear in Method.gg's index cards, but five lack dedicated guide pages. Encounter/loot
-coverage remains partial; only factual IDs and item metadata are included, not
-website code, prose, artwork, layouts or map images. See DUNGEON_VIEWER.md and
-TESTING.md.
+0.8.78 LIVE DUNGEON DATA REFRESH recorded 341 current dungeon quest memberships
+and a reported Wetlands encounter. Dungeon access and quest routes now use the
+Instances page. The legacy map/loot viewer and its optional dataset are retired.
+See DUNGEONS.md and TESTING.md.
 
 0.8.72 INSTANT GUIDE START lets a zone route start while its ordered quest list
 is still compiling in the background. The normal route-loading state appears;
@@ -528,9 +525,8 @@ Quests toggles those markers. The floor dropdown stays hidden for single/unmappe
 Map only is a compact gameplay view; it stays open during combat. Entry asks
 Open map? when enabled. Classic floor references may differ from Forever layouts;
 missing boss coordinates and new-dungeon data are never guessed.
-See DUNGEON_VIEWER.md for snapshot coverage and beta tests. Unknown zones have a quiet
-fallback. Artwork changes appearance only, not guide logic.
-Restart the client fully if new artwork remains blank after reload.
+The retired viewer snapshot and optional dataset are no longer shipped.
+Unknown zones have a quiet fallback.
 Use level brackets / Near party to narrow the list.
 Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
 and pages. The default bracket follows the lowest synced party level. Zone sections
@@ -940,7 +936,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
                 archive.writestr('WowTogether/' + name, packaged_changelog)
             else:
                 archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'ROUTE_OPTIMIZATION.md', 'RECOMMENDED.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'GUIDE_REASONS.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'ROUTE_OPTIMIZATION.md', 'RECOMMENDED.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'GUIDE_REASONS.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)

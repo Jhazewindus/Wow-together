@@ -150,8 +150,7 @@ stay unknown. See CHANGELOG.md, QUEST_DATA.md and TESTING.md.
 
 **0.8.78 refreshed current dungeon references.** The published Wowhead Forever
 quest categories now contain 341 captured memberships, and Wetlands includes a
-newly documented reported encounter with source-linked item facts. Missing
-dungeon encounters remain unknown; see DUNGEONS.md and DUNGEON_VIEWER.md.
+newly documented reported encounter with source-linked item facts. Dungeon quest memberships and access facts remain available through the Instances page; see DUNGEONS.md and TESTING.md.
 
 **0.8.77 improves live leveling trips** with exact stop ordering for trips
 within a bounded search budget, a beam-search fallback, one per-trip distance
@@ -206,16 +205,16 @@ they do not establish in-game FPS or load time. See PERFORMANCE.md and TESTING.m
 
 ## Install
 
-Extract the release ZIP and copy all four addon folders side by side to:
+Extract the release ZIP and copy all three addon folders side by side to:
 
 ```text
 the live World of Warcraft client’s `Interface\AddOns\` folder
 ```
 
-Install `WowTogether`, `WowTogether_QuestData`, `WowTogether_ProfessionData` and
-`WowTogether_DungeonData` as sibling folders in `AddOns`. Update all four on
-**every party member's client** and fully restart WoW. Leave the three matching
-data add-ons enabled; they load only when their data is first needed. Restart if
+Install `WowTogether`, `WowTogether_QuestData` and `WowTogether_ProfessionData`
+as sibling folders in `AddOns`. Update all three on **every party member's
+client** and fully restart WoW. Leave the two matching data add-ons enabled;
+they load only when their data is first needed. Restart if
 a new addon folder does not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
@@ -695,20 +694,7 @@ concise. Technical source notes and API explanations stay in diagnostics and
 documentation. Missing content uses short
 messages such as **Map unavailable**; useful prerequisite explanations remain.
 
-**0.8.24 adds the Dungeon viewer.** Clicking a dungeon card opens its journal from anywhere.
-The map-level dropdown appears only when multiple maps are available. Click a
-boss and browse notable drops with item icons, search,
-filters and cached client tooltips. Dungeon cards keep **Quest list** beside
-**Start route**. Entering a recognized dungeon optionally asks **Open map?** and
-opens a compact movable map. Both views resize and stay open during combat; their
-positions, sizes and BG choice are saved across all dungeons and reloads.
-
-The offline snapshot contains 243 encounters and 2,766 notable drop entries across
-19 Classic complexes, with 164 client portrait references and 19 client map
-reference sets. Current exposed client floors/markers take precedence. Older
-layouts can differ from Forever; unknown boss positions are not guessed. New
-Forever dungeon boss/loot coverage remains incomplete. No external image files
-are bundled. See [DUNGEON_VIEWER.md](DUNGEON_VIEWER.md) for sources and beta limits.
+The legacy dungeon map and loot viewer was removed after the Instances page replaced its browse and quest entry points. The optional map/loot data package is no longer distributed. Dungeon access, prerequisite and quest routes remain available from the Instances page.
 
 **0.8.23 improves flight timing following Romits' report.** Untimed rides use
 the native flight map's connecting stops when public `GetNumRoutes` and

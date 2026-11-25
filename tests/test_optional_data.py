@@ -39,17 +39,14 @@ class OptionalDataTests(unittest.TestCase):
         self.assertEqual(client.data_addons_loaded, set())
         self.assertEqual(client.ns.optionalDataState["WowTogether_QuestData"], None)
 
-    def test_profession_and_dungeon_payloads_load_only_on_request(self):
+    def test_profession_payload_loads_on_request_and_retired_dungeon_pack_is_absent(self):
         client = Client(quests=(), use_lazy_data=True, default_guide=True)
         self.assertTrue(client.ns.EnsureOptionalData("WowTogether_ProfessionData"))
         self.assertTrue(client.ns.professionGuideData.professions)
         self.assertIn("WowTogether_ProfessionData", client.data_addons_loaded)
         self.assertNotIn("WowTogether_DungeonData", client.data_addons_loaded)
-
-        self.assertTrue(client.ns.EnsureOptionalData("WowTogether_DungeonData"))
-        self.assertTrue(client.ns.dungeonJournalData.dungeons)
-        self.assertTrue(client.ns.dungeonMapData.dungeons)
-        self.assertIn("WowTogether_DungeonData", client.data_addons_loaded)
+        self.assertFalse(client.ns.EnsureOptionalData("WowTogether_DungeonData"))
+        self.assertNotIn("WowTogether_DungeonData", client.data_addons_loaded)
 
     def test_guide_location_coverage_requires_locations_for_known_requirements(self):
         client = Client(quests=(), default_guide=True)
