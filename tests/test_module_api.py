@@ -645,6 +645,7 @@ class PackagingBoundaryTests(unittest.TestCase):
         self.assertTrue(checker.violations('local core = ns; core.db = {}'))
         self.assertEqual(checker.violations('local value = ns.ReadPublic(GetTime)'), [])
         self.assertEqual(checker.violations('local scanner = ns.StartFarmCandidateScan'), [])
+        self.assertEqual(checker.violations('local spawnSearch = ns.FarmPriorSpawnSearch'), [])
         self.assertTrue(checker.violations('ns\n  .db = {}'))
         self.assertTrue(checker.violations('local root = _G; root.WowTogetherDB = {}'))
         self.assertTrue(checker.violations('_G.WowTogetherDB = {}'))
