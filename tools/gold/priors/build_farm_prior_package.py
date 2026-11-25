@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 PRIORS = Path(__file__).resolve().parent
 DEST = ROOT / 'WowTogether_GoldData'
+SPAWN_PREFIX = 'WowTogether_GoldSpawnData_'
 sys.path.insert(0, str(ROOT / 'tools'))
 from forever_map_geometry import read_geometry
 from pack_data import Packer
@@ -42,7 +43,7 @@ def build_records(geometry_path: Path, creatures=None, loot_rows=None):
         # Negative reference IDs encode table links, not item yields; do not guess.
         count = row.get('minCountOrReference')
         if isinstance(item, int) and item > 0 and isinstance(count, int) and count > 0 \
-                and isinstance(chance, (int, float)) and 0 < chance <= 100:
+                and isinstance(chance, (int, float)) and 0.5 <= chance <= 100:
             by_loot[row.get('ownerLootId')].append({'itemID': item, 'chance': chance, 'quantity': count,
                 'source': LEGACY + '; creature_loot_template chance'})
     by_skinning = defaultdict(list)
@@ -51,7 +52,7 @@ def build_records(geometry_path: Path, creatures=None, loot_rows=None):
         chance = row.get('chanceOrQuestChance')
         count = row.get('minCountOrReference')
         if isinstance(item, int) and item > 0 and isinstance(count, int) and count > 0 \
-                and isinstance(chance, (int, float)) and 0 < chance <= 100:
+                and isinstance(chance, (int, float)) and 0.5 <= chance <= 100:
             by_skinning[row.get('ownerLootId')].append({'itemID': item, 'chance': chance,
                 'quantity': count, 'source': LEGACY + '; skinning_loot_template chance; legacy, unconfirmed'})
 
@@ -203,9 +204,42 @@ def build_gathering_records(geometry_path: Path):
 def render(records):
     packer = Packer()
     body = 'ns.farmPriorData = {count = ' + str(len(records)) + '}\n'
+    index_records = {}
+    for index, source in enumerate(records, 1):
+        row = dict(source)
+        row['spawnPointCount'] = len(row.get('spawnPoints') or [])
+        row.pop('spawnPoints', None)
+        row.get('sources', {}).pop('spawnPoints', None)
+        index_records[index] = row
     body += packer.records('gold-farm-priors', 'ns.farmPriorData.records',
-        {index: row for index, row in enumerate(records, 1)}, lazy_rows=True)
-    return packer.code(body, 'Legacy, unconfirmed farm priors; see LEGACY_DATA_COPYRIGHT.md and LEGACY_DATA_LICENSE.txt.')
+        index_records, lazy_rows=True)
+    return packer.code(body, 'Legacy, unconfirmed farm index; spawn coordinates load by zone when starting a farm.')
+
+
+def render_spawn_package(map_id, zone_name, records):
+    package = SPAWN_PREFIX + str(map_id)
+    destination = ROOT / package
+    destination.mkdir(exist_ok=True)
+    packer = Packer()
+    payloads = {}
+    for row in records:
+        points = []
+        for point in row['spawnPoints']:
+            points.append({'mapID': map_id, 'x': point['x'], 'y': point['y'],
+                'source': 'QuestieDB Forever map bounds; converted legacy world coordinate'})
+        payloads[row['npcID']] = {'npcID': row['npcID'], 'mapID': map_id, 'spawnPoints': points}
+    body = 'ns.farmSpawnDataByMap = ns.farmSpawnDataByMap or {}\n'
+    body += 'ns.farmSpawnDataByMap[' + str(map_id) + '] = {mapID = ' + str(map_id) \
+        + ', zoneName = ' + repr(zone_name) + ', count = ' + str(len(payloads)) + ', records = {}}\n'
+    body += packer.records('gold-farm-spawns-' + str(map_id),
+        'ns.farmSpawnDataByMap[' + str(map_id) + '].records', payloads, lazy_rows=True)
+    source = packer.code(body, 'Legacy, unconfirmed spawn positions; see PRIOR_DATA.md and GPL-3.0.txt.')
+    (destination / 'FarmSpawnData.lua').write_text(source, encoding='utf-8')
+    (destination / (package + '.toc')).write_text(
+        '## Interface: 16001\n## Title: Wow Together Gold Spawn Data - ' + str(map_id)
+        + '\n## Notes: Legacy, unconfirmed spawn points for ' + zone_name
+        + '\n## LoadOnDemand: 1\n## Dependencies: WowTogether\nFarmSpawnData.lua\n', encoding='utf-8')
+    return len(payloads)
 
 
 def main():
@@ -216,6 +250,16 @@ def main():
     gathering = build_gathering_records(args.geometry)
     DEST.mkdir(exist_ok=True)
     (DEST / 'FarmPriorData.lua').write_text(render(records), encoding='utf-8')
+    zone_rows = defaultdict(list)
+    for row in records:
+        zone_rows[(row['mapID'], row['zoneName'])].append(row)
+    for old in ROOT.glob(SPAWN_PREFIX + '*'):
+        if old.is_dir():
+            import shutil
+            shutil.rmtree(old)
+    spawn_counts = {}
+    for (map_id, zone_name), rows in sorted(zone_rows.items()):
+        spawn_counts[str(map_id)] = render_spawn_package(map_id, zone_name, rows)
     # Keep the two domains separate in the same LOD package. This file is
     # generated through the same packed-data decoder but has zone-keyed rows.
     gathering_packer = Packer()
@@ -225,7 +269,8 @@ def main():
     gathering_payload = gathering_packer.code(gathering_body,
         'Legacy, unconfirmed gathering loot; see LEGACY_DATA_COPYRIGHT.md and LEGACY_DATA_LICENSE.txt.')
     (DEST / 'GatheringPriorData.lua').write_text(gathering_payload, encoding='utf-8')
-    print(json.dumps({'records': len(records), 'gatheringZoneRecords': len(gathering), 'loadOnDemand': True,
+    print(json.dumps({'records': len(records), 'gatheringZoneRecords': len(gathering),
+        'spawnZonePackages': spawn_counts, 'lootChanceFloorPercent': 0.5, 'loadOnDemand': True,
         'confidence': 'legacy, unconfirmed', 'lootRowsWithUnsupportedReferenceIDsOmitted': True}))
 
 

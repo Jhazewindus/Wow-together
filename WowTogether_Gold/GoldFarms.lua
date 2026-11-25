@@ -280,7 +280,8 @@ local function makeMob(record)
     -- place gives one kill per respawn, not one every thirty seconds. Without
     -- this a single named guard with a sure drop tops every list. Six minutes
     -- per spawn point is assumed; the player's own measured pace is not capped.
-    local spawns = type(record.spawnPoints) == "table" and #record.spawnPoints or 0
+    local spawns = positive(record.spawnPointCount) and record.spawnPointCount
+        or (type(record.spawnPoints) == "table" and #record.spawnPoints or 0)
     if string.find(paceBasis, "assumed", 1, true) then
         local cap = math.max(1, spawns) * 10
         if kills > cap then
@@ -295,7 +296,8 @@ local function makeMob(record)
         npcID = record.npcID, estimate = copperPerHour, expectedPerKill = expectedPerKill, pace = kills,
         paceAssumed = string.find(paceBasis, "assumed", 1, true) ~= nil,
         basis = "Legacy, unconfirmed; " .. paceBasis .. "; " .. lootBasis .. "; data: " .. cleanSource(record, "loot"),
-        points = record.spawnPoints or {}, pointSource = cleanSource(record, "spawnPoints"),
+        points = record.spawnPoints or {}, spawnPointCount = spawns,
+        pointSource = cleanSource(record, "spawnPoints"),
         loot = record.loot, source = "farm prior", sample = 0}
     return candidate
 end
@@ -359,7 +361,8 @@ local function sortCandidates()
         local row = candidates[index]
         local key = row.id
         local pointRows = routePoints(row)
-        local routeText = #pointRows >= 3 and "Start a measured walking loop." or "Zone-level suggestion; no route coordinates yet."
+        local hasRoute = (row.spawnPointCount or 0) >= GATHER_POINTS_REQUIRED or #pointRows >= GATHER_POINTS_REQUIRED
+        local routeText = hasRoute and "Start a measured walking loop." or "Zone-level suggestion; no route coordinates yet."
         cards[#cards + 1] = {key = clipped(row.id, 64), title = clipped(row.name .. " — " .. row.zone, 100),
             detail = clipped(string.format("Estimate %.1fg/hour. Basis: %s. %s", row.estimate / 10000, row.basis, routeText), 350),
             priority = math.max(1, 100 - index), action = function() farms.Start(key) end}
@@ -456,12 +459,28 @@ function farms.Start(key)
             return beginSession(candidate, start)
         end
     else
-        local pointRows = routePoints(candidate)
-        if #pointRows < 3 then ns.Print("Gold: no sourced route points are available for " .. candidate.name .. "."); return false end
         pendingSession = {id = key, candidate = candidate, start = start}
-        local ok, reason = ns.StartModuleLoop("Gold", {title = candidate.name .. " — " .. candidate.zone,
-            points = pointRows, onStop = stopThis, onStart = function() beginSession(candidate, now() or start); pendingSession = nil end})
-        if not ok then pendingSession = nil; ns.Print("Gold: " .. tostring(reason)); return false end
+        if type(ns.FarmPriorSpawnSearch) ~= "function" then
+            pendingSession = nil
+            return false, "Farm spawn-point search unavailable."
+        end
+        local function startWithPoints(pointRows)
+            if not pendingSession or pendingSession.id ~= key then return end
+            candidate.points = pointRows
+            if #pointRows < GATHER_POINTS_REQUIRED then
+                pendingSession = nil
+                ns.Print("Gold: no complete loop is available for " .. candidate.name .. "; the session will still track this farm.")
+                beginSession(candidate, start)
+                return
+            end
+            local ok, reason = ns.StartModuleLoop("Gold", {title = candidate.name .. " — " .. candidate.zone,
+                points = pointRows, onStop = stopThis,
+                onStart = function() beginSession(candidate, now() or start); pendingSession = nil end})
+            if not ok then pendingSession = nil; ns.Print("Gold: " .. tostring(reason)) end
+        end
+        local accepted, reason = ns.FarmPriorSpawnSearch(candidate.npcID, candidate.mapID, startWithPoints)
+        if not accepted then pendingSession = nil; return false, reason end
+        return true
     end
     return pendingSession == nil and activeSession ~= nil
 end
@@ -541,25 +560,9 @@ end
 
 -- `category` narrows the list to one kind ("Killing", "Mining", ...); nil is the best of everything.
 function farms.Suggestions(limit, category)
-    -- The data places a creature in every zone its spawn points touch, so one
-    -- that lives on a border is listed two or three times. Its home is the
-    -- zone with the most of its spawn points.
-    local home, pool = {}, {}
+    local list = {}
     for _, row in ipairs(candidates) do
-        if category == nil or categoryOf(row) == category then pool[#pool + 1] = row end
-    end
-    for _, row in ipairs(pool) do
-        local known = home[row.name]
-        local points = type(row.points) == "table" and #row.points or 0
-        if not known or points > known.points or (points == known.points and row.estimate > known.row.estimate) then
-            home[row.name] = {row = row, points = points}
-        end
-    end
-    local list, taken = {}, {}
-    for _, row in ipairs(pool) do
-        if #list >= (limit or 3) then break end
-        if not taken[row.name] and home[row.name].row == row then
-            taken[row.name] = true
+        if (category == nil or categoryOf(row) == category) and #list < (limit or 3) then
             local items, total = breakdown(row)
             local rate, assumed, unit = paceOf(row)
             local top, auction, vendor = {}, 0, 0
@@ -572,7 +575,7 @@ function farms.Suggestions(limit, category)
             end
             list[#list + 1] = {key = row.id, name = row.name, zone = row.zone, kind = row.kind, profession = row.profession,
                 category = categoryOf(row),
-                estimate = row.estimate, routable = #routePoints(row) >= 3,
+                estimate = row.estimate, routable = (row.spawnPointCount or 0) >= 3 or #routePoints(row) >= 3,
                 active = activeSession ~= nil and activeSession.id == row.id,
                 pace = rate, paceAssumed = assumed, paceUnit = unit, measured = (row.sample or 0) > 0 or not assumed,
                 top = top, others = math.max(0, #items - #top), auctionPriced = auction, vendorPriced = vendor}

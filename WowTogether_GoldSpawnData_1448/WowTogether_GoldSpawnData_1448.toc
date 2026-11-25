@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Gold Spawn Data - 1448
+## Notes: Legacy, unconfirmed spawn points for Felwood
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+FarmSpawnData.lua

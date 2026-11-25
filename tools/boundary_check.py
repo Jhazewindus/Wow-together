@@ -12,7 +12,7 @@ ALLOWED = {
     'ReadPublic', 'Public', 'GuideInteger', 'SafeTitle', 'Option', 'SetOption',
     'StartFarmCandidateScan', 'QueueModuleSync',
     'Print', 'On', 'ResearchExportHook', 'Gold', 'STEP_SYMBOLS',
-    'PublishGoldFunction', 'AuctionQuote', 'FarmPriorSearch', 'GatheringFarmSearch',
+    'PublishGoldFunction', 'AuctionQuote', 'FarmPriorSearch', 'FarmPriorSpawnSearch', 'GatheringFarmSearch',
     'RegisterGatheringObserver', 'StartModuleLoop', 'StopModuleLoop',
     'SetFarmSession', 'RequestFarmSessionRefresh',
     'UIPanel', 'UILabel', 'UIButton', 'UIButtonTone', 'UIClose', 'UIHelp',

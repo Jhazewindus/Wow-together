@@ -46,6 +46,7 @@ class BuildAutomationTests(unittest.TestCase):
                 expected = {'WowTogether', 'WowTogether_QuestData',
                     'WowTogether_ProfessionData', 'WowTogether_GoldData',
                     'WowTogether_GatheringPositionData'}
+                expected.update(path.name for path in ROOT.glob('WowTogether_GoldSpawnData_*') if path.is_dir())
                 if (ROOT / 'WowTogether_Gold').exists(): expected.add('WowTogether_Gold')
                 self.assertEqual(roots, expected)
                 self.assertTrue(all('/' in p and not p.startswith('/') and '..' not in p.split('/') for p in z.namelist()))

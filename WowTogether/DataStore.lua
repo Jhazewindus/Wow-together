@@ -17,6 +17,12 @@ local dataAddons = {
 }
 
 local function dataReady(definition)
+    if definition.mapID then
+        local byMap = ns.farmSpawnDataByMap
+        local zone = type(byMap) == "table" and rawget(byMap, definition.mapID)
+        return type(zone) == "table" and zone.mapID == definition.mapID
+            and type(rawget(zone, "records")) == "table"
+    end
     local primary = ns[definition.field]
     if type(primary) ~= "table" or type(rawget(primary, definition.tableField)) ~= "table" then return false end
     if definition.extraField then
@@ -28,6 +34,13 @@ end
 
 function ns.EnsureOptionalData(addon)
     local definition = dataAddons[addon]
+    if not definition and type(addon) == "string" then
+        local digits = string.match(addon, "^WowTogether_GoldSpawnData_(%d+)$")
+        local mapID = digits and tonumber(digits)
+        if mapID and mapID > 0 and mapID <= 1000000 then
+            definition = {mapID = mapID}
+        end
+    end
     if not definition then return false end
     local function markLoaded()
         ns.optionalDataState[addon] = "loaded"
@@ -203,6 +216,16 @@ function ns.OptionalDataDiagnostics(output)
     for _, addon in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData", "WowTogether_GatheringPositionData"}) do
         output("Optional data " .. addon .. ": " .. (ns.optionalDataState[addon] or "not loaded"))
     end
+    local spawnAddons = {}
+    for addon in pairs(ns.optionalDataState) do
+        if type(addon) == "string" and string.match(addon, "^WowTogether_GoldSpawnData_%d+$") then
+            spawnAddons[#spawnAddons + 1] = addon
+        end
+    end
+    table.sort(spawnAddons)
+    for _, addon in ipairs(spawnAddons) do
+        output("Optional data " .. addon .. ": " .. tostring(ns.optionalDataState[addon]))
+    end
 end
 
 function ns.MemoryDiagnostics(output)
@@ -215,6 +238,11 @@ function ns.MemoryDiagnostics(output)
     if type(update) == "function" and type(get) == "function" then
         ns.ReadPublic(update)
         local names = {addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData", "WowTogether_GatheringPositionData"}
+        for addon in pairs(ns.optionalDataState) do
+            if type(addon) == "string" and string.match(addon, "^WowTogether_GoldSpawnData_%d+$") then
+                names[#names + 1] = addon
+            end
+        end
         local total, main, optional = 0, nil, {}
         for index, name in ipairs(names) do
             local used = ns.ReadPublic(get, name)
@@ -225,7 +253,11 @@ function ns.MemoryDiagnostics(output)
         end
         if main then
             local details = {}
-            for _, name in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData", "WowTogether_GatheringPositionData"}) do
+            local dataNames = {"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_GoldData", "WowTogether_GatheringPositionData"}
+            for addon in pairs(ns.optionalDataState) do
+                if type(addon) == "string" and string.match(addon, "^WowTogether_GoldSpawnData_%d+$") then dataNames[#dataNames + 1] = addon end
+            end
+            for _, name in ipairs(dataNames) do
                 if optional[name] and optional[name] > 0 then
                     details[#details + 1] = name:gsub("WowTogether_", "") .. " " .. string.format("%.1f MiB", optional[name] / 1024)
                 end

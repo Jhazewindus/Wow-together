@@ -69,7 +69,7 @@ class ModuleAPITests(unittest.TestCase):
                     'SafeTitle', 'Option', 'SetOption', 'Print', 'On',
                     'ResearchExportHook', 'StartFarmCandidateScan', 'QueueModuleSync',
                     'PublishGoldFunction',
-                    'AuctionQuote', 'FarmPriorSearch', 'StartModuleLoop', 'StopModuleLoop',
+                    'AuctionQuote', 'FarmPriorSearch', 'FarmPriorSpawnSearch', 'StartModuleLoop', 'StopModuleLoop',
                     'SetFarmSession', 'RequestFarmSessionRefresh', 'GatheringFarmSearch',
                     'RegisterGatheringObserver', 'UIPanel', 'UILabel', 'UIButton',
                     'UIButtonTone', 'UIClose', 'UIHelp', 'UIDivider', 'UIColors',
@@ -102,18 +102,18 @@ class ModuleAPITests(unittest.TestCase):
             'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
         self.assertIn('frame clock', external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 10, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[1])
-        self.assertEqual(self.ns.farmPriorData.count, 2864)
+        self.assertEqual(self.ns.farmPriorData.count, 2850)
         self.assertEqual(external.FarmPriorSearch(self.lua.table_from({
             'minLevel': 0, 'maxLevel': 15, 'limit': 5}), self.lua.eval('function() end'))[0], False)
         self.ns.farmPriorData = self.lua.table_from({'records': [{
             'npcID': 77, 'name': 'Test wolf', 'minLevel': 11, 'maxLevel': 12,
             'confidence': 'legacy, unconfirmed',
             'mapID': 501, 'zoneName': 'Test Coast',
-            'spawnPoints': [{'mapID': 501, 'x': .4, 'y': .5, 'source': 'test spawn'}],
+            'spawnPointCount': 1,
             'skinnable': False, 'skinningLoot': [],
             'loot': [{'itemID': 88, 'chance': 12.5, 'quantity': 2, 'source': 'test loot'}],
             'sources': {'npcID': 'test NPC ID', 'name': 'test name', 'level': 'test levels',
-                'mapID': 'test map', 'zoneName': 'test zone', 'spawnPoints': 'test spawn',
+                'mapID': 'test map', 'zoneName': 'test zone',
                 'loot': 'test loot', 'skinnable': 'test skinnable', 'skinningLoot': 'test skinning loot'}}]}, recursive=True)
         self.lua.execute('''
             clockTick=0
@@ -134,10 +134,11 @@ class ModuleAPITests(unittest.TestCase):
         self.assertEqual(result.loot[1].itemID, 88)
         self.assertEqual(result.loot[1].source, 'test loot')
         self.assertEqual(result.loot[1].quantity, 2)
+        self.assertEqual(result.spawnPointCount, 1)
         result.loot[1].chance = 99
         self.assertEqual(self.ns.farmPriorData.records[1].loot[1].chance, 12.5)
 
-    def test_load_on_demand_legacy_farm_package_returns_loot_with_source_and_minimum_count(self):
+    def test_load_on_demand_legacy_farm_index_returns_loot_but_defers_spawn_points(self):
         api = self.lua.globals().WowTogetherModuleAPI
         self.lua.execute('''
             clockTick=0
@@ -153,10 +154,29 @@ class ModuleAPITests(unittest.TestCase):
             callback()
         record = self.lua.globals().loadedFarmRows[1]
         self.assertEqual(record.confidence, 'legacy, unconfirmed')
-        self.assertGreaterEqual(len(record.spawnPoints), 1)
-        self.assertLessEqual(len(record.spawnPoints), 24)
+        self.assertGreaterEqual(record.spawnPointCount, 1)
+        self.assertIsNone(record.spawnPoints)
         self.assertGreaterEqual(record.loot[1].quantity, 1)
         self.assertIn('CMaNGOS', record.loot[1].source)
+
+    def test_spawn_points_load_from_only_the_selected_zone_package(self):
+        api = self.lua.globals().WowTogetherModuleAPI
+        self.lua.execute('''
+            clockTick=0
+            function debugprofilestop() clockTick=clockTick+.1; return clockTick end
+            loadedFarmPoints=nil
+        ''')
+        accepted = api.FarmPriorSpawnSearch(3, 1431,
+            self.lua.eval('function(points) loadedFarmPoints=points end'))
+        self.assertTrue(accepted)
+        while len(self.lua.globals().timers):
+            callback = self.lua.globals().timers[1]
+            self.lua.execute('table.remove(timers, 1)')
+            callback()
+        points = self.lua.globals().loadedFarmPoints
+        self.assertEqual(len(points), 9)
+        self.assertTrue(all(points[index].mapID == 1431 for index in range(1, len(points) + 1)))
+        self.assertIn('converted legacy world coordinate', points[1].source)
 
     def test_gathering_search_returns_only_valid_source_backed_zone_facts_to_external_namespace(self):
         api = self.lua.globals().WowTogetherModuleAPI
@@ -625,6 +645,7 @@ class PackagingBoundaryTests(unittest.TestCase):
         self.assertTrue(checker.violations('local core = ns; core.db = {}'))
         self.assertEqual(checker.violations('local value = ns.ReadPublic(GetTime)'), [])
         self.assertEqual(checker.violations('local scanner = ns.StartFarmCandidateScan'), [])
+        self.assertEqual(checker.violations('local spawnSearch = ns.FarmPriorSpawnSearch'), [])
         self.assertTrue(checker.violations('ns\n  .db = {}'))
         self.assertTrue(checker.violations('local root = _G; root.WowTogetherDB = {}'))
         self.assertTrue(checker.violations('_G.WowTogetherDB = {}'))

@@ -130,6 +130,10 @@ def main():
         'WowTogether_GoldData': ['FarmPriorData.lua', 'GatheringPriorData.lua'],
         'WowTogether_GatheringPositionData': ['GatheringPositionData.lua'],
     }
+    for folder in sorted(ROOT.glob('WowTogether_GoldSpawnData_*')):
+        if not re.fullmatch(r'WowTogether_GoldSpawnData_[1-9][0-9]*', folder.name):
+            raise ValueError('Invalid per-zone farm spawn package name: ' + folder.name)
+        data_packages[folder.name] = toc_sources(folder)
     gold_sources = optional_gold_sources(ROOT)
     if gold_sources is not None:
         data_packages['WowTogether_Gold'] = gold_sources
@@ -202,9 +206,10 @@ Copy the complete WowTogether folder to:
 the live World of Warcraft client’s Interface\\AddOns\\WowTogether\\ directory
 
 Update EVERY party member to {version}, copying the WowTogether folder and
-all three matching WowTogether_*Data folders side by side into AddOns.
+all matching WowTogether_*Data folders side by side into AddOns. Include the
+WowTogether_GoldSpawnData_<mapID> folders for farm routes.
 {gold_install}
-Do not put the data folders inside WowTogether. Keep all three enabled in the
+Do not put the data folders inside WowTogether. Keep the required data addons enabled in the
 addon list; they load only when their data is first needed. Then fully restart the client;
 the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.

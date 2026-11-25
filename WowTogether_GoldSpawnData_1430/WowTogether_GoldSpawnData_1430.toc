@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Gold Spawn Data - 1430
+## Notes: Legacy, unconfirmed spawn points for Deadwind Pass
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+FarmSpawnData.lua

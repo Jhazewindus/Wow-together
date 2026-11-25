@@ -35,11 +35,8 @@ Forever. Players' observations should correct them.
 
 ## Size and loading
 
-At this revision, `FarmPriorData.lua` is 5,370,556 bytes and
-`GatheringPriorData.lua` is 154,143 bytes on disk. Host Lua 5.1 tests observed
-about 10.68 MiB of additional Lua heap after loading the package; this is a
-host estimate, not a WoW client measurement. The 94,950 creature loot rows
-that reach the package currently divide by positive drop chance as follows:
+The source audit found 94,950 creature loot rows. By positive chance they
+divide as follows:
 
 | Chance range | Rows |
 | --- | ---: |
@@ -48,14 +45,28 @@ that reach the package currently divide by positive drop chance as follows:
 | 0.5% to 5% | 11,948 |
 | Over 5% | 8,177 |
 
-Filtering out loot below 0.5% retains 20,125 rows. A host-side regenerated
-payload shrinks `FarmPriorData.lua` to 2,866,553 bytes, saving 2,504,003 bytes
-(2.39 MiB) on disk. The same host load measured 5.22 MiB of Lua heap, saving
-5.46 MiB but remaining above the 4 MiB target. The follow-up should put the
-slim creature/loot index in the always-loaded data and load spawn coordinates
-per zone only when starting a farm; no zone-only search restriction is needed.
+Rows below 0.5% are omitted at import time: 74,825 rows removed and 20,125
+retained. The current `FarmPriorData.lua` index is 1,364,250 bytes; it stores
+creature identity, name, levels, home map, spawn count, loot and skinning
+priors, but no coordinates. Coordinates are split across 38
+`WowTogether_GoldSpawnData_<mapID>` LoadOnDemand addons. Their Lua and TOC
+files total 1,494,006 bytes; the largest zone file is 126,702 bytes. Together
+with the 154,143-byte gathering index and package TOCs, the full Gold data
+set is 3,051,971 bytes (2.91 MiB) on disk. Compared with the unfiltered
+5,370,556-byte creature payload, the trimmed index plus all zone coordinates
+use 2,858,256 bytes, a 2,512,300-byte reduction. These are uncompressed
+source-file byte counts, not archive sizes.
+
+Loading `WowTogether_GoldData` added 2.18 MiB of Lua heap in the host Lua 5.1
+harness after collection; searching the full level range and retaining the
+50-result cap added 0.27 MiB more (2.45 MiB total). This meets the 4 MiB
+index target in the host harness. Loading a selected zone package happens
+only when a player starts a creature farm. These are host estimates, not WoW
+client measurements. The in-game memory report can show each optional data
+addon after it loads.
 
 `tools/import_vanilla_loot.py` is a separate parser for dungeon-loot audit
 pages. It does not produce this package. `tools/gold/priors/build_legacy_priors.py`
 produces the audited JSON inputs from the pinned CMaNGOS dump;
-`tools/gold/priors/build_farm_prior_package.py` produces the two Lua payloads.
+`tools/gold/priors/build_farm_prior_package.py` produces the index, gathering
+payload and per-zone spawn addons.
