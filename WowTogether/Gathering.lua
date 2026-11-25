@@ -30,6 +30,9 @@ local addonName, ns = ...
 -- Nothing here gathers, targets or travels for the player.
 
 local MINING, HERBALISM, SKINNING, FISHING = 186, 182, 393, 356
+local FISHING_POOL_KINDS = {
+    "Floating Debris", "Sagefish School", "Floating Wreckage", "Oily Blackmouth School",
+}
 ns.GATHERING_IDS = {MINING, HERBALISM, SKINNING, FISHING}
 -- How far above its requirement a node turns green.
 local GREEN = {[MINING] = 65, [HERBALISM] = 50}
@@ -323,17 +326,42 @@ function ns.GatheringFarmPoints(profession, nodeName, mapID)
     if not professionType or type(nodeName) ~= "string" or #nodeName < 1 or #nodeName > 100
         or string.find(nodeName, "[%z\1-\31\127]")
         or not ns.GuideInteger(mapID, 1000000) or mapID < 1 then return {} end
-    local result = {}
-    local key = profession == "Fishing" and ("Fishing|" .. mapID)
-        or profession .. "|" .. nodeName .. "|" .. mapID
-    local seeded = ns.gatheringPositionData and ns.gatheringPositionData.records
-        and ns.gatheringPositionData.records[key]
-    for _, point in ipairs(type(seeded) == "table" and seeded.points or {}) do
-        if type(point) == "table" and point.mapID == mapID and ns.ValidTravelPoint(point)
-            and type(point.source) == "string" and #point.source <= 240 then
-            result[#result + 1] = {mapID = mapID, x = point.x, y = point.y, source = point.source}
-            if #result >= 24 then return result end
+    local result, fishingKind = {}, false
+    for _, kind in ipairs(FISHING_POOL_KINDS) do if nodeName == kind then fishingKind = kind; break end end
+    local records = ns.gatheringPositionData and ns.gatheringPositionData.records
+    local function addSeeded(kind)
+        local key = profession .. "|" .. kind .. "|" .. mapID
+        local seeded = records and records[key]
+        for _, point in ipairs(type(seeded) == "table" and seeded.points or {}) do
+            if type(point) == "table" and point.mapID == mapID and ns.ValidTravelPoint(point)
+                and type(point.source) == "string" and #point.source <= 240 then
+                local duplicate = false
+                if profession == "Fishing" and not fishingKind then
+                    for _, existing in ipairs(result) do
+                        if existing.x == point.x and existing.y == point.y then duplicate = true; break end
+                    end
+                end
+                if not duplicate then
+                    result[#result + 1] = {mapID = mapID, x = point.x, y = point.y, source = point.source}
+                    -- Up to eighty, not twenty-four: a loop holds twenty-four, and whoever
+                    -- builds it needs more than that to choose spots that lie together.
+                    if #result >= 80 then return true end
+                end
+            end
         end
+        return false
+    end
+    if profession == "Fishing" then
+        if fishingKind then
+            addSeeded(fishingKind)
+        else
+            for _, kind in ipairs(FISHING_POOL_KINDS) do if addSeeded(kind) then return result end end
+        end
+        -- A typed request must not be broadened by GatherLite's all-fishing
+        -- runtime query. Generic zone requests may still use that fallback.
+        if fishingKind then return result end
+    else
+        addSeeded(nodeName)
     end
     local libStub = type(LibStub) == "function" and ns.ReadPublic(LibStub, "AceAddon-3.0")
     local addon = libStub and type(libStub.GetAddon) == "function"

@@ -1,0 +1,43 @@
+## Interface: 16001
+## Title: Wow Together Gold Spawn Data
+## Notes: Legacy, unconfirmed spawn points for farm loops
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+zones\1411.lua
+zones\1412.lua
+zones\1413.lua
+zones\1416.lua
+zones\1417.lua
+zones\1418.lua
+zones\1419.lua
+zones\1420.lua
+zones\1421.lua
+zones\1422.lua
+zones\1423.lua
+zones\1424.lua
+zones\1425.lua
+zones\1426.lua
+zones\1427.lua
+zones\1428.lua
+zones\1429.lua
+zones\1430.lua
+zones\1431.lua
+zones\1432.lua
+zones\1433.lua
+zones\1434.lua
+zones\1435.lua
+zones\1436.lua
+zones\1437.lua
+zones\1438.lua
+zones\1439.lua
+zones\1440.lua
+zones\1441.lua
+zones\1442.lua
+zones\1443.lua
+zones\1444.lua
+zones\1446.lua
+zones\1447.lua
+zones\1448.lua
+zones\1449.lua
+zones\1451.lua
+zones\1452.lua

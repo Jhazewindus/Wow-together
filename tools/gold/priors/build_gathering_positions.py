@@ -17,8 +17,15 @@ LICENSE = 'All Rights Reserved; redistributed with written permission from the p
 GATHERLITE_COMMIT = '4ace5b625a1ee724ca912262509f641b4f35992a'
 GATHERLITE_REPOSITORY = 'https://github.com/Wuild/GatherLite'
 GATHERLITE_SHA256 = '6bca890f7dbb66117512f68ca4d09d6990bdf48a3d65dc37e302ed262c366f4d'
-FISHING_POOL_IDS = {180655, 180685, 180662, 180901, 180751, 180750,
-    180900, 180682, 180664, 180582, 180656, 180663}
+# GatherLite stores object IDs, not pool labels. Keep the object kind in the
+# exported record so separate routes can be built for schools and wreckage.
+# IDs are mapped to their Classic object names in Wowhead's database.
+FISHING_POOL_IDS = {
+    180655: 'Floating Debris',
+    180656: 'Sagefish School',
+    180685: 'Floating Wreckage',
+    180750: 'Oily Blackmouth School',
+}
 NODE_IDS = {
     'Mining': {
         201: 'Copper Vein', 202: 'Tin Vein', 203: 'Iron Deposit', 204: 'Silver Vein',
@@ -104,10 +111,11 @@ def read_fishing_pools(path: Path):
     source = (f'GatherLite {GATHERLITE_COMMIT[:12]}/plugins/database/data/forever.lua; '
         f'SHA-256 {GATHERLITE_SHA256}; GPL-3.0-or-later; legacy, unconfirmed')
     def save():
-        if object_id not in FISHING_POOL_IDS or not map_id or not coords:
+        node = FISHING_POOL_IDS.get(object_id)
+        if not node or not map_id or not coords:
             return
-        key = f'Fishing|{map_id}'
-        row = records.setdefault(key, {'profession': 'Fishing', 'node': 'fishing pools',
+        key = f'Fishing|{node}|{map_id}'
+        row = records.setdefault(key, {'profession': 'Fishing', 'node': node,
             'mapID': map_id, 'points': [], 'source': source})
         row['points'].extend({'mapID': map_id, 'x': coords[i], 'y': coords[i + 1], 'source': source}
             for i in range(0, len(coords) - 1, 2))

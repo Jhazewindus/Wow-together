@@ -10,6 +10,7 @@ if type(db.gathering) ~= "table" then db.gathering = {} end
 if type(db.farmSession) ~= "table" then db.farmSession = nil end
 
 local LIMIT, MAX_POINTS, GATHER_POINTS_REQUIRED = 50, 24, 3
+local POOL_POINTS = 80      -- how many known spots are handed to the route engine, which keeps the best 24
 local DEFAULT_KILLS_PER_HOUR, DEFAULT_NODES_PER_HOUR = 120, 30
 local candidates, candidateCount, lastError = {}, 0, nil
 local refreshGeneration = 0
@@ -122,7 +123,8 @@ local function copyPoint(point, label, reason)
     return {mapID = point.mapID, x = point.x, y = point.y,
         label = label or point.label or "Farm spot", reason = reason or point.reason or "Sourced or observed farm location."}
 end
-local function routePoints(candidate)
+local function routePoints(candidate, most)
+    most = most or MAX_POINTS
     local result = {}
     local function add(point, label, reason)
         local item = copyPoint(point, label, reason)
@@ -130,7 +132,7 @@ local function routePoints(candidate)
         for _, existing in ipairs(result) do
             if existing.mapID == item.mapID and math.abs(existing.x - item.x) < 0.001 and math.abs(existing.y - item.y) < 0.001 then return end
         end
-        if #result < MAX_POINTS then result[#result + 1] = item end
+        if #result < most then result[#result + 1] = item end
     end
     for _, point in ipairs(candidate.points or {}) do
         add(point, point.label or candidate.name, point.reason or candidate.pointSource)
@@ -312,6 +314,94 @@ local function gatheringYield(item, mapID, profession, sourceKind)
     if not seededYield or not seededChance then return nil end
     return seededYield, seededChance, "seeded " .. tostring(item.source or "yield source")
 end
+-- How long a spot takes to come back, and how long a stop takes to work.
+--
+-- The route engine sizes a loop to these: enough stops that the first is
+-- back by the time the player returns to it, and no more. The figures here
+-- are ASSUMPTIONS, from how the base game behaves, and are shown as such:
+--   veins and herbs   back in about 6 minutes; 8 and 5 seconds to gather
+--   fishing pools     back in about 6 minutes; 75 seconds (about four casts)
+--   creatures         back in about 5 minutes; 25 seconds to kill and loot
+-- They are corrected by play. While a loop runs, each stop the player
+-- reaches is counted, and so is whether anything was harvested since the
+-- stop before. After twenty stops the respawn figure for that farm is moved:
+-- up when fewer than three stops in four had something (the loop was too
+-- short), down when nearly all did (it could be shorter). It stays between
+-- half and three times the assumption.
+local LOOP_TIMINGS = {Mining = {360, 8}, Herbalism = {360, 5}, Fishing = {360, 75}, Killing = {300, 25}}
+if type(db.loopStats) ~= "table" then db.loopStats = {} end
+
+local function loopKind(candidate)
+    return candidate.kind == "gathering" and candidate.profession or "Killing"
+end
+
+-- respawn seconds, seconds per stop, and where the respawn figure came from.
+function farms.LoopTiming(candidate)
+    local timing = LOOP_TIMINGS[loopKind(candidate)] or LOOP_TIMINGS.Killing
+    local stats = type(db.loopStats) == "table" and db.loopStats[candidate.id]
+    if type(stats) == "table" and finite(stats.respawn) and stats.respawn > 0 then
+        return stats.respawn, timing[2], string.format("from your laps: something at %d%% of stops", (stats.lastRate or 0) * 100 + 0.5), true
+    end
+    return timing[1], timing[2], "assumed", false
+end
+
+-- Counts the stops reached while a farm's loop runs, and how many of them had
+-- something since the stop before.
+local function watchArrivals(candidate)
+    if type(db.loopStats) ~= "table" then db.loopStats = {} end
+    local stats = db.loopStats[candidate.id]
+    if type(stats) ~= "table" then stats = {visited = 0, hits = 0}; db.loopStats[candidate.id] = stats end
+    stats.visited, stats.hits = finite(stats.visited) and stats.visited or 0, finite(stats.hits) and stats.hits or 0
+    local function harvested()
+        local tracker = namespace.GoldTracker
+        return tracker and type(tracker.HarvestTotal) == "function" and tracker.HarvestTotal() or 0
+    end
+    local last = harvested()
+    return function()
+        local total = harvested()
+        if total < last then last = 0 end                -- A new session began: the count started again.
+        stats.visited = stats.visited + 1
+        if total > last then stats.hits = stats.hits + 1 end
+        last = total
+    end
+end
+
+-- After a run of at least twenty stops, move the farm's respawn figure.
+local function settleLoopStats(candidate)
+    local stats = type(db.loopStats) == "table" and db.loopStats[candidate.id]
+    if type(stats) ~= "table" or not finite(stats.visited) or stats.visited < 20 then return end
+    local base = (LOOP_TIMINGS[loopKind(candidate)] or LOOP_TIMINGS.Killing)[1]
+    local rate = stats.hits / stats.visited
+    local factor = rate < 0.5 and 1.5 or (rate < 0.75 and 1.25 or (rate > 0.95 and 0.85 or 1))
+    local current = finite(stats.respawn) and stats.respawn > 0 and stats.respawn or base
+    stats.respawn = math.max(base * 0.5, math.min(base * 3, current * factor))
+    stats.lastRate, stats.visited, stats.hits = rate, 0, 0
+    candidate.loopPlan = nil                             -- The lap shown for this farm is worked out again.
+end
+farms.SettleLoopStats = settleLoopStats
+
+-- How many harvests an hour a gathering farm is costed at.
+--
+-- Everything was costed at thirty an hour, "one every two minutes". That is
+-- fair for walking between veins. It is five times too slow for fishing,
+-- where a cast lands a catch every twenty-odd seconds: every fishing zone
+-- came out at about four silver an hour while the owner was measuring eighty.
+-- So: fishing is assumed at 150 an hour, and in every case the player's own
+-- measured pace for that kind of gathering comes first when they have one.
+local ASSUMED_PACE = {Fishing = {150, "150 catches/hour assumed (one every 24 seconds)"}}
+local function gatheringPace(profession)
+    local tracker = namespace.GoldTracker
+    if tracker and type(tracker.KindPace) == "function" then
+        local own, minutes = tracker.KindPace(profession)
+        if finite(own) and own > 0 then
+            return own, string.format("%d an hour: your own pace over %d min of %s", own + 0.5, minutes or 0, string.lower(profession)), false
+        end
+    end
+    local assumed = ASSUMED_PACE[profession]
+    if assumed then return assumed[1], assumed[2], true end
+    return DEFAULT_NODES_PER_HOUR, DEFAULT_NODES_PER_HOUR .. " harvests/hour assumed (one every 2 minutes)", true
+end
+
 local function makeGathering(row, zone)
     local sourceKind = zone.sourceKind or zone.waterKind or row.sourceKind or row.waterKind
     if row.profession == "Mining" or row.profession == "Herbalism" then sourceKind = "gather-node" end
@@ -329,23 +419,42 @@ local function makeGathering(row, zone)
         end
     end
     if not hasData then return nil end
-    local candidatesPerHour, rateBasis = DEFAULT_NODES_PER_HOUR, DEFAULT_NODES_PER_HOUR .. " harvests/hour assumed (one every 2 minutes)"
+    local candidatesPerHour, rateBasis, paceAssumed = gatheringPace(row.profession)
     local localSamples = 0
     local learned = sourceKind and db.gathering[row.profession .. ":" .. zone.mapID .. ":" .. sourceKind]
     localSamples = learned and #learned.points or 0
     if learned and learned.harvestsPerHour and learned.harvestSample >= 3 then
         candidatesPerHour = learned.harvestsPerHour
         rateBasis = string.format("%g harvests/hour from %d observed intervals", candidatesPerHour, learned.harvestSample)
+        paceAssumed = false
     end
-    -- Third-party seed coordinates can help identify known zones, but a
-    -- gathering loop is offered only after this character has observed enough
-    -- real node/catch positions in play.
-    local points = {}
+    -- The route. Spots this character has actually harvested at come first;
+    -- the known positions that ship with the addon (GatherMate2_Data,
+    -- GatherLite) fill the rest. Those are legacy and unconfirmed, and are
+    -- labelled so, but a loop round sixty known pools today is worth more
+    -- than no loop until the player has found them all by hand. This
+    -- reverses the earlier rule that seed coordinates were never routed.
+    local points, known = {}, {}
+    -- Where the tracker has seen this player harvest, most-used spots first.
+    local trackerPart = namespace.GoldTracker
+    for _, point in ipairs(trackerPart and type(trackerPart.Spots) == "function" and trackerPart.Spots(row.profession, zone.mapID) or {}) do
+        if #points < POOL_POINTS then points[#points + 1] = {mapID = point.mapID, x = point.x, y = point.y} end
+    end
+    for _, point in ipairs(learned and type(learned.points) == "table" and learned.points or {}) do
+        if #points < POOL_POINTS then points[#points + 1] = point end
+    end
+    local observedPoints = #points
+    for _, point in ipairs(type(zone.points) == "table" and zone.points or {}) do known[#known + 1] = point end
+    for _, point in ipairs(known) do
+        if #points < MAX_POINTS then points[#points + 1] = point end      -- A first twenty-four, to count and to show; Start picks the best.
+    end
     local zoneName = zone.name or ("Map " .. zone.mapID)
     local nodeKey = string.gsub(row.node, "[^%w:_%-]", "_")
     return {kind = "gathering", id = "gather:" .. row.professionID .. ":" .. zone.mapID .. ":" .. nodeKey,
         name = row.node, profession = row.profession, professionID = row.professionID,
         zone = zoneName, mapID = zone.mapID, estimate = expected * candidatesPerHour,
+        pace = candidatesPerHour, paceAssumed = paceAssumed, rateBasis = rateBasis,
+        knownPoints = known, observedPoints = observedPoints, seededRoute = #known > 0 and observedPoints < GATHER_POINTS_REQUIRED,
         basis = rateBasis .. "; " .. table.concat(basis, "; "), points = points,
         pointSource = zone.pointsSource or row.pointsSource or "No coordinates supplied", sourceKind = sourceKind,
         loot = row.loot, source = "gathering data", sample = localSamples}
@@ -417,8 +526,18 @@ if type(ns.On) == "function" then
     ns.On("ZONE_CHANGED_NEW_AREA", farms.RefreshSearches)
 end
 local function beginSession(candidate, start)
-    activeSession = {id = candidate.id, label = candidate.name .. " in " .. candidate.zone,
-        estimate = candidate.estimate, estimateBasis = candidate.basis,
+    -- The session card takes a label and a basis of at most a hundred
+    -- characters each. A gathering farm's full basis lists every item with
+    -- its sources and runs to several hundred, so the card refused it
+    -- ("Invalid farm-session data") and no gathering session ever began.
+    -- The card gets the pace sentence; the full working stays in the tooltip.
+    local title = candidate.profession == "Fishing" and "Fishing" or candidate.name
+    local short = candidate.rateBasis or candidate.basis or "Farm data"
+    if #short > 100 then short = string.sub(short, 1, 97) .. "..." end
+    local label = title .. " in " .. candidate.zone
+    if #label > 100 then label = string.sub(label, 1, 97) .. "..." end
+    activeSession = {id = candidate.id, label = label,
+        estimate = candidate.estimate, estimateBasis = short,
         startTime = start, copper = 0, items = 0, unpriced = 0, elapsed = 0,
         candidate = candidate, priceSources = {}}
     db.farmSession = {id = candidate.id, label = activeSession.label, estimate = activeSession.estimate,
@@ -448,14 +567,27 @@ function farms.Start(key)
         if activeSession and activeSession.id == key then farms.Stop(reason) end
     end
     if candidate.kind == "gathering" then
-        local pointRows = routePoints(candidate)
+        -- Every spot known for the zone goes to the route engine, which keeps
+        -- the ones that make the shortest loop. The player's own observed
+        -- spots are first in the list.
+        if type(candidate.knownPoints) == "table" and #candidate.knownPoints > 0 and not candidate.pooled then
+            local pool = {}
+            for index = 1, math.min(candidate.observedPoints or 0, #candidate.points) do pool[#pool + 1] = candidate.points[index] end
+            for _, point in ipairs(candidate.knownPoints) do pool[#pool + 1] = point end
+            candidate.points = pool
+            candidate.pooled = true
+        end
+        local pointRows = routePoints(candidate, POOL_POINTS)
         if #pointRows >= GATHER_POINTS_REQUIRED then
             pendingSession = {id = key, candidate = candidate, start = start}
+            local respawn, harvestSeconds = farms.LoopTiming(candidate)
             local ok, reason = ns.StartModuleLoop("Gold", {title = candidate.name .. " in " .. candidate.zone,
-                points = pointRows, onStop = stopThis, onStart = function() beginSession(candidate, now() or start); pendingSession = nil end})
+                points = pointRows, onStop = stopThis, onStart = function() beginSession(candidate, now() or start); pendingSession = nil end,
+                respawn = respawn, harvestSeconds = harvestSeconds, onArrive = watchArrivals(candidate)})
             if not ok then pendingSession = nil; ns.Print("Gold: " .. tostring(reason)); return false end
+            return true
         else
-            ns.Print("Gold: gathering session started in " .. candidate.zone .. "; follow the zone suggestion and keep moving between nodes.")
+            -- The Gold page says, on screen, that this farm has no route and what to do.
             return beginSession(candidate, start)
         end
     else
@@ -473,9 +605,11 @@ function farms.Start(key)
                 beginSession(candidate, start)
                 return
             end
+            local respawn, harvestSeconds = farms.LoopTiming(candidate)
             local ok, reason = ns.StartModuleLoop("Gold", {title = candidate.name .. " — " .. candidate.zone,
                 points = pointRows, onStop = stopThis,
-                onStart = function() beginSession(candidate, now() or start); pendingSession = nil end})
+                onStart = function() beginSession(candidate, now() or start); pendingSession = nil end,
+                respawn = respawn, harvestSeconds = harvestSeconds, onArrive = watchArrivals(candidate)})
             if not ok then pendingSession = nil; ns.Print("Gold: " .. tostring(reason)) end
         end
         local accepted, reason = ns.FarmPriorSpawnSearch(candidate.npcID, candidate.mapID, startWithPoints)
@@ -487,6 +621,7 @@ end
 function farms.Stop(reason)
     if not activeSession then return false end
     activeSession.stopReason = safeText(reason, 120) and reason or "stopped"
+    if activeSession.candidate then settleLoopStats(activeSession.candidate) end
     db.farmSession, pendingSession = nil, nil
     activeSession = nil
     if type(ns.SetFarmSession) == "function" then ns.SetFarmSession("Gold", nil) end
@@ -495,6 +630,29 @@ function farms.Stop(reason)
 end
 -- What the farm tracker shows beside its own figures: the suggested farm in
 -- progress and what it was estimated to pay.
+-- How long a farm's loop is, for showing before it is started: stops, the
+-- spots it was chosen from, and the lap on foot. Nil when the farm has no
+-- positions loaded (a creature farm loads its spawn points when started).
+function farms.LoopPlan(key)
+    local candidate
+    for _, row in ipairs(candidates) do if row.id == key then candidate = row; break end end
+    if not candidate or type(ns.PlanLoop) ~= "function" then return nil end
+    if candidate.loopPlan ~= nil then return candidate.loopPlan or nil end
+    local pool = {}
+    for index = 1, math.min(candidate.observedPoints or 0, #(candidate.points or {})) do pool[#pool + 1] = candidate.points[index] end
+    for _, point in ipairs(type(candidate.knownPoints) == "table" and candidate.knownPoints or {}) do pool[#pool + 1] = point end
+    if #pool == 0 then for _, point in ipairs(candidate.points or {}) do pool[#pool + 1] = point end end
+    local spots = {}
+    for _, point in ipairs(pool) do
+        if #spots < POOL_POINTS and type(point) == "table" then spots[#spots + 1] = {mapID = point.mapID, x = point.x, y = point.y} end
+    end
+    local respawn, harvestSeconds, note, learned = farms.LoopTiming(candidate)
+    local plan = #spots >= GATHER_POINTS_REQUIRED and ns.PlanLoop(spots, {from = false, respawn = respawn, harvestSeconds = harvestSeconds}) or nil
+    candidate.loopPlan = plan and {stops = plan.stops, available = plan.available, seconds = plan.seconds, yards = plan.yards,
+        lapSeconds = plan.lapSeconds, respawn = respawn, respawnNote = note, respawnLearned = learned, short = plan.short} or false
+    return candidate.loopPlan or nil
+end
+
 function farms.ActiveSession()
     if not activeSession then return nil end
     return {label = activeSession.label, estimate = activeSession.estimate, estimateBasis = activeSession.estimateBasis}
@@ -507,9 +665,12 @@ local function paceOf(row)
         local rate, basis = mobPace(row.npcID)
         return rate, string.find(basis, "assumed", 1, true) ~= nil, "kills"
     end
+    local unit = row.profession == "Fishing" and "catches" or "harvests"
+    if row.pace then return row.pace, row.paceAssumed == true, unit end
     local learned = row.sourceKind and db.gathering[row.profession .. ":" .. row.mapID .. ":" .. row.sourceKind]
-    if learned and learned.harvestsPerHour and (learned.harvestSample or 0) >= 3 then return learned.harvestsPerHour, false, "harvests" end
-    return DEFAULT_NODES_PER_HOUR, true, "harvests"
+    if learned and learned.harvestsPerHour and (learned.harvestSample or 0) >= 3 then return learned.harvestsPerHour, false, unit end
+    local rate, _, assumed = gatheringPace(row.profession)
+    return rate, assumed, unit
 end
 
 -- What a farm's estimate is made of, item by item: the chance, the count and
@@ -526,7 +687,7 @@ local function breakdown(row)
             local worth = each * yield * chance
             total = total + worth
             items[#items + 1] = {itemID = item.itemID, chance = chance, yield = yield, each = unitPrice,
-                auction = source == "core auction quote", worth = worth}
+                auction = source ~= nil and source ~= "vendor", worth = worth}
         end
     end
     table.sort(items, function(a, b)
@@ -565,8 +726,9 @@ function farms.Suggestions(limit, category)
         if (category == nil or categoryOf(row) == category) and #list < (limit or 3) then
             local items, total = breakdown(row)
             local rate, assumed, unit = paceOf(row)
-            local top, auction, vendor = {}, 0, 0
+            local top, auction, vendor, chanceCoverage = {}, 0, 0, 0
             for index, item in ipairs(items) do
+                chanceCoverage = chanceCoverage + item.chance
                 if item.each then if item.auction then auction = auction + 1 else vendor = vendor + 1 end end
                 if index <= 4 and item.worth > 0 then
                     top[#top + 1] = {itemID = item.itemID, chance = item.chance, each = item.each, auction = item.auction,
@@ -576,9 +738,11 @@ function farms.Suggestions(limit, category)
             list[#list + 1] = {key = row.id, name = row.name, zone = row.zone, kind = row.kind, profession = row.profession,
                 category = categoryOf(row),
                 estimate = row.estimate, routable = (row.spawnPointCount or 0) >= 3 or #routePoints(row) >= 3,
+                seededRoute = row.seededRoute == true, knownSpots = type(row.knownPoints) == "table" and #row.knownPoints or nil,
+                ownSpots = row.observedPoints,
                 active = activeSession ~= nil and activeSession.id == row.id,
                 pace = rate, paceAssumed = assumed, paceUnit = unit, measured = (row.sample or 0) > 0 or not assumed,
-                top = top, others = math.max(0, #items - #top), auctionPriced = auction, vendorPriced = vendor}
+                top = top, chanceCoverage = chanceCoverage, others = math.max(0, #items - #top), auctionPriced = auction, vendorPriced = vendor}
         end
     end
     return list, lastError
@@ -643,7 +807,7 @@ end
 if type(ns.PublishGoldFunction) == "function" then
     ns.PublishGoldFunction("Price", function(itemID)
         local quote = prices and prices.Price and prices.Price(itemID)
-        if quote then return quote.copper, quote.source == "core auction quote" end
+        if quote then return quote.copper, quote.source ~= "vendor" end
     end)
 end
 farms.RefreshSearches()

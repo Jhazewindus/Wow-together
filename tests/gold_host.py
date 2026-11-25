@@ -39,10 +39,17 @@ ITEMS = r"""
 
 
 def load_gold(client, saved=None):
-    """Runs the gold package's files in its TOC order and returns its private table."""
+    """Loads the gold package the way the game does and returns its private table.
+
+    The order matters and is the game's: the package's files run first, with
+    its saved variable not yet set; then the saved data appears in the global;
+    then ADDON_LOADED fires. An earlier version of this helper set the saved
+    data before running the files, which hid a bug that lost everything the
+    package recorded on every reload.
+    """
     lua = client.lua
     lua.execute(ITEMS)
-    lua.globals().WowTogetherGoldDB = lua.table_from(saved, recursive=True) if saved is not None else None
+    lua.globals().WowTogetherGoldDB = None
     namespace = lua.table()
     folder = os.path.join(ROOT, 'WowTogether_Gold')
     load = lua.eval('function(source, name, addon, namespace) local chunk, problem = loadstring(source, name); '
@@ -51,8 +58,22 @@ def load_gold(client, saved=None):
         line = line.strip()
         if line.endswith('.lua'):
             load(open(os.path.join(folder, line), encoding='utf-8').read(), line, 'WowTogether_Gold', namespace)
+    if saved is not None:
+        lua.globals().WowTogetherGoldDB = lua.table_from(saved, recursive=True)
+    client.ns.frame.OnEvent(client.ns.frame, 'ADDON_LOADED', 'WowTogether_Gold')
     lua.globals().goldSpace = namespace
     return namespace
+
+
+def saved_data(client):
+    """What the game would write to disk at logout: a plain copy of the saved variable."""
+    client.ns.frame.OnEvent(client.ns.frame, 'PLAYER_LOGOUT')
+
+    def plain(value):
+        if hasattr(value, 'items') and not isinstance(value, (str, bytes)):
+            return {key: plain(item) for key, item in value.items()}
+        return value
+    return plain(client.lua.globals().WowTogetherGoldDB)
 
 
 def item_link(client, item):

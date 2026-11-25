@@ -1,6 +1,0 @@
-## Interface: 16001
-## Title: Wow Together Gold Spawn Data - 1442
-## Notes: Legacy, unconfirmed spawn points for Stonetalon Mountains
-## LoadOnDemand: 1
-## Dependencies: WowTogether
-FarmSpawnData.lua
