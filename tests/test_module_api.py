@@ -71,7 +71,10 @@ class ModuleAPITests(unittest.TestCase):
                     'PublishGoldFunction',
                     'AuctionQuote', 'FarmPriorSearch', 'StartModuleLoop', 'StopModuleLoop',
                     'SetFarmSession', 'RequestFarmSessionRefresh', 'GatheringFarmSearch',
-                    'RegisterGatheringObserver'}
+                    'RegisterGatheringObserver', 'UIPanel', 'UILabel', 'UIButton',
+                    'UIButtonTone', 'UIClose', 'UIHelp', 'UIDivider', 'UIColors',
+                    'AuctionHouseVisible', 'AuctionHouseAnchor', 'RouteInCombat', 'After',
+                    'OpenModulePage'}
         self.assertEqual({key for key, _ in api.items()}, expected)
         self.assertEqual(api.version, 2)
         self.assertEqual(self.ns.GoldAPIVersion, 2)
@@ -225,7 +228,8 @@ class ModuleAPITests(unittest.TestCase):
         self.ns.RegisterModule('Gold', self.lua.table())
         self.lua.execute('''
             local ns=...
-            ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.routeSelection=nil
+            ns.TravelPointDistance=function() return 7 end
             ns.RouteInCombat=function() return false end
             ns.DrawRoute=function() end
             ns.AttachRouteProvider=function() end
@@ -251,7 +255,8 @@ class ModuleAPITests(unittest.TestCase):
         self.ns.RegisterModule('Gold', self.lua.table())
         self.lua.execute('''
             local ns=...
-            ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.routeSelection=nil
+            ns.TravelPointDistance=function() return 7 end
             ns.RouteInCombat=function() return false end
             ns.DrawRoute=function() end; ns.AttachRouteProvider=function() end
             ns.OpenGuideWindow=function() end
@@ -284,6 +289,7 @@ class ModuleAPITests(unittest.TestCase):
         self.lua.execute('''
             local ns=...
             ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.TravelPointDistance=function() return 7 end
             ns.RouteInCombat=function() return false end
             ns.DrawRoute=function() end; ns.AttachRouteProvider=function() end
             ns.OpenGuideWindow=function() end
@@ -317,6 +323,7 @@ class ModuleAPITests(unittest.TestCase):
         self.lua.execute('''
             local ns=...
             ns.FindTravelPath=function(a,b) return {seconds=1,legs={{method="walk"}}} end
+            ns.TravelPointDistance=function() return 7 end
             inCombat=false
             ns.RouteInCombat=function() return inCombat end
             ns.DrawRoute=function() end; ns.AttachRouteProvider=function() end
@@ -529,24 +536,22 @@ class ModuleAPITests(unittest.TestCase):
         with self.assertRaises(Exception):
             self.ns.RegisterModule('gold', self.lua.table())
 
-    def test_trail_loop_uses_optimal_closed_walk_and_rejects_nonwalk(self):
+    def test_trail_loop_uses_estimated_closed_distance_without_searching_paths(self):
         self.lua.execute('''
             local ns = ...
             local cost={{0,1,10,1},{1,0,1,10},{10,1,0,1},{1,10,1,0}}
-            ns.FindTravelPath=function(a,b,flights)
-                assert(flights==false)
-                return {seconds=cost[a.id][b.id], legs={{method="walk"}}}
+            ns.TravelPointDistance=function(a,b)
+                return cost[a.id][b.id] * 7
             end
+            ns.FindTravelPath=function() error("loop must not search paths") end
         ''', self.ns)
         points = self.lua.table_from([{'id': i, 'mapID': 1, 'x': i / 10, 'y': .5}
                                       for i in range(1, 5)], recursive=True)
         loop = self.ns.TrailLoop(points)
         self.assertEqual(loop.seconds, 4)
         self.assertEqual(len(loop.legs), 4)
+        self.assertTrue(loop.legs[1].estimated)
         self.assertEqual(loop.points[1].id, loop.points[5].id)
-        self.lua.execute('''local ns=...; ns.FindTravelPath=function()
-            return {seconds=1,legs={{method="taxi"}}} end''', self.ns)
-        self.assertIsNone(self.ns.TrailLoop(points))
 
     def test_farm_stop_appears_on_route_and_clears(self):
         self.ns.RegisterModule('Gold', self.lua.table())

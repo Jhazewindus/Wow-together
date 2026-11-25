@@ -25,12 +25,19 @@ local function command(text)
         local prices = namespace.GoldPrices
         if prices and prices.Command then return prices.Command(rest) end
         ns.Print("Gold prices are unavailable.")
+    elseif action == nil or action == "" or action == "track" or action == "tracker" then
+        local tracker = namespace.GoldTracker
+        if tracker then tracker.Command(action == "track" or action == "tracker" and rest or rest or "")
+        else ns.Print("The farm tracker is unavailable.") end
+    elseif action == "reset" or action == "pause" or action == "start" or action == "resume" or action == "scan" then
+        local tracker = namespace.GoldTracker
+        if tracker then tracker.Command(action) else ns.Print("The farm tracker is unavailable.") end
     elseif action == "stop" then
         local farms = namespace.GoldFarms
         if farms and farms.Stop then farms.Stop("stopped by player")
         else ns.Print("Gold session unavailable.") end
     else
-        ns.Print("Gold farms are in the Wow Together Play page. Use /wt gold prices for sources or /wt gold stop to end a session.")
+        ns.Print("Gold is in the main window: press Gold on the left. The farm tracker and the price scan open from there.")
     end
 end
 
@@ -43,6 +50,8 @@ local function probe(output)
     if observations and observations.Probe then observations.Probe(output) end
     local farms = namespace.GoldFarms
     if farms and farms.Probe then farms.Probe(output) end
+    local tracker = namespace.GoldTracker
+    if tracker and tracker.Probe then tracker.Probe(output) end
 end
 
 ns.RegisterModule("Gold", {
@@ -54,6 +63,12 @@ ns.RegisterModule("Gold", {
         entries = {
             {key = "gold.recordLoot", label = "Record loot and gathering",
                 help = "Save observations from your own play for future farming suggestions.", default = true},
+            {key = "gold.trackerAutoStart", label = "Start the farm tracker with the first loot",
+                help = "The farm session clock starts by itself when you loot something. Off: press Start in the tracker.", default = true},
+            {key = "gold.trackerWithFarm", label = "Show the farm tracker when I start a farm",
+                help = "Starting a suggested farm puts the farm session window on screen.", default = true},
+            {key = "gold.scanAtAuction", label = "Offer a price scan at the auction house",
+                help = "Open the price scan when you visit an auction house with farmed items to price. Nothing is bought or sold.", default = true},
             {key = "gold.shareObservations", label = "Share Gold observations with party",
                 help = "Share measured farming facts with party members running Wow Together Gold.", default = true},
         },

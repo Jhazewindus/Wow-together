@@ -169,7 +169,9 @@ class DungeonViewerTests(unittest.TestCase):
     def test_dungeon_buttons_pool_correctly_and_no_route_is_started_by_card_click(self):
         c=self.client();c.ns.SetFilter('dungeons');card=c.ns.ui.cards[1]
         self.assertIsNone(card.dungeonButton);self.assertTrue(card.detailsButton.IsShown(card.detailsButton));self.assertEqual(card.detailsButton.caption.text, 'Follow');self.assertFalse(card.mapButton.IsShown(card.mapButton))
-        before=c.ns.routeSelection;card.OnClick();self.assertEqual(before,c.ns.routeSelection);self.assertTrue(c.ns.dungeonViewer)
+        before=c.ns.routeSelection;card.OnClick();self.assertEqual(before,c.ns.routeSelection)
+        self.assertTrue(c.ns.instancePage.IsShown(c.ns.instancePage))
+        self.assertEqual(c.ns.instancePage.collect.caption.text, 'Start quest route')
         c.ns.SetFilter('library');self.assertIsNone(card.dungeonButton);self.assertEqual('BOTTOMRIGHT',card.detailsButton.point[1]);self.assertEqual(c.ns.ui.contentWidth,card.width)
 
 if __name__=='__main__':unittest.main()

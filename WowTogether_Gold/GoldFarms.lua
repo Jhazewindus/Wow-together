@@ -276,11 +276,24 @@ local function makeMob(record)
     local expectedPerKill, lootBasis = estimateLoot(record.loot)
     if not expectedPerKill or not positive(record.npcID) then return nil end
     local kills, paceBasis = mobPace(record.npcID)
+    -- An assumed pace cannot outrun the spawns: a creature that stands in one
+    -- place gives one kill per respawn, not one every thirty seconds. Without
+    -- this a single named guard with a sure drop tops every list. Six minutes
+    -- per spawn point is assumed; the player's own measured pace is not capped.
+    local spawns = type(record.spawnPoints) == "table" and #record.spawnPoints or 0
+    if string.find(paceBasis, "assumed", 1, true) then
+        local cap = math.max(1, spawns) * 10
+        if kills > cap then
+            kills = cap
+            paceBasis = cap .. " kills/hour assumed (" .. math.max(1, spawns) .. " spawn point" .. (spawns == 1 and "" or "s") .. ", one kill each per six minutes)"
+        end
+    end
     local copperPerHour = expectedPerKill * kills
     local name = safeText(record.name, 100) and record.name or ("NPC " .. record.npcID)
     local candidate = {kind = "mob", id = "mob:" .. record.npcID .. ":" .. record.mapID, name = name,
         zone = record.zoneName or record.zone or "Unknown zone", mapID = record.mapID,
-        npcID = record.npcID, estimate = copperPerHour, expectedPerKill = expectedPerKill,
+        npcID = record.npcID, estimate = copperPerHour, expectedPerKill = expectedPerKill, pace = kills,
+        paceAssumed = string.find(paceBasis, "assumed", 1, true) ~= nil,
         basis = "Legacy, unconfirmed; " .. paceBasis .. "; " .. lootBasis .. "; data: " .. cleanSource(record, "loot"),
         points = record.spawnPoints or {}, pointSource = cleanSource(record, "spawnPoints"),
         loot = record.loot, source = "farm prior", sample = 0}
@@ -461,12 +474,150 @@ function farms.Stop(reason)
     if type(ns.StopModuleLoop) == "function" then ns.StopModuleLoop("Gold") end
     return true
 end
+-- What the farm tracker shows beside its own figures: the suggested farm in
+-- progress and what it was estimated to pay.
+function farms.ActiveSession()
+    if not activeSession then return nil end
+    return {label = activeSession.label, estimate = activeSession.estimate, estimateBasis = activeSession.estimateBasis}
+end
+-- How often a farm pays out: kills or harvests an hour, and whether that is
+-- the player's own measured pace or an assumption.
+local function paceOf(row)
+    if row.kind == "mob" then
+        if row.pace then return row.pace, row.paceAssumed == true, "kills" end
+        local rate, basis = mobPace(row.npcID)
+        return rate, string.find(basis, "assumed", 1, true) ~= nil, "kills"
+    end
+    local learned = row.sourceKind and db.gathering[row.profession .. ":" .. row.mapID .. ":" .. row.sourceKind]
+    if learned and learned.harvestsPerHour and (learned.harvestSample or 0) >= 3 then return learned.harvestsPerHour, false, "harvests" end
+    return DEFAULT_NODES_PER_HOUR, true, "harvests"
+end
+
+-- What a farm's estimate is made of, item by item: the chance, the count and
+-- the price of each, biggest earner first.
+local function breakdown(row)
+    local items, total = {}, 0
+    for _, item in ipairs(row.loot or {}) do
+        local unitPrice, source = itemPrice(item.itemID)
+        local yield, chance
+        if row.kind == "mob" then yield, chance = quantityValue(item), chanceValue(item)
+        else yield, chance = gatheringYield(item, row.mapID, row.profession, row.sourceKind) end
+        if yield and chance then
+            local each = unitPrice or 0
+            local worth = each * yield * chance
+            total = total + worth
+            items[#items + 1] = {itemID = item.itemID, chance = chance, yield = yield, each = unitPrice,
+                auction = source == "core auction quote", worth = worth}
+        end
+    end
+    table.sort(items, function(a, b)
+        if a.worth ~= b.worth then return a.worth > b.worth end
+        return a.itemID < b.itemID
+    end)
+    return items, total
+end
+
+-- The best suggestions, for the gold page: one per creature or node (the
+-- data lists some in several zones), each with what its estimate rests on.
+-- The kinds of farm, in the order they are offered: killing first, then the
+-- gathering professions.
+farms.CATEGORIES = {"Killing", "Mining", "Herbalism", "Skinning", "Fishing"}
+local function categoryOf(row)
+    if row.kind == "mob" then return "Killing" end
+    return row.profession
+end
+
+-- How many different farms there are of each kind.
+function farms.Categories()
+    local counts, seen = {}, {}
+    for _, name in ipairs(farms.CATEGORIES) do counts[name] = 0 end
+    for _, row in ipairs(candidates) do
+        local category = categoryOf(row)
+        local key = tostring(category) .. "\0" .. tostring(row.name)
+        if category and counts[category] and not seen[key] then seen[key] = true; counts[category] = counts[category] + 1 end
+    end
+    return counts
+end
+
+-- `category` narrows the list to one kind ("Killing", "Mining", ...); nil is the best of everything.
+function farms.Suggestions(limit, category)
+    -- The data places a creature in every zone its spawn points touch, so one
+    -- that lives on a border is listed two or three times. Its home is the
+    -- zone with the most of its spawn points.
+    local home, pool = {}, {}
+    for _, row in ipairs(candidates) do
+        if category == nil or categoryOf(row) == category then pool[#pool + 1] = row end
+    end
+    for _, row in ipairs(pool) do
+        local known = home[row.name]
+        local points = type(row.points) == "table" and #row.points or 0
+        if not known or points > known.points or (points == known.points and row.estimate > known.row.estimate) then
+            home[row.name] = {row = row, points = points}
+        end
+    end
+    local list, taken = {}, {}
+    for _, row in ipairs(pool) do
+        if #list >= (limit or 3) then break end
+        if not taken[row.name] and home[row.name].row == row then
+            taken[row.name] = true
+            local items, total = breakdown(row)
+            local rate, assumed, unit = paceOf(row)
+            local top, auction, vendor = {}, 0, 0
+            for index, item in ipairs(items) do
+                if item.each then if item.auction then auction = auction + 1 else vendor = vendor + 1 end end
+                if index <= 4 and item.worth > 0 then
+                    top[#top + 1] = {itemID = item.itemID, chance = item.chance, each = item.each, auction = item.auction,
+                        share = total > 0 and item.worth / total or 0}
+                end
+            end
+            list[#list + 1] = {key = row.id, name = row.name, zone = row.zone, kind = row.kind, profession = row.profession,
+                category = categoryOf(row),
+                estimate = row.estimate, routable = #routePoints(row) >= 3,
+                active = activeSession ~= nil and activeSession.id == row.id,
+                pace = rate, paceAssumed = assumed, paceUnit = unit, measured = (row.sample or 0) > 0 or not assumed,
+                top = top, others = math.max(0, #items - #top), auctionPriced = auction, vendorPriced = vendor}
+        end
+    end
+    return list, lastError
+end
+
+-- The items whose price decides which farm is best: what the farms near the
+-- player drop, weighted by how much of it an hour of farming would bring.
+-- Rare world drops (a fiftieth of a percent each) are left out: they do not
+-- move an estimate and there are hundreds of them.
+function farms.ScanItems(limit)
+    local weight = {}
+    for _, row in ipairs(candidates) do
+        local rate = paceOf(row)
+        for _, item in ipairs((breakdown(row))) do
+            local perHour = item.chance * item.yield * rate
+            if perHour >= 0.5 and (not weight[item.itemID] or perHour > weight[item.itemID]) then weight[item.itemID] = perHour end
+        end
+    end
+    local ids = {}
+    for itemID in pairs(weight) do ids[#ids + 1] = itemID end
+    table.sort(ids, function(a, b)
+        if weight[a] ~= weight[b] then return weight[a] > weight[b] end
+        return a < b
+    end)
+    while #ids > (limit or 300) do table.remove(ids) end
+    return ids
+end
+
+-- Re-rank after new prices came in.
+function farms.PricesChanged() farms.RefreshSearches() end
+
 function farms.Probe(output)
     output("Gold farms: " .. candidateCount .. " candidates; " .. (observerRegistered and "gathering observer available" or "gathering observer unavailable")
         .. "; last error " .. clipped(lastError or "none", 180) .. ".")
 end
 
 function farms.Render(page)
+    local tracker = namespace.GoldTracker
+    if tracker and type(tracker.RenderPage) == "function" then
+        if page.goldStatus then page.goldStatus:Hide() end
+        return tracker.RenderPage(page)
+    end
     page.goldStatus = page.goldStatus or page:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     page.goldStatus:ClearAllPoints()
     page.goldStatus:SetPoint("TOPLEFT", 16, -16)

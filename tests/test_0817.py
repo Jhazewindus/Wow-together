@@ -418,11 +418,9 @@ class EntranceIntegrationTests(unittest.TestCase):
         self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
         self.assertEqual(card.detailsButton.caption.text, 'Follow')
         card.OnClick()
-        c.ns.dungeonViewer.questList.OnClick()
-        self.assertTrue(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
-        self.assertIn('Dungeon levels', c.ns.dungeonWindow.subtitle.text)
-        self.assertIsNone(c.ns.dungeonWindow.record)
-        self.assertGreater(len(c.ns.dungeonWindow.visibleQuests), 0)
+        self.assertTrue(c.ns.instancePage.IsShown(c.ns.instancePage))
+        self.assertEqual(c.ns.instancePage.title.text, c.ns.instancePage.instance.name)
+        self.assertGreater(len(c.ns.instancePage.rows), 0)
 
 
 if __name__ == '__main__':

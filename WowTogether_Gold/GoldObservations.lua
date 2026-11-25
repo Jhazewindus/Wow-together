@@ -452,6 +452,19 @@ function observations.ExportEvents()
     end
     return events
 end
+-- Every item the player has seen drop, for the price scan.
+function observations.SeenItems(limit)
+    local ids, seen = {}, {}
+    for _, perBuild in pairs(type(db.observations) == "table" and db.observations or {}) do
+        for _, record in pairs(type(perBuild) == "table" and type(perBuild.mobs) == "table" and perBuild.mobs or {}) do
+            for itemID in pairs(type(record) == "table" and type(record.drops) == "table" and record.drops or {}) do
+                if type(itemID) == "number" and not seen[itemID] and #ids < (limit or 200) then seen[itemID] = true; ids[#ids + 1] = itemID end
+            end
+        end
+    end
+    table.sort(ids)
+    return ids
+end
 function observations.Probe(output)
     local nodes, runs = 0, 0
     for _, map in pairs(state.nodes) do nodes = nodes + #map end
