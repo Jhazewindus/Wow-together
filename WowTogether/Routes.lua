@@ -795,6 +795,10 @@ function ns.DrawRoute(provider, geometryOnly)
     if inCombat() and (not geometryOnly or not publicOwnedDrawing(provider)) then ns.routeRedrawPending = true; return end
     hideDrawing(provider)
     ns.routeStats.surface, ns.routeStats.geometry = nil, nil
+    if ns.AzerothGPSPathingActive and ns.AzerothGPSPathingActive() then
+        ns.routeStats.status = "AzerothGPS is drawing the routed path."
+        return
+    end
     local map, route = provider.owningMap, ns.RouteForDisplay()
     if not map or not route then
         if ns.routePaused then ns.routeStats.status = ns.routePaused end

@@ -284,6 +284,7 @@ function ns.UpdateNavigation()
     local frame = ns.navigation
     if not frame then return end
     local state = ns.NavigationState()
+    if ns.SyncAzerothGPSPathing then ns.SyncAzerothGPSPathing(state) end
     frame.state = state
     local zoneExit = state.stop and state.stop.reasonCode == "zone-exit"
     if frame.zoneExit ~= zoneExit then frame.zoneExit = zoneExit; ns.LayoutNavigation() end
@@ -317,8 +318,10 @@ function ns.UpdateNavigation()
     frame.status:SetText(presentation.what .. progress)
     frame.status:SetTextColor(unpack(ns.UIColors.text))
     frame.context:SetText(presentation.why or "")
-    frame.distance:SetText(presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
-        .. ((presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport") and " • Route re-plans after you land" or ""))
+    local gpsRouting = ns.AzerothGPSPathingActive and ns.AzerothGPSPathingActive()
+    frame.distance:SetText(gpsRouting and "Follow AzerothGPS turn-by-turn guidance; Wow Together is tracking this guide stop."
+        or presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
+            .. ((presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport") and " • Route re-plans after you land" or ""))
     local statusColor = presentation.statusColor == "green" and ns.UIColors.success
         or presentation.statusColor == "gold" and ns.UIColors.gold
         or presentation.statusColor == "muted" and ns.UIColors.muted or ns.UIColors.text

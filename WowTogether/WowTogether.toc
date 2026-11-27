@@ -3,6 +3,7 @@
 ## Notes: Forever quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
 ## Version: @project-version@
+## OptionalDeps: AzerothGPS
 ## SavedVariables: WowTogetherDB
 ## SavedVariablesPerCharacter: WowTogetherCharDB
 Core.lua
@@ -46,6 +47,7 @@ QuestLearning.lua
 Suggestions.lua
 Guide.lua
 Routes.lua
+AzerothGPSPathing.lua
 PartyRoutes.lua
 PartyPlan.lua
 GuideText.lua
