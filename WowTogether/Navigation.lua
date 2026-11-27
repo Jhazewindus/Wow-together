@@ -319,7 +319,9 @@ function ns.UpdateNavigation()
     frame.status:SetTextColor(unpack(ns.UIColors.text))
     frame.context:SetText(presentation.why or "")
     local gpsRouting = ns.AzerothGPSPathingActive and ns.AzerothGPSPathingActive()
+    local gpsArrived = ns.AzerothGPSPathingArrived and ns.AzerothGPSPathingArrived()
     frame.distance:SetText(gpsRouting and "Follow AzerothGPS turn-by-turn guidance; Wow Together is tracking this guide stop."
+        or gpsArrived and "At this guide stop. Complete the objective to continue."
         or presentation.status .. (presentation.time and (" • " .. presentation.time) or "")
             .. ((presentation.kind == "travel-hearth" or presentation.kind == "travel-teleport") and " • Route re-plans after you land" or ""))
     local statusColor = presentation.statusColor == "green" and ns.UIColors.success
