@@ -13,7 +13,7 @@ import re
 import subprocess
 
 from lupa.lua51 import LuaRuntime
-from import_warcraftdb import ROOT, BASE, apply_corrections, apply_stage_corrections, normalize
+from import_warcraftdb import ROOT, BASE, apply_corrections, apply_riverglades_zone, apply_stage_corrections, normalize
 from import_wowhead import base_facts, detail_facts, json_after, list_rows
 from quest_enrichment import enrich, entity_facts, mapper_entities, order_objectives_by_requirements, quest_relations, warcraftdb_objective_facts, warcraftdb_map_facts
 from legacy_quest_facts import COMMIT, SOURCE, calibrate, indexed, mapped_locations, matches, read_snapshot, requirements, world_locations
@@ -193,6 +193,7 @@ def build(args):
     for exclusion in json.loads((ROOT/'tools/quest_exclusions.json').read_text()):
         for ident in exclusion['questIDs']:
             if ident in records:records[ident]['levelingExcluded']=exclusion['reason']
+    riverglades_source = apply_riverglades_zone(records)
     legacy_quests=[];transforms={};legacy_stats={}
     # Tester-confirmed Forever gates must precede fallback imports so an older
     # alternative branch cannot weaken or conflict with a tested requirement.
@@ -393,6 +394,7 @@ def build(args):
         entities={k:len(v) for k,v in runtime_entities.items()},source_entities={k:len(v) for k,v in entities.items()},additional_map_joins=joins,legacy_fallback=legacy_stats,
         forever_npc_geography=poi_source,forever_beta_facts=beta_source,community_coordinate_facts=community_source,
         warcraftdb_native_maps=native_maps,tester_corrections=corrections,reviewed_stage_corrections=stage_corrections,
+        riverglades_source=riverglades_source,
         prior_snapshot_fallback={'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'quests_with_retained_fields':prior_snapshot_quests,'retained_fields':prior_snapshot_fields,
             'rule':'current facts take precedence; prior reviewed fields fill omissions'})
@@ -420,7 +422,7 @@ def build(args):
         'quest_capture':json.loads((args.quest_cache/'capture.json').read_text()) if (args.quest_cache/'capture.json').exists() else {},
         'entity_capture':json.loads((args.entity_cache/'capture.json').read_text()) if (args.entity_cache/'capture.json').exists() else {},
         'legacy_fallback':legacy_stats,'forever_beta_facts':beta_source,'community_coordinate_facts':community_source,
-        'warcraftdb_native_maps':native_maps,
+        'warcraftdb_native_maps':native_maps,'riverglades_source':riverglades_source,
         'prior_snapshot_fallback':summary['prior_snapshot_fallback']}
     for key,value in prior_coverage.items():
         if key not in report:report[key]=value
