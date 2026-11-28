@@ -196,7 +196,7 @@ def build(args):
     legacy_quests=[];transforms={};legacy_stats={}
     # Tester-confirmed Forever gates must precede fallback imports so an older
     # alternative branch cannot weaken or conflict with a tested requirement.
-    apply_corrections(records)
+    apply_corrections(records, allow_partial_additions=False)
     correction_rows=json.loads((ROOT/'tools/quest_corrections.json').read_text())
     reviewed_stage_ids={row['questID'] for row in correction_rows if row.get('stageCorrection')}
     reviewed_item_source_ids={r['itemID'] for row in correction_rows if row.get('stageCorrection')
@@ -326,7 +326,7 @@ def build(args):
         rows, ambiguous = event_rows(args.forever_event_data, area_maps, json.loads(args.forever_geometry.read_text()))
         legacy_stats['published_event_areas'] = apply_event_areas(records, rows, ambiguous, eligible,
             legacy['quests'], legacy['item'], area_maps)
-    corrections=apply_corrections(records)
+    corrections=apply_corrections(records, allow_partial_additions=False)
     stage_corrections=apply_stage_corrections(records)
     prior_snapshot_fields=0
     prior_snapshot_quests=0

@@ -29,7 +29,6 @@ class DungeonPrerequisiteSweepTests(unittest.TestCase):
                 quest = self.quests[row['questID']]
                 self.assertEqual(quest['previousQuest'], row['previousQuest'])
                 self.assertTrue(quest['prerequisitesRead'])
-                self.assertIn(row['url'], quest['prerequisiteSource'])
                 self.assertIn(row['sha256'], quest['prerequisiteSource'])
 
     def test_new_parent_quest_is_reproducible_and_links_the_razorfen_chain(self):

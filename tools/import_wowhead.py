@@ -443,7 +443,7 @@ def main():
             root = records.get(record['seriesRoot'])
             record['seriesName'] = root.get('title', 'Quest series') if root else 'Quest series'
     date = datetime.date.today().isoformat()
-    corrections = apply_corrections(records)
+    corrections = apply_corrections(records, allow_partial_additions=False)
     previous_summary = {}
     summary_path = ROOT / 'WowTogether' / 'QuestCatalogue.json'
     if args.cached_details and summary_path.exists():

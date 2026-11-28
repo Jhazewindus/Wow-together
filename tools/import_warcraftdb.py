@@ -18,7 +18,7 @@ BASE = 'https://forever.warcraftdb.com'
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def apply_corrections(records, allow_partial_additions=False):
+def apply_corrections(records, allow_partial_additions=True):
     """Keep reviewed tester facts separate from source parsing and provenance."""
     applied = []
     corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
@@ -546,7 +546,7 @@ def main():
             if len(records) % 100 == 0:
                 print(f'Details: {len(records)}/{total}', flush=True)
     date = datetime.date.today().isoformat()
-    corrections = apply_corrections(records)
+    corrections = apply_corrections(records, allow_partial_additions=False)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(generate(records, date))
     summary = {'source': BASE, 'captured': date, 'count': total,

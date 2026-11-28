@@ -33,7 +33,7 @@ def apply(directory):
             if quest['title'] != exclusion['title']:
                 raise ValueError('Guide exclusion quest identity changed; review required')
             quest['levelingExcluded'] = exclusion['reason']
-    apply_corrections(catalogue['quests'])
+    apply_corrections(catalogue['quests'], allow_partial_additions=False)
     stage_changes = apply_stage_corrections(catalogue['quests'])
     changed = sorted(i for i, q in catalogue['quests'].items() if i not in before or q != before[i])
     if not changed:

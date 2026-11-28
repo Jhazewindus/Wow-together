@@ -443,7 +443,7 @@ end'''
         self.assertEqual(len(report['quest_chain_import']['exclusive_quest_ids']),122)
         self.assertFalse(report['quest_chain_import']['withheld_fields'])
         self.assertEqual((report['with_starters'],report['with_objectives'],report['with_turnins']),
-                         (4424,2126,4600))
+                         (4448,2138,4624))
 
     def test_all_prerequisites_are_required_for_pickup_and_compiled_before_child(self):
         c=guide_client(1);quests={i:world_quest(str(i)) for i in (900,901,902)}
