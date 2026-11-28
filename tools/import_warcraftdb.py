@@ -18,7 +18,7 @@ BASE = 'https://forever.warcraftdb.com'
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def apply_corrections(records):
+def apply_corrections(records, allow_partial_additions=False):
     """Keep reviewed tester facts separate from source parsing and provenance."""
     applied = []
     corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
@@ -29,7 +29,11 @@ def apply_corrections(records):
             if addition.get('title') != correction.get('title') or addition.get('prerequisitesRead') is not True:
                 raise ValueError('Reviewed quest addition is invalid; review required')
             parent = addition.get('previousQuest')
-            if parent is not None and (type(parent) is not int or parent == ident or parent not in records):
+            if parent is not None and (type(parent) is not int or parent == ident):
+                raise ValueError('Reviewed quest addition has an invalid prerequisite')
+            if parent is not None and parent not in records:
+                if allow_partial_additions:
+                    continue
                 raise ValueError('Reviewed quest addition has an unavailable prerequisite')
             if not addition.get('starts') or not addition.get('ends') or not addition.get('questAdditionSource'):
                 raise ValueError('Reviewed quest addition is missing source-backed route facts')

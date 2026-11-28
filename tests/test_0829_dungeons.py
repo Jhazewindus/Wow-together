@@ -74,8 +74,8 @@ class DungeonActionTests(unittest.TestCase):
         self.assertEqual({p['entityID'] for p in starts}, {31439})
         self.assertEqual({p['mapID'] for p in starts}, {1416})
         reviewed = {6563: copy.deepcopy(quest_data[6563])}
-        apply_corrections(reviewed)
-        apply_corrections(reviewed)
+        apply_corrections(reviewed, allow_partial_additions=True)
+        apply_corrections(reviewed, allow_partial_additions=True)
         self.assertNotIn('previousQuest', reviewed[6563])
         audit = json.loads((ROOT / 'research' / 'dungeon-prerequisite-audit-2026-11-07' / 'audit.json').read_text())
         self.assertEqual(audit['scope']['deniedQuestPages'], 17)

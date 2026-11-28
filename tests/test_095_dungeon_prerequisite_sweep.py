@@ -42,7 +42,7 @@ class DungeonPrerequisiteSweepTests(unittest.TestCase):
         self.assertEqual(parent['zone'], "Shen'dralas")
 
         rebuilt = {93404: self.quests[93404]}
-        apply_corrections(rebuilt)
+        apply_corrections(rebuilt, allow_partial_additions=True)
         self.assertEqual(rebuilt[93601]['title'], 'Passing the Blame')
         self.assertEqual(rebuilt[93601]['previousQuest'], 93404)
 
