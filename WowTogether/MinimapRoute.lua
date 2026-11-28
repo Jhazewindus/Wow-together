@@ -73,6 +73,9 @@ end
 
 local function draw()
     if not overlay then return end
+    if ns.AzerothGPSPathingActive and ns.AzerothGPSPathingActive() then
+        hideAll(); ns.minimapRouteStatus = "AzerothGPS is drawing the routed path."; return
+    end
     if not ns.Option("minimapRoute") or not ns.selectedRoute or ns.navigationPreview
         or ns.ReadPublic(UnitOnTaxi, "player") == true or not ns.ReadPublic(Minimap.IsVisible, Minimap) then
         hideAll(); ns.minimapRouteStatus = "Hidden (setting, no route, flight or minimap hidden)."; return

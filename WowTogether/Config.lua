@@ -7,7 +7,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = true, standaloneArrowScale = 1, minimapRoute = true, travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
+    standaloneArrow = true, standaloneArrowScale = 1, minimapRoute = true, pathingEngine = "auto", travelNetwork = true, learnRoads = true, shareRoads = true, shareObservations = true, learnObjectives = true, useHearthstone = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, guidePeek = true, highlightGuideQuest = true, classTraining = true,
     guideGlance = false, uiNext = false,
     inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
@@ -60,6 +60,7 @@ local sections = {
         {"standaloneArrow", "Show the floating direction arrow", "Show a large, separately movable arrow above the guide card."},
         {"standaloneArrowScale", "Direction arrow size", "Set the floating arrow size from 75% to 150%.", {{0.75, "75%"}, {1, "100%"}, {1.25, "125%"}, {1.5, "150%"}}},
         {"minimapRoute", "Draw the route on the minimap", "Show the current travel line and next stops on the minimap, clipped to its edge."},
+        {"pathingEngine", "Path routing", "Use AzerothGPS for road-aware routing when its companion API is installed. Wow Together keeps choosing guide objectives; AzerothGPS replaces its current trip with the active guide leg. If unavailable or the target has no map position, Wow Together uses its own pathing.", {{"auto", "AzerothGPS when available"}, {"native", "Wow Together"}, {"azerothgps", "AzerothGPS only"}}},
         {"distanceUnits", "Distance units", "Choose the unit shown below the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show map route details", "Show a short route explanation below the world map."},
         {"unitNumbers", "Always show health and resource numbers", "Keep numbers visible on Blizzard's unit bars. Turn off to restore your previous setting."}},
@@ -170,6 +171,7 @@ function ns.InitializeConfig()
         ns.db.config.standaloneArrowScale = 1
     end
     if ns.db.config.distanceUnits ~= "yards" and ns.db.config.distanceUnits ~= "metres" then ns.db.config.distanceUnits = "yards" end
+    if ns.db.config.pathingEngine ~= "auto" and ns.db.config.pathingEngine ~= "native" and ns.db.config.pathingEngine ~= "azerothgps" then ns.db.config.pathingEngine = "auto" end
     if ns.db.config.npcMarker ~= "star" and ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "star" end
     if ns.db.config.supplyTarget ~= 10 and ns.db.config.supplyTarget ~= 20 and ns.db.config.supplyTarget ~= 40 then ns.db.config.supplyTarget = 20 end
 end

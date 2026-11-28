@@ -137,6 +137,7 @@ function ns.UpdateStandaloneArrow(state)
         and (state.angle ~= nil or finite(state.distance) or state.arrived or state.flight)
     local visible = state and state.visible == true and not state.idle and not state.busy
         and target and ns.Option("standaloneArrow") == true
+        and not (ns.AzerothGPSPathingActive and ns.AzerothGPSPathingActive())
     frame:SetShown(visible == true)
     local training = visible and (ns.IsClassTrainingStep(stop) or ns.IsInventoryServiceStep(stop))
         and not state.flight and not ns.navigation:IsShown()
