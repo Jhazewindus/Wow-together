@@ -410,7 +410,7 @@ end'''
         self.assertEqual(source['commit'],'aa1d7e7294596cf50a6fd0946dfae0d969cb9623')
         quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
         entities=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','questEntities')
-        self.assertEqual(len(quests),5337)
+        self.assertEqual(len(quests),5358)
         self.assertEqual(quests[1943]['nextInChain'],1944)
         self.assertEqual(quests[1944]['nextInChain'],1945)
         self.assertEqual(quests[1945]['nextInChain'],1946)

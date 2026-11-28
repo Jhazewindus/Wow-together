@@ -3,8 +3,8 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "3f2674bf9ffa9ccb8ba3a152cb5fcdd6f0a5b83e72c50f312c1b9bd46815e36b",
-      "records": 5337
+      "sha256": "e394cd43f27232a12aad972fabc19260647058d23b985277006a4385fd680fc8",
+      "records": 5358
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
