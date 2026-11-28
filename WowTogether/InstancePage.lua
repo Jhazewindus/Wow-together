@@ -132,6 +132,12 @@ local function draw(frame)
     local instance = frame.instance
     if not instance then return end
     local items, counts, needs = build(instance)
+    local hasAccessRoute = false
+    for _, status in ipairs(ns.InstanceAccess(instance.key)) do
+        if status.state ~= "have" and type(status.chain) == "table" and #status.chain > 0 then
+            hasAccessRoute = true; break
+        end
+    end
     local width = (frame.content:GetWidth() or 580)
     frame.title:SetText(instance.name)
     frame.subtitle:SetText(instance.subtitle or "")
@@ -237,12 +243,21 @@ local function draw(frame)
     frame.empty:SetShown(#items == 0)
     frame.content:SetHeight(math.max(80, y + 8))
     local group = instance.group
-    frame.collect:SetShown(group ~= nil)
+    frame.collect:SetShown(group ~= nil or hasAccessRoute)
     if group then
+        frame.collect.caption:SetText("Start quest route")
         frame.collect:SetEnabled(counts.open + counts.active + counts.ready > 0)
         frame.collect:SetScript("OnClick", function() ns.ShowDungeonQuests(group, true) end)
+    elseif hasAccessRoute then
+        frame.collect.caption:SetText("Start attunement route")
+        frame.collect:SetEnabled(type(ns.BuildInstanceAccessGuide) == "function")
+        frame.collect:SetScript("OnClick", function()
+            local guide = ns.BuildInstanceAccessGuide(instance.key)
+            if guide then ns.RequestStartRoute(guide) end
+        end)
     end
     frame.hint:SetText(group and "Leads you to every pickup and prerequisite, then to the entrance."
+        or hasAccessRoute and "Leads you through the remaining attunement quests and their prerequisites."
         or "Press Show on the next step to see where it starts.")
 end
 

@@ -444,6 +444,45 @@ function ns.BuildClassQuestGuide(id)
     return guide
 end
 
+-- Turn an instance's published access quest IDs into a personal route. The
+-- access list supplies the branch roots; the catalogue supplies prerequisite
+-- steps, alternatives, and any later steps in the same series.
+function ns.BuildInstanceAccessQuestGuide(key, title, chainIDs)
+    if type(key) ~= "string" or key == "" or type(title) ~= "string"
+        or type(chainIDs) ~= "table" or #chainIDs == 0 then return end
+    local records, seen, dependencies = {}, {}, {chosen = {}, alternatives = {}}
+    for _, id in ipairs(chainIDs) do
+        if ns.GuideInteger(id) and id > 0 then
+            addChain(records, seen, id, nil, true, dependencies)
+        end
+    end
+    if #records == 0 then return end
+    local low, high, mapID = 255, 1, 0
+    for _, record in ipairs(records) do
+        local quest = ns.CatalogueQuest(record.id)
+        local level = quest and (quest.minLevel or quest.level) or 0
+        if level > 0 then low, high = math.min(low, level), math.max(high, level) end
+        if mapID == 0 then
+            local point = quest and quest.starts and quest.starts[1]
+            mapID = point and point.mapID or record.mapID or 0
+        end
+    end
+    if low == 255 then low = 1 end
+    local query = ns.NewQuestQuery()
+    local guide = {key = "instance-access:" .. key, title = title, zone = "Instance access quests",
+        mode = "chain", kind = "Attunement questline", records = records, target = records[1],
+        collectionDependencies = dependencies.chosen, collectionAlternatives = dependencies.alternatives,
+        mapID = mapID, homeMapID = mapID, focusKey = ns.self,
+        rangeLow = 1, rangeHigh = 255, mainLevelLow = low, mainLevelHigh = math.max(low, high),
+        level = ns.PartyLevelFloor(query), fullGuide = true, personal = true,
+        fixedRoute = false, profilesReady = true, hasPoint = false,
+        reason = #records .. " linked attunement and prerequisite quests; follow their known order.",
+        destination = "Follow the attunement questline."}
+    guide.coverage = ns.GuideLocationCoverage(records)
+    guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
+    return guide
+end
+
 local function coreRange(entry)
     local levels = {}
     for _, id in ipairs(entry.ids) do

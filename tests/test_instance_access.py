@@ -150,6 +150,19 @@ class ViewTests(unittest.TestCase):
         hyjal = next(card for card in cards if card.title.text == 'Hyjal Summit')
         self.assertFalse(hyjal.detailsButton.IsShown(hyjal.detailsButton))
 
+    def test_onyxia_page_starts_a_personal_route_through_its_faction_chain(self):
+        c, frame = InstancePageTests().page('onyxias-lair')
+        self.assertTrue(frame.collect.IsShown(frame.collect))
+        self.assertEqual(frame.collect.caption.text, 'Start attunement route')
+        frame.collect.OnClick(frame.collect); c.drain()
+        self.assertEqual(c.ns.routeSelection.key, 'instance-access:onyxias-lair')
+        self.assertEqual(len(c.ns.routeSelection.records), 14)
+        self.assertEqual(c.ns.routeSelection.records[1].id, 4903)
+
+    def test_open_raid_page_has_no_attunement_route_button(self):
+        c, frame = InstancePageTests().page('hyjal-summit')
+        self.assertFalse(frame.collect.IsShown(frame.collect))
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -185,7 +198,8 @@ class InstancePageTests(unittest.TestCase):
         self.assertEqual(rows[2].right.text, 'Done')
         self.assertTrue(rows[5].go.IsShown(rows[5].go))                             # Only the current step has a button.
         self.assertFalse(rows[6].go.IsShown(rows[6].go))
-        self.assertFalse(frame.collect.IsShown(frame.collect))                      # No dungeon quest route for a raid.
+        self.assertTrue(frame.collect.IsShown(frame.collect))
+        self.assertEqual(frame.collect.caption.text, 'Start attunement route')
 
     def test_the_current_step_opens_its_quest(self):
         c, frame = self.page('onyxias-lair', completed=(4903,))
