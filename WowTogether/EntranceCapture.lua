@@ -16,7 +16,7 @@ local addonName, ns = ...
 -- an entrance that was recorded on the first.
 
 local INTERVAL = 3
-local lastOutdoors
+local lastOutdoors, sampleElapsed
 
 local function inside()
     local inInstance, kind = ns.ReadPublic(IsInInstance)
@@ -50,11 +50,6 @@ local function note()
         local spot = ns.PlayerSpot()
         if type(spot) == "table" and ns.ValidTravelPoint(spot) then lastOutdoors = {mapID = spot.mapID, x = spot.x, y = spot.y} end
     end
-end
-
-local function tick()
-    note()
-    ns.After("timer:EntranceCapture", INTERVAL, tick)
 end
 
 function ns.RecordInstanceEntrance()
@@ -94,7 +89,20 @@ ns.On("PLAYER_ENTERING_WORLD", function()
     -- The instance's name is not always readable the instant the world loads.
     ns.After("timer:EntranceCapture", 1, function() ns.RecordInstanceEntrance() end)
 end)
-ns.On("PLAYER_LOGIN", function() ns.After("timer:EntranceCapture", INTERVAL, tick) end)
+
+-- Sample outdoors without a repeating timer: timer queues in the addon test
+-- harness must drain, and an always-rescheduling timer obscures real hangs.
+local tracker = CreateFrame("Frame")
+tracker:SetScript("OnUpdate", function(_, elapsed)
+    local isInside = inside()
+    if isInside then sampleElapsed = 0; return end
+    if type(elapsed) ~= "number" or elapsed < 0 or elapsed ~= elapsed then return end
+    sampleElapsed = (sampleElapsed or 0) + elapsed
+    if sampleElapsed >= INTERVAL then
+        sampleElapsed = sampleElapsed % INTERVAL
+        note()
+    end
+end)
 
 function ns.EntranceCaptureDiagnostics(output)
     local count = 0
