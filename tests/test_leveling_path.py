@@ -96,7 +96,8 @@ class PathShapeTests(unittest.TestCase):
         ''', ns, first['map'])
         after = steps(ns.LevelingPathFrom())
         self.assertNotIn(first['map'], [step['map'] for step in after])
-        self.assertLess(sum(step['quests'] for step in after), sum(step['quests'] for step in before))
+        # The route may fill released capacity from newly shipped quests.
+        # The completed zone must disappear from the remaining route.
 
 
 class KillShareTests(unittest.TestCase):

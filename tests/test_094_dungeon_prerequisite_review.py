@@ -17,10 +17,10 @@ class DungeonPrerequisiteReviewTests(unittest.TestCase):
     def setUpClass(cls):
         cls.quests = own_lua(ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua', 'catalogue')['quests']
 
-    def test_only_the_two_conflicting_gates_remain_unverified(self):
+    def test_all_dungeon_prerequisite_gates_are_reviewed(self):
         report = scan()
-        self.assertEqual(report['counts']['unverifiedPrerequisiteMemberships'], 2)
-        self.assertEqual({row['questID'] for row in report['unverifiedPrerequisiteMemberships']}, {2846, 95682})
+        self.assertEqual(report['counts']['unverifiedPrerequisiteMemberships'], 0)
+        self.assertEqual(report['unverifiedPrerequisiteMemberships'], [])
 
     def test_known_prerequisite_variants_use_their_specific_parent(self):
         parents = {

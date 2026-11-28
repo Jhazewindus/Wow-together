@@ -18,11 +18,56 @@ BASE = 'https://forever.warcraftdb.com'
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def apply_corrections(records):
+def apply_corrections(records, allow_partial_additions=True):
     """Keep reviewed tester facts separate from source parsing and provenance."""
     applied = []
     corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
     for correction in corrections:
+        if correction.get('questAddition'):
+            ident = correction['questID']
+            addition = copy.deepcopy(correction['questAddition'])
+            if addition.get('title') != correction.get('title') or addition.get('prerequisitesRead') is not True:
+                raise ValueError('Reviewed quest addition is invalid; review required')
+            parent = addition.get('previousQuest')
+            if parent is not None and (type(parent) is not int or parent == ident):
+                raise ValueError('Reviewed quest addition has an invalid prerequisite')
+            if parent is not None and parent not in records:
+                if allow_partial_additions:
+                    continue
+                raise ValueError('Reviewed quest addition has an unavailable prerequisite')
+            if allow_partial_additions and parent is None and ident not in records:
+                continue
+            if not addition.get('starts') or not addition.get('ends') or not addition.get('questAdditionSource'):
+                raise ValueError('Reviewed quest addition is missing source-backed route facts')
+            if ident in records:
+                if records[ident].get('title') != correction['title']:
+                    raise ValueError('Reviewed quest addition identity changed; review required')
+            else:
+                records[ident] = addition
+                applied.append(ident)
+            continue
+        if correction.get('routeFactsCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed route identity changed; review required')
+            rule = correction['routeFactsCorrection']
+            allowed = {'starts', 'ends', 'objectives', 'npcTargets', 'objectiveLocationsIncomplete'}
+            before, after = rule.get('before', {}), rule.get('after', {})
+            if not after or set(before) != set(after) or set(after) - allowed:
+                raise ValueError('Reviewed route facts are invalid')
+            for key in after:
+                if quest.get(key) not in (before[key], after[key]):
+                    raise ValueError('Reviewed route facts conflict with source; review required')
+            if not after.get('starts') or not after.get('ends'):
+                raise ValueError('Reviewed route facts must include pickup and turn-in points')
+            for key, value in after.items():
+                if quest.get(key) != value:
+                    quest[key] = copy.deepcopy(value)
+            quest['routeFactsSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
         if correction.get('stageCorrection'):
             continue  # Stage facts apply after enrichment, not as eligibility rules.
         if correction.get('questTypeCorrection'):
@@ -503,7 +548,7 @@ def main():
             if len(records) % 100 == 0:
                 print(f'Details: {len(records)}/{total}', flush=True)
     date = datetime.date.today().isoformat()
-    corrections = apply_corrections(records)
+    corrections = apply_corrections(records, allow_partial_additions=False)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(generate(records, date))
     summary = {'source': BASE, 'captured': date, 'count': total,

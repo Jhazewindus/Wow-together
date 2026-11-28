@@ -17,7 +17,7 @@ class OptionalDataTests(unittest.TestCase):
     def test_startup_and_catalogue_summary_do_not_parse_quest_payload(self):
         client = Client(quests=(), use_lazy_data=True, default_guide=True)
         self.assertEqual(client.data_addons_loaded, set())
-        self.assertEqual(client.ns.catalogue.count, 5337)
+        self.assertEqual(client.ns.catalogue.count, 5358)
         self.assertEqual(client.ns.catalogue.captured, "2026-11-08")
         self.assertEqual(len(client.ns.xpBaseline), 60)
         self.assertEqual(client.data_addons_loaded, set())

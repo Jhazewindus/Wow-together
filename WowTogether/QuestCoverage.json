@@ -7,12 +7,12 @@
     "https://github.com/Questie/QuestieDB"
   ],
   "summary": {
-    "count": 5337,
-    "detailed_quests": 394,
-    "with_starters": 4424,
-    "with_objectives": 2126,
-    "with_turnins": 4600,
-    "with_prerequisites": 2620,
+    "count": 5358,
+    "detailed_quests": 415,
+    "with_starters": 4448,
+    "with_objectives": 2138,
+    "with_turnins": 4624,
+    "with_prerequisites": 2665,
     "entities": {
       "object": 7044,
       "npc": 13418,
@@ -20,6 +20,27 @@
     }
   },
   "zones": {
+    "Riverglades": {
+      "quests": 20,
+      "pickups": 20,
+      "objectives": 12,
+      "turnins": 20,
+      "complete_locations": 16,
+      "missing_quest_ids": [
+        93787,
+        94748,
+        95427,
+        95602
+      ]
+    },
+    "Shen'dralas": {
+      "quests": 1,
+      "pickups": 1,
+      "objectives": 0,
+      "turnins": 1,
+      "complete_locations": 1,
+      "missing_quest_ids": []
+    },
     "Unknown category": {
       "quests": 6,
       "pickups": 2,
@@ -675,9 +696,9 @@
     },
     "dungeons/kroldok-stronghold": {
       "quests": 13,
-      "pickups": 0,
+      "pickups": 3,
       "objectives": 0,
-      "turnins": 0,
+      "turnins": 3,
       "complete_locations": 0,
       "missing_quest_ids": [
         94968,
@@ -16872,6 +16893,141 @@
       "Quest pages publish no starter or turn-in map points for these records.",
       "No trustworthy quest-series rows or prerequisite links were published; prerequisite state remains unverified.",
       "The dungeon lists and individual quest facts are not evidence of an item drop source or a complete pickup route."
+    ]
+  },
+  "dungeon_prerequisite_sweep": {
+    "captured": "2026-11-28",
+    "dungeonCategories": 28,
+    "uniqueListedQuestIDs": 380,
+    "pagesCaptured": 369,
+    "pagesUnavailableCurrentSweep": 11,
+    "newlyVerifiedEdges": [
+      1200,
+      1275,
+      2040,
+      2240,
+      2770,
+      2924,
+      2930,
+      4126,
+      4134,
+      4136,
+      4764,
+      4768,
+      93604,
+      95809,
+      95682,
+      98815,
+      95646,
+      95647,
+      98824,
+      98823,
+      94975,
+      94968,
+      94972
+    ],
+    "addedPrerequisiteQuest": 93601,
+    "addedPrerequisiteQuests": [
+      {
+        "questID": 93786,
+        "url": "https://www.wowhead.com/forever/quest=93786",
+        "sha256": "27cbc2227b6ee8f14586835f140e25f0b29fd63543d99a10f41c11ceefec0682"
+      },
+      {
+        "questID": 93787,
+        "url": "https://www.wowhead.com/forever/quest=93787",
+        "sha256": "8443796916b31c9f39538210a532e2ddb33ccfca85c988bdc02eb90c8e2a4e0a"
+      },
+      {
+        "questID": 94483,
+        "url": "https://www.wowhead.com/forever/quest=94483",
+        "sha256": "a9026ce8617bbb89d6c6e61bea4a5c3885d26cf1a49059ae92dbda9c9d320998"
+      },
+      {
+        "questID": 94672,
+        "url": "https://www.wowhead.com/forever/quest=94672",
+        "sha256": "50d7bc6a6f00f3af4ee39f5bdcf0a03fbeccd7e40b43dff4c1be7e0cb0f39c40"
+      },
+      {
+        "questID": 94680,
+        "url": "https://www.wowhead.com/forever/quest=94680",
+        "sha256": "77dcfb0e6a20b576b9dff2c3c4a217f5959e186ea73ae80d0d59e6a7e1937776"
+      },
+      {
+        "questID": 94727,
+        "url": "https://www.wowhead.com/forever/quest=94727",
+        "sha256": "d6313ec575e031361546c16e081532e5c9d63bcd5aa7e9d061520d728903bfc6"
+      },
+      {
+        "questID": 95417,
+        "url": "https://www.wowhead.com/forever/quest=95417",
+        "sha256": "62a3a39b66e02200f980e78a210cfaeb0235c43002bce0f16625439d89ded909"
+      },
+      {
+        "questID": 95601,
+        "url": "https://www.wowhead.com/forever/quest=95601",
+        "sha256": "5b0882e924437ff6f3c966079200419bb2073a69aa5ddfa4532dde0fbcb92793"
+      },
+      {
+        "questID": 95602,
+        "url": "https://www.wowhead.com/forever/quest=95602",
+        "sha256": "61cf7c920ee43c1c83c37bef50dcf0334af5f5fee4dc591b3c8c8559a12e2eac"
+      },
+      {
+        "questID": 95427,
+        "url": "https://www.wowhead.com/forever/quest=95427",
+        "sha256": "2f2c53f61b1446a1386f1cf30785c51e4df5999cc9f95c4f79dba000a9a101d7"
+      },
+      {
+        "questID": 95418,
+        "url": "https://www.wowhead.com/forever/quest=95418",
+        "sha256": "00ec4c98d7d12df9ff28a80e87e5abe93bd18ead6f61d6b7d0bc1a7fe474ddd1"
+      },
+      {
+        "questID": 95420,
+        "url": "https://www.wowhead.com/forever/quest=95420",
+        "sha256": "8d60d7799ddd537db6752037253f3788999e0e3dc504b673263a4b7d8f456b5b"
+      },
+      {
+        "questID": 95424,
+        "url": "https://www.wowhead.com/forever/quest=95424",
+        "sha256": "42cf5baf2366bc451b693495a1ffca7078771441ef64b3f2bd8ec90dab7c28ca"
+      },
+      {
+        "questID": 95425,
+        "url": "https://www.wowhead.com/forever/quest=95425",
+        "sha256": "55a5ca591e53e934d1c766ba21026c76eb1caa09db06f313be173c5458eda4dd"
+      },
+      {
+        "questID": 95428,
+        "url": "https://www.wowhead.com/forever/quest=95428",
+        "sha256": "b36c425500fa8fc468fe20db65d7a568978b512395e26f122b7a04c5a9848d8a"
+      },
+      {
+        "questID": 94744,
+        "url": "https://www.wowhead.com/forever/quest=94744",
+        "sha256": "dc067cb8c6596949353562f1453c7f6e9ba89642386bb1c9c5faebb7ee581156"
+      },
+      {
+        "questID": 94745,
+        "url": "https://www.wowhead.com/forever/quest=94745",
+        "sha256": "8b505b8ea70afdc8a9f631b77c28494c685829c1c15b269e77deb1bce4df770a"
+      },
+      {
+        "questID": 94748,
+        "url": "https://www.wowhead.com/forever/quest=94748",
+        "sha256": "d83befef7f67812546bc8222a71b6256f661499ad8cf89e52cc01fdca129bb61"
+      },
+      {
+        "questID": 94768,
+        "url": "https://www.wowhead.com/forever/quest=94768",
+        "sha256": "25765b5c62dfe3fc9717b80b3b7982878d608fdf088af4fd34b2c5ae5cfb97bc"
+      },
+      {
+        "questID": 95278,
+        "url": "https://www.wowhead.com/forever/quest=95278",
+        "sha256": "0d07e1116c82304ec79fd963cb21cc1f2eb6e3636a0d7a287f2a23a4034fda9a"
+      }
     ]
   }
 }

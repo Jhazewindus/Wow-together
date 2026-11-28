@@ -1,0 +1,80 @@
+{
+  "counts": {
+    "dungeonCategories": 28,
+    "listedQuestMemberships": 382,
+    "uniqueListedQuests": 382,
+    "missingCatalogueRecords": 0,
+    "higherMinimumPrerequisiteEdges": 5,
+    "unverifiedPrerequisiteMemberships": 0
+  },
+  "higherMinimumPrerequisites": [
+    {
+      "dungeon": "city-of-dalaran",
+      "parentQuestID": 92432,
+      "parentTitle": "An Alarming Request",
+      "parentMinLevel": 30,
+      "questID": 92457,
+      "title": "Starving Arcane",
+      "minLevel": 24,
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": "User-confirmed prerequisite fact from the supplied ForeverDungeonJournal 1.6.3 reference archive (SHA-256 7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02), confirmed 2026-10-12. Lookup pointers: https://www.wowhead.com/forever/quest=92457 and https://www.wowhead.com/forever/quest=92432; these pages were not fetched for this update. No addon code, quest prose, images or bulk tables were used."
+    },
+    {
+      "dungeon": "city-of-dalaran",
+      "parentQuestID": 92432,
+      "parentTitle": "An Alarming Request",
+      "parentMinLevel": 30,
+      "questID": 92458,
+      "title": "Heart of Disruption",
+      "minLevel": 24,
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": null
+    },
+    {
+      "dungeon": "city-of-dalaran",
+      "parentQuestID": 92434,
+      "parentTitle": "Blood in the Streets",
+      "parentMinLevel": 30,
+      "questID": 96984,
+      "title": "Heart of Disruption",
+      "minLevel": 24,
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; the captured quest series is 92434 → 96984 → 97287."
+    },
+    {
+      "dungeon": "gnomeregan",
+      "parentQuestID": 2841,
+      "parentTitle": "Rig Wars",
+      "parentMinLevel": 25,
+      "questID": 2842,
+      "title": "Chief Engineer Scooty",
+      "minLevel": 20,
+      "relations": [
+        "previousQuest"
+      ],
+      "prerequisiteSource": "Wowhead Forever comments 3155187 and 3278949 confirm Rig Wars must be accepted before Chief Engineer Scooty is offered; captured 2026-11-07."
+    },
+    {
+      "dungeon": "the-stockade",
+      "parentQuestID": 303,
+      "parentTitle": "The Dark Iron War",
+      "parentMinLevel": 25,
+      "questID": 378,
+      "title": "The Fury Runs Deep",
+      "minLevel": 22,
+      "relations": [
+        "previousQuest",
+        "prerequisiteAny"
+      ],
+      "prerequisiteSource": "Published Forever beta prerequisites"
+    }
+  ],
+  "unverifiedPrerequisiteMemberships": [],
+  "missingRecords": []
+}

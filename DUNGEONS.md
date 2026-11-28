@@ -120,24 +120,100 @@ predecessor or a reviewed page with no preceding series step. The exact
 Gnomeregan Sparklematic variants and each Lord Valthalak amulet variant now
 point to their own required predecessor, rather than treating sibling variants
 as interchangeable. The reviewed page hashes and the QuestieDB revision are in
-`research/dungeon-prerequisite-audit-2026-11-08.json`. Only two prerequisite
-memberships remain unresolved: **Tiara of the Deep** (2846), where comments
-conflict with the published series row, and **Open the Maw** (95682), whose
-listed prior quest is also reported as a breadcrumb while its required pickup
-NPC is unnamed. Both remain visibly unverified; neither receives a guessed
-route.
+`research/dungeon-prerequisite-audit-2026-11-08.json`.
+
+The November 28, 2026 all-membership sweep resolved both remaining disputed
+gates. **Open the Maw** (95682) requires **Dragonmaw Rumors** (95663); current
+Forever comments report the quest is unavailable until that step is complete,
+and the dungeon guide identifies Zaruk in Hammerfall as its starter.
+**Tabetha's Task** (2861) is only a breadcrumb for **Tiara of the Deep** (2846),
+not a required gate. The catalogue now has no unverified prerequisite gates.
 
 Fifteen pages previously denied by Wowhead are now accessible; two detail pages
 (7498 and 7761) remain denied. Quest 7507 is now source-reviewed as having no
 preceding quest; it remains the known predecessor for 7508. Newly listed quests
-still lack some pickup/objective coordinates, and two outdoor prerequisite
-records have no published pickup/turn-in map points. A comment-supported pickup
-for 97130 is routed to Archmage Timear in Dalaran.
+still lack some pickup/objective coordinates, and some outdoor chains remain
+source-incomplete. A comment-supported pickup for 97130 is routed to Archmage
+Timear in Dalaran.
 
 The current Forever pages still show no preceding quest for either faction's
 The Heart of the Void quest. They do not identify its starter item or pickup
 point, so dungeon preparation leaves collection deferred and directs the player
 to the run.
+
+## November 28 all-membership prerequisite sweep
+
+A paced refresh requested all **380 unique dungeon quest pages** from Wowhead
+Forever. It captured 369 pages with valid quest records; four returned 403 and
+seven were not fetched after the capture stopped. We separately retrieved the
+three skipped Wetlands follow-up pages (98815, 98823, 98824). We also captured
+21 of 28 current dungeon overview guides; seven guide URLs returned 404. The
+manifest records page hashes, status, and guide findings in
+`research/dungeon-prerequisite-sweep-2026-11-28.json`; the refreshed gate count
+is in `research/dungeon-prerequisite-level-audit-2026-11-28.json`.
+
+The sweep added immediate predecessor steps from current quest series and the
+published overview guides. Passing the Blame (93601) was absent from the quest
+catalogue, so its verified start, turn-in and own predecessor were added from
+its current Forever page before linking it to Agamaggan's Blood (93604).
+
+The guide pass also found the complete Horde preparation chain for Krol'dok
+Stronghold. Twenty outdoor quest records were missing, so the captured Forever
+pages were added with pickup and hand-in locations. QuestieDB identifies five
+AND-gates: Show Them How It's Done needs A Message in Blood and Food for the
+Taking; Digging for Answers needs Encroaching Twilight and Twilight Missives;
+Twilight No More! needs both The Purple Ones and Sickening Lights; Clugfist's
+Decree needs Might Makes Right and Unworthy Champion; and Bring Me His Head
+needs Carving a Path and Break Their Chains. The dungeon offers then follow
+Bring Me His Head → A Token of Vengeance / It Is Time, Brother... → Eye of Mugg
+and Tome of Twilight. The three dungeon quests now have source-backed givers
+and turn-ins; their objective coordinates remain incomplete in the source.
+
+The all-dungeon master guide exposed four omitted Drowned City gates:
+The Drowned City (95775) follows The Vile Reef (629); The Only Good Brinescale
+(95776) requires both The Vile Reef and Enemies in the Water (95773); and the
+two Southshore quests Take Two With Water (95787) and Magics of the Drowned
+City (95788) follow Troll Witchery (205), the guide's stated final prerequisite.
+These links give the route planner the published outdoor steps; the reported
+in-game “did not offer” message still needs a character-level play-test.
+
+| Dungeon | Required predecessor → dungeon quest |
+| --- | --- |
+| Blackfathom Deeps | In Search of Thaelrid (1198) → Blackfathom Villainy (1200) |
+| Blackfathom Deeps | The Corruption Abroad (3765) → Researching the Corruption (1275) |
+| Gnomeregan | Speak with Shoni (2041) → Underground Assault (2040) |
+| Uldaman | The Lost Dwarves (2398) → The Hidden Chamber (2240) |
+| Zul'Farrak | The Brassbolts Brothers (2769) → Gahz'rilla (2770) |
+| Gnomeregan | Klockmort's Essentials (2925) → Essential Artificials (2924) |
+| Gnomeregan | Castpipe's Task (2931) → Data Rescue (2930) |
+| Blackrock Depths | Ragnar Thunderbrew (4128) → Hurley Blackbreath (4126) |
+| Blackrock Depths | Vivian Lagrave (4133) → Lost Thunderbrew Recipe (4134) |
+| Blackrock Depths | Yuka Screwspigot (4324) → Ribbly Screwspigot (4136) |
+| Blackrock Spire | Mayara Brightwing (4766) → Doomrigger's Clasp (4764) |
+| Blackrock Spire | Vivian Lagrave and the Darkstone Tablet (4769) → The Darkstone Tablet (4768) |
+| Razorfen Downs | Passing the Blame (93601) → Agamaggan's Blood (93604) |
+| Excavation Site: Wetlands | Lost in the Thicket Things (95647) → Heartwoven (95809) |
+| Excavation Site: Wetlands | Dragonmaw Rumors (95663) → Open the Maw (95682) |
+| Krol'dok Stronghold | Bring Me His Head (94768) → A Token of Vengeance (94975) |
+| Krol'dok Stronghold | It Is Time, Brother... (95278) → Eye of Mugg (94968) |
+| Krol'dok Stronghold | It Is Time, Brother... (95278) → Tome of Twilight (94972) |
+| Wetlands quests | Young Crocolisk Skins (484) → Highland Hides (98815) |
+| Wetlands quests | Blisters on the Land (275) → Horrors in the Highland (95646) |
+| Wetlands quests | Seeking Caitlin (95737) → Lost in the Thicket Things (95647) |
+| Wetlands quests | Lost Relic Carry (95810) → Prehistoric Prism (98824) |
+| Wetlands quests | Elder Knowledge (95664) → Earthen Echo (98823) |
+| The Drowned City | The Vile Reef (629) → The Drowned City (95775) |
+| The Drowned City | The Vile Reef (629) + Enemies in the Water (95773) → The Only Good Brinescale (95776) |
+| The Drowned City | Troll Witchery (205) → Take Two With Water (95787) / Magics of the Drowned City (95788) |
+
+Two source distinctions matter: the current Highland Hides page series includes
+Daily Delivery (469), but current Forever comments and the dungeon overview say
+it is not required; the actual gate is Young Crocolisk Skins (484). Also, 6562
+before Blackfathom Deeps' The Essence of Aku'Mai (6563) remains rejected because
+prior Forever review and regression coverage establish it is false. The
+Krol'dok overview mentions starter quest series for 94968/94972/94975 but
+does not enumerate the IDs; those dungeon gates come from the pinned QuestieDB
+relations and the live page review above.
 
 Map IDs below are Forever UI map IDs, not area IDs. Coordinates are percentages.
 
@@ -191,20 +267,18 @@ complete guided route. The category capture and each page hash are recorded in
 The November 8 refresh of the eight Drowned City pages improved seven existing
 records (95775, 95776, 95787, 95788, 95789, 95791 and 97130): it adds or confirms
 three pickup points, three turn-in points, NPC/item facts and the exact tablet
-item IDs. No objective coordinates, Drowned City entrance point, or new chain
-link was established. The current source captures and hashes are recorded in
+item IDs. The November 28 master-guide sweep added the four prerequisites
+listed above. No objective coordinates or Drowned City entrance point were
+established. The current source captures and hashes are recorded in
 `research/dungeon-progression-audit-2026-11-08.json`. QuestieDB at
 `aa1d7e7294596cf50a6fd0946dfae0d969cb9623` added no new dungeon quest records
 beyond this reviewed catalogue; its chain facts confirm the 1109 → 1113 link.
 
-As of this refresh, 380 static quest memberships are in the finder and two
-additional area-matched quests are included in the runtime prerequisite audit
-(382 total). Five of 28 dungeon entrance areas remain unknown, Blackmaw Hold
-and Shaper's Terrace still have no named quest list, and only the two conflicting
-prerequisite memberships above remain unverified. Pickup/objective coordinates
-and those entrance/category gaps remain explicit rather than guessed. See
-`research/dungeon-prerequisite-level-audit-2026-11-08.json` and
-`research/dungeon-prerequisite-audit-2026-11-08.json`.
+The November 8 snapshot had 380 static memberships and two runtime area matches
+(382 total). It recorded two unresolved prerequisites at that time. The
+November 28 audit now reports zero unverified gates across all 382 memberships.
+Five of 28 dungeon entrance areas remain unknown, and Blackmaw Hold and
+Shaper's Terrace still lack named quest lists. See the dated audits below.
 
 ## Reproduce the offline merge
 

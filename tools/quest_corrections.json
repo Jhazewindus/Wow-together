@@ -13958,7 +13958,7 @@
       "before": "Both",
       "side": "Horde"
     },
-    "source": "https://www.wowhead.com/forever/quest=95534 — refreshed capture 2026-11-04, SHA-256 88414a71d647d103492d4bd0f29f9b5d08cbb029594e552e6422527b4ab34b65; current page says Both. Current QuestieDB Forever data at 4ab64311b6f0be1a96b38a5b95bfa27fa95416af still carries the Horde mask, and the 2026-10-10 Wowhead capture also reported Horde. Retain Horde pending live-client verification of this source conflict."
+    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 refreshed capture 2026-11-04, SHA-256 88414a71d647d103492d4bd0f29f9b5d08cbb029594e552e6422527b4ab34b65; current page says Both. Current QuestieDB Forever data at 4ab64311b6f0be1a96b38a5b95bfa27fa95416af still carries the Horde mask, and the 2026-10-10 Wowhead capture also reported Horde. Retain Horde pending live-client verification of this source conflict."
   },
   {
     "questID": 93680,
@@ -13998,7 +13998,7 @@
   {
     "questID": 96984,
     "title": "Heart of Disruption",
-    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete. Retain the previously reviewed current handoff locations from the captured quest page: starter 269127 at 68.6,45.2 (map 1421), receiver 2410 at 61.6,20.8 (map 1424). Current QuestieDB does not publish this quest record, so no replacement location is inferred.",
+    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete. Retain the previously reviewed current handoff locations from the captured quest page: starter 269127 at 68.6,45.2 (map 1421), receiver 2410 at 61.6,20.8 (map 1424). Current QuestieDB does not publish this quest record, so no replacement location is inferred.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 24,
@@ -17837,7 +17837,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6821
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -17846,7 +17846,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6822
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6824,
@@ -17855,7 +17855,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6823
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -20713,7 +20713,7 @@
         "previousQuest": null
       }
     },
-    "source": "Wowhead Forever comments 3221829 and 3221830 explicitly identify Trouble in the Deeps (6562) and The Essence of Aku’Mai (6563) as breadcrumb-linked, not prerequisites; page SHA-256 f7758d3d660bad46a1380c2273151dc1a320aac8e7315edd23c5232ac008c4ad."
+    "source": "Wowhead Forever comments 3221829 and 3221830 explicitly identify Trouble in the Deeps (6562) and The Essence of Aku\u2019Mai (6563) as breadcrumb-linked, not prerequisites; page SHA-256 f7758d3d660bad46a1380c2273151dc1a320aac8e7315edd23c5232ac008c4ad."
   },
   {
     "questID": 93404,
@@ -20740,30 +20740,35 @@
     "questID": 2846,
     "title": "Tiara of the Deep",
     "prerequisiteReviewCorrection": {
-      "before": {},
-      "after": {
+      "before": {
         "prerequisitesUnverified": true
+      },
+      "after": {
+        "prerequisitesUnverified": null
       }
     },
-    "source": "Wowhead comments 2956157, 2956161 and 2956163 conflict on whether Tabetha’s Task is required for Tiara of the Deep; keep the prerequisite gate visibly unverified rather than inventing an edge."
+    "source": "Current Wowhead Forever quest=2846 page captured 2026-11-28 (SHA-256 3b67622022281f99ae83885433633a06a4783df50b42f2aa34d5d9eb7ca16c37) lists Tabetha's Task in its series, but the current Forever dungeon quest guide has no Pre marker for Tiara. Recent Wowhead Forever comment by mmarwyn on quest=2861 (posted 2026-11-13; page SHA-256 6444424ca846848e88751dc16e1852db49660cedc05d69788394f1ffae356941) confirms Tabetha's Task is not required; it only blocks sharing while active. QuestieDB Forever quest record at revision 01902c6c35cc09efdc41f4e731f701e63f98f67d has no preQuest field for 2846; its 2861 nextInChain relation points forward and is not a prerequisite."
   },
   {
     "questID": 95682,
     "title": "Open the Maw",
     "prerequisiteReviewCorrection": {
-      "before": {},
-      "after": {
+      "before": {
         "prerequisitesUnverified": true
+      },
+      "after": {
+        "previousQuest": 95663,
+        "prerequisitesUnverified": null
       }
     },
-    "source": "Wowhead comment 6440024 reports an unnamed prerequisite pickup near Hammerfall; comment 6440416 marks Dragonmaw Rumors (95663) as a breadcrumb. The actual required quest remains unidentified, so keep this gate unverified."
+    "source": "Wowhead Forever quest=95682, captured 2026-11-28, SHA-256 4617f040cf8db627d61cf2918f5de5e0aa6af732d84ca7f6cec8766a51707c02: the published linear quest series lists Dragonmaw Rumors (95663) immediately before Open the Maw (95682). Wowhead Forever comment 6440024 and reply 1864336 report the quest is unavailable until Dragonmaw Rumors is completed; the Forever dungeon guide identifies Zaruk as its starter in Arathi Highlands."
   },
   {
     "questID": 96984,
     "title": "Heart of Disruption",
     "previousQuest": 92434,
     "previousTitle": "Blood in the Streets",
-    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; the captured quest series is 92434 → 96984 → 97287."
+    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7; the captured quest series is 92434 \u2192 96984 \u2192 97287."
   },
   {
     "questID": 96335,
@@ -21576,5 +21581,1892 @@
     "prerequisiteCorrection": {
       "previousQuest": 79229
     }
+  },
+  {
+    "questID": 93601,
+    "title": "Passing the Blame",
+    "questAddition": {
+      "title": "Passing the Blame",
+      "foreverStatus": "new",
+      "level": 45,
+      "minLevel": 35,
+      "areaID": 16651,
+      "xp": 390,
+      "money": 600,
+      "side": "Both",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2652,
+          "x": 0.6940000000000001,
+          "y": 0.718,
+          "name": "Woodwyrd",
+          "entityID": 254674,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2652,
+          "x": 0.726,
+          "y": 0.314,
+          "name": "Kog'thug the Brave",
+          "entityID": 253527,
+          "npc": true
+        }
+      ],
+      "series": [
+        93594,
+        93404,
+        93601,
+        93604
+      ],
+      "seriesRoot": 93594,
+      "seriesPosition": 3,
+      "previousQuest": 93404,
+      "prerequisitesRead": true,
+      "zone": "Shen'dralas",
+      "mapID": 2652,
+      "locationSource": "Wowhead Forever",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "entityID": 254674,
+          "name": "Woodwyrd"
+        }
+      ],
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "entityID": 253527,
+          "name": "Kog'thug the Brave"
+        }
+      ],
+      "worldReferences": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 254674,
+            "name": "Woodwyrd"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 253527,
+            "name": "Kog'thug the Brave"
+          }
+        ],
+        "requirements": [],
+        "provided": []
+      },
+      "prerequisiteSource": "Wowhead Forever quest=93601, captured 2026-11-28, SHA-256 f1c3d0063ac31e1367b580926c15c0d55ea34d4eb5c6e5391ea0e2ddb495553f: series lists quest 93404 immediately before Passing the Blame.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=93601 (captured 2026-11-28; SHA-256 f1c3d0063ac31e1367b580926c15c0d55ea34d4eb5c6e5391ea0e2ddb495553f)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=93601 (captured 2026-11-28; SHA-256 f1c3d0063ac31e1367b580926c15c0d55ea34d4eb5c6e5391ea0e2ddb495553f)"
+  },
+  {
+    "questID": 1200,
+    "title": "Blackfathom Villainy",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 1198
+      }
+    },
+    "source": "Wowhead Forever quest=1200, captured 2026-11-28, SHA-256 d39890492e0758d48e776f9c5abdc146a170f5dbfecb6de5af95cd011793f187: the published linear quest series lists In Search of Thaelrid (1198) immediately before Blackfathom Villainy (1200)."
+  },
+  {
+    "questID": 1275,
+    "title": "Researching the Corruption",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 3765
+      }
+    },
+    "source": "Wowhead Forever quest=1275, captured 2026-11-28, SHA-256 fd5b149a3e76551a6d38f0bf285c9a3d08af060c584f4ea560838b044b90aecb: the published linear quest series lists The Corruption Abroad (3765) immediately before Researching the Corruption (1275)."
+  },
+  {
+    "questID": 2040,
+    "title": "Underground Assault",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 2041
+      }
+    },
+    "source": "Wowhead Forever quest=2040, captured 2026-11-28, SHA-256 bbf71933c2ef29fccd25fd8df41eb17b8646caaf3cbf1bc43b8727bddbdd3ad0: the published linear quest series lists Speak with Shoni (2041) immediately before Underground Assault (2040)."
+  },
+  {
+    "questID": 2240,
+    "title": "The Hidden Chamber",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 2398
+      }
+    },
+    "source": "Wowhead Forever quest=2240, captured 2026-11-28, SHA-256 ee9eb759cba668de73251e8fa7ceb24d8defb97f150a6b08e8b3f1ee79c51fd2: the published linear quest series lists The Lost Dwarves (2398) immediately before The Hidden Chamber (2240)."
+  },
+  {
+    "questID": 2770,
+    "title": "Gahz'rilla",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 2769
+      }
+    },
+    "source": "Wowhead Forever quest=2770, captured 2026-11-28, SHA-256 1483fee104b0520f78616f06e3b6b4599af50fd06edd4041940fee849d7d3473: the published linear quest series lists The Brassbolts Brothers (2769) immediately before Gahz'rilla (2770)."
+  },
+  {
+    "questID": 2924,
+    "title": "Essential Artificials",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 2925
+      }
+    },
+    "source": "Wowhead Forever quest=2924, captured 2026-11-28, SHA-256 9ad2fdf446345228fa1c149e066310bf45e0afdc4223aafa3d0ba75d85ac4106: the published linear quest series lists Klockmort's Essentials (2925) immediately before Essential Artificials (2924)."
+  },
+  {
+    "questID": 2930,
+    "title": "Data Rescue",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 2931
+      }
+    },
+    "source": "Wowhead Forever quest=2930, captured 2026-11-28, SHA-256 2650a48beee5c1c8c3fff4e1371fbe5f446c1e5505e27437703861758f448ced: the published linear quest series lists Castpipe's Task (2931) immediately before Data Rescue (2930)."
+  },
+  {
+    "questID": 4126,
+    "title": "Hurley Blackbreath",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 4128
+      }
+    },
+    "source": "Wowhead Forever quest=4126, captured 2026-11-28, SHA-256 0a1dc4d2898ce26de47d209820070deb56b30606ec6d701a7659d65cef87c20f: the published linear quest series lists Ragnar Thunderbrew (4128) immediately before Hurley Blackbreath (4126)."
+  },
+  {
+    "questID": 4134,
+    "title": "Lost Thunderbrew Recipe",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 4133
+      }
+    },
+    "source": "Wowhead Forever quest=4134, captured 2026-11-28, SHA-256 268b3caffc11dd45c7dac5217f783ae034cad4b44adf4455e270da22951ece2f: the published linear quest series lists Vivian Lagrave (4133) immediately before Lost Thunderbrew Recipe (4134)."
+  },
+  {
+    "questID": 4136,
+    "title": "Ribbly Screwspigot",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 4324
+      }
+    },
+    "source": "Wowhead Forever quest=4136, captured 2026-11-28, SHA-256 eeea335611d084ffeb931a7ce08298d964b8a2c3b50c759a1a3c7aa3ff5c4086: the published linear quest series lists Yuka Screwspigot (4324) immediately before Ribbly Screwspigot (4136)."
+  },
+  {
+    "questID": 4764,
+    "title": "Doomrigger's Clasp",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 4766
+      }
+    },
+    "source": "Wowhead Forever quest=4764, captured 2026-11-28, SHA-256 176685837cadc3dde4511eb0e16efdd15c6bdee1c1bea1cf28c29abd287a02da: the published linear quest series lists Mayara Brightwing (4766) immediately before Doomrigger's Clasp (4764)."
+  },
+  {
+    "questID": 4768,
+    "title": "The Darkstone Tablet",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 4769
+      }
+    },
+    "source": "Wowhead Forever quest=4768, captured 2026-11-28, SHA-256 0c9a7aecc5e437d14a6e42894c5aa72234a0a5b361757466230ba3a086e4f3c8: the published linear quest series lists Vivian Lagrave and the Darkstone Tablet (4769) immediately before The Darkstone Tablet (4768)."
+  },
+  {
+    "questID": 93604,
+    "title": "Agamaggan's Blood",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 93601
+      }
+    },
+    "source": "Wowhead Forever quest=93604, captured 2026-11-28, SHA-256 f89759ce5db994d9d5b9458da71028492487856cca66257cf3950ed776de205d: the published linear quest series lists Passing the Blame (93601) immediately before Agamaggan's Blood (93604)."
+  },
+  {
+    "questID": 95809,
+    "title": "Heartwoven",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 95647
+      }
+    },
+    "source": "Wowhead Forever quest=95809, captured 2026-11-28, SHA-256 b12fb9a3fa9ce4eb71f0c7570680993b505a3bb2af5b9eb48fbead152034ee7f: the published linear quest series lists Lost in the Thicket Things (95647) immediately before Heartwoven (95809)."
+  },
+  {
+    "questID": 484,
+    "title": "Young Crocolisk Skins",
+    "prerequisiteReviewCorrection": {
+      "before": {
+        "previousQuest": 469,
+        "prerequisitesUnverified": true
+      },
+      "after": {
+        "previousQuest": null,
+        "prerequisitesUnverified": false
+      }
+    },
+    "source": "Wowhead Forever Wetlands dungeon overview (captured 2026-11-28; SHA-256 1dc55a002ae86b9d0ff035b7a6bca11286cf6022355b546a4bc26d3ee92004fe) and quest=98815 (captured 2026-11-28; SHA-256 e1e5c58f77deeea1786d87d84bb46a9a1344a06f41ff923fa84e610be5712d63): Young Crocolisk Skins is required before Highland Hides, while Daily Delivery (469) is listed in the series but not required per current quest comments. Clear the unverified false gate."
+  },
+  {
+    "questID": 98815,
+    "title": "Highland Hides",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 484
+      }
+    },
+    "source": "Wowhead Forever Wetlands dungeon overview (captured 2026-11-28; SHA-256 1dc55a002ae86b9d0ff035b7a6bca11286cf6022355b546a4bc26d3ee92004fe) explicitly says complete Young Crocolisk Skins (484) to unlock Highland Hides; quest=98815 current page (captured 2026-11-28; SHA-256 e1e5c58f77deeea1786d87d84bb46a9a1344a06f41ff923fa84e610be5712d63) and current player reports distinguish required 484 from non-required Daily Delivery (469)."
+  },
+  {
+    "questID": 95646,
+    "title": "Horrors in the Highland",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 275
+      }
+    },
+    "source": "Wowhead Forever Wetlands dungeon overview, Horrors in the Highland detailed section (captured 2026-11-28; SHA-256 1dc55a002ae86b9d0ff035b7a6bca11286cf6022355b546a4bc26d3ee92004fe), lists The Greenwarden (463) -> Tramping Paws (276) -> Fire Taboo (277) -> Blisters on the Land (275) before this dungeon quest. The catalogue already records the first three links, making 275 the immediate gate."
+  },
+  {
+    "questID": 95647,
+    "title": "Lost in the Thicket Things",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 95737
+      }
+    },
+    "source": "Wowhead Forever Wetlands dungeon overview (captured 2026-11-28; SHA-256 1dc55a002ae86b9d0ff035b7a6bca11286cf6022355b546a4bc26d3ee92004fe) lists Seeking Caitlin (95737) as the prerequisite starting quest for Lost in the Thicket Things; current page for 95647 lists its dungeon follow-up Heartwoven (95809)."
+  },
+  {
+    "questID": 98824,
+    "title": "Prehistoric Prism",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 95810
+      }
+    },
+    "source": "Wowhead Forever Wetlands dungeon overview and quest=98824 (captured 2026-11-28; SHA-256 0b6802aea3c1fa254a217b8d1d7ad66894900edebc53857bd925eb7203a57b55) identify Prehistoric Prism as the follow-up to Lost Relic Carry (95810), looted from the dungeon's final boss."
+  },
+  {
+    "questID": 98823,
+    "title": "Earthen Echo",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 95664
+      }
+    },
+    "source": "Wowhead Forever Wetlands dungeon overview and quest=98823 (captured 2026-11-28; SHA-256 d68462b0e82c077d48cbd8160d8684d7a277396006ddbcda8ff3c43da7b65d62) identify Earthen Echo as the follow-up to Elder Knowledge (95664), looted from the dungeon's final boss."
+  },
+  {
+    "questID": 93786,
+    "title": "A Message in Blood",
+    "questAddition": {
+      "title": "A Message in Blood",
+      "foreverStatus": "new",
+      "level": 36,
+      "minLevel": 35,
+      "areaID": 16591,
+      "xp": 2800,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.461,
+          "y": 0.82,
+          "name": "Meadowsbrook Farmhand",
+          "entityID": 256383,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 256383
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 256383,
+          "npc": true,
+          "name": "Meadowsbrook Farmhand",
+          "action": "kill"
+        }
+      ],
+      "series": [
+        93786,
+        93787
+      ],
+      "seriesRoot": 93786,
+      "seriesPosition": 1,
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 27cbc2227b6ee8f14586835f140e25f0b29fd63543d99a10f41c11ceefec0682.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=93786 (captured 2026-11-28; SHA-256 27cbc2227b6ee8f14586835f140e25f0b29fd63543d99a10f41c11ceefec0682)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=93786 (captured 2026-11-28; SHA-256 27cbc2227b6ee8f14586835f140e25f0b29fd63543d99a10f41c11ceefec0682)"
+  },
+  {
+    "questID": 93787,
+    "title": "Food for the Taking",
+    "questAddition": {
+      "title": "Food for the Taking",
+      "foreverStatus": "new",
+      "level": 36,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 2800,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "objectiveLocationsIncomplete": true,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 262640,
+          "quantity": 6,
+          "name": "Feed Satchel"
+        }
+      ],
+      "series": [
+        93786,
+        93787
+      ],
+      "seriesRoot": 93786,
+      "seriesPosition": 2,
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 8443796916b31c9f39538210a532e2ddb33ccfca85c988bdc02eb90c8e2a4e0a.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=93787 (captured 2026-11-28; SHA-256 8443796916b31c9f39538210a532e2ddb33ccfca85c988bdc02eb90c8e2a4e0a)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=93787 (captured 2026-11-28; SHA-256 8443796916b31c9f39538210a532e2ddb33ccfca85c988bdc02eb90c8e2a4e0a)"
+  },
+  {
+    "questID": 94483,
+    "title": "Show Them How It's Done",
+    "questAddition": {
+      "title": "Show Them How It's Done",
+      "foreverStatus": "new",
+      "level": 39,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3000,
+      "money": 3500,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.514,
+          "y": 0.7020000000000001,
+          "name": "Farholde Scout",
+          "entityID": 257926,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 257926
+        },
+        {
+          "mapID": 2548,
+          "x": 0.45,
+          "y": 0.642,
+          "name": "Farholde Priest",
+          "entityID": 270667,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 270667
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 257926,
+          "npc": true,
+          "name": "Farholde Scout",
+          "action": "kill"
+        },
+        {
+          "entityID": 270667,
+          "npc": true,
+          "name": "Farholde Priest",
+          "action": "kill"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteAll": [
+        93786,
+        93787
+      ],
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 a9026ce8617bbb89d6c6e61bea4a5c3885d26cf1a49059ae92dbda9c9d320998.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94483 (captured 2026-11-28; SHA-256 a9026ce8617bbb89d6c6e61bea4a5c3885d26cf1a49059ae92dbda9c9d320998)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94483 (captured 2026-11-28; SHA-256 a9026ce8617bbb89d6c6e61bea4a5c3885d26cf1a49059ae92dbda9c9d320998)"
+  },
+  {
+    "questID": 94672,
+    "title": "Encroaching Twilight",
+    "questAddition": {
+      "title": "Encroaching Twilight",
+      "foreverStatus": "new",
+      "level": 41,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3300,
+      "money": 5500,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.479,
+          "y": 0.5,
+          "name": "Twilight Shadowmancer",
+          "entityID": 254560,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 254560
+        },
+        {
+          "mapID": 2548,
+          "x": 0.479,
+          "y": 0.5,
+          "name": "Twilight Neophyte",
+          "entityID": 256798,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 256798
+        },
+        {
+          "mapID": 2548,
+          "x": 0.44,
+          "y": 0.47,
+          "name": "Twilight Raider",
+          "entityID": 256952,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 256952
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 254560,
+          "npc": true,
+          "name": "Twilight Shadowmancer",
+          "action": "kill"
+        },
+        {
+          "entityID": 256798,
+          "npc": true,
+          "name": "Twilight Neophyte",
+          "action": "kill"
+        },
+        {
+          "entityID": 256952,
+          "npc": true,
+          "name": "Twilight Raider",
+          "action": "kill"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94483,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 50d7bc6a6f00f3af4ee39f5bdcf0a03fbeccd7e40b43dff4c1be7e0cb0f39c40.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94672 (captured 2026-11-28; SHA-256 50d7bc6a6f00f3af4ee39f5bdcf0a03fbeccd7e40b43dff4c1be7e0cb0f39c40)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94672 (captured 2026-11-28; SHA-256 50d7bc6a6f00f3af4ee39f5bdcf0a03fbeccd7e40b43dff4c1be7e0cb0f39c40)"
+  },
+  {
+    "questID": 94680,
+    "title": "Twilight Missives",
+    "questAddition": {
+      "title": "Twilight Missives",
+      "foreverStatus": "new",
+      "level": 41,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 2450,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.479,
+          "y": 0.5,
+          "name": "Twilight Shadowmancer",
+          "entityID": 254560,
+          "npc": true,
+          "action": "collect",
+          "itemName": "Twilight Missive",
+          "sourceObjective": 0
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 254560,
+          "npc": true,
+          "name": "Twilight Shadowmancer",
+          "action": "collect",
+          "itemName": "Twilight Missive"
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 265745,
+          "quantity": 3,
+          "name": "Twilight Missive"
+        }
+      ],
+      "series": [
+        94680,
+        94727
+      ],
+      "seriesRoot": 94680,
+      "seriesPosition": 1,
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94483,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 77dcfb0e6a20b576b9dff2c3c4a217f5959e186ea73ae80d0d59e6a7e1937776.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94680 (captured 2026-11-28; SHA-256 77dcfb0e6a20b576b9dff2c3c4a217f5959e186ea73ae80d0d59e6a7e1937776)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94680 (captured 2026-11-28; SHA-256 77dcfb0e6a20b576b9dff2c3c4a217f5959e186ea73ae80d0d59e6a7e1937776)"
+  },
+  {
+    "questID": 94727,
+    "title": "Digging for Answers",
+    "questAddition": {
+      "title": "Digging for Answers",
+      "foreverStatus": "new",
+      "level": 40,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 315,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 260931
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 260931,
+          "npc": true,
+          "name": "Clubtoe",
+          "action": "kill"
+        }
+      ],
+      "series": [
+        94680,
+        94727
+      ],
+      "seriesRoot": 94680,
+      "seriesPosition": 2,
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteAll": [
+        94672,
+        94680
+      ],
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 d6313ec575e031361546c16e081532e5c9d63bcd5aa7e9d061520d728903bfc6.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94727 (captured 2026-11-28; SHA-256 d6313ec575e031361546c16e081532e5c9d63bcd5aa7e9d061520d728903bfc6)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94727 (captured 2026-11-28; SHA-256 d6313ec575e031361546c16e081532e5c9d63bcd5aa7e9d061520d728903bfc6)"
+  },
+  {
+    "questID": 95417,
+    "title": "The Purple Ones",
+    "questAddition": {
+      "title": "The Purple Ones",
+      "foreverStatus": "new",
+      "level": 40,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 315,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.49200000000000005,
+          "y": 0.46799999999999997,
+          "name": "Twilight Brute",
+          "entityID": 261208,
+          "npc": true
+        }
+      ],
+      "prerequisiteCandidates": [
+        95424,
+        95425
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94727,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 62a3a39b66e02200f980e78a210cfaeb0235c43002bce0f16625439d89ded909.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95417 (captured 2026-11-28; SHA-256 62a3a39b66e02200f980e78a210cfaeb0235c43002bce0f16625439d89ded909)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95417 (captured 2026-11-28; SHA-256 62a3a39b66e02200f980e78a210cfaeb0235c43002bce0f16625439d89ded909)"
+  },
+  {
+    "questID": 95601,
+    "title": "The Purple Ones",
+    "questAddition": {
+      "title": "The Purple Ones",
+      "foreverStatus": "new",
+      "level": 40,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3150,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.49200000000000005,
+          "y": 0.46799999999999997,
+          "name": "Twilight Brute",
+          "entityID": 261208,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.485,
+          "y": 0.483,
+          "name": "Empowered Brute",
+          "entityID": 261711,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 261711
+        },
+        {
+          "mapID": 2548,
+          "x": 0.473,
+          "y": 0.5,
+          "name": "Twilight Ritualist",
+          "entityID": 262169,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 262169
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 261711,
+          "npc": true,
+          "name": "Empowered Brute",
+          "action": "kill"
+        },
+        {
+          "entityID": 262169,
+          "npc": true,
+          "name": "Twilight Ritualist",
+          "action": "kill"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 95417,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 5b0882e924437ff6f3c966079200419bb2073a69aa5ddfa4532dde0fbcb92793.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95601 (captured 2026-11-28; SHA-256 5b0882e924437ff6f3c966079200419bb2073a69aa5ddfa4532dde0fbcb92793)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95601 (captured 2026-11-28; SHA-256 5b0882e924437ff6f3c966079200419bb2073a69aa5ddfa4532dde0fbcb92793)"
+  },
+  {
+    "questID": 95602,
+    "title": "Sickening Lights",
+    "questAddition": {
+      "title": "Sickening Lights",
+      "foreverStatus": "new",
+      "level": 40,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3150,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "objectiveLocationsIncomplete": true,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94727,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 61cf7c920ee43c1c83c37bef50dcf0334af5f5fee4dc591b3c8c8559a12e2eac.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95602 (captured 2026-11-28; SHA-256 61cf7c920ee43c1c83c37bef50dcf0334af5f5fee4dc591b3c8c8559a12e2eac)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95602 (captured 2026-11-28; SHA-256 61cf7c920ee43c1c83c37bef50dcf0334af5f5fee4dc591b3c8c8559a12e2eac)"
+  },
+  {
+    "questID": 95427,
+    "title": "Twilight No More!",
+    "questAddition": {
+      "title": "Twilight No More!",
+      "foreverStatus": "new",
+      "level": 41,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3300,
+      "money": 2500,
+      "side": "Horde",
+      "questType": "Elite",
+      "classMask": 0,
+      "raceMask": 0,
+      "objectiveLocationsIncomplete": true,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.45,
+          "y": 0.505,
+          "name": "Chogg'Zac",
+          "entityID": 256899,
+          "npc": true,
+          "action": "collect",
+          "itemName": "Zac's Head",
+          "sourceObjective": 1
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 256899,
+          "npc": true,
+          "name": "Chogg'Zac",
+          "action": "collect",
+          "itemName": "Zac's Head"
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 265750,
+          "quantity": 1,
+          "name": "Chogg's Head"
+        },
+        {
+          "itemID": 265751,
+          "quantity": 1,
+          "name": "Zac's Head"
+        }
+      ],
+      "prerequisiteCandidates": [
+        95601,
+        95602
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteAll": [
+        95601,
+        95602
+      ],
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 2f2c53f61b1446a1386f1cf30785c51e4df5999cc9f95c4f79dba000a9a101d7.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95427 (captured 2026-11-28; SHA-256 2f2c53f61b1446a1386f1cf30785c51e4df5999cc9f95c4f79dba000a9a101d7)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95427 (captured 2026-11-28; SHA-256 2f2c53f61b1446a1386f1cf30785c51e4df5999cc9f95c4f79dba000a9a101d7)"
+  },
+  {
+    "questID": 95418,
+    "title": "Spread the Word",
+    "questAddition": {
+      "title": "Spread the Word",
+      "foreverStatus": "new",
+      "level": 40,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 315,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.499,
+          "y": 0.47,
+          "name": "Clubtoe",
+          "entityID": 260931,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 265750,
+          "quantity": 1,
+          "name": "Chogg's Head"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 95427,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 00ec4c98d7d12df9ff28a80e87e5abe93bd18ead6f61d6b7d0bc1a7fe474ddd1.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95418 (captured 2026-11-28; SHA-256 00ec4c98d7d12df9ff28a80e87e5abe93bd18ead6f61d6b7d0bc1a7fe474ddd1)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95418 (captured 2026-11-28; SHA-256 00ec4c98d7d12df9ff28a80e87e5abe93bd18ead6f61d6b7d0bc1a7fe474ddd1)"
+  },
+  {
+    "questID": 95420,
+    "title": "Land of Giants",
+    "questAddition": {
+      "title": "Land of Giants",
+      "foreverStatus": "new",
+      "level": 40,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 315,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.44,
+          "name": "Tran'gul",
+          "entityID": 256710,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.644,
+          "y": 0.14800000000000002,
+          "name": "Clugfist",
+          "entityID": 255829,
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 265750,
+          "quantity": 1,
+          "name": "Chogg's Head"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 95418,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 8d60d7799ddd537db6752037253f3788999e0e3dc504b673263a4b7d8f456b5b.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95420 (captured 2026-11-28; SHA-256 8d60d7799ddd537db6752037253f3788999e0e3dc504b673263a4b7d8f456b5b)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95420 (captured 2026-11-28; SHA-256 8d60d7799ddd537db6752037253f3788999e0e3dc504b673263a4b7d8f456b5b)"
+  },
+  {
+    "questID": 95424,
+    "title": "Might Makes Right",
+    "questAddition": {
+      "title": "Might Makes Right",
+      "foreverStatus": "new",
+      "level": 41,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3300,
+      "money": 5500,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.644,
+          "y": 0.14800000000000002,
+          "name": "Clugfist",
+          "entityID": 255829,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.644,
+          "y": 0.14800000000000002,
+          "name": "Clugfist",
+          "entityID": 255829,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.6890000000000001,
+          "y": 0.312,
+          "name": "Twilight Mauler",
+          "entityID": 260968,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 260968
+        },
+        {
+          "mapID": 2548,
+          "x": 0.765,
+          "y": 0.26899999999999996,
+          "name": "Twilight Firecaller",
+          "entityID": 261497,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 261497
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 260968,
+          "npc": true,
+          "name": "Twilight Mauler",
+          "action": "kill"
+        },
+        {
+          "entityID": 261497,
+          "npc": true,
+          "name": "Twilight Firecaller",
+          "action": "kill"
+        }
+      ],
+      "prerequisiteCandidates": [
+        95431,
+        95433
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 95420,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 42cf5baf2366bc451b693495a1ffca7078771441ef64b3f2bd8ec90dab7c28ca.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95424 (captured 2026-11-28; SHA-256 42cf5baf2366bc451b693495a1ffca7078771441ef64b3f2bd8ec90dab7c28ca)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95424 (captured 2026-11-28; SHA-256 42cf5baf2366bc451b693495a1ffca7078771441ef64b3f2bd8ec90dab7c28ca)"
+  },
+  {
+    "questID": 95425,
+    "title": "Unworthy Champion",
+    "questAddition": {
+      "title": "Unworthy Champion",
+      "foreverStatus": "new",
+      "level": 42,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 3450,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.644,
+          "y": 0.14800000000000002,
+          "name": "Clugfist",
+          "entityID": 255829,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.644,
+          "y": 0.14800000000000002,
+          "name": "Clugfist",
+          "entityID": 255829,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.74,
+          "y": 0.268,
+          "name": "Klunk",
+          "entityID": 260973,
+          "npc": true,
+          "action": "collect",
+          "itemName": "Skullbasher",
+          "sourceObjective": 0
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 260973,
+          "npc": true,
+          "name": "Klunk",
+          "action": "collect",
+          "itemName": "Skullbasher"
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 269257,
+          "quantity": 1,
+          "name": "Skullbasher"
+        }
+      ],
+      "prerequisiteCandidates": [
+        95431,
+        95433
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 95420,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 55a5ca591e53e934d1c766ba21026c76eb1caa09db06f313be173c5458eda4dd.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95425 (captured 2026-11-28; SHA-256 55a5ca591e53e934d1c766ba21026c76eb1caa09db06f313be173c5458eda4dd)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95425 (captured 2026-11-28; SHA-256 55a5ca591e53e934d1c766ba21026c76eb1caa09db06f313be173c5458eda4dd)"
+  },
+  {
+    "questID": 95428,
+    "title": "Clugfist's Decree",
+    "questAddition": {
+      "title": "Clugfist's Decree",
+      "foreverStatus": "new",
+      "level": 41,
+      "minLevel": 36,
+      "areaID": 16591,
+      "xp": 330,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.644,
+          "y": 0.14800000000000002,
+          "name": "Clugfist",
+          "entityID": 255829,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "series": [
+        95428,
+        94744
+      ],
+      "seriesRoot": 95428,
+      "seriesPosition": 1,
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteAll": [
+        95424,
+        95425
+      ],
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 b36c425500fa8fc468fe20db65d7a568978b512395e26f122b7a04c5a9848d8a.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95428 (captured 2026-11-28; SHA-256 b36c425500fa8fc468fe20db65d7a568978b512395e26f122b7a04c5a9848d8a)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95428 (captured 2026-11-28; SHA-256 b36c425500fa8fc468fe20db65d7a568978b512395e26f122b7a04c5a9848d8a)"
+  },
+  {
+    "questID": 94744,
+    "title": "The Wayward Warrior",
+    "questAddition": {
+      "title": "The Wayward Warrior",
+      "foreverStatus": "new",
+      "level": 43,
+      "minLevel": 38,
+      "areaID": 16591,
+      "xp": 360,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "series": [
+        95428,
+        94744
+      ],
+      "seriesRoot": 95428,
+      "seriesPosition": 2,
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 95428,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 dc067cb8c6596949353562f1453c7f6e9ba89642386bb1c9c5faebb7ee581156.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94744 (captured 2026-11-28; SHA-256 dc067cb8c6596949353562f1453c7f6e9ba89642386bb1c9c5faebb7ee581156)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94744 (captured 2026-11-28; SHA-256 dc067cb8c6596949353562f1453c7f6e9ba89642386bb1c9c5faebb7ee581156)"
+  },
+  {
+    "questID": 94745,
+    "title": "Carving a Path",
+    "questAddition": {
+      "title": "Carving a Path",
+      "foreverStatus": "new",
+      "level": 44,
+      "minLevel": 38,
+      "areaID": 16591,
+      "xp": 3750,
+      "money": 6500,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.287,
+          "y": 0.41600000000000004,
+          "name": "Twilight Fanatic",
+          "entityID": 256795,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 256795
+        },
+        {
+          "mapID": 2548,
+          "x": 0.276,
+          "y": 0.40700000000000003,
+          "name": "Twilight Corrupter",
+          "entityID": 256797,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 256797
+        },
+        {
+          "mapID": 2548,
+          "x": 0.259,
+          "y": 0.439,
+          "name": "Twilight Champion",
+          "entityID": 256799,
+          "npc": true,
+          "action": "kill",
+          "sourceObjective": 256799
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 256795,
+          "npc": true,
+          "name": "Twilight Fanatic",
+          "action": "kill"
+        },
+        {
+          "entityID": 256797,
+          "npc": true,
+          "name": "Twilight Corrupter",
+          "action": "kill"
+        },
+        {
+          "entityID": 256799,
+          "npc": true,
+          "name": "Twilight Champion",
+          "action": "kill"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94744,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 8b505b8ea70afdc8a9f631b77c28494c685829c1c15b269e77deb1bce4df770a.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94745 (captured 2026-11-28; SHA-256 8b505b8ea70afdc8a9f631b77c28494c685829c1c15b269e77deb1bce4df770a)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94745 (captured 2026-11-28; SHA-256 8b505b8ea70afdc8a9f631b77c28494c685829c1c15b269e77deb1bce4df770a)"
+  },
+  {
+    "questID": 94748,
+    "title": "Break Their Chains",
+    "questAddition": {
+      "title": "Break Their Chains",
+      "foreverStatus": "new",
+      "level": 44,
+      "minLevel": 38,
+      "areaID": 16591,
+      "xp": 3750,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "objectiveLocationsIncomplete": true,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.259,
+          "y": 0.439,
+          "name": "Twilight Champion",
+          "entityID": 256799,
+          "npc": true,
+          "action": "collect",
+          "itemName": "Twilight Key",
+          "sourceObjective": 1
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 256799,
+          "npc": true,
+          "name": "Twilight Champion",
+          "action": "collect",
+          "itemName": "Twilight Key"
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 265821,
+          "quantity": 5,
+          "name": "Twilight Key"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94744,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 d83befef7f67812546bc8222a71b6256f661499ad8cf89e52cc01fdca129bb61.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94748 (captured 2026-11-28; SHA-256 d83befef7f67812546bc8222a71b6256f661499ad8cf89e52cc01fdca129bb61)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94748 (captured 2026-11-28; SHA-256 d83befef7f67812546bc8222a71b6256f661499ad8cf89e52cc01fdca129bb61)"
+  },
+  {
+    "questID": 94768,
+    "title": "Bring Me His Head",
+    "questAddition": {
+      "title": "Bring Me His Head",
+      "foreverStatus": "new",
+      "level": 46,
+      "minLevel": 38,
+      "areaID": 16591,
+      "xp": 5050,
+      "side": "Horde",
+      "questType": "Elite",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "mapID": 2548,
+          "x": 0.266,
+          "y": 0.44799999999999995,
+          "name": "Overlord Kilgar",
+          "entityID": 256881,
+          "npc": true,
+          "action": "collect",
+          "itemName": "Kilgar's Head",
+          "sourceObjective": 0
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 256881,
+          "npc": true,
+          "name": "Overlord Kilgar",
+          "action": "collect",
+          "itemName": "Kilgar's Head"
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 265837,
+          "quantity": 1,
+          "name": "Kilgar's Head"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "prerequisiteAll": [
+        94745,
+        94748
+      ],
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 25765b5c62dfe3fc9717b80b3b7982878d608fdf088af4fd34b2c5ae5cfb97bc.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=94768 (captured 2026-11-28; SHA-256 25765b5c62dfe3fc9717b80b3b7982878d608fdf088af4fd34b2c5ae5cfb97bc)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=94768 (captured 2026-11-28; SHA-256 25765b5c62dfe3fc9717b80b3b7982878d608fdf088af4fd34b2c5ae5cfb97bc)"
+  },
+  {
+    "questID": 95278,
+    "title": "It Is Time, Brother...",
+    "questAddition": {
+      "title": "It Is Time, Brother...",
+      "foreverStatus": "new",
+      "level": 45,
+      "minLevel": 38,
+      "areaID": 16591,
+      "xp": 390,
+      "side": "Horde",
+      "classMask": 0,
+      "raceMask": 0,
+      "starts": [
+        {
+          "mapID": 2548,
+          "x": 0.33399999999999996,
+          "y": 0.38,
+          "name": "Da'grosh",
+          "entityID": 258570,
+          "npc": true
+        }
+      ],
+      "ends": [
+        {
+          "mapID": 2548,
+          "x": 0.594,
+          "y": 0.456,
+          "name": "Krom'rosh",
+          "entityID": 256418,
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "itemID": 268705,
+          "quantity": 1,
+          "name": "Blood and Battle"
+        }
+      ],
+      "prerequisitesRead": true,
+      "zone": "Riverglades",
+      "mapID": 2548,
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 94768,
+      "prerequisiteSource": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d preQuestSingle/preQuestGroup; current Wowhead Forever detail capture 2026-11-28, SHA-256 0d07e1116c82304ec79fd963cb21cc1f2eb6e3636a0d7a287f2a23a4034fda9a.",
+      "questAdditionSource": "https://www.wowhead.com/forever/quest=95278 (captured 2026-11-28; SHA-256 0d07e1116c82304ec79fd963cb21cc1f2eb6e3636a0d7a287f2a23a4034fda9a)"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95278 (captured 2026-11-28; SHA-256 0d07e1116c82304ec79fd963cb21cc1f2eb6e3636a0d7a287f2a23a4034fda9a)"
+  },
+  {
+    "questID": 94975,
+    "title": "A Token of Vengeance",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 94768
+      }
+    },
+    "source": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d sets prerequisite 94768; current Wowhead Forever dungeon quest capture 2026-11-28, SHA-256 225a76c82eeb10132f4fc5b8949f52c90e258dcffe5ceceb8d92f75510f505cd corroborates identity and current comments describe the unlock chain."
+  },
+  {
+    "questID": 94968,
+    "title": "Eye of Mugg",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 95278
+      }
+    },
+    "source": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d sets prerequisite 95278; current Wowhead Forever dungeon quest capture 2026-11-28, SHA-256 7f39f0b08874baa75847ec7685cb2f6930ff5ac40fce5f33d8115a6d568aa9c2 corroborates identity and current comments describe the unlock chain."
+  },
+  {
+    "questID": 94972,
+    "title": "Tome of Twilight",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 95278
+      }
+    },
+    "source": "QuestieDB Forever correction revision 01902c6c35cc09efdc41f4e731f701e63f98f67d sets prerequisite 95278; current Wowhead Forever dungeon quest capture 2026-11-28, SHA-256 f5bd8ec95a219e9c5613565d79a8925cc73120b096f888821c9fa74451550a0c corroborates identity and current comments describe the unlock chain."
+  },
+  {
+    "questID": 94975,
+    "title": "A Token of Vengeance",
+    "routeFactsCorrection": {
+      "before": {
+        "starts": null,
+        "ends": null,
+        "objectiveLocationsIncomplete": null,
+        "objectives": null,
+        "npcTargets": null
+      },
+      "after": {
+        "starts": [
+          {
+            "mapID": 2548,
+            "x": 0.33399999999999996,
+            "y": 0.38,
+            "name": "Da'grosh",
+            "entityID": 258570,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 2548,
+            "x": 0.33399999999999996,
+            "y": 0.38,
+            "name": "Da'grosh",
+            "entityID": 258570,
+            "npc": true
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectives": {},
+        "npcTargets": {}
+      }
+    },
+    "source": "Wowhead Forever quest=94975, captured 2026-11-28, SHA-256 760313bb9c2b8af87db0a3c2c8fa55aff2ac442a788328a2136f212b52a453eb; current mapper has no dungeon loot coordinate, so objective locations remain marked incomplete."
+  },
+  {
+    "questID": 94968,
+    "title": "Eye of Mugg",
+    "routeFactsCorrection": {
+      "before": {
+        "starts": null,
+        "ends": null,
+        "npcTargets": null,
+        "objectiveLocationsIncomplete": null,
+        "objectives": null
+      },
+      "after": {
+        "starts": [
+          {
+            "mapID": 2548,
+            "x": 0.594,
+            "y": 0.456,
+            "name": "Krom'rosh",
+            "entityID": 256418,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 2548,
+            "x": 0.594,
+            "y": 0.456,
+            "name": "Krom'rosh",
+            "entityID": 256418,
+            "npc": true
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 258968,
+            "npc": true,
+            "name": "Overlord Mugg",
+            "action": "collect",
+            "itemName": "Eye of Mugg"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectives": {}
+      }
+    },
+    "source": "Wowhead Forever quest=94968, captured 2026-11-28, SHA-256 7f39f0b08874baa75847ec7685cb2f6930ff5ac40fce5f33d8115a6d568aa9c2; current mapper has no dungeon loot coordinate, so objective locations remain marked incomplete."
+  },
+  {
+    "questID": 94972,
+    "title": "Tome of Twilight",
+    "routeFactsCorrection": {
+      "before": {
+        "starts": null,
+        "ends": null,
+        "npcTargets": null,
+        "objectiveLocationsIncomplete": null,
+        "objectives": null
+      },
+      "after": {
+        "starts": [
+          {
+            "mapID": 2548,
+            "x": 0.594,
+            "y": 0.44,
+            "name": "Tran'gul",
+            "entityID": 256710,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 2548,
+            "x": 0.594,
+            "y": 0.44,
+            "name": "Tran'gul",
+            "entityID": 256710,
+            "npc": true
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 258964,
+            "npc": true,
+            "name": "Nar'gurk",
+            "action": "collect",
+            "itemName": "Tome of Twilight"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectives": {}
+      }
+    },
+    "source": "Wowhead Forever quest=94972, captured 2026-11-28, SHA-256 f5bd8ec95a219e9c5613565d79a8925cc73120b096f888821c9fa74451550a0c; current mapper has no dungeon loot coordinate, so objective locations remain marked incomplete."
+  },
+  {
+    "questID": 95775,
+    "title": "The Drowned City",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 629
+      }
+    },
+    "source": "Wowhead Forever master dungeon quest guide, captured 2026-11-28, SHA-256 ecebda9237b9a8f050166bdfd46ab90553eaba8689f59e7e271b9ba119e24a10; The Drowned City row says it starts with The Vile Reef (629) from Kin'weelay."
+  },
+  {
+    "questID": 95776,
+    "title": "The Only Good Brinescale...",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "prerequisiteAll": [
+          629,
+          95773
+        ]
+      }
+    },
+    "source": "Wowhead Forever master dungeon quest guide, captured 2026-11-28, SHA-256 ecebda9237b9a8f050166bdfd46ab90553eaba8689f59e7e271b9ba119e24a10; the row says it starts with The Vile Reef (629) and requires Enemies in the Water (95773) afterward."
+  },
+  {
+    "questID": 95787,
+    "title": "Take Two With Water",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 205
+      }
+    },
+    "source": "Wowhead Forever master dungeon quest guide, captured 2026-11-28, SHA-256 ecebda9237b9a8f050166bdfd46ab90553eaba8689f59e7e271b9ba119e24a10; the Drowned City row identifies Troll Witchery (205) as the final prerequisite."
+  },
+  {
+    "questID": 95788,
+    "title": "Magics of the Drowned City",
+    "prerequisiteReviewCorrection": {
+      "before": {},
+      "after": {
+        "previousQuest": 205
+      }
+    },
+    "source": "Wowhead Forever master dungeon quest guide, captured 2026-11-28, SHA-256 ecebda9237b9a8f050166bdfd46ab90553eaba8689f59e7e271b9ba119e24a10; the Drowned City row identifies Troll Witchery (205) as the final prerequisite."
   }
 ]

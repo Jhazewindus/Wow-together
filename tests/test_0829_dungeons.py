@@ -62,8 +62,10 @@ class DungeonActionTests(unittest.TestCase):
         self.assertEqual(quest_data[94984]['previousQuest'], 94907)
         self.assertEqual(quest_data[94997]['previousQuest'], 94983)
         self.assertNotIn('previousQuest', quest_data[6563])
-        self.assertTrue(quest_data[2846]['prerequisitesUnverified'])
-        self.assertTrue(quest_data[95682]['prerequisitesUnverified'])
+        self.assertNotIn('previousQuest', quest_data[2846])
+        self.assertFalse(quest_data[2846].get('prerequisitesUnverified', False))
+        self.assertEqual(quest_data[95682]['previousQuest'], 95663)
+        self.assertFalse(quest_data[95682].get('prerequisitesUnverified', False))
         self.assertEqual(quest_data[97291]['previousQuest'], 97290)
         self.assertEqual(quest_data[97292]['previousQuest'], 97291)
         unread = {ident for ident in memberships if not quest_data[ident].get('prerequisitesRead')}
@@ -72,8 +74,8 @@ class DungeonActionTests(unittest.TestCase):
         self.assertEqual({p['entityID'] for p in starts}, {31439})
         self.assertEqual({p['mapID'] for p in starts}, {1416})
         reviewed = {6563: copy.deepcopy(quest_data[6563])}
-        apply_corrections(reviewed)
-        apply_corrections(reviewed)
+        apply_corrections(reviewed, allow_partial_additions=True)
+        apply_corrections(reviewed, allow_partial_additions=True)
         self.assertNotIn('previousQuest', reviewed[6563])
         audit = json.loads((ROOT / 'research' / 'dungeon-prerequisite-audit-2026-11-07' / 'audit.json').read_text())
         self.assertEqual(audit['scope']['deniedQuestPages'], 17)

@@ -91,8 +91,8 @@ class WetlandsCoverageTests(unittest.TestCase):
     def test_unknown_elites_and_existing_actual_gates_are_preserved(self):
         for ident in [87318,87491,88756,88757,88758]:
             q=self.quests[ident];self.assertEqual(q['questType'],'Elite');self.assertTrue(q.get('starts'));self.assertTrue(q.get('ends'));self.assertFalse(q.get('objectives'))
-        self.assertTrue(self.quests[484]['prerequisitesUnverified'])
-        self.assertEqual(self.quests[484]['previousQuest'],469)
+        self.assertFalse(self.quests[484].get('prerequisitesUnverified', False))
+        self.assertNotIn('previousQuest', self.quests[484])
         self.assertEqual(self.quests[471]['prerequisiteAny'],[484])
         for ident in [98208,98246,98293]:self.assertTrue(self.quests[ident]['objectiveLocationsIncomplete'])
 

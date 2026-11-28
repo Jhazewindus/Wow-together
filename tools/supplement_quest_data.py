@@ -98,7 +98,7 @@ def build(directory, cache, output, forever_beta_data=None):
         for ident,value in rows.items():
             target=entities[kind].get(ident)
             if target and not target.get('name') and value['name']:target['name']=value['name']
-    corrections=apply_corrections(records)
+    corrections=apply_corrections(records, allow_partial_additions=False)
     chain_import={}
     if forever_beta_data:
         beta,_,source,origins=read_beta_facts(forever_beta_data)
