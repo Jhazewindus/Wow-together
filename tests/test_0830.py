@@ -189,6 +189,17 @@ class DungeonCollectionTests(unittest.TestCase):
         route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
         self.assertEqual(len(route.stops), 1); self.assertTrue(route.stops[1].dungeonEntrance)
 
+    def test_active_quest_is_not_rejected_by_a_stale_negative_npc_offer(self):
+        c = shipped(60); g = shipped_groups(c)['the-drowned-city']
+        accept(c, 95775)  # The Drowned City
+        c.ns.ObservedPickupAvailable = c.lua.eval('function(id) if id == 95775 then return false end end')
+
+        self.assertTrue(c.ns.CatalogueAllowed(95775, c.ns.profile, c.ns.self))
+        guide = c.ns.DungeonGuide(g)
+        self.assertIn(95775, {r.id for r in guide.records.values()})
+        route = c.ns.BuildDungeonRoute(guide, True)
+        self.assertNotIn('did not offer', route.pendingReason or '')
+
     def test_entering_matching_dungeon_retains_guide_for_the_run_and_handins(self):
         c = solo(); map_canvas(c); g = dungeon(c)
         accept(c, 900, 901)

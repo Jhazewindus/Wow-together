@@ -334,12 +334,16 @@ end
 -- The third result is a machine-readable reason for the confirmation UI.
 -- Existing callers keep the two-result eligibility contract below.
 function ns.CataloguePickupCheck(id, profile, key, query)
+    key = key or ns.self
+    local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
+    -- Pickup evidence only describes unaccepted quests; the active log proves
+    -- this character has already passed the quest giver's offer check.
+    if active and active[id] ~= nil then return true end
     local quest = ns.CatalogueQuest(id)
     if quest and (not profile or not profile.level or profile.level <= 0) then return nil, "Waiting for player level." end
     if quest and quest.minLevel and profile.level < quest.minLevel then return false, "Requires level " .. quest.minLevel .. "." end
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity == false then return false, reason end
-    key = key or ns.self
     local alternative, relation = alternativeTaken(id, key, query)
     if alternative and relation == "breadcrumb" then
         return false, "No longer offered: it only leads into " .. ns.QuestTitle(alternative) .. ", which is already underway or done.", "breadcrumb-superseded"
