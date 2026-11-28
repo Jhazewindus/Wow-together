@@ -1,0 +1,552 @@
+{
+  "schema": 1,
+  "zoneMapID": 2548,
+  "source": "Wowhead Forever quest Series field",
+  "captured": "2026-11-28",
+  "surveyedPages": 126,
+  "pagesWithSeries": 60,
+  "inaccessibleSourceQuestIDs": [
+    94734,
+    94928,
+    96015,
+    95603,
+    94832,
+    94739,
+    94668,
+    94670,
+    94962,
+    94964,
+    94965,
+    94748,
+    94535,
+    94745,
+    94889,
+    95428,
+    94727,
+    95163,
+    94999,
+    95219,
+    94532,
+    95936,
+    94923,
+    95278,
+    95613,
+    96028,
+    96027,
+    95162,
+    94669,
+    96108,
+    95331,
+    98426,
+    94879,
+    95602,
+    94533,
+    95418,
+    95183,
+    96026,
+    94931,
+    95156,
+    95601,
+    95417,
+    95184,
+    94744,
+    95181,
+    95425,
+    95992,
+    95882,
+    96081
+  ],
+  "chains": [
+    {
+      "sourceQuestID": 94480,
+      "source": "https://www.wowhead.com/forever/quest=94480",
+      "questIDs": [
+        94480,
+        94481
+      ]
+    },
+    {
+      "sourceQuestID": 96109,
+      "source": "https://www.wowhead.com/forever/quest=96109",
+      "questIDs": [
+        96107,
+        96108,
+        96109
+      ]
+    },
+    {
+      "sourceQuestID": 93786,
+      "source": "https://www.wowhead.com/forever/quest=93786",
+      "questIDs": [
+        93786,
+        93787
+      ]
+    },
+    {
+      "sourceQuestID": 94858,
+      "source": "https://www.wowhead.com/forever/quest=94858",
+      "questIDs": [
+        94829,
+        94858
+      ]
+    },
+    {
+      "sourceQuestID": 93788,
+      "source": "https://www.wowhead.com/forever/quest=93788",
+      "questIDs": [
+        93788,
+        93976,
+        95288,
+        95293
+      ]
+    },
+    {
+      "sourceQuestID": 94617,
+      "source": "https://www.wowhead.com/forever/quest=94617",
+      "questIDs": [
+        94613,
+        94615,
+        94617
+      ]
+    },
+    {
+      "sourceQuestID": 94893,
+      "source": "https://www.wowhead.com/forever/quest=94893",
+      "questIDs": [
+        94885,
+        94887,
+        94892,
+        94893
+      ]
+    },
+    {
+      "sourceQuestID": 95957,
+      "source": "https://www.wowhead.com/forever/quest=95957",
+      "questIDs": [
+        95988,
+        95957,
+        95975
+      ]
+    },
+    {
+      "sourceQuestID": 95322,
+      "source": "https://www.wowhead.com/forever/quest=95322",
+      "questIDs": [
+        95295,
+        95322,
+        95325
+      ]
+    },
+    {
+      "sourceQuestID": 95148,
+      "source": "https://www.wowhead.com/forever/quest=95148",
+      "questIDs": [
+        95147,
+        95148
+      ]
+    },
+    {
+      "sourceQuestID": 94680,
+      "source": "https://www.wowhead.com/forever/quest=94680",
+      "questIDs": [
+        94680,
+        94727
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "sourceQuestID": 96103,
+      "source": "https://www.wowhead.com/forever/quest=96103",
+      "titles": [
+        "A Feast for Buzzards",
+        "Song of the Strider",
+        "King of the Wild Plains"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95983,
+      "source": "https://www.wowhead.com/forever/quest=95983",
+      "titles": [
+        "A Feast for Buzzards",
+        "Song of the Strider",
+        "King of the Wild Plains"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 94925,
+      "source": "https://www.wowhead.com/forever/quest=94925",
+      "titles": [
+        "Borrowed Blades",
+        "The Goblin Trader",
+        "Smuggler's Paradise",
+        "Smuggler's Special"
+      ],
+      "reason": "source-quest-not-in-series"
+    },
+    {
+      "sourceQuestID": 94907,
+      "source": "https://www.wowhead.com/forever/quest=94907",
+      "titles": [
+        "A Small Favor",
+        "Tome of Twilight"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 94737,
+      "source": "https://www.wowhead.com/forever/quest=94737",
+      "titles": [
+        "Bloodmaster's Ring",
+        "Pay to Play",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Our Ogre Friend",
+        "A Boar's Delight",
+        "A Treat for a Friend",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95561,
+      "source": "https://www.wowhead.com/forever/quest=95561",
+      "titles": [
+        "Fetch 'n' Fletch",
+        "Apple of My Eye",
+        "Fit for a Princess",
+        "Stepped Out"
+      ],
+      "reason": "cross-faction-title-match"
+    },
+    {
+      "sourceQuestID": 94961,
+      "source": "https://www.wowhead.com/forever/quest=94961",
+      "titles": [
+        "Biting the Hand",
+        "Biting the Hand"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 94963,
+      "source": "https://www.wowhead.com/forever/quest=94963",
+      "titles": [
+        "Biting the Hand",
+        "Biting the Hand"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95063,
+      "source": "https://www.wowhead.com/forever/quest=95063",
+      "titles": [
+        "Bloodmaster's Ring",
+        "Pay to Play",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Our Ogre Friend",
+        "A Boar's Delight",
+        "A Treat for a Friend",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 94890,
+      "source": "https://www.wowhead.com/forever/quest=94890",
+      "titles": [
+        "Bring Me His Head",
+        "News to Farholde"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95312,
+      "source": "https://www.wowhead.com/forever/quest=95312",
+      "titles": [
+        "Smuggler's Bargain",
+        "Shipping and Handling",
+        "Shipping and Handling",
+        "Coming to Collect",
+        "Tazzik's Dues",
+        "Consolation Prize"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95472,
+      "source": "https://www.wowhead.com/forever/quest=95472",
+      "titles": [
+        "Smuggler's Bargain",
+        "Shipping and Handling",
+        "Shipping and Handling",
+        "Coming to Collect",
+        "Tazzik's Dues",
+        "Consolation Prize"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95433,
+      "source": "https://www.wowhead.com/forever/quest=95433",
+      "titles": [
+        "Rise Up!",
+        "Rumblings of Discontent",
+        "Might Makes Right",
+        "The Purple Ones",
+        "The Purple Ones",
+        "Twilight No More!",
+        "Spread the Word",
+        "Land of Giants"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95951,
+      "source": "https://www.wowhead.com/forever/quest=95951",
+      "titles": [
+        "Fetch 'n' Fletch",
+        "Apple of My Eye",
+        "Fit for a Princess",
+        "Stepped Out"
+      ],
+      "reason": "cross-faction-title-match"
+    },
+    {
+      "sourceQuestID": 95913,
+      "source": "https://www.wowhead.com/forever/quest=95913",
+      "titles": [
+        "Fetch 'n' Fletch",
+        "Apple of My Eye",
+        "Fit for a Princess",
+        "Stepped Out"
+      ],
+      "reason": "cross-faction-title-match"
+    },
+    {
+      "sourceQuestID": 96105,
+      "source": "https://www.wowhead.com/forever/quest=96105",
+      "titles": [
+        "A Feast for Buzzards",
+        "Song of the Strider",
+        "King of the Wild Plains"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95986,
+      "source": "https://www.wowhead.com/forever/quest=95986",
+      "titles": [
+        "A Feast for Buzzards",
+        "Song of the Strider",
+        "King of the Wild Plains"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95420,
+      "source": "https://www.wowhead.com/forever/quest=95420",
+      "titles": [
+        "Rise Up!",
+        "Rumblings of Discontent",
+        "Might Makes Right",
+        "The Purple Ones",
+        "The Purple Ones",
+        "Twilight No More!",
+        "Spread the Word",
+        "Land of Giants"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95424,
+      "source": "https://www.wowhead.com/forever/quest=95424",
+      "titles": [
+        "Rise Up!",
+        "Rumblings of Discontent",
+        "Might Makes Right",
+        "The Purple Ones",
+        "The Purple Ones",
+        "Twilight No More!",
+        "Spread the Word",
+        "Land of Giants"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 94891,
+      "source": "https://www.wowhead.com/forever/quest=94891",
+      "titles": [
+        "Bring Me His Head",
+        "News to Farholde"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 94733,
+      "source": "https://www.wowhead.com/forever/quest=94733",
+      "titles": [
+        "Bloodmaster's Ring",
+        "Pay to Play",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring",
+        "Our Ogre Friend",
+        "A Boar's Delight",
+        "A Treat for a Friend",
+        "Bloodmaster's Ring",
+        "Bloodmaster's Ring"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95432,
+      "source": "https://www.wowhead.com/forever/quest=95432",
+      "titles": [
+        "Rise Up!",
+        "Rumblings of Discontent",
+        "Might Makes Right",
+        "The Purple Ones",
+        "The Purple Ones",
+        "Twilight No More!",
+        "Spread the Word",
+        "Land of Giants"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95431,
+      "source": "https://www.wowhead.com/forever/quest=95431",
+      "titles": [
+        "Rise Up!",
+        "Rumblings of Discontent",
+        "Might Makes Right",
+        "The Purple Ones",
+        "The Purple Ones",
+        "Twilight No More!",
+        "Spread the Word",
+        "Land of Giants"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95296,
+      "source": "https://www.wowhead.com/forever/quest=95296",
+      "titles": [
+        "Smuggler's Bargain",
+        "Shipping and Handling",
+        "Shipping and Handling",
+        "Coming to Collect",
+        "Tazzik's Dues",
+        "Consolation Prize"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95383,
+      "source": "https://www.wowhead.com/forever/quest=95383",
+      "titles": [
+        "Smuggler's Bargain",
+        "Shipping and Handling",
+        "Shipping and Handling",
+        "Coming to Collect",
+        "Tazzik's Dues",
+        "Consolation Prize"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95294,
+      "source": "https://www.wowhead.com/forever/quest=95294",
+      "titles": [
+        "Smuggler's Bargain",
+        "Shipping and Handling",
+        "Shipping and Handling",
+        "Coming to Collect",
+        "Tazzik's Dues",
+        "Consolation Prize"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 96104,
+      "source": "https://www.wowhead.com/forever/quest=96104",
+      "titles": [
+        "A Feast for Buzzards",
+        "Song of the Strider",
+        "King of the Wild Plains"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95984,
+      "source": "https://www.wowhead.com/forever/quest=95984",
+      "titles": [
+        "A Feast for Buzzards",
+        "Song of the Strider",
+        "King of the Wild Plains"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95961,
+      "source": "https://www.wowhead.com/forever/quest=95961",
+      "titles": [
+        "Fetch 'n' Fletch",
+        "Apple of My Eye",
+        "Fit for a Princess",
+        "Stepped Out"
+      ],
+      "reason": "cross-faction-title-match"
+    },
+    {
+      "sourceQuestID": 95955,
+      "source": "https://www.wowhead.com/forever/quest=95955",
+      "titles": [
+        "Fetch 'n' Fletch",
+        "Apple of My Eye",
+        "Fit for a Princess",
+        "Stepped Out"
+      ],
+      "reason": "source-quest-not-in-series"
+    },
+    {
+      "sourceQuestID": 95321,
+      "source": "https://www.wowhead.com/forever/quest=95321",
+      "titles": [
+        "Smuggler's Bargain",
+        "Shipping and Handling",
+        "Shipping and Handling",
+        "Coming to Collect",
+        "Tazzik's Dues",
+        "Consolation Prize"
+      ],
+      "reason": "ambiguous-title"
+    },
+    {
+      "sourceQuestID": 95427,
+      "source": "https://www.wowhead.com/forever/quest=95427",
+      "titles": [
+        "Rise Up!",
+        "Rumblings of Discontent",
+        "Might Makes Right",
+        "The Purple Ones",
+        "The Purple Ones",
+        "Twilight No More!",
+        "Spread the Word",
+        "Land of Giants"
+      ],
+      "reason": "ambiguous-title"
+    }
+  ]
+}

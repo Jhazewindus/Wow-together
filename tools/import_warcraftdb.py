@@ -16,6 +16,144 @@ from pathlib import Path
 
 BASE = 'https://forever.warcraftdb.com'
 ROOT = Path(__file__).resolve().parents[1]
+RIVERGLADES_DATA = ROOT / 'tools' / 'riverglades_zone_quests.json'
+RIVERGLADES_SERIES = ROOT / 'tools' / 'riverglades_quest_series.json'
+
+
+def riverglades_zone_summary(records):
+    rows = [(ident, quest) for ident, quest in records.items()
+            if quest.get('categoryPath') == 'eastern-kingdoms/riverglades'
+            or quest.get('areaID') == 16591 or quest.get('mapID') == 2548]
+    return {
+        'zone': 'Riverglades', 'mapID': 2548, 'sourceAreaID': 16591,
+        'quests': len(rows),
+        'factions': {side: sum(quest.get('side') == side for _, quest in rows)
+                     for side in ('Alliance', 'Horde', 'Both')},
+        'pickups': sum(bool(quest.get('starts')) for _, quest in rows),
+        'turnins': sum(bool(quest.get('ends')) for _, quest in rows),
+        'objectives': sum(bool(quest.get('objectives')) for _, quest in rows),
+        'verifiedPrerequisites': sum(quest.get('prerequisitesRead') is True
+                                     and not quest.get('prerequisitesUnverified') for _, quest in rows),
+        'incompleteQuestIDs': sorted(ident for ident, quest in rows
+            if not quest.get('starts') or not quest.get('ends')
+            or quest.get('objectiveLocationsIncomplete') or quest.get('prerequisitesUnverified')
+            or quest.get('prerequisitesRead') is not True),
+    }
+
+
+def apply_riverglades_zone(records):
+    """Apply captured Riverglades facts without replacing reviewed catalogue facts."""
+    if not RIVERGLADES_DATA.is_file():
+        return {'inventory': 0, 'added': [], 'updated': []}
+    source = json.loads(RIVERGLADES_DATA.read_text())
+    if (source.get('schema') != 1 or source.get('zoneMapID') != 2548
+            or source.get('sourceAreaID') != 16591
+            or source.get('categoryPath') != 'eastern-kingdoms/riverglades'
+            or source.get('inventoryCount') != len(source.get('quests', []))):
+        raise ValueError('Riverglades source inventory needs review')
+    seen, added, updated = set(), [], []
+    for row in source['quests']:
+        ident, addition = row.get('questID'), copy.deepcopy(row.get('facts'))
+        if type(ident) is not int or ident <= 0 or ident in seen or not isinstance(addition, dict):
+            raise ValueError('Riverglades quest inventory has an invalid or duplicate ID')
+        # The Warcraft DB export represents absent arrays as empty objects.
+        # Keep the catalogue's list-shaped fields stable so reapplying this
+        # import is idempotent and empty objectives remain a Lua sequence.
+        list_fields = ('requirements', 'requiredItems', 'objectives', 'npcTargets',
+                       'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
+                       'missingRequirements', 'objectiveAlternatives')
+        for field in list_fields:
+            if addition.get(field) == {}:
+                addition[field] = []
+        references = addition.get('worldReferences')
+        if isinstance(references, dict):
+            for field in ('requirements', 'starts', 'ends', 'provided'):
+                if references.get(field) == {}:
+                    references[field] = []
+        seen.add(ident)
+        evidence = addition.get('sourceFact', {})
+        if (addition.get('title') != row.get('title') or addition.get('mapID') != 2548
+                or addition.get('areaID') != 16591 or addition.get('categoryPath') != source['categoryPath']
+                or evidence.get('source') != f'{BASE}/api/data/node/quest/{ident}'
+                or not re.fullmatch(r'[0-9a-f]{64}', evidence.get('sha256', ''))):
+            raise ValueError('Riverglades quest source identity/provenance is invalid: ' + str(ident))
+        current = records.get(ident)
+        if current is None:
+            addition['questAdditionSource'] = (evidence['source'] + ' (captured '
+                + evidence['captured'] + '; SHA-256 ' + evidence['sha256'] + ')')
+            records[ident] = addition
+            added.append(ident)
+            continue
+        if current.get('title') != row['title']:
+            raise ValueError('Riverglades quest identity changed; review required: ' + str(ident))
+        changed = False
+        for field, value in addition.items():
+            current_value = current.get(field)
+            if (field in list_fields and isinstance(current_value, (dict, list))
+                    and not current_value and not value):
+                # Lua's empty table has no array/map distinction. Preserve the
+                # packed value when both source and catalogue are empty.
+                continue
+            if field in ('areaID', 'mapID', 'zone', 'categoryPath'):
+                if current.get(field) not in (None, '', value):
+                    raise ValueError('Riverglades zone identity conflicts with the catalogue: ' + str(ident))
+                if current.get(field) != value:
+                    current[field] = copy.deepcopy(value); changed = True
+            elif (field not in current or current[field] in (None, '')
+                  or isinstance(current[field], (dict, list)) and not current[field]
+                  or field == 'objectiveLocationsIncomplete' and value is True and current[field] is False):
+                current[field] = copy.deepcopy(value); changed = True
+        if changed:
+            updated.append(ident)
+
+    series = apply_riverglades_series(records)
+    summary = riverglades_zone_summary(records)
+    summary.update({'inventory': source['inventoryCount'], 'added': len(added),
+                    'updated': len(updated), 'seriesChains': series['chains'],
+                    'seriesUnresolved': series['unresolved']})
+    return summary
+
+
+def apply_riverglades_series(records):
+    if not RIVERGLADES_SERIES.is_file():
+        return {'chains': 0, 'unresolved': []}
+    source = json.loads(RIVERGLADES_SERIES.read_text())
+    if source.get('schema') != 1 or source.get('zoneMapID') != 2548:
+        raise ValueError('Riverglades chain capture needs review')
+    applied, unresolved = 0, []
+    for chain in source.get('chains', []):
+        ids = chain.get('questIDs')
+        if not isinstance(ids, list) or len(ids) < 2 or len(ids) > 24 or len(set(ids)) != len(ids):
+            raise ValueError('Riverglades chain has invalid quest IDs')
+        members = [records.get(ident) for ident in ids]
+        if any(not quest for quest in members):
+            unresolved.append(chain.get('sourceQuestID'))
+            continue
+        if any(quest.get('mapID') != 2548 for quest in members):
+            unresolved.append(chain.get('sourceQuestID'))
+            continue
+        source_url = chain.get('source')
+        if not isinstance(source_url, str) or not source_url.startswith('https://www.wowhead.com/forever/quest='):
+            raise ValueError('Riverglades chain is missing its Wowhead source')
+        conflict = any(
+            quest.get('series') not in (None, ids)
+            or quest.get('previousQuest') not in (None, ids[index - 1] if index else None)
+            for index, quest in enumerate(members))
+        if conflict:
+            unresolved.append(chain.get('sourceQuestID'))
+            continue
+        for index, ident in enumerate(ids):
+            quest = records[ident]
+            quest['series'] = copy.deepcopy(ids)
+            quest['seriesRoot'] = ids[0]
+            quest['seriesPosition'] = index + 1
+            quest['seriesSource'] = source_url
+            if index:
+                quest['previousQuest'] = ids[index - 1]
+                quest['prerequisiteSource'] = source_url
+            quest['prerequisitesRead'] = True
+        applied += 1
+    return {'chains': applied, 'unresolved': sorted(set(unresolved))}
 
 
 def apply_corrections(records, allow_partial_additions=True):

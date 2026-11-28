@@ -113,7 +113,7 @@ end
 -- Keep summary labels available without parsing the 9.5 MiB quest payload.
 -- The large quest table is loaded only when a guide/library actually asks for it.
 ns.catalogue = proxy("catalogue", "WowTogether_QuestData", {
-    count = 5358, captured = "2026-11-08",
+    count = 5512, captured = "2026-11-08",
     source = "https://forever.warcraftdb.com/list/quests",
     detailSource = "https://www.wowhead.com/forever/quests",
 }, {quests = true})

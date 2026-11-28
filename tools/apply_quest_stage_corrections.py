@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 from build_quest_dataset import own_lua
-from import_warcraftdb import apply_corrections, apply_stage_corrections
+from import_warcraftdb import apply_corrections, apply_riverglades_zone, apply_stage_corrections
 from pack_data import quest_code
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +33,7 @@ def apply(directory):
             if quest['title'] != exclusion['title']:
                 raise ValueError('Guide exclusion quest identity changed; review required')
             quest['levelingExcluded'] = exclusion['reason']
+    riverglades_source = apply_riverglades_zone(catalogue['quests'])
     apply_corrections(catalogue['quests'], allow_partial_additions=False)
     stage_changes = apply_stage_corrections(catalogue['quests'])
     changed = sorted(i for i, q in catalogue['quests'].items() if i not in before or q != before[i])
@@ -63,6 +64,8 @@ def apply(directory):
     metadata['reviewed_stage_corrections'] = reviewed
     coverage['reviewed_stage_corrections'] = reviewed
     metadata['reviewed_quest_corrections'] = sorted(set(metadata.get('reviewed_quest_corrections', [])) | set(changed))
+    metadata['riverglades_source'] = riverglades_source
+    coverage['riverglades_source'] = riverglades_source
     sweep_path = ROOT / 'research/dungeon-prerequisite-sweep-2026-11-28.json'
     if sweep_path.is_file():
         sweep = json.loads(sweep_path.read_text())
