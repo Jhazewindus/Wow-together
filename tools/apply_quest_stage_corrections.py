@@ -35,26 +35,49 @@ def apply(directory):
             quest['levelingExcluded'] = exclusion['reason']
     apply_corrections(catalogue['quests'])
     stage_changes = apply_stage_corrections(catalogue['quests'])
-    changed = sorted(i for i, q in catalogue['quests'].items() if q != before[i])
+    changed = sorted(i for i, q in catalogue['quests'].items() if i not in before or q != before[i])
     if not changed:
         return []
+    catalogue['count'] = len(catalogue['quests'])
     code = quest_code(catalogue, own_lua(path, 'questEntities'),
                       own_lua(path, 'worldQuestChecks'), None)
     metadata_directory = ROOT / 'WowTogether' if directory.resolve() == (ROOT / 'WowTogether_QuestData').resolve() else directory
     metadata = json.loads((metadata_directory / 'QuestCatalogue.json').read_text())
     coverage = json.loads((metadata_directory / 'QuestCoverage.json').read_text())
     records = catalogue['quests']
+    metadata['count'] = len(records)
+    metadata['detailed_quests'] += sum(1 for ident in changed if ident not in before
+                                       and records[ident].get('questAdditionSource'))
+    coverage['summary']['count'] = metadata['count']
+    coverage['summary']['detailed_quests'] = metadata['detailed_quests']
     for key, role in (('with_starters', 'starts'), ('with_objectives', 'objectives'), ('with_turnins', 'ends')):
         metadata[key] = sum(bool(q.get(role)) for q in records.values())
         coverage['summary'][key] = metadata[key]
     metadata['with_prerequisites'] = sum(bool(q.get('previousQuest') or q.get('prerequisiteAll')
                                                 or q.get('prerequisiteAny')) for q in records.values())
     coverage['summary']['with_prerequisites'] = metadata['with_prerequisites']
+    metadata['with_series'] = sum(bool(q.get('series')) for q in records.values())
+    metadata['unverified_prerequisites'] = sum(bool(q.get('prerequisitesUnverified')) for q in records.values())
     metadata['incomplete_objective_locations'] = sum(bool(q.get('objectiveLocationsIncomplete')) for q in records.values())
     reviewed = sorted(set(metadata.get('reviewed_stage_corrections', [])) | set(stage_changes))
     metadata['reviewed_stage_corrections'] = reviewed
     coverage['reviewed_stage_corrections'] = reviewed
     metadata['reviewed_quest_corrections'] = sorted(set(metadata.get('reviewed_quest_corrections', [])) | set(changed))
+    sweep_path = ROOT / 'research/dungeon-prerequisite-sweep-2026-11-28.json'
+    if sweep_path.is_file():
+        sweep = json.loads(sweep_path.read_text())
+        sweep_summary = {
+            'captured': sweep['captured'],
+            'dungeonCategories': sweep['scope']['dungeonCategories'],
+            'uniqueListedQuestIDs': sweep['scope']['uniqueListedQuestIDs'],
+            'pagesCaptured': sweep['scope']['pagesCaptured'],
+            'pagesUnavailableCurrentSweep': sweep['scope']['pagesUnavailableCurrentSweep'],
+            'newlyVerifiedEdges': [row['questID'] for row in sweep['newlyVerifiedEdges']],
+            'addedPrerequisiteQuest': sweep['addedPrerequisiteQuest']['questID'],
+            'addedPrerequisiteQuests': sweep.get('addedPrerequisiteQuests', []),
+        }
+        metadata['dungeon_prerequisite_sweep'] = sweep_summary
+        coverage['dungeon_prerequisite_sweep'] = sweep_summary
     zones = collections.defaultdict(lambda: {'quests': 0, 'pickups': 0, 'objectives': 0,
                                             'turnins': 0, 'complete_locations': 0, 'missing_quest_ids': []})
     for ident, q in sorted(records.items()):

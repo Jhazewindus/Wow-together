@@ -62,8 +62,10 @@ class DungeonActionTests(unittest.TestCase):
         self.assertEqual(quest_data[94984]['previousQuest'], 94907)
         self.assertEqual(quest_data[94997]['previousQuest'], 94983)
         self.assertNotIn('previousQuest', quest_data[6563])
-        self.assertTrue(quest_data[2846]['prerequisitesUnverified'])
-        self.assertTrue(quest_data[95682]['prerequisitesUnverified'])
+        self.assertNotIn('previousQuest', quest_data[2846])
+        self.assertFalse(quest_data[2846].get('prerequisitesUnverified', False))
+        self.assertEqual(quest_data[95682]['previousQuest'], 95663)
+        self.assertFalse(quest_data[95682].get('prerequisitesUnverified', False))
         self.assertEqual(quest_data[97291]['previousQuest'], 97290)
         self.assertEqual(quest_data[97292]['previousQuest'], 97291)
         unread = {ident for ident in memberships if not quest_data[ident].get('prerequisitesRead')}

@@ -198,18 +198,18 @@ class DungeonDataTests(unittest.TestCase):
         self.assertFalse(any(stop.id == 373 and stop.dungeonKey == 'the-deadmines'
                              for stop in route.stops.values()))
 
-    def test_unverified_wetlands_gate_is_named_under_later_not_routed_as_current(self):
+    def test_wetlands_route_includes_verified_dragonmaw_rumors_gate(self):
         c = shipped(31)
         c.ns.profile.faction, c.ns.profile.raceID = 'Horde', 2
         group = groups(c)['excavation-site-wetlands']
         guide = c.ns.DungeonGuide(group, 95682)
         route = c.ns.BuildDungeonRoute(guide, False, False)
 
-        self.assertFalse(any(stop.id == 95682 for stop in route.stops.values()))
-        self.assertIn('Open the Maw', route.pendingReason)
-        self.assertIn('under Later', route.pendingReason)
-        self.assertIn('Ask Deathstalker Agent', route.pendingReason)
-        self.assertIn('Deathstalker Agent', route.pendingReason)
+        self.assertIsNone(route.pendingReason)
+        starts = [stop for stop in route.stops.values() if stop.id == 95663]
+        self.assertTrue(starts)
+        self.assertIn(1417, {int(stop.mapID) for stop in starts})
+        self.assertIn(1437, {int(stop.mapID) for stop in starts})
 
     def test_unverified_dungeon_chain_is_kept_under_later_while_other_goals_remain_routable(self):
         c = shipped(60)
