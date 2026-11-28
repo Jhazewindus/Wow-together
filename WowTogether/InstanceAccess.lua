@@ -139,6 +139,24 @@ function ns.InstanceAccess(key)
     return list
 end
 
+-- Build one route through the known unfinished access chains for this
+-- instance. The quest catalogue contributes the prerequisites and locations.
+function ns.BuildInstanceAccessGuide(key)
+    if type(key) ~= "string" then return end
+    local ids, titles, seen = {}, {}, {}
+    for _, status in ipairs(ns.InstanceAccess(key)) do
+        if status.state ~= "have" and type(status.chain) == "table" then
+            titles[#titles + 1] = status.title
+            for _, id in ipairs(status.chain) do
+                if not seen[id] then ids[#ids + 1], seen[id] = id, true end
+            end
+        end
+    end
+    if #ids == 0 or type(ns.BuildInstanceAccessQuestGuide) ~= "function" then return end
+    local title = "Get " .. table.concat(titles, " and ")
+    return ns.BuildInstanceAccessQuestGuide(key, title, ids)
+end
+
 -- Steps of other instances' chains that are done inside this dungeon and
 -- are still ahead of the character: "do these in the same run".
 function ns.InstanceAlsoHere(key)
