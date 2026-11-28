@@ -30,6 +30,11 @@ def groups(c):
     return {g.key: g for g in c.ns.DungeonGroups().values()}
 
 
+def guide_for(c, group, pickup_quest_id=None):
+    result = c.ns.DungeonGuide(group, pickup_quest_id)
+    return result[0] if isinstance(result, tuple) else result
+
+
 def wow_bit(c):
     c.lua.execute('''bit={
       lshift=function(a,b) return a*2^b end,
@@ -48,7 +53,7 @@ class DungeonDataTests(unittest.TestCase):
     def test_lordaeron_item_started_quests_are_dungeon_run_goals_not_blocking_preparation(self):
         c = shipped(20)
         group = groups(c)['ruins-of-lordaeron']
-        guide = c.ns.DungeonGuide(group)
+        guide = guide_for(c, group)
         self.assertTrue(guide.collectionDeferred[95204])
         self.assertTrue(guide.collectionDeferred[97288])
         self.assertTrue(guide.collectionDeferred[97289])
@@ -75,7 +80,7 @@ class DungeonDataTests(unittest.TestCase):
             c = shipped(60)
             c.ns.profile.faction, c.ns.profile.raceID = faction, race
             for group in groups(c).values():
-                guide = c.ns.DungeonGuide(group)
+                guide = guide_for(c, group)
                 if not guide:
                     continue
                 built += 1
@@ -116,7 +121,7 @@ class DungeonDataTests(unittest.TestCase):
             wow_bit(c)
             c.ns.profile.faction, c.ns.profile.raceID = faction, race
             for group in groups(c).values():
-                guide = c.ns.DungeonGuide(group)
+                guide = guide_for(c, group)
                 if not guide:
                     continue
                 built += 1
@@ -131,7 +136,7 @@ class DungeonDataTests(unittest.TestCase):
 
     def test_cross_dungeon_prerequisite_routes_its_instance_before_the_goal_dungeon(self):
         c = shipped(60)
-        guide = c.ns.DungeonGuide(groups(c)['scarlet-monastery'])
+        guide = guide_for(c, groups(c)['scarlet-monastery'])
         self.assertEqual(list(guide.collectionDependencies[1113].values()), [1109])
 
         route = c.ns.BuildDungeonRoute(guide, False, False)
@@ -152,7 +157,7 @@ class DungeonDataTests(unittest.TestCase):
     def test_hall_of_thanes_prerequisite_is_in_the_live_dungeon_preparation_route(self):
         c = shipped(20)
         c.ns.profile.faction, c.ns.profile.raceID = 'Alliance', 1
-        guide = c.ns.DungeonGuide(groups(c)['the-hall-of-thanes'])
+        guide = guide_for(c, groups(c)['the-hall-of-thanes'])
         self.assertEqual(list(guide.collectionDependencies[96393].values()), [96391])
 
         route = c.ns.BuildDungeonRoute(guide, False, False)
@@ -169,7 +174,7 @@ class DungeonDataTests(unittest.TestCase):
     def test_stockade_chain_routes_the_unsent_letter_item_drop_to_the_deadmines(self):
         c = shipped(30)
         c.ns.profile.faction, c.ns.profile.raceID = 'Alliance', 1
-        guide = c.ns.DungeonGuide(groups(c)['the-stockade'])
+        guide = guide_for(c, groups(c)['the-stockade'])
         route = c.ns.BuildDungeonRoute(guide, False, False)
         steps = list(route.stops.values())
         item_drop = next(i for i, stop in enumerate(steps)
@@ -193,7 +198,7 @@ class DungeonDataTests(unittest.TestCase):
         item.sources[len(item.sources) + 1] = c.lua.table_from(
             {'entityType': 'npc', 'entityID': 999999, 'name': 'Outside source', 'action': 'loot'}, recursive=True)
 
-        guide = c.ns.DungeonGuide(groups(c)['the-stockade'])
+        guide = guide_for(c, groups(c)['the-stockade'])
         route = c.ns.BuildDungeonRoute(guide, False, False)
         self.assertFalse(any(stop.id == 373 and stop.dungeonKey == 'the-deadmines'
                              for stop in route.stops.values()))
@@ -202,7 +207,7 @@ class DungeonDataTests(unittest.TestCase):
         c = shipped(31)
         c.ns.profile.faction, c.ns.profile.raceID = 'Horde', 2
         group = groups(c)['excavation-site-wetlands']
-        guide = c.ns.DungeonGuide(group, 95682)
+        guide = guide_for(c, group, 95682)
         route = c.ns.BuildDungeonRoute(guide, False, False)
 
         self.assertIsNone(route.pendingReason)
@@ -215,7 +220,7 @@ class DungeonDataTests(unittest.TestCase):
         c = shipped(60)
         # WoW supplies bit.band/lshift; the host harness intentionally does not.
         wow_bit(c)
-        guide = c.ns.DungeonGuide(groups(c)['blackrock-spire'])
+        guide = guide_for(c, groups(c)['blackrock-spire'])
         route = c.ns.BuildDungeonRoute(guide, False, False)
         steps = list(route.stops.values())
         later_ids = {int(step.id) for step in route.later.values()}
@@ -229,7 +234,7 @@ class DungeonDataTests(unittest.TestCase):
     def test_entering_a_dungeon_advances_past_unmapped_prep_steps(self):
         c = shipped(20)
         group = groups(c)['ruins-of-lordaeron']
-        guide = c.ns.DungeonGuide(group)
+        guide = guide_for(c, group)
         c.lua.execute("local ns=...; ns.DungeonEntryKey=function() return '" + group.key + "' end", c.ns)
         c.ns.AdvanceDungeonGuide(guide)
         self.assertEqual(guide.dungeonPhase, 'run')
@@ -294,7 +299,7 @@ class DungeonDataTests(unittest.TestCase):
             c.ns.profile.faction, c.ns.profile.raceID = faction, race
             gs = groups(c)
             for key, ids in expected.items():
-                guide = c.ns.DungeonGuide(gs[key])
+                guide = guide_for(c, gs[key])
                 for quest_id in ids:
                     self.assertIn(quest_id, list(gs[key].ids.values()))
                     self.assertIsNotNone(c.ns.CatalogueQuest(quest_id))
@@ -317,12 +322,12 @@ class DungeonDataTests(unittest.TestCase):
         self.assertEqual(gs['scarlet-monastery'].maxLevel, 45)
         for key in ('blackmaw-hold', 'shapers-terrace'):
             self.assertIsNone(c.ns.DungeonEntrance(gs[key]))
-            self.assertIsNone(c.ns.DungeonGuide(gs[key]))
+            self.assertIsNone(guide_for(c, gs[key]))
             self.assertIn('not captured', c.ns.DungeonCollectionSummary(gs[key]))
             self.assertFalse(c.ns.DungeonCollectionReadiness(gs[key]).levelReady)
         for key in ('kroldok-stronghold', 'the-drowned-city'):
             self.assertIsNone(c.ns.DungeonEntrance(gs[key]))
-            self.assertIsNotNone(c.ns.DungeonGuide(gs[key]))
+            self.assertIsNotNone(guide_for(c, gs[key]))
 
     def test_levels_are_information_not_a_new_pickup_gate(self):
         c = solo()
@@ -332,7 +337,7 @@ class DungeonDataTests(unittest.TestCase):
         self.assertTrue(result.levelReady)
         self.assertEqual(result.pickupLevel, 5)
         self.assertIn('40–50', c.ns.DungeonOverviewSummary(group))
-        self.assertIsNotNone(c.ns.DungeonGuide(group))
+        self.assertIsNotNone(guide_for(c, group))
 
     def test_sources_and_generator_fail_closed_for_an_incomplete_overview(self):
         data = json.loads((ROOT / 'WowTogether/DungeonData.json').read_text())
@@ -393,7 +398,7 @@ class EntranceIntegrationTests(unittest.TestCase):
         c = solo()
         maps(c)
         group = dungeon(c, entrance_map=502)
-        plan = c.ns.DungeonGuide(group)
+        plan = guide_for(c, group)
         route = c.ns.BuildDungeonRoute(plan, True)
         self.assertEqual(route.mapID, 501)
         self.assertEqual([s.kind for s in route.stops.values()], ['a', 'a', 'q'])

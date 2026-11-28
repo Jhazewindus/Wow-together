@@ -971,6 +971,7 @@ function ns.SyncDiagnostics(output)
     if ns.RouteEngineDiagnostics then ns.RouteEngineDiagnostics(output) end
     if ns.FullPriceScanDiagnostics then ns.FullPriceScanDiagnostics(output) end
     if ns.InstanceAccessDiagnostics then ns.InstanceAccessDiagnostics(output) end
+    if ns.EntranceCaptureDiagnostics then ns.EntranceCaptureDiagnostics(output) end
     if ns.HudDiagnostics then ns.HudDiagnostics(output) end
     if ns.LevelingPathDiagnostics then ns.LevelingPathDiagnostics(output) end
     if ns.QuestCleanupDiagnostics then ns.QuestCleanupDiagnostics(output) end

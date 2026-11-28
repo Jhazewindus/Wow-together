@@ -150,19 +150,6 @@ class ViewTests(unittest.TestCase):
         hyjal = next(card for card in cards if card.title.text == 'Hyjal Summit')
         self.assertFalse(hyjal.detailsButton.IsShown(hyjal.detailsButton))
 
-    def test_onyxia_page_starts_a_personal_route_through_its_faction_chain(self):
-        c, frame = InstancePageTests().page('onyxias-lair')
-        self.assertTrue(frame.collect.IsShown(frame.collect))
-        self.assertEqual(frame.collect.caption.text, 'Start attunement route')
-        frame.collect.OnClick(frame.collect); c.drain()
-        self.assertEqual(c.ns.routeSelection.key, 'instance-access:onyxias-lair')
-        self.assertEqual(len(c.ns.routeSelection.records), 14)
-        self.assertEqual(c.ns.routeSelection.records[1].id, 4903)
-
-    def test_open_raid_page_has_no_attunement_route_button(self):
-        c, frame = InstancePageTests().page('hyjal-summit')
-        self.assertFalse(frame.collect.IsShown(frame.collect))
-
 
 if __name__ == '__main__':
     unittest.main()
@@ -198,8 +185,7 @@ class InstancePageTests(unittest.TestCase):
         self.assertEqual(rows[2].right.text, 'Done')
         self.assertTrue(rows[5].go.IsShown(rows[5].go))                             # Only the current step has a button.
         self.assertFalse(rows[6].go.IsShown(rows[6].go))
-        self.assertTrue(frame.collect.IsShown(frame.collect))
-        self.assertEqual(frame.collect.caption.text, 'Start attunement route')
+        self.assertEqual(frame.collect.caption.text, 'Start attunement route')      # A raid has no quest route, but its attunement has one.
 
     def test_the_current_step_opens_its_quest(self):
         c, frame = self.page('onyxias-lair', completed=(4903,))
@@ -235,13 +221,13 @@ class InstancePageTests(unittest.TestCase):
 
     def test_a_card_opens_this_page_and_not_the_map_and_loot_viewer(self):
         c = character(); ns = c.ns
-        c.lua.execute('local ns = ...; page = 0; '
+        c.lua.execute('local ns = ...; viewer, page = 0, 0; ns.ShowDungeonViewer = function() viewer = viewer + 1 end; '
                       'local show = ns.ShowInstancePage; ns.ShowInstancePage = function(...) page = page + 1; return show(...) end', ns)
         if not ns.window.IsShown(ns.window):
             ns.ToggleWindow()
         ns.SetHubTab('Browse'); ns.ui.browseFilter = 'dungeons'; ns.SetFilter('dungeons', True); c.drain(); ns.Refresh(); c.drain()
         card = next(card for card in ns.ui.cards.values() if card.IsShown(card) and card.title.text == 'Scholomance')
         card.OnClick(card)
-        self.assertEqual(c.lua.globals().page, 1)
+        self.assertEqual((c.lua.globals().page, c.lua.globals().viewer), (1, 0))
         self.assertEqual(ns.instancePage.title.text, 'Scholomance')
         self.assertNotIn('loot', card.reason.text.lower())

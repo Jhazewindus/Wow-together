@@ -62,6 +62,7 @@ QuestShare.lua
 QuestCleanup.lua
 InstanceAccess.lua
 InstancePage.lua
+EntranceCapture.lua
 AreaObjectives.lua
 Navigation.lua
 GuideTips.lua

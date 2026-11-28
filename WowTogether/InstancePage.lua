@@ -247,7 +247,15 @@ local function draw(frame)
     if group then
         frame.collect.caption:SetText("Start quest route")
         frame.collect:SetEnabled(counts.open + counts.active + counts.ready > 0)
-        frame.collect:SetScript("OnClick", function() ns.ShowDungeonQuests(group, true) end)
+        frame.collect:SetScript("OnClick", function()
+            local started, why = ns.ShowDungeonQuests(group, true)
+            if started == false then
+                frame.instance.note = why            -- It could not start: the page says why.
+                draw(frame)
+            else
+                frame:Hide()                         -- It started: out of the way of the guide and the map.
+            end
+        end)
     elseif hasAccessRoute then
         frame.collect.caption:SetText("Start attunement route")
         frame.collect:SetEnabled(type(ns.BuildInstanceAccessGuide) == "function")
@@ -256,9 +264,29 @@ local function draw(frame)
             if guide then ns.RequestStartRoute(guide) end
         end)
     end
-    frame.hint:SetText(group and "Leads you to every pickup and prerequisite, then to the entrance."
-        or hasAccessRoute and "Leads you through the remaining attunement quests and their prerequisites."
-        or "Press Show on the next step to see where it starts.")
+    -- Under the button: what it will do for this character, or why it cannot.
+    local preview, level = instance.preview, ns.profile and ns.profile.level
+    local hint, warn
+    if instance.note then
+        hint, warn = instance.note, true
+    elseif group and preview and preview.refused then
+        hint, warn = preview.refused, true
+    elseif group and preview and preview.ahead then
+        hint = "You are level " .. tostring(level or "?") .. " and these quests open at " .. tostring(preview.opensAt or "?")
+            .. ". The route starts the quests that lead up to them, which you can do now."
+    elseif group then
+        hint = "Leads you to every pickup and prerequisite, then to the entrance."
+    elseif hasAccessRoute then
+        hint = "Leads you through the remaining attunement quests and their prerequisites."
+    else
+        hint = "Press Show on the next step to see where it starts."
+    end
+    frame.hint:SetText(hint)
+    frame.hint:SetTextColor(unpack(warn and {1, 0.6, 0.3} or colors().muted))
+    if group then
+        frame.collect.caption:SetText(preview and preview.ahead and "Start the lead-up" or "Start quest route")
+        if preview and preview.refused then frame.collect:SetEnabled(false) end
+    end
 end
 
 function ns.RefreshInstancePage()
@@ -267,7 +295,8 @@ function ns.RefreshInstancePage()
 end
 
 -- `instance`: a dungeon group from ns.DungeonGroups(), or a raid from ns.instanceRaids.
-function ns.ShowInstancePage(instance)
+-- `note`: something to tell the player on the page, such as why a route could not start.
+function ns.ShowInstancePage(instance, note)
     if type(instance) ~= "table" then return false end
     ns.ReadProfile(); ns.ReadQuests()
     if not ns.instancePage then
@@ -291,7 +320,7 @@ function ns.ShowInstancePage(instance)
         frame.empty:SetText("Nothing is known about this instance yet.")
         frame.collect = ns.UIButton(frame, "Start quest route", 156, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 18)
         frame.hint = ns.UILabel(frame, nil, 11, colors().muted); frame.hint:SetPoint("BOTTOMLEFT", 190, 24)
-        frame.hint:SetWidth(WIDTH - 220); frame.hint:SetWordWrap(false)
+        frame.hint:SetWidth(WIDTH - 220); frame.hint:SetWordWrap(true)
         if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherInstancePage") end
     end
     local frame = ns.instancePage
@@ -299,6 +328,12 @@ function ns.ShowInstancePage(instance)
     frame.instance = {key = instance.key, name = instance.name, ids = instance.ids or {}, group = group,
         subtitle = group and ns.DungeonOverviewSummary(group) ~= "" and ns.DungeonOverviewSummary(group)
             or ("Level " .. tostring(instance.level or "?") .. (instance.where and (" • " .. instance.where) or "") .. (instance.note and (". " .. instance.note) or ""))}
+    frame.instance.note = type(note) == "string" and note or nil
+    -- What the route button will do, worked out once when the page opens.
+    if group and type(ns.DungeonGuide) == "function" then
+        local okay, guide, why = pcall(ns.DungeonGuide, group)
+        if okay then frame.instance.preview = guide and {ahead = guide.ahead == true, opensAt = guide.opensAt, quests = #guide.records} or {refused = why} end
+    end
     frame.scroll:SetVerticalScroll(0)
     draw(frame); frame:Show(); frame:Raise()
     return true
