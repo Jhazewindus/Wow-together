@@ -267,7 +267,7 @@ class DungeonDataTests(unittest.TestCase):
         self.assertEqual(count, 380)
         self.assertNotIn(2971, {i for d in data['dungeons'].values() for i in d['questIDs']})
         self.assertNotIn(6201, {i for d in data['dungeons'].values() for i in d['questIDs']})
-        self.assertEqual(c.ns.catalogue.count, 5358)
+        self.assertEqual(c.ns.catalogue.count, 5512)
         # Explicit zone identity folds this formerly separate dungeon card in.
         self.assertIn(92401, list(gs['ruins-of-lordaeron'].ids.values()))
         self.assertIn(92401, data['dungeons']['ruins-of-lordaeron']['questIDs'])

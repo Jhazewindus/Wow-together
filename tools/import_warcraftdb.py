@@ -56,6 +56,20 @@ def apply_riverglades_zone(records):
         ident, addition = row.get('questID'), copy.deepcopy(row.get('facts'))
         if type(ident) is not int or ident <= 0 or ident in seen or not isinstance(addition, dict):
             raise ValueError('Riverglades quest inventory has an invalid or duplicate ID')
+        # The Warcraft DB export represents absent arrays as empty objects.
+        # Keep the catalogue's list-shaped fields stable so reapplying this
+        # import is idempotent and empty objectives remain a Lua sequence.
+        list_fields = ('requirements', 'requiredItems', 'objectives', 'npcTargets',
+                       'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
+                       'missingRequirements', 'objectiveAlternatives')
+        for field in list_fields:
+            if addition.get(field) == {}:
+                addition[field] = []
+        references = addition.get('worldReferences')
+        if isinstance(references, dict):
+            for field in ('requirements', 'starts', 'ends', 'provided'):
+                if references.get(field) == {}:
+                    references[field] = []
         seen.add(ident)
         evidence = addition.get('sourceFact', {})
         if (addition.get('title') != row.get('title') or addition.get('mapID') != 2548
@@ -74,6 +88,12 @@ def apply_riverglades_zone(records):
             raise ValueError('Riverglades quest identity changed; review required: ' + str(ident))
         changed = False
         for field, value in addition.items():
+            current_value = current.get(field)
+            if (field in list_fields and isinstance(current_value, (dict, list))
+                    and not current_value and not value):
+                # Lua's empty table has no array/map distinction. Preserve the
+                # packed value when both source and catalogue are empty.
+                continue
             if field in ('areaID', 'mapID', 'zone', 'categoryPath'):
                 if current.get(field) not in (None, '', value):
                     raise ValueError('Riverglades zone identity conflicts with the catalogue: ' + str(ident))

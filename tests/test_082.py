@@ -410,7 +410,11 @@ end'''
         self.assertEqual(source['commit'],'aa1d7e7294596cf50a6fd0946dfae0d969cb9623')
         quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
         entities=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','questEntities')
-        self.assertEqual(len(quests),5358)
+        self.assertEqual(len(quests),5512)
+        riverglades=[q for q in quests.values() if q.get('mapID')==2548]
+        self.assertEqual(len(riverglades),176)
+        self.assertEqual(quests[95118]['zone'],'Riverglades')
+        self.assertEqual(quests[95118]['categoryPath'],'eastern-kingdoms/riverglades')
         self.assertEqual(quests[1943]['nextInChain'],1944)
         self.assertEqual(quests[1944]['nextInChain'],1945)
         self.assertEqual(quests[1945]['nextInChain'],1946)
@@ -443,7 +447,7 @@ end'''
         self.assertEqual(len(report['quest_chain_import']['exclusive_quest_ids']),122)
         self.assertFalse(report['quest_chain_import']['withheld_fields'])
         self.assertEqual((report['with_starters'],report['with_objectives'],report['with_turnins']),
-                         (4448,2138,4624))
+                         (4588,2180,4766))
 
     def test_all_prerequisites_are_required_for_pickup_and_compiled_before_child(self):
         c=guide_client(1);quests={i:world_quest(str(i)) for i in (900,901,902)}

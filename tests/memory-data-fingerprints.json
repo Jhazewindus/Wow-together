@@ -3,8 +3,8 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "e49c34e282307ba43c3d6515d5ebe5d81288230d0cfeac21aa062ca2d57799c6",
-      "records": 5358
+      "sha256": "67e4675f0740d36ff4ba52a139579c4fa603c5a23f55056221f47493c58f1004",
+      "records": 5512
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
@@ -19,5 +19,5 @@
       "sha256": "b62f5bc722867fbf35bd83caed1ffe62588d9757eff2712c9abe5b1f35ed1e84"
     }
   },
-  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior. Version 0.8.95 restores Wowhead Forever series predecessor 92434 for Heart of Disruption (96984). Version 0.8.100 refreshes reviewed dungeon prerequisite links; quest entity layout, XP data, journal and map fingerprints remain unchanged. Version 0.8.112 adds partial Forever boss loot coverage for five newer dungeons with native item icons and source receipts."
+  "revision": "v0.8.28 packing baseline; catalog facts have since been refreshed. Version 0.8.87 adds reviewed Blackfathom Deeps prerequisite status while preserving packing behavior. Version 0.8.95 restores Wowhead Forever series predecessor 92434 for Heart of Disruption (96984). Version 0.8.100 refreshes reviewed dungeon prerequisite links; quest entity layout, XP data, journal and map fingerprints remain unchanged. Version 0.8.112 adds partial Forever boss loot coverage for five newer dungeons with native item icons and source receipts. Riverglades guide data adds the current 5512-record catalogue fingerprint."
 }

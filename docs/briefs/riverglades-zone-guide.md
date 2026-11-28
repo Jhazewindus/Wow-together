@@ -37,10 +37,17 @@ The dungeon prerequisite work does not make a zone guide.
 - `tools/quest_corrections.json` (only explicit, corroborated chain edges)
 - `tools/quest_exclusions.json` (source-confirmed placeholders only)
 - `WowTogether/Catalogue.lua`
+- `WowTogether/DataStore.lua`
 - `WowTogether/LevelingGuides.lua`
 - `WowTogether_QuestData/QuestCatalogue.lua`
 - `WowTogether/QuestCatalogue.json`
 - `WowTogether/QuestCoverage.json`
+- `tests/test_0817.py`
+- `tests/test_082.py`
+- `tests/test_0829.py`
+- `tests/test_optional_data.py`
+- `tests/test_elwynn_coverage.py`
+- `tests/memory-data-fingerprints.json`
 - `research/riverglades-zone-quest-audit-2026-11-28.json`
 - `changes/core/riverglades-zone-guide.md`
 
