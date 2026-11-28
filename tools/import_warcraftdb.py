@@ -35,6 +35,8 @@ def apply_corrections(records, allow_partial_additions=True):
                 if allow_partial_additions:
                     continue
                 raise ValueError('Reviewed quest addition has an unavailable prerequisite')
+            if allow_partial_additions and parent is None and ident not in records:
+                continue
             if not addition.get('starts') or not addition.get('ends') or not addition.get('questAdditionSource'):
                 raise ValueError('Reviewed quest addition is missing source-backed route facts')
             if ident in records:
