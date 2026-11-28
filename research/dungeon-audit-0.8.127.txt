@@ -1,0 +1,29 @@
+dungeon                      lvl  quests(Horde) no-pickup-spot  entrance  route@60
+Hall of Thanes                13    0 of 5         0            yes     NO   NO QUESTS
+Ragefire Chasm                13    6 of 6         1            yes     yes   1 quest(s) with no pickup spot
+Ruins of Lordaeron            15    9 of 13        2            yes     yes   2 quest(s) with no pickup spot
+Wailing Caverns               15    9 of 12        1            yes     yes   1 quest(s) with no pickup spot
+The Deadmines                 18    0 of 6         0            yes     NO   NO QUESTS
+Shadowfang Keep               22    3 of 3         0            yes     yes   
+The Stockade                  22    0 of 6         0            yes     NO   NO QUESTS
+Blackfathom Deeps             24    7 of 13        2            yes     yes   2 quest(s) with no pickup spot
+Excavation Site: Wetlands     24    5 of 14        1            yes     yes   1 quest(s) with no pickup spot
+City of Dalaran               28   10 of 15        1            yes     yes   1 quest(s) with no pickup spot
+Scarlet Monastery             28    5 of 8         1            yes     yes   1 quest(s) with no pickup spot
+Gnomeregan                    29   13 of 28       10            yes     yes   10 quest(s) with no pickup spot
+Razorfen Kraul                30    4 of 6         1            yes     yes   1 quest(s) with no pickup spot
+The Drowned City              35    3 of 8         0            NO      yes   NO ENTRANCE
+Krol'dok Stronghold           40    5 of 13        2            NO      yes   2 quest(s) with no pickup spot; NO ENTRANCE
+Razorfen Downs                40    7 of 10        4            yes     yes   4 quest(s) with no pickup spot
+Uldaman                       42   13 of 29        4            yes     yes   4 quest(s) with no pickup spot
+Zul'Farrak                    44   10 of 12        1            yes     yes   1 quest(s) with no pickup spot
+Maraudon                      45    9 of 13        3            yes     yes   3 quest(s) with no pickup spot
+Alcaz Prison                  48    0 of 4         0            NO      NO   NO QUESTS; NO ENTRANCE
+Sunken Temple                 50    9 of 10        3            yes     yes   3 quest(s) with no pickup spot
+Blackrock Depths              52   26 of 44        7            yes     yes   7 quest(s) with no pickup spot
+Blackmaw Hold                 55    0 of 0         0            NO      NO   NO QUESTS (not captured); NO ENTRANCE
+Blackrock Spire               55   26 of 37        7            yes     yes   7 quest(s) with no pickup spot
+Dire Maul                     58   25 of 38       19            yes     yes   19 quest(s) with no pickup spot
+Scholomance                   58   10 of 12        0            yes     yes   
+Shaper's Terrace              58    0 of 0         0            NO      NO   NO QUESTS (not captured); NO ENTRANCE
+Stratholme                    58   15 of 17        4            yes     yes   4 quest(s) with no pickup spot

@@ -55,10 +55,13 @@ local function travelCost(a, b, cooperative)
     return estimate
 end
 
-local function eligibleIdentity(id)
+-- `ahead`: the quest counts even though the character is below its level.
+-- Used when none of a dungeon's quests can be taken yet, so that the quests
+-- which lead up to them can be started now.
+local function eligibleIdentity(id, ahead)
     local q = ns.CatalogueQuest(id)
     return q and ns.DungeonQuestRelevant(id) == true
-        and (ns.active[id] or (q.minLevel or q.level or 255) <= (ns.profile.level or 0)
+        and (ahead or ns.active[id] or (q.minLevel or q.level or 255) <= (ns.profile.level or 0)
             or ns.PickupOfferEvidence(ns.self, id) == true and ns.CatalogueAllowed(id, ns.profile, ns.self) == true)
         and not ns.GuideQuestSkipped(id)
         and not ns.CatalogueAlternativeTaken(id, ns.self)
@@ -193,12 +196,39 @@ function ns.DungeonGuide(group, pickupQuestID)
             if inDungeonScope(ns.CatalogueQuest(previous) or {}) then deferred[id] = true end
         end
     end
-    for _, id in ipairs(group.ids) do
-        if (not pickupQuestID or id == pickupQuestID) and eligibleIdentity(id) and not complete(id) then
-            goals[id] = true; visit(id, 0)
+    local function collect(ahead)
+        for _, id in ipairs(group.ids) do
+            if (not pickupQuestID or id == pickupQuestID) and eligibleIdentity(id, ahead) and not complete(id) then
+                goals[id] = true; visit(id, 0)
+            end
         end
     end
-    if #records == 0 then return end
+    collect(false)
+    -- Every one of the dungeon's quests is above the character's level.
+    -- That used to mean an empty guide and a button that did nothing, even
+    -- when a long chain of quests led up to them and its first step could be
+    -- taken at once. So the quests are taken as goals anyway, and the guide
+    -- is the chain that leads to them. It is only refused when nothing in
+    -- that chain can be started either, and then it says at what level.
+    local ahead, opensAt
+    if #records == 0 then
+        collect(true)
+        if #records == 0 then return nil, "No unfinished quests here match your character." end
+        for id in pairs(goals) do
+            local quest = ns.CatalogueQuest(id)
+            local level = quest and (quest.minLevel or quest.level)
+            if ns.GuideInteger(level, 255) and (not opensAt or level < opensAt) then opensAt = level end
+        end
+        local doable = false
+        for _, record in ipairs(records) do
+            if ns.active[record.id] or ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true then doable = true; break end
+        end
+        if not doable then
+            return nil, "Nothing to do here yet: these quests open at level " .. tostring(opensAt or "?")
+                .. ", and nothing that leads up to them can be started before then."
+        end
+        ahead = true
+    end
     local entrance = not pickupQuestID and ns.DungeonEntrance(group) or nil
     local guide = {key = "dungeon:" .. group.key .. (pickupQuestID and (":quest:" .. pickupQuestID) or ""),
         dungeonKey = group.key, dungeon = group, pickupQuestID = pickupQuestID, mode = "dungeon", personal = true,
@@ -218,6 +248,12 @@ function ns.DungeonGuide(group, pickupQuestID)
     end
     if entrance then guide.hasPoint = true
     elseif not pickupQuestID then guide.reason = guide.reason .. " Entrance not located yet." end
+    if ahead then
+        guide.ahead, guide.opensAt = true, opensAt
+        guide.title = "Prepare for " .. group.name
+        guide.reason = "The dungeon's own quests open at level " .. tostring(opensAt or "?")
+            .. ". This leads you through the quests that come before them."
+    end
     return guide
 end
 
@@ -794,12 +830,19 @@ end
 function ns.ShowDungeonQuests(group, startDirectly, pickupQuestID)
     ns.ReadProfile()
     ns.ReadQuests()
-    local guide = ns.DungeonGuide(group, pickupQuestID)
-    if not guide then ns.guideAction = "No unfinished quests match your level and character."; ns.Refresh(); return end
+    local guide, why = ns.DungeonGuide(group, pickupQuestID)
+    if not guide then
+        -- Never silently: say why, on the instance's own page.
+        ns.guideAction = why or "No unfinished quests match your level and character."
+        ns.Refresh()
+        if not pickupQuestID and type(ns.ShowInstancePage) == "function" then ns.ShowInstancePage(group, ns.guideAction) end
+        return false, ns.guideAction
+    end
     ns.dungeonHistoryScope = {}
     for _, record in ipairs(guide.records) do ns.dungeonHistoryScope[record.id] = true end
     ns.ScheduleSync()
     if not guide.hasPoint and not startDirectly then return ns.ShowInstancePage(group) end
     if guide.hasPoint then ns.RequestStartRoute(guide)
     else ns.ActivateRoute(guide); ns.Refresh() end
+    return true, guide
 end
