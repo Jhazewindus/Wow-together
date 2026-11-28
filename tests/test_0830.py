@@ -9,6 +9,11 @@ from test_routes import catalogue, quest, map_canvas, guide as quest_guide
 from test_0817 import shipped, groups as shipped_groups
 
 
+def guide_for(c, group, pickup_quest_id=None):
+    result = c.ns.DungeonGuide(group, pickup_quest_id)
+    return result[0] if isinstance(result, tuple) else result
+
+
 def group(c, data):
     for q in data.values():
         q.setdefault('categoryPath', 'dungeons/test-cavern')
@@ -38,7 +43,7 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_all_twenty_six_pickups_across_three_maps_are_retained(self):
         c = solo(); world_positions(c)
         g = group(c, {i: quest(str(i), map_id=501 + (i % 3)) for i in range(900, 926)})
-        route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
+        route = c.ns.BuildDungeonRoute(guide_for(c, g), True)
         self.assertEqual({s.id for s in route.stops.values() if s.kind == 'a'}, set(range(900, 926)))
         self.assertEqual(len(route.stops), 27)
         self.assertTrue(route.stops[27].dungeonEntrance)
@@ -49,7 +54,7 @@ class DungeonCollectionTests(unittest.TestCase):
         c = solo()
         g = group(c, {900: quest('Dungeon goal', previousQuest=899),
                       899: quest('Outside prerequisite', categoryPath='kalimdor/test-coast')})
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         route = c.ns.BuildDungeonRoute(guide, True)
         steps = [(s.id, s.kind) for s in route.stops.values() if not s.dungeonEntrance]
         self.assertEqual(steps, [(899, 'a'), (899, 'q'), (899, 't'), (900, 'a')])
@@ -59,7 +64,7 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_live_lordaeron_quests_collect_their_new_prerequisite_chains(self):
         c = shipped(20)
         group = shipped_groups(c)['ruins-of-lordaeron']
-        guide = c.ns.DungeonGuide(group)
+        guide = guide_for(c, group)
         self.assertEqual(list(guide.collectionDependencies[92422].values()), [99156])
         self.assertEqual(list(guide.collectionDependencies[99156].values()), [356])
         self.assertEqual(list(guide.collectionDependencies[95216].values()), [451])
@@ -76,7 +81,7 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_all_dungeon_prerequisites_found_in_current_sources_are_collected_first(self):
         c = shipped()
         dungeon_groups = shipped_groups(c)
-        guides = {key: c.ns.DungeonGuide(dungeon_groups[key]) for key in
+        guides = {key: guide_for(c, dungeon_groups[key]) for key in
                   ('uldaman', 'wailing-caverns', 'blackrock-depths')}
         for dungeon, child, parent in (('uldaman', 2341, 2340),
                                        ('wailing-caverns', 1489, 880),
@@ -102,7 +107,7 @@ class DungeonCollectionTests(unittest.TestCase):
         c = solo()
         g = group(c, {900: quest(previousQuest=899), 901: quest(previousQuest=899),
                       899: quest(categoryPath='kalimdor/test-coast')})
-        route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
+        route = c.ns.BuildDungeonRoute(guide_for(c, g), True)
         steps = [(s.id, s.kind) for s in route.stops.values() if not s.dungeonEntrance]
         self.assertEqual(steps.count((899, 'a')), 1)
         for id in (900, 901): self.assertLess(steps.index((899, 't')), steps.index((id, 'a')))
@@ -113,13 +118,13 @@ class DungeonCollectionTests(unittest.TestCase):
             g = group(c, {900: quest(previousQuest=899, prerequisiteSource=source),
                           899: quest(categoryPath='kalimdor/test-coast')})
             c.ns.offered[900] = True
-            guide = c.ns.DungeonGuide(g)
+            guide = guide_for(c, g)
             self.assertEqual({r.id for r in guide.records.values()}, expected)
 
     def test_accepted_goal_does_not_start_an_obsolete_prerequisite_chain(self):
         c = solo(); g = group(c, {900: quest(previousQuest=899), 899: quest(categoryPath='kalimdor/test-coast')})
         accept(c, 900)
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         self.assertEqual({r.id for r in guide.records.values()}, {900})
         route = c.ns.BuildDungeonRoute(guide, True)
         self.assertEqual(len(route.stops), 1); self.assertTrue(route.stops[1].dungeonEntrance)
@@ -127,16 +132,16 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_accepted_goal_stays_collected_when_published_level_is_stale(self):
         c = solo(); g = group(c, {900: quest(minLevel=20, level=25)})
         accept(c, 900)
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         self.assertIsNotNone(guide)
         route = c.ns.BuildDungeonRoute(guide, True)
         self.assertEqual(len(route.stops), 1); self.assertTrue(route.stops[1].dungeonEntrance)
 
     def test_actual_offer_with_unknown_pickup_level_does_not_use_target_level_as_a_gate(self):
         c = solo(); g = group(c, {900: quest(minLevel=None, level=25)})
-        self.assertIsNone(c.ns.DungeonGuide(g))
+        self.assertIsNone(guide_for(c, g))
         c.ns.offered[900] = True
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         self.assertEqual(c.ns.BuildDungeonRoute(guide, True).stops[1].id, 900)
 
     def test_any_prerequisite_picks_one_compatible_branch_and_does_not_infer_candidates(self):
@@ -145,7 +150,7 @@ class DungeonCollectionTests(unittest.TestCase):
                       897: quest('Wrong faction', side='Alliance', categoryPath='kalimdor/test-coast'),
                       898: quest('Matching branch', categoryPath='kalimdor/test-coast'),
                       896: quest('Unproven', categoryPath='kalimdor/test-coast')})
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         ids = {r.id for r in guide.records.values()}
         self.assertIn(898, ids); self.assertNotIn(897, ids); self.assertNotIn(896, ids)
 
@@ -154,7 +159,7 @@ class DungeonCollectionTests(unittest.TestCase):
             c = solo()
             g = group(c, {900: quest(previousQuest=899),
                           899: quest(categoryPath='kalimdor/test-coast', **changes)})
-            route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
+            route = c.ns.BuildDungeonRoute(guide_for(c, g), True)
             self.assertFalse(any(s.id == 900 or s.dungeonEntrance for s in route.stops.values()))
             self.assertEqual(route.missing, 1)
             self.assertTrue(route.partial)
@@ -164,17 +169,17 @@ class DungeonCollectionTests(unittest.TestCase):
         g = group(c, {900: quest(previousQuest=899), 899: quest(categoryPath='kalimdor/test-coast')})
         c.lua.execute('finished[899]=true')
         c.ns.ObservedPickupAvailable = c.lua.eval('function(id) if id==900 then return false end end')
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         route = c.ns.BuildDungeonRoute(guide, True)
         self.assertEqual(len(route.stops), 0); self.assertEqual(route.missing, 1)
         c.ns.ObservedPickupAvailable = c.lua.eval('function(id) if id==900 then return true end end')
-        self.assertEqual(c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True).stops[1].id, 900)
+        self.assertEqual(c.ns.BuildDungeonRoute(guide_for(c, g), True).stops[1].id, 900)
 
     def test_partial_prerequisite_still_routes_known_pickup_without_unlocking_child(self):
         c = solo()
         g = group(c, {900: quest(previousQuest=899),
                       899: quest(categoryPath='kalimdor/test-coast', ends=[])})
-        route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
+        route = c.ns.BuildDungeonRoute(guide_for(c, g), True)
         self.assertEqual(route.stops[1].id, 899)
         self.assertEqual(route.stops[1].kind, 'a')
         self.assertFalse(any(s.id == 900 or s.dungeonEntrance for s in route.stops.values()))
@@ -183,10 +188,10 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_accepted_goals_are_collected_not_sent_to_objectives(self):
         c = solo(); g = dungeon(c)
         accept(c, 900)
-        route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
+        route = c.ns.BuildDungeonRoute(guide_for(c, g), True)
         self.assertEqual([(s.id, s.kind) for s in route.stops.values() if not s.dungeonEntrance], [(901, 'a')])
         accept(c, 900, 901)
-        route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
+        route = c.ns.BuildDungeonRoute(guide_for(c, g), True)
         self.assertEqual(len(route.stops), 1); self.assertTrue(route.stops[1].dungeonEntrance)
 
     def test_active_quest_is_not_rejected_by_a_stale_negative_npc_offer(self):
@@ -195,7 +200,7 @@ class DungeonCollectionTests(unittest.TestCase):
         c.ns.ObservedPickupAvailable = c.lua.eval('function(id) if id == 95775 then return false end end')
 
         self.assertTrue(c.ns.CatalogueAllowed(95775, c.ns.profile, c.ns.self))
-        guide = c.ns.DungeonGuide(g)
+        guide = guide_for(c, g)
         self.assertIn(95775, {r.id for r in guide.records.values()})
         route = c.ns.BuildDungeonRoute(guide, True)
         self.assertNotIn('did not offer', route.pendingReason or '')
@@ -272,7 +277,7 @@ class DungeonCollectionTests(unittest.TestCase):
     def test_switching_guides_cancels_an_old_dungeon_planning_job(self):
         c = solo(); map_canvas(c); g = dungeon(c)
         c.ns.ShowDungeonQuests(g, True)
-        other = c.ns.DungeonGuide(g, 901)
+        other = guide_for(c, g, 901)
         c.ns.ActivateRoute(other)
         c.drain()
         self.assertEqual(c.ns.routeSelection.pickupQuestID, 901)
@@ -298,6 +303,6 @@ class DungeonCollectionTests(unittest.TestCase):
         self.assertTrue(c.ns.CanAutoAcceptGuideQuest(899))
         self.assertFalse(c.ns.CanAutoAcceptGuideQuest(898))
         c.ns.char.guideSkips.quests[899] = True
-        route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), False)
+        route = c.ns.BuildDungeonRoute(guide_for(c, g), False)
         self.assertEqual(len(route.stops), 0)
         self.assertTrue(c.ns.GuideQuestSkipped(899))

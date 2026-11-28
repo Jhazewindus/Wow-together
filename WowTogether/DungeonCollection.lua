@@ -221,7 +221,13 @@ function ns.DungeonGuide(group, pickupQuestID)
         end
         local doable = false
         for _, record in ipairs(records) do
-            if ns.active[record.id] or ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true then doable = true; break end
+            local quest = ns.CatalogueQuest(record.id)
+            local level = quest and (quest.minLevel or quest.level)
+            local offered = ns.PickupOfferEvidence(ns.self, record.id) == true
+                and ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true
+            local levelReady = ns.GuideInteger(level, 255) and level <= (ns.profile.level or 0)
+                and ns.CatalogueAllowed(record.id, ns.profile, ns.self) == true
+            if ns.active[record.id] or offered or levelReady then doable = true; break end
         end
         if not doable then
             return nil, "Nothing to do here yet: these quests open at level " .. tostring(opensAt or "?")
